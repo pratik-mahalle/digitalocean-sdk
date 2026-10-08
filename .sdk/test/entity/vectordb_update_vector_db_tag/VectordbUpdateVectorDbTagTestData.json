@@ -1,0 +1,83 @@
+{
+  "existing": {
+    "vectordb_update_vector_db_tag": {
+      "VECTORDB_UPDATE_VECTOR_DB_TAG00": {
+        "config": {},
+        "created_at": "s8d",
+        "endpoints": {},
+        "forked_from_id": "FORKED_FROM01",
+        "id": "VECTORDB_UPDATE_VECTOR_DB_TAG00",
+        "last_restore_id": "LAST_RESTORE01",
+        "name": "s92",
+        "owner_uuid": "s93",
+        "project_id": "PROJECT01",
+        "region": "s95",
+        "size": "s96",
+        "status": "s97",
+        "tags": [],
+        "updated_at": "s99",
+        "vector_database_id": "VECTOR_DATABASE01"
+      },
+      "VECTORDB_UPDATE_VECTOR_DB_TAG01": {
+        "config": {},
+        "created_at": "s119",
+        "endpoints": {},
+        "forked_from_id": "FORKED_FROM01",
+        "id": "VECTORDB_UPDATE_VECTOR_DB_TAG01",
+        "last_restore_id": "LAST_RESTORE01",
+        "name": "s11e",
+        "owner_uuid": "s11f",
+        "project_id": "PROJECT01",
+        "region": "s121",
+        "size": "s122",
+        "status": "s123",
+        "tags": [],
+        "updated_at": "s125",
+        "vector_database_id": "VECTOR_DATABASE01"
+      },
+      "VECTORDB_UPDATE_VECTOR_DB_TAG02": {
+        "config": {},
+        "created_at": "s1a5",
+        "endpoints": {},
+        "forked_from_id": "FORKED_FROM01",
+        "id": "VECTORDB_UPDATE_VECTOR_DB_TAG02",
+        "last_restore_id": "LAST_RESTORE01",
+        "name": "s1aa",
+        "owner_uuid": "s1ab",
+        "project_id": "PROJECT01",
+        "region": "s1ad",
+        "size": "s1ae",
+        "status": "s1af",
+        "tags": [],
+        "updated_at": "s1b1",
+        "vector_database_id": "VECTOR_DATABASE01"
+      }
+    }
+  },
+  "new": {
+    "vectordb_update_vector_db_tag": {
+      "vectordb_update_vector_db_tag_ref01": {
+        "config": {},
+        "created_at": "s231",
+        "endpoints": {},
+        "forked_from_id": "FORKED_FROM01",
+        "last_restore_id": "LAST_RESTORE01",
+        "name": "s236",
+        "owner_uuid": "s237",
+        "project_id": "PROJECT01",
+        "region": "s239",
+        "size": "s23a",
+        "status": "s23b",
+        "tags": [],
+        "updated_at": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/vector-databases/{id}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,321 @@
+# Entity: api_get_knowledge_base_indexing_job_output
+
+main: kit: entity: api_get_knowledge_base_indexing_job_output: {
+
+  alias: field: {}
+
+  fields: {
+    completed_datasources: {
+      fo: "int64"
+      h: "Completed Datasources"
+      n: "completed_datasources"
+      r: false
+      sh: "Number of datasources indexed completed"
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date / time"
+      t: "`$STRING`"
+    }
+    data_source_jobs: {
+      h: "Data Source Jobs"
+      n: "data_source_jobs"
+      r: false
+      sh: "Details on Data Sources included in the Indexing Job"
+      t: "`$ARRAY`"
+    }
+    data_source_uuids: {
+      h: "Data Source Uuids"
+      n: "data_source_uuids"
+      r: false
+      sh: "List of data source ids to index, if none are provided, all data sources will be indexed"
+      t: "`$ARRAY`"
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: false
+      t: "`$STRING`"
+    }
+    is_report_available: {
+      h: "Is Report Available"
+      n: "is_report_available"
+      r: false
+      sh: "Boolean value to determine if the indexing job details are available"
+      t: "`$BOOLEAN`"
+    }
+    knowledge_base_uuid: {
+      h: "Knowledge Base Uuid"
+      n: "knowledge_base_uuid"
+      r: false
+      sh: "Knowledge base id"
+      t: "`$STRING`"
+    }
+    phase: {
+      h: "Phase"
+      n: "phase"
+      r: false
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    tokens: {
+      fo: "int64"
+      h: "Tokens"
+      n: "tokens"
+      r: false
+      sh: "Number of tokens [This field is deprecated]"
+      t: "`$INTEGER`"
+    }
+    total_datasources: {
+      fo: "int64"
+      h: "Total Datasources"
+      n: "total_datasources"
+      r: false
+      sh: "Number of datasources being indexed"
+      t: "`$INTEGER`"
+    }
+    total_tokens: {
+      fo: "uint64"
+      h: "Total Tokens"
+      n: "total_tokens"
+      r: false
+      sh: "Total Tokens Consumed By the Indexing Job"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Last modified"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_knowledge_base_indexing_job_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/indexing_jobs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/indexing_jobs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.job`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/indexing_jobs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/indexing_jobs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.jobs`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/indexing_jobs/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/indexing_jobs/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.job`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/indexing_jobs/{uuid}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/indexing_jobs/{uuid}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+            {
+              var: "uuid"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.job`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

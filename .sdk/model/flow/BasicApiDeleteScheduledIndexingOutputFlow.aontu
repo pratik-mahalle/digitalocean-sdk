@@ -1,0 +1,31 @@
+# BasicApiDeleteScheduledIndexingOutputFlow
+
+main: kit: flow: BasicApiDeleteScheduledIndexingOutputFlow:
+{
+  entity: "api_delete_scheduled_indexing_output",
+  kind: "basic",
+  name: "BasicApiDeleteScheduledIndexingOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_delete_scheduled_indexing_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "api_delete_scheduled_indexing_output_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "api_delete_scheduled_indexing_output01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicApiDeleteScheduledIndexingOutputFlow"
+}

@@ -1,0 +1,81 @@
+# BasicReservedIpFlow
+
+main: kit: flow: BasicReservedIpFlow:
+{
+  entity: "reserved_ip",
+  kind: "basic",
+  name: "BasicReservedIpFlow",
+  step: [
+    {
+      i: {
+        ref: "reserved_ip_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "reserved_ip_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "reserved_ip_ref01",
+        srcdatavar: "reserved_ip_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "reserved_ip01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-reserved_ip_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "reserved_ip_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "reserved_ip01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "reserved_ip_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicReservedIpFlow"
+}

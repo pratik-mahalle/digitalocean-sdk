@@ -1,0 +1,22 @@
+# BasicApiModelPublicFlow
+
+main: kit: flow: BasicApiModelPublicFlow:
+{
+  entity: "api_model_public",
+  kind: "basic",
+  name: "BasicApiModelPublicFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_model_public_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiModelPublicFlow"
+}

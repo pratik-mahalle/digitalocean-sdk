@@ -1,0 +1,18 @@
+# BasicCreateResponseFlow
+
+main: kit: flow: BasicCreateResponseFlow:
+{
+  entity: "create_response",
+  kind: "basic",
+  name: "BasicCreateResponseFlow",
+  step: [
+    {
+      i: {
+        ref: "create_response_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCreateResponseFlow"
+}

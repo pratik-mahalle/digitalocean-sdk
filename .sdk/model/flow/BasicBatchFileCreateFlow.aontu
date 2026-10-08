@@ -1,0 +1,18 @@
+# BasicBatchFileCreateFlow
+
+main: kit: flow: BasicBatchFileCreateFlow:
+{
+  entity: "batch_file_create",
+  kind: "basic",
+  name: "BasicBatchFileCreateFlow",
+  step: [
+    {
+      i: {
+        ref: "batch_file_create_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBatchFileCreateFlow"
+}

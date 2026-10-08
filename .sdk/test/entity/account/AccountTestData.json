@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "account": {
+      "ACCOUNT00": {
+        "droplet_limit": 90,
+        "email": "s5b",
+        "email_verified": true,
+        "floating_ip_limit": 93,
+        "name": "s5e",
+        "status": "s5f",
+        "status_message": "s60",
+        "team": {},
+        "uuid": "s62",
+        "id": "ACCOUNT00"
+      },
+      "ACCOUNT01": {
+        "droplet_limit": 180,
+        "email": "sb5",
+        "email_verified": true,
+        "floating_ip_limit": 183,
+        "name": "sb8",
+        "status": "sb9",
+        "status_message": "sba",
+        "team": {},
+        "uuid": "sbc",
+        "id": "ACCOUNT01"
+      },
+      "ACCOUNT02": {
+        "droplet_limit": 270,
+        "email": "s10f",
+        "email_verified": true,
+        "floating_ip_limit": 273,
+        "name": "s112",
+        "status": "s113",
+        "status_message": "s114",
+        "team": {},
+        "uuid": "s116",
+        "id": "ACCOUNT02"
+      }
+    }
+  },
+  "new": {
+    "account": {
+      "account_ref01": {
+        "droplet_limit": 360,
+        "email": "s169",
+        "email_verified": true,
+        "floating_ip_limit": 363,
+        "name": "s16c",
+        "status": "s16d",
+        "status_message": "s16e",
+        "team": {},
+        "uuid": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/account": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

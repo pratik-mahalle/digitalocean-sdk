@@ -1,0 +1,47 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "api-engineering@digitalocean.com"
+        name: "DigitalOcean API Team"
+      }
+      description: "The DigitalOcean API."
+      license: {
+        name: "Apache 2.0"
+        url: "https://www.apache.org/licenses/LICENSE-2.0.html"
+      }
+      security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "inference_bearer_auth"
+              type: "http"
+            }
+          ]
+        ]
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearer_auth"
+        type: "http"
+      }
+      servers: [
+        {
+          description: "production"
+          url: "https://api.digitalocean.com"
+        }
+      ]
+      termsOfService: "https://www.digitalocean.com/legal/terms-of-service-agreement/"
+      title: "DigitalOcean API"
+      version: "2.0"
+      website: "https://digitalocean.com"
+    }
+  }
+}
+

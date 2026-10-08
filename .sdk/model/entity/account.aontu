@@ -1,0 +1,109 @@
+# Entity: account
+
+main: kit: entity: account: {
+
+  alias: field: {}
+
+  fields: {
+    droplet_limit: {
+      h: "Droplet Limit"
+      n: "droplet_limit"
+      r: true
+      sh: "The total number of Droplets current user or team may have active at one time."
+      t: "`$INTEGER`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "The email address used by the current user to register for DigitalOcean."
+      t: "`$STRING`"
+    }
+    email_verified: {
+      h: "Email Verified"
+      n: "email_verified"
+      r: true
+      sh: "If true, the user has verified their account via email."
+      t: "`$BOOLEAN`"
+    }
+    floating_ip_limit: {
+      h: "Floating Ip Limit"
+      n: "floating_ip_limit"
+      r: true
+      sh: "The total number of Floating IPs the current user or team may have."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The display name for the current user."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "This value is one of \"active\", \"warning\" or \"locked\"."
+      t: "`$STRING`"
+    }
+    status_message: {
+      h: "Status Message"
+      n: "status_message"
+      r: true
+      sh: "A human-readable message giving more details about the status of the account."
+      t: "`$STRING`"
+    }
+    team: {
+      h: "Team"
+      n: "team"
+      r: false
+      sh: "When authorized in a team context, includes information about the current team."
+      t: "`$OBJECT`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: true
+      sh: "The unique universal identifier for the current user."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "account"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/account"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/account"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.account`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "kubernetes_option": {
+      "KUBERNETES_OPTION00": {
+        "regions": [],
+        "sizes": [],
+        "versions": [],
+        "id": "KUBERNETES_OPTION00"
+      },
+      "KUBERNETES_OPTION01": {
+        "regions": [],
+        "sizes": [],
+        "versions": [],
+        "id": "KUBERNETES_OPTION01"
+      },
+      "KUBERNETES_OPTION02": {
+        "regions": [],
+        "sizes": [],
+        "versions": [],
+        "id": "KUBERNETES_OPTION02"
+      }
+    }
+  },
+  "new": {
+    "kubernetes_option": {
+      "kubernetes_option_ref01": {
+        "regions": [],
+        "sizes": [],
+        "versions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/kubernetes/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

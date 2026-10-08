@@ -1,0 +1,32 @@
+# BasicApiGetKnowledgeBaseOutputFlow
+
+main: kit: flow: BasicApiGetKnowledgeBaseOutputFlow:
+{
+  entity: "api_get_knowledge_base_output",
+  kind: "basic",
+  name: "BasicApiGetKnowledgeBaseOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_knowledge_base_output_ref01",
+        srcdatavar: "api_get_knowledge_base_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_knowledge_base_output01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_knowledge_base_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetKnowledgeBaseOutputFlow"
+}

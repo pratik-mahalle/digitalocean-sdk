@@ -1,0 +1,22 @@
+# BasicGenaiapiRegionFlow
+
+main: kit: flow: BasicGenaiapiRegionFlow:
+{
+  entity: "genaiapi_region",
+  kind: "basic",
+  name: "BasicGenaiapiRegionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "genaiapi_region_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGenaiapiRegionFlow"
+}

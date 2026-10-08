@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "api_generate_oauth2_url_output": {
+      "API_GENERATE_OAUTH2_URL_OUTPUT00": {
+        "url": "sa",
+        "id": "API_GENERATE_OAUTH2_URL_OUTPUT00"
+      },
+      "API_GENERATE_OAUTH2_URL_OUTPUT01": {
+        "url": "s14",
+        "id": "API_GENERATE_OAUTH2_URL_OUTPUT01"
+      },
+      "API_GENERATE_OAUTH2_URL_OUTPUT02": {
+        "url": "s1e",
+        "id": "API_GENERATE_OAUTH2_URL_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_generate_oauth2_url_output": {
+      "api_generate_oauth2_url_output_ref01": {
+        "url": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/oauth2/url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

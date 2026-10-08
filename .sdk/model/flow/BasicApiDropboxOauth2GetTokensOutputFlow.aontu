@@ -1,0 +1,18 @@
+# BasicApiDropboxOauth2GetTokensOutputFlow
+
+main: kit: flow: BasicApiDropboxOauth2GetTokensOutputFlow:
+{
+  entity: "api_dropbox_oauth2_get_tokens_output",
+  kind: "basic",
+  name: "BasicApiDropboxOauth2GetTokensOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_dropbox_oauth2_get_tokens_output_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiDropboxOauth2GetTokensOutputFlow"
+}

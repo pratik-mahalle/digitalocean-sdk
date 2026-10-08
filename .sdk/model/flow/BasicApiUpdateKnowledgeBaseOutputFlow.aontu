@@ -1,0 +1,49 @@
+# BasicApiUpdateKnowledgeBaseOutputFlow
+
+main: kit: flow: BasicApiUpdateKnowledgeBaseOutputFlow:
+{
+  entity: "api_update_knowledge_base_output",
+  kind: "basic",
+  name: "BasicApiUpdateKnowledgeBaseOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_knowledge_base_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_update_knowledge_base_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_update_knowledge_base_output_ref01",
+        srcdatavar: "api_update_knowledge_base_output_ref01_data",
+        suffix: "_up0",
+        textfield: "added_to_agent_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_knowledge_base_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateKnowledgeBaseOutputFlow"
+}

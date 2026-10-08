@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "prom_query_range": {
+      "PROM_QUERY_RANGE00": {
+        "result": [],
+        "resultType": "s15",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY_RANGE00"
+      },
+      "PROM_QUERY_RANGE01": {
+        "result": [],
+        "resultType": "s29",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY_RANGE01"
+      },
+      "PROM_QUERY_RANGE02": {
+        "result": [],
+        "resultType": "s3d",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY_RANGE02"
+      }
+    }
+  },
+  "new": {
+    "prom_query_range": {
+      "prom_query_range_ref01": {
+        "result": [],
+        "resultType": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/insights/query/{region}/prom/api/v1/query_range": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/query/{region}/prom/api/v1/query_range": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

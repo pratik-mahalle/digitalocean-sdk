@@ -1,0 +1,29 @@
+# BasicApiUpdateScenarioSetOutputFlow
+
+main: kit: flow: BasicApiUpdateScenarioSetOutputFlow:
+{
+  entity: "api_update_scenario_set_output",
+  kind: "basic",
+  name: "BasicApiUpdateScenarioSetOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_scenario_set_output_ref01",
+        srcdatavar: "api_update_scenario_set_output_ref01_data",
+        suffix: "_up0",
+        textfield: "bucket_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_scenario_set_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateScenarioSetOutputFlow"
+}

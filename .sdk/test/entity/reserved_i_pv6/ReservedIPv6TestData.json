@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "reserved_i_pv6": {
+      "RESERVED_I_PV600": {
+        "droplet": "s28",
+        "ip": "s29",
+        "region_slug": "s2a",
+        "reserved_at": "s2b",
+        "reserved_ipv6": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV600"
+      },
+      "RESERVED_I_PV601": {
+        "droplet": "s50",
+        "ip": "s51",
+        "region_slug": "s52",
+        "reserved_at": "s53",
+        "reserved_ipv6": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV601"
+      },
+      "RESERVED_I_PV602": {
+        "droplet": "s78",
+        "ip": "s79",
+        "region_slug": "s7a",
+        "reserved_at": "s7b",
+        "reserved_ipv6": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV602"
+      }
+    }
+  },
+  "new": {
+    "reserved_i_pv6": {
+      "reserved_i_pv6_ref01": {
+        "droplet": "sa0",
+        "ip": "sa1",
+        "region_slug": "sa2",
+        "reserved_at": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/reserved_ipv6": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/reserved_ipv6": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/reserved_ipv6/{reserved_ipv6}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/reserved_ipv6/{reserved_ipv6}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

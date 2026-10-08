@@ -1,0 +1,590 @@
+# Entity: droplet_autoscale_pool
+
+main: kit: entity: droplet_autoscale_pool: {
+
+  alias: field: {}
+
+  fields: {
+    active_resources_count: {
+      h: "Active Resources Count"
+      n: "active_resources_count"
+      r: true
+      sh: "The number of active Droplets in the autoscale pool."
+      t: "`$INTEGER`"
+    }
+    config: {
+      h: "Config"
+      n: "config"
+      r: true
+      sh: "The scaling configuration for an autoscale pool, which is how the pool scales up and down (either by resource utilization or static configuration)."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the autoscale pool was created."
+      t: "`$STRING`"
+    }
+    current_instance_count: {
+      h: "Current Instance Count"
+      n: "current_instance_count"
+      r: true
+      sh: "The current number of Droplets in the autoscale pool."
+      t: "`$INTEGER`"
+    }
+    current_utilization: {
+      h: "Current Utilization"
+      n: "current_utilization"
+      op: {
+        list: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      t: "`$OBJECT`"
+    }
+    desired_instance_count: {
+      h: "Desired Instance Count"
+      n: "desired_instance_count"
+      r: true
+      sh: "The target number of Droplets for the autoscale pool after the scaling event."
+      t: "`$INTEGER`"
+    }
+    droplet_id: {
+      h: "Droplet Id"
+      n: "droplet_id"
+      r: true
+      sh: "The unique identifier of the Droplet."
+      t: "`$INTEGER`"
+    }
+    droplet_template: {
+      h: "Droplet Template"
+      n: "droplet_template"
+      r: true
+      t: "`$OBJECT`"
+    }
+    health_status: {
+      h: "Health Status"
+      n: "health_status"
+      r: true
+      sh: "The health status of the Droplet."
+      t: "`$STRING`"
+    }
+    history_event_id: {
+      h: "History Event Id"
+      n: "history_event_id"
+      r: true
+      sh: "The unique identifier of the history event."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "A unique identifier for each autoscale pool instance."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The human-readable name set for the autoscale pool."
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: true
+      sh: "The reason for the scaling event."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the autoscale pool."
+      t: "`$STRING`"
+    }
+    unhealthy_reason: {
+      h: "Unhealthy Reason"
+      n: "unhealthy_reason"
+      r: false
+      sh: "A human-readable description of why the Droplet is unhealthy."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the autoscale pool was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "droplet_autoscale_pool"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/droplets/autoscale"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/droplets/autoscale"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.autoscale_pool`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/droplets/autoscale/{autoscale_pool_id}/history"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}/history"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+            {
+              lit: "history"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.history`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/autoscale/{autoscale_pool_id}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}/members"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.droplets`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/autoscale"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "my-autoscale-pool"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/autoscale"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.autoscale_pools`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/droplets/autoscale/{autoscale_pool_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.autoscale_pool`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/droplets/autoscale/{autoscale_pool_id}/dangerous"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: true
+                k: "header"
+                n: "x_dangerous"
+                or: "X-Dangerous"
+                r: true
+                t: "`$BOOLEAN`"
+              }
+            ]
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}/dangerous"
+          q: {
+            "$action": "dangerous"
+            exist: [
+              "autoscale_pool_id"
+              "x_dangerous"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+            {
+              lit: "dangerous"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/droplets/autoscale/{autoscale_pool_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/droplets/autoscale/{autoscale_pool_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "param"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/droplets/autoscale/{autoscale_pool_id}"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "autoscale"
+            }
+            {
+              var: "autoscale_pool_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.autoscale_pool`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

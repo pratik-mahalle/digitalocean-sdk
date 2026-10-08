@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_get_knowledge_base_output": {
+      "API_GET_KNOWLEDGE_BASE_OUTPUT00": {
+        "database_status": "s14",
+        "knowledge_base": {},
+        "uuid": "UUID01",
+        "id": "API_GET_KNOWLEDGE_BASE_OUTPUT00"
+      },
+      "API_GET_KNOWLEDGE_BASE_OUTPUT01": {
+        "database_status": "s28",
+        "knowledge_base": {},
+        "uuid": "UUID01",
+        "id": "API_GET_KNOWLEDGE_BASE_OUTPUT01"
+      },
+      "API_GET_KNOWLEDGE_BASE_OUTPUT02": {
+        "database_status": "s3c",
+        "knowledge_base": {},
+        "uuid": "UUID01",
+        "id": "API_GET_KNOWLEDGE_BASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_knowledge_base_output": {
+      "api_get_knowledge_base_output_ref01": {
+        "database_status": "s50",
+        "knowledge_base": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/knowledge_bases/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,479 @@
+# Entity: vpc_routes__public_preview
+
+main: kit: entity: vpc_routes__public_preview: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "The time when the route was created."
+      t: "`$STRING`"
+    }
+    destination_cidr: {
+      h: "Destination Cidr"
+      n: "destination_cidr"
+      r: true
+      sh: "A valid IPv4 CIDR accepted by the VPC routing product."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      ro: true
+      sh: "The unique identifier of the route."
+      t: "`$STRING`"
+    }
+    modifiable: {
+      h: "Modifiable"
+      n: "modifiable"
+      r: false
+      ro: true
+      sh: "Whether the caller can update or delete the route."
+      t: "`$BOOLEAN`"
+    }
+    target_urns: {
+      h: "Target Urns"
+      n: "target_urns"
+      r: true
+      sh: "The URNs of supported next-hop resources."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      ro: true
+      sh: "The route type inferred from how the route is sourced."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vpc_routes__public_preview"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_id"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes"
+          q: {
+            exist: [
+              "subnet_id"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              subnet_uuid: "subnet_id"
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_id"
+            }
+            {
+              lit: "routes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.route`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_id"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes"
+          q: {
+            exist: [
+              "subnet_id"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              subnet_uuid: "subnet_id"
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_id"
+            }
+            {
+              lit: "routes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.routes`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_uuid}/routes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_uuid}/routes"
+          q: {
+            "$action": "routes"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "routes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.routes`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f0e1d2c3-b4a5-6789-0fed-cba987654321"
+                k: "param"
+                n: "route_uuid"
+                or: "route_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_id"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
+          q: {
+            exist: [
+              "route_uuid"
+              "subnet_id"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              subnet_uuid: "subnet_id"
+              vpc_uuid: "vpc_id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_id"
+            }
+            {
+              lit: "routes"
+            }
+            {
+              var: "route_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f0e1d2c3-b4a5-6789-0fed-cba987654321"
+                k: "param"
+                n: "route_uuid"
+                or: "route_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_id"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
+          q: {
+            exist: [
+              "route_uuid"
+              "subnet_id"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              subnet_uuid: "subnet_id"
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_id"
+            }
+            {
+              lit: "routes"
+            }
+            {
+              var: "route_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.route`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vpc")]
+    [path("$.main.kit.entity.vpc")]
+  ]
+
+}

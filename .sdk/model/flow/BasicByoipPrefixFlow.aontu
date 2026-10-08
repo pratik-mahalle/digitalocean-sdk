@@ -1,0 +1,100 @@
+# BasicByoipPrefixFlow
+
+main: kit: flow: BasicByoipPrefixFlow:
+{
+  entity: "byoip_prefix",
+  kind: "basic",
+  name: "BasicByoipPrefixFlow",
+  step: [
+    {
+      i: {
+        ref: "byoip_prefix_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "byoip_prefix_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "byoip_prefix_ref01",
+        srcdatavar: "byoip_prefix_ref01_data",
+        suffix: "_up0",
+        textfield: "failure_reason"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-byoip_prefix_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "byoip_prefix_ref01",
+        srcdatavar: "byoip_prefix_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "byoip_prefix01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-byoip_prefix_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "byoip_prefix_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "byoip_prefix01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "byoip_prefix_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicByoipPrefixFlow"
+}

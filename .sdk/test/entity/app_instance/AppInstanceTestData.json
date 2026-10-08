@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "app_instance": {
+      "APP_INSTANCE00": {
+        "component_name": "s32",
+        "component_type": "s33",
+        "id": "APP_INSTANCE00",
+        "instance_alias": "s35",
+        "instance_name": "s36"
+      },
+      "APP_INSTANCE01": {
+        "component_name": "s64",
+        "component_type": "s65",
+        "id": "APP_INSTANCE01",
+        "instance_alias": "s67",
+        "instance_name": "s68"
+      },
+      "APP_INSTANCE02": {
+        "component_name": "s96",
+        "component_type": "s97",
+        "id": "APP_INSTANCE02",
+        "instance_alias": "s99",
+        "instance_name": "s9a"
+      }
+    }
+  },
+  "new": {
+    "app_instance": {
+      "app_instance_ref01": {
+        "component_name": "sc8",
+        "component_type": "sc9",
+        "instance_alias": "scb",
+        "instance_name": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/{app_id}/instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

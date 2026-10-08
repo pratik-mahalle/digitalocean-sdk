@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "api_list_evaluation_metrics_output": {
+      "API_LIST_EVALUATION_METRICS_OUTPUT00": {
+        "associated_presets": [],
+        "category": "s97",
+        "custom_eval_config": {},
+        "description": "s99",
+        "evaluation_scope": "s9a",
+        "inverted": false,
+        "is_metric_goal": true,
+        "metric_name": "s9d",
+        "metric_rank": 158,
+        "metric_type": "s9f",
+        "metric_uuid": "sa0",
+        "metric_value_type": "sa1",
+        "range_max": 162,
+        "range_min": 163,
+        "source": "sa4"
+      },
+      "API_LIST_EVALUATION_METRICS_OUTPUT01": {
+        "associated_presets": [],
+        "category": "s12d",
+        "custom_eval_config": {},
+        "description": "s12f",
+        "evaluation_scope": "s130",
+        "inverted": false,
+        "is_metric_goal": true,
+        "metric_name": "s133",
+        "metric_rank": 308,
+        "metric_type": "s135",
+        "metric_uuid": "s136",
+        "metric_value_type": "s137",
+        "range_max": 312,
+        "range_min": 313,
+        "source": "s13a"
+      },
+      "API_LIST_EVALUATION_METRICS_OUTPUT02": {
+        "associated_presets": [],
+        "category": "s1c3",
+        "custom_eval_config": {},
+        "description": "s1c5",
+        "evaluation_scope": "s1c6",
+        "inverted": false,
+        "is_metric_goal": true,
+        "metric_name": "s1c9",
+        "metric_rank": 458,
+        "metric_type": "s1cb",
+        "metric_uuid": "s1cc",
+        "metric_value_type": "s1cd",
+        "range_max": 462,
+        "range_min": 463,
+        "source": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "api_list_evaluation_metrics_output": {
+      "api_list_evaluation_metrics_output_ref01": {
+        "associated_presets": [],
+        "category": "s259",
+        "custom_eval_config": {},
+        "description": "s25b",
+        "evaluation_scope": "s25c",
+        "inverted": false,
+        "is_metric_goal": true,
+        "metric_name": "s25f",
+        "metric_rank": 608,
+        "metric_type": "s261",
+        "metric_uuid": "s262",
+        "metric_value_type": "s263",
+        "range_max": 612,
+        "range_min": 613,
+        "source": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/evaluation_metrics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

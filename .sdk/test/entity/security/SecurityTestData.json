@@ -1,0 +1,117 @@
+{
+  "existing": {
+    "security": {
+      "SECURITY00": {
+        "created_at": "s6e",
+        "findings": [],
+        "id": "SECURITY00",
+        "name": "s71",
+        "resource": "s72",
+        "resources": [],
+        "rule_uuid": "s74",
+        "status": "s75",
+        "tier_coverage": {},
+        "type": "s77",
+        "urn": "s78",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01",
+        "suppression_uuid": "SUPPRESSION_UUID01"
+      },
+      "SECURITY01": {
+        "created_at": "sdc",
+        "findings": [],
+        "id": "SECURITY01",
+        "name": "sdf",
+        "resource": "se0",
+        "resources": [],
+        "rule_uuid": "se2",
+        "status": "se3",
+        "tier_coverage": {},
+        "type": "se5",
+        "urn": "se6",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01",
+        "suppression_uuid": "SUPPRESSION_UUID01"
+      },
+      "SECURITY02": {
+        "created_at": "s14a",
+        "findings": [],
+        "id": "SECURITY02",
+        "name": "s14d",
+        "resource": "s14e",
+        "resources": [],
+        "rule_uuid": "s150",
+        "status": "s151",
+        "tier_coverage": {},
+        "type": "s153",
+        "urn": "s154",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01",
+        "suppression_uuid": "SUPPRESSION_UUID01"
+      }
+    }
+  },
+  "new": {
+    "security": {
+      "security_ref01": {
+        "created_at": "s1b8",
+        "findings": [],
+        "name": "s1bb",
+        "resource": "s1bc",
+        "resources": [],
+        "rule_uuid": "s1be",
+        "status": "s1bf",
+        "tier_coverage": {},
+        "type": "s1c1",
+        "urn": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/security/scans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/security/scans/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/security/settings/suppressions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/{scan_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/security/settings/suppressions/{suppression_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/security/settings/plan": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

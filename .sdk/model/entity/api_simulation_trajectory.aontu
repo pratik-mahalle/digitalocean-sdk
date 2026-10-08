@@ -1,0 +1,212 @@
+# Entity: api_simulation_trajectory
+
+main: kit: entity: api_simulation_trajectory: {
+
+  alias: field: {}
+
+  fields: {
+    agent_id: {
+      h: "Agent Id"
+      n: "agent_id"
+      r: false
+      sh: "Identifier of the candidate agent under test for this journey."
+      t: "`$STRING`"
+    }
+    completed_at: {
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    duration_sec: {
+      fo: "uint64"
+      h: "Duration Sec"
+      n: "duration_sec"
+      r: false
+      t: "`$STRING`"
+    }
+    evaluation_metrics: {
+      h: "Evaluation Metrics"
+      n: "evaluation_metrics"
+      r: false
+      sh: "Per-metric scores and judge reasoning for this trajectory."
+      t: "`$ARRAY`"
+    }
+    failure_reason: {
+      h: "Failure Reason"
+      n: "failure_reason"
+      r: false
+      t: "`$STRING`"
+    }
+    journey_index: {
+      fo: "int64"
+      h: "Journey Index"
+      n: "journey_index"
+      r: false
+      t: "`$INTEGER`"
+    }
+    journey_uuid: {
+      h: "Journey Uuid"
+      n: "journey_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    judge: {
+      h: "Judge"
+      n: "judge"
+      r: false
+      sh: "Judge output embedded in the trajectory JSON."
+      t: "`$OBJECT`"
+    }
+    max_turns: {
+      fo: "int64"
+      h: "Max Turns"
+      n: "max_turns"
+      r: false
+      sh: "Turn budget configured for this journey (per-scenario max_turns, after any run-level override)."
+      t: "`$INTEGER`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: false
+      t: "`$ARRAY`"
+    }
+    run_uuid: {
+      h: "Run Uuid"
+      n: "run_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    scenario_uuid: {
+      h: "Scenario Uuid"
+      n: "scenario_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    session_id: {
+      h: "Session Id"
+      n: "session_id"
+      r: false
+      t: "`$STRING`"
+    }
+    started_at: {
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Lifecycle status of the trajectory."
+      t: "`$STRING`"
+    }
+    token_usage: {
+      h: "Token Usage"
+      n: "token_usage"
+      r: false
+      sh: "Per-actor token accounting for a run or journey."
+      t: "`$OBJECT`"
+    }
+    turn_count: {
+      fo: "int64"
+      h: "Turn Count"
+      n: "turn_count"
+      r: false
+      t: "`$INTEGER`"
+    }
+    verdict: {
+      h: "Verdict"
+      n: "verdict"
+      r: false
+      sh: "The judge's verdict for a journey."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_simulation_trajectory"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}/trajectory"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "journey_id"
+                or: "journey_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "simulation_run_id"
+                or: "run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}/trajectory"
+          q: {
+            exist: [
+              "journey_id"
+              "simulation_run_id"
+            ]
+          }
+          r: {
+            param: {
+              journey_uuid: "journey_id"
+              run_uuid: "simulation_run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "simulation_runs"
+            }
+            {
+              var: "simulation_run_id"
+            }
+            {
+              lit: "journeys"
+            }
+            {
+              var: "journey_id"
+            }
+            {
+              lit: "trajectory"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trajectory`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

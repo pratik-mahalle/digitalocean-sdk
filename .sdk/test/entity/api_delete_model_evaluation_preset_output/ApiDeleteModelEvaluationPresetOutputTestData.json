@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_model_evaluation_preset_output": {
+      "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT00": {
+        "eval_preset_uuid": "EVAL_PRESET_UUID01",
+        "id": "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT00"
+      },
+      "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT01": {
+        "eval_preset_uuid": "EVAL_PRESET_UUID01",
+        "id": "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT01"
+      },
+      "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT02": {
+        "eval_preset_uuid": "EVAL_PRESET_UUID01",
+        "id": "API_DELETE_MODEL_EVALUATION_PRESET_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_model_evaluation_preset_output": {
+      "api_delete_model_evaluation_preset_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

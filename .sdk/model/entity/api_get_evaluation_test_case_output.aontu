@@ -1,0 +1,279 @@
+# Entity: api_get_evaluation_test_case_output
+
+main: kit: entity: api_get_evaluation_test_case_output: {
+
+  alias: field: {}
+
+  fields: {
+    agent_workspace_name: {
+      h: "Agent Workspace Name"
+      n: "agent_workspace_name"
+      r: false
+      t: "`$STRING`"
+    }
+    archived_at: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archived_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_by_user_email: {
+      h: "Created By User Email"
+      n: "created_by_user_email"
+      r: false
+      t: "`$STRING`"
+    }
+    created_by_user_id: {
+      fo: "uint64"
+      h: "Created By User Id"
+      n: "created_by_user_id"
+      r: false
+      t: "`$STRING`"
+    }
+    dataset: {
+      h: "Dataset"
+      n: "dataset"
+      r: false
+      t: "`$OBJECT`"
+    }
+    dataset_name: {
+      h: "Dataset Name"
+      n: "dataset_name"
+      r: false
+      t: "`$STRING`"
+    }
+    dataset_uuid: {
+      h: "Dataset Uuid"
+      n: "dataset_uuid"
+      r: false
+      sh: "Dataset against which the test‑case is executed."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the test case."
+      t: "`$STRING`"
+    }
+    latest_version_number_of_runs: {
+      fo: "int32"
+      h: "Latest Version Number Of Runs"
+      n: "latest_version_number_of_runs"
+      r: false
+      t: "`$INTEGER`"
+    }
+    metrics: {
+      h: "Metrics"
+      n: "metrics"
+      r: false
+      sh: "Full metric list to use for evaluation test case."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the test case."
+      t: "`$STRING`"
+    }
+    star_metric: {
+      h: "Star Metric"
+      n: "star_metric"
+      r: false
+      t: "`$OBJECT`"
+    }
+    test_case_uuid: {
+      h: "Test Case Uuid"
+      n: "test_case_uuid"
+      r: false
+      sh: "Test‑case UUID."
+      t: "`$STRING`"
+    }
+    total_runs: {
+      fo: "int32"
+      h: "Total Runs"
+      n: "total_runs"
+      r: false
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_by_user_email: {
+      h: "Updated By User Email"
+      n: "updated_by_user_email"
+      r: false
+      t: "`$STRING`"
+    }
+    updated_by_user_id: {
+      fo: "uint64"
+      h: "Updated By User Id"
+      n: "updated_by_user_id"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      fo: "int64"
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$INTEGER`"
+    }
+    workspace_uuid: {
+      h: "Workspace Uuid"
+      n: "workspace_uuid"
+      r: false
+      sh: "The workspace uuid."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_evaluation_test_case_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/evaluation_test_cases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/evaluation_test_cases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_test_cases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_test_cases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_test_cases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_test_cases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.evaluation_test_cases`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_test_cases/{test_case_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "test_case_uuid"
+                or: "test_case_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "evaluation_test_case_version"
+                or: "evaluation_test_case_version"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_test_cases/{test_case_uuid}"
+          q: {
+            exist: [
+              "test_case_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_test_cases"
+            }
+            {
+              var: "test_case_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.evaluation_test_case`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

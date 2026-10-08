@@ -1,0 +1,135 @@
+# Entity: api_import_custom_model_output_public
+
+main: kit: entity: api_import_custom_model_output_public: {
+
+  alias: field: {}
+
+  fields: {
+    accept_hf_token_storage: {
+      h: "Accept Hf Token Storage"
+      n: "accept_hf_token_storage"
+      r: false
+      sh: "Whether the caller accepts storage of their HuggingFace token for gated model access"
+      t: "`$BOOLEAN`"
+    }
+    accept_terms_and_conditions: {
+      h: "Accept Terms And Conditions"
+      n: "accept_terms_and_conditions"
+      r: false
+      sh: "Whether the caller accepts the terms and conditions for importing this model"
+      t: "`$BOOLEAN`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the model"
+      t: "`$STRING`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: false
+      t: "`$STRING`"
+    }
+    import_job: {
+      h: "Import Job"
+      n: "import_job"
+      r: false
+      sh: "Import job tracking for a custom model"
+      t: "`$OBJECT`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: false
+      sh: "Custom model - user-imported model from HuggingFace, Spaces, etc."
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name for the imported model"
+      t: "`$STRING`"
+    }
+    preferred_gpu_region: {
+      h: "Preferred Gpu Region"
+      n: "preferred_gpu_region"
+      r: false
+      sh: "Preferred GPU region for deployment"
+      t: "`$STRING`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: false
+      sh: "Reference to the original source of the model"
+      t: "`$OBJECT`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: false
+      sh: "Source from which the model was imported"
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "User-defined tags for organizing models"
+      t: "`$OBJECT`"
+    }
+    validation_steps: {
+      h: "Validation Steps"
+      n: "validation_steps"
+      r: false
+      sh: "Validation steps performed during import"
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "api_import_custom_model_output_public"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/custom_models/import"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/custom_models/import"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "custom_models"
+            }
+            {
+              lit: "import"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

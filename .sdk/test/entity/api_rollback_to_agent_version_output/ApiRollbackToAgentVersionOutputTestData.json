@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "api_rollback_to_agent_version_output": {
+      "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT00": {
+        "audit_header": {},
+        "uuid": "s1f",
+        "version_hash": "s20",
+        "agent_id": "AGENT01",
+        "id": "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT00"
+      },
+      "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT01": {
+        "audit_header": {},
+        "uuid": "s3d",
+        "version_hash": "s3e",
+        "agent_id": "AGENT01",
+        "id": "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT01"
+      },
+      "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT02": {
+        "audit_header": {},
+        "uuid": "s5b",
+        "version_hash": "s5c",
+        "agent_id": "AGENT01",
+        "id": "API_ROLLBACK_TO_AGENT_VERSION_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_rollback_to_agent_version_output": {
+      "api_rollback_to_agent_version_output_ref01": {
+        "audit_header": {},
+        "uuid": "s79",
+        "version_hash": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/agents/{uuid}/versions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

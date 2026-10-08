@@ -1,0 +1,284 @@
+# Entity: api_get_evaluation_run_output
+
+main: kit: entity: api_get_evaluation_run_output: {
+
+  alias: field: {}
+
+  fields: {
+    agent_deleted: {
+      h: "Agent Deleted"
+      n: "agent_deleted"
+      r: false
+      sh: "Whether agent is deleted"
+      t: "`$BOOLEAN`"
+    }
+    agent_deployment_name: {
+      h: "Agent Deployment Name"
+      n: "agent_deployment_name"
+      r: false
+      sh: "The agent deployment name"
+      t: "`$STRING`"
+    }
+    agent_deployment_names: {
+      h: "Agent Deployment Names"
+      n: "agent_deployment_names"
+      r: false
+      sh: "Agent deployment names to run the test case against."
+      t: "`$ARRAY`"
+    }
+    agent_name: {
+      h: "Agent Name"
+      n: "agent_name"
+      r: false
+      sh: "Agent name"
+      t: "`$STRING`"
+    }
+    agent_uuid: {
+      h: "Agent Uuid"
+      n: "agent_uuid"
+      r: false
+      sh: "Agent UUID."
+      t: "`$STRING`"
+    }
+    agent_uuids: {
+      h: "Agent Uuids"
+      n: "agent_uuids"
+      r: false
+      sh: "Agent UUIDs to run the test case against (legacy agents)."
+      t: "`$ARRAY`"
+    }
+    agent_version_hash: {
+      h: "Agent Version Hash"
+      n: "agent_version_hash"
+      r: false
+      sh: "Version hash"
+      t: "`$STRING`"
+    }
+    agent_workspace_uuid: {
+      h: "Agent Workspace Uuid"
+      n: "agent_workspace_uuid"
+      r: false
+      sh: "Agent workspace uuid"
+      t: "`$STRING`"
+    }
+    created_by_user_email: {
+      h: "Created By User Email"
+      n: "created_by_user_email"
+      r: false
+      t: "`$STRING`"
+    }
+    created_by_user_id: {
+      fo: "uint64"
+      h: "Created By User Id"
+      n: "created_by_user_id"
+      r: false
+      t: "`$STRING`"
+    }
+    error_description: {
+      h: "Error Description"
+      n: "error_description"
+      r: false
+      sh: "The error description"
+      t: "`$STRING`"
+    }
+    evaluation_run_uuid: {
+      h: "Evaluation Run Uuid"
+      n: "evaluation_run_uuid"
+      r: false
+      sh: "Evaluation run UUID."
+      t: "`$STRING`"
+    }
+    evaluation_run_uuids: {
+      h: "Evaluation Run Uuids"
+      n: "evaluation_run_uuids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    evaluation_test_case_workspace_uuid: {
+      h: "Evaluation Test Case Workspace Uuid"
+      n: "evaluation_test_case_workspace_uuid"
+      r: false
+      sh: "Evaluation test case workspace uuid"
+      t: "`$STRING`"
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: false
+      sh: "Run end time."
+      t: "`$STRING`"
+    }
+    pass_status: {
+      h: "Pass Status"
+      n: "pass_status"
+      r: false
+      sh: "The pass status of the evaluation run based on the star metric."
+      t: "`$BOOLEAN`"
+    }
+    queued_at: {
+      fo: "date-time"
+      h: "Queued At"
+      n: "queued_at"
+      r: false
+      sh: "Run queued time."
+      t: "`$STRING`"
+    }
+    run_level_metric_results: {
+      h: "Run Level Metric Results"
+      n: "run_level_metric_results"
+      r: false
+      t: "`$ARRAY`"
+    }
+    run_name: {
+      h: "Run Name"
+      n: "run_name"
+      r: false
+      sh: "Run name."
+      t: "`$STRING`"
+    }
+    star_metric_result: {
+      h: "Star Metric Result"
+      n: "star_metric_result"
+      r: false
+      t: "`$OBJECT`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "Run start time."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Evaluation Run Statuses"
+      t: "`$STRING`"
+    }
+    test_case_description: {
+      h: "Test Case Description"
+      n: "test_case_description"
+      r: false
+      sh: "Test case description."
+      t: "`$STRING`"
+    }
+    test_case_name: {
+      h: "Test Case Name"
+      n: "test_case_name"
+      r: false
+      sh: "Test case name."
+      t: "`$STRING`"
+    }
+    test_case_uuid: {
+      h: "Test Case Uuid"
+      n: "test_case_uuid"
+      r: false
+      sh: "Test-case UUID."
+      t: "`$STRING`"
+    }
+    test_case_version: {
+      fo: "int64"
+      h: "Test Case Version"
+      n: "test_case_version"
+      r: false
+      sh: "Test-case-version."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "api_get_evaluation_run_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/evaluation_runs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/evaluation_runs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_runs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_runs/{evaluation_run_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "evaluation_run_uuid"
+                or: "evaluation_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}"
+          q: {
+            exist: [
+              "evaluation_run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_runs"
+            }
+            {
+              var: "evaluation_run_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.evaluation_run`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

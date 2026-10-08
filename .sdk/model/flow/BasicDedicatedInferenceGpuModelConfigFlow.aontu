@@ -1,0 +1,22 @@
+# BasicDedicatedInferenceGpuModelConfigFlow
+
+main: kit: flow: BasicDedicatedInferenceGpuModelConfigFlow:
+{
+  entity: "dedicated_inference_gpu_model_config",
+  kind: "basic",
+  name: "BasicDedicatedInferenceGpuModelConfigFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dedicated_inference_gpu_model_config_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDedicatedInferenceGpuModelConfigFlow"
+}

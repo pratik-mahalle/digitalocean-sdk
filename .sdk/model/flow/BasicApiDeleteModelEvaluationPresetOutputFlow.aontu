@@ -1,0 +1,9 @@
+# BasicApiDeleteModelEvaluationPresetOutputFlow
+
+main: kit: flow: BasicApiDeleteModelEvaluationPresetOutputFlow:
+{
+  entity: "api_delete_model_evaluation_preset_output",
+  kind: "basic",
+  name: "BasicApiDeleteModelEvaluationPresetOutputFlow",
+  "key$": "BasicApiDeleteModelEvaluationPresetOutputFlow"
+}

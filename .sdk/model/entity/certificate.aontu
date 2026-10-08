@@ -1,0 +1,285 @@
+# Entity: certificate
+
+main: kit: entity: certificate: {
+
+  alias: field: {}
+
+  fields: {
+    certificate: {
+      h: "Certificate"
+      n: "certificate"
+      r: false
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the certificate was created."
+      t: "`$STRING`"
+    }
+    dns_names: {
+      h: "Dns Names"
+      n: "dns_names"
+      r: false
+      sh: "An array of fully qualified domain names (FQDNs) for which the certificate was issued."
+      t: "`$ARRAY`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference a certificate."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "A unique human-readable name referring to a certificate."
+      t: "`$STRING`"
+    }
+    not_after: {
+      fo: "date-time"
+      h: "Not After"
+      n: "not_after"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents the certificate's expiration date."
+      t: "`$STRING`"
+    }
+    sha1_fingerprint: {
+      h: "Sha1 Fingerprint"
+      n: "sha1_fingerprint"
+      r: false
+      ro: true
+      sh: "A unique identifier generated from the SHA-1 fingerprint of the certificate."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      ro: true
+      sh: "A string representing the current state of the certificate."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "A string representing the type of the certificate."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "certificate"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/certificates"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/certificates"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "certificates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.certificate`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/certificates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "certificate-name"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/certificates"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "certificates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.certificates`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/certificates/{certificate_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "certificate_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/certificates/{certificate_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              certificate_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "certificates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.certificate`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/certificates/{certificate_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "certificate_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/certificates/{certificate_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              certificate_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "certificates"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

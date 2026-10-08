@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "app_alert": {
+      "APP_ALERT00": {
+        "component_name": "s46",
+        "emails": [],
+        "id": "APP_ALERT00",
+        "phase": "s49",
+        "progress": {},
+        "slack_webhooks": [],
+        "spec": {},
+        "alert_id": "ALERT01",
+        "app_id": "APP01"
+      },
+      "APP_ALERT01": {
+        "component_name": "s8c",
+        "emails": [],
+        "id": "APP_ALERT01",
+        "phase": "s8f",
+        "progress": {},
+        "slack_webhooks": [],
+        "spec": {},
+        "alert_id": "ALERT01",
+        "app_id": "APP01"
+      },
+      "APP_ALERT02": {
+        "component_name": "sd2",
+        "emails": [],
+        "id": "APP_ALERT02",
+        "phase": "sd5",
+        "progress": {},
+        "slack_webhooks": [],
+        "spec": {},
+        "alert_id": "ALERT01",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_alert": {
+      "app_alert_ref01": {
+        "component_name": "s118",
+        "emails": [],
+        "phase": "s11b",
+        "progress": {},
+        "slack_webhooks": [],
+        "spec": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/{app_id}/alerts/{alert_id}/destinations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

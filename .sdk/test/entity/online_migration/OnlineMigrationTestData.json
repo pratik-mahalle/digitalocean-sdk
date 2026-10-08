@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "online_migration": {
+      "ONLINE_MIGRATION00": {
+        "created_at": "s3c",
+        "disable_ssl": false,
+        "id": "ONLINE_MIGRATION00",
+        "ignore_dbs": [],
+        "source": {},
+        "status": "s41",
+        "database_id": "DATABASE01"
+      },
+      "ONLINE_MIGRATION01": {
+        "created_at": "s78",
+        "disable_ssl": false,
+        "id": "ONLINE_MIGRATION01",
+        "ignore_dbs": [],
+        "source": {},
+        "status": "s7d",
+        "database_id": "DATABASE01"
+      },
+      "ONLINE_MIGRATION02": {
+        "created_at": "sb4",
+        "disable_ssl": false,
+        "id": "ONLINE_MIGRATION02",
+        "ignore_dbs": [],
+        "source": {},
+        "status": "sb9",
+        "database_id": "DATABASE01"
+      }
+    }
+  },
+  "new": {
+    "online_migration": {
+      "online_migration_ref01": {
+        "created_at": "sf0",
+        "disable_ssl": false,
+        "ignore_dbs": [],
+        "source": {},
+        "status": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/databases/{database_cluster_uuid}/online-migration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/online-migration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

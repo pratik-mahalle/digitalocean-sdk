@@ -1,0 +1,110 @@
+# Entity: clusterlint
+
+main: kit: entity: clusterlint: {
+
+  alias: field: {}
+
+  fields: {
+    check_name: {
+      h: "Check Name"
+      n: "check_name"
+      r: false
+      sh: "The clusterlint check that resulted in the diagnostic."
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      sh: "Feedback about the object for users to fix."
+      t: "`$STRING`"
+    }
+    object: {
+      h: "Object"
+      n: "object"
+      r: false
+      sh: "Metadata about the Kubernetes API object the diagnostic is reported on."
+      t: "`$OBJECT`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: false
+      sh: "Can be one of error, warning or suggestion."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "clusterlint"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/kubernetes/clusters/{cluster_id}/clusterlint"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bd5f5959-5e1e-4205-a714-a914373942af"
+                k: "param"
+                n: "cluster_id"
+                or: "cluster_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "50c2f44c-011d-493e-aee5-361a4a0d1844"
+                k: "query"
+                n: "run_id"
+                or: "run_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/kubernetes/clusters/{cluster_id}/clusterlint"
+          q: {
+            exist: [
+              "cluster_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "kubernetes"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              var: "cluster_id"
+            }
+            {
+              lit: "clusterlint"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.diagnostics`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

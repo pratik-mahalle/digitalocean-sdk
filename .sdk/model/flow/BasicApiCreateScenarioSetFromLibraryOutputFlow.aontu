@@ -1,0 +1,22 @@
+# BasicApiCreateScenarioSetFromLibraryOutputFlow
+
+main: kit: flow: BasicApiCreateScenarioSetFromLibraryOutputFlow:
+{
+  entity: "api_create_scenario_set_from_library_output",
+  kind: "basic",
+  name: "BasicApiCreateScenarioSetFromLibraryOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_create_scenario_set_from_library_output_ref01"
+      }
+
+      m: {
+        scenario_library_id: "scenario_library01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiCreateScenarioSetFromLibraryOutputFlow"
+}

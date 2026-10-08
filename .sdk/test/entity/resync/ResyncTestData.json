@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "resync": {
+      "RESYNC00": {
+        "authorization": "s32",
+        "mcpServer": "s33",
+        "pending": true,
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "RESYNC00"
+      },
+      "RESYNC01": {
+        "authorization": "s64",
+        "mcpServer": "s65",
+        "pending": true,
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "RESYNC01"
+      },
+      "RESYNC02": {
+        "authorization": "s96",
+        "mcpServer": "s97",
+        "pending": true,
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "RESYNC02"
+      }
+    }
+  },
+  "new": {
+    "resync": {
+      "resync_ref01": {
+        "authorization": "sc8",
+        "mcpServer": "sc9",
+        "pending": true,
+        "tools": [],
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/mcp-servers/{server_ref}/resync": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

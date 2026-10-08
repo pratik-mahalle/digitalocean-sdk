@@ -1,0 +1,26 @@
+# BasicApiListKnowledgeBaseDataSourcesOutputFlow
+
+main: kit: flow: BasicApiListKnowledgeBaseDataSourcesOutputFlow:
+{
+  entity: "api_list_knowledge_base_data_sources_output",
+  kind: "basic",
+  name: "BasicApiListKnowledgeBaseDataSourcesOutputFlow",
+  step: [
+    {
+      m: {
+        knowledge_base_id: "knowledge_base01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_knowledge_base_data_sources_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListKnowledgeBaseDataSourcesOutputFlow"
+}

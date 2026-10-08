@@ -1,0 +1,130 @@
+{
+  "existing": {
+    "block_storage": {
+      "BLOCK_STORAGE00": {
+        "created_at": "s96",
+        "description": "s97",
+        "droplet_ids": [],
+        "filesystem_label": "s99",
+        "filesystem_type": "s9a",
+        "id": "BLOCK_STORAGE00",
+        "min_disk_size": 156,
+        "name": "s9d",
+        "region": "s9e",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "sa1",
+        "size_gigabytes": 162,
+        "tags": [],
+        "volume": {},
+        "volume_id": "VOLUME01",
+        "snapshot_id": "SNAPSHOT01"
+      },
+      "BLOCK_STORAGE01": {
+        "created_at": "s12c",
+        "description": "s12d",
+        "droplet_ids": [],
+        "filesystem_label": "s12f",
+        "filesystem_type": "s130",
+        "id": "BLOCK_STORAGE01",
+        "min_disk_size": 306,
+        "name": "s133",
+        "region": "s134",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s137",
+        "size_gigabytes": 312,
+        "tags": [],
+        "volume": {},
+        "volume_id": "VOLUME01",
+        "snapshot_id": "SNAPSHOT01"
+      },
+      "BLOCK_STORAGE02": {
+        "created_at": "s1c2",
+        "description": "s1c3",
+        "droplet_ids": [],
+        "filesystem_label": "s1c5",
+        "filesystem_type": "s1c6",
+        "id": "BLOCK_STORAGE02",
+        "min_disk_size": 456,
+        "name": "s1c9",
+        "region": "s1ca",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s1cd",
+        "size_gigabytes": 462,
+        "tags": [],
+        "volume": {},
+        "volume_id": "VOLUME01",
+        "snapshot_id": "SNAPSHOT01"
+      }
+    }
+  },
+  "new": {
+    "block_storage": {
+      "block_storage_ref01": {
+        "created_at": "s258",
+        "description": "s259",
+        "droplet_ids": [],
+        "filesystem_label": "s25b",
+        "filesystem_type": "s25c",
+        "min_disk_size": 606,
+        "name": "s25f",
+        "region": "s260",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s263",
+        "size_gigabytes": 612,
+        "tags": [],
+        "volume": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/volumes/{volume_id}/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/volumes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes/{volume_id}/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes/{volume_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/volumes/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/volumes/{volume_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/volumes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

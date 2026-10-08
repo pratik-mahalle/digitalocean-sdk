@@ -1,0 +1,122 @@
+{
+  "existing": {
+    "empty": {
+      "EMPTY00": {
+        "actorId": "saa",
+        "agentName": "sab",
+        "agentUrn": "sac",
+        "categories": [],
+        "config": {},
+        "createdAt": "saf",
+        "insights": "sb0",
+        "mcpUrl": "sb1",
+        "name": "sb2",
+        "network": "sb3",
+        "overrides": [],
+        "owning_user_id": "OWNING_USER01",
+        "policy": "sb6",
+        "session": "sb7",
+        "sessionUrn": "sb8",
+        "tools": [],
+        "updatedAt": "sba",
+        "actor_id": "ACTOR01",
+        "session_urn": "SESSION_URN01",
+        "id": "EMPTY00"
+      },
+      "EMPTY01": {
+        "actorId": "s154",
+        "agentName": "s155",
+        "agentUrn": "s156",
+        "categories": [],
+        "config": {},
+        "createdAt": "s159",
+        "insights": "s15a",
+        "mcpUrl": "s15b",
+        "name": "s15c",
+        "network": "s15d",
+        "overrides": [],
+        "owning_user_id": "OWNING_USER01",
+        "policy": "s160",
+        "session": "s161",
+        "sessionUrn": "s162",
+        "tools": [],
+        "updatedAt": "s164",
+        "actor_id": "ACTOR01",
+        "session_urn": "SESSION_URN01",
+        "id": "EMPTY01"
+      },
+      "EMPTY02": {
+        "actorId": "s1fe",
+        "agentName": "s1ff",
+        "agentUrn": "s200",
+        "categories": [],
+        "config": {},
+        "createdAt": "s203",
+        "insights": "s204",
+        "mcpUrl": "s205",
+        "name": "s206",
+        "network": "s207",
+        "overrides": [],
+        "owning_user_id": "OWNING_USER01",
+        "policy": "s20a",
+        "session": "s20b",
+        "sessionUrn": "s20c",
+        "tools": [],
+        "updatedAt": "s20e",
+        "actor_id": "ACTOR01",
+        "session_urn": "SESSION_URN01",
+        "id": "EMPTY02"
+      }
+    }
+  },
+  "new": {
+    "empty": {
+      "empty_ref01": {
+        "actorId": "s2a8",
+        "agentName": "s2a9",
+        "agentUrn": "s2aa",
+        "categories": [],
+        "config": {},
+        "createdAt": "s2ad",
+        "insights": "s2ae",
+        "mcpUrl": "s2af",
+        "name": "s2b0",
+        "network": "s2b1",
+        "overrides": [],
+        "owning_user_id": "OWNING_USER01",
+        "policy": "s2b4",
+        "session": "s2b5",
+        "sessionUrn": "s2b6",
+        "tools": [],
+        "updatedAt": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/actors/{actor_id}/limits:clear": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/action-gateway/actors/{actor_id}/limits:set": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/action-gateway/sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/action-gateway/sessions/{session_urn}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

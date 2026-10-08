@@ -1,0 +1,177 @@
+# Entity: vectordb_update_vector_db_tag
+
+main: kit: entity: vectordb_update_vector_db_tag: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      sh: "VectorDBConfig holds optional, advanced cluster settings."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    endpoints: {
+      h: "Endpoints"
+      n: "endpoints"
+      r: false
+      sh: "VectorDBEndpoints contains the connection endpoints for a vector database instance."
+      t: "`$OBJECT`"
+    }
+    forked_from_id: {
+      h: "Forked From Id"
+      n: "forked_from_id"
+      r: false
+      sh: "ID of the vector database this instance was forked from."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Required."
+      t: "`$STRING`"
+    }
+    last_restore_id: {
+      h: "Last Restore Id"
+      n: "last_restore_id"
+      r: false
+      sh: "Backup_id of the most recent restore initiated against this instance."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    owner_uuid: {
+      h: "Owner Uuid"
+      n: "owner_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "Project this database belongs to."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      sh: "Resource tier: small, medium, or large."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Lifecycle state: pending, creating, active, errored, or deleting."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "Tags to set on the vector database."
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vectordb_update_vector_db_tag"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/vector-databases/{id}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"example string\""
+                k: "param"
+                n: "vector_database_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/vector-databases/{id}/tags"
+          q: {
+            exist: [
+              "vector_database_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "vector_database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vector-databases"
+            }
+            {
+              var: "vector_database_id"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vector_db`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vector_database")]
+  ]
+
+}

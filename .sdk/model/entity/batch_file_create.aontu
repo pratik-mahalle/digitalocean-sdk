@@ -1,0 +1,56 @@
+# Entity: batch_file_create
+
+main: kit: entity: batch_file_create: {
+
+  alias: field: {}
+
+  fields: {
+    file_name: {
+      h: "File Name"
+      n: "file_name"
+      r: true
+      sh: "The file you plan to upload."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "batch_file_create"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/batches/files"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/batches/files"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "batches"
+            }
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

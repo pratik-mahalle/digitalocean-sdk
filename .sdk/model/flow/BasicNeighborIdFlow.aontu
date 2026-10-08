@@ -1,0 +1,22 @@
+# BasicNeighborIdFlow
+
+main: kit: flow: BasicNeighborIdFlow:
+{
+  entity: "neighbor_id",
+  kind: "basic",
+  name: "BasicNeighborIdFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "neighbor_id_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNeighborIdFlow"
+}

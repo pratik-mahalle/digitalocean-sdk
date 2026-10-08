@@ -1,0 +1,193 @@
+# Entity: app_alert
+
+main: kit: entity: app_alert: {
+
+  alias: field: {}
+
+  fields: {
+    component_name: {
+      h: "Component Name"
+      n: "component_name"
+      r: false
+      t: "`$STRING`"
+    }
+    emails: {
+      h: "Emails"
+      n: "emails"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    phase: {
+      h: "Phase"
+      n: "phase"
+      r: false
+      t: "`$STRING`"
+    }
+    progress: {
+      h: "Progress"
+      n: "progress"
+      r: false
+      t: "`$OBJECT`"
+    }
+    slack_webhooks: {
+      h: "Slack Webhooks"
+      n: "slack_webhooks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app_alert"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/alerts/{alert_id}/destinations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "5a624ab5-dd58-4b39-b7dd-8b7c36e8a91d"
+                k: "param"
+                n: "alert_id"
+                or: "alert_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/alerts/{alert_id}/destinations"
+          q: {
+            exist: [
+              "alert_id"
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_id"
+            }
+            {
+              lit: "destinations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/alerts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/alerts"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "alerts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alerts`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

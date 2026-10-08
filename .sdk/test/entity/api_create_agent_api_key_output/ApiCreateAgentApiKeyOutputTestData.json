@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "api_create_agent_api_key_output": {
+      "API_CREATE_AGENT_API_KEY_OUTPUT00": {
+        "agent_uuid": "s46",
+        "created_at": "s47",
+        "created_by": "s48",
+        "deleted_at": "s49",
+        "name": "s4a",
+        "secret_key": "s4b",
+        "uuid": "s4c",
+        "agent_id": "AGENT01",
+        "id": "API_CREATE_AGENT_API_KEY_OUTPUT00"
+      },
+      "API_CREATE_AGENT_API_KEY_OUTPUT01": {
+        "agent_uuid": "s8c",
+        "created_at": "s8d",
+        "created_by": "s8e",
+        "deleted_at": "s8f",
+        "name": "s90",
+        "secret_key": "s91",
+        "uuid": "s92",
+        "agent_id": "AGENT01",
+        "id": "API_CREATE_AGENT_API_KEY_OUTPUT01"
+      },
+      "API_CREATE_AGENT_API_KEY_OUTPUT02": {
+        "agent_uuid": "sd2",
+        "created_at": "sd3",
+        "created_by": "sd4",
+        "deleted_at": "sd5",
+        "name": "sd6",
+        "secret_key": "sd7",
+        "uuid": "sd8",
+        "agent_id": "AGENT01",
+        "id": "API_CREATE_AGENT_API_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_create_agent_api_key_output": {
+      "api_create_agent_api_key_output_ref01": {
+        "agent_uuid": "s118",
+        "created_at": "s119",
+        "created_by": "s11a",
+        "deleted_at": "s11b",
+        "name": "s11c",
+        "secret_key": "s11d",
+        "uuid": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/agents/{agent_uuid}/api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

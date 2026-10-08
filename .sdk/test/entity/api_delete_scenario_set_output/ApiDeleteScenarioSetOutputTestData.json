@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_scenario_set_output": {
+      "API_DELETE_SCENARIO_SET_OUTPUT00": {
+        "scenario_set_uuid": "SCENARIO_SET_UUID01",
+        "id": "API_DELETE_SCENARIO_SET_OUTPUT00"
+      },
+      "API_DELETE_SCENARIO_SET_OUTPUT01": {
+        "scenario_set_uuid": "SCENARIO_SET_UUID01",
+        "id": "API_DELETE_SCENARIO_SET_OUTPUT01"
+      },
+      "API_DELETE_SCENARIO_SET_OUTPUT02": {
+        "scenario_set_uuid": "SCENARIO_SET_UUID01",
+        "id": "API_DELETE_SCENARIO_SET_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_scenario_set_output": {
+      "api_delete_scenario_set_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/scenario_sets/{scenario_set_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

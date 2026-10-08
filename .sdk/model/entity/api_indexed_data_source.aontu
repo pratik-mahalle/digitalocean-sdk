@@ -1,0 +1,184 @@
+# Entity: api_indexed_data_source
+
+main: kit: entity: api_indexed_data_source: {
+
+  alias: field: {}
+
+  fields: {
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "Timestamp when data source completed indexing"
+      t: "`$STRING`"
+    }
+    data_source_uuid: {
+      h: "Data Source Uuid"
+      n: "data_source_uuid"
+      r: false
+      sh: "Uuid of the indexed data source"
+      t: "`$STRING`"
+    }
+    error_details: {
+      h: "Error Details"
+      n: "error_details"
+      r: false
+      sh: "A detailed error description"
+      t: "`$STRING`"
+    }
+    error_msg: {
+      h: "Error Msg"
+      n: "error_msg"
+      r: false
+      sh: "A string code provinding a hint which part of the system experienced an error"
+      t: "`$STRING`"
+    }
+    failed_item_count: {
+      fo: "uint64"
+      h: "Failed Item Count"
+      n: "failed_item_count"
+      r: false
+      sh: "Total count of files that have failed"
+      t: "`$STRING`"
+    }
+    indexed_file_count: {
+      fo: "uint64"
+      h: "Indexed File Count"
+      n: "indexed_file_count"
+      r: false
+      sh: "Total count of files that have been indexed"
+      t: "`$STRING`"
+    }
+    indexed_item_count: {
+      fo: "uint64"
+      h: "Indexed Item Count"
+      n: "indexed_item_count"
+      r: false
+      sh: "Total count of files that have been indexed"
+      t: "`$STRING`"
+    }
+    removed_item_count: {
+      fo: "uint64"
+      h: "Removed Item Count"
+      n: "removed_item_count"
+      r: false
+      sh: "Total count of files that have been removed"
+      t: "`$STRING`"
+    }
+    skipped_item_count: {
+      fo: "uint64"
+      h: "Skipped Item Count"
+      n: "skipped_item_count"
+      r: false
+      sh: "Total count of files that have been skipped"
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "Timestamp when data source started indexing"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    total_bytes: {
+      fo: "uint64"
+      h: "Total Bytes"
+      n: "total_bytes"
+      r: false
+      sh: "Total size of files in data source in bytes"
+      t: "`$STRING`"
+    }
+    total_bytes_indexed: {
+      fo: "uint64"
+      h: "Total Bytes Indexed"
+      n: "total_bytes_indexed"
+      r: false
+      sh: "Total size of files in data source in bytes that have been indexed"
+      t: "`$STRING`"
+    }
+    total_file_count: {
+      fo: "uint64"
+      h: "Total File Count"
+      n: "total_file_count"
+      r: false
+      sh: "Total file count in the data source"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_indexed_data_source"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/indexing_jobs/{indexing_job_uuid}/data_sources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "indexing_job_id"
+                or: "indexing_job_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/data_sources"
+          q: {
+            exist: [
+              "indexing_job_id"
+            ]
+          }
+          r: {
+            param: {
+              indexing_job_uuid: "indexing_job_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+            {
+              var: "indexing_job_id"
+            }
+            {
+              lit: "data_sources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.indexed_data_sources`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+# BasicApiModelCatalogCardFlow
+
+main: kit: flow: BasicApiModelCatalogCardFlow:
+{
+  entity: "api_model_catalog_card",
+  kind: "basic",
+  name: "BasicApiModelCatalogCardFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_model_catalog_card_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_model_catalog_card_ref01",
+        srcdatavar: "api_model_catalog_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_model_catalog_card01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_model_catalog_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiModelCatalogCardFlow"
+}

@@ -1,0 +1,109 @@
+# Entity: list_tool_health
+
+main: kit: entity: list_tool_health: {
+
+  alias: field: {}
+
+  fields: {
+    health: {
+      h: "Health"
+      n: "health"
+      r: false
+      sh: "Metrics over the window."
+      t: "`$ANY`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "ID of the provider that offers the tool."
+      t: "`$STRING`"
+    }
+    tool_slug: {
+      h: "Tool Slug"
+      n: "tool_slug"
+      r: false
+      sh: "Catalog tool slug."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "list_tool_health"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/health"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "exa"
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "HEALTH_WINDOW_SEVEN_DAYS"
+                k: "query"
+                n: "window"
+                or: "window"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/health"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "health"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tools`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

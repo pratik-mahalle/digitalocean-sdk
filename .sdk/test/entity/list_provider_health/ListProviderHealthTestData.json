@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "list_provider_health": {
+      "LIST_PROVIDER_HEALTH00": {
+        "health": "s14",
+        "provider": "s15"
+      },
+      "LIST_PROVIDER_HEALTH01": {
+        "health": "s28",
+        "provider": "s29"
+      },
+      "LIST_PROVIDER_HEALTH02": {
+        "health": "s3c",
+        "provider": "s3d"
+      }
+    }
+  },
+  "new": {
+    "list_provider_health": {
+      "list_provider_health_ref01": {
+        "health": "s50",
+        "provider": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/tools/health/providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

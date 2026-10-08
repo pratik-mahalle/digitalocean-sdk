@@ -1,0 +1,122 @@
+{
+  "existing": {
+    "billing": {
+      "BILLING00": {
+        "amount": "sa0",
+        "current_page": 161,
+        "data_points": [],
+        "date": "sa3",
+        "description": "sa4",
+        "id": "BILLING00",
+        "invoice_id": "INVOICE01",
+        "invoice_items": [],
+        "invoice_period": "sa8",
+        "invoice_uuid": "sa9",
+        "links": {},
+        "meta": "sab",
+        "total_items": 172,
+        "total_pages": 173,
+        "type": "sae",
+        "updated_at": "saf",
+        "account_urn": "ACCOUNT_URN01",
+        "end_date": "END_DATE01",
+        "start_date": "START_DATE01"
+      },
+      "BILLING01": {
+        "amount": "s140",
+        "current_page": 321,
+        "data_points": [],
+        "date": "s143",
+        "description": "s144",
+        "id": "BILLING01",
+        "invoice_id": "INVOICE01",
+        "invoice_items": [],
+        "invoice_period": "s148",
+        "invoice_uuid": "s149",
+        "links": {},
+        "meta": "s14b",
+        "total_items": 332,
+        "total_pages": 333,
+        "type": "s14e",
+        "updated_at": "s14f",
+        "account_urn": "ACCOUNT_URN01",
+        "end_date": "END_DATE01",
+        "start_date": "START_DATE01"
+      },
+      "BILLING02": {
+        "amount": "s1e0",
+        "current_page": 481,
+        "data_points": [],
+        "date": "s1e3",
+        "description": "s1e4",
+        "id": "BILLING02",
+        "invoice_id": "INVOICE01",
+        "invoice_items": [],
+        "invoice_period": "s1e8",
+        "invoice_uuid": "s1e9",
+        "links": {},
+        "meta": "s1eb",
+        "total_items": 492,
+        "total_pages": 493,
+        "type": "s1ee",
+        "updated_at": "s1ef",
+        "account_urn": "ACCOUNT_URN01",
+        "end_date": "END_DATE01",
+        "start_date": "START_DATE01"
+      }
+    }
+  },
+  "new": {
+    "billing": {
+      "billing_ref01": {
+        "amount": "s280",
+        "current_page": 641,
+        "data_points": [],
+        "date": "s283",
+        "description": "s284",
+        "invoice_id": "INVOICE01",
+        "invoice_items": [],
+        "invoice_period": "s288",
+        "invoice_uuid": "s289",
+        "links": {},
+        "meta": "s28b",
+        "total_items": 652,
+        "total_pages": 653,
+        "type": "s28e",
+        "updated_at": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/customers/my/billing_history": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/customers/my/invoices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/billing/{account_urn}/insights/{start_date}/{end_date}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/customers/my/invoices/{invoice_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/customers/my/invoices/{invoice_uuid}/csv": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/customers/my/invoices/{invoice_uuid}/pdf": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

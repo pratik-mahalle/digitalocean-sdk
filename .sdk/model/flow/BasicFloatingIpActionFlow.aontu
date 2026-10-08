@@ -1,0 +1,62 @@
+# BasicFloatingIpActionFlow
+
+main: kit: flow: BasicFloatingIpActionFlow:
+{
+  entity: "floating_ip_action",
+  kind: "basic",
+  name: "BasicFloatingIpActionFlow",
+  step: [
+    {
+      i: {
+        ref: "floating_ip_action_ref01"
+      }
+
+      m: {
+        floating_ip: "floating_ip01",
+        floating_ip_id: "floating_ip01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        floating_ip: "floating_ip01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "floating_ip_action_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "floating_ip_action_ref01",
+        srcdatavar: "floating_ip_action_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        floating_ip_id: "floating_ip01",
+        id: "floating_ip_action01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-floating_ip_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFloatingIpActionFlow"
+}

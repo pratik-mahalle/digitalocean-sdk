@@ -1,0 +1,83 @@
+# Entity: api_dropbox_oauth2_get_tokens_output
+
+main: kit: entity: api_dropbox_oauth2_get_tokens_output: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "The oauth2 code from google"
+      t: "`$STRING`"
+    }
+    redirect_url: {
+      h: "Redirect Url"
+      n: "redirect_url"
+      r: false
+      sh: "Redirect url"
+      t: "`$STRING`"
+    }
+    refresh_token: {
+      h: "Refresh Token"
+      n: "refresh_token"
+      r: false
+      sh: "The refresh token"
+      t: "`$STRING`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: false
+      sh: "The access token"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_dropbox_oauth2_get_tokens_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/oauth2/dropbox/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/oauth2/dropbox/tokens"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "oauth2"
+            }
+            {
+              lit: "dropbox"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

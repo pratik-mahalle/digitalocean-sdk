@@ -1,0 +1,618 @@
+# Entity: apps_get_log
+
+main: kit: entity: apps_get_log: {
+
+  alias: field: {}
+
+  fields: {
+    historic_urls: {
+      h: "Historic Urls"
+      n: "historic_urls"
+      r: false
+      t: "`$ARRAY`"
+    }
+    live_url: {
+      h: "Live Url"
+      n: "live_url"
+      r: false
+      sh: "A URL of the real-time live logs."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "apps_get_log"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "component"
+                k: "param"
+                n: "component_name"
+                or: "component_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BUILD"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "component_name"
+              "deployment_id"
+              "type"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+            {
+              lit: "components"
+            }
+            {
+              var: "component_name"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/jobs/{job_name}/invocations/{job_invocation_id}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "123e4567-e89b-12d3-a456-426"
+                k: "param"
+                n: "invocation_id"
+                or: "job_invocation_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "component"
+                k: "param"
+                n: "job_name"
+                or: "job_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "query"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "100"
+                k: "query"
+                n: "tail_line"
+                or: "tail_lines"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "JOB_INVOCATION"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/jobs/{job_name}/invocations/{job_invocation_id}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "invocation_id"
+              "job_name"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              job_invocation_id: "invocation_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "jobs"
+            }
+            {
+              var: "job_name"
+            }
+            {
+              lit: "invocations"
+            }
+            {
+              var: "invocation_id"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/components/{component_name}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "component"
+                k: "param"
+                n: "component_name"
+                or: "component_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BUILD"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/components/{component_name}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "component_name"
+              "type"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "components"
+            }
+            {
+              var: "component_name"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/deployments/{deployment_id}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BUILD"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/deployments/{deployment_id}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "deployment_id"
+              "type"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/events/{event_id}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "event_id"
+                or: "event_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BUILD"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/events/{event_id}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "event_id"
+              "type"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "events"
+            }
+            {
+              var: "event_id"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "follow"
+                or: "follow"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "3m"
+                k: "query"
+                n: "pod_connection_timeout"
+                or: "pod_connection_timeout"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "BUILD"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/logs"
+          q: {
+            exist: [
+              "app_id"
+              "type"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.historic_urls`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

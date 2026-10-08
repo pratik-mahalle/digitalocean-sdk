@@ -1,0 +1,194 @@
+# Entity: nfs_snapshot
+
+main: kit: entity: nfs_snapshot: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The timestamp when the snapshot was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier of the snapshot."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The human-readable name of the snapshot."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      sh: "The DigitalOcean region slug where the snapshot is located."
+      t: "`$STRING`"
+    }
+    share_id: {
+      fo: "uuid"
+      h: "Share Id"
+      n: "share_id"
+      r: true
+      sh: "The unique identifier of the share from which this snapshot was created."
+      t: "`$STRING`"
+    }
+    size_gib: {
+      fo: "uint64"
+      h: "Size Gib"
+      n: "size_gib"
+      r: true
+      sh: "The size of the snapshot in GiB."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the snapshot."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "nfs_snapshot"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs/snapshots"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "query"
+                n: "share_id"
+                or: "share_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs/snapshots"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "snapshots"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshots`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs/snapshots/{nfs_snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "param"
+                n: "id"
+                or: "nfs_snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs/snapshots/{nfs_snapshot_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              nfs_snapshot_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshot`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

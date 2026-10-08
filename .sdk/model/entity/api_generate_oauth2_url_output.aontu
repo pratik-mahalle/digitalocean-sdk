@@ -1,0 +1,79 @@
+# Entity: api_generate_oauth2_url_output
+
+main: kit: entity: api_generate_oauth2_url_output: {
+
+  alias: field: {}
+
+  fields: {
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "The oauth2 url"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_generate_oauth2_url_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/oauth2/url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "\"example string\""
+                k: "query"
+                n: "redirect_url"
+                or: "redirect_url"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"example string\""
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/oauth2/url"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "oauth2"
+            }
+            {
+              lit: "url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

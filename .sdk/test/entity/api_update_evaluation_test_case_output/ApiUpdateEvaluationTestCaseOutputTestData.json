@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_update_evaluation_test_case_output": {
+      "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT00": {
+        "dataset_uuid": "s46",
+        "description": "s47",
+        "metrics": {},
+        "name": "s49",
+        "star_metric": {},
+        "test_case_uuid": "s4b",
+        "version": 76,
+        "id": "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT00"
+      },
+      "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT01": {
+        "dataset_uuid": "s8c",
+        "description": "s8d",
+        "metrics": {},
+        "name": "s8f",
+        "star_metric": {},
+        "test_case_uuid": "s91",
+        "version": 146,
+        "id": "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT01"
+      },
+      "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT02": {
+        "dataset_uuid": "sd2",
+        "description": "sd3",
+        "metrics": {},
+        "name": "sd5",
+        "star_metric": {},
+        "test_case_uuid": "sd7",
+        "version": 216,
+        "id": "API_UPDATE_EVALUATION_TEST_CASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_evaluation_test_case_output": {
+      "api_update_evaluation_test_case_output_ref01": {
+        "dataset_uuid": "s118",
+        "description": "s119",
+        "metrics": {},
+        "name": "s11b",
+        "star_metric": {},
+        "test_case_uuid": "s11d",
+        "version": 286
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/evaluation_test_cases/{test_case_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

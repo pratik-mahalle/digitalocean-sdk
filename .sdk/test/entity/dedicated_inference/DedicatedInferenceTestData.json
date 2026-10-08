@@ -1,0 +1,120 @@
+{
+  "existing": {
+    "dedicated_inference": {
+      "DEDICATED_INFERENCE00": {
+        "access_tokens": {},
+        "created_at": "s79",
+        "dedicated_inference": {},
+        "endpoints": {},
+        "id": "DEDICATED_INFERENCE00",
+        "pending_deployment_spec": {},
+        "region": "s7e",
+        "spec": {},
+        "status": "s80",
+        "token": {},
+        "updated_at": "s82",
+        "vpc_uuid": "s83",
+        "token_id": "TOKEN01"
+      },
+      "DEDICATED_INFERENCE01": {
+        "access_tokens": {},
+        "created_at": "sf1",
+        "dedicated_inference": {},
+        "endpoints": {},
+        "id": "DEDICATED_INFERENCE01",
+        "pending_deployment_spec": {},
+        "region": "sf6",
+        "spec": {},
+        "status": "sf8",
+        "token": {},
+        "updated_at": "sfa",
+        "vpc_uuid": "sfb",
+        "token_id": "TOKEN01"
+      },
+      "DEDICATED_INFERENCE02": {
+        "access_tokens": {},
+        "created_at": "s169",
+        "dedicated_inference": {},
+        "endpoints": {},
+        "id": "DEDICATED_INFERENCE02",
+        "pending_deployment_spec": {},
+        "region": "s16e",
+        "spec": {},
+        "status": "s170",
+        "token": {},
+        "updated_at": "s172",
+        "vpc_uuid": "s173",
+        "token_id": "TOKEN01"
+      }
+    }
+  },
+  "new": {
+    "dedicated_inference": {
+      "dedicated_inference_ref01": {
+        "access_tokens": {},
+        "created_at": "s1e1",
+        "dedicated_inference": {},
+        "endpoints": {},
+        "pending_deployment_spec": {},
+        "region": "s1e6",
+        "spec": {},
+        "status": "s1e8",
+        "token": {},
+        "updated_at": "s1ea",
+        "vpc_uuid": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/dedicated-inferences/{dedicated_inference_id}/tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/dedicated-inferences": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/dedicated-inferences/{dedicated_inference_id}/accelerators": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/dedicated-inferences/{dedicated_inference_id}/tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/dedicated-inferences": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/dedicated-inferences/{dedicated_inference_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/dedicated-inferences/{dedicated_inference_id}/ca": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/dedicated-inferences/{dedicated_inference_id}/tokens/{token_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/dedicated-inferences/{dedicated_inference_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/dedicated-inferences/{dedicated_inference_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

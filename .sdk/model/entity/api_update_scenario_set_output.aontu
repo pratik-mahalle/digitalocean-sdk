@@ -1,0 +1,206 @@
+# Entity: api_update_scenario_set_output
+
+main: kit: entity: api_update_scenario_set_output: {
+
+  alias: field: {}
+
+  fields: {
+    bucket_name: {
+      h: "Bucket Name"
+      n: "bucket_name"
+      r: false
+      sh: "Object storage bucket holding the scenario file."
+      t: "`$STRING`"
+    }
+    bucket_region: {
+      h: "Bucket Region"
+      n: "bucket_region"
+      r: false
+      sh: "Object storage bucket region."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Time created at."
+      t: "`$STRING`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "Time deleted at."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Customer-supplied description."
+      t: "`$STRING`"
+    }
+    failure_reason: {
+      h: "Failure Reason"
+      n: "failure_reason"
+      r: false
+      sh: "Human-readable explanation of a terminal FAILED status."
+      t: "`$STRING`"
+    }
+    generator_model_uuid: {
+      h: "Generator Model Uuid"
+      n: "generator_model_uuid"
+      r: false
+      sh: "Model that produced the scenarios."
+      t: "`$STRING`"
+    }
+    library_scenario_uuid: {
+      h: "Library Scenario Uuid"
+      n: "library_scenario_uuid"
+      r: false
+      sh: "UUID of the source library entry."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Customer-supplied name."
+      t: "`$STRING`"
+    }
+    scenario_count: {
+      fo: "int64"
+      h: "Scenario Count"
+      n: "scenario_count"
+      r: false
+      sh: "Number of scenarios in the set."
+      t: "`$INTEGER`"
+    }
+    scenario_set_uuid: {
+      h: "Scenario Set Uuid"
+      n: "scenario_set_uuid"
+      r: false
+      sh: "UUID of the scenario set."
+      t: "`$STRING`"
+    }
+    scenarios: {
+      h: "Scenarios"
+      n: "scenarios"
+      r: false
+      sh: "Optional inline scenarios to replace the set contents."
+      t: "`$ARRAY`"
+    }
+    source_export_id: {
+      h: "Source Export Id"
+      n: "source_export_id"
+      r: false
+      sh: "Signals export UUID that produced this set."
+      t: "`$STRING`"
+    }
+    source_goal_description: {
+      h: "Source Goal Description"
+      n: "source_goal_description"
+      r: false
+      sh: "The goal that drove generation."
+      t: "`$STRING`"
+    }
+    source_kind: {
+      h: "Source Kind"
+      n: "source_kind"
+      r: false
+      sh: "How a scenario set was created."
+      t: "`$STRING`"
+    }
+    spaces_key: {
+      h: "Spaces Key"
+      n: "spaces_key"
+      r: false
+      sh: "Object storage key for the scenario file."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Lifecycle status of a scenario set."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Time last updated at."
+      t: "`$STRING`"
+    }
+    workflow_uuid: {
+      h: "Workflow Uuid"
+      n: "workflow_uuid"
+      r: false
+      sh: "Identifier of the generation workflow."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_scenario_set_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/scenario_sets/{scenario_set_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "scenario_set_uuid"
+                or: "scenario_set_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}"
+          q: {
+            exist: [
+              "scenario_set_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_sets"
+            }
+            {
+              var: "scenario_set_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scenario_set`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

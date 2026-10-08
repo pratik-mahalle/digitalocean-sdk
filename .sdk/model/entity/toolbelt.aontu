@@ -1,0 +1,503 @@
+# Entity: toolbelt
+
+main: kit: entity: toolbelt: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "When this version was created, in RFC 3339 format."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Team-authored description."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      sh: "Human-readable label."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    latest_version: {
+      h: "Latest Version"
+      n: "latest_version"
+      r: false
+      sh: "Latest version number, as a string."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Toolbelt name, unique among your team's active toolbelts."
+      t: "`$STRING`"
+    }
+    next_page_token: {
+      h: "Next Page Token"
+      n: "next_page_token"
+      r: false
+      sh: "Token for the next page of `tool_details`; empty on the last page."
+      t: "`$STRING`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: false
+      sh: "`<name>@<version>`, identifying this exact version."
+      t: "`$STRING`"
+    }
+    reference_latest: {
+      h: "Reference Latest"
+      n: "reference_latest"
+      r: false
+      sh: "The toolbelt name, which refers to whichever version is latest."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "active, or deprecated once the toolbelt is deleted."
+      t: "`$STRING`"
+    }
+    tool_count: {
+      fo: "int32"
+      h: "Tool Count"
+      n: "tool_count"
+      r: false
+      sh: "Number of entries in tools."
+      t: "`$INTEGER`"
+    }
+    tool_details: {
+      h: "Tool Details"
+      n: "tool_details"
+      r: false
+      sh: "The requested page of resolved catalog metadata for the members named in toolbelt.tools."
+      t: "`$ARRAY`"
+    }
+    toolbelt: {
+      h: "Toolbelt"
+      n: "toolbelt"
+      r: false
+      sh: "The requested toolbelt version."
+      t: "`$ANY`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Members, sorted, each as `<tool_slug>@<version>`: the tool and the version this toolbelt version pins."
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "When this version was last modified, in RFC 3339 format."
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Version number of this toolbelt version, as a string, for example `3`."
+      t: "`$STRING`"
+    }
+    version_count: {
+      fo: "int32"
+      h: "Version Count"
+      n: "version_count"
+      r: false
+      sh: "Number of versions recorded under this name, including versions from before the toolbelt was deleted and the name reused."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "toolbelt"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/action-gateway/toolbelts/{name}/tools/add"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "search-toolbelt"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/action-gateway/toolbelts/{name}/tools/add"
+          q: {
+            "$action": "tool_add"
+            exist: [
+              "name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              var: "name"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "add"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelt`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/action-gateway/toolbelts/{name}/tools/remove"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "search-toolbelt"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/action-gateway/toolbelts/{name}/tools/remove"
+          q: {
+            "$action": "tool_remove"
+            exist: [
+              "name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              var: "name"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "remove"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelt`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/action-gateway/toolbelts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/action-gateway/toolbelts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelt`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/toolbelts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "active"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/toolbelts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelts`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/toolbelts/{name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "search-toolbelt"
+                k: "param"
+                n: "id"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/toolbelts/{name}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              name: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelt`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/action-gateway/toolbelts/{name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "search-toolbelt"
+                k: "param"
+                n: "id"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/action-gateway/toolbelts/{name}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              name: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelt`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

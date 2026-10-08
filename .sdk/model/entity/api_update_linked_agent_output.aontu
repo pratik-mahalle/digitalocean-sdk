@@ -1,0 +1,130 @@
+# Entity: api_update_linked_agent_output
+
+main: kit: entity: api_update_linked_agent_output: {
+
+  alias: field: {}
+
+  fields: {
+    child_agent_uuid: {
+      h: "Child Agent Uuid"
+      n: "child_agent_uuid"
+      r: false
+      sh: "Routed agent id"
+      t: "`$STRING`"
+    }
+    if_case: {
+      h: "If Case"
+      n: "if_case"
+      r: false
+      sh: "Describes the case in which the child agent should be used"
+      t: "`$STRING`"
+    }
+    parent_agent_uuid: {
+      h: "Parent Agent Uuid"
+      n: "parent_agent_uuid"
+      r: false
+      sh: "A unique identifier for the parent agent."
+      t: "`$STRING`"
+    }
+    rollback: {
+      h: "Rollback"
+      n: "rollback"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    route_name: {
+      h: "Route Name"
+      n: "route_name"
+      r: false
+      sh: "Route name"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id of linkage"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_linked_agent_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "parent_agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "child_agent_uuid"
+                or: "child_agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}"
+          q: {
+            exist: [
+              "agent_id"
+              "child_agent_uuid"
+            ]
+          }
+          r: {
+            param: {
+              parent_agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "child_agents"
+            }
+            {
+              var: "child_agent_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

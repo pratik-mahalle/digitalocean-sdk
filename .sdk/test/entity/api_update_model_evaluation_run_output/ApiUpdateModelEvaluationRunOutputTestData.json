@@ -1,0 +1,122 @@
+{
+  "existing": {
+    "api_update_model_evaluation_run_output": {
+      "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT00": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "sd3",
+        "candidate_model_source": "sd4",
+        "candidate_model_uuid": "sd5",
+        "created_at": "sd6",
+        "dataset_name": "sd7",
+        "dataset_uuid": "sd8",
+        "epochs": 217,
+        "eval_preset_uuid": "sda",
+        "eval_run_uuid": "sdb",
+        "judge_model_name": "sdc",
+        "judge_model_uuid": "sdd",
+        "metric_uuids": [],
+        "name": "sdf",
+        "preset_name": "se0",
+        "preset_save_sections": [],
+        "progress": {},
+        "save_as_preset": false,
+        "source": "se4",
+        "star_metric": {},
+        "status": "se6",
+        "id": "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT00"
+      },
+      "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT01": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s1a5",
+        "candidate_model_source": "s1a6",
+        "candidate_model_uuid": "s1a7",
+        "created_at": "s1a8",
+        "dataset_name": "s1a9",
+        "dataset_uuid": "s1aa",
+        "epochs": 427,
+        "eval_preset_uuid": "s1ac",
+        "eval_run_uuid": "s1ad",
+        "judge_model_name": "s1ae",
+        "judge_model_uuid": "s1af",
+        "metric_uuids": [],
+        "name": "s1b1",
+        "preset_name": "s1b2",
+        "preset_save_sections": [],
+        "progress": {},
+        "save_as_preset": false,
+        "source": "s1b6",
+        "star_metric": {},
+        "status": "s1b8",
+        "id": "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT01"
+      },
+      "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT02": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s277",
+        "candidate_model_source": "s278",
+        "candidate_model_uuid": "s279",
+        "created_at": "s27a",
+        "dataset_name": "s27b",
+        "dataset_uuid": "s27c",
+        "epochs": 637,
+        "eval_preset_uuid": "s27e",
+        "eval_run_uuid": "s27f",
+        "judge_model_name": "s280",
+        "judge_model_uuid": "s281",
+        "metric_uuids": [],
+        "name": "s283",
+        "preset_name": "s284",
+        "preset_save_sections": [],
+        "progress": {},
+        "save_as_preset": false,
+        "source": "s288",
+        "star_metric": {},
+        "status": "s28a",
+        "id": "API_UPDATE_MODEL_EVALUATION_RUN_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_model_evaluation_run_output": {
+      "api_update_model_evaluation_run_output_ref01": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s349",
+        "candidate_model_source": "s34a",
+        "candidate_model_uuid": "s34b",
+        "created_at": "s34c",
+        "dataset_name": "s34d",
+        "dataset_uuid": "s34e",
+        "epochs": 847,
+        "eval_preset_uuid": "s350",
+        "eval_run_uuid": "s351",
+        "judge_model_name": "s352",
+        "judge_model_uuid": "s353",
+        "metric_uuids": [],
+        "name": "s355",
+        "preset_name": "s356",
+        "preset_save_sections": [],
+        "progress": {},
+        "save_as_preset": false,
+        "source": "s35a",
+        "star_metric": {},
+        "status": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/model_evaluation_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/model_evaluation_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+# BasicApiGetEvaluationRunOutputFlow
+
+main: kit: flow: BasicApiGetEvaluationRunOutputFlow:
+{
+  entity: "api_get_evaluation_run_output",
+  kind: "basic",
+  name: "BasicApiGetEvaluationRunOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_evaluation_run_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "api_get_evaluation_run_output_ref01",
+        srcdatavar: "api_get_evaluation_run_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_evaluation_run_output01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_evaluation_run_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetEvaluationRunOutputFlow"
+}

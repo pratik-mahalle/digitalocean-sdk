@@ -1,0 +1,59 @@
+# BasicApiDeleteOpenAiapiKeyOutputFlow
+
+main: kit: flow: BasicApiDeleteOpenAiapiKeyOutputFlow:
+{
+  entity: "api_delete_open_aiapi_key_output",
+  kind: "basic",
+  name: "BasicApiDeleteOpenAiapiKeyOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_delete_open_aiapi_key_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_delete_open_aiapi_key_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_delete_open_aiapi_key_output_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "api_delete_open_aiapi_key_output01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "api_delete_open_aiapi_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiDeleteOpenAiapiKeyOutputFlow"
+}

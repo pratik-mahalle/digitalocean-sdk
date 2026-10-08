@@ -1,0 +1,80 @@
+# Entity: reserved_i_pv6_action
+
+main: kit: entity: reserved_i_pv6_action: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "reserved_i_pv6_action"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/reserved_ipv6/{reserved_ipv6}/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "2409:40d0:f7:1017:74b4:3a96:105e:4c6e"
+                k: "param"
+                n: "reserved_ipv6_id"
+                or: "reserved_ipv6"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/reserved_ipv6/{reserved_ipv6}/actions"
+          q: {
+            exist: [
+              "reserved_ipv6_id"
+            ]
+          }
+          r: {
+            param: {
+              reserved_ipv6: "reserved_ipv6_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ipv6"
+            }
+            {
+              var: "reserved_ipv6_id"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.action`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

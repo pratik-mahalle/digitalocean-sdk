@@ -1,0 +1,81 @@
+# Entity: balance
+
+main: kit: entity: balance: {
+
+  alias: field: {}
+
+  fields: {
+    account_balance: {
+      h: "Account Balance"
+      n: "account_balance"
+      r: false
+      sh: "Current balance of the customer's most recent billing activity."
+      t: "`$STRING`"
+    }
+    generated_at: {
+      fo: "date-time"
+      h: "Generated At"
+      n: "generated_at"
+      r: false
+      sh: "The time at which balances were most recently generated."
+      t: "`$STRING`"
+    }
+    month_to_date_balance: {
+      h: "Month To Date Balance"
+      n: "month_to_date_balance"
+      r: false
+      sh: "Balance as of the `generated_at` time."
+      t: "`$STRING`"
+    }
+    month_to_date_usage: {
+      h: "Month To Date Usage"
+      n: "month_to_date_usage"
+      r: false
+      sh: "Amount used in the current billing period as of the `generated_at` time."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "balance"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/customers/my/balance"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/customers/my/balance"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "balance"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

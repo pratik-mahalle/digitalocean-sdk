@@ -1,0 +1,62 @@
+# BasicAppJobInvocationFlow
+
+main: kit: flow: BasicAppJobInvocationFlow:
+{
+  entity: "app_job_invocation",
+  kind: "basic",
+  name: "BasicAppJobInvocationFlow",
+  step: [
+    {
+      i: {
+        ref: "app_job_invocation_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        job_invocation_id: "job_invocation01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_job_invocation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_job_invocation_ref01",
+        srcdatavar: "app_job_invocation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_job_invocation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_job_invocation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppJobInvocationFlow"
+}

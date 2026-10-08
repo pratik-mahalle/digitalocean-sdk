@@ -1,0 +1,28 @@
+# BasicBatchInferenceFlow
+
+main: kit: flow: BasicBatchInferenceFlow:
+{
+  entity: "batch_inference",
+  kind: "basic",
+  name: "BasicBatchInferenceFlow",
+  step: [
+    {
+      i: {
+        ref: "batch_inference_ref01",
+        srcdatavar: "batch_inference_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-batch_inference_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBatchInferenceFlow"
+}

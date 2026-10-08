@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "prepayment_config": {
+      "PREPAYMENT_CONFIG00": {
+        "config": {},
+        "status": {},
+        "id": "PREPAYMENT_CONFIG00"
+      },
+      "PREPAYMENT_CONFIG01": {
+        "config": {},
+        "status": {},
+        "id": "PREPAYMENT_CONFIG01"
+      },
+      "PREPAYMENT_CONFIG02": {
+        "config": {},
+        "status": {},
+        "id": "PREPAYMENT_CONFIG02"
+      }
+    }
+  },
+  "new": {
+    "prepayment_config": {
+      "prepayment_config_ref01": {
+        "config": {},
+        "status": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/customers/my/prepayment_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

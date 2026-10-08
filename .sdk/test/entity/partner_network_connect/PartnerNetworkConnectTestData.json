@@ -1,0 +1,119 @@
+{
+  "existing": {
+    "partner_network_connect": {
+      "PARTNER_NETWORK_CONNECT00": {
+        "bgp": {},
+        "bgp_auth_key": {},
+        "children": [],
+        "cidr": "s85",
+        "connection_bandwidth_in_mbps": 134,
+        "created_at": "s87",
+        "id": "PARTNER_NETWORK_CONNECT00",
+        "naas_provider": "s89",
+        "name": "s8a",
+        "parent_uuid": "s8b",
+        "region": "s8c",
+        "state": "s8d",
+        "vpc_ids": [],
+        "pa_id": "PA01"
+      },
+      "PARTNER_NETWORK_CONNECT01": {
+        "bgp": {},
+        "bgp_auth_key": {},
+        "children": [],
+        "cidr": "s107",
+        "connection_bandwidth_in_mbps": 264,
+        "created_at": "s109",
+        "id": "PARTNER_NETWORK_CONNECT01",
+        "naas_provider": "s10b",
+        "name": "s10c",
+        "parent_uuid": "s10d",
+        "region": "s10e",
+        "state": "s10f",
+        "vpc_ids": [],
+        "pa_id": "PA01"
+      },
+      "PARTNER_NETWORK_CONNECT02": {
+        "bgp": {},
+        "bgp_auth_key": {},
+        "children": [],
+        "cidr": "s189",
+        "connection_bandwidth_in_mbps": 394,
+        "created_at": "s18b",
+        "id": "PARTNER_NETWORK_CONNECT02",
+        "naas_provider": "s18d",
+        "name": "s18e",
+        "parent_uuid": "s18f",
+        "region": "s190",
+        "state": "s191",
+        "vpc_ids": [],
+        "pa_id": "PA01"
+      }
+    }
+  },
+  "new": {
+    "partner_network_connect": {
+      "partner_network_connect_ref01": {
+        "bgp": {},
+        "bgp_auth_key": {},
+        "children": [],
+        "cidr": "s20b",
+        "connection_bandwidth_in_mbps": 524,
+        "created_at": "s20d",
+        "naas_provider": "s20f",
+        "name": "s210",
+        "parent_uuid": "s211",
+        "region": "s212",
+        "state": "s213",
+        "vpc_ids": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/partner_network_connect/attachments/{pa_id}/service_key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/partner_network_connect/attachments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/partner_network_connect/attachments/{pa_id}/remote_routes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/partner_network_connect/attachments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/partner_network_connect/attachments/{pa_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/partner_network_connect/attachments/{pa_id}/service_key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/partner_network_connect/attachments/{pa_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/partner_network_connect/attachments/{pa_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

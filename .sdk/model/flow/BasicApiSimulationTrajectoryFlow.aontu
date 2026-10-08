@@ -1,0 +1,33 @@
+# BasicApiSimulationTrajectoryFlow
+
+main: kit: flow: BasicApiSimulationTrajectoryFlow:
+{
+  entity: "api_simulation_trajectory",
+  kind: "basic",
+  name: "BasicApiSimulationTrajectoryFlow",
+  step: [
+    {
+      i: {
+        ref: "api_simulation_trajectory_ref01",
+        srcdatavar: "api_simulation_trajectory_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_simulation_trajectory01",
+        simulation_run_id: "simulation_run01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_simulation_trajectory_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiSimulationTrajectoryFlow"
+}

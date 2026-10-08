@@ -1,0 +1,9 @@
+# BasicApiDeleteWorkspaceOutputFlow
+
+main: kit: flow: BasicApiDeleteWorkspaceOutputFlow:
+{
+  entity: "api_delete_workspace_output",
+  kind: "basic",
+  name: "BasicApiDeleteWorkspaceOutputFlow",
+  "key$": "BasicApiDeleteWorkspaceOutputFlow"
+}

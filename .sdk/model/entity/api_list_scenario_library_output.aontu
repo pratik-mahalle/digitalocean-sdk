@@ -1,0 +1,167 @@
+# Entity: api_list_scenario_library_output
+
+main: kit: entity: api_list_scenario_library_output: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Optional grouping for catalog browsing (e.g."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Time created at."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Curated description."
+      t: "`$STRING`"
+    }
+    goal_description: {
+      h: "Goal Description"
+      n: "goal_description"
+      r: false
+      sh: "The goal this scenario set demonstrates, shown as context alongside goal-driven generation."
+      t: "`$STRING`"
+    }
+    library_scenario_uuid: {
+      h: "Library Scenario Uuid"
+      n: "library_scenario_uuid"
+      r: false
+      sh: "UUID of the library entry."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Curated display name."
+      t: "`$STRING`"
+    }
+    scenario_count: {
+      fo: "int64"
+      h: "Scenario Count"
+      n: "scenario_count"
+      r: false
+      sh: "Number of scenarios in the library entry."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Lifecycle status of a Common Scenario & Goal Library entry."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Time last updated at."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_list_scenario_library_output"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/scenario_library"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "example string"
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "example string"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SCENARIO_LIBRARY_SORT_FIELD_UNSPECIFIED"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SORT_DIRECTION_UNSPECIFIED"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/scenario_library"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_library"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scenarios`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,113 @@
+# Entity: app_instance
+
+main: kit: entity: app_instance: {
+
+  alias: field: {}
+
+  fields: {
+    component_name: {
+      h: "Component Name"
+      n: "component_name"
+      r: false
+      sh: "Name of the component, from the app spec."
+      t: "`$STRING`"
+    }
+    component_type: {
+      h: "Component Type"
+      n: "component_type"
+      r: false
+      sh: "Supported compute component by DigitalOcean App Platform."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    instance_alias: {
+      h: "Instance Alias"
+      n: "instance_alias"
+      r: false
+      sh: "Readable identifier, an alias of the instance name, reference for mapping insights to instance names."
+      t: "`$STRING`"
+    }
+    instance_name: {
+      h: "Instance Name"
+      n: "instance_name"
+      r: false
+      sh: "Name of the instance, which is a unique identifier for the instance."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app_instance"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/instances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/instances"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "instances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.instances`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

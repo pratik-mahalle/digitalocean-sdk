@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "api_import_custom_model_output_public": {
+      "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC00": {
+        "accept_hf_token_storage": true,
+        "accept_terms_and_conditions": false,
+        "description": "s7a",
+        "error": "s7b",
+        "import_job": {},
+        "model": {},
+        "name": "s7e",
+        "preferred_gpu_region": "s7f",
+        "source_ref": {},
+        "source_type": "s81",
+        "tags": {},
+        "validation_steps": [],
+        "id": "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC00"
+      },
+      "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC01": {
+        "accept_hf_token_storage": true,
+        "accept_terms_and_conditions": false,
+        "description": "sf2",
+        "error": "sf3",
+        "import_job": {},
+        "model": {},
+        "name": "sf6",
+        "preferred_gpu_region": "sf7",
+        "source_ref": {},
+        "source_type": "sf9",
+        "tags": {},
+        "validation_steps": [],
+        "id": "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC01"
+      },
+      "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC02": {
+        "accept_hf_token_storage": true,
+        "accept_terms_and_conditions": false,
+        "description": "s16a",
+        "error": "s16b",
+        "import_job": {},
+        "model": {},
+        "name": "s16e",
+        "preferred_gpu_region": "s16f",
+        "source_ref": {},
+        "source_type": "s171",
+        "tags": {},
+        "validation_steps": [],
+        "id": "API_IMPORT_CUSTOM_MODEL_OUTPUT_PUBLIC02"
+      }
+    }
+  },
+  "new": {
+    "api_import_custom_model_output_public": {
+      "api_import_custom_model_output_public_ref01": {
+        "accept_hf_token_storage": true,
+        "accept_terms_and_conditions": false,
+        "description": "s1e2",
+        "error": "s1e3",
+        "import_job": {},
+        "model": {},
+        "name": "s1e6",
+        "preferred_gpu_region": "s1e7",
+        "source_ref": {},
+        "source_type": "s1e9",
+        "tags": {},
+        "validation_steps": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/custom_models/import": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

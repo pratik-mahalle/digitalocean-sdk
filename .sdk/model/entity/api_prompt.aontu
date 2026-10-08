@@ -1,0 +1,160 @@
+# Entity: api_prompt
+
+main: kit: entity: api_prompt: {
+
+  alias: field: {}
+
+  fields: {
+    evaluation_trace_spans: {
+      h: "Evaluation Trace Spans"
+      n: "evaluation_trace_spans"
+      r: false
+      sh: "The evaluated trace spans."
+      t: "`$ARRAY`"
+    }
+    ground_truth: {
+      h: "Ground Truth"
+      n: "ground_truth"
+      r: false
+      sh: "The ground truth for the prompt."
+      t: "`$STRING`"
+    }
+    input: {
+      h: "Input"
+      n: "input"
+      r: false
+      t: "`$STRING`"
+    }
+    input_tokens: {
+      fo: "uint64"
+      h: "Input Tokens"
+      n: "input_tokens"
+      r: false
+      sh: "The number of input tokens used in the prompt."
+      t: "`$STRING`"
+    }
+    output: {
+      h: "Output"
+      n: "output"
+      r: false
+      t: "`$STRING`"
+    }
+    output_tokens: {
+      fo: "uint64"
+      h: "Output Tokens"
+      n: "output_tokens"
+      r: false
+      sh: "The number of output tokens used in the prompt."
+      t: "`$STRING`"
+    }
+    prompt_chunks: {
+      h: "Prompt Chunks"
+      n: "prompt_chunks"
+      r: false
+      sh: "The list of prompt chunks."
+      t: "`$ARRAY`"
+    }
+    prompt_id: {
+      fo: "int64"
+      h: "Prompt Id"
+      n: "prompt_id"
+      r: false
+      sh: "Prompt ID"
+      t: "`$INTEGER`"
+    }
+    prompt_level_metric_results: {
+      h: "Prompt Level Metric Results"
+      n: "prompt_level_metric_results"
+      r: false
+      sh: "The metric results for the prompt."
+      t: "`$ARRAY`"
+    }
+    trace_id: {
+      h: "Trace Id"
+      n: "trace_id"
+      r: false
+      sh: "The trace id for the prompt."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_prompt"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results/{prompt_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "evaluation_run_id"
+                or: "evaluation_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "param"
+                n: "prompt_id"
+                or: "prompt_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results/{prompt_id}"
+          q: {
+            exist: [
+              "evaluation_run_id"
+              "prompt_id"
+            ]
+          }
+          r: {
+            param: {
+              evaluation_run_uuid: "evaluation_run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_runs"
+            }
+            {
+              var: "evaluation_run_id"
+            }
+            {
+              lit: "results"
+            }
+            {
+              var: "prompt_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.prompt`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

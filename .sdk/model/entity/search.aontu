@@ -1,0 +1,419 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: {
+    actorId: {
+      h: "Actor Id"
+      n: "actorId"
+      r: false
+      sh: "Empty when the session is not bound to an actor."
+      t: "`$STRING`"
+    }
+    agentName: {
+      h: "Agent Name"
+      n: "agentName"
+      r: false
+      sh: "Name of the agent that started the session."
+      t: "`$STRING`"
+    }
+    agentUrn: {
+      h: "Agent Urn"
+      n: "agentUrn"
+      r: false
+      sh: "URN of the agent that started the session."
+      t: "`$STRING`"
+    }
+    auth_type: {
+      de: true
+      h: "Auth Type"
+      n: "auth_type"
+      r: false
+      sh: "Deprecated: read `auth_types`, since a provider may accept more than one credential kind."
+      t: "`$STRING`"
+    }
+    auth_types: {
+      h: "Auth Types"
+      n: "auth_types"
+      r: false
+      sh: "Credential kinds the provider accepts, sorted: none|oauth|`shared_api_key`|unknown|`user_oauth_app`|`user_token`."
+      t: "`$ARRAY`"
+    }
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      sh: "Session options as supplied at creation."
+      t: "`$OBJECT`"
+    }
+    connection_parameters: {
+      h: "Connection Parameters"
+      n: "connection_parameters"
+      r: false
+      sh: "Non-sensitive values collected when creating a connection."
+      t: "`$ARRAY`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "When the session was created."
+      t: "`$STRING`"
+    }
+    credential_parameters: {
+      h: "Credential Parameters"
+      n: "credential_parameters"
+      r: false
+      sh: "Non-secret values collected when registering an API key provider credential."
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the latest version."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      sh: "Human-readable label of the latest version."
+      t: "`$STRING`"
+    }
+    insights: {
+      h: "Insights"
+      n: "insights"
+      r: false
+      sh: "Omitted when no explicit customer Insights choice was stored."
+      t: "`$ANY`"
+    }
+    latest_version: {
+      h: "Latest Version"
+      n: "latest_version"
+      r: false
+      sh: "Latest version number, as a string."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The required human-readable session name."
+      t: "`$STRING`"
+    }
+    network: {
+      h: "Network"
+      n: "network"
+      r: false
+      sh: "Omitted when the request omitted network."
+      t: "`$ANY`"
+    }
+    oauth_client_setup_url: {
+      h: "Oauth Client Setup Url"
+      n: "oauth_client_setup_url"
+      r: false
+      sh: "HTTPS page at the provider where a team creates that OAuth client, such as its developer console or setup guide."
+      t: "`$STRING`"
+    }
+    oauth_redirect_url: {
+      h: "Oauth Redirect Url"
+      n: "oauth_redirect_url"
+      r: false
+      sh: "Callback URL a team must register with the provider when it creates its own OAuth client."
+      t: "`$STRING`"
+    }
+    owning_user_id: {
+      h: "Owning User Id"
+      n: "owning_user_id"
+      r: false
+      sh: "DigitalOcean user ID of the user who created the session, when recorded."
+      t: "`$STRING`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: false
+      sh: "The session's tool-permission policy."
+      t: "`$ANY`"
+    }
+    reference_latest: {
+      h: "Reference Latest"
+      n: "reference_latest"
+      r: false
+      sh: "The toolbelt name, which refers to whichever version is latest."
+      t: "`$STRING`"
+    }
+    scopes: {
+      h: "Scopes"
+      n: "scopes"
+      r: false
+      sh: "The OAuth scopes a connection may request; a connection that requests none gets all of them."
+      t: "`$ARRAY`"
+    }
+    sessionUrn: {
+      h: "Session Urn"
+      n: "sessionUrn"
+      r: false
+      sh: "Session URN, for example `do:managed_agent_session:<uuid>`."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "active, or deprecated once the toolbelt is deleted."
+      t: "`$STRING`"
+    }
+    tool_count: {
+      fo: "int32"
+      h: "Tool Count"
+      n: "tool_count"
+      r: false
+      sh: "Number of members in the latest version."
+      t: "`$INTEGER`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Omitted when the request omitted tools (all tools)."
+      t: "`$OBJECT`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "When the session was last modified."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "When the latest version was last modified, in RFC 3339 format."
+      t: "`$STRING`"
+    }
+    version_count: {
+      fo: "int32"
+      h: "Version Count"
+      n: "version_count"
+      r: false
+      sh: "Number of versions recorded under this name, including versions from before the toolbelt was deleted and the name reused."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/sessions/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "alice"
+                k: "query"
+                n: "end_user_id"
+                or: "end_user_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/sessions/search"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "sessions"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sessions`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/action-gateway/toolbelts/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "active"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/toolbelts/search"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolbelts`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/providers/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/providers/search"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "providers"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.providers`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

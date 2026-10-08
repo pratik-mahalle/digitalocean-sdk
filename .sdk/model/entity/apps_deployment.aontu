@@ -1,0 +1,566 @@
+# Entity: apps_deployment
+
+main: kit: entity: apps_deployment: {
+
+  alias: field: {}
+
+  fields: {
+    cause: {
+      h: "Cause"
+      n: "cause"
+      r: false
+      t: "`$STRING`"
+    }
+    cloned_from: {
+      h: "Cloned From"
+      n: "cloned_from"
+      r: false
+      t: "`$STRING`"
+    }
+    components: {
+      h: "Components"
+      n: "components"
+      r: false
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    deployment_id: {
+      h: "Deployment Id"
+      n: "deployment_id"
+      r: false
+      sh: "The ID of the deployment to rollback to."
+      t: "`$STRING`"
+    }
+    force_build: {
+      h: "Force Build"
+      n: "force_build"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    functions: {
+      h: "Functions"
+      n: "functions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    jobs: {
+      h: "Jobs"
+      n: "jobs"
+      r: false
+      t: "`$ARRAY`"
+    }
+    phase: {
+      h: "Phase"
+      n: "phase"
+      r: false
+      t: "`$STRING`"
+    }
+    phase_last_updated_at: {
+      fo: "date-time"
+      h: "Phase Last Updated At"
+      n: "phase_last_updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    progress: {
+      h: "Progress"
+      n: "progress"
+      r: false
+      t: "`$OBJECT`"
+    }
+    services: {
+      h: "Services"
+      n: "services"
+      r: false
+      t: "`$ARRAY`"
+    }
+    skip_pin: {
+      h: "Skip Pin"
+      n: "skip_pin"
+      r: false
+      sh: "Whether to skip pinning the rollback deployment."
+      t: "`$BOOLEAN`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: true
+      sh: "The desired configuration of an application."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 7
+      }
+    }
+    static_sites: {
+      h: "Static Sites"
+      n: "static_sites"
+      r: false
+      t: "`$ARRAY`"
+    }
+    tier_slug: {
+      h: "Tier Slug"
+      n: "tier_slug"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      t: "`$STRING`"
+    }
+    workers: {
+      h: "Workers"
+      n: "workers"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "apps_deployment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/deployments/{deployment_id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "param"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/deployments/{deployment_id}/cancel"
+          q: {
+            exist: [
+              "app_id"
+              "deployment_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/deployments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/deployments"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/restart"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/restart"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "restart"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/rollback"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/rollback"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "rollback"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/rollback/revert"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/rollback/revert"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "rollback"
+            }
+            {
+              lit: "revert"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/deployments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: [
+                  "MANUAL"
+                  "AUTOSCALED"
+                ]
+                k: "query"
+                n: "deployment_type"
+                or: "deployment_types"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/deployments"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployments`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/deployments/{deployment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "param"
+                n: "id"
+                or: "deployment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/deployments/{deployment_id}"
+          q: {
+            exist: [
+              "app_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              deployment_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

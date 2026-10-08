@@ -1,0 +1,110 @@
+# Entity: embedding
+
+main: kit: entity: embedding: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      sh: "One entry for each `input` string, in the same order."
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    encoding_format: {
+      h: "Encoding Format"
+      n: "encoding_format"
+      r: false
+      sh: "How embedding values are returned in each `data[].embedding` field."
+      t: "`$STRING`"
+    }
+    input: {
+      h: "Input"
+      n: "input"
+      r: true
+      sh: "A single string or 1–2048 strings; each string produces one row in `data`, in order."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: true
+      sh: "The embedding model that produced the vectors."
+      t: "`$STRING`"
+    }
+    object: {
+      h: "Object"
+      n: "object"
+      r: true
+      sh: "The object type, which is always the string `list`."
+      t: "`$STRING`"
+    }
+    usage: {
+      h: "Usage"
+      n: "usage"
+      r: true
+      sh: "Token usage for the embeddings request."
+      t: "`$OBJECT`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "Optional end-user identifier to help with abuse monitoring."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "embedding"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/embeddings"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/embeddings"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "embeddings"
+            }
+          ]
+          t: {
+            req: {
+              encoding_format: "`reqdata.encoding_format`"
+              input: "`reqdata.input`"
+              model: "`reqdata.model`"
+              user: "`reqdata.user`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

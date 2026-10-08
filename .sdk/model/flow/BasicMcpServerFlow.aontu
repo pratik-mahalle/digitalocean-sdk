@@ -1,0 +1,100 @@
+# BasicMcpServerFlow
+
+main: kit: flow: BasicMcpServerFlow:
+{
+  entity: "mcp_server",
+  kind: "basic",
+  name: "BasicMcpServerFlow",
+  step: [
+    {
+      i: {
+        ref: "mcp_server_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "mcp_server_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "mcp_server_ref01",
+        srcdatavar: "mcp_server_ref01_data",
+        suffix: "_up0",
+        textfield: "api_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mcp_server_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "mcp_server_ref01",
+        srcdatavar: "mcp_server_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "mcp_server01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mcp_server_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "mcp_server_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "mcp_server01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "mcp_server_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMcpServerFlow"
+}

@@ -1,0 +1,22 @@
+# BasicListToolHealthFlow
+
+main: kit: flow: BasicListToolHealthFlow:
+{
+  entity: "list_tool_health",
+  kind: "basic",
+  name: "BasicListToolHealthFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_tool_health_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListToolHealthFlow"
+}

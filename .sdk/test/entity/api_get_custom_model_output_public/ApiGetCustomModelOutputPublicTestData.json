@@ -1,0 +1,130 @@
+{
+  "existing": {
+    "api_get_custom_model_output_public": {
+      "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC00": {
+        "active_deployments": [],
+        "architecture": "se7",
+        "config_json": {},
+        "context_length": 233,
+        "cost_estimate_per_month": 234,
+        "created_at": "seb",
+        "description": "sec",
+        "error_message": "sed",
+        "file_count": 238,
+        "input_modalities": [],
+        "license": "sf0",
+        "name": "sf1",
+        "output_modalities": [],
+        "parameters": "sf3",
+        "source_ref": {},
+        "source_type": "sf5",
+        "status": "sf6",
+        "storage_region": "sf7",
+        "tags": {},
+        "team_id": "TEAM01",
+        "total_size_bytes": "sfa",
+        "updated_at": "sfb",
+        "uuid": "sfc",
+        "id": "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC00"
+      },
+      "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC01": {
+        "active_deployments": [],
+        "architecture": "s1cd",
+        "config_json": {},
+        "context_length": 463,
+        "cost_estimate_per_month": 464,
+        "created_at": "s1d1",
+        "description": "s1d2",
+        "error_message": "s1d3",
+        "file_count": 468,
+        "input_modalities": [],
+        "license": "s1d6",
+        "name": "s1d7",
+        "output_modalities": [],
+        "parameters": "s1d9",
+        "source_ref": {},
+        "source_type": "s1db",
+        "status": "s1dc",
+        "storage_region": "s1dd",
+        "tags": {},
+        "team_id": "TEAM01",
+        "total_size_bytes": "s1e0",
+        "updated_at": "s1e1",
+        "uuid": "s1e2",
+        "id": "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC01"
+      },
+      "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC02": {
+        "active_deployments": [],
+        "architecture": "s2b3",
+        "config_json": {},
+        "context_length": 693,
+        "cost_estimate_per_month": 694,
+        "created_at": "s2b7",
+        "description": "s2b8",
+        "error_message": "s2b9",
+        "file_count": 698,
+        "input_modalities": [],
+        "license": "s2bc",
+        "name": "s2bd",
+        "output_modalities": [],
+        "parameters": "s2bf",
+        "source_ref": {},
+        "source_type": "s2c1",
+        "status": "s2c2",
+        "storage_region": "s2c3",
+        "tags": {},
+        "team_id": "TEAM01",
+        "total_size_bytes": "s2c6",
+        "updated_at": "s2c7",
+        "uuid": "s2c8",
+        "id": "API_GET_CUSTOM_MODEL_OUTPUT_PUBLIC02"
+      }
+    }
+  },
+  "new": {
+    "api_get_custom_model_output_public": {
+      "api_get_custom_model_output_public_ref01": {
+        "active_deployments": [],
+        "architecture": "s399",
+        "config_json": {},
+        "context_length": 923,
+        "cost_estimate_per_month": 924,
+        "created_at": "s39d",
+        "description": "s39e",
+        "error_message": "s39f",
+        "file_count": 928,
+        "input_modalities": [],
+        "license": "s3a2",
+        "name": "s3a3",
+        "output_modalities": [],
+        "parameters": "s3a5",
+        "source_ref": {},
+        "source_type": "s3a7",
+        "status": "s3a8",
+        "storage_region": "s3a9",
+        "tags": {},
+        "team_id": "TEAM01",
+        "total_size_bytes": "s3ac",
+        "updated_at": "s3ad",
+        "uuid": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/custom_models": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/custom_models/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/gen-ai/custom_models/{uuid}/metadata": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

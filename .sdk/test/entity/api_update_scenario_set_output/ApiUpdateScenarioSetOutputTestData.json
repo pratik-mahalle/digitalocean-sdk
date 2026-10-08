@@ -1,0 +1,104 @@
+{
+  "existing": {
+    "api_update_scenario_set_output": {
+      "API_UPDATE_SCENARIO_SET_OUTPUT00": {
+        "bucket_name": "sbe",
+        "bucket_region": "sbf",
+        "created_at": "sc0",
+        "deleted_at": "sc1",
+        "description": "sc2",
+        "failure_reason": "sc3",
+        "generator_model_uuid": "sc4",
+        "library_scenario_uuid": "sc5",
+        "name": "sc6",
+        "scenario_count": 199,
+        "scenario_set_uuid": "sc8",
+        "scenarios": [],
+        "source_export_id": "SOURCE_EXPORT01",
+        "source_goal_description": "scb",
+        "source_kind": "scc",
+        "spaces_key": "scd",
+        "status": "sce",
+        "updated_at": "scf",
+        "workflow_uuid": "sd0",
+        "id": "API_UPDATE_SCENARIO_SET_OUTPUT00"
+      },
+      "API_UPDATE_SCENARIO_SET_OUTPUT01": {
+        "bucket_name": "s17c",
+        "bucket_region": "s17d",
+        "created_at": "s17e",
+        "deleted_at": "s17f",
+        "description": "s180",
+        "failure_reason": "s181",
+        "generator_model_uuid": "s182",
+        "library_scenario_uuid": "s183",
+        "name": "s184",
+        "scenario_count": 389,
+        "scenario_set_uuid": "s186",
+        "scenarios": [],
+        "source_export_id": "SOURCE_EXPORT01",
+        "source_goal_description": "s189",
+        "source_kind": "s18a",
+        "spaces_key": "s18b",
+        "status": "s18c",
+        "updated_at": "s18d",
+        "workflow_uuid": "s18e",
+        "id": "API_UPDATE_SCENARIO_SET_OUTPUT01"
+      },
+      "API_UPDATE_SCENARIO_SET_OUTPUT02": {
+        "bucket_name": "s23a",
+        "bucket_region": "s23b",
+        "created_at": "s23c",
+        "deleted_at": "s23d",
+        "description": "s23e",
+        "failure_reason": "s23f",
+        "generator_model_uuid": "s240",
+        "library_scenario_uuid": "s241",
+        "name": "s242",
+        "scenario_count": 579,
+        "scenario_set_uuid": "s244",
+        "scenarios": [],
+        "source_export_id": "SOURCE_EXPORT01",
+        "source_goal_description": "s247",
+        "source_kind": "s248",
+        "spaces_key": "s249",
+        "status": "s24a",
+        "updated_at": "s24b",
+        "workflow_uuid": "s24c",
+        "id": "API_UPDATE_SCENARIO_SET_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_scenario_set_output": {
+      "api_update_scenario_set_output_ref01": {
+        "bucket_name": "s2f8",
+        "bucket_region": "s2f9",
+        "created_at": "s2fa",
+        "deleted_at": "s2fb",
+        "description": "s2fc",
+        "failure_reason": "s2fd",
+        "generator_model_uuid": "s2fe",
+        "library_scenario_uuid": "s2ff",
+        "name": "s300",
+        "scenario_count": 769,
+        "scenario_set_uuid": "s302",
+        "scenarios": [],
+        "source_export_id": "SOURCE_EXPORT01",
+        "source_goal_description": "s305",
+        "source_kind": "s306",
+        "spaces_key": "s307",
+        "status": "s308",
+        "updated_at": "s309",
+        "workflow_uuid": "s30a"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/scenario_sets/{scenario_set_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,339 @@
+{
+  "existing": {
+    "kubernete": {
+      "KUBERNETE00": {
+        "amd_gpu_device_metrics_exporter_plugin": {},
+        "amd_gpu_device_plugin": {},
+        "amd_gpu_dra_driver": {},
+        "auto_scale": false,
+        "auto_upgrade": true,
+        "cluster_autoscaler_configuration": {},
+        "cluster_subnet": "s1f0",
+        "control_plane_firewall": {},
+        "coredns_autoscaler": {},
+        "count": 499,
+        "created_at": "s1f4",
+        "endpoint": "s1f5",
+        "gpu_partition_mode": "s1f6",
+        "ha": false,
+        "id": "KUBERNETE00",
+        "ipv4": "s1f9",
+        "isolated_workers": true,
+        "kubernetes_version": "s1fb",
+        "labels": {},
+        "maintenance_policy": {},
+        "max_nodes": 510,
+        "message": "s1ff",
+        "min_nodes": 512,
+        "name": "s201",
+        "nfs_csi_plugin": {},
+        "node_pools": [],
+        "nodes": [],
+        "nvidia_gpu_device_plugin": {},
+        "nvidia_gpu_dra_driver": {},
+        "p2p_oci_registry_plugin": {},
+        "rdma_shared_dev_plugin": {},
+        "region": "s209",
+        "registries": [],
+        "registry_enabled": false,
+        "routing_agent": {},
+        "service_subnet": "s20d",
+        "size": "s20e",
+        "slug": "s20f",
+        "sso": {},
+        "status": {},
+        "supported_features": [],
+        "surge_upgrade": false,
+        "tags": [],
+        "taints": [],
+        "timestamp": "s216",
+        "updated_at": "s217",
+        "version": "s218",
+        "vpc_uuid": "s219",
+        "worker_subnet_uuid": "s21a",
+        "cluster_id": "CLUSTER01",
+        "node_pool_id": "NODE_POOL01",
+        "node_id": "NODE01"
+      },
+      "KUBERNETE01": {
+        "amd_gpu_device_metrics_exporter_plugin": {},
+        "amd_gpu_device_plugin": {},
+        "amd_gpu_dra_driver": {},
+        "auto_scale": false,
+        "auto_upgrade": true,
+        "cluster_autoscaler_configuration": {},
+        "cluster_subnet": "s3da",
+        "control_plane_firewall": {},
+        "coredns_autoscaler": {},
+        "count": 989,
+        "created_at": "s3de",
+        "endpoint": "s3df",
+        "gpu_partition_mode": "s3e0",
+        "ha": false,
+        "id": "KUBERNETE01",
+        "ipv4": "s3e3",
+        "isolated_workers": true,
+        "kubernetes_version": "s3e5",
+        "labels": {},
+        "maintenance_policy": {},
+        "max_nodes": 1000,
+        "message": "s3e9",
+        "min_nodes": 1002,
+        "name": "s3eb",
+        "nfs_csi_plugin": {},
+        "node_pools": [],
+        "nodes": [],
+        "nvidia_gpu_device_plugin": {},
+        "nvidia_gpu_dra_driver": {},
+        "p2p_oci_registry_plugin": {},
+        "rdma_shared_dev_plugin": {},
+        "region": "s3f3",
+        "registries": [],
+        "registry_enabled": false,
+        "routing_agent": {},
+        "service_subnet": "s3f7",
+        "size": "s3f8",
+        "slug": "s3f9",
+        "sso": {},
+        "status": {},
+        "supported_features": [],
+        "surge_upgrade": false,
+        "tags": [],
+        "taints": [],
+        "timestamp": "s400",
+        "updated_at": "s401",
+        "version": "s402",
+        "vpc_uuid": "s403",
+        "worker_subnet_uuid": "s404",
+        "cluster_id": "CLUSTER01",
+        "node_pool_id": "NODE_POOL01",
+        "node_id": "NODE01"
+      },
+      "KUBERNETE02": {
+        "amd_gpu_device_metrics_exporter_plugin": {},
+        "amd_gpu_device_plugin": {},
+        "amd_gpu_dra_driver": {},
+        "auto_scale": false,
+        "auto_upgrade": true,
+        "cluster_autoscaler_configuration": {},
+        "cluster_subnet": "s5c4",
+        "control_plane_firewall": {},
+        "coredns_autoscaler": {},
+        "count": 1479,
+        "created_at": "s5c8",
+        "endpoint": "s5c9",
+        "gpu_partition_mode": "s5ca",
+        "ha": false,
+        "id": "KUBERNETE02",
+        "ipv4": "s5cd",
+        "isolated_workers": true,
+        "kubernetes_version": "s5cf",
+        "labels": {},
+        "maintenance_policy": {},
+        "max_nodes": 1490,
+        "message": "s5d3",
+        "min_nodes": 1492,
+        "name": "s5d5",
+        "nfs_csi_plugin": {},
+        "node_pools": [],
+        "nodes": [],
+        "nvidia_gpu_device_plugin": {},
+        "nvidia_gpu_dra_driver": {},
+        "p2p_oci_registry_plugin": {},
+        "rdma_shared_dev_plugin": {},
+        "region": "s5dd",
+        "registries": [],
+        "registry_enabled": false,
+        "routing_agent": {},
+        "service_subnet": "s5e1",
+        "size": "s5e2",
+        "slug": "s5e3",
+        "sso": {},
+        "status": {},
+        "supported_features": [],
+        "surge_upgrade": false,
+        "tags": [],
+        "taints": [],
+        "timestamp": "s5ea",
+        "updated_at": "s5eb",
+        "version": "s5ec",
+        "vpc_uuid": "s5ed",
+        "worker_subnet_uuid": "s5ee",
+        "cluster_id": "CLUSTER01",
+        "node_pool_id": "NODE_POOL01",
+        "node_id": "NODE01"
+      }
+    }
+  },
+  "new": {
+    "kubernete": {
+      "kubernete_ref01": {
+        "amd_gpu_device_metrics_exporter_plugin": {},
+        "amd_gpu_device_plugin": {},
+        "amd_gpu_dra_driver": {},
+        "auto_scale": false,
+        "auto_upgrade": true,
+        "cluster_autoscaler_configuration": {},
+        "cluster_subnet": "s7ae",
+        "control_plane_firewall": {},
+        "coredns_autoscaler": {},
+        "count": 1969,
+        "created_at": "s7b2",
+        "endpoint": "s7b3",
+        "gpu_partition_mode": "s7b4",
+        "ha": false,
+        "ipv4": "s7b7",
+        "isolated_workers": true,
+        "kubernetes_version": "s7b9",
+        "labels": {},
+        "maintenance_policy": {},
+        "max_nodes": 1980,
+        "message": "s7bd",
+        "min_nodes": 1982,
+        "name": "s7bf",
+        "nfs_csi_plugin": {},
+        "node_pools": [],
+        "nodes": [],
+        "nvidia_gpu_device_plugin": {},
+        "nvidia_gpu_dra_driver": {},
+        "p2p_oci_registry_plugin": {},
+        "rdma_shared_dev_plugin": {},
+        "region": "s7c7",
+        "registries": [],
+        "registry_enabled": false,
+        "routing_agent": {},
+        "service_subnet": "s7cb",
+        "size": "s7cc",
+        "slug": "s7cd",
+        "sso": {},
+        "status": {},
+        "supported_features": [],
+        "surge_upgrade": false,
+        "tags": [],
+        "taints": [],
+        "timestamp": "s7d4",
+        "updated_at": "s7d5",
+        "version": "s7d6",
+        "vpc_uuid": "s7d7",
+        "worker_subnet_uuid": "s7d8"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}/recycle": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/clusters/{cluster_id}/clusterlint": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/clusters/{cluster_id}/node_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/clusters/{cluster_id}/upgrade": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/clusters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/registries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/kubernetes/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/node_pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/status_messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/upgrades": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/kubeconfig": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}/nodes/{node_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/clusters/{cluster_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/dangerous": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/selective": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/registries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/kubernetes/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/kubernetes/clusters/{cluster_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

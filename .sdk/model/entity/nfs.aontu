@@ -1,0 +1,363 @@
+# Entity: nfs
+
+main: kit: entity: nfs: {
+
+  alias: field: {}
+
+  fields: {
+    access_points: {
+      h: "Access Points"
+      n: "access_points"
+      r: false
+      sh: "Access points configured on this share."
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      sh: "Timestamp for when the NFS share was created."
+      t: "`$STRING`"
+    }
+    host: {
+      h: "Host"
+      n: "host"
+      r: false
+      sh: "The host IP of the NFS server that will be accessible from the associated VPC"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      ro: true
+      sh: "The unique identifier of the NFS share."
+      t: "`$STRING`"
+    }
+    mount_path: {
+      h: "Mount Path"
+      n: "mount_path"
+      r: false
+      sh: "Path at which the share will be available, to be mounted at a target of the user's choice within the client"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The human-readable name of the share."
+      t: "`$STRING`"
+    }
+    performance_tier: {
+      h: "Performance Tier"
+      n: "performance_tier"
+      r: false
+      sh: "The performance tier of the share."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      sh: "The DigitalOcean region slug (e.g., nyc2, atl1) where the NFS share resides."
+      t: "`$STRING`"
+    }
+    size_gib: {
+      h: "Size Gib"
+      n: "size_gib"
+      r: true
+      sh: "The desired/provisioned size of the share in GiB (Gibibytes)."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      ro: true
+      sh: "The current status of the share."
+      t: "`$STRING`"
+    }
+    vpc_ids: {
+      h: "Vpc Ids"
+      n: "vpc_ids"
+      op: {
+        create: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      sh: "List of VPC IDs that should be able to access the share."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "nfs"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/nfs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/nfs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.share`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.shares`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs/{nfs_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "param"
+                n: "id"
+                or: "nfs_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs/{nfs_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              nfs_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.share`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/nfs/{nfs_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "param"
+                n: "id"
+                or: "nfs_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/nfs/{nfs_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              nfs_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/nfs/snapshots/{nfs_snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "param"
+                n: "nfs_snapshot_id"
+                or: "nfs_snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/nfs/snapshots/{nfs_snapshot_id}"
+          q: {
+            exist: [
+              "nfs_snapshot_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "nfs_snapshot_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.snapshot")]
+  ]
+
+}

@@ -1,0 +1,123 @@
+# Entity: list_provider
+
+main: kit: entity: list_provider: {
+
+  alias: field: {}
+
+  fields: {
+    auth_type: {
+      de: true
+      h: "Auth Type"
+      n: "auth_type"
+      r: false
+      sh: "Deprecated: read `auth_types`, since a provider may accept more than one credential kind."
+      t: "`$STRING`"
+    }
+    auth_types: {
+      h: "Auth Types"
+      n: "auth_types"
+      r: false
+      sh: "Credential kinds the provider accepts, sorted: none|oauth|`shared_api_key`|unknown|`user_oauth_app`|`user_token`."
+      t: "`$ARRAY`"
+    }
+    connection_parameters: {
+      h: "Connection Parameters"
+      n: "connection_parameters"
+      r: false
+      sh: "Non-sensitive values collected when creating a connection."
+      t: "`$ARRAY`"
+    }
+    credential_parameters: {
+      h: "Credential Parameters"
+      n: "credential_parameters"
+      r: false
+      sh: "Non-secret values collected when registering an API key provider credential."
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Provider description."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      sh: "Human-readable provider name."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Provider slug, used as provider when creating a connection or a provider credential."
+      t: "`$STRING`"
+    }
+    oauth_client_setup_url: {
+      h: "Oauth Client Setup Url"
+      n: "oauth_client_setup_url"
+      r: false
+      sh: "HTTPS page at the provider where a team creates that OAuth client, such as its developer console or setup guide."
+      t: "`$STRING`"
+    }
+    oauth_redirect_url: {
+      h: "Oauth Redirect Url"
+      n: "oauth_redirect_url"
+      r: false
+      sh: "Callback URL a team must register with the provider when it creates its own OAuth client."
+      t: "`$STRING`"
+    }
+    scopes: {
+      h: "Scopes"
+      n: "scopes"
+      r: false
+      sh: "The OAuth scopes a connection may request; a connection that requests none gets all of them."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "list_provider"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/providers"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/providers"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "providers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.providers`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

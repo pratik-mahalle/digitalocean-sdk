@@ -1,0 +1,22 @@
+# BasicLogsSearchFlow
+
+main: kit: flow: BasicLogsSearchFlow:
+{
+  entity: "logs_search",
+  kind: "basic",
+  name: "BasicLogsSearchFlow",
+  step: [
+    {
+      i: {
+        ref: "logs_search_ref01"
+      }
+
+      m: {
+        query_id: "query01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLogsSearchFlow"
+}

@@ -1,0 +1,82 @@
+# Entity: api_get_knowledge_base_output
+
+main: kit: entity: api_get_knowledge_base_output: {
+
+  alias: field: {}
+
+  fields: {
+    database_status: {
+      h: "Database Status"
+      n: "database_status"
+      r: false
+      t: "`$STRING`"
+    }
+    knowledge_base: {
+      h: "Knowledge Base"
+      n: "knowledge_base"
+      r: false
+      sh: "Knowledgebase Description"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "api_get_knowledge_base_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/knowledge_bases/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/knowledge_bases/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

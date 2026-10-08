@@ -1,0 +1,637 @@
+# Entity: firewall
+
+main: kit: entity: firewall: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the firewall was created."
+      t: "`$STRING`"
+    }
+    droplet_ids: {
+      h: "Droplet Ids"
+      n: "droplet_ids"
+      r: false
+      sh: "An array containing the IDs of the Droplets assigned to the firewall."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference a firewall."
+      t: "`$STRING`"
+    }
+    inbound_rules: {
+      h: "Inbound Rules"
+      n: "inbound_rules"
+      r: false
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "A human-readable name for a firewall."
+      t: "`$STRING`"
+    }
+    outbound_rules: {
+      h: "Outbound Rules"
+      n: "outbound_rules"
+      r: false
+      t: "`$ARRAY`"
+    }
+    pending_changes: {
+      h: "Pending Changes"
+      n: "pending_changes"
+      r: false
+      ro: true
+      sh: "An array of objects each containing the fields \"droplet_id\", \"removing\", and \"status\"."
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      ro: true
+      sh: "A status string indicating the current state of the firewall."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      t: "`$ANY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "firewall"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/firewalls/{firewall_id}/droplets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/firewalls/{firewall_id}/droplets"
+          q: {
+            "$action": "droplet"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "droplets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/firewalls/{firewall_id}/rules"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/firewalls/{firewall_id}/rules"
+          q: {
+            "$action": "rule"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/firewalls/{firewall_id}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/firewalls/{firewall_id}/tags"
+          q: {
+            "$action": "tag"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/firewalls"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/firewalls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.firewall`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/firewalls"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/firewalls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.firewalls`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/firewalls/{firewall_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/firewalls/{firewall_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.firewall`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/firewalls/{firewall_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/firewalls/{firewall_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/firewalls/{firewall_id}/droplets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/firewalls/{firewall_id}/droplets"
+          q: {
+            "$action": "droplet"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "droplets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/firewalls/{firewall_id}/rules"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/firewalls/{firewall_id}/rules"
+          q: {
+            "$action": "rule"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/firewalls/{firewall_id}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/firewalls/{firewall_id}/tags"
+          q: {
+            "$action": "tag"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/firewalls/{firewall_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bb4b2611-3d72-467b-8602-280330ecd65c"
+                k: "param"
+                n: "id"
+                or: "firewall_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/firewalls/{firewall_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              firewall_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "firewalls"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.firewall`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

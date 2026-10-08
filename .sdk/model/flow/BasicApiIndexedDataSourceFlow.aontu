@@ -1,0 +1,26 @@
+# BasicApiIndexedDataSourceFlow
+
+main: kit: flow: BasicApiIndexedDataSourceFlow:
+{
+  entity: "api_indexed_data_source",
+  kind: "basic",
+  name: "BasicApiIndexedDataSourceFlow",
+  step: [
+    {
+      m: {
+        indexing_job_id: "indexing_job01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_indexed_data_source_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiIndexedDataSourceFlow"
+}

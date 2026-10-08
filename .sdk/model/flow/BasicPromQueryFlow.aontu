@@ -1,0 +1,44 @@
+# BasicPromQueryFlow
+
+main: kit: flow: BasicPromQueryFlow:
+{
+  entity: "prom_query",
+  kind: "basic",
+  name: "BasicPromQueryFlow",
+  step: [
+    {
+      i: {
+        ref: "prom_query_ref01"
+      }
+
+      m: {
+        query_id: "query01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "prom_query_ref01",
+        srcdatavar: "prom_query_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "prom_query01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-prom_query_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPromQueryFlow"
+}

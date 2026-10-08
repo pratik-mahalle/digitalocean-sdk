@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "domain_record": {
+      "DOMAIN_RECORD00": {
+        "data": "s6e",
+        "domain_record": {},
+        "flags": 112,
+        "id": "DOMAIN_RECORD00",
+        "name": "s72",
+        "port": 115,
+        "priority": 116,
+        "tag": "s75",
+        "ttl": 118,
+        "type": "s77",
+        "weight": 120,
+        "domain_name": "DOMAIN_NAME01"
+      },
+      "DOMAIN_RECORD01": {
+        "data": "sdc",
+        "domain_record": {},
+        "flags": 222,
+        "id": "DOMAIN_RECORD01",
+        "name": "se0",
+        "port": 225,
+        "priority": 226,
+        "tag": "se3",
+        "ttl": 228,
+        "type": "se5",
+        "weight": 230,
+        "domain_name": "DOMAIN_NAME01"
+      },
+      "DOMAIN_RECORD02": {
+        "data": "s14a",
+        "domain_record": {},
+        "flags": 332,
+        "id": "DOMAIN_RECORD02",
+        "name": "s14e",
+        "port": 335,
+        "priority": 336,
+        "tag": "s151",
+        "ttl": 338,
+        "type": "s153",
+        "weight": 340,
+        "domain_name": "DOMAIN_NAME01"
+      }
+    }
+  },
+  "new": {
+    "domain_record": {
+      "domain_record_ref01": {
+        "data": "s1b8",
+        "domain_record": {},
+        "flags": 442,
+        "name": "s1bc",
+        "port": 445,
+        "priority": 446,
+        "tag": "s1bf",
+        "ttl": 448,
+        "type": "s1c1",
+        "weight": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/domains/{domain_name}/records": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/domains/{domain_name}/records": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/domains/{domain_name}/records/{domain_record_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/domains/{domain_name}/records/{domain_record_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/domains/{domain_name}/records/{domain_record_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/domains/{domain_name}/records/{domain_record_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

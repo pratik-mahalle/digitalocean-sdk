@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "list_toolbelt_provider": {
+      "LIST_TOOLBELT_PROVIDER00": {
+        "categories": [],
+        "created_at": "s47",
+        "description": "s48",
+        "id": "LIST_TOOLBELT_PROVIDER00",
+        "name": "s4a",
+        "provider": "s4b",
+        "tool_count": 76
+      },
+      "LIST_TOOLBELT_PROVIDER01": {
+        "categories": [],
+        "created_at": "s8d",
+        "description": "s8e",
+        "id": "LIST_TOOLBELT_PROVIDER01",
+        "name": "s90",
+        "provider": "s91",
+        "tool_count": 146
+      },
+      "LIST_TOOLBELT_PROVIDER02": {
+        "categories": [],
+        "created_at": "sd3",
+        "description": "sd4",
+        "id": "LIST_TOOLBELT_PROVIDER02",
+        "name": "sd6",
+        "provider": "sd7",
+        "tool_count": 216
+      }
+    }
+  },
+  "new": {
+    "list_toolbelt_provider": {
+      "list_toolbelt_provider_ref01": {
+        "categories": [],
+        "created_at": "s119",
+        "description": "s11a",
+        "name": "s11c",
+        "provider": "s11d",
+        "tool_count": 286
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/toolbelts/{name}/providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

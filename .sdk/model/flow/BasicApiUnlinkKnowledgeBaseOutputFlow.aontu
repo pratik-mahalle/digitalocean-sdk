@@ -1,0 +1,9 @@
+# BasicApiUnlinkKnowledgeBaseOutputFlow
+
+main: kit: flow: BasicApiUnlinkKnowledgeBaseOutputFlow:
+{
+  entity: "api_unlink_knowledge_base_output",
+  kind: "basic",
+  name: "BasicApiUnlinkKnowledgeBaseOutputFlow",
+  "key$": "BasicApiUnlinkKnowledgeBaseOutputFlow"
+}

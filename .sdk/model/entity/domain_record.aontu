@@ -1,0 +1,517 @@
+# Entity: domain_record
+
+main: kit: entity: domain_record: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: false
+      sh: "Variable data depending on record type."
+      t: "`$STRING`"
+    }
+    domain_record: {
+      h: "Domain Record"
+      n: "domain_record"
+      r: false
+      t: "`$OBJECT`"
+    }
+    flags: {
+      h: "Flags"
+      n: "flags"
+      r: false
+      sh: "An unsigned integer between 0-255 used for CAA records."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique identifier for each domain record."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The host name, alias, or service being defined by the record."
+      t: "`$STRING`"
+    }
+    port: {
+      h: "Port"
+      n: "port"
+      r: false
+      sh: "The port for SRV records."
+      t: "`$INTEGER`"
+    }
+    priority: {
+      h: "Priority"
+      n: "priority"
+      r: false
+      sh: "The priority for SRV and MX records."
+      t: "`$INTEGER`"
+    }
+    tag: {
+      h: "Tag"
+      n: "tag"
+      r: false
+      sh: "The parameter tag for CAA records."
+      t: "`$STRING`"
+    }
+    ttl: {
+      h: "Ttl"
+      n: "ttl"
+      r: false
+      sh: "This value is the time to live for the record, in seconds."
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of the DNS record."
+      t: "`$STRING`"
+    }
+    weight: {
+      h: "Weight"
+      n: "weight"
+      r: false
+      sh: "The weight for SRV records."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "domain_record"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/domains/{domain_name}/records"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/domains/{domain_name}/records"
+          q: {
+            exist: [
+              "domain_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain_record`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/domains/{domain_name}/records"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "sub.example.com"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "A"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/domains/{domain_name}/records"
+          q: {
+            exist: [
+              "domain_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain_records`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/domains/{domain_name}/records/{domain_record_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 3352896
+                k: "param"
+                n: "id"
+                or: "domain_record_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/domains/{domain_name}/records/{domain_record_id}"
+          q: {
+            exist: [
+              "domain_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              domain_record_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain_record`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/domains/{domain_name}/records/{domain_record_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 3352896
+                k: "param"
+                n: "id"
+                or: "domain_record_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/domains/{domain_name}/records/{domain_record_id}"
+          q: {
+            exist: [
+              "domain_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              domain_record_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain_record`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/domains/{domain_name}/records/{domain_record_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 3352896
+                k: "param"
+                n: "id"
+                or: "domain_record_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/domains/{domain_name}/records/{domain_record_id}"
+          q: {
+            exist: [
+              "domain_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              domain_record_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/domains/{domain_name}/records/{domain_record_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example.com"
+                k: "param"
+                n: "domain_name"
+                or: "domain_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 3352896
+                k: "param"
+                n: "id"
+                or: "domain_record_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/domains/{domain_name}/records/{domain_record_id}"
+          q: {
+            exist: [
+              "domain_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              domain_record_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "domain_name"
+            }
+            {
+              lit: "records"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain_record`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.domain")]
+  ]
+
+}

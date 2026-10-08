@@ -1,0 +1,117 @@
+# Entity: api_update_evaluation_test_case_output
+
+main: kit: entity: api_update_evaluation_test_case_output: {
+
+  alias: field: {}
+
+  fields: {
+    dataset_uuid: {
+      h: "Dataset Uuid"
+      n: "dataset_uuid"
+      r: false
+      sh: "Dataset against which the test‑case is executed."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the test case."
+      t: "`$STRING`"
+    }
+    metrics: {
+      h: "Metrics"
+      n: "metrics"
+      r: false
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the test case."
+      t: "`$STRING`"
+    }
+    star_metric: {
+      h: "Star Metric"
+      n: "star_metric"
+      r: false
+      t: "`$OBJECT`"
+    }
+    test_case_uuid: {
+      h: "Test Case Uuid"
+      n: "test_case_uuid"
+      r: false
+      sh: "Test-case UUID to update"
+      t: "`$STRING`"
+    }
+    version: {
+      fo: "int32"
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "The new verson of the test case."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "api_update_evaluation_test_case_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/evaluation_test_cases/{test_case_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "test_case_uuid"
+                or: "test_case_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/evaluation_test_cases/{test_case_uuid}"
+          q: {
+            exist: [
+              "test_case_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_test_cases"
+            }
+            {
+              var: "test_case_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

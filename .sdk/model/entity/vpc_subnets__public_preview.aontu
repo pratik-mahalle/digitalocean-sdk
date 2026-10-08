@@ -1,0 +1,550 @@
+# Entity: vpc_subnets__public_preview
+
+main: kit: entity: vpc_subnets__public_preview: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      ro: true
+      sh: "The time when the VPC subnet was created."
+      t: "`$STRING`"
+    }
+    default: {
+      h: "Default"
+      n: "default"
+      r: false
+      ro: true
+      sh: "Whether this is the default subnet for the VPC."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      ro: true
+      sh: "The unique identifier of the VPC subnet."
+      t: "`$STRING`"
+    }
+    ip_range: {
+      h: "Ip Range"
+      n: "ip_range"
+      r: true
+      ro: true
+      sh: "The IPv4 range assigned to the subnet in CIDR notation."
+      t: "`$STRING`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: false
+      sh: "Additional information about the VPC subnet."
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The human-readable name of the VPC subnet."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      ro: true
+      sh: "The slug of the region containing the VPC subnet."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      ro: true
+      sh: "The type of the VPC subnet."
+      t: "`$STRING`"
+    }
+    urn: {
+      h: "Urn"
+      n: "urn"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      ro: true
+      sh: "The uniform resource name of the VPC subnet."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vpc_subnets__public_preview"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/vpcs/{vpc_uuid}/subnets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/vpcs/{vpc_uuid}/subnets"
+          q: {
+            "$action": "subnets"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "subnets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_subnet`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_uuid"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "droplet"
+                k: "query"
+                n: "resource_type"
+                or: "resource_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/members"
+          q: {
+            exist: [
+              "subnet_uuid"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_uuid"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.members`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_uuid}/subnets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_uuid}/subnets"
+          q: {
+            "$action": "subnets"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "subnets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_subnet`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_uuid"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+          q: {
+            exist: [
+              "subnet_uuid"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_subnet`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_uuid"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+          q: {
+            exist: [
+              "subnet_uuid"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "vpc_id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "subnet_uuid"
+                or: "subnet_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
+                k: "param"
+                n: "vpc_id"
+                or: "vpc_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}"
+          q: {
+            exist: [
+              "subnet_uuid"
+              "vpc_id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_uuid: "vpc_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "vpc_id"
+            }
+            {
+              lit: "subnets"
+            }
+            {
+              var: "subnet_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_subnet`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vpc")]
+  ]
+
+}

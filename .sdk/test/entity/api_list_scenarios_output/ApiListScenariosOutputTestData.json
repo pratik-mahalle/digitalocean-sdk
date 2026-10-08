@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_list_scenarios_output": {
+      "API_LIST_SCENARIOS_OUTPUT00": {
+        "description": "s46",
+        "exploration_budget": 71,
+        "max_turns": 72,
+        "name": "s49",
+        "scenario_uuid": "s4a",
+        "stopping_criteria": [],
+        "user_persona": "s4c",
+        "scenario_library_id": "SCENARIO_LIBRARY01",
+        "scenario_set_id": "SCENARIO_SET01"
+      },
+      "API_LIST_SCENARIOS_OUTPUT01": {
+        "description": "s8c",
+        "exploration_budget": 141,
+        "max_turns": 142,
+        "name": "s8f",
+        "scenario_uuid": "s90",
+        "stopping_criteria": [],
+        "user_persona": "s92",
+        "scenario_library_id": "SCENARIO_LIBRARY01",
+        "scenario_set_id": "SCENARIO_SET01"
+      },
+      "API_LIST_SCENARIOS_OUTPUT02": {
+        "description": "sd2",
+        "exploration_budget": 211,
+        "max_turns": 212,
+        "name": "sd5",
+        "scenario_uuid": "sd6",
+        "stopping_criteria": [],
+        "user_persona": "sd8",
+        "scenario_library_id": "SCENARIO_LIBRARY01",
+        "scenario_set_id": "SCENARIO_SET01"
+      }
+    }
+  },
+  "new": {
+    "api_list_scenarios_output": {
+      "api_list_scenarios_output_ref01": {
+        "description": "s118",
+        "exploration_budget": 281,
+        "max_turns": 282,
+        "name": "s11b",
+        "scenario_uuid": "s11c",
+        "stopping_criteria": [],
+        "user_persona": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/scenario_library/{library_scenario_uuid}/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/scenario_sets/{scenario_set_uuid}/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

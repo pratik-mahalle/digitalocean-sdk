@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_dropbox_oauth2_get_tokens_output": {
+      "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT00": {
+        "code": "s28",
+        "redirect_url": "s29",
+        "refresh_token": "s2a",
+        "token": "s2b",
+        "id": "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT00"
+      },
+      "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT01": {
+        "code": "s50",
+        "redirect_url": "s51",
+        "refresh_token": "s52",
+        "token": "s53",
+        "id": "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT01"
+      },
+      "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT02": {
+        "code": "s78",
+        "redirect_url": "s79",
+        "refresh_token": "s7a",
+        "token": "s7b",
+        "id": "API_DROPBOX_OAUTH2_GET_TOKENS_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_dropbox_oauth2_get_tokens_output": {
+      "api_dropbox_oauth2_get_tokens_output_ref01": {
+        "code": "sa0",
+        "redirect_url": "sa1",
+        "refresh_token": "sa2",
+        "token": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/oauth2/dropbox/tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

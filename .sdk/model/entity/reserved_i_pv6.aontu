@@ -1,0 +1,233 @@
+# Entity: reserved_i_pv6
+
+main: kit: entity: reserved_i_pv6: {
+
+  alias: field: {}
+
+  fields: {
+    droplet: {
+      h: "Droplet"
+      n: "droplet"
+      r: false
+      sh: "Requires `droplet:read` scope."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    ip: {
+      fo: "ipv6"
+      h: "Ip"
+      n: "ip"
+      r: false
+      sh: "The public IP address of the reserved IPv6."
+      t: "`$STRING`"
+    }
+    region_slug: {
+      h: "Region Slug"
+      n: "region_slug"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The region that the reserved IPv6 is reserved to."
+      t: "`$STRING`"
+    }
+    reserved_at: {
+      fo: "date-time"
+      h: "Reserved At"
+      n: "reserved_at"
+      r: false
+      sh: "The date and time when the reserved IPv6 was reserved."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "reserved_i_pv6"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/reserved_ipv6"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/reserved_ipv6"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ipv6"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ipv6`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ipv6"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ipv6"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ipv6"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ipv6s`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ipv6/{reserved_ipv6}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "2409:40d0:f7:1017:74b4:3a96:105e:4c6e"
+                k: "param"
+                n: "reserved_ipv6"
+                or: "reserved_ipv6"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ipv6/{reserved_ipv6}"
+          q: {
+            exist: [
+              "reserved_ipv6"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ipv6"
+            }
+            {
+              var: "reserved_ipv6"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ipv6`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/reserved_ipv6/{reserved_ipv6}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "2409:40d0:f7:1017:74b4:3a96:105e:4c6e"
+                k: "param"
+                n: "reserved_ipv6"
+                or: "reserved_ipv6"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/reserved_ipv6/{reserved_ipv6}"
+          q: {
+            exist: [
+              "reserved_ipv6"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ipv6"
+            }
+            {
+              var: "reserved_ipv6"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "clusterlint": {
+      "CLUSTERLINT00": {
+        "check_name": "s28",
+        "message": "s29",
+        "object": {},
+        "severity": "s2b",
+        "cluster_id": "CLUSTER01"
+      },
+      "CLUSTERLINT01": {
+        "check_name": "s50",
+        "message": "s51",
+        "object": {},
+        "severity": "s53",
+        "cluster_id": "CLUSTER01"
+      },
+      "CLUSTERLINT02": {
+        "check_name": "s78",
+        "message": "s79",
+        "object": {},
+        "severity": "s7b",
+        "cluster_id": "CLUSTER01"
+      }
+    }
+  },
+  "new": {
+    "clusterlint": {
+      "clusterlint_ref01": {
+        "check_name": "sa0",
+        "message": "sa1",
+        "object": {},
+        "severity": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/kubernetes/clusters/{cluster_id}/clusterlint": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "n1_click": {
+      "N1_CLICK00": {
+        "slug": "s14",
+        "type": "s15"
+      },
+      "N1_CLICK01": {
+        "slug": "s28",
+        "type": "s29"
+      },
+      "N1_CLICK02": {
+        "slug": "s3c",
+        "type": "s3d"
+      }
+    }
+  },
+  "new": {
+    "n1_click": {
+      "n1_click_ref01": {
+        "slug": "s50",
+        "type": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/1-clicks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

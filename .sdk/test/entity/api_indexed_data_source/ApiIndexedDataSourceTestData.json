@@ -1,0 +1,84 @@
+{
+  "existing": {
+    "api_indexed_data_source": {
+      "API_INDEXED_DATA_SOURCE00": {
+        "completed_at": "s8c",
+        "data_source_uuid": "s8d",
+        "error_details": "s8e",
+        "error_msg": "s8f",
+        "failed_item_count": "s90",
+        "indexed_file_count": "s91",
+        "indexed_item_count": "s92",
+        "removed_item_count": "s93",
+        "skipped_item_count": "s94",
+        "started_at": "s95",
+        "status": "s96",
+        "total_bytes": "s97",
+        "total_bytes_indexed": "s98",
+        "total_file_count": "s99",
+        "indexing_job_id": "INDEXING_JOB01"
+      },
+      "API_INDEXED_DATA_SOURCE01": {
+        "completed_at": "s118",
+        "data_source_uuid": "s119",
+        "error_details": "s11a",
+        "error_msg": "s11b",
+        "failed_item_count": "s11c",
+        "indexed_file_count": "s11d",
+        "indexed_item_count": "s11e",
+        "removed_item_count": "s11f",
+        "skipped_item_count": "s120",
+        "started_at": "s121",
+        "status": "s122",
+        "total_bytes": "s123",
+        "total_bytes_indexed": "s124",
+        "total_file_count": "s125",
+        "indexing_job_id": "INDEXING_JOB01"
+      },
+      "API_INDEXED_DATA_SOURCE02": {
+        "completed_at": "s1a4",
+        "data_source_uuid": "s1a5",
+        "error_details": "s1a6",
+        "error_msg": "s1a7",
+        "failed_item_count": "s1a8",
+        "indexed_file_count": "s1a9",
+        "indexed_item_count": "s1aa",
+        "removed_item_count": "s1ab",
+        "skipped_item_count": "s1ac",
+        "started_at": "s1ad",
+        "status": "s1ae",
+        "total_bytes": "s1af",
+        "total_bytes_indexed": "s1b0",
+        "total_file_count": "s1b1",
+        "indexing_job_id": "INDEXING_JOB01"
+      }
+    }
+  },
+  "new": {
+    "api_indexed_data_source": {
+      "api_indexed_data_source_ref01": {
+        "completed_at": "s230",
+        "data_source_uuid": "s231",
+        "error_details": "s232",
+        "error_msg": "s233",
+        "failed_item_count": "s234",
+        "indexed_file_count": "s235",
+        "indexed_item_count": "s236",
+        "removed_item_count": "s237",
+        "skipped_item_count": "s238",
+        "started_at": "s239",
+        "status": "s23a",
+        "total_bytes": "s23b",
+        "total_bytes_indexed": "s23c",
+        "total_file_count": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/indexing_jobs/{indexing_job_uuid}/data_sources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

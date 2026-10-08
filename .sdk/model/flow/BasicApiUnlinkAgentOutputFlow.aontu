@@ -1,0 +1,9 @@
+# BasicApiUnlinkAgentOutputFlow
+
+main: kit: flow: BasicApiUnlinkAgentOutputFlow:
+{
+  entity: "api_unlink_agent_output",
+  kind: "basic",
+  name: "BasicApiUnlinkAgentOutputFlow",
+  "key$": "BasicApiUnlinkAgentOutputFlow"
+}

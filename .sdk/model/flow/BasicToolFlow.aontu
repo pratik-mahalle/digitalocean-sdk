@@ -1,0 +1,44 @@
+# BasicToolFlow
+
+main: kit: flow: BasicToolFlow:
+{
+  entity: "tool",
+  kind: "basic",
+  name: "BasicToolFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "tool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "tool_ref01",
+        srcdatavar: "tool_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "tool01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-tool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicToolFlow"
+}

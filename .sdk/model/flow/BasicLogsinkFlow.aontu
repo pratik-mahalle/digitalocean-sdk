@@ -1,0 +1,33 @@
+# BasicLogsinkFlow
+
+main: kit: flow: BasicLogsinkFlow:
+{
+  entity: "logsink",
+  kind: "basic",
+  name: "BasicLogsinkFlow",
+  step: [
+    {
+      i: {
+        ref: "logsink_ref01",
+        srcdatavar: "logsink_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        database_id: "database01",
+        id: "logsink01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-logsink_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLogsinkFlow"
+}

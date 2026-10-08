@@ -1,0 +1,29 @@
+# BasicVectordbUpdateVectorDbTagFlow
+
+main: kit: flow: BasicVectordbUpdateVectorDbTagFlow:
+{
+  entity: "vectordb_update_vector_db_tag",
+  kind: "basic",
+  name: "BasicVectordbUpdateVectorDbTagFlow",
+  step: [
+    {
+      i: {
+        ref: "vectordb_update_vector_db_tag_ref01",
+        srcdatavar: "vectordb_update_vector_db_tag_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vectordb_update_vector_db_tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVectordbUpdateVectorDbTagFlow"
+}

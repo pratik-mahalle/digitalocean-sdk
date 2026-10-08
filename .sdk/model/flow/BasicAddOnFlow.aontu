@@ -1,0 +1,104 @@
+# BasicAddOnFlow
+
+main: kit: flow: BasicAddOnFlow:
+{
+  entity: "add_on",
+  kind: "basic",
+  name: "BasicAddOnFlow",
+  step: [
+    {
+      i: {
+        ref: "add_on_ref01"
+      }
+
+      m: {
+        app_slug: "app_slug01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "add_on_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "add_on_ref01",
+        srcdatavar: "add_on_ref01_data",
+        suffix: "_up0",
+        textfield: "app_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-add_on_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "add_on_ref01",
+        srcdatavar: "add_on_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "add_on01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-add_on_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "add_on_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "add_on01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "add_on_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddOnFlow"
+}

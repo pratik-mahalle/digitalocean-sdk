@@ -1,0 +1,101 @@
+# BasicContainerRegistryFlow
+
+main: kit: flow: BasicContainerRegistryFlow:
+{
+  entity: "container_registry",
+  kind: "basic",
+  name: "BasicContainerRegistryFlow",
+  step: [
+    {
+      i: {
+        ref: "container_registry_ref01"
+      }
+
+      m: {
+        registry_name: "registry_name01",
+        repository_name: "repository_name01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "container_registry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        registry_name: "registry_name01"
+      }
+
+      i: {
+        ref: "container_registry_ref01",
+        srcdatavar: "container_registry_ref01_data",
+        suffix: "_up0",
+        textfield: "digest"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-container_registry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "container_registry_ref01",
+        srcdatavar: "container_registry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-container_registry_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "container_registry_ref01",
+        suffix: "_rm0"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "container_registry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicContainerRegistryFlow"
+}

@@ -1,0 +1,23 @@
+# BasicApiLinkAgentOutputFlow
+
+main: kit: flow: BasicApiLinkAgentOutputFlow:
+{
+  entity: "api_link_agent_output",
+  kind: "basic",
+  name: "BasicApiLinkAgentOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_link_agent_output_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        child_agent_uuid: "child_agent_uuid01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiLinkAgentOutputFlow"
+}

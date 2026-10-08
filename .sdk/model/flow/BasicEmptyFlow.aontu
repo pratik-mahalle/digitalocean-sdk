@@ -1,0 +1,59 @@
+# BasicEmptyFlow
+
+main: kit: flow: BasicEmptyFlow:
+{
+  entity: "empty",
+  kind: "basic",
+  name: "BasicEmptyFlow",
+  step: [
+    {
+      i: {
+        ref: "empty_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "empty_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "empty_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "empty01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "empty_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEmptyFlow"
+}

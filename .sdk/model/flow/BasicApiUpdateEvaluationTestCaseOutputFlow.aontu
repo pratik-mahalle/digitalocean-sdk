@@ -1,0 +1,29 @@
+# BasicApiUpdateEvaluationTestCaseOutputFlow
+
+main: kit: flow: BasicApiUpdateEvaluationTestCaseOutputFlow:
+{
+  entity: "api_update_evaluation_test_case_output",
+  kind: "basic",
+  name: "BasicApiUpdateEvaluationTestCaseOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_evaluation_test_case_output_ref01",
+        srcdatavar: "api_update_evaluation_test_case_output_ref01_data",
+        suffix: "_up0",
+        textfield: "dataset_uuid"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_evaluation_test_case_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateEvaluationTestCaseOutputFlow"
+}

@@ -1,0 +1,117 @@
+{
+  "existing": {
+    "api_model_catalog_card": {
+      "API_MODEL_CATALOG_CARD00": {
+        "availability": [],
+        "badges": [],
+        "benchmark_score": {},
+        "capabilities": [],
+        "code_snippets": {},
+        "context_window": "se1",
+        "created_at": "se2",
+        "creator": "se3",
+        "description": "se4",
+        "hugging_face_id": "HUGGING_FACE01",
+        "id": "API_MODEL_CATALOG_CARD00",
+        "max_output_tokens": "se7",
+        "modalities": {},
+        "model_id": "MODEL01",
+        "name": "sea",
+        "parameter_count": 235,
+        "pricing": {},
+        "pricing_detail": {},
+        "provider": "see",
+        "scaled_pricing_enabled": false,
+        "short_description": "sf0",
+        "type": "sf1"
+      },
+      "API_MODEL_CATALOG_CARD01": {
+        "availability": [],
+        "badges": [],
+        "benchmark_score": {},
+        "capabilities": [],
+        "code_snippets": {},
+        "context_window": "s1bd",
+        "created_at": "s1be",
+        "creator": "s1bf",
+        "description": "s1c0",
+        "hugging_face_id": "HUGGING_FACE01",
+        "id": "API_MODEL_CATALOG_CARD01",
+        "max_output_tokens": "s1c3",
+        "modalities": {},
+        "model_id": "MODEL01",
+        "name": "s1c6",
+        "parameter_count": 455,
+        "pricing": {},
+        "pricing_detail": {},
+        "provider": "s1ca",
+        "scaled_pricing_enabled": false,
+        "short_description": "s1cc",
+        "type": "s1cd"
+      },
+      "API_MODEL_CATALOG_CARD02": {
+        "availability": [],
+        "badges": [],
+        "benchmark_score": {},
+        "capabilities": [],
+        "code_snippets": {},
+        "context_window": "s299",
+        "created_at": "s29a",
+        "creator": "s29b",
+        "description": "s29c",
+        "hugging_face_id": "HUGGING_FACE01",
+        "id": "API_MODEL_CATALOG_CARD02",
+        "max_output_tokens": "s29f",
+        "modalities": {},
+        "model_id": "MODEL01",
+        "name": "s2a2",
+        "parameter_count": 675,
+        "pricing": {},
+        "pricing_detail": {},
+        "provider": "s2a6",
+        "scaled_pricing_enabled": false,
+        "short_description": "s2a8",
+        "type": "s2a9"
+      }
+    }
+  },
+  "new": {
+    "api_model_catalog_card": {
+      "api_model_catalog_card_ref01": {
+        "availability": [],
+        "badges": [],
+        "benchmark_score": {},
+        "capabilities": [],
+        "code_snippets": {},
+        "context_window": "s375",
+        "created_at": "s376",
+        "creator": "s377",
+        "description": "s378",
+        "hugging_face_id": "HUGGING_FACE01",
+        "max_output_tokens": "s37b",
+        "modalities": {},
+        "model_id": "MODEL01",
+        "name": "s37e",
+        "parameter_count": 895,
+        "pricing": {},
+        "pricing_detail": {},
+        "provider": "s382",
+        "scaled_pricing_enabled": false,
+        "short_description": "s384",
+        "type": "s385"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/models/catalog": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/models/catalog/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

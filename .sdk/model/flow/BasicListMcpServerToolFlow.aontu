@@ -1,0 +1,45 @@
+# BasicListMcpServerToolFlow
+
+main: kit: flow: BasicListMcpServerToolFlow:
+{
+  entity: "list_mcp_server_tool",
+  kind: "basic",
+  name: "BasicListMcpServerToolFlow",
+  step: [
+    {
+      m: {
+        server_ref: "server_ref01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_mcp_server_tool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "list_mcp_server_tool_ref01",
+        srcdatavar: "list_mcp_server_tool_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-list_mcp_server_tool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListMcpServerToolFlow"
+}

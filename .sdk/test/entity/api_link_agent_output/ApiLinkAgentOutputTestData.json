@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "api_link_agent_output": {
+      "API_LINK_AGENT_OUTPUT00": {
+        "child_agent_uuid": "s28",
+        "if_case": "s29",
+        "parent_agent_uuid": "s2a",
+        "route_name": "s2b",
+        "agent_id": "AGENT01",
+        "id": "API_LINK_AGENT_OUTPUT00"
+      },
+      "API_LINK_AGENT_OUTPUT01": {
+        "child_agent_uuid": "s50",
+        "if_case": "s51",
+        "parent_agent_uuid": "s52",
+        "route_name": "s53",
+        "agent_id": "AGENT01",
+        "id": "API_LINK_AGENT_OUTPUT01"
+      },
+      "API_LINK_AGENT_OUTPUT02": {
+        "child_agent_uuid": "s78",
+        "if_case": "s79",
+        "parent_agent_uuid": "s7a",
+        "route_name": "s7b",
+        "agent_id": "AGENT01",
+        "id": "API_LINK_AGENT_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_link_agent_output": {
+      "api_link_agent_output_ref01": {
+        "child_agent_uuid": "sa0",
+        "if_case": "sa1",
+        "parent_agent_uuid": "sa2",
+        "route_name": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+# Entity: async_invoke
+
+main: kit: entity: async_invoke: {
+
+  alias: field: {}
+
+  fields: {
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "The timestamp when the job completed."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "The timestamp when the request was created."
+      t: "`$STRING`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: false
+      sh: "Error message if the job failed."
+      t: "`$STRING`"
+    }
+    input: {
+      h: "Input"
+      n: "input"
+      r: true
+      sh: "The input parameters for the model invocation."
+      t: "`$OBJECT`"
+    }
+    model_id: {
+      h: "Model Id"
+      n: "model_id"
+      r: true
+      sh: "The model ID that was invoked."
+      t: "`$STRING`"
+    }
+    output: {
+      h: "Output"
+      n: "output"
+      r: false
+      sh: "The output of the invocation."
+      t: "`$OBJECT`"
+    }
+    request_id: {
+      h: "Request Id"
+      n: "request_id"
+      r: true
+      sh: "A unique identifier for the async invocation request."
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "The timestamp when the job started processing."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "The current status of the async invocation."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "An optional list of key-value tags to attach to the invocation request for tracking or categorization."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "async_invoke"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/async-invoke"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/async-invoke"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "async-invoke"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,32 @@
+# BasicInvoiceSummaryFlow
+
+main: kit: flow: BasicInvoiceSummaryFlow:
+{
+  entity: "invoice_summary",
+  kind: "basic",
+  name: "BasicInvoiceSummaryFlow",
+  step: [
+    {
+      i: {
+        ref: "invoice_summary_ref01",
+        srcdatavar: "invoice_summary_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "invoice_summary01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-invoice_summary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicInvoiceSummaryFlow"
+}

@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "floating_ip": {
+      "FLOATING_IP00": {
+        "droplet": "s50",
+        "floating_ip": {},
+        "id": "FLOATING_IP00",
+        "ip": "s53",
+        "links": {},
+        "locked": false,
+        "project_id": "PROJECT01",
+        "region": "s57"
+      },
+      "FLOATING_IP01": {
+        "droplet": "sa0",
+        "floating_ip": {},
+        "id": "FLOATING_IP01",
+        "ip": "sa3",
+        "links": {},
+        "locked": false,
+        "project_id": "PROJECT01",
+        "region": "sa7"
+      },
+      "FLOATING_IP02": {
+        "droplet": "sf0",
+        "floating_ip": {},
+        "id": "FLOATING_IP02",
+        "ip": "sf3",
+        "links": {},
+        "locked": false,
+        "project_id": "PROJECT01",
+        "region": "sf7"
+      }
+    }
+  },
+  "new": {
+    "floating_ip": {
+      "floating_ip_ref01": {
+        "droplet": "s140",
+        "floating_ip": {},
+        "ip": "s143",
+        "links": {},
+        "locked": false,
+        "project_id": "PROJECT01",
+        "region": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/floating_ips": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/floating_ips": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/floating_ips/{floating_ip}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/floating_ips/{floating_ip}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

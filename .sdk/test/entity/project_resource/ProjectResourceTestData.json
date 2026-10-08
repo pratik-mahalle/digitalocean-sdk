@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "project_resource": {
+      "PROJECT_RESOURCE00": {
+        "assigned_at": "s3c",
+        "id": "PROJECT_RESOURCE00",
+        "links": {},
+        "resources": [],
+        "status": "s40",
+        "urn": "s41"
+      },
+      "PROJECT_RESOURCE01": {
+        "assigned_at": "s78",
+        "id": "PROJECT_RESOURCE01",
+        "links": {},
+        "resources": [],
+        "status": "s7c",
+        "urn": "s7d"
+      },
+      "PROJECT_RESOURCE02": {
+        "assigned_at": "sb4",
+        "id": "PROJECT_RESOURCE02",
+        "links": {},
+        "resources": [],
+        "status": "sb8",
+        "urn": "sb9"
+      }
+    }
+  },
+  "new": {
+    "project_resource": {
+      "project_resource_ref01": {
+        "assigned_at": "sf0",
+        "links": {},
+        "resources": [],
+        "status": "sf4",
+        "urn": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/projects/{project_id}/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/projects/default/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/projects/{project_id}/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/projects/default/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,368 @@
+# Entity: output_view
+
+main: kit: entity: output_view: {
+
+  alias: field: {}
+
+  fields: {
+    audit: {
+      h: "Audit"
+      n: "audit"
+      r: false
+      sh: "Null on a preview, which stores nothing."
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "View description."
+      t: "`$STRING`"
+    }
+    fields: {
+      h: "Fields"
+      n: "fields"
+      op: {
+        create: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      sh: "The dotted output paths a projection keeps; arrays are traversed element-wise."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: false
+      sh: "`OUTPUT_VIEW_KIND_PROJECTION` or `OUTPUT_VIEW_KIND_TRANSFORM`."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "View name, unique per tool version among its owner's views."
+      t: "`$STRING`"
+    }
+    output_schema: {
+      h: "Output Schema"
+      n: "output_schema"
+      r: false
+      sh: "The JSON Schema every result of this view satisfies."
+      t: "`$OBJECT`"
+    }
+    team_id: {
+      h: "Team Id"
+      n: "team_id"
+      r: false
+      sh: "Your team's ID on your team's views, and empty for a view DigitalOcean publishes to every team."
+      t: "`$STRING`"
+    }
+    tool: {
+      h: "Tool"
+      n: "tool"
+      r: false
+      sh: "The provider-qualified tool slug, for example `exa_search`."
+      t: "`$STRING`"
+    }
+    tool_id: {
+      h: "Tool Id"
+      n: "tool_id"
+      r: false
+      sh: "The opaque identity of the exact tool version the view is bound to; tool and version are its readable coordinates."
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "The tool version, for example `v3`."
+      t: "`$STRING`"
+    }
+    view_id: {
+      h: "View Id"
+      n: "view_id"
+      r: false
+      sh: "Output view ID, for example `ov_` followed by 32 hex digits."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "output_view"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/action-gateway/output-views"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/action-gateway/output-views"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "output-views"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.view`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/action-gateway/output-views/preview"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/action-gateway/output-views/preview"
+          q: {
+            "$action": "preview"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "output-views"
+            }
+            {
+              lit: "preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.view`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/output-views"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "exa_web_search"
+                k: "query"
+                n: "tool"
+                or: "tool"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "tul_exa_web_search"
+                k: "query"
+                n: "tool_id"
+                or: "tool_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/output-views"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "output-views"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.views`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/output-views/{view_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "ov_4f0c2a9d8e1b47c6a3d5f7e9b1c3a5d7"
+                k: "param"
+                n: "id"
+                or: "view_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/output-views/{view_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              view_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "output-views"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.view`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/action-gateway/output-views/{view_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "ov_4f0c2a9d8e1b47c6a3d5f7e9b1c3a5d7"
+                k: "param"
+                n: "id"
+                or: "view_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/action-gateway/output-views/{view_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              view_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "output-views"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.view`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

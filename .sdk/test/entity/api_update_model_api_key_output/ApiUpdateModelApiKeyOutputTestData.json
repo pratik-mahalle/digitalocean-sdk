@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "api_update_model_api_key_output": {
+      "API_UPDATE_MODEL_API_KEY_OUTPUT00": {
+        "api_key_uuid": "s46",
+        "created_at": "s47",
+        "created_by": "s48",
+        "deleted_at": "s49",
+        "name": "s4a",
+        "secret_key": "s4b",
+        "uuid": "s4c",
+        "id": "API_UPDATE_MODEL_API_KEY_OUTPUT00"
+      },
+      "API_UPDATE_MODEL_API_KEY_OUTPUT01": {
+        "api_key_uuid": "s8c",
+        "created_at": "s8d",
+        "created_by": "s8e",
+        "deleted_at": "s8f",
+        "name": "s90",
+        "secret_key": "s91",
+        "uuid": "s92",
+        "id": "API_UPDATE_MODEL_API_KEY_OUTPUT01"
+      },
+      "API_UPDATE_MODEL_API_KEY_OUTPUT02": {
+        "api_key_uuid": "sd2",
+        "created_at": "sd3",
+        "created_by": "sd4",
+        "deleted_at": "sd5",
+        "name": "sd6",
+        "secret_key": "sd7",
+        "uuid": "sd8",
+        "id": "API_UPDATE_MODEL_API_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_model_api_key_output": {
+      "api_update_model_api_key_output_ref01": {
+        "api_key_uuid": "s118",
+        "created_at": "s119",
+        "created_by": "s11a",
+        "deleted_at": "s11b",
+        "name": "s11c",
+        "secret_key": "s11d",
+        "uuid": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/models/api_keys/{api_key_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,374 @@
+# Entity: api_model_catalog_card
+
+main: kit: entity: api_model_catalog_card: {
+
+  alias: field: {}
+
+  fields: {
+    availability: {
+      h: "Availability"
+      n: "availability"
+      r: false
+      t: "`$ARRAY`"
+    }
+    badges: {
+      h: "Badges"
+      n: "badges"
+      r: false
+      sh: "Badges for models"
+      t: "`$ARRAY`"
+    }
+    benchmark_score: {
+      h: "Benchmark Score"
+      n: "benchmark_score"
+      r: false
+      sh: "Benchmark scores for this model, stored as arbitrary JSON"
+      t: "`$OBJECT`"
+    }
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: false
+      t: "`$ARRAY`"
+    }
+    code_snippets: {
+      h: "Code Snippets"
+      n: "code_snippets"
+      r: false
+      sh: "Code examples for using the model"
+      t: "`$OBJECT`"
+    }
+    context_window: {
+      fo: "int64"
+      h: "Context Window"
+      n: "context_window"
+      r: false
+      sh: "Specs (same as Entry)"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "RFC 3339 timestamp indicating when the model was added to the catalog."
+      t: "`$STRING`"
+    }
+    creator: {
+      h: "Creator"
+      n: "creator"
+      r: false
+      sh: "Model creator/developer (e.g., \"Meta\", \"Anthropic\", \"OpenAI\")"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Card-specific"
+      t: "`$STRING`"
+    }
+    hugging_face_id: {
+      h: "Hugging Face Id"
+      n: "hugging_face_id"
+      r: false
+      sh: "The Hugging Face repository ID (e.g."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Identity (same as Entry)"
+      t: "`$STRING`"
+    }
+    max_output_tokens: {
+      fo: "int64"
+      h: "Max Output Tokens"
+      n: "max_output_tokens"
+      r: false
+      sh: "The maximum number of output tokens the model can generate in a single response."
+      t: "`$STRING`"
+    }
+    modalities: {
+      h: "Modalities"
+      n: "modalities"
+      r: false
+      sh: "Input/output modalities"
+      t: "`$OBJECT`"
+    }
+    model_id: {
+      h: "Model Id"
+      n: "model_id"
+      r: false
+      sh: "Model identifier used for API calls (e.g., \"llama3.1-70b-instruct\")"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    parameter_count: {
+      fo: "float"
+      h: "Parameter Count"
+      n: "parameter_count"
+      r: false
+      t: "`$NUMBER`"
+    }
+    pricing: {
+      h: "Pricing"
+      n: "pricing"
+      r: false
+      sh: "Pricing per million tokens (aligns with existing ModelPrice pattern)"
+      t: "`$OBJECT`"
+    }
+    pricing_detail: {
+      h: "Pricing Detail"
+      n: "pricing_detail"
+      r: false
+      sh: "The complete set of prices for a model, covering every available variant."
+      t: "`$OBJECT`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      t: "`$STRING`"
+    }
+    scaled_pricing_enabled: {
+      h: "Scaled Pricing Enabled"
+      n: "scaled_pricing_enabled"
+      r: false
+      sh: "True when this model's pricing varies over time."
+      t: "`$BOOLEAN`"
+    }
+    short_description: {
+      h: "Short Description"
+      n: "short_description"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_model_catalog_card"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/models/catalog"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: [
+                  "serverless"
+                ]
+                k: "query"
+                n: "availability"
+                or: "availability"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: [
+                  "featured"
+                ]
+                k: "query"
+                n: "badge"
+                or: "badges"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: [
+                  "chat"
+                ]
+                k: "query"
+                n: "model_type"
+                or: "model_type"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: [
+                  "Meta"
+                ]
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "llama"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "MODEL_CATALOG_SORT_BY_NAME"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SORT_DIRECTION_ASC"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "MODEL_CATALOG_USE_CASE_CODING"
+                k: "query"
+                n: "use_case"
+                or: "use_case"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/models/catalog"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "catalog"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/models/catalog/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"example string\""
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "\"example string\""
+                k: "query"
+                n: "model_id"
+                or: "model_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/models/catalog/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "catalog"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

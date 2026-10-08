@@ -1,0 +1,110 @@
+{
+  "existing": {
+    "firewall": {
+      "FIREWALL00": {
+        "created_at": "s5a",
+        "droplet_ids": [],
+        "id": "FIREWALL00",
+        "inbound_rules": [],
+        "name": "s5e",
+        "outbound_rules": [],
+        "pending_changes": [],
+        "status": "s61",
+        "tags": "s62"
+      },
+      "FIREWALL01": {
+        "created_at": "sb4",
+        "droplet_ids": [],
+        "id": "FIREWALL01",
+        "inbound_rules": [],
+        "name": "sb8",
+        "outbound_rules": [],
+        "pending_changes": [],
+        "status": "sbb",
+        "tags": "sbc"
+      },
+      "FIREWALL02": {
+        "created_at": "s10e",
+        "droplet_ids": [],
+        "id": "FIREWALL02",
+        "inbound_rules": [],
+        "name": "s112",
+        "outbound_rules": [],
+        "pending_changes": [],
+        "status": "s115",
+        "tags": "s116"
+      }
+    }
+  },
+  "new": {
+    "firewall": {
+      "firewall_ref01": {
+        "created_at": "s168",
+        "droplet_ids": [],
+        "inbound_rules": [],
+        "name": "s16c",
+        "outbound_rules": [],
+        "pending_changes": [],
+        "status": "s16f",
+        "tags": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/firewalls/{firewall_id}/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/firewalls/{firewall_id}/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/firewalls/{firewall_id}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/firewalls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/firewalls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/firewalls/{firewall_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/firewalls/{firewall_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/firewalls/{firewall_id}/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/firewalls/{firewall_id}/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/firewalls/{firewall_id}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/firewalls/{firewall_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

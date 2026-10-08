@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "connections": [],
+        "groups": [],
+        "id": "USER00",
+        "pagination": "s53",
+        "sessions": [],
+        "user_id": "USER01",
+        "user_ids": [],
+        "username": "s57",
+        "cluster_id": "CLUSTER01"
+      },
+      "USER01": {
+        "connections": [],
+        "groups": [],
+        "id": "USER01",
+        "pagination": "sa3",
+        "sessions": [],
+        "user_id": "USER01",
+        "user_ids": [],
+        "username": "sa7",
+        "cluster_id": "CLUSTER01"
+      },
+      "USER02": {
+        "connections": [],
+        "groups": [],
+        "id": "USER02",
+        "pagination": "sf3",
+        "sessions": [],
+        "user_id": "USER01",
+        "user_ids": [],
+        "username": "sf7",
+        "cluster_id": "CLUSTER01"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "connections": [],
+        "groups": [],
+        "pagination": "s143",
+        "sessions": [],
+        "user_id": "USER01",
+        "user_ids": [],
+        "username": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/kubernetes/clusters/{cluster_id}/user": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/users/{user_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# BasicAppsGetLogFlow
+
+main: kit: flow: BasicAppsGetLogFlow:
+{
+  entity: "apps_get_log",
+  kind: "basic",
+  name: "BasicAppsGetLogFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "apps_get_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppsGetLogFlow"
+}

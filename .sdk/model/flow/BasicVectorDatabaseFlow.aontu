@@ -1,0 +1,9 @@
+# BasicVectorDatabaseFlow
+
+main: kit: flow: BasicVectorDatabaseFlow:
+{
+  entity: "vector_database",
+  kind: "basic",
+  name: "BasicVectorDatabaseFlow",
+  "key$": "BasicVectorDatabaseFlow"
+}

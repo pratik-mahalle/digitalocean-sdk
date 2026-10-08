@@ -1,0 +1,26 @@
+# BasicApiListEvaluationTestCasesByWorkspaceOutputFlow
+
+main: kit: flow: BasicApiListEvaluationTestCasesByWorkspaceOutputFlow:
+{
+  entity: "api_list_evaluation_test_cases_by_workspace_output",
+  kind: "basic",
+  name: "BasicApiListEvaluationTestCasesByWorkspaceOutputFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_evaluation_test_cases_by_workspace_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListEvaluationTestCasesByWorkspaceOutputFlow"
+}

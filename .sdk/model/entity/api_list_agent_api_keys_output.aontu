@@ -1,0 +1,139 @@
+# Entity: api_list_agent_api_keys_output
+
+main: kit: entity: api_list_agent_api_keys_output: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date"
+      t: "`$STRING`"
+    }
+    created_by: {
+      fo: "uint64"
+      h: "Created By"
+      n: "created_by"
+      r: false
+      sh: "Created by"
+      t: "`$STRING`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "Deleted date"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name"
+      t: "`$STRING`"
+    }
+    secret_key: {
+      h: "Secret Key"
+      n: "secret_key"
+      r: false
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Uuid"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_list_agent_api_keys_output"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/agents/{agent_uuid}/api_keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/agents/{agent_uuid}/api_keys"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "api_keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.api_key_infos`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

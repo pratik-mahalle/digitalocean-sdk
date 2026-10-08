@@ -1,0 +1,95 @@
+# Entity: api_get_model_evaluation_run_results_download_url_output
+
+main: kit: entity: api_get_model_evaluation_run_results_download_url_output: {
+
+  alias: field: {}
+
+  fields: {
+    download_url: {
+      h: "Download Url"
+      n: "download_url"
+      r: false
+      sh: "The presigned URL to download the gzip-compressed JSON results file (.json.gz)."
+      t: "`$STRING`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "The time the URL expires at."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_model_evaluation_run_results_download_url_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/results/download_url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "model_evaluation_run_id"
+                or: "eval_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/results/download_url"
+          q: {
+            exist: [
+              "model_evaluation_run_id"
+            ]
+          }
+          r: {
+            param: {
+              eval_run_uuid: "model_evaluation_run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+            {
+              var: "model_evaluation_run_id"
+            }
+            {
+              lit: "results"
+            }
+            {
+              lit: "download_url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

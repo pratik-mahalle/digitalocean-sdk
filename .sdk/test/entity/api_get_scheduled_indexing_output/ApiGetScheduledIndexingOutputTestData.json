@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "api_get_scheduled_indexing_output": {
+      "API_GET_SCHEDULED_INDEXING_OUTPUT00": {
+        "created_at": "s64",
+        "days": [],
+        "deleted_at": "s66",
+        "is_active": false,
+        "knowledge_base_uuid": "s68",
+        "last_ran_at": "s69",
+        "next_run_at": "s6a",
+        "time": "s6b",
+        "updated_at": "s6c",
+        "uuid": "s6d",
+        "id": "API_GET_SCHEDULED_INDEXING_OUTPUT00"
+      },
+      "API_GET_SCHEDULED_INDEXING_OUTPUT01": {
+        "created_at": "sc8",
+        "days": [],
+        "deleted_at": "sca",
+        "is_active": false,
+        "knowledge_base_uuid": "scc",
+        "last_ran_at": "scd",
+        "next_run_at": "sce",
+        "time": "scf",
+        "updated_at": "sd0",
+        "uuid": "sd1",
+        "id": "API_GET_SCHEDULED_INDEXING_OUTPUT01"
+      },
+      "API_GET_SCHEDULED_INDEXING_OUTPUT02": {
+        "created_at": "s12c",
+        "days": [],
+        "deleted_at": "s12e",
+        "is_active": false,
+        "knowledge_base_uuid": "s130",
+        "last_ran_at": "s131",
+        "next_run_at": "s132",
+        "time": "s133",
+        "updated_at": "s134",
+        "uuid": "s135",
+        "id": "API_GET_SCHEDULED_INDEXING_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_scheduled_indexing_output": {
+      "api_get_scheduled_indexing_output_ref01": {
+        "created_at": "s190",
+        "days": [],
+        "deleted_at": "s192",
+        "is_active": false,
+        "knowledge_base_uuid": "s194",
+        "last_ran_at": "s195",
+        "next_run_at": "s196",
+        "time": "s197",
+        "updated_at": "s198",
+        "uuid": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

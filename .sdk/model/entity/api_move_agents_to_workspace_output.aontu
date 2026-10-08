@@ -1,0 +1,165 @@
+# Entity: api_move_agents_to_workspace_output
+
+main: kit: entity: api_move_agents_to_workspace_output: {
+
+  alias: field: {}
+
+  fields: {
+    agent_uuids: {
+      h: "Agent Uuids"
+      n: "agent_uuids"
+      r: false
+      sh: "Agent uuids"
+      t: "`$ARRAY`"
+    }
+    agents: {
+      h: "Agents"
+      n: "agents"
+      r: false
+      sh: "Agents"
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date"
+      t: "`$STRING`"
+    }
+    created_by: {
+      fo: "uint64"
+      h: "Created By"
+      n: "created_by"
+      r: false
+      sh: "The id of user who created this workspace"
+      t: "`$STRING`"
+    }
+    created_by_email: {
+      h: "Created By Email"
+      n: "created_by_email"
+      r: false
+      sh: "The email of the user who created this workspace"
+      t: "`$STRING`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "Deleted date"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the workspace"
+      t: "`$STRING`"
+    }
+    evaluation_test_cases: {
+      h: "Evaluation Test Cases"
+      n: "evaluation_test_cases"
+      r: false
+      sh: "Evaluations"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the workspace"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Update date"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id"
+      t: "`$STRING`"
+    }
+    workspace_uuid: {
+      h: "Workspace Uuid"
+      n: "workspace_uuid"
+      r: false
+      sh: "Workspace uuid to move agents to"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_move_agents_to_workspace_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/workspaces/{workspace_uuid}/agents"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "workspace_id"
+                or: "workspace_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/workspaces/{workspace_uuid}/agents"
+          q: {
+            exist: [
+              "workspace_id"
+            ]
+          }
+          r: {
+            param: {
+              workspace_uuid: "workspace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "workspaces"
+            }
+            {
+              var: "workspace_id"
+            }
+            {
+              lit: "agents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.workspace`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

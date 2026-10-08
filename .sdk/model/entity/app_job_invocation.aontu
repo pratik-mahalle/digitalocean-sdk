@@ -1,0 +1,330 @@
+# Entity: app_job_invocation
+
+main: kit: entity: app_job_invocation: {
+
+  alias: field: {}
+
+  fields: {
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      t: "`$STRING`"
+    }
+    deployment_id: {
+      h: "Deployment Id"
+      n: "deployment_id"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    job_name: {
+      h: "Job Name"
+      n: "job_name"
+      r: false
+      t: "`$STRING`"
+    }
+    phase: {
+      h: "Phase"
+      n: "phase"
+      r: false
+      sh: "The phase of the job invocation"
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: "`$STRING`"
+    }
+    trigger: {
+      h: "Trigger"
+      n: "trigger"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app_job_invocation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/job-invocations/{job_invocation_id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "123e4567-e89b-12d3-a456-426"
+                k: "param"
+                n: "job_invocation_id"
+                or: "job_invocation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "component"
+                k: "query"
+                n: "job_name"
+                or: "job_name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/job-invocations/{job_invocation_id}/cancel"
+          q: {
+            exist: [
+              "app_id"
+              "job_invocation_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "job-invocations"
+            }
+            {
+              var: "job_invocation_id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/job-invocations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "3aa4d20e-5527-4c00-b496-601fbd22520a"
+                k: "query"
+                n: "deployment_id"
+                or: "deployment_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "component1"
+                  "component2"
+                ]
+                k: "query"
+                n: "job_name"
+                or: "job_names"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/job-invocations"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "job-invocations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.job_invocations`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/job-invocations/{job_invocation_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "123e4567-e89b-12d3-a456-426"
+                k: "param"
+                n: "id"
+                or: "job_invocation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "component"
+                k: "query"
+                n: "job_name"
+                or: "job_name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/job-invocations/{job_invocation_id}"
+          q: {
+            exist: [
+              "app_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              job_invocation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "job-invocations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

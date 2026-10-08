@@ -1,0 +1,103 @@
+# Entity: actor_limit
+
+main: kit: entity: actor_limit: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: true
+      sh: "The category the limit applies to."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    requests_per_minute: {
+      fo: "uint64"
+      h: "Requests Per Minute"
+      n: "requests_per_minute"
+      r: true
+      sh: "Calls allowed per minute."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "actor_limit"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/actors/{actor_id}/limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alice"
+                k: "param"
+                n: "id"
+                or: "actor_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/actors/{actor_id}/limits"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              actor_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.configured_limits`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

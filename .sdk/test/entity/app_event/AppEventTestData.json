@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "app_event": {
+      "APP_EVENT00": {
+        "autoscaling": {},
+        "created_at": "s3d",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_EVENT00",
+        "type": "s41"
+      },
+      "APP_EVENT01": {
+        "autoscaling": {},
+        "created_at": "s79",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_EVENT01",
+        "type": "s7d"
+      },
+      "APP_EVENT02": {
+        "autoscaling": {},
+        "created_at": "sb5",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_EVENT02",
+        "type": "sb9"
+      }
+    }
+  },
+  "new": {
+    "app_event": {
+      "app_event_ref01": {
+        "autoscaling": {},
+        "created_at": "sf1",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "type": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/{app_id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

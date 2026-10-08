@@ -1,0 +1,104 @@
+# Entity: genaiapi_region
+
+main: kit: entity: genaiapi_region: {
+
+  alias: field: {}
+
+  fields: {
+    inference_url: {
+      h: "Inference Url"
+      n: "inference_url"
+      r: false
+      sh: "Url for inference server"
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "Region code"
+      t: "`$STRING`"
+    }
+    serves_batch: {
+      h: "Serves Batch"
+      n: "serves_batch"
+      r: false
+      sh: "This datacenter is capable of running batch jobs"
+      t: "`$BOOLEAN`"
+    }
+    serves_inference: {
+      h: "Serves Inference"
+      n: "serves_inference"
+      r: false
+      sh: "This datacenter is capable of serving inference"
+      t: "`$BOOLEAN`"
+    }
+    stream_inference_url: {
+      h: "Stream Inference Url"
+      n: "stream_inference_url"
+      r: false
+      sh: "The url for the inference streaming server"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "genaiapi_region"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/regions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "serves_batch"
+                or: "serves_batch"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "serves_inference"
+                or: "serves_inference"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/regions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "regions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.regions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

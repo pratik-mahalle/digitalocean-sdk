@@ -1,0 +1,4075 @@
+# Entity: database
+
+main: kit: entity: database: {
+
+  alias: field: {}
+
+  fields: {
+    access_cert: {
+      h: "Access Cert"
+      n: "access_cert"
+      r: false
+      ro: true
+      sh: "Access certificate for TLS client authentication."
+      t: "`$STRING`"
+    }
+    access_key: {
+      h: "Access Key"
+      n: "access_key"
+      r: false
+      ro: true
+      sh: "Access key for TLS client authentication."
+      t: "`$STRING`"
+    }
+    autoscale: {
+      h: "Autoscale"
+      n: "autoscale"
+      r: false
+      sh: "Autoscaling configuration for the database cluster."
+      t: "`$ANY`"
+    }
+    backup_restore: {
+      h: "Backup Restore"
+      n: "backup_restore"
+      r: true
+      t: "`$OBJECT`"
+    }
+    compatibility_level: {
+      h: "Compatibility Level"
+      n: "compatibility_level"
+      r: true
+      sh: "The compatibility level of the schema registry."
+      t: "`$STRING`"
+    }
+    config: {
+      h: "Config"
+      n: "config"
+      op: {
+        update: {
+          req: true
+          type: "`$ANY`"
+        }
+      }
+      r: false
+      t: "`$OBJECT`"
+    }
+    connection: {
+      h: "Connection"
+      n: "connection"
+      r: false
+      t: "`$ANY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the database cluster was created."
+      t: "`$STRING`"
+    }
+    credentials: {
+      h: "Credentials"
+      n: "credentials"
+      r: false
+      t: "`$OBJECT`"
+    }
+    db: {
+      h: "Db"
+      n: "db"
+      r: true
+      sh: "The database for use with the connection pool."
+      t: "`$STRING`"
+    }
+    db_names: {
+      h: "Db Names"
+      n: "db_names"
+      r: false
+      ro: true
+      sh: "An array of strings containing the names of databases created in the database cluster."
+      t: "`$ARRAY`"
+    }
+    do_settings: {
+      h: "Do Settings"
+      n: "do_settings"
+      r: false
+      t: "`$ANY`"
+    }
+    engine: {
+      h: "Engine"
+      n: "engine"
+      r: true
+      sh: "A slug representing the database engine used for the cluster."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference a database replica."
+      t: "`$STRING`"
+    }
+    maintenance_window: {
+      h: "Maintenance Window"
+      n: "maintenance_window"
+      r: false
+      t: "`$ANY`"
+    }
+    metrics_endpoints: {
+      h: "Metrics Endpoints"
+      n: "metrics_endpoints"
+      r: false
+      ro: true
+      sh: "Public hostname and port of the cluster's metrics endpoint(s)."
+      t: "`$ARRAY`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      sh: "The PGBouncer transaction mode for the connection pool."
+      t: "`$STRING`"
+    }
+    mysql_settings: {
+      h: "Mysql Settings"
+      n: "mysql_settings"
+      r: true
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        load: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The name of the database."
+      t: "`$STRING`"
+    }
+    num_nodes: {
+      h: "Num Nodes"
+      n: "num_nodes"
+      r: true
+      sh: "The number of nodes in the database cluster."
+      t: "`$INTEGER`"
+    }
+    partition_count: {
+      h: "Partition Count"
+      n: "partition_count"
+      r: false
+      sh: "The number of partitions available for the topic."
+      t: "`$INTEGER`"
+    }
+    partitions: {
+      h: "Partitions"
+      n: "partitions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    password: {
+      h: "Password"
+      n: "password"
+      r: false
+      ro: true
+      sh: "A randomly generated password for the database user.<br>Requires `database:view_credentials` scope."
+      t: "`$STRING`"
+    }
+    private_connection: {
+      h: "Private Connection"
+      n: "private_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    private_network_uuid: {
+      h: "Private Network Uuid"
+      n: "private_network_uuid"
+      r: false
+      sh: "A string specifying the UUID of the VPC to which the read-only replica will be assigned."
+      t: "`$STRING`"
+    }
+    project_id: {
+      fo: "uuid"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "The ID of the project that the database cluster is assigned to."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+        load: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "A slug identifier for the region where the read-only replica will be located."
+      t: "`$STRING`"
+    }
+    replication_factor: {
+      h: "Replication Factor"
+      n: "replication_factor"
+      r: false
+      sh: "The number of nodes to replicate data across the cluster."
+      t: "`$INTEGER`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: false
+      ro: true
+      sh: "A string representing the database user's role."
+      t: "`$STRING`"
+    }
+    rules: {
+      h: "Rules"
+      n: "rules"
+      r: false
+      t: "`$ARRAY`"
+    }
+    schema: {
+      h: "Schema"
+      n: "schema"
+      r: true
+      sh: "The schema definition in the specified format."
+      t: "`$STRING`"
+    }
+    schema_id: {
+      h: "Schema Id"
+      n: "schema_id"
+      r: true
+      sh: "The id for schema."
+      t: "`$INTEGER`"
+    }
+    schema_registry_connection: {
+      h: "Schema Registry Connection"
+      n: "schema_registry_connection"
+      r: false
+      sh: "The connection details for Schema Registry."
+      t: "`$ANY`"
+    }
+    schema_type: {
+      h: "Schema Type"
+      n: "schema_type"
+      r: true
+      sh: "The type of the schema."
+      t: "`$STRING`"
+    }
+    semantic_version: {
+      h: "Semantic Version"
+      n: "semantic_version"
+      r: false
+      ro: true
+      sh: "A string representing the semantic version of the database engine in use for the cluster."
+      t: "`$STRING`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      op: {
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "User settings that can be updated via the Update a Database User endpoint."
+      t: "`$OBJECT`"
+    }
+    size: {
+      fo: "int32"
+      h: "Size"
+      n: "size"
+      op: {
+        load: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The desired size of the PGBouncer connection pool."
+      t: "`$INTEGER`"
+    }
+    standby_connection: {
+      h: "Standby Connection"
+      n: "standby_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    standby_private_connection: {
+      h: "Standby Private Connection"
+      n: "standby_private_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "The state of the Kafka topic."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      ro: true
+      sh: "A string representing the current status of the database cluster."
+      t: "`$STRING`"
+    }
+    storage_size_mib: {
+      h: "Storage Size Mib"
+      n: "storage_size_mib"
+      r: false
+      sh: "Additional storage added to the cluster, in MiB."
+      t: "`$INTEGER`"
+    }
+    subject_name: {
+      h: "Subject Name"
+      n: "subject_name"
+      r: true
+      sh: "The name of the schema subject."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "A flat array of tag names as strings applied to the read-only replica.<br><br>Requires `tag:read` scope."
+      t: "`$ARRAY`"
+    }
+    ui_connection: {
+      h: "Ui Connection"
+      n: "ui_connection"
+      r: false
+      sh: "The connection details for OpenSearch dashboard."
+      t: "`$ANY`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "The name of the user for use with the connection pool."
+      t: "`$STRING`"
+    }
+    users: {
+      h: "Users"
+      n: "users"
+      r: false
+      ro: true
+      t: "`$ARRAY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        load: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The version of the schema."
+      t: "`$STRING`"
+    }
+    version_end_of_availability: {
+      h: "Version End Of Availability"
+      n: "version_end_of_availability"
+      r: false
+      ro: true
+      sh: "A timestamp referring to the date when the particular version will no longer be available for creating new clusters."
+      t: "`$STRING`"
+    }
+    version_end_of_life: {
+      h: "Version End Of Life"
+      n: "version_end_of_life"
+      r: false
+      ro: true
+      sh: "A timestamp referring to the date when the particular version will no longer be supported."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "database"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/users/{username}/reset_auth"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "app-01"
+                k: "param"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/users/{username}/reset_auth"
+          q: {
+            "$action": "reset_auth"
+            exist: [
+              "id"
+              "username"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "username"
+            }
+            {
+              lit: "reset_auth"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/dbs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/dbs"
+          q: {
+            "$action": "dbs"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "dbs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.db`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/logsink"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/logsink"
+          q: {
+            "$action": "logsink"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "logsink"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sink`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/pools"
+          q: {
+            "$action": "pool"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.pool`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/replicas"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/replicas"
+          q: {
+            "$action": "replica"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replicas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.replica`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/schema-registry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry"
+          q: {
+            "$action": "schema_registry"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/topics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/topics"
+          q: {
+            "$action": "topic"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "topics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.topic`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases/{database_cluster_uuid}/users"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/databases/{database_cluster_uuid}/users"
+          q: {
+            "$action": "user"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/databases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/databases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.database`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/backups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/backups"
+          q: {
+            "$action": "backup"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "backups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/dbs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/dbs"
+          q: {
+            "$action": "dbs"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "dbs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dbs`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/events"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/events"
+          q: {
+            "$action": "event"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "events"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.events`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/firewall"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/firewall"
+          q: {
+            "$action": "firewall"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "firewall"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.rules`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/indexes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/indexes"
+          q: {
+            "$action": "index"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "indexes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.indexes`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/logsink"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/logsink"
+          q: {
+            "$action": "logsink"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "logsink"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sinks`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/replicas"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/replicas"
+          q: {
+            "$action": "replica"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replicas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.replicas`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/schema-registry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry"
+          q: {
+            "$action": "schema_registry"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subjects`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/topics"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/topics"
+          q: {
+            "$action": "topic"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "topics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.topics`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/users"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/users"
+          q: {
+            "$action": "user"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.users`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "production"
+                k: "query"
+                n: "tag_name"
+                or: "tag_name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.databases`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-schema"
+                k: "param"
+                n: "subject_name"
+                or: "subject_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "param"
+                n: "version"
+                or: "version"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}"
+          q: {
+            exist: [
+              "id"
+              "subject_name"
+              "version"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              var: "subject_name"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "version"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/dbs/{database_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alpha"
+                k: "param"
+                n: "database_name"
+                or: "database_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/dbs/{database_name}"
+          q: {
+            exist: [
+              "database_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "dbs"
+            }
+            {
+              var: "database_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.db`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "backend-pool"
+                k: "param"
+                n: "pool_name"
+                or: "pool_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+          q: {
+            exist: [
+              "id"
+              "pool_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pools"
+            }
+            {
+              var: "pool_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.pool`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/replicas/{replica_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "read-nyc3-01"
+                k: "param"
+                n: "replica_name"
+                or: "replica_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}"
+          q: {
+            exist: [
+              "id"
+              "replica_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replicas"
+            }
+            {
+              var: "replica_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.replica`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-schema"
+                k: "param"
+                n: "subject_name"
+                or: "subject_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}"
+          q: {
+            exist: [
+              "id"
+              "subject_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              lit: "config"
+            }
+            {
+              var: "subject_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-schema"
+                k: "param"
+                n: "subject_name"
+                or: "subject_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}"
+          q: {
+            exist: [
+              "id"
+              "subject_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              var: "subject_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-events"
+                k: "param"
+                n: "topic_name"
+                or: "topic_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+          q: {
+            exist: [
+              "id"
+              "topic_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "topics"
+            }
+            {
+              var: "topic_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.topic`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/users/{username}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "app-01"
+                k: "param"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/users/{username}"
+          q: {
+            exist: [
+              "id"
+              "username"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "username"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.database`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/autoscale"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/autoscale"
+          q: {
+            "$action": "autoscale"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "autoscale"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.autoscale`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/ca"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/ca"
+          q: {
+            "$action": "ca"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ca"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.ca`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/config"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/config"
+          q: {
+            "$action": "config"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.config`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/do_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/do_settings"
+          q: {
+            "$action": "do_setting"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "do_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.do_settings`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/eviction_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/eviction_policy"
+          q: {
+            "$action": "eviction_policy"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "eviction_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/schema-registry/config"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/config"
+          q: {
+            "$action": "schema_registry_config"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              lit: "config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/databases/metrics/credentials"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/databases/metrics/credentials"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "credentials"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.credentials`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/databases/{database_cluster_uuid}/config"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/databases/{database_cluster_uuid}/config"
+          q: {
+            "$action": "config"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/dbs/{database_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alpha"
+                k: "param"
+                n: "database_name"
+                or: "database_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/dbs/{database_name}"
+          q: {
+            exist: [
+              "database_name"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "dbs"
+            }
+            {
+              var: "database_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/indexes/{index_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "logs-*"
+                k: "param"
+                n: "index_name"
+                or: "index_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/indexes/{index_name}"
+          q: {
+            exist: [
+              "id"
+              "index_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "indexes"
+            }
+            {
+              var: "index_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "50484ec3-19d6-4cd3-b56f-3b0381c289a6"
+                k: "param"
+                n: "logsink_id"
+                or: "logsink_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+          q: {
+            exist: [
+              "id"
+              "logsink_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "logsink"
+            }
+            {
+              var: "logsink_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/online-migration/{migration_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "77b28fc8-19ff-11eb-8c9c-c68e24557488"
+                k: "param"
+                n: "migration_id"
+                or: "migration_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/online-migration/{migration_id}"
+          q: {
+            exist: [
+              "id"
+              "migration_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "online-migration"
+            }
+            {
+              var: "migration_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "backend-pool"
+                k: "param"
+                n: "pool_name"
+                or: "pool_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+          q: {
+            exist: [
+              "id"
+              "pool_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pools"
+            }
+            {
+              var: "pool_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/replicas/{replica_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "read-nyc3-01"
+                k: "param"
+                n: "replica_name"
+                or: "replica_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}"
+          q: {
+            exist: [
+              "id"
+              "replica_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replicas"
+            }
+            {
+              var: "replica_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-schema"
+                k: "param"
+                n: "subject_name"
+                or: "subject_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}"
+          q: {
+            exist: [
+              "id"
+              "subject_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              var: "subject_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-events"
+                k: "param"
+                n: "topic_name"
+                or: "topic_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+          q: {
+            exist: [
+              "id"
+              "topic_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "topics"
+            }
+            {
+              var: "topic_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}/users/{username}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "app-01"
+                k: "param"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}/users/{username}"
+          q: {
+            exist: [
+              "id"
+              "username"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "username"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/databases/{database_cluster_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/databases/{database_cluster_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "50484ec3-19d6-4cd3-b56f-3b0381c289a6"
+                k: "param"
+                n: "logsink_id"
+                or: "logsink_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+          q: {
+            exist: [
+              "id"
+              "logsink_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "logsink"
+            }
+            {
+              var: "logsink_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "backend-pool"
+                k: "param"
+                n: "pool_name"
+                or: "pool_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/pools/{pool_name}"
+          q: {
+            exist: [
+              "id"
+              "pool_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pools"
+            }
+            {
+              var: "pool_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "read-nyc3-01"
+                k: "param"
+                n: "replica_name"
+                or: "replica_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote"
+          q: {
+            "$action": "promote"
+            exist: [
+              "id"
+              "replica_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "replicas"
+            }
+            {
+              var: "replica_name"
+            }
+            {
+              lit: "promote"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-schema"
+                k: "param"
+                n: "subject_name"
+                or: "subject_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}"
+          q: {
+            exist: [
+              "id"
+              "subject_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              lit: "config"
+            }
+            {
+              var: "subject_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "customer-events"
+                k: "param"
+                n: "topic_name"
+                or: "topic_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/topics/{topic_name}"
+          q: {
+            exist: [
+              "id"
+              "topic_name"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "topics"
+            }
+            {
+              var: "topic_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.topic`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/users/{username}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "app-01"
+                k: "param"
+                n: "username"
+                or: "username"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/users/{username}"
+          q: {
+            exist: [
+              "id"
+              "username"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "username"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/autoscale"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/autoscale"
+          q: {
+            "$action": "autoscale"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "autoscale"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/do_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/do_settings"
+          q: {
+            "$action": "do_setting"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "do_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/eviction_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/eviction_policy"
+          q: {
+            "$action": "eviction_policy"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "eviction_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/firewall"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/firewall"
+          q: {
+            "$action": "firewall"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "firewall"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/install_update"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/install_update"
+          q: {
+            "$action": "install_update"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "install_update"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/maintenance"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/maintenance"
+          q: {
+            "$action": "maintenance"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "maintenance"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/migrate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/migrate"
+          q: {
+            "$action": "migrate"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "migrate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/resize"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/resize"
+          q: {
+            "$action": "resize"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "resize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/schema-registry/config"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/schema-registry/config"
+          q: {
+            "$action": "schema_registry_config"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "schema-registry"
+            }
+            {
+              lit: "config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/sql_mode"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/sql_mode"
+          q: {
+            "$action": "sql_mode"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "sql_mode"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/upgrade"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/upgrade"
+          q: {
+            "$action": "upgrade"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "upgrade"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/databases/metrics/credentials"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/v2/databases/metrics/credentials"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "credentials"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.logsink")]
+    [path("$.main.kit.entity.online_migration")]
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

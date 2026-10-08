@@ -1,0 +1,81 @@
+# BasicOutputViewFlow
+
+main: kit: flow: BasicOutputViewFlow:
+{
+  entity: "output_view",
+  kind: "basic",
+  name: "BasicOutputViewFlow",
+  step: [
+    {
+      i: {
+        ref: "output_view_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "output_view_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "output_view_ref01",
+        srcdatavar: "output_view_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "output_view01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-output_view_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "output_view_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "output_view01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "output_view_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOutputViewFlow"
+}

@@ -1,0 +1,683 @@
+# Entity: vpc
+
+main: kit: entity: vpc: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format."
+      t: "`$STRING`"
+    }
+    default: {
+      h: "Default"
+      n: "default"
+      r: false
+      sh: "A boolean value indicating whether or not the VPC is the default network for the region."
+      t: "`$BOOLEAN`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A free-form text field for describing the VPC's purpose."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference the VPC."
+      t: "`$STRING`"
+    }
+    ip_range: {
+      h: "Ip Range"
+      n: "ip_range"
+      r: false
+      sh: "The range of IP addresses in the VPC in CIDR notation."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        patch: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The name of the VPC."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The slug identifier for the region where the VPC will be created."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      ro: true
+      sh: "The current status of the VPC peering."
+      t: "`$STRING`"
+    }
+    urn: {
+      h: "Urn"
+      n: "urn"
+      r: false
+      sh: "The uniform resource name (URN) for the resource in the format do:resource_type:resource_id."
+      t: "`$STRING`"
+    }
+    vpc_ids: {
+      h: "Vpc Ids"
+      n: "vpc_ids"
+      r: false
+      sh: "An array of the two peered VPCs IDs."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vpc"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/vpcs/{vpc_id}/peerings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/vpcs/{vpc_id}/peerings"
+          q: {
+            "$action": "peering"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "peerings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.peering`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/vpcs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/vpcs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_id}/members"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "droplet"
+                k: "query"
+                n: "resource_type"
+                or: "resource_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_id}/members"
+          q: {
+            "$action": "member"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "members"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.members`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_id}/peerings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_id}/peerings"
+          q: {
+            "$action": "peering"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "peerings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.peerings`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/vpcs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpcs`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpcs/{vpc_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpcs/{vpc_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/vpcs/{vpc_id}/peerings/{vpc_peering_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "5a4981aa-9653-4bd1-bef5-d6bff52042e4"
+                k: "param"
+                n: "vpc_peering_id"
+                or: "vpc_peering_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/vpcs/{vpc_id}/peerings/{vpc_peering_id}"
+          q: {
+            exist: [
+              "id"
+              "vpc_peering_id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "peerings"
+            }
+            {
+              var: "vpc_peering_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.peering`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /v2/vpcs/{vpc_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/vpcs/{vpc_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/vpcs/{vpc_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/vpcs/{vpc_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/vpcs/{vpc_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "vpc_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/vpcs/{vpc_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              vpc_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpcs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

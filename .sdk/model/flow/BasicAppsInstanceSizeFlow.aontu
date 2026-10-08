@@ -1,0 +1,44 @@
+# BasicAppsInstanceSizeFlow
+
+main: kit: flow: BasicAppsInstanceSizeFlow:
+{
+  entity: "apps_instance_size",
+  kind: "basic",
+  name: "BasicAppsInstanceSizeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "apps_instance_size_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "apps_instance_size_ref01",
+        srcdatavar: "apps_instance_size_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "apps_instance_size01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-apps_instance_size_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppsInstanceSizeFlow"
+}

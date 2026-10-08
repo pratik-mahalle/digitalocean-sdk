@@ -1,0 +1,32 @@
+# BasicApiDeleteAgentApiKeyOutputFlow
+
+main: kit: flow: BasicApiDeleteAgentApiKeyOutputFlow:
+{
+  entity: "api_delete_agent_api_key_output",
+  kind: "basic",
+  name: "BasicApiDeleteAgentApiKeyOutputFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01"
+      }
+
+      i: {
+        ref: "api_delete_agent_api_key_output_ref01",
+        srcdatavar: "api_delete_agent_api_key_output_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_delete_agent_api_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiDeleteAgentApiKeyOutputFlow"
+}

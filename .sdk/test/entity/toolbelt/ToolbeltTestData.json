@@ -1,0 +1,117 @@
+{
+  "existing": {
+    "toolbelt": {
+      "TOOLBELT00": {
+        "created_at": "saa",
+        "description": "sab",
+        "display_name": "sac",
+        "id": "TOOLBELT00",
+        "latest_version": "sae",
+        "name": "saf",
+        "next_page_token": "sb0",
+        "reference": "sb1",
+        "reference_latest": "sb2",
+        "status": "sb3",
+        "tool_count": 180,
+        "tool_details": [],
+        "toolbelt": "sb6",
+        "tools": [],
+        "updated_at": "sb8",
+        "version": "sb9",
+        "version_count": 186
+      },
+      "TOOLBELT01": {
+        "created_at": "s154",
+        "description": "s155",
+        "display_name": "s156",
+        "id": "TOOLBELT01",
+        "latest_version": "s158",
+        "name": "s159",
+        "next_page_token": "s15a",
+        "reference": "s15b",
+        "reference_latest": "s15c",
+        "status": "s15d",
+        "tool_count": 350,
+        "tool_details": [],
+        "toolbelt": "s160",
+        "tools": [],
+        "updated_at": "s162",
+        "version": "s163",
+        "version_count": 356
+      },
+      "TOOLBELT02": {
+        "created_at": "s1fe",
+        "description": "s1ff",
+        "display_name": "s200",
+        "id": "TOOLBELT02",
+        "latest_version": "s202",
+        "name": "s203",
+        "next_page_token": "s204",
+        "reference": "s205",
+        "reference_latest": "s206",
+        "status": "s207",
+        "tool_count": 520,
+        "tool_details": [],
+        "toolbelt": "s20a",
+        "tools": [],
+        "updated_at": "s20c",
+        "version": "s20d",
+        "version_count": 526
+      }
+    }
+  },
+  "new": {
+    "toolbelt": {
+      "toolbelt_ref01": {
+        "created_at": "s2a8",
+        "description": "s2a9",
+        "display_name": "s2aa",
+        "latest_version": "s2ac",
+        "name": "s2ad",
+        "next_page_token": "s2ae",
+        "reference": "s2af",
+        "reference_latest": "s2b0",
+        "status": "s2b1",
+        "tool_count": 690,
+        "tool_details": [],
+        "toolbelt": "s2b4",
+        "tools": [],
+        "updated_at": "s2b6",
+        "version": "s2b7",
+        "version_count": 696
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/toolbelts/{name}/tools/add": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/action-gateway/toolbelts/{name}/tools/remove": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/action-gateway/toolbelts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/toolbelts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/toolbelts/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/action-gateway/toolbelts/{name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

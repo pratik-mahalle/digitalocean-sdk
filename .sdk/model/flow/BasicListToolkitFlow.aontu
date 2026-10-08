@@ -1,0 +1,22 @@
+# BasicListToolkitFlow
+
+main: kit: flow: BasicListToolkitFlow:
+{
+  entity: "list_toolkit",
+  kind: "basic",
+  name: "BasicListToolkitFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_toolkit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListToolkitFlow"
+}

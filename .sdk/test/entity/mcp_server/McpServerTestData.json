@@ -1,0 +1,128 @@
+{
+  "existing": {
+    "mcp_server": {
+      "MCP_SERVER00": {
+        "api_key": "sd2",
+        "createdAt": "sd3",
+        "credentialRef": "sd4",
+        "credentialRefSource": "sd5",
+        "description": "sd6",
+        "endpoint": "sd7",
+        "id": "MCP_SERVER00",
+        "lastSyncedAt": "sd9",
+        "oauth_authorization_ttl_seconds": "sda",
+        "oauth_authorize_url": "sdb",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "sdd",
+        "oauth_scopes": [],
+        "oauth_token_url": "sdf",
+        "protocolVersion": "se0",
+        "serverRef": "se1",
+        "syncError": "se2",
+        "syncStatus": "se3",
+        "toolCount": 228,
+        "transport": "se5",
+        "updatedAt": "se6"
+      },
+      "MCP_SERVER01": {
+        "api_key": "s1a4",
+        "createdAt": "s1a5",
+        "credentialRef": "s1a6",
+        "credentialRefSource": "s1a7",
+        "description": "s1a8",
+        "endpoint": "s1a9",
+        "id": "MCP_SERVER01",
+        "lastSyncedAt": "s1ab",
+        "oauth_authorization_ttl_seconds": "s1ac",
+        "oauth_authorize_url": "s1ad",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s1af",
+        "oauth_scopes": [],
+        "oauth_token_url": "s1b1",
+        "protocolVersion": "s1b2",
+        "serverRef": "s1b3",
+        "syncError": "s1b4",
+        "syncStatus": "s1b5",
+        "toolCount": 438,
+        "transport": "s1b7",
+        "updatedAt": "s1b8"
+      },
+      "MCP_SERVER02": {
+        "api_key": "s276",
+        "createdAt": "s277",
+        "credentialRef": "s278",
+        "credentialRefSource": "s279",
+        "description": "s27a",
+        "endpoint": "s27b",
+        "id": "MCP_SERVER02",
+        "lastSyncedAt": "s27d",
+        "oauth_authorization_ttl_seconds": "s27e",
+        "oauth_authorize_url": "s27f",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s281",
+        "oauth_scopes": [],
+        "oauth_token_url": "s283",
+        "protocolVersion": "s284",
+        "serverRef": "s285",
+        "syncError": "s286",
+        "syncStatus": "s287",
+        "toolCount": 648,
+        "transport": "s289",
+        "updatedAt": "s28a"
+      }
+    }
+  },
+  "new": {
+    "mcp_server": {
+      "mcp_server_ref01": {
+        "api_key": "s348",
+        "createdAt": "s349",
+        "credentialRef": "s34a",
+        "credentialRefSource": "s34b",
+        "description": "s34c",
+        "endpoint": "s34d",
+        "lastSyncedAt": "s34f",
+        "oauth_authorization_ttl_seconds": "s350",
+        "oauth_authorize_url": "s351",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s353",
+        "oauth_scopes": [],
+        "oauth_token_url": "s355",
+        "protocolVersion": "s356",
+        "serverRef": "s357",
+        "syncError": "s358",
+        "syncStatus": "s359",
+        "toolCount": 858,
+        "transport": "s35b",
+        "updatedAt": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/mcp-servers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/mcp-servers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/mcp-servers/{server_ref}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/action-gateway/mcp-servers/{server_ref}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/action-gateway/mcp-servers/{server_ref}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

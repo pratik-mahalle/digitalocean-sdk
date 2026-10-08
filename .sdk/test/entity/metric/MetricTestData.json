@@ -1,0 +1,321 @@
+{
+  "existing": {
+    "metric": {
+      "METRIC00": {
+        "result": [],
+        "resultType": "s15",
+        "id": "METRIC00"
+      },
+      "METRIC01": {
+        "result": [],
+        "resultType": "s29",
+        "id": "METRIC01"
+      },
+      "METRIC02": {
+        "result": [],
+        "resultType": "s3d",
+        "id": "METRIC02"
+      }
+    }
+  },
+  "new": {
+    "metric": {
+      "metric_ref01": {
+        "result": [],
+        "resultType": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/monitoring/metrics/database/mysql/load": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/schema_latency": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/schema_throughput": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/bandwidth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/cpu_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/disk_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/memory_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/op_rates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/apps/cpu_percentage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/apps/memory_percentage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/apps/restart_count": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_memory_utilization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_memory_utilization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/index_vs_sequential_reads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/threads_active": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/threads_connected": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/database/mysql/threads_created_rate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/cpu": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/filesystem_free": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/filesystem_size": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/load_1": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/load_15": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/load_5": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/memory_available": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/memory_cached": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/memory_free": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/droplet/memory_total": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_downtime": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_health_checks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/droplets_queue_size": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_connections_current": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_connections_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_cpu_utilization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_http_responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_http": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_current": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

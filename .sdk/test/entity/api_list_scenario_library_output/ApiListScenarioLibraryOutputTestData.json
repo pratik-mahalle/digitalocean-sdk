@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "api_list_scenario_library_output": {
+      "API_LIST_SCENARIO_LIBRARY_OUTPUT00": {
+        "category": "s5a",
+        "created_at": "s5b",
+        "description": "s5c",
+        "goal_description": "s5d",
+        "library_scenario_uuid": "s5e",
+        "name": "s5f",
+        "scenario_count": 96,
+        "status": "s61",
+        "updated_at": "s62"
+      },
+      "API_LIST_SCENARIO_LIBRARY_OUTPUT01": {
+        "category": "sb4",
+        "created_at": "sb5",
+        "description": "sb6",
+        "goal_description": "sb7",
+        "library_scenario_uuid": "sb8",
+        "name": "sb9",
+        "scenario_count": 186,
+        "status": "sbb",
+        "updated_at": "sbc"
+      },
+      "API_LIST_SCENARIO_LIBRARY_OUTPUT02": {
+        "category": "s10e",
+        "created_at": "s10f",
+        "description": "s110",
+        "goal_description": "s111",
+        "library_scenario_uuid": "s112",
+        "name": "s113",
+        "scenario_count": 276,
+        "status": "s115",
+        "updated_at": "s116"
+      }
+    }
+  },
+  "new": {
+    "api_list_scenario_library_output": {
+      "api_list_scenario_library_output_ref01": {
+        "category": "s168",
+        "created_at": "s169",
+        "description": "s16a",
+        "goal_description": "s16b",
+        "library_scenario_uuid": "s16c",
+        "name": "s16d",
+        "scenario_count": 366,
+        "status": "s16f",
+        "updated_at": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/scenario_library": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

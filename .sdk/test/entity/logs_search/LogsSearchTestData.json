@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "logs_search": {
+      "LOGS_SEARCH00": {
+        "data": [],
+        "filter": {},
+        "order_by": [],
+        "pagination": {},
+        "time_range": {},
+        "query_id": "QUERY01",
+        "id": "LOGS_SEARCH00"
+      },
+      "LOGS_SEARCH01": {
+        "data": [],
+        "filter": {},
+        "order_by": [],
+        "pagination": {},
+        "time_range": {},
+        "query_id": "QUERY01",
+        "id": "LOGS_SEARCH01"
+      },
+      "LOGS_SEARCH02": {
+        "data": [],
+        "filter": {},
+        "order_by": [],
+        "pagination": {},
+        "time_range": {},
+        "query_id": "QUERY01",
+        "id": "LOGS_SEARCH02"
+      }
+    }
+  },
+  "new": {
+    "logs_search": {
+      "logs_search_ref01": {
+        "data": [],
+        "filter": {},
+        "order_by": [],
+        "pagination": {},
+        "time_range": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/insights/query/{region}/logs/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# BasicConnectionPoolFlow
+
+main: kit: flow: BasicConnectionPoolFlow:
+{
+  entity: "connection_pool",
+  kind: "basic",
+  name: "BasicConnectionPoolFlow",
+  step: [
+    {
+      m: {
+        database_id: "database01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "connection_pool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionPoolFlow"
+}

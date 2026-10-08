@@ -1,0 +1,376 @@
+# Entity: batch
+
+main: kit: entity: batch: {
+
+  alias: field: {}
+
+  fields: {
+    batch_id: {
+      fo: "uuid"
+      h: "Batch Id"
+      n: "batch_id"
+      r: true
+      sh: "Unique identifier for the batch job."
+      t: "`$STRING`"
+    }
+    cancelled_at: {
+      fo: "date-time"
+      h: "Cancelled At"
+      n: "cancelled_at"
+      r: false
+      t: "`$STRING`"
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    completion_window: {
+      h: "Completion Window"
+      n: "completion_window"
+      r: true
+      sh: "Time window in which the job must complete."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      r: false
+      sh: "Inference endpoint each request is dispatched to."
+      t: "`$STRING`"
+    }
+    error_file_id: {
+      fo: "uuid"
+      h: "Error File Id"
+      n: "error_file_id"
+      r: false
+      sh: "Error sidecar file."
+      t: "`$STRING`"
+    }
+    errors: {
+      h: "Errors"
+      n: "errors"
+      r: false
+      sh: "Top-level errors that prevented the batch from completing."
+      t: "`$ARRAY`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "Derived from `created_at` plus `completion_window`."
+      t: "`$STRING`"
+    }
+    failed_at: {
+      fo: "date-time"
+      h: "Failed At"
+      n: "failed_at"
+      r: false
+      t: "`$STRING`"
+    }
+    file_id: {
+      fo: "uuid"
+      h: "File Id"
+      n: "file_id"
+      r: true
+      sh: "The `file_id` returned by `POST /v1/batches/files`."
+      t: "`$STRING`"
+    }
+    finalizing_at: {
+      fo: "date-time"
+      h: "Finalizing At"
+      n: "finalizing_at"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    in_progress_at: {
+      fo: "date-time"
+      h: "In Progress At"
+      n: "in_progress_at"
+      r: false
+      t: "`$STRING`"
+    }
+    input_file_id: {
+      fo: "uuid"
+      h: "Input File Id"
+      n: "input_file_id"
+      r: true
+      sh: "The uploaded JSONL input file."
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      sh: "Metadata attached at creation."
+      t: "`$OBJECT`"
+    }
+    output_file_id: {
+      fo: "uuid"
+      h: "Output File Id"
+      n: "output_file_id"
+      r: false
+      sh: "Output JSONL file."
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      sh: "The inference provider whose JSONL schema the input file conforms to."
+      t: "`$STRING`"
+    }
+    request_counts: {
+      h: "Request Counts"
+      n: "request_counts"
+      r: false
+      sh: "Aggregate request counts."
+      t: "`$OBJECT`"
+    }
+    request_id: {
+      h: "Request Id"
+      n: "request_id"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The idempotency key supplied at creation."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "Lifecycle status."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "batch"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/batches/{batch_id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0e9d1d35-3d1e-4d66-9a2f-8c7e0f6b3e21"
+                k: "param"
+                n: "id"
+                or: "batch_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v1/batches/{batch_id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              batch_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "batches"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/batches"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/batches"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "batches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v1/batches"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "7b2e9c1a-6f4d-4d9b-a0f1-5c4b7e2f8a12"
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "in_progress"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/batches"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "batches"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/batches/{batch_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0e9d1d35-3d1e-4d66-9a2f-8c7e0f6b3e21"
+                k: "param"
+                n: "id"
+                or: "batch_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/batches/{batch_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              batch_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "batches"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

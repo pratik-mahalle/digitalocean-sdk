@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "batch_file_create": {
+      "BATCH_FILE_CREATE00": {
+        "file_name": "sa",
+        "id": "BATCH_FILE_CREATE00"
+      },
+      "BATCH_FILE_CREATE01": {
+        "file_name": "s14",
+        "id": "BATCH_FILE_CREATE01"
+      },
+      "BATCH_FILE_CREATE02": {
+        "file_name": "s1e",
+        "id": "BATCH_FILE_CREATE02"
+      }
+    }
+  },
+  "new": {
+    "batch_file_create": {
+      "batch_file_create_ref01": {
+        "file_name": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/batches/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

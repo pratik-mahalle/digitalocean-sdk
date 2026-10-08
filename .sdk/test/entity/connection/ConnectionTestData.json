@@ -1,0 +1,119 @@
+{
+  "existing": {
+    "connection": {
+      "CONNECTION00": {
+        "api_key": {},
+        "authorization": "sc9",
+        "connection": "sca",
+        "connection_parameters": {},
+        "created_at": "scc",
+        "credential": {},
+        "credential_id": "CREDENTIAL01",
+        "credential_kind": "scf",
+        "granted_at": "sd0",
+        "id": "CONNECTION00",
+        "network": {},
+        "oauth": {},
+        "owning_user_id": "OWNING_USER01",
+        "provider": "sd5",
+        "provider_display_name": "sd6",
+        "revoked_at": "sd7",
+        "scopes": [],
+        "status": "sd9",
+        "updated_at": "sda",
+        "user_id": "USER01"
+      },
+      "CONNECTION01": {
+        "api_key": {},
+        "authorization": "s191",
+        "connection": "s192",
+        "connection_parameters": {},
+        "created_at": "s194",
+        "credential": {},
+        "credential_id": "CREDENTIAL01",
+        "credential_kind": "s197",
+        "granted_at": "s198",
+        "id": "CONNECTION01",
+        "network": {},
+        "oauth": {},
+        "owning_user_id": "OWNING_USER01",
+        "provider": "s19d",
+        "provider_display_name": "s19e",
+        "revoked_at": "s19f",
+        "scopes": [],
+        "status": "s1a1",
+        "updated_at": "s1a2",
+        "user_id": "USER01"
+      },
+      "CONNECTION02": {
+        "api_key": {},
+        "authorization": "s259",
+        "connection": "s25a",
+        "connection_parameters": {},
+        "created_at": "s25c",
+        "credential": {},
+        "credential_id": "CREDENTIAL01",
+        "credential_kind": "s25f",
+        "granted_at": "s260",
+        "id": "CONNECTION02",
+        "network": {},
+        "oauth": {},
+        "owning_user_id": "OWNING_USER01",
+        "provider": "s265",
+        "provider_display_name": "s266",
+        "revoked_at": "s267",
+        "scopes": [],
+        "status": "s269",
+        "updated_at": "s26a",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "connection": {
+      "connection_ref01": {
+        "api_key": {},
+        "authorization": "s321",
+        "connection": "s322",
+        "connection_parameters": {},
+        "created_at": "s324",
+        "credential": {},
+        "credential_id": "CREDENTIAL01",
+        "credential_kind": "s327",
+        "granted_at": "s328",
+        "network": {},
+        "oauth": {},
+        "owning_user_id": "OWNING_USER01",
+        "provider": "s32d",
+        "provider_display_name": "s32e",
+        "revoked_at": "s32f",
+        "scopes": [],
+        "status": "s331",
+        "updated_at": "s332",
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/connections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/action-gateway/connections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

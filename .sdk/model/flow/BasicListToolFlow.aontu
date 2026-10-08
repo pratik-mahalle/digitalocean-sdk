@@ -1,0 +1,22 @@
+# BasicListToolFlow
+
+main: kit: flow: BasicListToolFlow:
+{
+  entity: "list_tool",
+  kind: "basic",
+  name: "BasicListToolFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_tool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListToolFlow"
+}

@@ -1,0 +1,155 @@
+{
+  "existing": {
+    "insight": {
+      "INSIGHT00": {
+        "channel_type": "sbe",
+        "created_at": "sbf",
+        "email": {},
+        "id": "INSIGHT00",
+        "last_notified_at": "sc2",
+        "last_triggered_at": "sc3",
+        "name": "sc4",
+        "resolved_at": "sc5",
+        "resource_urn": "sc6",
+        "rule_id": "RULE01",
+        "severity": "sc8",
+        "slack": {},
+        "spec": {},
+        "status": "scb",
+        "triggered_at": "scc",
+        "updated_at": "scd",
+        "usage": "sce",
+        "value": 207,
+        "webhook": {}
+      },
+      "INSIGHT01": {
+        "channel_type": "s17c",
+        "created_at": "s17d",
+        "email": {},
+        "id": "INSIGHT01",
+        "last_notified_at": "s180",
+        "last_triggered_at": "s181",
+        "name": "s182",
+        "resolved_at": "s183",
+        "resource_urn": "s184",
+        "rule_id": "RULE01",
+        "severity": "s186",
+        "slack": {},
+        "spec": {},
+        "status": "s189",
+        "triggered_at": "s18a",
+        "updated_at": "s18b",
+        "usage": "s18c",
+        "value": 397,
+        "webhook": {}
+      },
+      "INSIGHT02": {
+        "channel_type": "s23a",
+        "created_at": "s23b",
+        "email": {},
+        "id": "INSIGHT02",
+        "last_notified_at": "s23e",
+        "last_triggered_at": "s23f",
+        "name": "s240",
+        "resolved_at": "s241",
+        "resource_urn": "s242",
+        "rule_id": "RULE01",
+        "severity": "s244",
+        "slack": {},
+        "spec": {},
+        "status": "s247",
+        "triggered_at": "s248",
+        "updated_at": "s249",
+        "usage": "s24a",
+        "value": 587,
+        "webhook": {}
+      }
+    }
+  },
+  "new": {
+    "insight": {
+      "insight_ref01": {
+        "channel_type": "s2f8",
+        "created_at": "s2f9",
+        "email": {},
+        "last_notified_at": "s2fc",
+        "last_triggered_at": "s2fd",
+        "name": "s2fe",
+        "resolved_at": "s2ff",
+        "resource_urn": "s300",
+        "rule_id": "RULE01",
+        "severity": "s302",
+        "slack": {},
+        "spec": {},
+        "status": "s305",
+        "triggered_at": "s306",
+        "updated_at": "s307",
+        "usage": "s308",
+        "value": 777,
+        "webhook": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/insights/alert-rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/insights/notification-channels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/alert-instances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/alert-rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/notification-channels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/alert-instances/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/alert-rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/notification-channels/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/insights/alert-rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/insights/notification-channels/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/insights/alert-rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/insights/notification-channels/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

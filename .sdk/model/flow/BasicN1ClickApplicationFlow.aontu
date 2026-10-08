@@ -1,0 +1,18 @@
+# BasicN1ClickApplicationFlow
+
+main: kit: flow: BasicN1ClickApplicationFlow:
+{
+  entity: "n1_click_application",
+  kind: "basic",
+  name: "BasicN1ClickApplicationFlow",
+  step: [
+    {
+      i: {
+        ref: "n1_click_application_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicN1ClickApplicationFlow"
+}

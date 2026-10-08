@@ -1,0 +1,33 @@
+# BasicDedicatedInferenceAcceleratorFlow
+
+main: kit: flow: BasicDedicatedInferenceAcceleratorFlow:
+{
+  entity: "dedicated_inference_accelerator",
+  kind: "basic",
+  name: "BasicDedicatedInferenceAcceleratorFlow",
+  step: [
+    {
+      i: {
+        ref: "dedicated_inference_accelerator_ref01",
+        srcdatavar: "dedicated_inference_accelerator_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        dedicated_inference_id: "dedicated_inference01",
+        id: "dedicated_inference_accelerator01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dedicated_inference_accelerator_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDedicatedInferenceAcceleratorFlow"
+}

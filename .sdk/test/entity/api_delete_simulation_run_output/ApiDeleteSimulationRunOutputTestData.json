@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_simulation_run_output": {
+      "API_DELETE_SIMULATION_RUN_OUTPUT00": {
+        "run_uuid": "RUN_UUID01",
+        "id": "API_DELETE_SIMULATION_RUN_OUTPUT00"
+      },
+      "API_DELETE_SIMULATION_RUN_OUTPUT01": {
+        "run_uuid": "RUN_UUID01",
+        "id": "API_DELETE_SIMULATION_RUN_OUTPUT01"
+      },
+      "API_DELETE_SIMULATION_RUN_OUTPUT02": {
+        "run_uuid": "RUN_UUID01",
+        "id": "API_DELETE_SIMULATION_RUN_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_simulation_run_output": {
+      "api_delete_simulation_run_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/simulation_runs/{run_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

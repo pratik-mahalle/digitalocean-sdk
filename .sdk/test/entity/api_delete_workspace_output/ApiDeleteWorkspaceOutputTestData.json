@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_workspace_output": {
+      "API_DELETE_WORKSPACE_OUTPUT00": {
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_DELETE_WORKSPACE_OUTPUT00"
+      },
+      "API_DELETE_WORKSPACE_OUTPUT01": {
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_DELETE_WORKSPACE_OUTPUT01"
+      },
+      "API_DELETE_WORKSPACE_OUTPUT02": {
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_DELETE_WORKSPACE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_workspace_output": {
+      "api_delete_workspace_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/workspaces/{workspace_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

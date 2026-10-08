@@ -1,0 +1,26 @@
+# BasicAppInstanceFlow
+
+main: kit: flow: BasicAppInstanceFlow:
+{
+  entity: "app_instance",
+  kind: "basic",
+  name: "BasicAppInstanceFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_instance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppInstanceFlow"
+}

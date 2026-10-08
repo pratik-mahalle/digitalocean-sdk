@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_update_open_aiapi_key_output": {
+      "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT00": {
+        "api_key": "s5a",
+        "api_key_uuid": "s5b",
+        "created_at": "s5c",
+        "created_by": "s5d",
+        "deleted_at": "s5e",
+        "models": [],
+        "name": "s60",
+        "updated_at": "s61",
+        "uuid": "s62",
+        "id": "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT00"
+      },
+      "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT01": {
+        "api_key": "sb4",
+        "api_key_uuid": "sb5",
+        "created_at": "sb6",
+        "created_by": "sb7",
+        "deleted_at": "sb8",
+        "models": [],
+        "name": "sba",
+        "updated_at": "sbb",
+        "uuid": "sbc",
+        "id": "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT01"
+      },
+      "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT02": {
+        "api_key": "s10e",
+        "api_key_uuid": "s10f",
+        "created_at": "s110",
+        "created_by": "s111",
+        "deleted_at": "s112",
+        "models": [],
+        "name": "s114",
+        "updated_at": "s115",
+        "uuid": "s116",
+        "id": "API_UPDATE_OPEN_AIAPI_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_open_aiapi_key_output": {
+      "api_update_open_aiapi_key_output_ref01": {
+        "api_key": "s168",
+        "api_key_uuid": "s169",
+        "created_at": "s16a",
+        "created_by": "s16b",
+        "deleted_at": "s16c",
+        "models": [],
+        "name": "s16e",
+        "updated_at": "s16f",
+        "uuid": "s170"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/openai/keys/{api_key_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

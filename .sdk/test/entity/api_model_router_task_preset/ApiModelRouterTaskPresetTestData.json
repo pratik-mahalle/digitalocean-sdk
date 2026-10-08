@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "api_model_router_task_preset": {
+      "API_MODEL_ROUTER_TASK_PRESET00": {
+        "category": "s46",
+        "description": "s47",
+        "models": [],
+        "name": "s49",
+        "selection_policy": {},
+        "tags": [],
+        "task_slug": "s4c"
+      },
+      "API_MODEL_ROUTER_TASK_PRESET01": {
+        "category": "s8c",
+        "description": "s8d",
+        "models": [],
+        "name": "s8f",
+        "selection_policy": {},
+        "tags": [],
+        "task_slug": "s92"
+      },
+      "API_MODEL_ROUTER_TASK_PRESET02": {
+        "category": "sd2",
+        "description": "sd3",
+        "models": [],
+        "name": "sd5",
+        "selection_policy": {},
+        "tags": [],
+        "task_slug": "sd8"
+      }
+    }
+  },
+  "new": {
+    "api_model_router_task_preset": {
+      "api_model_router_task_preset_ref01": {
+        "category": "s118",
+        "description": "s119",
+        "models": [],
+        "name": "s11b",
+        "selection_policy": {},
+        "tags": [],
+        "task_slug": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/models/routers/tasks/presets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

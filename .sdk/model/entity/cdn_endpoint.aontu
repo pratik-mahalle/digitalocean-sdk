@@ -1,0 +1,388 @@
+# Entity: cdn_endpoint
+
+main: kit: entity: cdn_endpoint: {
+
+  alias: field: {}
+
+  fields: {
+    certificate_id: {
+      fo: "uuid"
+      h: "Certificate Id"
+      n: "certificate_id"
+      r: false
+      sh: "The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the CDN endpoint was created."
+      t: "`$STRING`"
+    }
+    custom_domain: {
+      fo: "hostname"
+      h: "Custom Domain"
+      n: "custom_domain"
+      r: false
+      sh: "The fully qualified domain name (FQDN) of the custom subdomain used with the CDN endpoint."
+      t: "`$STRING`"
+    }
+    endpoint: {
+      fo: "hostname"
+      h: "Endpoint"
+      n: "endpoint"
+      r: false
+      ro: true
+      sh: "The fully qualified domain name (FQDN) from which the CDN-backed content is served."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference a CDN endpoint."
+      t: "`$STRING`"
+    }
+    origin: {
+      fo: "hostname"
+      h: "Origin"
+      n: "origin"
+      r: true
+      sh: "The fully qualified domain name (FQDN) for the origin server which provides the content for the CDN."
+      t: "`$STRING`"
+    }
+    ttl: {
+      h: "Ttl"
+      n: "ttl"
+      r: false
+      sh: "The amount of time the content is cached by the CDN's edge servers in seconds."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "cdn_endpoint"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/cdn/endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/cdn/endpoints"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/cdn/endpoints"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/cdn/endpoints"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoints`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/cdn/endpoints/{cdn_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "19f06b6a-3ace-4315-b086-499a0e521b76"
+                k: "param"
+                n: "id"
+                or: "cdn_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/cdn/endpoints/{cdn_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cdn_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/cdn/endpoints/{cdn_id}/cache"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "19f06b6a-3ace-4315-b086-499a0e521b76"
+                k: "param"
+                n: "endpoint_id"
+                or: "cdn_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/cdn/endpoints/{cdn_id}/cache"
+          q: {
+            "$action": "cache"
+            exist: [
+              "endpoint_id"
+            ]
+          }
+          r: {
+            param: {
+              cdn_id: "endpoint_id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "endpoint_id"
+            }
+            {
+              lit: "cache"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/cdn/endpoints/{cdn_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "19f06b6a-3ace-4315-b086-499a0e521b76"
+                k: "param"
+                n: "id"
+                or: "cdn_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/cdn/endpoints/{cdn_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cdn_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/cdn/endpoints/{cdn_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "19f06b6a-3ace-4315-b086-499a0e521b76"
+                k: "param"
+                n: "id"
+                or: "cdn_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/cdn/endpoints/{cdn_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              cdn_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "cdn"
+            }
+            {
+              lit: "endpoints"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.endpoint`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

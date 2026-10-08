@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_model_router_output": {
+      "API_DELETE_MODEL_ROUTER_OUTPUT00": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_MODEL_ROUTER_OUTPUT00"
+      },
+      "API_DELETE_MODEL_ROUTER_OUTPUT01": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_MODEL_ROUTER_OUTPUT01"
+      },
+      "API_DELETE_MODEL_ROUTER_OUTPUT02": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_MODEL_ROUTER_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_model_router_output": {
+      "api_delete_model_router_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/models/routers/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "snapshot": {
+      "SNAPSHOT00": {
+        "created_at": "s5a",
+        "id": "SNAPSHOT00",
+        "min_disk_size": 92,
+        "name": "s5d",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s60",
+        "size_gigabytes": 97,
+        "tags": []
+      },
+      "SNAPSHOT01": {
+        "created_at": "sb4",
+        "id": "SNAPSHOT01",
+        "min_disk_size": 182,
+        "name": "sb7",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "sba",
+        "size_gigabytes": 187,
+        "tags": []
+      },
+      "SNAPSHOT02": {
+        "created_at": "s10e",
+        "id": "SNAPSHOT02",
+        "min_disk_size": 272,
+        "name": "s111",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s114",
+        "size_gigabytes": 277,
+        "tags": []
+      }
+    }
+  },
+  "new": {
+    "snapshot": {
+      "snapshot_ref01": {
+        "created_at": "s168",
+        "min_disk_size": 362,
+        "name": "s16b",
+        "regions": [],
+        "resource_id": "RESOURCE01",
+        "resource_type": "s16e",
+        "size_gigabytes": 367,
+        "tags": []
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/snapshots/{snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

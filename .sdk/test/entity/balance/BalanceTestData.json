@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "balance": {
+      "BALANCE00": {
+        "account_balance": "s28",
+        "generated_at": "s29",
+        "month_to_date_balance": "s2a",
+        "month_to_date_usage": "s2b",
+        "id": "BALANCE00"
+      },
+      "BALANCE01": {
+        "account_balance": "s50",
+        "generated_at": "s51",
+        "month_to_date_balance": "s52",
+        "month_to_date_usage": "s53",
+        "id": "BALANCE01"
+      },
+      "BALANCE02": {
+        "account_balance": "s78",
+        "generated_at": "s79",
+        "month_to_date_balance": "s7a",
+        "month_to_date_usage": "s7b",
+        "id": "BALANCE02"
+      }
+    }
+  },
+  "new": {
+    "balance": {
+      "balance_ref01": {
+        "account_balance": "sa0",
+        "generated_at": "sa1",
+        "month_to_date_balance": "sa2",
+        "month_to_date_usage": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/customers/my/balance": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

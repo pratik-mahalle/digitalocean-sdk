@@ -1,0 +1,33 @@
+# BasicApiGetSimulationJourneyTrajectoryUrlOutputFlow
+
+main: kit: flow: BasicApiGetSimulationJourneyTrajectoryUrlOutputFlow:
+{
+  entity: "api_get_simulation_journey_trajectory_url_output",
+  kind: "basic",
+  name: "BasicApiGetSimulationJourneyTrajectoryUrlOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_simulation_journey_trajectory_url_output_ref01",
+        srcdatavar: "api_get_simulation_journey_trajectory_url_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_simulation_journey_trajectory_url_output01",
+        simulation_run_id: "simulation_run01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_simulation_journey_trajectory_url_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetSimulationJourneyTrajectoryUrlOutputFlow"
+}

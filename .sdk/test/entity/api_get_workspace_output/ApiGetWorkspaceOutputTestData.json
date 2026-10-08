@@ -1,0 +1,85 @@
+{
+  "existing": {
+    "api_get_workspace_output": {
+      "API_GET_WORKSPACE_OUTPUT00": {
+        "agent_uuids": [],
+        "agents": [],
+        "created_at": "s70",
+        "created_by": "s71",
+        "created_by_email": "s72",
+        "deleted_at": "s73",
+        "description": "s74",
+        "evaluation_test_cases": [],
+        "name": "s76",
+        "updated_at": "s77",
+        "uuid": "s78",
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_GET_WORKSPACE_OUTPUT00"
+      },
+      "API_GET_WORKSPACE_OUTPUT01": {
+        "agent_uuids": [],
+        "agents": [],
+        "created_at": "sde",
+        "created_by": "sdf",
+        "created_by_email": "se0",
+        "deleted_at": "se1",
+        "description": "se2",
+        "evaluation_test_cases": [],
+        "name": "se4",
+        "updated_at": "se5",
+        "uuid": "se6",
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_GET_WORKSPACE_OUTPUT01"
+      },
+      "API_GET_WORKSPACE_OUTPUT02": {
+        "agent_uuids": [],
+        "agents": [],
+        "created_at": "s14c",
+        "created_by": "s14d",
+        "created_by_email": "s14e",
+        "deleted_at": "s14f",
+        "description": "s150",
+        "evaluation_test_cases": [],
+        "name": "s152",
+        "updated_at": "s153",
+        "uuid": "s154",
+        "workspace_uuid": "WORKSPACE_UUID01",
+        "id": "API_GET_WORKSPACE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_workspace_output": {
+      "api_get_workspace_output_ref01": {
+        "agent_uuids": [],
+        "agents": [],
+        "created_at": "s1ba",
+        "created_by": "s1bb",
+        "created_by_email": "s1bc",
+        "deleted_at": "s1bd",
+        "description": "s1be",
+        "evaluation_test_cases": [],
+        "name": "s1c0",
+        "updated_at": "s1c1",
+        "uuid": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/workspaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/workspaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/workspaces/{workspace_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

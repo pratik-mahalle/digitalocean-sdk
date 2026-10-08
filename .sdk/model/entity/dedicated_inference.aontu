@@ -1,0 +1,685 @@
+# Entity: dedicated_inference
+
+main: kit: entity: dedicated_inference: {
+
+  alias: field: {}
+
+  fields: {
+    access_tokens: {
+      h: "Access Tokens"
+      n: "access_tokens"
+      r: false
+      sh: "Key-value pairs for provider tokens (e.g."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "When the Dedicated Inference was created."
+      t: "`$STRING`"
+    }
+    dedicated_inference: {
+      h: "Dedicated Inference"
+      n: "dedicated_inference"
+      r: false
+      sh: "A Dedicated Inference instance."
+      t: "`$OBJECT`"
+    }
+    endpoints: {
+      h: "Endpoints"
+      n: "endpoints"
+      r: false
+      ro: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "Unique ID of the Dedicated Inference."
+      t: "`$STRING`"
+    }
+    pending_deployment_spec: {
+      h: "Pending Deployment Spec"
+      n: "pending_deployment_spec"
+      r: false
+      sh: "Pending deployment when status is provisioning or updating."
+      t: "`$OBJECT`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      ro: true
+      sh: "DigitalOcean region where the Dedicated Inference is hosted."
+      t: "`$STRING`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: true
+      sh: "Structured configuration for a Dedicated Inference deployment."
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      ro: true
+      sh: "Current state of the Dedicated Inference."
+      t: "`$STRING`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: false
+      sh: "Access token for authenticating to Dedicated Inference endpoints."
+      t: "`$OBJECT`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      ro: true
+      sh: "When the Dedicated Inference was last updated."
+      t: "`$STRING`"
+    }
+    vpc_uuid: {
+      fo: "uuid"
+      h: "Vpc Uuid"
+      n: "vpc_uuid"
+      r: false
+      ro: true
+      sh: "VPC UUID of the Dedicated Inference."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dedicated_inference"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/dedicated-inferences/{dedicated_inference_id}/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/tokens"
+          q: {
+            "$action": "token"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.token`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/dedicated-inferences"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/dedicated-inferences"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dedicated_inference`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/{dedicated_inference_id}/accelerators"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "gpu-mi300x1-192gb"
+                k: "query"
+                n: "slug"
+                or: "slug"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/accelerators"
+          q: {
+            "$action": "accelerator"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "accelerators"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.accelerators`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/{dedicated_inference_id}/tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/tokens"
+          q: {
+            "$action": "token"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tokens`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "atl1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dedicated_inferences`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/{dedicated_inference_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dedicated_inference`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/{dedicated_inference_id}/ca"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/ca"
+          q: {
+            "$action": "ca"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ca"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/dedicated-inferences/{dedicated_inference_id}/tokens/{token_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "f11d4795-c1db-4ac3-9aa6-a0ea3c58877e"
+                k: "param"
+                n: "token_id"
+                or: "token_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/tokens/{token_id}"
+          q: {
+            exist: [
+              "id"
+              "token_id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "tokens"
+            }
+            {
+              var: "token_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/dedicated-inferences/{dedicated_inference_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/dedicated-inferences/{dedicated_inference_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              dedicated_inference_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.dedicated_inference`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

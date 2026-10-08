@@ -1,0 +1,33 @@
+# BasicApiUpdateKnowledgeBaseDataSourceOutputFlow
+
+main: kit: flow: BasicApiUpdateKnowledgeBaseDataSourceOutputFlow:
+{
+  entity: "api_update_knowledge_base_data_source_output",
+  kind: "basic",
+  name: "BasicApiUpdateKnowledgeBaseDataSourceOutputFlow",
+  step: [
+    {
+      d: {
+        knowledge_base_id: "knowledge_base01"
+      }
+
+      i: {
+        ref: "api_update_knowledge_base_data_source_output_ref01",
+        srcdatavar: "api_update_knowledge_base_data_source_output_ref01_data",
+        suffix: "_up0",
+        textfield: "bucket_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_knowledge_base_data_source_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateKnowledgeBaseDataSourceOutputFlow"
+}

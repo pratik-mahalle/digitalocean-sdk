@@ -1,0 +1,9 @@
+# BasicApiDeleteCustomModelOutputPublicFlow
+
+main: kit: flow: BasicApiDeleteCustomModelOutputPublicFlow:
+{
+  entity: "api_delete_custom_model_output_public",
+  kind: "basic",
+  name: "BasicApiDeleteCustomModelOutputPublicFlow",
+  "key$": "BasicApiDeleteCustomModelOutputPublicFlow"
+}

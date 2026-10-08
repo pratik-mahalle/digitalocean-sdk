@@ -1,0 +1,503 @@
+# Entity: billing
+
+main: kit: entity: billing: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: false
+      sh: "Amount of the billing history entry."
+      t: "`$STRING`"
+    }
+    current_page: {
+      h: "Current Page"
+      n: "current_page"
+      r: true
+      sh: "Current page number"
+      t: "`$INTEGER`"
+    }
+    data_points: {
+      h: "Data Points"
+      n: "data_points"
+      r: true
+      sh: "Array of billing data points, which are day-over-day changes in billing resource usage based on nightly invoice item estimates, for the requested period"
+      t: "`$ARRAY`"
+    }
+    date: {
+      fo: "date-time"
+      h: "Date"
+      n: "date"
+      r: false
+      sh: "Time the billing history entry occurred."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the billing history entry."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    invoice_id: {
+      h: "Invoice Id"
+      n: "invoice_id"
+      r: false
+      sh: "ID of the invoice associated with the billing history entry, if applicable."
+      t: "`$STRING`"
+    }
+    invoice_items: {
+      h: "Invoice Items"
+      n: "invoice_items"
+      r: false
+      t: "`$ARRAY`"
+    }
+    invoice_period: {
+      h: "Invoice Period"
+      n: "invoice_period"
+      r: false
+      sh: "Billing period of usage for which the invoice is issued, in `YYYY-MM` format."
+      t: "`$STRING`"
+    }
+    invoice_uuid: {
+      h: "Invoice Uuid"
+      n: "invoice_uuid"
+      r: false
+      sh: "UUID of the invoice associated with the billing history entry, if applicable."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 2
+      }
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: true
+      t: "`$ANY`"
+    }
+    total_items: {
+      h: "Total Items"
+      n: "total_items"
+      r: true
+      sh: "Total number of items available across all pages"
+      t: "`$INTEGER`"
+    }
+    total_pages: {
+      h: "Total Pages"
+      n: "total_pages"
+      r: true
+      sh: "Total number of pages available"
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of billing history entry."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Time the invoice was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "start_date"
+      "end_date"
+    ]
+    sep: "/"
+  }
+
+  name: "billing"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/customers/my/billing_history"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/customers/my/billing_history"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "billing_history"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.billing_history`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/customers/my/invoices"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/customers/my/invoices"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "invoices"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.invoices`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/billing/{account_urn}/insights/{start_date}/{end_date}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "do:team:12345678-1234-1234-1234-123456789012"
+                k: "param"
+                n: "account_urn"
+                or: "account_urn"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-01-31"
+                k: "param"
+                n: "end_date"
+                or: "end_date"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-01-01"
+                k: "param"
+                n: "start_date"
+                or: "start_date"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/billing/{account_urn}/insights/{start_date}/{end_date}"
+          q: {
+            exist: [
+              "account_urn"
+              "end_date"
+              "start_date"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "billing"
+            }
+            {
+              var: "account_urn"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              var: "start_date"
+            }
+            {
+              var: "end_date"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/customers/my/invoices/{invoice_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "22737513-0ea7-4206-8ceb-98a575af7681"
+                k: "param"
+                n: "invoice_uuid"
+                or: "invoice_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/customers/my/invoices/{invoice_uuid}"
+          q: {
+            exist: [
+              "invoice_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "invoices"
+            }
+            {
+              var: "invoice_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/customers/my/invoices/{invoice_uuid}/csv"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "22737513-0ea7-4206-8ceb-98a575af7681"
+                k: "param"
+                n: "invoice_uuid"
+                or: "invoice_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/customers/my/invoices/{invoice_uuid}/csv"
+          q: {
+            exist: [
+              "invoice_uuid"
+            ]
+          }
+          rs: {
+            kind: "raw"
+            media: "text/csv"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "invoices"
+            }
+            {
+              var: "invoice_uuid"
+            }
+            {
+              lit: "csv"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/customers/my/invoices/{invoice_uuid}/pdf"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "22737513-0ea7-4206-8ceb-98a575af7681"
+                k: "param"
+                n: "invoice_uuid"
+                or: "invoice_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/customers/my/invoices/{invoice_uuid}/pdf"
+          q: {
+            exist: [
+              "invoice_uuid"
+            ]
+          }
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/pdf"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "invoices"
+            }
+            {
+              var: "invoice_uuid"
+            }
+            {
+              lit: "pdf"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.insight")]
+  ]
+
+}

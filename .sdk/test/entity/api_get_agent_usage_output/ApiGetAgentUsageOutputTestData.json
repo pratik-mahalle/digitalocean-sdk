@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_get_agent_usage_output": {
+      "API_GET_AGENT_USAGE_OUTPUT00": {
+        "log_insights_usage": {},
+        "usage": {},
+        "agent_id": "AGENT01",
+        "id": "API_GET_AGENT_USAGE_OUTPUT00"
+      },
+      "API_GET_AGENT_USAGE_OUTPUT01": {
+        "log_insights_usage": {},
+        "usage": {},
+        "agent_id": "AGENT01",
+        "id": "API_GET_AGENT_USAGE_OUTPUT01"
+      },
+      "API_GET_AGENT_USAGE_OUTPUT02": {
+        "log_insights_usage": {},
+        "usage": {},
+        "agent_id": "AGENT01",
+        "id": "API_GET_AGENT_USAGE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_agent_usage_output": {
+      "api_get_agent_usage_output_ref01": {
+        "log_insights_usage": {},
+        "usage": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/agents/{uuid}/usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

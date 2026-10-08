@@ -1,0 +1,23 @@
+# BasicVectordbRestoreBackupFlow
+
+main: kit: flow: BasicVectordbRestoreBackupFlow:
+{
+  entity: "vectordb_restore_backup",
+  kind: "basic",
+  name: "BasicVectordbRestoreBackupFlow",
+  step: [
+    {
+      i: {
+        ref: "vectordb_restore_backup_ref01"
+      }
+
+      m: {
+        backup_id: "backup01",
+        vector_database_id: "vector_database01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVectordbRestoreBackupFlow"
+}

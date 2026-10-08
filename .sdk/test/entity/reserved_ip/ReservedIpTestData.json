@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "reserved_ip": {
+      "RESERVED_IP00": {
+        "droplet": "s50",
+        "id": "RESERVED_IP00",
+        "ip": "s52",
+        "links": {},
+        "locked": true,
+        "project_id": "PROJECT01",
+        "region": "s56",
+        "reserved_ip": {}
+      },
+      "RESERVED_IP01": {
+        "droplet": "sa0",
+        "id": "RESERVED_IP01",
+        "ip": "sa2",
+        "links": {},
+        "locked": true,
+        "project_id": "PROJECT01",
+        "region": "sa6",
+        "reserved_ip": {}
+      },
+      "RESERVED_IP02": {
+        "droplet": "sf0",
+        "id": "RESERVED_IP02",
+        "ip": "sf2",
+        "links": {},
+        "locked": true,
+        "project_id": "PROJECT01",
+        "region": "sf6",
+        "reserved_ip": {}
+      }
+    }
+  },
+  "new": {
+    "reserved_ip": {
+      "reserved_ip_ref01": {
+        "droplet": "s140",
+        "ip": "s142",
+        "links": {},
+        "locked": true,
+        "project_id": "PROJECT01",
+        "region": "s146",
+        "reserved_ip": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/reserved_ips": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/reserved_ips": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/reserved_ips/{reserved_ip}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/reserved_ips/{reserved_ip}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+# BasicApiDeleteKnowledgeBaseOutputFlow
+
+main: kit: flow: BasicApiDeleteKnowledgeBaseOutputFlow:
+{
+  entity: "api_delete_knowledge_base_output",
+  kind: "basic",
+  name: "BasicApiDeleteKnowledgeBaseOutputFlow",
+  "key$": "BasicApiDeleteKnowledgeBaseOutputFlow"
+}

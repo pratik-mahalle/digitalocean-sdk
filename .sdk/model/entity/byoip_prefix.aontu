@@ -1,0 +1,436 @@
+# Entity: byoip_prefix
+
+main: kit: entity: byoip_prefix: {
+
+  alias: field: {}
+
+  fields: {
+    advertise: {
+      h: "Advertise"
+      n: "advertise"
+      r: false
+      sh: "Whether the BYOIP prefix should be advertised"
+      t: "`$BOOLEAN`"
+    }
+    advertised: {
+      h: "Advertised"
+      n: "advertised"
+      r: false
+      sh: "Whether the BYOIP prefix is being advertised"
+      t: "`$BOOLEAN`"
+    }
+    failure_reason: {
+      h: "Failure Reason"
+      n: "failure_reason"
+      r: false
+      sh: "Reason for failure, if applicable"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: false
+      sh: "Whether the BYOIP prefix is locked"
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the BYOIP prefix"
+      t: "`$STRING`"
+    }
+    prefix: {
+      h: "Prefix"
+      n: "prefix"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The IP prefix in CIDR notation"
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "The ID of the project associated with the BYOIP prefix"
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Region where the BYOIP prefix is located"
+      t: "`$STRING`"
+    }
+    signature: {
+      h: "Signature"
+      n: "signature"
+      r: true
+      sh: "The signature hash for the prefix creation request"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Status of the BYOIP prefix"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique identifier for the BYOIP prefix"
+      t: "`$STRING`"
+    }
+    validations: {
+      h: "Validations"
+      n: "validations"
+      r: false
+      sh: "List of validation statuses for the BYOIP prefix"
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "byoip_prefix"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/byoip_prefixes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/byoip_prefixes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/byoip_prefixes/{byoip_prefix_uuid}/ips"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                k: "param"
+                n: "id"
+                or: "byoip_prefix_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/byoip_prefixes/{byoip_prefix_uuid}/ips"
+          q: {
+            "$action": "ips"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              byoip_prefix_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "ips"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.ips`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/byoip_prefixes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/byoip_prefixes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.byoip_prefixes`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/byoip_prefixes/{byoip_prefix_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                k: "param"
+                n: "id"
+                or: "byoip_prefix_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/byoip_prefixes/{byoip_prefix_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              byoip_prefix_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.byoip_prefix`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/byoip_prefixes/{byoip_prefix_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                k: "param"
+                n: "id"
+                or: "byoip_prefix_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/byoip_prefixes/{byoip_prefix_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              byoip_prefix_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/byoip_prefixes/{byoip_prefix_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                k: "param"
+                n: "id"
+                or: "byoip_prefix_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/byoip_prefixes/{byoip_prefix_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              byoip_prefix_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "byoip_prefixes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.byoip_prefix`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

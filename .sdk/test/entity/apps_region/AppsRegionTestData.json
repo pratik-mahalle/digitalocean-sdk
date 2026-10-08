@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "apps_region": {
+      "APPS_REGION00": {
+        "continent": "s50",
+        "data_centers": [],
+        "default": true,
+        "disabled": false,
+        "flag": "s54",
+        "label": "s55",
+        "reason": "s56",
+        "slug": "s57"
+      },
+      "APPS_REGION01": {
+        "continent": "sa0",
+        "data_centers": [],
+        "default": true,
+        "disabled": false,
+        "flag": "sa4",
+        "label": "sa5",
+        "reason": "sa6",
+        "slug": "sa7"
+      },
+      "APPS_REGION02": {
+        "continent": "sf0",
+        "data_centers": [],
+        "default": true,
+        "disabled": false,
+        "flag": "sf4",
+        "label": "sf5",
+        "reason": "sf6",
+        "slug": "sf7"
+      }
+    }
+  },
+  "new": {
+    "apps_region": {
+      "apps_region_ref01": {
+        "continent": "s140",
+        "data_centers": [],
+        "default": true,
+        "disabled": false,
+        "flag": "s144",
+        "label": "s145",
+        "reason": "s146",
+        "slug": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/regions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

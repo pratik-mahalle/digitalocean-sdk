@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "vector_database": {
+      "VECTOR_DATABASE00": {
+        "id": "VECTOR_DATABASE00"
+      },
+      "VECTOR_DATABASE01": {
+        "id": "VECTOR_DATABASE01"
+      },
+      "VECTOR_DATABASE02": {
+        "id": "VECTOR_DATABASE02"
+      }
+    }
+  },
+  "new": {
+    "vector_database": {
+      "vector_database_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/vector-databases/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

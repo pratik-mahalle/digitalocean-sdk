@@ -1,0 +1,22 @@
+# BasicListProviderHealthFlow
+
+main: kit: flow: BasicListProviderHealthFlow:
+{
+  entity: "list_provider_health",
+  kind: "basic",
+  name: "BasicListProviderHealthFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_provider_health_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListProviderHealthFlow"
+}

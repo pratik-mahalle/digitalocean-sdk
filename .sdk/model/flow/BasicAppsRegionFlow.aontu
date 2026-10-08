@@ -1,0 +1,22 @@
+# BasicAppsRegionFlow
+
+main: kit: flow: BasicAppsRegionFlow:
+{
+  entity: "apps_region",
+  kind: "basic",
+  name: "BasicAppsRegionFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "apps_region_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppsRegionFlow"
+}

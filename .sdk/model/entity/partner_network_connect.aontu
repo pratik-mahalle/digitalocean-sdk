@@ -1,0 +1,594 @@
+# Entity: partner_network_connect
+
+main: kit: entity: partner_network_connect: {
+
+  alias: field: {}
+
+  fields: {
+    bgp: {
+      h: "Bgp"
+      n: "bgp"
+      r: false
+      sh: "The BGP configuration for the partner attachment."
+      t: "`$OBJECT`"
+    }
+    bgp_auth_key: {
+      h: "Bgp Auth Key"
+      n: "bgp_auth_key"
+      r: false
+      t: "`$OBJECT`"
+    }
+    children: {
+      h: "Children"
+      n: "children"
+      r: false
+      ro: true
+      sh: "An array of associated partner attachment UUIDs."
+      t: "`$ARRAY`"
+    }
+    cidr: {
+      h: "Cidr"
+      n: "cidr"
+      r: false
+      ro: true
+      sh: "A CIDR block representing a remote route."
+      t: "`$STRING`"
+    }
+    connection_bandwidth_in_mbps: {
+      h: "Connection Bandwidth In Mbps"
+      n: "connection_bandwidth_in_mbps"
+      r: false
+      sh: "The bandwidth (in Mbps) of the connection."
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "string"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference the partner attachment."
+      t: "`$STRING`"
+    }
+    naas_provider: {
+      h: "Naas Provider"
+      n: "naas_provider"
+      r: false
+      sh: "The Network as a Service (NaaS) provider for the partner attachment."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the partner attachment."
+      t: "`$STRING`"
+    }
+    parent_uuid: {
+      h: "Parent Uuid"
+      n: "parent_uuid"
+      r: false
+      ro: true
+      sh: "Associated partner attachment UUID"
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "The region where the partner attachment is located."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      ro: true
+      sh: "The current operational state of the attachment."
+      t: "`$STRING`"
+    }
+    vpc_ids: {
+      h: "Vpc Ids"
+      n: "vpc_ids"
+      r: false
+      sh: "An array of VPC network IDs."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "partner_network_connect"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/partner_network_connect/attachments/{pa_id}/service_key"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/partner_network_connect/attachments/{pa_id}/service_key"
+          q: {
+            "$action": "service_key"
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+            {
+              lit: "service_key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/partner_network_connect/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/partner_network_connect/attachments"
+          q: {
+            "$action": "attachment"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.partner_attachment`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/partner_network_connect/attachments/{pa_id}/remote_routes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/partner_network_connect/attachments/{pa_id}/remote_routes"
+          q: {
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+            {
+              lit: "remote_routes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.remote_routes`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/partner_network_connect/attachments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/partner_network_connect/attachments"
+          q: {
+            "$action": "attachment"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.partner_attachments`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/partner_network_connect/attachments/{pa_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/partner_network_connect/attachments/{pa_id}"
+          q: {
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.partner_attachment`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key"
+          q: {
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+            {
+              lit: "bgp_auth_key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/partner_network_connect/attachments/{pa_id}/service_key"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/partner_network_connect/attachments/{pa_id}/service_key"
+          q: {
+            "$action": "service_key"
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+            {
+              lit: "service_key"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/partner_network_connect/attachments/{pa_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/partner_network_connect/attachments/{pa_id}"
+          q: {
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.partner_attachment`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/partner_network_connect/attachments/{pa_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "pa_id"
+                or: "pa_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/partner_network_connect/attachments/{pa_id}"
+          q: {
+            exist: [
+              "pa_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "partner_network_connect"
+            }
+            {
+              lit: "attachments"
+            }
+            {
+              var: "pa_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.partner_attachment`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

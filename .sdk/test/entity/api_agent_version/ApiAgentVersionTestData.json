@@ -1,0 +1,119 @@
+{
+  "existing": {
+    "api_agent_version": {
+      "API_AGENT_VERSION00": {
+        "agent_uuid": "se6",
+        "attached_child_agents": [],
+        "attached_functions": [],
+        "attached_guardrails": [],
+        "attached_knowledgebases": [],
+        "can_rollback": false,
+        "created_at": "sec",
+        "created_by_email": "sed",
+        "currently_applied": true,
+        "description": "sef",
+        "id": "API_AGENT_VERSION00",
+        "instruction": "sf1",
+        "k": 242,
+        "max_tokens": 243,
+        "model_name": "sf4",
+        "name": "sf5",
+        "provide_citations": true,
+        "retrieval_method": "sf7",
+        "tags": [],
+        "temperature": 249,
+        "top_p": 250,
+        "trigger_action": "sfb",
+        "version_hash": "sfc",
+        "agent_id": "AGENT01"
+      },
+      "API_AGENT_VERSION01": {
+        "agent_uuid": "s1cc",
+        "attached_child_agents": [],
+        "attached_functions": [],
+        "attached_guardrails": [],
+        "attached_knowledgebases": [],
+        "can_rollback": false,
+        "created_at": "s1d2",
+        "created_by_email": "s1d3",
+        "currently_applied": true,
+        "description": "s1d5",
+        "id": "API_AGENT_VERSION01",
+        "instruction": "s1d7",
+        "k": 472,
+        "max_tokens": 473,
+        "model_name": "s1da",
+        "name": "s1db",
+        "provide_citations": true,
+        "retrieval_method": "s1dd",
+        "tags": [],
+        "temperature": 479,
+        "top_p": 480,
+        "trigger_action": "s1e1",
+        "version_hash": "s1e2",
+        "agent_id": "AGENT01"
+      },
+      "API_AGENT_VERSION02": {
+        "agent_uuid": "s2b2",
+        "attached_child_agents": [],
+        "attached_functions": [],
+        "attached_guardrails": [],
+        "attached_knowledgebases": [],
+        "can_rollback": false,
+        "created_at": "s2b8",
+        "created_by_email": "s2b9",
+        "currently_applied": true,
+        "description": "s2bb",
+        "id": "API_AGENT_VERSION02",
+        "instruction": "s2bd",
+        "k": 702,
+        "max_tokens": 703,
+        "model_name": "s2c0",
+        "name": "s2c1",
+        "provide_citations": true,
+        "retrieval_method": "s2c3",
+        "tags": [],
+        "temperature": 709,
+        "top_p": 710,
+        "trigger_action": "s2c7",
+        "version_hash": "s2c8",
+        "agent_id": "AGENT01"
+      }
+    }
+  },
+  "new": {
+    "api_agent_version": {
+      "api_agent_version_ref01": {
+        "agent_uuid": "s398",
+        "attached_child_agents": [],
+        "attached_functions": [],
+        "attached_guardrails": [],
+        "attached_knowledgebases": [],
+        "can_rollback": false,
+        "created_at": "s39e",
+        "created_by_email": "s39f",
+        "currently_applied": true,
+        "description": "s3a1",
+        "instruction": "s3a3",
+        "k": 932,
+        "max_tokens": 933,
+        "model_name": "s3a6",
+        "name": "s3a7",
+        "provide_citations": true,
+        "retrieval_method": "s3a9",
+        "tags": [],
+        "temperature": 939,
+        "top_p": 940,
+        "trigger_action": "s3ad",
+        "version_hash": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/agents/{uuid}/versions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

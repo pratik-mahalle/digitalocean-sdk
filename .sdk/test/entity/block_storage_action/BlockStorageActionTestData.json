@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "block_storage_action": {
+      "BLOCK_STORAGE_ACTION00": {
+        "completed_at": "s5a",
+        "id": "BLOCK_STORAGE_ACTION00",
+        "region": {},
+        "region_slug": "s5d",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s5f",
+        "started_at": "s60",
+        "status": "s61",
+        "type": "s62",
+        "volume_id": "VOLUME01"
+      },
+      "BLOCK_STORAGE_ACTION01": {
+        "completed_at": "sb4",
+        "id": "BLOCK_STORAGE_ACTION01",
+        "region": {},
+        "region_slug": "sb7",
+        "resource_id": "RESOURCE01",
+        "resource_type": "sb9",
+        "started_at": "sba",
+        "status": "sbb",
+        "type": "sbc",
+        "volume_id": "VOLUME01"
+      },
+      "BLOCK_STORAGE_ACTION02": {
+        "completed_at": "s10e",
+        "id": "BLOCK_STORAGE_ACTION02",
+        "region": {},
+        "region_slug": "s111",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s113",
+        "started_at": "s114",
+        "status": "s115",
+        "type": "s116",
+        "volume_id": "VOLUME01"
+      }
+    }
+  },
+  "new": {
+    "block_storage_action": {
+      "block_storage_action_ref01": {
+        "completed_at": "s168",
+        "region": {},
+        "region_slug": "s16b",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s16d",
+        "started_at": "s16e",
+        "status": "s16f",
+        "type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/volumes/{volume_id}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/volumes/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes/{volume_id}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/volumes/{volume_id}/actions/{action_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

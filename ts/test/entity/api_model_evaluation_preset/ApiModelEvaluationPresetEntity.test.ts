@@ -1,0 +1,228 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { DigitaloceanSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('ApiModelEvaluationPresetEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when DIGITALOCEAN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DIGITALOCEAN_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = DigitaloceanSDK.test()
+    const ent = testsdk.ApiModelEvaluationPreset()
+    assert(null != ent)
+  })
+
+
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('api_model_evaluation_preset hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of DigitaloceanSDK.test(offline).ApiModelEvaluationPreset().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of DigitaloceanSDK.test(offline).ApiModelEvaluationPreset()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = DigitaloceanSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.ApiModelEvaluationPreset().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of DigitaloceanSDK.test().ApiModelEvaluationPreset().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new DigitaloceanSDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.ApiModelEvaluationPreset().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.ApiModelEvaluationPreset().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = DigitaloceanSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.ApiModelEvaluationPreset().list({"candidate_model_name":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.DIGITALOCEAN_TEST_LIVE
+    for (const op of ['list', 'load']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_model_evaluation_preset.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"candidate_inference_config":{"a":true,"h":"Candidate Inference Config","n":"candidate_inference_config","r":false,"sh":"Inference configuration for the candidate model during evaluation.","t":"`$OBJECT`","key$":"candidate_inference_config","index$":0},"candidate_model_name":{"a":true,"h":"Candidate Model Name","n":"candidate_model_name","r":false,"sh":"Model slug used to call the candidate model API.","t":"`$STRING`","key$":"candidate_model_name","index$":1},"candidate_model_source":{"a":true,"h":"Candidate Model Source","n":"candidate_model_source","r":false,"sh":"Whether the candidate is a served model (serverless platform, a dedicated deployment, or a model router) or an OHS-hosted agent config.","t":"`$STRING`","key$":"candidate_model_source","index$":2},"candidate_model_uuid":{"a":true,"h":"Candidate Model Uuid","n":"candidate_model_uuid","r":false,"sh":"UUID of the candidate model stored on this preset.","t":"`$STRING`","key$":"candidate_model_uuid","index$":3},"candidate_system_prompt":{"a":true,"h":"Candidate System Prompt","n":"candidate_system_prompt","r":false,"sh":"System prompt / instructions to send to the candidate model.","t":"`$STRING`","key$":"candidate_system_prompt","index$":4},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":false,"sh":"Timestamp when the preset was created.","t":"`$STRING`","key$":"created_at","index$":5},"dataset_name":{"a":true,"h":"Dataset Name","n":"dataset_name","r":false,"sh":"Display name of the dataset stored on this preset.","t":"`$STRING`","key$":"dataset_name","index$":6},"dataset_uuid":{"a":true,"h":"Dataset Uuid","n":"dataset_uuid","r":false,"sh":"UUID of the dataset stored on this preset.","t":"`$STRING`","key$":"dataset_uuid","index$":7},"eval_preset_uuid":{"a":true,"h":"Eval Preset Uuid","n":"eval_preset_uuid","r":false,"sh":"UUID of the evaluation preset.","t":"`$STRING`","key$":"eval_preset_uuid","index$":8},"id":{"a":true,"h":"Id","n":"id","r":false,"t":"`$STRING`","key$":"id","index$":9},"judge_model_name":{"a":true,"h":"Judge Model Name","n":"judge_model_name","r":false,"sh":"Display name of the judge model stored on this preset.","t":"`$STRING`","key$":"judge_model_name","index$":10},"judge_model_uuid":{"a":true,"h":"Judge Model Uuid","n":"judge_model_uuid","r":false,"sh":"UUID of the judge model stored on this preset.","t":"`$STRING`","key$":"judge_model_uuid","index$":11},"metrics":{"a":true,"h":"Metrics","n":"metrics","r":false,"sh":"Metrics selected for this preset.","t":"`$ARRAY`","key$":"metrics","index$":12},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Name of the evaluation preset.","t":"`$STRING`","key$":"name","index$":13},"saved_sections":{"a":true,"h":"Saved Sections","n":"saved_sections","r":false,"sh":"Sections of the inline evaluation config that were persisted when this preset was created.","t":"`$ARRAY`","key$":"saved_sections","index$":14},"star_metric":{"a":true,"h":"Star Metric","n":"star_metric","r":false,"t":"`$OBJECT`","key$":"star_metric","index$":15}},"id":{"field":"id","name":"id"},"name":"api_model_evaluation_preset","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v2/gen-ai/model_evaluation_presets","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/v2/gen-ai/model_evaluation_presets","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v2"},{"lit":"gen-ai"},{"lit":"model_evaluation_presets"}],"t":{"req":"`reqdata`","res":"`body.presets`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"\"123e4567-e89b-12d3-a456-426614174000\"","k":"param","n":"id","or":"eval_preset_uuid","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}","q":{"exist":["id"]},"r":{"param":{"eval_preset_uuid":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v2"},{"lit":"gen-ai"},{"lit":"model_evaluation_presets"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body.preset`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"api_model_evaluation_preset","name__orig":"api_model_evaluation_preset","Name":"ApiModelEvaluationPreset","name_":"api_model_evaluation_preset","name-":"api-model-evaluation-preset","NAME":"API_MODEL_EVALUATION_PRESET","index$":72}, {"active":true,"entity":"api_model_evaluation_preset","key$":"BasicApiModelEvaluationPresetFlow","kind":"basic","name":"BasicApiModelEvaluationPresetFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"api_model_evaluation_preset_ref01"}}],"index$":0},{"a":true,"d":{},"i":{"ref":"api_model_evaluation_preset_ref01","srcdatavar":"api_model_evaluation_preset_ref01_data","suffix":"_dt0"},"m":{"id":"api_model_evaluation_preset01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-api_model_evaluation_preset_ref01"}}],"index$":1}]}, 'ApiModelEvaluationPreset', {"GET /v2/gen-ai/model_evaluation_presets":{"protocol":"http","parameters":[]},"GET /v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}":{"protocol":"http","parameters":[{"description":"UUID of the evaluation preset.","example":"\"123e4567-e89b-12d3-a456-426614174000\"","in":"path","name":"eval_preset_uuid","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let api_model_evaluation_preset_ref01_data = Object.values(setup.data.existing.api_model_evaluation_preset)[0] as any
+
+    // LIST
+    const api_model_evaluation_preset_ref01_ent = client.ApiModelEvaluationPreset()
+    const api_model_evaluation_preset_ref01_match: any = {}
+
+    const api_model_evaluation_preset_ref01_list = (await api_model_evaluation_preset_ref01_ent.list(api_model_evaluation_preset_ref01_match)).map((e: any) => e.data())
+
+
+    // LOAD
+    const api_model_evaluation_preset_ref01_match_dt0: any = {}
+    api_model_evaluation_preset_ref01_match_dt0.id = api_model_evaluation_preset_ref01_data.id
+    const api_model_evaluation_preset_ref01_data_dt0 = (await api_model_evaluation_preset_ref01_ent.load(api_model_evaluation_preset_ref01_match_dt0)).data()
+    assert(api_model_evaluation_preset_ref01_data_dt0.id === api_model_evaluation_preset_ref01_data.id)
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/api_model_evaluation_preset/ApiModelEvaluationPresetTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = DigitaloceanSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['api_model_evaluation_preset01','api_model_evaluation_preset02','api_model_evaluation_preset03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'DIGITALOCEAN_TEST_API_MODEL_EVALUATION_PRESET_ENTID': idmap,
+    'DIGITALOCEAN_TEST_LIVE': 'FALSE',
+    'DIGITALOCEAN_TEST_EXPLAIN': 'FALSE',
+    'DIGITALOCEAN_APIKEY': '',
+  })
+
+  idmap = env['DIGITALOCEAN_TEST_API_MODEL_EVALUATION_PRESET_ENTID']
+
+  const live = 'TRUE' === env.DIGITALOCEAN_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['DIGITALOCEAN_TEST_API_MODEL_EVALUATION_PRESET_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new DigitaloceanSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.DIGITALOCEAN_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.DIGITALOCEAN_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

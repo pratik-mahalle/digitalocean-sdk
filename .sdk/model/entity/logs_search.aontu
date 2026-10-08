@@ -1,0 +1,115 @@
+# Entity: logs_search
+
+main: kit: entity: logs_search: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: false
+      sh: "Matching log records."
+      t: "`$ARRAY`"
+    }
+    filter: {
+      h: "Filter"
+      n: "filter"
+      r: false
+      sh: "A boolean filter tree for logs queries."
+      t: "`$OBJECT`"
+    }
+    order_by: {
+      h: "Order By"
+      n: "order_by"
+      r: false
+      sh: "Sort clauses applied to the result set."
+      t: "`$ARRAY`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: false
+      sh: "Pagination response."
+      t: "`$OBJECT`"
+    }
+    time_range: {
+      h: "Time Range"
+      n: "time_range"
+      r: true
+      sh: "An inclusive query time window."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "logs_search"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/query/{region}/logs/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/insights/query/{region}/logs/search"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "logs"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

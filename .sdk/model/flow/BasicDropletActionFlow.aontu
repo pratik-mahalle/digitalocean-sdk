@@ -1,0 +1,61 @@
+# BasicDropletActionFlow
+
+main: kit: flow: BasicDropletActionFlow:
+{
+  entity: "droplet_action",
+  kind: "basic",
+  name: "BasicDropletActionFlow",
+  step: [
+    {
+      i: {
+        ref: "droplet_action_ref01"
+      }
+
+      m: {
+        droplet_id: "droplet01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        droplet_id: "droplet01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "droplet_action_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "droplet_action_ref01",
+        srcdatavar: "droplet_action_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        droplet_id: "droplet01",
+        id: "droplet_action01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-droplet_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDropletActionFlow"
+}

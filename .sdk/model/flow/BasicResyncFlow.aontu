@@ -1,0 +1,22 @@
+# BasicResyncFlow
+
+main: kit: flow: BasicResyncFlow:
+{
+  entity: "resync",
+  kind: "basic",
+  name: "BasicResyncFlow",
+  step: [
+    {
+      i: {
+        ref: "resync_ref01"
+      }
+
+      m: {
+        server_ref: "server_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicResyncFlow"
+}

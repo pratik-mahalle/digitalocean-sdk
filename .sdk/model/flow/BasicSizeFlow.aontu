@@ -1,0 +1,22 @@
+# BasicSizeFlow
+
+main: kit: flow: BasicSizeFlow:
+{
+  entity: "size",
+  kind: "basic",
+  name: "BasicSizeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "size_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSizeFlow"
+}

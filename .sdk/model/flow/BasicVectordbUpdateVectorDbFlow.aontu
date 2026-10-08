@@ -1,0 +1,29 @@
+# BasicVectordbUpdateVectorDbFlow
+
+main: kit: flow: BasicVectordbUpdateVectorDbFlow:
+{
+  entity: "vectordb_update_vector_db",
+  kind: "basic",
+  name: "BasicVectordbUpdateVectorDbFlow",
+  step: [
+    {
+      i: {
+        ref: "vectordb_update_vector_db_ref01",
+        srcdatavar: "vectordb_update_vector_db_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vectordb_update_vector_db_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVectordbUpdateVectorDbFlow"
+}

@@ -1,0 +1,242 @@
+# Entity: api_delete_evaluation_dataset_output
+
+main: kit: entity: api_delete_evaluation_dataset_output: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Time created at."
+      t: "`$STRING`"
+    }
+    dataset_name: {
+      h: "Dataset Name"
+      n: "dataset_name"
+      r: false
+      sh: "Name of the dataset."
+      t: "`$STRING`"
+    }
+    dataset_paradigm: {
+      h: "Dataset Paradigm"
+      n: "dataset_paradigm"
+      r: false
+      sh: "EvaluationDatasetParadigm is the row/content shape of a dataset, orthogonal to the surface in EvaluationDatasetType (e.g."
+      t: "`$STRING`"
+    }
+    dataset_type: {
+      h: "Dataset Type"
+      n: "dataset_type"
+      r: false
+      t: "`$STRING`"
+    }
+    dataset_uuid: {
+      h: "Dataset Uuid"
+      n: "dataset_uuid"
+      r: false
+      sh: "UUID of the dataset."
+      t: "`$STRING`"
+    }
+    evaluation_dataset_uuid: {
+      h: "Evaluation Dataset Uuid"
+      n: "evaluation_dataset_uuid"
+      r: false
+      sh: "Evaluation dataset uuid."
+      t: "`$STRING`"
+    }
+    file_size: {
+      fo: "uint64"
+      h: "File Size"
+      n: "file_size"
+      r: false
+      sh: "The size of the dataset uploaded file in bytes."
+      t: "`$STRING`"
+    }
+    file_upload_dataset: {
+      h: "File Upload Dataset"
+      n: "file_upload_dataset"
+      r: false
+      sh: "File to upload as data source for knowledge base."
+      t: "`$OBJECT`"
+    }
+    has_ground_truth: {
+      h: "Has Ground Truth"
+      n: "has_ground_truth"
+      r: false
+      sh: "Does the dataset have a ground truth column?"
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the agent evaluation dataset."
+      t: "`$STRING`"
+    }
+    row_count: {
+      fo: "int64"
+      h: "Row Count"
+      n: "row_count"
+      r: false
+      sh: "Number of rows in the dataset."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "api_delete_evaluation_dataset_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/evaluation_datasets"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/evaluation_datasets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_datasets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_datasets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "EVALUATION_DATASET_PARADIGM_SINGLE_TURN"
+                k: "query"
+                n: "dataset_paradigm"
+                or: "dataset_paradigm"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "EVALUATION_DATASET_TYPE_UNKNOWN"
+                k: "query"
+                n: "dataset_type"
+                or: "dataset_type"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "has_ground_truth"
+                or: "has_ground_truth"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_datasets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_datasets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.evaluation_datasets`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/evaluation_datasets/{dataset_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "dataset_uuid"
+                or: "dataset_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/evaluation_datasets/{dataset_uuid}"
+          q: {
+            exist: [
+              "dataset_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_datasets"
+            }
+            {
+              var: "dataset_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

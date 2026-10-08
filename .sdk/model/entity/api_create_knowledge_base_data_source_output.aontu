@@ -1,0 +1,188 @@
+# Entity: api_create_knowledge_base_data_source_output
+
+main: kit: entity: api_create_knowledge_base_data_source_output: {
+
+  alias: field: {}
+
+  fields: {
+    aws_data_source: {
+      h: "Aws Data Source"
+      n: "aws_data_source"
+      r: false
+      sh: "AWS S3 Data Source for Display"
+      t: "`$OBJECT`"
+    }
+    bucket_name: {
+      h: "Bucket Name"
+      n: "bucket_name"
+      r: false
+      sh: "Name of storage bucket - Deprecated, moved to data_source_details"
+      t: "`$STRING`"
+    }
+    chunking_algorithm: {
+      h: "Chunking Algorithm"
+      n: "chunking_algorithm"
+      r: false
+      t: "`$STRING`"
+    }
+    chunking_options: {
+      h: "Chunking Options"
+      n: "chunking_options"
+      r: false
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date / time"
+      t: "`$STRING`"
+    }
+    dropbox_data_source: {
+      h: "Dropbox Data Source"
+      n: "dropbox_data_source"
+      r: false
+      sh: "Dropbox Data Source for Display"
+      t: "`$OBJECT`"
+    }
+    file_upload_data_source: {
+      h: "File Upload Data Source"
+      n: "file_upload_data_source"
+      r: false
+      sh: "File to upload as data source for knowledge base."
+      t: "`$OBJECT`"
+    }
+    google_drive_data_source: {
+      h: "Google Drive Data Source"
+      n: "google_drive_data_source"
+      r: false
+      sh: "Google Drive Data Source for Display"
+      t: "`$OBJECT`"
+    }
+    item_path: {
+      h: "Item Path"
+      n: "item_path"
+      r: false
+      sh: "Path of folder or object in bucket - Deprecated, moved to data_source_details"
+      t: "`$STRING`"
+    }
+    knowledge_base_uuid: {
+      h: "Knowledge Base Uuid"
+      n: "knowledge_base_uuid"
+      r: false
+      sh: "Knowledge base id"
+      t: "`$STRING`"
+    }
+    last_datasource_indexing_job: {
+      h: "Last Datasource Indexing Job"
+      n: "last_datasource_indexing_job"
+      r: false
+      t: "`$OBJECT`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "Region code - Deprecated, moved to data_source_details"
+      t: "`$STRING`"
+    }
+    spaces_data_source: {
+      h: "Spaces Data Source"
+      n: "spaces_data_source"
+      r: false
+      sh: "Spaces Bucket Data Source"
+      t: "`$OBJECT`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Last modified"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id of knowledge base"
+      t: "`$STRING`"
+    }
+    web_crawler_data_source: {
+      h: "Web Crawler Data Source"
+      n: "web_crawler_data_source"
+      r: false
+      sh: "WebCrawlerDataSource"
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "api_create_knowledge_base_data_source_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "knowledge_base_id"
+                or: "knowledge_base_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources"
+          q: {
+            exist: [
+              "knowledge_base_id"
+            ]
+          }
+          r: {
+            param: {
+              knowledge_base_uuid: "knowledge_base_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              var: "knowledge_base_id"
+            }
+            {
+              lit: "data_sources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.knowledge_base_data_source`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

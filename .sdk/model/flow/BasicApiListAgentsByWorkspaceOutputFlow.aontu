@@ -1,0 +1,26 @@
+# BasicApiListAgentsByWorkspaceOutputFlow
+
+main: kit: flow: BasicApiListAgentsByWorkspaceOutputFlow:
+{
+  entity: "api_list_agents_by_workspace_output",
+  kind: "basic",
+  name: "BasicApiListAgentsByWorkspaceOutputFlow",
+  step: [
+    {
+      m: {
+        workspace_id: "workspace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_agents_by_workspace_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListAgentsByWorkspaceOutputFlow"
+}

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_get_anthropic_api_key_output": {
+      "API_GET_ANTHROPIC_API_KEY_OUTPUT00": {
+        "created_at": "s3c",
+        "created_by": "s3d",
+        "deleted_at": "s3e",
+        "name": "s3f",
+        "updated_at": "s40",
+        "uuid": "s41",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_ANTHROPIC_API_KEY_OUTPUT00"
+      },
+      "API_GET_ANTHROPIC_API_KEY_OUTPUT01": {
+        "created_at": "s78",
+        "created_by": "s79",
+        "deleted_at": "s7a",
+        "name": "s7b",
+        "updated_at": "s7c",
+        "uuid": "s7d",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_ANTHROPIC_API_KEY_OUTPUT01"
+      },
+      "API_GET_ANTHROPIC_API_KEY_OUTPUT02": {
+        "created_at": "sb4",
+        "created_by": "sb5",
+        "deleted_at": "sb6",
+        "name": "sb7",
+        "updated_at": "sb8",
+        "uuid": "sb9",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_ANTHROPIC_API_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_anthropic_api_key_output": {
+      "api_get_anthropic_api_key_output_ref01": {
+        "created_at": "sf0",
+        "created_by": "sf1",
+        "deleted_at": "sf2",
+        "name": "sf3",
+        "updated_at": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/anthropic/keys/{api_key_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

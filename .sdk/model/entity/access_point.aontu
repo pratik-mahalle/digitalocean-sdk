@@ -1,0 +1,344 @@
+# Entity: access_point
+
+main: kit: entity: access_point: {
+
+  alias: field: {}
+
+  fields: {
+    access_policy: {
+      h: "Access Policy"
+      n: "access_policy"
+      r: true
+      sh: "Provider-agnostic NFS access policy for an access point."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      sh: "The timestamp when the access point was created."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      ro: true
+      sh: "The unique identifier of the access point."
+      t: "`$STRING`"
+    }
+    is_default: {
+      h: "Is Default"
+      n: "is_default"
+      r: true
+      ro: true
+      sh: "Whether this is the share's default access point."
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The human-readable name of the access point."
+      t: "`$STRING`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: true
+      sh: "The export sub-path for this access point (always starts with `/`)."
+      t: "`$STRING`"
+    }
+    share_id: {
+      fo: "uuid"
+      h: "Share Id"
+      n: "share_id"
+      r: true
+      ro: true
+      sh: "The unique identifier of the share this access point belongs to."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      ro: true
+      sh: "The current lifecycle status of an access point."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      sh: "The timestamp when the access point was last updated."
+      t: "`$STRING`"
+    }
+    vpc_id: {
+      h: "Vpc Id"
+      n: "vpc_id"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The VPC this access point is pinned to."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "access_point"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/nfs/shares/{share_id}/access_points"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "baf4827c-6fa9-456f-9dbd-9ddfcacd0720"
+                k: "param"
+                n: "share_id"
+                or: "share_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/nfs/shares/{share_id}/access_points"
+          q: {
+            exist: [
+              "share_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "shares"
+            }
+            {
+              var: "share_id"
+            }
+            {
+              lit: "access_points"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_point`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs/shares/{share_id}/access_points"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "baf4827c-6fa9-456f-9dbd-9ddfcacd0720"
+                k: "param"
+                n: "share_id"
+                or: "share_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "ACCESS_POINT_ACTIVE"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs/shares/{share_id}/access_points"
+          q: {
+            exist: [
+              "share_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "shares"
+            }
+            {
+              var: "share_id"
+            }
+            {
+              lit: "access_points"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_points`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/nfs/access_points/{access_point_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "becd9f04-8afa-4ccd-b03e-9676447df603"
+                k: "param"
+                n: "id"
+                or: "access_point_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/nfs/access_points/{access_point_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              access_point_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "access_points"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_point`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/nfs/access_points/{access_point_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "becd9f04-8afa-4ccd-b03e-9676447df603"
+                k: "param"
+                n: "id"
+                or: "access_point_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/nfs/access_points/{access_point_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              access_point_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              lit: "access_points"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_point`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

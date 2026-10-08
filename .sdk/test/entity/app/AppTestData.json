@@ -1,0 +1,167 @@
+{
+  "existing": {
+    "app": {
+      "APP00": {
+        "active_deployment": {},
+        "autoscaling": {},
+        "created_at": "sfc",
+        "dedicated_ips": [],
+        "default_ingress": "sfe",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "domains": [],
+        "id": "APP00",
+        "in_progress_deployment": {},
+        "last_deployment_created_at": "s104",
+        "live_domain": "s105",
+        "live_url": "s106",
+        "live_url_base": "s107",
+        "owner_uuid": "s108",
+        "pending_deployment": "s109",
+        "pinned_deployment": "s10a",
+        "project_id": "PROJECT01",
+        "region": {},
+        "spec": {},
+        "tier_slug": "s10e",
+        "type": "s10f",
+        "update_all_source_versions": true,
+        "updated_at": "s111",
+        "vpc": {},
+        "event_id": "EVENT01"
+      },
+      "APP01": {
+        "active_deployment": {},
+        "autoscaling": {},
+        "created_at": "s1f6",
+        "dedicated_ips": [],
+        "default_ingress": "s1f8",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "domains": [],
+        "id": "APP01",
+        "in_progress_deployment": {},
+        "last_deployment_created_at": "s1fe",
+        "live_domain": "s1ff",
+        "live_url": "s200",
+        "live_url_base": "s201",
+        "owner_uuid": "s202",
+        "pending_deployment": "s203",
+        "pinned_deployment": "s204",
+        "project_id": "PROJECT01",
+        "region": {},
+        "spec": {},
+        "tier_slug": "s208",
+        "type": "s209",
+        "update_all_source_versions": true,
+        "updated_at": "s20b",
+        "vpc": {},
+        "event_id": "EVENT01"
+      },
+      "APP02": {
+        "active_deployment": {},
+        "autoscaling": {},
+        "created_at": "s2f0",
+        "dedicated_ips": [],
+        "default_ingress": "s2f2",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "domains": [],
+        "id": "APP02",
+        "in_progress_deployment": {},
+        "last_deployment_created_at": "s2f8",
+        "live_domain": "s2f9",
+        "live_url": "s2fa",
+        "live_url_base": "s2fb",
+        "owner_uuid": "s2fc",
+        "pending_deployment": "s2fd",
+        "pinned_deployment": "s2fe",
+        "project_id": "PROJECT01",
+        "region": {},
+        "spec": {},
+        "tier_slug": "s302",
+        "type": "s303",
+        "update_all_source_versions": true,
+        "updated_at": "s305",
+        "vpc": {},
+        "event_id": "EVENT01"
+      }
+    }
+  },
+  "new": {
+    "app": {
+      "app_ref01": {
+        "active_deployment": {},
+        "autoscaling": {},
+        "created_at": "s3ea",
+        "dedicated_ips": [],
+        "default_ingress": "s3ec",
+        "deployment": {},
+        "deployment_id": "DEPLOYMENT01",
+        "domains": [],
+        "in_progress_deployment": {},
+        "last_deployment_created_at": "s3f2",
+        "live_domain": "s3f3",
+        "live_url": "s3f4",
+        "live_url_base": "s3f5",
+        "owner_uuid": "s3f6",
+        "pending_deployment": "s3f7",
+        "pinned_deployment": "s3f8",
+        "project_id": "PROJECT01",
+        "region": {},
+        "spec": {},
+        "tier_slug": "s3fc",
+        "type": "s3fd",
+        "update_all_source_versions": true,
+        "updated_at": "s3ff",
+        "vpc": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/{app_id}/events/{event_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/rollback/commit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/rollback/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/events/{event_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+# BasicVpcSubnetsPublicPreviewFlow
+
+main: kit: flow: BasicVpcSubnetsPublicPreviewFlow:
+{
+  entity: "vpc_subnets__public_preview",
+  kind: "basic",
+  name: "BasicVpcSubnetsPublicPreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "vpc_subnets__public_preview_ref01"
+      }
+
+      m: {
+        subnet_uuid: "subnet_uuid01",
+        vpc_id: "vpc01",
+        vpc_uuid: "vpc_uuid01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        vpc_uuid: "vpc_uuid01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vpc_subnets__public_preview_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        vpc_id: "vpc01"
+      }
+
+      i: {
+        ref: "vpc_subnets__public_preview_ref01",
+        srcdatavar: "vpc_subnets__public_preview_ref01_data",
+        suffix: "_up0",
+        textfield: "name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_subnets__public_preview_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_subnets__public_preview_ref01",
+        srcdatavar: "vpc_subnets__public_preview_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vpc_subnets__public_preview01",
+        vpc_id: "vpc01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_subnets__public_preview_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_subnets__public_preview_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "vpc_subnets__public_preview01",
+        vpc_id: "vpc01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        vpc_uuid: "vpc_uuid01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "vpc_subnets__public_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVpcSubnetsPublicPreviewFlow"
+}

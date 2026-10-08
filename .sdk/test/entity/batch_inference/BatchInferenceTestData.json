@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "batch_inference": {
+      "BATCH_INFERENCE00": {
+        "id": "BATCH_INFERENCE00"
+      },
+      "BATCH_INFERENCE01": {
+        "id": "BATCH_INFERENCE01"
+      },
+      "BATCH_INFERENCE02": {
+        "id": "BATCH_INFERENCE02"
+      }
+    }
+  },
+  "new": {
+    "batch_inference": {
+      "batch_inference_ref01": {}
+    }
+  },
+  "requests": {
+    "PUT /<upload_url>": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

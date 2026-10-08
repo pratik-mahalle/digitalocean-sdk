@@ -1,0 +1,84 @@
+# Entity: sql_mode
+
+main: kit: entity: sql_mode: {
+
+  alias: field: {}
+
+  fields: {
+    sql_mode: {
+      h: "Sql Mode"
+      n: "sql_mode"
+      r: true
+      sh: "A string specifying the configured SQL modes for the MySQL cluster."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "sql_mode"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/sql_mode"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "database_id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/sql_mode"
+          q: {
+            exist: [
+              "database_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "sql_mode"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.database")]
+  ]
+
+}

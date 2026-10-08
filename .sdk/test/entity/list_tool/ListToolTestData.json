@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "list_tool": {
+      "LIST_TOOL00": {
+        "definitions": [],
+        "pagination": "s29",
+        "tools": [],
+        "version": "s2b"
+      },
+      "LIST_TOOL01": {
+        "definitions": [],
+        "pagination": "s51",
+        "tools": [],
+        "version": "s53"
+      },
+      "LIST_TOOL02": {
+        "definitions": [],
+        "pagination": "s79",
+        "tools": [],
+        "version": "s7b"
+      }
+    }
+  },
+  "new": {
+    "list_tool": {
+      "list_tool_ref01": {
+        "definitions": [],
+        "pagination": "sa1",
+        "tools": [],
+        "version": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

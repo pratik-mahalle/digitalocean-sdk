@@ -1,0 +1,44 @@
+# BasicNfsSnapshotFlow
+
+main: kit: flow: BasicNfsSnapshotFlow:
+{
+  entity: "nfs_snapshot",
+  kind: "basic",
+  name: "BasicNfsSnapshotFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "nfs_snapshot_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "nfs_snapshot_ref01",
+        srcdatavar: "nfs_snapshot_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "nfs_snapshot01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nfs_snapshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNfsSnapshotFlow"
+}

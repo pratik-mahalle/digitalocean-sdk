@@ -1,0 +1,81 @@
+# BasicToolbeltFlow
+
+main: kit: flow: BasicToolbeltFlow:
+{
+  entity: "toolbelt",
+  kind: "basic",
+  name: "BasicToolbeltFlow",
+  step: [
+    {
+      i: {
+        ref: "toolbelt_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "toolbelt_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "toolbelt_ref01",
+        srcdatavar: "toolbelt_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "toolbelt01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-toolbelt_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "toolbelt_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "toolbelt01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "toolbelt_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicToolbeltFlow"
+}

@@ -1,0 +1,109 @@
+# Entity: api_model_router_preset
+
+main: kit: entity: api_model_router_preset: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      t: "`$OBJECT`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: false
+      sh: "Display name for UI surfaces"
+      t: "`$STRING`"
+    }
+    long_description: {
+      h: "Long Description"
+      n: "long_description"
+      r: false
+      sh: "Long description for details views"
+      t: "`$STRING`"
+    }
+    short_description: {
+      h: "Short Description"
+      n: "short_description"
+      r: false
+      sh: "Short description for list views"
+      t: "`$STRING`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      sh: "Stable slug for routing usage"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_model_router_preset"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/models/routers/presets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/models/routers/presets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "routers"
+            }
+            {
+              lit: "presets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.presets`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

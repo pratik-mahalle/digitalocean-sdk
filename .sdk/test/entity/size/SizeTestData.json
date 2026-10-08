@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "size": {
+      "SIZE00": {
+        "available": true,
+        "description": "s79",
+        "disk": 122,
+        "disk_info": [],
+        "gpu_info": {},
+        "memory": 125,
+        "price_hourly": 126,
+        "price_monthly": 127,
+        "regions": [],
+        "slug": "s81",
+        "transfer": 130,
+        "vcpus": 131
+      },
+      "SIZE01": {
+        "available": true,
+        "description": "sf1",
+        "disk": 242,
+        "disk_info": [],
+        "gpu_info": {},
+        "memory": 245,
+        "price_hourly": 246,
+        "price_monthly": 247,
+        "regions": [],
+        "slug": "sf9",
+        "transfer": 250,
+        "vcpus": 251
+      },
+      "SIZE02": {
+        "available": true,
+        "description": "s169",
+        "disk": 362,
+        "disk_info": [],
+        "gpu_info": {},
+        "memory": 365,
+        "price_hourly": 366,
+        "price_monthly": 367,
+        "regions": [],
+        "slug": "s171",
+        "transfer": 370,
+        "vcpus": 371
+      }
+    }
+  },
+  "new": {
+    "size": {
+      "size_ref01": {
+        "available": true,
+        "description": "s1e1",
+        "disk": 482,
+        "disk_info": [],
+        "gpu_info": {},
+        "memory": 485,
+        "price_hourly": 486,
+        "price_monthly": 487,
+        "regions": [],
+        "slug": "s1e9",
+        "transfer": 490,
+        "vcpus": 491
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/sizes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

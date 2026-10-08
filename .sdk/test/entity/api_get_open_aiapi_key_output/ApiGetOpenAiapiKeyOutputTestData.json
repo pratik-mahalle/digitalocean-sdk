@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "api_get_open_aiapi_key_output": {
+      "API_GET_OPEN_AIAPI_KEY_OUTPUT00": {
+        "created_at": "s46",
+        "created_by": "s47",
+        "deleted_at": "s48",
+        "models": [],
+        "name": "s4a",
+        "updated_at": "s4b",
+        "uuid": "s4c",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_OPEN_AIAPI_KEY_OUTPUT00"
+      },
+      "API_GET_OPEN_AIAPI_KEY_OUTPUT01": {
+        "created_at": "s8c",
+        "created_by": "s8d",
+        "deleted_at": "s8e",
+        "models": [],
+        "name": "s90",
+        "updated_at": "s91",
+        "uuid": "s92",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_OPEN_AIAPI_KEY_OUTPUT01"
+      },
+      "API_GET_OPEN_AIAPI_KEY_OUTPUT02": {
+        "created_at": "sd2",
+        "created_by": "sd3",
+        "deleted_at": "sd4",
+        "models": [],
+        "name": "sd6",
+        "updated_at": "sd7",
+        "uuid": "sd8",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_GET_OPEN_AIAPI_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_open_aiapi_key_output": {
+      "api_get_open_aiapi_key_output_ref01": {
+        "created_at": "s118",
+        "created_by": "s119",
+        "deleted_at": "s11a",
+        "models": [],
+        "name": "s11c",
+        "updated_at": "s11d",
+        "uuid": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/openai/keys/{api_key_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

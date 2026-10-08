@@ -1,0 +1,26 @@
+# BasicAppEventFlow
+
+main: kit: flow: BasicAppEventFlow:
+{
+  entity: "app_event",
+  kind: "basic",
+  name: "BasicAppEventFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppEventFlow"
+}

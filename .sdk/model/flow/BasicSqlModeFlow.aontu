@@ -1,0 +1,32 @@
+# BasicSqlModeFlow
+
+main: kit: flow: BasicSqlModeFlow:
+{
+  entity: "sql_mode",
+  kind: "basic",
+  name: "BasicSqlModeFlow",
+  step: [
+    {
+      i: {
+        ref: "sql_mode_ref01",
+        srcdatavar: "sql_mode_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "sql_mode01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-sql_mode_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSqlModeFlow"
+}

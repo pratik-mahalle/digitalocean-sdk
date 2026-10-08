@@ -1,0 +1,87 @@
+# Entity: prepayment_status
+
+main: kit: entity: prepayment_status: {
+
+  alias: field: {}
+
+  fields: {
+    balance: {
+      h: "Balance"
+      n: "balance"
+      r: false
+      sh: "Current prepayment balance."
+      t: "`$STRING`"
+    }
+    blocked: {
+      h: "Blocked"
+      n: "blocked"
+      r: false
+      sh: "Whether the prepayment gate is currently blocking usage."
+      t: "`$BOOLEAN`"
+    }
+    eligible: {
+      h: "Eligible"
+      n: "eligible"
+      r: false
+      sh: "Whether the account is eligible for the prepayment gate experience."
+      t: "`$BOOLEAN`"
+    }
+    is_auto_prepay_enabled: {
+      h: "Is Auto Prepay Enabled"
+      n: "is_auto_prepay_enabled"
+      r: false
+      sh: "Whether automatic prepayment top-up is enabled."
+      t: "`$BOOLEAN`"
+    }
+    month_to_date_balance: {
+      h: "Month To Date Balance"
+      n: "month_to_date_balance"
+      r: false
+      sh: "Current account balance including month-to-date usage."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "prepayment_status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/customers/my/prepayment_status"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/customers/my/prepayment_status"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "prepayment_status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.status`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

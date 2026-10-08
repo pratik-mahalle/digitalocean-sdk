@@ -1,0 +1,52 @@
+# BasicApiGetEvaluationTestCaseOutputFlow
+
+main: kit: flow: BasicApiGetEvaluationTestCaseOutputFlow:
+{
+  entity: "api_get_evaluation_test_case_output",
+  kind: "basic",
+  name: "BasicApiGetEvaluationTestCaseOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_evaluation_test_case_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_get_evaluation_test_case_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_get_evaluation_test_case_output_ref01",
+        srcdatavar: "api_get_evaluation_test_case_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_evaluation_test_case_output01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_evaluation_test_case_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetEvaluationTestCaseOutputFlow"
+}

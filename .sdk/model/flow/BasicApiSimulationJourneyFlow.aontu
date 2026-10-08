@@ -1,0 +1,33 @@
+# BasicApiSimulationJourneyFlow
+
+main: kit: flow: BasicApiSimulationJourneyFlow:
+{
+  entity: "api_simulation_journey",
+  kind: "basic",
+  name: "BasicApiSimulationJourneyFlow",
+  step: [
+    {
+      i: {
+        ref: "api_simulation_journey_ref01",
+        srcdatavar: "api_simulation_journey_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_simulation_journey01",
+        simulation_run_id: "simulation_run01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_simulation_journey_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiSimulationJourneyFlow"
+}

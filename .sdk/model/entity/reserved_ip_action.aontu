@@ -1,0 +1,289 @@
+# Entity: reserved_ip_action
+
+main: kit: entity: reserved_ip_action: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: false
+      t: "`$OBJECT`"
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the action was completed."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "A unique numeric ID that can be used to identify and reference an action."
+      t: "`$INTEGER`"
+    }
+    project_id: {
+      fo: "uuid"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "The UUID of the project to which the reserved IP currently belongs."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      t: "`$OBJECT`"
+    }
+    region_slug: {
+      h: "Region Slug"
+      n: "region_slug"
+      r: false
+      sh: "A human-readable string that is used as a unique identifier for each region."
+      t: "`$STRING`"
+    }
+    resource_id: {
+      h: "Resource Id"
+      n: "resource_id"
+      r: false
+      sh: "A unique identifier for the resource that the action is associated with."
+      t: "`$INTEGER`"
+    }
+    resource_type: {
+      h: "Resource Type"
+      n: "resource_type"
+      r: false
+      sh: "The type of resource that the action is associated with."
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the action was initiated."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The current status of the action."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "This is the type of action that the object represents."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "reserved_ip_action"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/reserved_ips/{reserved_ip}/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "45.55.96.47"
+                k: "param"
+                n: "id"
+                or: "reserved_ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/reserved_ips/{reserved_ip}/actions"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              reserved_ip: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.action`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ips/{reserved_ip}/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "45.55.96.47"
+                k: "param"
+                n: "id"
+                or: "reserved_ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ips/{reserved_ip}/actions"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              reserved_ip: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.actions`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ips/{reserved_ip}/actions/{action_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 36804636
+                k: "param"
+                n: "id"
+                or: "action_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "45.55.96.47"
+                k: "param"
+                n: "reserved_ip_id"
+                or: "reserved_ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ips/{reserved_ip}/actions/{action_id}"
+          q: {
+            exist: [
+              "id"
+              "reserved_ip_id"
+            ]
+          }
+          r: {
+            param: {
+              action_id: "id"
+              reserved_ip: "reserved_ip_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+            {
+              var: "reserved_ip_id"
+            }
+            {
+              lit: "actions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.action`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.reserved_ip")]
+  ]
+
+}

@@ -1,0 +1,554 @@
+{
+  point: "warning"
+  note: "Points POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls, POST /v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls, POST /v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls and POST /v2/gen-ai/scenario_sets/file_upload_presigned_urls on entity=api_create_data_source_file_upload_presigned_urls_output op=create have the same selector (exist: none), so only POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "api_create_data_source_file_upload_presigned_urls_output"
+  op: "create"
+  points: [
+    "POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls"
+    "POST /v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls"
+    "POST /v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls"
+    "POST /v2/gen-ai/scenario_sets/file_upload_presigned_urls"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/apps/{app_id}/deployments, POST /v2/apps/{app_id}/restart, POST /v2/apps/{app_id}/rollback and POST /v2/apps/{app_id}/rollback/revert on entity=apps_deployment op=create have the same selector (exist: app_id), so only POST /v2/apps/{app_id}/deployments is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "apps_deployment"
+  op: "create"
+  points: [
+    "POST /v2/apps/{app_id}/deployments"
+    "POST /v2/apps/{app_id}/restart"
+    "POST /v2/apps/{app_id}/rollback"
+    "POST /v2/apps/{app_id}/rollback/revert"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/customers/my/billing_history and GET /v2/customers/my/invoices on entity=billing op=list have the same selector (exist: none), so only GET /v2/customers/my/billing_history is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "list"
+  points: [
+    "GET /v2/customers/my/billing_history"
+    "GET /v2/customers/my/invoices"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/customers/my/invoices/{invoice_uuid}, GET /v2/customers/my/invoices/{invoice_uuid}/csv and GET /v2/customers/my/invoices/{invoice_uuid}/pdf on entity=billing op=load have the same selector (exist: invoice_uuid), so only GET /v2/customers/my/invoices/{invoice_uuid} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "billing"
+  op: "load"
+  points: [
+    "GET /v2/customers/my/invoices/{invoice_uuid}"
+    "GET /v2/customers/my/invoices/{invoice_uuid}/csv"
+    "GET /v2/customers/my/invoices/{invoice_uuid}/pdf"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/registries/{registry_name}/garbage-collection and POST /v2/registry/{registry_name}/garbage-collection on entity=container_registry op=create have the same selector (exist: registry_name), so only POST /v2/registries/{registry_name}/garbage-collection is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "create"
+  points: [
+    "POST /v2/registries/{registry_name}/garbage-collection"
+    "POST /v2/registry/{registry_name}/garbage-collection"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/registries, POST /v2/registries/subscription, POST /v2/registries/validate-name, POST /v2/registry, POST /v2/registry/subscription and POST /v2/registry/validate-name on entity=container_registry op=create have the same selector (exist: none), so only POST /v2/registries is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "create"
+  points: [
+    "POST /v2/registries"
+    "POST /v2/registries/subscription"
+    "POST /v2/registries/validate-name"
+    "POST /v2/registry"
+    "POST /v2/registry/subscription"
+    "POST /v2/registry/validate-name"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/registries/{registry_name}/repositories/{repository_name}/digests, GET /v2/registries/{registry_name}/repositories/{repository_name}/tags, GET /v2/registry/{registry_name}/repositories/{repository_name}/digests and GET /v2/registry/{registry_name}/repositories/{repository_name}/tags on entity=container_registry op=list have the same selector (exist: registry_name,repository_name), so only GET /v2/registries/{registry_name}/repositories/{repository_name}/digests is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "list"
+  points: [
+    "GET /v2/registries/{registry_name}/repositories/{repository_name}/digests"
+    "GET /v2/registries/{registry_name}/repositories/{repository_name}/tags"
+    "GET /v2/registry/{registry_name}/repositories/{repository_name}/digests"
+    "GET /v2/registry/{registry_name}/repositories/{repository_name}/tags"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/registries/{registry_name}/garbage-collections, GET /v2/registries/{registry_name}/repositoriesV2, GET /v2/registry/{registry_name}/garbage-collections, GET /v2/registry/{registry_name}/repositories and GET /v2/registry/{registry_name}/repositoriesV2 on entity=container_registry op=list have the same selector (exist: registry_name), so only GET /v2/registries/{registry_name}/garbage-collections is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "list"
+  points: [
+    "GET /v2/registries/{registry_name}/garbage-collections"
+    "GET /v2/registries/{registry_name}/repositoriesV2"
+    "GET /v2/registry/{registry_name}/garbage-collections"
+    "GET /v2/registry/{registry_name}/repositories"
+    "GET /v2/registry/{registry_name}/repositoriesV2"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/registries/{registry_name}/garbage-collection and GET /v2/registry/{registry_name}/garbage-collection on entity=container_registry op=load have the same selector (exist: registry_name), so only GET /v2/registries/{registry_name}/garbage-collection is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "load"
+  points: [
+    "GET /v2/registries/{registry_name}/garbage-collection"
+    "GET /v2/registry/{registry_name}/garbage-collection"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/registries/options, GET /v2/registries/subscription, GET /v2/registry, GET /v2/registry/options and GET /v2/registry/subscription on entity=container_registry op=load have the same selector (exist: none), so only GET /v2/registries/options is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "load"
+  points: [
+    "GET /v2/registries/options"
+    "GET /v2/registries/subscription"
+    "GET /v2/registry"
+    "GET /v2/registry/options"
+    "GET /v2/registry/subscription"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest} and DELETE /v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest} on entity=container_registry op=remove have the same selector (exist: manifest_digest,registry_name,repository_name), so only DELETE /v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "remove"
+  points: [
+    "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+    "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag} and DELETE /v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag} on entity=container_registry op=remove have the same selector (exist: registry_name,repository_name,repository_tag), so only DELETE /v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "remove"
+  points: [
+    "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+    "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PUT /v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid} and PUT /v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid} on entity=container_registry op=update have the same selector (exist: garbage_collection_uuid,registry_name), so only PUT /v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "container_registry"
+  op: "update"
+  points: [
+    "PUT /v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+    "PUT /v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name} and GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name} on entity=database op=load have the same selector (exist: id,subject_name), so only GET /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "database"
+  op: "load"
+  points: [
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}"
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/droplets and GET /v2/droplets/backups/supported_policies on entity=droplet op=list have the same selector (exist: none), so only GET /v2/droplets is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "droplet"
+  op: "list"
+  points: [
+    "GET /v2/droplets"
+    "GET /v2/droplets/backups/supported_policies"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/droplets/autoscale/{autoscale_pool_id}/history and GET /v2/droplets/autoscale/{autoscale_pool_id}/members on entity=droplet_autoscale_pool op=list have the same selector (exist: autoscale_pool_id), so only GET /v2/droplets/autoscale/{autoscale_pool_id}/history is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "droplet_autoscale_pool"
+  op: "list"
+  points: [
+    "GET /v2/droplets/autoscale/{autoscale_pool_id}/history"
+    "GET /v2/droplets/autoscale/{autoscale_pool_id}/members"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/action-gateway/actors/{actor_id}/limits:clear and POST /v2/action-gateway/actors/{actor_id}/limits:set on entity=empty op=create have the same selector (exist: actor_id), so only POST /v2/action-gateway/actors/{actor_id}/limits:clear is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "empty"
+  op: "create"
+  points: [
+    "POST /v2/action-gateway/actors/{actor_id}/limits:clear"
+    "POST /v2/action-gateway/actors/{actor_id}/limits:set"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/functions/namespaces/{namespace_id}/keys and POST /v2/functions/namespaces/{namespace_id}/triggers on entity=function op=create have the same selector (exist: namespace_id), so only POST /v2/functions/namespaces/{namespace_id}/keys is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "function"
+  op: "create"
+  points: [
+    "POST /v2/functions/namespaces/{namespace_id}/keys"
+    "POST /v2/functions/namespaces/{namespace_id}/triggers"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/functions/namespaces/{namespace_id}/keys and GET /v2/functions/namespaces/{namespace_id}/triggers on entity=function op=list have the same selector (exist: namespace_id), so only GET /v2/functions/namespaces/{namespace_id}/keys is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "function"
+  op: "list"
+  points: [
+    "GET /v2/functions/namespaces/{namespace_id}/keys"
+    "GET /v2/functions/namespaces/{namespace_id}/triggers"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/insights/alert-instances/{id}, GET /v2/insights/alert-rules/{id} and GET /v2/insights/notification-channels/{id} on entity=insight op=load have the same selector (exist: id), so only GET /v2/insights/alert-instances/{id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "insight"
+  op: "load"
+  points: [
+    "GET /v2/insights/alert-instances/{id}"
+    "GET /v2/insights/alert-rules/{id}"
+    "GET /v2/insights/notification-channels/{id}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /v2/insights/alert-rules/{id} and DELETE /v2/insights/notification-channels/{id} on entity=insight op=remove have the same selector (exist: id), so only DELETE /v2/insights/alert-rules/{id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "insight"
+  op: "remove"
+  points: [
+    "DELETE /v2/insights/alert-rules/{id}"
+    "DELETE /v2/insights/notification-channels/{id}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points PUT /v2/insights/alert-rules/{id} and PUT /v2/insights/notification-channels/{id} on entity=insight op=update have the same selector (exist: id), so only PUT /v2/insights/alert-rules/{id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "insight"
+  op: "update"
+  points: [
+    "PUT /v2/insights/alert-rules/{id}"
+    "PUT /v2/insights/notification-channels/{id}"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/kubernetes/registries and POST /v2/kubernetes/registry on entity=kubernete op=create have the same selector (exist: none; $action: registry), so only POST /v2/kubernetes/registries is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "kubernete"
+  op: "create"
+  points: [
+    "POST /v2/kubernetes/registries"
+    "POST /v2/kubernetes/registry"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/kubernetes/clusters/{cluster_id}/node_pools, GET /v2/kubernetes/clusters/{cluster_id}/status_messages and GET /v2/kubernetes/clusters/{cluster_id}/upgrades on entity=kubernete op=list have the same selector (exist: cluster_id), so only GET /v2/kubernetes/clusters/{cluster_id}/node_pools is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "kubernete"
+  op: "list"
+  points: [
+    "GET /v2/kubernetes/clusters/{cluster_id}/node_pools"
+    "GET /v2/kubernetes/clusters/{cluster_id}/status_messages"
+    "GET /v2/kubernetes/clusters/{cluster_id}/upgrades"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/kubernetes/clusters/{cluster_id} and GET /v2/kubernetes/clusters/{cluster_id}/kubeconfig on entity=kubernete op=load have the same selector (exist: cluster_id), so only GET /v2/kubernetes/clusters/{cluster_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "kubernete"
+  op: "load"
+  points: [
+    "GET /v2/kubernetes/clusters/{cluster_id}"
+    "GET /v2/kubernetes/clusters/{cluster_id}/kubeconfig"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /v2/kubernetes/clusters/{cluster_id}, DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/dangerous and DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/selective on entity=kubernete op=remove have the same selector (exist: cluster_id), so only DELETE /v2/kubernetes/clusters/{cluster_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "kubernete"
+  op: "remove"
+  points: [
+    "DELETE /v2/kubernetes/clusters/{cluster_id}"
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/dangerous"
+    "DELETE /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/selective"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points DELETE /v2/kubernetes/registries and DELETE /v2/kubernetes/registry on entity=kubernete op=remove have the same selector (exist: none; $action: registry), so only DELETE /v2/kubernetes/registries is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "kubernete"
+  op: "remove"
+  points: [
+    "DELETE /v2/kubernetes/registries"
+    "DELETE /v2/kubernetes/registry"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/database/mysql/schema_latency and GET /v2/monitoring/metrics/database/mysql/schema_throughput on entity=metric op=load have the same selector (exist: db_id,end,metric,schema,start), so only GET /v2/monitoring/metrics/database/mysql/schema_latency is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/database/mysql/schema_latency"
+    "GET /v2/monitoring/metrics/database/mysql/schema_throughput"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/database/mysql/cpu_usage, GET /v2/monitoring/metrics/database/mysql/disk_usage and GET /v2/monitoring/metrics/database/mysql/memory_usage on entity=metric op=load have the same selector (exist: aggregate,db_id,end,start), so only GET /v2/monitoring/metrics/database/mysql/cpu_usage is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/database/mysql/cpu_usage"
+    "GET /v2/monitoring/metrics/database/mysql/disk_usage"
+    "GET /v2/monitoring/metrics/database/mysql/memory_usage"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/apps/cpu_percentage, GET /v2/monitoring/metrics/apps/memory_percentage and GET /v2/monitoring/metrics/apps/restart_count on entity=metric op=load have the same selector (exist: app_id,end,start), so only GET /v2/monitoring/metrics/apps/cpu_percentage is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/apps/cpu_percentage"
+    "GET /v2/monitoring/metrics/apps/memory_percentage"
+    "GET /v2/monitoring/metrics/apps/restart_count"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization, GET /v2/monitoring/metrics/droplet_autoscale/current_instances, GET /v2/monitoring/metrics/droplet_autoscale/current_memory_utilization, GET /v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization, GET /v2/monitoring/metrics/droplet_autoscale/target_instances and GET /v2/monitoring/metrics/droplet_autoscale/target_memory_utilization on entity=metric op=load have the same selector (exist: autoscale_pool_id,end,start), so only GET /v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization"
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_instances"
+    "GET /v2/monitoring/metrics/droplet_autoscale/current_memory_utilization"
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization"
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_instances"
+    "GET /v2/monitoring/metrics/droplet_autoscale/target_memory_utilization"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/database/mysql/index_vs_sequential_reads, GET /v2/monitoring/metrics/database/mysql/threads_active, GET /v2/monitoring/metrics/database/mysql/threads_connected and GET /v2/monitoring/metrics/database/mysql/threads_created_rate on entity=metric op=load have the same selector (exist: db_id,end,start), so only GET /v2/monitoring/metrics/database/mysql/index_vs_sequential_reads is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/database/mysql/index_vs_sequential_reads"
+    "GET /v2/monitoring/metrics/database/mysql/threads_active"
+    "GET /v2/monitoring/metrics/database/mysql/threads_connected"
+    "GET /v2/monitoring/metrics/database/mysql/threads_created_rate"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/droplet/cpu, GET /v2/monitoring/metrics/droplet/filesystem_free, GET /v2/monitoring/metrics/droplet/filesystem_size, GET /v2/monitoring/metrics/droplet/load_1, GET /v2/monitoring/metrics/droplet/load_15, GET /v2/monitoring/metrics/droplet/load_5, GET /v2/monitoring/metrics/droplet/memory_available, GET /v2/monitoring/metrics/droplet/memory_cached, GET /v2/monitoring/metrics/droplet/memory_free and GET /v2/monitoring/metrics/droplet/memory_total on entity=metric op=load have the same selector (exist: end,host_id,start), so only GET /v2/monitoring/metrics/droplet/cpu is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/droplet/cpu"
+    "GET /v2/monitoring/metrics/droplet/filesystem_free"
+    "GET /v2/monitoring/metrics/droplet/filesystem_size"
+    "GET /v2/monitoring/metrics/droplet/load_1"
+    "GET /v2/monitoring/metrics/droplet/load_15"
+    "GET /v2/monitoring/metrics/droplet/load_5"
+    "GET /v2/monitoring/metrics/droplet/memory_available"
+    "GET /v2/monitoring/metrics/droplet/memory_cached"
+    "GET /v2/monitoring/metrics/droplet/memory_free"
+    "GET /v2/monitoring/metrics/droplet/memory_total"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/monitoring/metrics/load_balancer/droplets_connections, GET /v2/monitoring/metrics/load_balancer/droplets_downtime, GET /v2/monitoring/metrics/load_balancer/droplets_health_checks, GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p, GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p, GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p, GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg, GET /v2/monitoring/metrics/load_balancer/droplets_http_responses, GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p, GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p, GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg, GET /v2/monitoring/metrics/load_balancer/droplets_queue_size, GET /v2/monitoring/metrics/load_balancer/frontend_connections_current, GET /v2/monitoring/metrics/load_balancer/frontend_connections_limit, GET /v2/monitoring/metrics/load_balancer/frontend_cpu_utilization, GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes, GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets, GET /v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second, GET /v2/monitoring/metrics/load_balancer/frontend_http_responses, GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_http, GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp, GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp, GET /v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput, GET /v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput, GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_current, GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit and GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit on entity=metric op=load have the same selector (exist: end,lb_id,start), so only GET /v2/monitoring/metrics/load_balancer/droplets_connections is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "metric"
+  op: "load"
+  points: [
+    "GET /v2/monitoring/metrics/load_balancer/droplets_connections"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_downtime"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_health_checks"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_responses"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg"
+    "GET /v2/monitoring/metrics/load_balancer/droplets_queue_size"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_connections_current"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_connections_limit"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_cpu_utilization"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_http_responses"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_http"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_current"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit"
+    "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/partner_network_connect/attachments/{pa_id} and GET /v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key on entity=partner_network_connect op=load have the same selector (exist: pa_id), so only GET /v2/partner_network_connect/attachments/{pa_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "partner_network_connect"
+  op: "load"
+  points: [
+    "GET /v2/partner_network_connect/attachments/{pa_id}"
+    "GET /v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/action-gateway/sessions/search, GET /v2/action-gateway/toolbelts/search and GET /v2/action-gateway/tools/providers/search on entity=search op=list have the same selector (exist: none), so only GET /v2/action-gateway/sessions/search is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "search"
+  op: "list"
+  points: [
+    "GET /v2/action-gateway/sessions/search"
+    "GET /v2/action-gateway/toolbelts/search"
+    "GET /v2/action-gateway/tools/providers/search"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points POST /v2/security/scans/rules and POST /v2/security/settings/suppressions on entity=security op=create have the same selector (exist: none), so only POST /v2/security/scans/rules is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "security"
+  op: "create"
+  points: [
+    "POST /v2/security/scans/rules"
+    "POST /v2/security/settings/suppressions"
+  ]
+
+}
+
+
+{
+  point: "warning"
+  note: "Points GET /v2/uptime/checks/{check_id} and GET /v2/uptime/checks/{check_id}/state on entity=uptime op=load have the same selector (exist: check_id), so only GET /v2/uptime/checks/{check_id} is ever chosen. An action or another entity in guide.aontu tells them apart."
+  entity: "uptime"
+  op: "load"
+  points: [
+    "GET /v2/uptime/checks/{check_id}"
+    "GET /v2/uptime/checks/{check_id}/state"
+  ]
+
+}

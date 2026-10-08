@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "async_invoke": {
+      "ASYNC_INVOKE00": {
+        "completed_at": "s64",
+        "created_at": "s65",
+        "error": "s66",
+        "input": {},
+        "model_id": "MODEL01",
+        "output": {},
+        "request_id": "REQUEST01",
+        "started_at": "s6b",
+        "status": "s6c",
+        "tags": [],
+        "id": "ASYNC_INVOKE00"
+      },
+      "ASYNC_INVOKE01": {
+        "completed_at": "sc8",
+        "created_at": "sc9",
+        "error": "sca",
+        "input": {},
+        "model_id": "MODEL01",
+        "output": {},
+        "request_id": "REQUEST01",
+        "started_at": "scf",
+        "status": "sd0",
+        "tags": [],
+        "id": "ASYNC_INVOKE01"
+      },
+      "ASYNC_INVOKE02": {
+        "completed_at": "s12c",
+        "created_at": "s12d",
+        "error": "s12e",
+        "input": {},
+        "model_id": "MODEL01",
+        "output": {},
+        "request_id": "REQUEST01",
+        "started_at": "s133",
+        "status": "s134",
+        "tags": [],
+        "id": "ASYNC_INVOKE02"
+      }
+    }
+  },
+  "new": {
+    "async_invoke": {
+      "async_invoke_ref01": {
+        "completed_at": "s190",
+        "created_at": "s191",
+        "error": "s192",
+        "input": {},
+        "model_id": "MODEL01",
+        "output": {},
+        "request_id": "REQUEST01",
+        "started_at": "s197",
+        "status": "s198",
+        "tags": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/async-invoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

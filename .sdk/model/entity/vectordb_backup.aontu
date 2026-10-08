@@ -1,0 +1,107 @@
+# Entity: vectordb_backup
+
+main: kit: entity: vectordb_backup: {
+
+  alias: field: {}
+
+  fields: {
+    backup_id: {
+      h: "Backup Id"
+      n: "backup_id"
+      r: false
+      sh: "Unique identifier for the backup (e.g., \"vectordb-{uuid}-20240101-120000\")."
+      t: "`$STRING`"
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "Timestamp when the backup process completed."
+      t: "`$STRING`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      sh: "Timestamp when the backup process started."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Status of the backup: SUCCESS."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "vectordb_backup"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vector-databases/{id}/backups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"example string\""
+                k: "param"
+                n: "vector_database_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vector-databases/{id}/backups"
+          q: {
+            exist: [
+              "vector_database_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "vector_database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vector-databases"
+            }
+            {
+              var: "vector_database_id"
+            }
+            {
+              lit: "backups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.backups`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vector_database")]
+  ]
+
+}

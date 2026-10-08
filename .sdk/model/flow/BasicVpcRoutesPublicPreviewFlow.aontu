@@ -1,0 +1,98 @@
+# BasicVpcRoutesPublicPreviewFlow
+
+main: kit: flow: BasicVpcRoutesPublicPreviewFlow:
+{
+  entity: "vpc_routes__public_preview",
+  kind: "basic",
+  name: "BasicVpcRoutesPublicPreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "vpc_routes__public_preview_ref01"
+      }
+
+      m: {
+        subnet_id: "subnet01",
+        vpc_id: "vpc01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        vpc_uuid: "vpc_uuid01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vpc_routes__public_preview_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        subnet_id: "subnet01",
+        vpc_id: "vpc01"
+      }
+
+      i: {
+        ref: "vpc_routes__public_preview_ref01",
+        srcdatavar: "vpc_routes__public_preview_ref01_data",
+        suffix: "_up0",
+        textfield: "destination_cidr"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_routes__public_preview_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_routes__public_preview_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "vpc_routes__public_preview01",
+        subnet_id: "subnet01",
+        vpc_id: "vpc01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        vpc_uuid: "vpc_uuid01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "vpc_routes__public_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVpcRoutesPublicPreviewFlow"
+}

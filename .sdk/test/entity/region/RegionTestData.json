@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "region": {
+      "REGION00": {
+        "available": true,
+        "features": [],
+        "name": "s34",
+        "sizes": [],
+        "slug": "s36"
+      },
+      "REGION01": {
+        "available": true,
+        "features": [],
+        "name": "s66",
+        "sizes": [],
+        "slug": "s68"
+      },
+      "REGION02": {
+        "available": true,
+        "features": [],
+        "name": "s98",
+        "sizes": [],
+        "slug": "s9a"
+      }
+    }
+  },
+  "new": {
+    "region": {
+      "region_ref01": {
+        "available": true,
+        "features": [],
+        "name": "sca",
+        "sizes": [],
+        "slug": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/regions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,250 @@
+# Entity: snapshot
+
+main: kit: entity: snapshot: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the snapshot was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "The unique identifier for the snapshot."
+      t: "`$STRING`"
+    }
+    min_disk_size: {
+      h: "Min Disk Size"
+      n: "min_disk_size"
+      r: true
+      sh: "The minimum size in GB required for a volume or Droplet to use this snapshot."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A human-readable name for the snapshot."
+      t: "`$STRING`"
+    }
+    regions: {
+      h: "Regions"
+      n: "regions"
+      r: true
+      sh: "An array of the regions that the snapshot is available in."
+      t: "`$ARRAY`"
+    }
+    resource_id: {
+      h: "Resource Id"
+      n: "resource_id"
+      r: true
+      sh: "The unique identifier for the resource that the snapshot originated from."
+      t: "`$STRING`"
+    }
+    resource_type: {
+      h: "Resource Type"
+      n: "resource_type"
+      r: true
+      sh: "The type of resource that the snapshot originated from."
+      t: "`$STRING`"
+    }
+    size_gigabytes: {
+      fo: "float"
+      h: "Size Gigabytes"
+      n: "size_gigabytes"
+      r: true
+      sh: "The billable size of the snapshot in gigabytes."
+      t: "`$NUMBER`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      sh: "An array of Tags the snapshot has been tagged with.<br><br>Requires `tag:read` scope."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "snapshot"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/snapshots"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "droplet"
+                k: "query"
+                n: "resource_type"
+                or: "resource_type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/snapshots"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "snapshots"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshots`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/snapshots/{snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 6372321
+                k: "param"
+                n: "id"
+                or: "snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/snapshots/{snapshot_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              snapshot_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshot`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/snapshots/{snapshot_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 6372321
+                k: "param"
+                n: "id"
+                or: "snapshot_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/snapshots/{snapshot_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              snapshot_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "snapshots"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

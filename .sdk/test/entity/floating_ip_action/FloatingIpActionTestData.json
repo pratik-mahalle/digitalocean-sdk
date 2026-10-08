@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "floating_ip_action": {
+      "FLOATING_IP_ACTION00": {
+        "action": {},
+        "completed_at": "s6f",
+        "id": "FLOATING_IP_ACTION00",
+        "project_id": "PROJECT01",
+        "region": {},
+        "region_slug": "s73",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s75",
+        "started_at": "s76",
+        "status": "s77",
+        "type": "s78",
+        "floating_ip_id": "FLOATING_IP01"
+      },
+      "FLOATING_IP_ACTION01": {
+        "action": {},
+        "completed_at": "sdd",
+        "id": "FLOATING_IP_ACTION01",
+        "project_id": "PROJECT01",
+        "region": {},
+        "region_slug": "se1",
+        "resource_id": "RESOURCE01",
+        "resource_type": "se3",
+        "started_at": "se4",
+        "status": "se5",
+        "type": "se6",
+        "floating_ip_id": "FLOATING_IP01"
+      },
+      "FLOATING_IP_ACTION02": {
+        "action": {},
+        "completed_at": "s14b",
+        "id": "FLOATING_IP_ACTION02",
+        "project_id": "PROJECT01",
+        "region": {},
+        "region_slug": "s14f",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s151",
+        "started_at": "s152",
+        "status": "s153",
+        "type": "s154",
+        "floating_ip_id": "FLOATING_IP01"
+      }
+    }
+  },
+  "new": {
+    "floating_ip_action": {
+      "floating_ip_action_ref01": {
+        "action": {},
+        "completed_at": "s1b9",
+        "project_id": "PROJECT01",
+        "region": {},
+        "region_slug": "s1bd",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s1bf",
+        "started_at": "s1c0",
+        "status": "s1c1",
+        "type": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/floating_ips/{floating_ip}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/floating_ips/{floating_ip}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/floating_ips/{floating_ip}/actions/{action_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,135 @@
+# Entity: api_update_model_router_output
+
+main: kit: entity: api_update_model_router_output: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date / time"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description"
+      t: "`$STRING`"
+    }
+    fallback_models: {
+      h: "Fallback Models"
+      n: "fallback_models"
+      r: false
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the model router"
+      t: "`$STRING`"
+    }
+    policies: {
+      h: "Policies"
+      n: "policies"
+      r: false
+      sh: "Router policies"
+      t: "`$ARRAY`"
+    }
+    regions: {
+      h: "Regions"
+      n: "regions"
+      r: false
+      sh: "Target regions for the router"
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Last modified"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_model_router_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/models/routers/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/models/routers/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "routers"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.model_router`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

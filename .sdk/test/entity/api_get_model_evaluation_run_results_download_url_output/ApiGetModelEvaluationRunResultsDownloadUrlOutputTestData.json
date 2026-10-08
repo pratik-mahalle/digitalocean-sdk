@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_get_model_evaluation_run_results_download_url_output": {
+      "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT00": {
+        "download_url": "s14",
+        "expires_at": "s15",
+        "model_evaluation_run_id": "MODEL_EVALUATION_RUN01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT00"
+      },
+      "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT01": {
+        "download_url": "s28",
+        "expires_at": "s29",
+        "model_evaluation_run_id": "MODEL_EVALUATION_RUN01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT01"
+      },
+      "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT02": {
+        "download_url": "s3c",
+        "expires_at": "s3d",
+        "model_evaluation_run_id": "MODEL_EVALUATION_RUN01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_RESULTS_DOWNLOAD_URL_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_model_evaluation_run_results_download_url_output": {
+      "api_get_model_evaluation_run_results_download_url_output_ref01": {
+        "download_url": "s50",
+        "expires_at": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/results/download_url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

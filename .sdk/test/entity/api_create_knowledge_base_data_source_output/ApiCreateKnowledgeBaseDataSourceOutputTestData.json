@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "api_create_knowledge_base_data_source_output": {
+      "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT00": {
+        "aws_data_source": {},
+        "bucket_name": "sa1",
+        "chunking_algorithm": "sa2",
+        "chunking_options": {},
+        "created_at": "sa4",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "sa8",
+        "knowledge_base_uuid": "sa9",
+        "last_datasource_indexing_job": {},
+        "region": "sab",
+        "spaces_data_source": {},
+        "updated_at": "sad",
+        "uuid": "sae",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT00"
+      },
+      "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT01": {
+        "aws_data_source": {},
+        "bucket_name": "s141",
+        "chunking_algorithm": "s142",
+        "chunking_options": {},
+        "created_at": "s144",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s148",
+        "knowledge_base_uuid": "s149",
+        "last_datasource_indexing_job": {},
+        "region": "s14b",
+        "spaces_data_source": {},
+        "updated_at": "s14d",
+        "uuid": "s14e",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT01"
+      },
+      "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT02": {
+        "aws_data_source": {},
+        "bucket_name": "s1e1",
+        "chunking_algorithm": "s1e2",
+        "chunking_options": {},
+        "created_at": "s1e4",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s1e8",
+        "knowledge_base_uuid": "s1e9",
+        "last_datasource_indexing_job": {},
+        "region": "s1eb",
+        "spaces_data_source": {},
+        "updated_at": "s1ed",
+        "uuid": "s1ee",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_CREATE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_create_knowledge_base_data_source_output": {
+      "api_create_knowledge_base_data_source_output_ref01": {
+        "aws_data_source": {},
+        "bucket_name": "s281",
+        "chunking_algorithm": "s282",
+        "chunking_options": {},
+        "created_at": "s284",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s288",
+        "knowledge_base_uuid": "s289",
+        "last_datasource_indexing_job": {},
+        "region": "s28b",
+        "spaces_data_source": {},
+        "updated_at": "s28d",
+        "uuid": "s28e",
+        "web_crawler_data_source": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

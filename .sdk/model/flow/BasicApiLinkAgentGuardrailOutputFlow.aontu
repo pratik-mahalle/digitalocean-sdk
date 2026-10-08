@@ -1,0 +1,22 @@
+# BasicApiLinkAgentGuardrailOutputFlow
+
+main: kit: flow: BasicApiLinkAgentGuardrailOutputFlow:
+{
+  entity: "api_link_agent_guardrail_output",
+  kind: "basic",
+  name: "BasicApiLinkAgentGuardrailOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_link_agent_guardrail_output_ref01"
+      }
+
+      m: {
+        agent_id: "agent01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiLinkAgentGuardrailOutputFlow"
+}

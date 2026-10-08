@@ -1,0 +1,28 @@
+# BasicOptionFlow
+
+main: kit: flow: BasicOptionFlow:
+{
+  entity: "option",
+  kind: "basic",
+  name: "BasicOptionFlow",
+  step: [
+    {
+      i: {
+        ref: "option_ref01",
+        srcdatavar: "option_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOptionFlow"
+}

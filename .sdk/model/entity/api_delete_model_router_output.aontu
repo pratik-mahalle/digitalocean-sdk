@@ -1,0 +1,72 @@
+# Entity: api_delete_model_router_output
+
+main: kit: entity: api_delete_model_router_output: {
+
+  alias: field: {}
+
+  name: "api_delete_model_router_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/models/routers/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/models/routers/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "routers"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

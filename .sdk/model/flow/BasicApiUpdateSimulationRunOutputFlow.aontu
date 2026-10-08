@@ -1,0 +1,49 @@
+# BasicApiUpdateSimulationRunOutputFlow
+
+main: kit: flow: BasicApiUpdateSimulationRunOutputFlow:
+{
+  entity: "api_update_simulation_run_output",
+  kind: "basic",
+  name: "BasicApiUpdateSimulationRunOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_simulation_run_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_update_simulation_run_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_update_simulation_run_output_ref01",
+        srcdatavar: "api_update_simulation_run_output_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_simulation_run_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateSimulationRunOutputFlow"
+}

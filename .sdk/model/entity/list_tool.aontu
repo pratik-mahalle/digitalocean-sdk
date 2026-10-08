@@ -1,0 +1,105 @@
+# Entity: list_tool
+
+main: kit: entity: list_tool: {
+
+  alias: field: {}
+
+  fields: {
+    definitions: {
+      h: "Definitions"
+      n: "definitions"
+      r: false
+      sh: "definitions[i] describes tools[i]."
+      t: "`$ARRAY`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: false
+      sh: "page and `per_page` echo the values applied; total is the number of tools matching `toolkitId` across all pages."
+      t: "`$ANY`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Tools on this page, grouped by provider and sorted by name within a provider."
+      t: "`$ARRAY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Catalog version identifier, for example `v1`."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "list_tool"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 100
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "exa"
+                k: "query"
+                n: "toolkit_id"
+                or: "toolkit_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

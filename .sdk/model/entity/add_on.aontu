@@ -1,0 +1,508 @@
+# Entity: add_on
+
+main: kit: entity: add_on: {
+
+  alias: field: {}
+
+  fields: {
+    app_name: {
+      h: "App Name"
+      n: "app_name"
+      r: false
+      sh: "The name of the application associated with the resource."
+      t: "`$STRING`"
+    }
+    app_slug: {
+      h: "App Slug"
+      n: "app_slug"
+      r: true
+      sh: "The slug identifier for the application associated with the resource."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "A brief description of the metadata item."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      sh: "The display name of the metadata item."
+      t: "`$STRING`"
+    }
+    has_config: {
+      h: "Has Config"
+      n: "has_config"
+      r: true
+      sh: "Indicates if the resource has configuration values set by the vendor."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the addon metadata item."
+      t: "`$INTEGER`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      sh: "A message related to the resource, if applicable."
+      t: "`$STRING`"
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      sh: "Metadata associated with the resource, set by the user."
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the addon resource."
+      t: "`$STRING`"
+    }
+    options: {
+      h: "Options"
+      n: "options"
+      r: false
+      t: "`$ARRAY`"
+    }
+    plan_name: {
+      h: "Plan Name"
+      n: "plan_name"
+      r: false
+      sh: "The name of the plan associated with the resource."
+      t: "`$STRING`"
+    }
+    plan_price_per_month: {
+      h: "Plan Price Per Month"
+      n: "plan_price_per_month"
+      r: false
+      sh: "The price of the plan per month in US dollars."
+      t: "`$INTEGER`"
+    }
+    plan_slug: {
+      h: "Plan Slug"
+      n: "plan_slug"
+      r: true
+      sh: "The slug identifier for the plan associated with the resource."
+      t: "`$STRING`"
+    }
+    sso_url: {
+      h: "Sso Url"
+      n: "sso_url"
+      r: false
+      sh: "The Single Sign-On URL for the resource, if applicable."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "The state the resource is currently in."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The data type of the metadata value."
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: true
+      sh: "The unique identifier for the addon resource."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "add_on"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/add-ons/saas"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/add-ons/saas"
+          q: {
+            "$action": "saa"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resource`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/add-ons/apps/{app_slug}/metadata"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example_app"
+                k: "param"
+                n: "app_slug"
+                or: "app_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/add-ons/apps/{app_slug}/metadata"
+          q: {
+            exist: [
+              "app_slug"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_slug"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.metadata`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/add-ons/apps"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/add-ons/apps"
+          q: {
+            "$action": "app"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "apps"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.apps`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/add-ons/saas"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/add-ons/saas"
+          q: {
+            "$action": "saa"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resources`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/add-ons/saas/{resource_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "123e4567-e89b-12d3-a456-426614174000"
+                k: "param"
+                n: "resource_uuid"
+                or: "resource_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/add-ons/saas/{resource_uuid}"
+          q: {
+            exist: [
+              "resource_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+            {
+              var: "resource_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resource`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/add-ons/saas/{resource_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "resource_uuid"
+                or: "resource_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/add-ons/saas/{resource_uuid}"
+          q: {
+            exist: [
+              "resource_uuid"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+            {
+              var: "resource_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/add-ons/saas/{resource_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "123e4567-e89b-12d3-a456-426614174000"
+                k: "param"
+                n: "resource_uuid"
+                or: "resource_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/add-ons/saas/{resource_uuid}"
+          q: {
+            exist: [
+              "resource_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+            {
+              var: "resource_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resource`"
+          }
+        }
+        {
+          co: {
+            id: "PATCH /v2/add-ons/saas/{resource_uuid}/plan"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "123e4567-e89b-12d3-a456-426614174000"
+                k: "param"
+                n: "resource_uuid"
+                or: "resource_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/add-ons/saas/{resource_uuid}/plan"
+          q: {
+            "$action": "plan"
+            exist: [
+              "resource_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "saas"
+            }
+            {
+              var: "resource_uuid"
+            }
+            {
+              lit: "plan"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resource`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

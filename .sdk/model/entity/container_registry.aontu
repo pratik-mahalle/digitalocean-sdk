@@ -1,0 +1,2046 @@
+# Entity: container_registry
+
+main: kit: entity: container_registry: {
+
+  alias: field: {}
+
+  fields: {
+    available_regions: {
+      h: "Available Regions"
+      n: "available_regions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    blobs: {
+      h: "Blobs"
+      n: "blobs"
+      r: false
+      sh: "All blobs associated with this manifest"
+      t: "`$ARRAY`"
+    }
+    blobs_deleted: {
+      h: "Blobs Deleted"
+      n: "blobs_deleted"
+      r: false
+      sh: "The number of blobs deleted as a result of this garbage collection."
+      t: "`$INTEGER`"
+    }
+    cancel: {
+      h: "Cancel"
+      n: "cancel"
+      r: false
+      sh: "A boolean value indicating that the garbage collection should be cancelled."
+      t: "`$BOOLEAN`"
+    }
+    compressed_size_bytes: {
+      h: "Compressed Size Bytes"
+      n: "compressed_size_bytes"
+      r: false
+      sh: "The compressed size of the manifest in bytes."
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the registry was created."
+      t: "`$STRING`"
+    }
+    digest: {
+      h: "Digest"
+      n: "digest"
+      r: false
+      sh: "The manifest digest"
+      t: "`$STRING`"
+    }
+    freed_bytes: {
+      h: "Freed Bytes"
+      n: "freed_bytes"
+      r: false
+      sh: "The number of bytes freed as a result of this garbage collection."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    latest_manifest: {
+      h: "Latest Manifest"
+      n: "latest_manifest"
+      r: false
+      t: "`$OBJECT`"
+    }
+    latest_tag: {
+      h: "Latest Tag"
+      n: "latest_tag"
+      r: false
+      t: "`$OBJECT`"
+    }
+    manifest_count: {
+      h: "Manifest Count"
+      n: "manifest_count"
+      r: false
+      sh: "The number of manifests in the repository."
+      t: "`$INTEGER`"
+    }
+    manifest_digest: {
+      h: "Manifest Digest"
+      n: "manifest_digest"
+      r: false
+      sh: "The digest of the manifest associated with the tag."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "A globally unique name for the container registry."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "Slug of the region where registry data is stored"
+      t: "`$STRING`"
+    }
+    registries: {
+      h: "Registries"
+      n: "registries"
+      r: false
+      t: "`$ARRAY`"
+    }
+    registry_name: {
+      h: "Registry Name"
+      n: "registry_name"
+      r: false
+      sh: "The name of the container registry."
+      t: "`$STRING`"
+    }
+    repository: {
+      h: "Repository"
+      n: "repository"
+      r: false
+      sh: "The name of the repository."
+      t: "`$STRING`"
+    }
+    size_bytes: {
+      h: "Size Bytes"
+      n: "size_bytes"
+      r: false
+      sh: "The uncompressed size of the manifest in bytes (this size is calculated asynchronously so it may not be immediately available)."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The current status of this garbage collection."
+      t: "`$STRING`"
+    }
+    storage_usage_bytes: {
+      h: "Storage Usage Bytes"
+      n: "storage_usage_bytes"
+      r: false
+      ro: true
+      sh: "The amount of storage used in the registry in bytes."
+      t: "`$INTEGER`"
+    }
+    storage_usage_bytes_updated_at: {
+      fo: "date-time"
+      h: "Storage Usage Bytes Updated At"
+      n: "storage_usage_bytes_updated_at"
+      r: false
+      ro: true
+      sh: "The time at which the storage usage was updated."
+      t: "`$STRING`"
+    }
+    subscription: {
+      h: "Subscription"
+      n: "subscription"
+      r: false
+      t: "`$ANY`"
+    }
+    subscription_tier_slug: {
+      h: "Subscription Tier Slug"
+      n: "subscription_tier_slug"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The slug of the subscription tier to sign up for."
+      t: "`$STRING`"
+    }
+    subscription_tiers: {
+      h: "Subscription Tiers"
+      n: "subscription_tiers"
+      r: false
+      t: "`$ARRAY`"
+    }
+    tag: {
+      h: "Tag"
+      n: "tag"
+      r: false
+      sh: "The name of the tag."
+      t: "`$STRING`"
+    }
+    tag_count: {
+      h: "Tag Count"
+      n: "tag_count"
+      r: false
+      sh: "The number of tags in the repository."
+      t: "`$INTEGER`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "All tags associated with this manifest"
+      t: "`$ARRAY`"
+    }
+    tier: {
+      h: "Tier"
+      n: "tier"
+      r: false
+      t: "`$OBJECT`"
+    }
+    tier_slug: {
+      h: "Tier Slug"
+      n: "tier_slug"
+      r: false
+      sh: "The slug of the subscription tier to sign up for."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of the garbage collection to run against this registry"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      ro: true
+      sh: "The time the garbage collection was last updated."
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "A string specifying the UUID of the garbage collection."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "container_registry"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/registries/{registry_name}/garbage-collection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/registries/{registry_name}/garbage-collection"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registry/{registry_name}/garbage-collection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/registry/{registry_name}/garbage-collection"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registries"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registries"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.registry`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registries/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registries/subscription"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registries/validate-name"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registries/validate-name"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              lit: "validate-name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registry"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registry"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.registry`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registry/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registry/subscription"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/registry/validate-name"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/registry/validate-name"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "validate-name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}/repositories/{repository_name}/digests"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}/repositories/{repository_name}/digests"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "digests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.manifests`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}/repositories/{repository_name}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}/repositories/{repository_name}/tags"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tags`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/repositories/{repository_name}/digests"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/repositories/{repository_name}/digests"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "digests"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.manifests`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/repositories/{repository_name}/tags"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/repositories/{repository_name}/tags"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "tags"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tags`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}/garbage-collections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}/garbage-collections"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collections`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}/repositoriesV2"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "eyJUb2tlbiI6IkNnZGpiMjlz"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}/repositoriesV2"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositoriesV2"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.repositories`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/garbage-collections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/garbage-collections"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collections`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/repositories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/repositories"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.repositories`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/repositoriesV2"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "eyJUb2tlbiI6IkNnZGpiMjlz"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/repositoriesV2"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositoriesV2"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.repositories`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registries"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.registries`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "id"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              registry_name: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.registry`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/{registry_name}/garbage-collection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registries/{registry_name}/garbage-collection"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/{registry_name}/garbage-collection"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/registry/{registry_name}/garbage-collection"
+          q: {
+            exist: [
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/options"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registries/options"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              lit: "options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.options`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registries/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registries/subscription"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registry"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.registry`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/options"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registry/options"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.options`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/registry/subscription"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/registry/subscription"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "subscription"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.subscription`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221"
+                k: "param"
+                n: "manifest_digest"
+                or: "manifest_digest"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+          q: {
+            exist: [
+              "manifest_digest"
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "digests"
+            }
+            {
+              var: "manifest_digest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "sha256:cb8a924afdf0229ef7515d9e5b3024e23b3eb03ddbba287f4a19c6ac90b8d221"
+                k: "param"
+                n: "manifest_digest"
+                or: "manifest_digest"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}"
+          q: {
+            exist: [
+              "manifest_digest"
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "digests"
+            }
+            {
+              var: "manifest_digest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "06a447a"
+                k: "param"
+                n: "repository_tag"
+                or: "repository_tag"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+              "repository_tag"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "tags"
+            }
+            {
+              var: "repository_tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "06a447a"
+                k: "param"
+                n: "repository_tag"
+                or: "repository_tag"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag}"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+              "repository_tag"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+            {
+              lit: "tags"
+            }
+            {
+              var: "repository_tag"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registries/{registry_name}/repositories/{repository_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "repo-1"
+                k: "param"
+                n: "repository_name"
+                or: "repository_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registries/{registry_name}/repositories/{repository_name}"
+          q: {
+            exist: [
+              "registry_name"
+              "repository_name"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "repositories"
+            }
+            {
+              var: "repository_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registries/{registry_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example"
+                k: "param"
+                n: "id"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/registries/{registry_name}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              registry_name: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/registry"
+            source: "openapi3"
+            version: 2
+          }
+          m: "DELETE"
+          o: "/v2/registry"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "eff0feee-49c7-4e8f-ba5c-a320c109c8a8"
+                k: "param"
+                n: "garbage_collection_uuid"
+                or: "garbage_collection_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+          q: {
+            exist: [
+              "garbage_collection_uuid"
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registries"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+            {
+              var: "garbage_collection_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "eff0feee-49c7-4e8f-ba5c-a320c109c8a8"
+                k: "param"
+                n: "garbage_collection_uuid"
+                or: "garbage_collection_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "example"
+                k: "param"
+                n: "registry_name"
+                or: "registry_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid}"
+          q: {
+            exist: [
+              "garbage_collection_uuid"
+              "registry_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              var: "registry_name"
+            }
+            {
+              lit: "garbage-collection"
+            }
+            {
+              var: "garbage_collection_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.garbage_collection`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.tag")]
+  ]
+
+}

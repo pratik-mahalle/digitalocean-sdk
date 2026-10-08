@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "image_action": {
+      "IMAGE_ACTION00": {
+        "completed_at": "s5a",
+        "id": "IMAGE_ACTION00",
+        "region": {},
+        "region_slug": "s5d",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s5f",
+        "started_at": "s60",
+        "status": "s61",
+        "type": "s62"
+      },
+      "IMAGE_ACTION01": {
+        "completed_at": "sb4",
+        "id": "IMAGE_ACTION01",
+        "region": {},
+        "region_slug": "sb7",
+        "resource_id": "RESOURCE01",
+        "resource_type": "sb9",
+        "started_at": "sba",
+        "status": "sbb",
+        "type": "sbc"
+      },
+      "IMAGE_ACTION02": {
+        "completed_at": "s10e",
+        "id": "IMAGE_ACTION02",
+        "region": {},
+        "region_slug": "s111",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s113",
+        "started_at": "s114",
+        "status": "s115",
+        "type": "s116"
+      }
+    }
+  },
+  "new": {
+    "image_action": {
+      "image_action_ref01": {
+        "completed_at": "s168",
+        "region": {},
+        "region_slug": "s16b",
+        "resource_id": "RESOURCE01",
+        "resource_type": "s16d",
+        "started_at": "s16e",
+        "status": "s16f",
+        "type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/images/{image_id}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

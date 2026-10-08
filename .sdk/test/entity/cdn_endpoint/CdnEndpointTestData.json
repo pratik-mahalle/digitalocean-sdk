@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "cdn_endpoint": {
+      "CDN_ENDPOINT00": {
+        "certificate_id": "CERTIFICATE01",
+        "created_at": "s47",
+        "custom_domain": "s48",
+        "endpoint": "s49",
+        "id": "CDN_ENDPOINT00",
+        "origin": "s4b",
+        "ttl": 76,
+        "endpoint_id": "ENDPOINT01"
+      },
+      "CDN_ENDPOINT01": {
+        "certificate_id": "CERTIFICATE01",
+        "created_at": "s8d",
+        "custom_domain": "s8e",
+        "endpoint": "s8f",
+        "id": "CDN_ENDPOINT01",
+        "origin": "s91",
+        "ttl": 146,
+        "endpoint_id": "ENDPOINT01"
+      },
+      "CDN_ENDPOINT02": {
+        "certificate_id": "CERTIFICATE01",
+        "created_at": "sd3",
+        "custom_domain": "sd4",
+        "endpoint": "sd5",
+        "id": "CDN_ENDPOINT02",
+        "origin": "sd7",
+        "ttl": 216,
+        "endpoint_id": "ENDPOINT01"
+      }
+    }
+  },
+  "new": {
+    "cdn_endpoint": {
+      "cdn_endpoint_ref01": {
+        "certificate_id": "CERTIFICATE01",
+        "created_at": "s119",
+        "custom_domain": "s11a",
+        "endpoint": "s11b",
+        "origin": "s11d",
+        "ttl": 286
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/cdn/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/cdn/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/cdn/endpoints/{cdn_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/cdn/endpoints/{cdn_id}/cache": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/cdn/endpoints/{cdn_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/cdn/endpoints/{cdn_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,166 @@
+# Entity: api_delete_agent_api_key_output
+
+main: kit: entity: api_delete_agent_api_key_output: {
+
+  alias: field: {}
+
+  name: "api_delete_agent_api_key_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "api_key_uuid"
+                or: "api_key_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}"
+          q: {
+            exist: [
+              "agent_id"
+              "api_key_uuid"
+            ]
+          }
+          r: {
+            param: {
+              agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "api_keys"
+            }
+            {
+              var: "api_key_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.api_key_info`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}/regenerate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "api_key_uuid"
+                or: "api_key_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}/regenerate"
+          q: {
+            "$action": "regenerate"
+            exist: [
+              "agent_id"
+              "api_key_uuid"
+            ]
+          }
+          r: {
+            param: {
+              agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "api_keys"
+            }
+            {
+              var: "api_key_uuid"
+            }
+            {
+              lit: "regenerate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.api_key_info`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

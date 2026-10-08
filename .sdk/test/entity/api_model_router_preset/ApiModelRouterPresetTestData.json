@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "api_model_router_preset": {
+      "API_MODEL_ROUTER_PRESET00": {
+        "config": {},
+        "display_name": "s33",
+        "long_description": "s34",
+        "short_description": "s35",
+        "slug": "s36"
+      },
+      "API_MODEL_ROUTER_PRESET01": {
+        "config": {},
+        "display_name": "s65",
+        "long_description": "s66",
+        "short_description": "s67",
+        "slug": "s68"
+      },
+      "API_MODEL_ROUTER_PRESET02": {
+        "config": {},
+        "display_name": "s97",
+        "long_description": "s98",
+        "short_description": "s99",
+        "slug": "s9a"
+      }
+    }
+  },
+  "new": {
+    "api_model_router_preset": {
+      "api_model_router_preset_ref01": {
+        "config": {},
+        "display_name": "sc9",
+        "long_description": "sca",
+        "short_description": "scb",
+        "slug": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/models/routers/presets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

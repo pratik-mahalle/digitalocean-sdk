@@ -1,0 +1,69 @@
+# Entity: api_delete_scenario_set_output
+
+main: kit: entity: api_delete_scenario_set_output: {
+
+  alias: field: {}
+
+  name: "api_delete_scenario_set_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/scenario_sets/{scenario_set_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "scenario_set_uuid"
+                or: "scenario_set_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}"
+          q: {
+            exist: [
+              "scenario_set_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_sets"
+            }
+            {
+              var: "scenario_set_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

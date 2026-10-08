@@ -1,0 +1,172 @@
+# Entity: api_create_data_source_file_upload_presigned_urls_output
+
+main: kit: entity: api_create_data_source_file_upload_presigned_urls_output: {
+
+  alias: field: {}
+
+  fields: {
+    files: {
+      h: "Files"
+      n: "files"
+      r: false
+      sh: "A list of files to generate presigned URLs for."
+      t: "`$ARRAY`"
+    }
+    request_id: {
+      h: "Request Id"
+      n: "request_id"
+      r: false
+      sh: "The ID generated for the request for Presigned URLs."
+      t: "`$STRING`"
+    }
+    uploads: {
+      h: "Uploads"
+      n: "uploads"
+      r: false
+      sh: "A list of generated presigned URLs and object keys, one per file."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "api_create_data_source_file_upload_presigned_urls_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/evaluation_datasets/file_upload_presigned_urls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_datasets"
+            }
+            {
+              lit: "file_upload_presigned_urls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              lit: "data_sources"
+            }
+            {
+              lit: "file_upload_presigned_urls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation"
+            }
+            {
+              lit: "datasets"
+            }
+            {
+              lit: "file_upload_presigned_urls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/gen-ai/scenario_sets/file_upload_presigned_urls"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/scenario_sets/file_upload_presigned_urls"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_sets"
+            }
+            {
+              lit: "file_upload_presigned_urls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

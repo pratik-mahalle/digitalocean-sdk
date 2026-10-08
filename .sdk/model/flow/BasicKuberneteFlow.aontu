@@ -1,0 +1,101 @@
+# BasicKuberneteFlow
+
+main: kit: flow: BasicKuberneteFlow:
+{
+  entity: "kubernete",
+  kind: "basic",
+  name: "BasicKuberneteFlow",
+  step: [
+    {
+      i: {
+        ref: "kubernete_ref01"
+      }
+
+      m: {
+        cluster_id: "cluster01",
+        node_pool_id: "node_pool01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "kubernete_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "kubernete_ref01",
+        srcdatavar: "kubernete_ref01_data",
+        suffix: "_up0",
+        textfield: "cluster_subnet"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kubernete_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "kubernete_ref01",
+        srcdatavar: "kubernete_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "kubernete01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kubernete_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "kubernete_ref01",
+        suffix: "_rm0"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "kubernete_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicKuberneteFlow"
+}

@@ -1,0 +1,59 @@
+# BasicApiDeleteEvaluationDatasetOutputFlow
+
+main: kit: flow: BasicApiDeleteEvaluationDatasetOutputFlow:
+{
+  entity: "api_delete_evaluation_dataset_output",
+  kind: "basic",
+  name: "BasicApiDeleteEvaluationDatasetOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_delete_evaluation_dataset_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_delete_evaluation_dataset_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_delete_evaluation_dataset_output_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "api_delete_evaluation_dataset_output01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "api_delete_evaluation_dataset_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiDeleteEvaluationDatasetOutputFlow"
+}

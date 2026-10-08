@@ -1,0 +1,32 @@
+# BasicBatchResultFlow
+
+main: kit: flow: BasicBatchResultFlow:
+{
+  entity: "batch_result",
+  kind: "basic",
+  name: "BasicBatchResultFlow",
+  step: [
+    {
+      i: {
+        ref: "batch_result_ref01",
+        srcdatavar: "batch_result_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "batch_result01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-batch_result_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBatchResultFlow"
+}

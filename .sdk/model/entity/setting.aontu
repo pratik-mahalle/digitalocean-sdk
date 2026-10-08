@@ -1,0 +1,87 @@
+# Entity: setting
+
+main: kit: entity: setting: {
+
+  alias: field: {}
+
+  fields: {
+    plan_downgrades: {
+      h: "Plan Downgrades"
+      n: "plan_downgrades"
+      r: false
+      t: "`$OBJECT`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: false
+      t: "`$OBJECT`"
+    }
+    tier_coverage: {
+      h: "Tier Coverage"
+      n: "tier_coverage"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "setting"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/security/settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/security/settings"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

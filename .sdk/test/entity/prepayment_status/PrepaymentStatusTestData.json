@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "prepayment_status": {
+      "PREPAYMENT_STATUS00": {
+        "balance": "s32",
+        "blocked": false,
+        "eligible": true,
+        "is_auto_prepay_enabled": false,
+        "month_to_date_balance": "s36",
+        "id": "PREPAYMENT_STATUS00"
+      },
+      "PREPAYMENT_STATUS01": {
+        "balance": "s64",
+        "blocked": false,
+        "eligible": true,
+        "is_auto_prepay_enabled": false,
+        "month_to_date_balance": "s68",
+        "id": "PREPAYMENT_STATUS01"
+      },
+      "PREPAYMENT_STATUS02": {
+        "balance": "s96",
+        "blocked": false,
+        "eligible": true,
+        "is_auto_prepay_enabled": false,
+        "month_to_date_balance": "s9a",
+        "id": "PREPAYMENT_STATUS02"
+      }
+    }
+  },
+  "new": {
+    "prepayment_status": {
+      "prepayment_status_ref01": {
+        "balance": "sc8",
+        "blocked": false,
+        "eligible": true,
+        "is_auto_prepay_enabled": false,
+        "month_to_date_balance": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/customers/my/prepayment_status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

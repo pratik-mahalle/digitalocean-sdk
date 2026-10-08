@@ -1,0 +1,64 @@
+# Entity: prepayment_config
+
+main: kit: entity: prepayment_config: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "prepayment_config"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/customers/my/prepayment_config"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/customers/my/prepayment_config"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "prepayment_config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

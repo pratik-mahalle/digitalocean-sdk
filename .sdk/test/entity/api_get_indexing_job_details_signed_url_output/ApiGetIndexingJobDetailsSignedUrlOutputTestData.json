@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "api_get_indexing_job_details_signed_url_output": {
+      "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT00": {
+        "signed_url": "sa",
+        "indexing_job_id": "INDEXING_JOB01",
+        "id": "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT00"
+      },
+      "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT01": {
+        "signed_url": "s14",
+        "indexing_job_id": "INDEXING_JOB01",
+        "id": "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT01"
+      },
+      "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT02": {
+        "signed_url": "s1e",
+        "indexing_job_id": "INDEXING_JOB01",
+        "id": "API_GET_INDEXING_JOB_DETAILS_SIGNED_URL_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_indexing_job_details_signed_url_output": {
+      "api_get_indexing_job_details_signed_url_output_ref01": {
+        "signed_url": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

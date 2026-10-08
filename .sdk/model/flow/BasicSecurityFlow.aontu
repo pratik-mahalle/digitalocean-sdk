@@ -1,0 +1,101 @@
+# BasicSecurityFlow
+
+main: kit: flow: BasicSecurityFlow:
+{
+  entity: "security",
+  kind: "basic",
+  name: "BasicSecurityFlow",
+  step: [
+    {
+      i: {
+        ref: "security_ref01"
+      }
+
+      m: {
+        finding_id: "finding01",
+        scan_id: "scan01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "security_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "security_ref01",
+        srcdatavar: "security_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-security_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "security_ref01",
+        srcdatavar: "security_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-security_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "security_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "security01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "security_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSecurityFlow"
+}

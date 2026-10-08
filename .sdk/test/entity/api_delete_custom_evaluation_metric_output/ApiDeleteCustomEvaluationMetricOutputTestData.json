@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_custom_evaluation_metric_output": {
+      "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT00": {
+        "metric_uuid": "METRIC_UUID01",
+        "id": "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT00"
+      },
+      "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT01": {
+        "metric_uuid": "METRIC_UUID01",
+        "id": "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT01"
+      },
+      "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT02": {
+        "metric_uuid": "METRIC_UUID01",
+        "id": "API_DELETE_CUSTOM_EVALUATION_METRIC_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_custom_evaluation_metric_output": {
+      "api_delete_custom_evaluation_metric_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/custom_evaluation_metrics/{metric_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

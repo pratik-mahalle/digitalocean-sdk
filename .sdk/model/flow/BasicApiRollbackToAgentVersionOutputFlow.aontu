@@ -1,0 +1,29 @@
+# BasicApiRollbackToAgentVersionOutputFlow
+
+main: kit: flow: BasicApiRollbackToAgentVersionOutputFlow:
+{
+  entity: "api_rollback_to_agent_version_output",
+  kind: "basic",
+  name: "BasicApiRollbackToAgentVersionOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_rollback_to_agent_version_output_ref01",
+        srcdatavar: "api_rollback_to_agent_version_output_ref01_data",
+        suffix: "_up0",
+        textfield: "uuid"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_rollback_to_agent_version_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiRollbackToAgentVersionOutputFlow"
+}

@@ -1,0 +1,26 @@
+# BasicApiListAgentsByOpenAiKeyOutputFlow
+
+main: kit: flow: BasicApiListAgentsByOpenAiKeyOutputFlow:
+{
+  entity: "api_list_agents_by_open_ai_key_output",
+  kind: "basic",
+  name: "BasicApiListAgentsByOpenAiKeyOutputFlow",
+  step: [
+    {
+      m: {
+        key_id: "key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_agents_by_open_ai_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListAgentsByOpenAiKeyOutputFlow"
+}

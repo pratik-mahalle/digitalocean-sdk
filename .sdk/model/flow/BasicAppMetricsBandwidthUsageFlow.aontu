@@ -1,0 +1,38 @@
+# BasicAppMetricsBandwidthUsageFlow
+
+main: kit: flow: BasicAppMetricsBandwidthUsageFlow:
+{
+  entity: "app_metrics_bandwidth_usage",
+  kind: "basic",
+  name: "BasicAppMetricsBandwidthUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "app_metrics_bandwidth_usage_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_metrics_bandwidth_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppMetricsBandwidthUsageFlow"
+}

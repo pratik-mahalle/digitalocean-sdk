@@ -1,0 +1,86 @@
+# Entity: nfs_action_2
+
+main: kit: entity: nfs_action_2: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "nfs_action_2"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/nfs/{nfs_id}/actions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "0a1b2c3d-4e5f-6a7b-8c9d-0e1f2a3b4c5d"
+                k: "param"
+                n: "id"
+                or: "nfs_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/nfs/{nfs_id}/actions"
+          q: {
+            "$action": "actions"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              nfs_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "nfs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "actions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.action`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

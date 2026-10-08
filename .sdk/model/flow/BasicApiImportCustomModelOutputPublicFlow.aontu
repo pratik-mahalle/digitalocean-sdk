@@ -1,0 +1,18 @@
+# BasicApiImportCustomModelOutputPublicFlow
+
+main: kit: flow: BasicApiImportCustomModelOutputPublicFlow:
+{
+  entity: "api_import_custom_model_output_public",
+  kind: "basic",
+  name: "BasicApiImportCustomModelOutputPublicFlow",
+  step: [
+    {
+      i: {
+        ref: "api_import_custom_model_output_public_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiImportCustomModelOutputPublicFlow"
+}

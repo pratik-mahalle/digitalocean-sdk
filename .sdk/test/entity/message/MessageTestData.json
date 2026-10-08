@@ -1,0 +1,112 @@
+{
+  "existing": {
+    "message": {
+      "MESSAGE00": {
+        "content": [],
+        "id": "MESSAGE00",
+        "max_tokens": 222,
+        "messages": [],
+        "metadata": {},
+        "model": "se1",
+        "reasoning_effort": "se2",
+        "role": "se3",
+        "speed": "se4",
+        "stop_reason": "se5",
+        "stop_sequence": "se6",
+        "stop_sequences": [],
+        "stream": true,
+        "system": "se9",
+        "temperature": 234,
+        "thinking": {},
+        "tool_choice": "sec",
+        "tools": [],
+        "top_k": 238,
+        "top_p": 239,
+        "type": "sf0",
+        "usage": {}
+      },
+      "MESSAGE01": {
+        "content": [],
+        "id": "MESSAGE01",
+        "max_tokens": 442,
+        "messages": [],
+        "metadata": {},
+        "model": "s1bd",
+        "reasoning_effort": "s1be",
+        "role": "s1bf",
+        "speed": "s1c0",
+        "stop_reason": "s1c1",
+        "stop_sequence": "s1c2",
+        "stop_sequences": [],
+        "stream": true,
+        "system": "s1c5",
+        "temperature": 454,
+        "thinking": {},
+        "tool_choice": "s1c8",
+        "tools": [],
+        "top_k": 458,
+        "top_p": 459,
+        "type": "s1cc",
+        "usage": {}
+      },
+      "MESSAGE02": {
+        "content": [],
+        "id": "MESSAGE02",
+        "max_tokens": 662,
+        "messages": [],
+        "metadata": {},
+        "model": "s299",
+        "reasoning_effort": "s29a",
+        "role": "s29b",
+        "speed": "s29c",
+        "stop_reason": "s29d",
+        "stop_sequence": "s29e",
+        "stop_sequences": [],
+        "stream": true,
+        "system": "s2a1",
+        "temperature": 674,
+        "thinking": {},
+        "tool_choice": "s2a4",
+        "tools": [],
+        "top_k": 678,
+        "top_p": 679,
+        "type": "s2a8",
+        "usage": {}
+      }
+    }
+  },
+  "new": {
+    "message": {
+      "message_ref01": {
+        "content": [],
+        "max_tokens": 882,
+        "messages": [],
+        "metadata": {},
+        "model": "s375",
+        "reasoning_effort": "s376",
+        "role": "s377",
+        "speed": "s378",
+        "stop_reason": "s379",
+        "stop_sequence": "s37a",
+        "stop_sequences": [],
+        "stream": true,
+        "system": "s37d",
+        "temperature": 894,
+        "thinking": {},
+        "tool_choice": "s380",
+        "tools": [],
+        "top_k": 898,
+        "top_p": 899,
+        "type": "s384",
+        "usage": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

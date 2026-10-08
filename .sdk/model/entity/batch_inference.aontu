@@ -1,0 +1,44 @@
+# Entity: batch_inference
+
+main: kit: entity: batch_inference: {
+
+  alias: field: {}
+
+  name: "batch_inference"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /<upload_url>"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/<upload_url>"
+          rb: {
+            binary: true
+            kind: "raw"
+            media: "application/octet-stream"
+          }
+          s: [
+            {
+              lit: "<upload_url>"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

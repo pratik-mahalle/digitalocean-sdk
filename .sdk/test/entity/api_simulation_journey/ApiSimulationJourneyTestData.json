@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "api_simulation_journey": {
+      "API_SIMULATION_JOURNEY00": {
+        "created_at": "saa",
+        "duration_sec": "sab",
+        "failure_reason": "sac",
+        "id": "API_SIMULATION_JOURNEY00",
+        "journey_index": 174,
+        "journey_uuid": "saf",
+        "judge_reasoning": "sb0",
+        "run_uuid": "sb1",
+        "scenario_uuid": "sb2",
+        "session_id": "SESSION01",
+        "status": "sb4",
+        "token_usage": {},
+        "trajectory_bucket_name": "sb6",
+        "trajectory_bucket_region": "sb7",
+        "trajectory_spaces_key": "sb8",
+        "updated_at": "sb9",
+        "verdict": "sba",
+        "simulation_run_id": "SIMULATION_RUN01"
+      },
+      "API_SIMULATION_JOURNEY01": {
+        "created_at": "s154",
+        "duration_sec": "s155",
+        "failure_reason": "s156",
+        "id": "API_SIMULATION_JOURNEY01",
+        "journey_index": 344,
+        "journey_uuid": "s159",
+        "judge_reasoning": "s15a",
+        "run_uuid": "s15b",
+        "scenario_uuid": "s15c",
+        "session_id": "SESSION01",
+        "status": "s15e",
+        "token_usage": {},
+        "trajectory_bucket_name": "s160",
+        "trajectory_bucket_region": "s161",
+        "trajectory_spaces_key": "s162",
+        "updated_at": "s163",
+        "verdict": "s164",
+        "simulation_run_id": "SIMULATION_RUN01"
+      },
+      "API_SIMULATION_JOURNEY02": {
+        "created_at": "s1fe",
+        "duration_sec": "s1ff",
+        "failure_reason": "s200",
+        "id": "API_SIMULATION_JOURNEY02",
+        "journey_index": 514,
+        "journey_uuid": "s203",
+        "judge_reasoning": "s204",
+        "run_uuid": "s205",
+        "scenario_uuid": "s206",
+        "session_id": "SESSION01",
+        "status": "s208",
+        "token_usage": {},
+        "trajectory_bucket_name": "s20a",
+        "trajectory_bucket_region": "s20b",
+        "trajectory_spaces_key": "s20c",
+        "updated_at": "s20d",
+        "verdict": "s20e",
+        "simulation_run_id": "SIMULATION_RUN01"
+      }
+    }
+  },
+  "new": {
+    "api_simulation_journey": {
+      "api_simulation_journey_ref01": {
+        "created_at": "s2a8",
+        "duration_sec": "s2a9",
+        "failure_reason": "s2aa",
+        "journey_index": 684,
+        "journey_uuid": "s2ad",
+        "judge_reasoning": "s2ae",
+        "run_uuid": "s2af",
+        "scenario_uuid": "s2b0",
+        "session_id": "SESSION01",
+        "status": "s2b2",
+        "token_usage": {},
+        "trajectory_bucket_name": "s2b4",
+        "trajectory_bucket_region": "s2b5",
+        "trajectory_spaces_key": "s2b6",
+        "updated_at": "s2b7",
+        "verdict": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

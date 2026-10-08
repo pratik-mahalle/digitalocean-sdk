@@ -1,0 +1,104 @@
+{
+  "existing": {
+    "create_response": {
+      "CREATE_RESPONSE00": {
+        "created": 200,
+        "id": "CREATE_RESPONSE00",
+        "input": "sca",
+        "instructions": "scb",
+        "max_output_tokens": 204,
+        "metadata": {},
+        "model": "sce",
+        "object": "scf",
+        "output": [],
+        "parallel_tool_calls": false,
+        "status": "sd2",
+        "stop": "sd3",
+        "stream": true,
+        "stream_options": {},
+        "temperature": 214,
+        "tool_choice": "sd7",
+        "tools": [],
+        "top_p": 217,
+        "usage": {},
+        "user": "sdb"
+      },
+      "CREATE_RESPONSE01": {
+        "created": 400,
+        "id": "CREATE_RESPONSE01",
+        "input": "s192",
+        "instructions": "s193",
+        "max_output_tokens": 404,
+        "metadata": {},
+        "model": "s196",
+        "object": "s197",
+        "output": [],
+        "parallel_tool_calls": false,
+        "status": "s19a",
+        "stop": "s19b",
+        "stream": true,
+        "stream_options": {},
+        "temperature": 414,
+        "tool_choice": "s19f",
+        "tools": [],
+        "top_p": 417,
+        "usage": {},
+        "user": "s1a3"
+      },
+      "CREATE_RESPONSE02": {
+        "created": 600,
+        "id": "CREATE_RESPONSE02",
+        "input": "s25a",
+        "instructions": "s25b",
+        "max_output_tokens": 604,
+        "metadata": {},
+        "model": "s25e",
+        "object": "s25f",
+        "output": [],
+        "parallel_tool_calls": false,
+        "status": "s262",
+        "stop": "s263",
+        "stream": true,
+        "stream_options": {},
+        "temperature": 614,
+        "tool_choice": "s267",
+        "tools": [],
+        "top_p": 617,
+        "usage": {},
+        "user": "s26b"
+      }
+    }
+  },
+  "new": {
+    "create_response": {
+      "create_response_ref01": {
+        "created": 800,
+        "input": "s322",
+        "instructions": "s323",
+        "max_output_tokens": 804,
+        "metadata": {},
+        "model": "s326",
+        "object": "s327",
+        "output": [],
+        "parallel_tool_calls": false,
+        "status": "s32a",
+        "stop": "s32b",
+        "stream": true,
+        "stream_options": {},
+        "temperature": 814,
+        "tool_choice": "s32f",
+        "tools": [],
+        "top_p": 817,
+        "usage": {},
+        "user": "s333"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

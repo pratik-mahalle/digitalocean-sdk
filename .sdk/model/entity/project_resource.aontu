@@ -1,0 +1,259 @@
+# Entity: project_resource
+
+main: kit: entity: project_resource: {
+
+  alias: field: {}
+
+  fields: {
+    assigned_at: {
+      fo: "date-time"
+      h: "Assigned At"
+      n: "assigned_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the project was created."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "The links object contains the `self` object, which contains the resource relationship."
+      t: "`$OBJECT`"
+    }
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: false
+      sh: "All resources, including the ones added in the request, that are assigned to the project."
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The status of assigning and fetching the resources."
+      t: "`$STRING`"
+    }
+    urn: {
+      h: "Urn"
+      n: "urn"
+      r: false
+      sh: "The uniform resource name (URN) for the resource in the format do:resource_type:resource_id."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project_resource"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/projects/{project_id}/resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/projects/{project_id}/resources"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/projects/default/resources"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/projects/default/resources"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              lit: "default"
+            }
+            {
+              lit: "resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/projects/{project_id}/resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/projects/{project_id}/resources"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              project_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resources`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/projects/default/resources"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/projects/default/resources"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              lit: "default"
+            }
+            {
+              lit: "resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.resources`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

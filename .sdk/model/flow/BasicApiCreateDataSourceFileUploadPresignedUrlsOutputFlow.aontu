@@ -1,0 +1,18 @@
+# BasicApiCreateDataSourceFileUploadPresignedUrlsOutputFlow
+
+main: kit: flow: BasicApiCreateDataSourceFileUploadPresignedUrlsOutputFlow:
+{
+  entity: "api_create_data_source_file_upload_presigned_urls_output",
+  kind: "basic",
+  name: "BasicApiCreateDataSourceFileUploadPresignedUrlsOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_create_data_source_file_upload_presigned_urls_output_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiCreateDataSourceFileUploadPresignedUrlsOutputFlow"
+}

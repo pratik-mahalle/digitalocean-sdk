@@ -1,0 +1,39 @@
+# BasicAppAlertFlow
+
+main: kit: flow: BasicAppAlertFlow:
+{
+  entity: "app_alert",
+  kind: "basic",
+  name: "BasicAppAlertFlow",
+  step: [
+    {
+      i: {
+        ref: "app_alert_ref01"
+      }
+
+      m: {
+        alert_id: "alert01",
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_alert_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppAlertFlow"
+}

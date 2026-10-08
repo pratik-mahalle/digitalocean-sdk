@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "api_model_evaluation_preset": {
+      "API_MODEL_EVALUATION_PRESET00": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "sa1",
+        "candidate_model_source": "sa2",
+        "candidate_model_uuid": "sa3",
+        "candidate_system_prompt": "sa4",
+        "created_at": "sa5",
+        "dataset_name": "sa6",
+        "dataset_uuid": "sa7",
+        "eval_preset_uuid": "sa8",
+        "id": "API_MODEL_EVALUATION_PRESET00",
+        "judge_model_name": "saa",
+        "judge_model_uuid": "sab",
+        "metrics": [],
+        "name": "sad",
+        "saved_sections": [],
+        "star_metric": {}
+      },
+      "API_MODEL_EVALUATION_PRESET01": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s141",
+        "candidate_model_source": "s142",
+        "candidate_model_uuid": "s143",
+        "candidate_system_prompt": "s144",
+        "created_at": "s145",
+        "dataset_name": "s146",
+        "dataset_uuid": "s147",
+        "eval_preset_uuid": "s148",
+        "id": "API_MODEL_EVALUATION_PRESET01",
+        "judge_model_name": "s14a",
+        "judge_model_uuid": "s14b",
+        "metrics": [],
+        "name": "s14d",
+        "saved_sections": [],
+        "star_metric": {}
+      },
+      "API_MODEL_EVALUATION_PRESET02": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s1e1",
+        "candidate_model_source": "s1e2",
+        "candidate_model_uuid": "s1e3",
+        "candidate_system_prompt": "s1e4",
+        "created_at": "s1e5",
+        "dataset_name": "s1e6",
+        "dataset_uuid": "s1e7",
+        "eval_preset_uuid": "s1e8",
+        "id": "API_MODEL_EVALUATION_PRESET02",
+        "judge_model_name": "s1ea",
+        "judge_model_uuid": "s1eb",
+        "metrics": [],
+        "name": "s1ed",
+        "saved_sections": [],
+        "star_metric": {}
+      }
+    }
+  },
+  "new": {
+    "api_model_evaluation_preset": {
+      "api_model_evaluation_preset_ref01": {
+        "candidate_inference_config": {},
+        "candidate_model_name": "s281",
+        "candidate_model_source": "s282",
+        "candidate_model_uuid": "s283",
+        "candidate_system_prompt": "s284",
+        "created_at": "s285",
+        "dataset_name": "s286",
+        "dataset_uuid": "s287",
+        "eval_preset_uuid": "s288",
+        "judge_model_name": "s28a",
+        "judge_model_uuid": "s28b",
+        "metrics": [],
+        "name": "s28d",
+        "saved_sections": [],
+        "star_metric": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/model_evaluation_presets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

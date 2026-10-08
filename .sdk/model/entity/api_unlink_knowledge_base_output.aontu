@@ -1,0 +1,89 @@
+# Entity: api_unlink_knowledge_base_output
+
+main: kit: entity: api_unlink_knowledge_base_output: {
+
+  alias: field: {}
+
+  name: "api_unlink_knowledge_base_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "knowledge_base_uuid"
+                or: "knowledge_base_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}"
+          q: {
+            exist: [
+              "agent_id"
+              "knowledge_base_uuid"
+            ]
+          }
+          r: {
+            param: {
+              agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              var: "knowledge_base_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.agent`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

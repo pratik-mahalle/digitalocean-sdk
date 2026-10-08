@@ -1,0 +1,263 @@
+# Entity: user
+
+main: kit: entity: user: {
+
+  alias: field: {}
+
+  fields: {
+    connections: {
+      h: "Connections"
+      n: "connections"
+      r: false
+      sh: "The user's connections that are not revoked, sorted by provider."
+      t: "`$ARRAY`"
+    }
+    groups: {
+      h: "Groups"
+      n: "groups"
+      r: false
+      sh: "A list of in-cluster groups that the user belongs to."
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: false
+      sh: "Paging applied to this response and the total number of users."
+      t: "`$ANY`"
+    }
+    sessions: {
+      h: "Sessions"
+      n: "sessions"
+      r: false
+      sh: "Sessions bound to the user, oldest first."
+      t: "`$ARRAY`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: false
+      sh: "The user ID: a session `actor_id` or a connection `user_id`."
+      t: "`$STRING`"
+    }
+    user_ids: {
+      h: "User Ids"
+      n: "user_ids"
+      r: false
+      sh: "User IDs on this page."
+      t: "`$ARRAY`"
+    }
+    username: {
+      fo: "email"
+      h: "Username"
+      n: "username"
+      r: false
+      sh: "The username for the cluster admin user."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "user"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/users"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "session_count"
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "desc"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "al"
+                k: "query"
+                n: "user_id"
+                or: "user_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/users"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "users"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/kubernetes/clusters/{cluster_id}/user"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bd5f5959-5e1e-4205-a714-a914373942af"
+                k: "param"
+                n: "cluster_id"
+                or: "cluster_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/kubernetes/clusters/{cluster_id}/user"
+          q: {
+            exist: [
+              "cluster_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "kubernetes"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              var: "cluster_id"
+            }
+            {
+              lit: "user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.kubernetes_cluster_user`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/action-gateway/users/{user_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alice"
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/users/{user_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              user_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.user`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

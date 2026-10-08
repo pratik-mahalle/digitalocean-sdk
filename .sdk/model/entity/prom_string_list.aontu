@@ -1,0 +1,320 @@
+# Entity: prom_string_list
+
+main: kit: entity: prom_string_list: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "prom_string_list"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/query/{region}/prom/api/v1/labels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/insights/query/{region}/prom/api/v1/labels"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                name: "end"
+              }
+              {
+                list: true
+                name: "match[]"
+              }
+              {
+                name: "start"
+              }
+            ]
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "labels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/query/{region}/prom/api/v1/label/{name}/values"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "__name__"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "{__name__=~\".+\"}"
+                ]
+                k: "query"
+                n: "match"
+                or: "match[]"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/query/{region}/prom/api/v1/label/{name}/values"
+          q: {
+            exist: [
+              "name"
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "label"
+            }
+            {
+              var: "name"
+            }
+            {
+              lit: "values"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/insights/query/{region}/prom/api/v1/labels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "{__name__=~\".+\"}"
+                ]
+                k: "query"
+                n: "match"
+                or: "match[]"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/query/{region}/prom/api/v1/labels"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "labels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

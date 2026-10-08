@@ -1,0 +1,49 @@
+# BasicApiUpdateModelEvaluationRunOutputFlow
+
+main: kit: flow: BasicApiUpdateModelEvaluationRunOutputFlow:
+{
+  entity: "api_update_model_evaluation_run_output",
+  kind: "basic",
+  name: "BasicApiUpdateModelEvaluationRunOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_model_evaluation_run_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_update_model_evaluation_run_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_update_model_evaluation_run_output_ref01",
+        srcdatavar: "api_update_model_evaluation_run_output_ref01_data",
+        suffix: "_up0",
+        textfield: "candidate_model_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_model_evaluation_run_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateModelEvaluationRunOutputFlow"
+}

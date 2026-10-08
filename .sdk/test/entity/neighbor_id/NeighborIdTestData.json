@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "neighbor_id": {
+      "NEIGHBOR_ID00": {
+        "neighbor_ids": []
+      },
+      "NEIGHBOR_ID01": {
+        "neighbor_ids": []
+      },
+      "NEIGHBOR_ID02": {
+        "neighbor_ids": []
+      }
+    }
+  },
+  "new": {
+    "neighbor_id": {
+      "neighbor_id_ref01": {
+        "neighbor_ids": []
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/reports/droplet_neighbors_ids": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

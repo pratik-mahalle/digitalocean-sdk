@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "apps_get_log": {
+      "APPS_GET_LOG00": {
+        "historic_urls": [],
+        "live_url": "s15",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "invocation_id": "INVOCATION01",
+        "job_name": "JOB_NAME01",
+        "event_id": "EVENT01"
+      },
+      "APPS_GET_LOG01": {
+        "historic_urls": [],
+        "live_url": "s29",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "invocation_id": "INVOCATION01",
+        "job_name": "JOB_NAME01",
+        "event_id": "EVENT01"
+      },
+      "APPS_GET_LOG02": {
+        "historic_urls": [],
+        "live_url": "s3d",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "invocation_id": "INVOCATION01",
+        "job_name": "JOB_NAME01",
+        "event_id": "EVENT01"
+      }
+    }
+  },
+  "new": {
+    "apps_get_log": {
+      "apps_get_log_ref01": {
+        "historic_urls": [],
+        "live_url": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/jobs/{job_name}/invocations/{job_invocation_id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/components/{component_name}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/deployments/{deployment_id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/events/{event_id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

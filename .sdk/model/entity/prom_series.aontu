@@ -1,0 +1,213 @@
+# Entity: prom_series
+
+main: kit: entity: prom_series: {
+
+  alias: field: {}
+
+  fields: {
+    data: {
+      h: "Data"
+      n: "data"
+      r: true
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "prom_series"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/query/{region}/prom/api/v1/series"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/insights/query/{region}/prom/api/v1/series"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                name: "end"
+              }
+              {
+                list: true
+                name: "match[]"
+              }
+              {
+                name: "start"
+              }
+            ]
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "series"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/query/{region}/prom/api/v1/series"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "{__name__=\"do.droplets.cpu_time\"}"
+                ]
+                k: "query"
+                n: "match"
+                or: "match[]"
+                r: true
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/query/{region}/prom/api/v1/series"
+          q: {
+            exist: [
+              "match"
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "series"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

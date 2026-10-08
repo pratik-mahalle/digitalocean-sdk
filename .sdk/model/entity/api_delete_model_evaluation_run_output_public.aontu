@@ -1,0 +1,69 @@
+# Entity: api_delete_model_evaluation_run_output_public
+
+main: kit: entity: api_delete_model_evaluation_run_output_public: {
+
+  alias: field: {}
+
+  name: "api_delete_model_evaluation_run_output_public"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "eval_run_uuid"
+                or: "eval_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+          q: {
+            exist: [
+              "eval_run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+            {
+              var: "eval_run_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

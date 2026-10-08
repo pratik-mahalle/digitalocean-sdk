@@ -1,0 +1,56 @@
+# Entity: neighbor_id
+
+main: kit: entity: neighbor_id: {
+
+  alias: field: {}
+
+  fields: {
+    neighbor_ids: {
+      h: "Neighbor Ids"
+      n: "neighbor_ids"
+      r: false
+      sh: "An array of arrays."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "neighbor_id"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reports/droplet_neighbors_ids"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/reports/droplet_neighbors_ids"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reports"
+            }
+            {
+              lit: "droplet_neighbors_ids"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.neighbor_ids`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

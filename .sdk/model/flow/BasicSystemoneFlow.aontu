@@ -1,0 +1,18 @@
+# BasicSystemoneFlow
+
+main: kit: flow: BasicSystemoneFlow:
+{
+  entity: "systemone",
+  kind: "basic",
+  name: "BasicSystemoneFlow",
+  step: [
+    {
+      i: {
+        ref: "systemone_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSystemoneFlow"
+}

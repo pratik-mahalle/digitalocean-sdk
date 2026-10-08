@@ -1,0 +1,100 @@
+# BasicVpcNatGatewayFlow
+
+main: kit: flow: BasicVpcNatGatewayFlow:
+{
+  entity: "vpc_nat_gateway",
+  kind: "basic",
+  name: "BasicVpcNatGatewayFlow",
+  step: [
+    {
+      i: {
+        ref: "vpc_nat_gateway_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vpc_nat_gateway_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_nat_gateway_ref01",
+        srcdatavar: "vpc_nat_gateway_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_nat_gateway_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_nat_gateway_ref01",
+        srcdatavar: "vpc_nat_gateway_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vpc_nat_gateway01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_nat_gateway_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_nat_gateway_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "vpc_nat_gateway01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "vpc_nat_gateway_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVpcNatGatewayFlow"
+}

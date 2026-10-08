@@ -1,0 +1,29 @@
+# BasicApiMoveAgentsToWorkspaceOutputFlow
+
+main: kit: flow: BasicApiMoveAgentsToWorkspaceOutputFlow:
+{
+  entity: "api_move_agents_to_workspace_output",
+  kind: "basic",
+  name: "BasicApiMoveAgentsToWorkspaceOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_move_agents_to_workspace_output_ref01",
+        srcdatavar: "api_move_agents_to_workspace_output_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_move_agents_to_workspace_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiMoveAgentsToWorkspaceOutputFlow"
+}

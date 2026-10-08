@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "nfs_snapshot": {
+      "NFS_SNAPSHOT00": {
+        "created_at": "s46",
+        "id": "NFS_SNAPSHOT00",
+        "name": "s48",
+        "region": "s49",
+        "share_id": "SHARE01",
+        "size_gib": 75,
+        "status": "s4c"
+      },
+      "NFS_SNAPSHOT01": {
+        "created_at": "s8c",
+        "id": "NFS_SNAPSHOT01",
+        "name": "s8e",
+        "region": "s8f",
+        "share_id": "SHARE01",
+        "size_gib": 145,
+        "status": "s92"
+      },
+      "NFS_SNAPSHOT02": {
+        "created_at": "sd2",
+        "id": "NFS_SNAPSHOT02",
+        "name": "sd4",
+        "region": "sd5",
+        "share_id": "SHARE01",
+        "size_gib": 215,
+        "status": "sd8"
+      }
+    }
+  },
+  "new": {
+    "nfs_snapshot": {
+      "nfs_snapshot_ref01": {
+        "created_at": "s118",
+        "name": "s11a",
+        "region": "s11b",
+        "share_id": "SHARE01",
+        "size_gib": 285,
+        "status": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/nfs/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/nfs/snapshots/{nfs_snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

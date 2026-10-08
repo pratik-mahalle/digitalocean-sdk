@@ -1,0 +1,106 @@
+{
+  "existing": {
+    "api_update_knowledge_base_output": {
+      "API_UPDATE_KNOWLEDGE_BASE_OUTPUT00": {
+        "added_to_agent_at": "saa",
+        "created_at": "sab",
+        "database_id": "DATABASE01",
+        "datasources": [],
+        "embedding_model_uuid": "sae",
+        "is_public": false,
+        "last_indexing_job": {},
+        "name": "sb1",
+        "project_id": "PROJECT01",
+        "region": "sb3",
+        "reranking_config": {},
+        "size": "sb5",
+        "tags": [],
+        "updated_at": "sb7",
+        "user_id": "USER01",
+        "uuid": "sb9",
+        "vpc_uuid": "sba",
+        "id": "API_UPDATE_KNOWLEDGE_BASE_OUTPUT00"
+      },
+      "API_UPDATE_KNOWLEDGE_BASE_OUTPUT01": {
+        "added_to_agent_at": "s154",
+        "created_at": "s155",
+        "database_id": "DATABASE01",
+        "datasources": [],
+        "embedding_model_uuid": "s158",
+        "is_public": false,
+        "last_indexing_job": {},
+        "name": "s15b",
+        "project_id": "PROJECT01",
+        "region": "s15d",
+        "reranking_config": {},
+        "size": "s15f",
+        "tags": [],
+        "updated_at": "s161",
+        "user_id": "USER01",
+        "uuid": "s163",
+        "vpc_uuid": "s164",
+        "id": "API_UPDATE_KNOWLEDGE_BASE_OUTPUT01"
+      },
+      "API_UPDATE_KNOWLEDGE_BASE_OUTPUT02": {
+        "added_to_agent_at": "s1fe",
+        "created_at": "s1ff",
+        "database_id": "DATABASE01",
+        "datasources": [],
+        "embedding_model_uuid": "s202",
+        "is_public": false,
+        "last_indexing_job": {},
+        "name": "s205",
+        "project_id": "PROJECT01",
+        "region": "s207",
+        "reranking_config": {},
+        "size": "s209",
+        "tags": [],
+        "updated_at": "s20b",
+        "user_id": "USER01",
+        "uuid": "s20d",
+        "vpc_uuid": "s20e",
+        "id": "API_UPDATE_KNOWLEDGE_BASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_knowledge_base_output": {
+      "api_update_knowledge_base_output_ref01": {
+        "added_to_agent_at": "s2a8",
+        "created_at": "s2a9",
+        "database_id": "DATABASE01",
+        "datasources": [],
+        "embedding_model_uuid": "s2ac",
+        "is_public": false,
+        "last_indexing_job": {},
+        "name": "s2af",
+        "project_id": "PROJECT01",
+        "region": "s2b1",
+        "reranking_config": {},
+        "size": "s2b3",
+        "tags": [],
+        "updated_at": "s2b5",
+        "user_id": "USER01",
+        "uuid": "s2b7",
+        "vpc_uuid": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/knowledge_bases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/knowledge_bases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/gen-ai/knowledge_bases/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

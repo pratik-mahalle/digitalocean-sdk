@@ -1,0 +1,92 @@
+# Entity: api_get_evaluation_dataset_download_url_output
+
+main: kit: entity: api_get_evaluation_dataset_download_url_output: {
+
+  alias: field: {}
+
+  fields: {
+    download_url: {
+      h: "Download Url"
+      n: "download_url"
+      r: false
+      sh: "The presigned URL to download the dataset file."
+      t: "`$STRING`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "The time the URL expires at."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_evaluation_dataset_download_url_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/evaluation_datasets/{dataset_uuid}/download_url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "evaluation_dataset_id"
+                or: "dataset_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/evaluation_datasets/{dataset_uuid}/download_url"
+          q: {
+            exist: [
+              "evaluation_dataset_id"
+            ]
+          }
+          r: {
+            param: {
+              dataset_uuid: "evaluation_dataset_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "evaluation_datasets"
+            }
+            {
+              var: "evaluation_dataset_id"
+            }
+            {
+              lit: "download_url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

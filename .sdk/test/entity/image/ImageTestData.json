@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "image": {
+      "IMAGE00": {
+        "created_at": "sa0",
+        "description": "sa1",
+        "distribution": "sa2",
+        "error_message": "sa3",
+        "id": "IMAGE00",
+        "min_disk_size": 165,
+        "name": "sa6",
+        "public": false,
+        "region": "sa8",
+        "regions": [],
+        "size_gigabytes": 170,
+        "slug": "sab",
+        "status": "sac",
+        "tags": [],
+        "type": "sae",
+        "url": "saf"
+      },
+      "IMAGE01": {
+        "created_at": "s140",
+        "description": "s141",
+        "distribution": "s142",
+        "error_message": "s143",
+        "id": "IMAGE01",
+        "min_disk_size": 325,
+        "name": "s146",
+        "public": false,
+        "region": "s148",
+        "regions": [],
+        "size_gigabytes": 330,
+        "slug": "s14b",
+        "status": "s14c",
+        "tags": [],
+        "type": "s14e",
+        "url": "s14f"
+      },
+      "IMAGE02": {
+        "created_at": "s1e0",
+        "description": "s1e1",
+        "distribution": "s1e2",
+        "error_message": "s1e3",
+        "id": "IMAGE02",
+        "min_disk_size": 485,
+        "name": "s1e6",
+        "public": false,
+        "region": "s1e8",
+        "regions": [],
+        "size_gigabytes": 490,
+        "slug": "s1eb",
+        "status": "s1ec",
+        "tags": [],
+        "type": "s1ee",
+        "url": "s1ef"
+      }
+    }
+  },
+  "new": {
+    "image": {
+      "image_ref01": {
+        "created_at": "s280",
+        "description": "s281",
+        "distribution": "s282",
+        "error_message": "s283",
+        "min_disk_size": 645,
+        "name": "s286",
+        "public": false,
+        "region": "s288",
+        "regions": [],
+        "size_gigabytes": 650,
+        "slug": "s28b",
+        "status": "s28c",
+        "tags": [],
+        "type": "s28e",
+        "url": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/images/{image_id}/account_transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/images/{image_id}/account_transfer/accept": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/images/{image_id}/account_transfer/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/images/{image_id}/account_transfer/decline": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/images/generations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/images": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/images": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/images/{image_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/images/{image_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/images/{image_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,267 @@
+# Entity: api_agent_version
+
+main: kit: entity: api_agent_version: {
+
+  alias: field: {}
+
+  fields: {
+    agent_uuid: {
+      h: "Agent Uuid"
+      n: "agent_uuid"
+      r: false
+      sh: "Uuid of the agent this version belongs to"
+      t: "`$STRING`"
+    }
+    attached_child_agents: {
+      h: "Attached Child Agents"
+      n: "attached_child_agents"
+      r: false
+      sh: "List of child agent relationships"
+      t: "`$ARRAY`"
+    }
+    attached_functions: {
+      h: "Attached Functions"
+      n: "attached_functions"
+      r: false
+      sh: "List of function versions"
+      t: "`$ARRAY`"
+    }
+    attached_guardrails: {
+      h: "Attached Guardrails"
+      n: "attached_guardrails"
+      r: false
+      sh: "List of guardrail version"
+      t: "`$ARRAY`"
+    }
+    attached_knowledgebases: {
+      h: "Attached Knowledgebases"
+      n: "attached_knowledgebases"
+      r: false
+      sh: "List of knowledge base agent versions"
+      t: "`$ARRAY`"
+    }
+    can_rollback: {
+      h: "Can Rollback"
+      n: "can_rollback"
+      r: false
+      sh: "Whether the version is able to be rolled back to"
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date"
+      t: "`$STRING`"
+    }
+    created_by_email: {
+      h: "Created By Email"
+      n: "created_by_email"
+      r: false
+      sh: "User who created this version"
+      t: "`$STRING`"
+    }
+    currently_applied: {
+      h: "Currently Applied"
+      n: "currently_applied"
+      r: false
+      sh: "Whether this is the currently applied configuration"
+      t: "`$BOOLEAN`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the agent"
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uint64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier"
+      t: "`$STRING`"
+    }
+    instruction: {
+      h: "Instruction"
+      n: "instruction"
+      r: false
+      sh: "Instruction for the agent"
+      t: "`$STRING`"
+    }
+    k: {
+      fo: "int64"
+      h: "K"
+      n: "k"
+      r: false
+      sh: "K value for the agent's configuration"
+      t: "`$INTEGER`"
+    }
+    max_tokens: {
+      fo: "int64"
+      h: "Max Tokens"
+      n: "max_tokens"
+      r: false
+      sh: "Max tokens setting for the agent"
+      t: "`$INTEGER`"
+    }
+    model_name: {
+      h: "Model Name"
+      n: "model_name"
+      r: false
+      sh: "Name of model associated to the agent version"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the agent"
+      t: "`$STRING`"
+    }
+    provide_citations: {
+      h: "Provide Citations"
+      n: "provide_citations"
+      r: false
+      sh: "Whether the agent should provide in-response citations"
+      t: "`$BOOLEAN`"
+    }
+    retrieval_method: {
+      h: "Retrieval Method"
+      n: "retrieval_method"
+      r: false
+      sh: "- RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is…"
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "Tags associated with the agent"
+      t: "`$ARRAY`"
+    }
+    temperature: {
+      fo: "float"
+      h: "Temperature"
+      n: "temperature"
+      r: false
+      sh: "Temperature setting for the agent"
+      t: "`$NUMBER`"
+    }
+    top_p: {
+      fo: "float"
+      h: "Top P"
+      n: "top_p"
+      r: false
+      sh: "Top_p setting for the agent"
+      t: "`$NUMBER`"
+    }
+    trigger_action: {
+      h: "Trigger Action"
+      n: "trigger_action"
+      r: false
+      sh: "Action triggering the configuration update"
+      t: "`$STRING`"
+    }
+    version_hash: {
+      h: "Version Hash"
+      n: "version_hash"
+      r: false
+      sh: "Version hash"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_agent_version"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/agents/{uuid}/versions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/agents/{uuid}/versions"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          r: {
+            param: {
+              uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "versions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.agent_versions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

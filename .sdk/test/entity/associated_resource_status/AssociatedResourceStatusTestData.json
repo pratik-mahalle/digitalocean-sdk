@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "associated_resource_status": {
+      "ASSOCIATED_RESOURCE_STATUS00": {
+        "completed_at": "s28",
+        "droplet": {},
+        "failures": 42,
+        "resources": {},
+        "droplet_id": "DROPLET01",
+        "id": "ASSOCIATED_RESOURCE_STATUS00"
+      },
+      "ASSOCIATED_RESOURCE_STATUS01": {
+        "completed_at": "s50",
+        "droplet": {},
+        "failures": 82,
+        "resources": {},
+        "droplet_id": "DROPLET01",
+        "id": "ASSOCIATED_RESOURCE_STATUS01"
+      },
+      "ASSOCIATED_RESOURCE_STATUS02": {
+        "completed_at": "s78",
+        "droplet": {},
+        "failures": 122,
+        "resources": {},
+        "droplet_id": "DROPLET01",
+        "id": "ASSOCIATED_RESOURCE_STATUS02"
+      }
+    }
+  },
+  "new": {
+    "associated_resource_status": {
+      "associated_resource_status_ref01": {
+        "completed_at": "sa0",
+        "droplet": {},
+        "failures": 162,
+        "resources": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/droplets/{droplet_id}/destroy_with_associated_resources/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

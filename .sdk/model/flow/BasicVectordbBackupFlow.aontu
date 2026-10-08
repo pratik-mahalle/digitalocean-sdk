@@ -1,0 +1,26 @@
+# BasicVectordbBackupFlow
+
+main: kit: flow: BasicVectordbBackupFlow:
+{
+  entity: "vectordb_backup",
+  kind: "basic",
+  name: "BasicVectordbBackupFlow",
+  step: [
+    {
+      m: {
+        vector_database_id: "vector_database01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vectordb_backup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVectordbBackupFlow"
+}

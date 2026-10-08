@@ -1,0 +1,103 @@
+{
+  "existing": {
+    "api_get_knowledge_base_indexing_job_output": {
+      "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT00": {
+        "completed_datasources": 150,
+        "created_at": "s97",
+        "data_source_jobs": [],
+        "data_source_uuids": [],
+        "finished_at": "s9a",
+        "is_report_available": false,
+        "knowledge_base_uuid": "s9c",
+        "phase": "s9d",
+        "started_at": "s9e",
+        "status": "s9f",
+        "tokens": 160,
+        "total_datasources": 161,
+        "total_tokens": "sa2",
+        "updated_at": "sa3",
+        "uuid": "sa4",
+        "id": "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT00"
+      },
+      "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT01": {
+        "completed_datasources": 300,
+        "created_at": "s12d",
+        "data_source_jobs": [],
+        "data_source_uuids": [],
+        "finished_at": "s130",
+        "is_report_available": false,
+        "knowledge_base_uuid": "s132",
+        "phase": "s133",
+        "started_at": "s134",
+        "status": "s135",
+        "tokens": 310,
+        "total_datasources": 311,
+        "total_tokens": "s138",
+        "updated_at": "s139",
+        "uuid": "s13a",
+        "id": "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT01"
+      },
+      "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT02": {
+        "completed_datasources": 450,
+        "created_at": "s1c3",
+        "data_source_jobs": [],
+        "data_source_uuids": [],
+        "finished_at": "s1c6",
+        "is_report_available": false,
+        "knowledge_base_uuid": "s1c8",
+        "phase": "s1c9",
+        "started_at": "s1ca",
+        "status": "s1cb",
+        "tokens": 460,
+        "total_datasources": 461,
+        "total_tokens": "s1ce",
+        "updated_at": "s1cf",
+        "uuid": "s1d0",
+        "id": "API_GET_KNOWLEDGE_BASE_INDEXING_JOB_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_knowledge_base_indexing_job_output": {
+      "api_get_knowledge_base_indexing_job_output_ref01": {
+        "completed_datasources": 600,
+        "created_at": "s259",
+        "data_source_jobs": [],
+        "data_source_uuids": [],
+        "finished_at": "s25c",
+        "is_report_available": false,
+        "knowledge_base_uuid": "s25e",
+        "phase": "s25f",
+        "started_at": "s260",
+        "status": "s261",
+        "tokens": 610,
+        "total_datasources": 611,
+        "total_tokens": "s264",
+        "updated_at": "s265",
+        "uuid": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/indexing_jobs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/indexing_jobs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/indexing_jobs/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/gen-ai/indexing_jobs/{uuid}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

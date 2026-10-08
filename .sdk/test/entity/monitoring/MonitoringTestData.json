@@ -1,0 +1,158 @@
+{
+  "existing": {
+    "monitoring": {
+      "MONITORING00": {
+        "alerts": {},
+        "compare": "s97",
+        "config": {},
+        "description": "s99",
+        "destination": {},
+        "enabled": false,
+        "entities": [],
+        "id": "MONITORING00",
+        "name": "s9e",
+        "resources": [],
+        "tags": [],
+        "type": "sa1",
+        "uuid": "sa2",
+        "value": 163,
+        "window": "sa4",
+        "destination_uuid": "DESTINATION_UUID01",
+        "alert_uuid": "ALERT_UUID01",
+        "sink_uuid": "SINK_UUID01"
+      },
+      "MONITORING01": {
+        "alerts": {},
+        "compare": "s12d",
+        "config": {},
+        "description": "s12f",
+        "destination": {},
+        "enabled": false,
+        "entities": [],
+        "id": "MONITORING01",
+        "name": "s134",
+        "resources": [],
+        "tags": [],
+        "type": "s137",
+        "uuid": "s138",
+        "value": 313,
+        "window": "s13a",
+        "destination_uuid": "DESTINATION_UUID01",
+        "alert_uuid": "ALERT_UUID01",
+        "sink_uuid": "SINK_UUID01"
+      },
+      "MONITORING02": {
+        "alerts": {},
+        "compare": "s1c3",
+        "config": {},
+        "description": "s1c5",
+        "destination": {},
+        "enabled": false,
+        "entities": [],
+        "id": "MONITORING02",
+        "name": "s1ca",
+        "resources": [],
+        "tags": [],
+        "type": "s1cd",
+        "uuid": "s1ce",
+        "value": 463,
+        "window": "s1d0",
+        "destination_uuid": "DESTINATION_UUID01",
+        "alert_uuid": "ALERT_UUID01",
+        "sink_uuid": "SINK_UUID01"
+      }
+    }
+  },
+  "new": {
+    "monitoring": {
+      "monitoring_ref01": {
+        "alerts": {},
+        "compare": "s259",
+        "config": {},
+        "description": "s25b",
+        "destination": {},
+        "enabled": false,
+        "entities": [],
+        "name": "s260",
+        "resources": [],
+        "tags": [],
+        "type": "s263",
+        "uuid": "s264",
+        "value": 613,
+        "window": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/monitoring/sinks/destinations/{destination_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/monitoring/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/monitoring/sinks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/monitoring/sinks/destinations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks/destinations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks/destinations/{destination_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks/{sink_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/monitoring/sinks/destinations/{destination_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/monitoring/sinks/{sink_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

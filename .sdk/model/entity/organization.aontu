@@ -1,0 +1,88 @@
+# Entity: organization
+
+main: kit: entity: organization: {
+
+  alias: field: {}
+
+  name: "organization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/organizations/team"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/organizations/team"
+          q: {
+            "$action": "team"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              lit: "team"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/organizations/teams"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/organizations/teams"
+          q: {
+            "$action": "team"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              lit: "teams"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.teams`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

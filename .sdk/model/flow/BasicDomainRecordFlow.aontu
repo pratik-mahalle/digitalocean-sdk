@@ -1,0 +1,118 @@
+# BasicDomainRecordFlow
+
+main: kit: flow: BasicDomainRecordFlow:
+{
+  entity: "domain_record",
+  kind: "basic",
+  name: "BasicDomainRecordFlow",
+  step: [
+    {
+      i: {
+        ref: "domain_record_ref01"
+      }
+
+      m: {
+        domain_name: "domain_name01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        domain_name: "domain_name01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "domain_record_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        domain_name: "domain_name01"
+      }
+
+      i: {
+        ref: "domain_record_ref01",
+        srcdatavar: "domain_record_ref01_data",
+        suffix: "_up0",
+        textfield: "data"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-domain_record_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "domain_record_ref01",
+        srcdatavar: "domain_record_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        domain_name: "domain_name01",
+        id: "domain_record01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-domain_record_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "domain_record_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        domain_name: "domain_name01",
+        id: "domain_record01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        domain_name: "domain_name01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "domain_record_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDomainRecordFlow"
+}

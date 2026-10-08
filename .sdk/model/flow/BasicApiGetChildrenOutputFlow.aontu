@@ -1,0 +1,26 @@
+# BasicApiGetChildrenOutputFlow
+
+main: kit: flow: BasicApiGetChildrenOutputFlow:
+{
+  entity: "api_get_children_output",
+  kind: "basic",
+  name: "BasicApiGetChildrenOutputFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_get_children_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetChildrenOutputFlow"
+}

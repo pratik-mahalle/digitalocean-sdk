@@ -1,0 +1,100 @@
+# Entity: list_toolkit
+
+main: kit: entity: list_toolkit: {
+
+  alias: field: {}
+
+  fields: {
+    categories: {
+      h: "Categories"
+      n: "categories"
+      r: false
+      sh: "Distinct categories of the provider's released tools, sorted."
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "When the provider was added."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Provider description."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Provider ID."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Human-readable provider name."
+      t: "`$STRING`"
+    }
+    provider_kind: {
+      h: "Provider Kind"
+      n: "provider_kind"
+      r: false
+      sh: "Classifies the provider, for example `managed_api` or `byo_mcp` (one of your team's MCP servers)."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "list_toolkit"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/toolkits"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/toolkits"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "toolkits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.toolkits`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,657 @@
+# Entity: image
+
+main: kit: entity: image: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the image was created."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "An optional free-form text field to describe an image."
+      t: "`$STRING`"
+    }
+    distribution: {
+      h: "Distribution"
+      n: "distribution"
+      r: false
+      sh: "The name of a custom image's distribution."
+      t: "`$STRING`"
+    }
+    error_message: {
+      h: "Error Message"
+      n: "error_message"
+      r: false
+      sh: "A string containing information about errors that may occur when importing a custom image."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique number that can be used to identify and reference a specific image."
+      t: "`$INTEGER`"
+    }
+    min_disk_size: {
+      h: "Min Disk Size"
+      n: "min_disk_size"
+      r: false
+      sh: "The minimum disk size in GB required for a Droplet to use this image."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The display name that has been given to an image."
+      t: "`$STRING`"
+    }
+    public: {
+      h: "Public"
+      n: "public"
+      r: false
+      sh: "This is a boolean value that indicates whether the image in question is public or not."
+      t: "`$BOOLEAN`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      sh: "The slug identifier for the region where the resource will initially be available."
+      t: "`$STRING`"
+    }
+    regions: {
+      h: "Regions"
+      n: "regions"
+      r: false
+      sh: "This attribute is an array of the regions that the image is available in."
+      t: "`$ARRAY`"
+    }
+    size_gigabytes: {
+      fo: "float"
+      h: "Size Gigabytes"
+      n: "size_gigabytes"
+      r: false
+      sh: "The size of the image in gigabytes."
+      t: "`$NUMBER`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      sh: "A uniquely identifying string that is associated with each of the DigitalOcean-provided public images."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "A status string indicating the state of a custom image."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "A flat array of tag names as strings to be applied to the resource."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Describes the kind of image."
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "A URL from which the custom Linux virtual machine image may be retrieved."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "image"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/images/{image_id}/account_transfer"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/images/{image_id}/account_transfer"
+          q: {
+            "$action": "account_transfer"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "account_transfer"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/images/{image_id}/account_transfer/accept"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/images/{image_id}/account_transfer/accept"
+          q: {
+            "$action": "account_transfer_accept"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "account_transfer"
+            }
+            {
+              lit: "accept"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/images/{image_id}/account_transfer/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/images/{image_id}/account_transfer/cancel"
+          q: {
+            "$action": "account_transfer_cancel"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "account_transfer"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/images/{image_id}/account_transfer/decline"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/images/{image_id}/account_transfer/decline"
+          q: {
+            "$action": "account_transfer_decline"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "account_transfer"
+            }
+            {
+              lit: "decline"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v1/images/generations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/images/generations"
+          q: {
+            "$action": "generation"
+          }
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/event-stream"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "images"
+            }
+            {
+              lit: "generations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/images"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/images"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.image`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/images"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "private"
+                or: "private"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "base-image"
+                k: "query"
+                n: "tag_name"
+                or: "tag_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "distribution"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/images"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.images`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/images/{image_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/images/{image_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.image`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/images/{image_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/images/{image_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/images/{image_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 62137902
+                k: "param"
+                n: "id"
+                or: "image_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/images/{image_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              image_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "images"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.image`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

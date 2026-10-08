@@ -1,0 +1,26 @@
+# BasicApiListSimulationJourneysOutputFlow
+
+main: kit: flow: BasicApiListSimulationJourneysOutputFlow:
+{
+  entity: "api_list_simulation_journeys_output",
+  kind: "basic",
+  name: "BasicApiListSimulationJourneysOutputFlow",
+  step: [
+    {
+      m: {
+        simulation_run_id: "simulation_run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_simulation_journeys_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListSimulationJourneysOutputFlow"
+}

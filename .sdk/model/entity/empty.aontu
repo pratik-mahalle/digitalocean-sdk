@@ -1,0 +1,392 @@
+# Entity: empty
+
+main: kit: entity: empty: {
+
+  alias: field: {}
+
+  fields: {
+    actorId: {
+      h: "Actor Id"
+      n: "actorId"
+      r: false
+      sh: "Optional actor binding: the user whose connections the session's tool calls use, matched against connection `user_id`."
+      t: "`$STRING`"
+    }
+    agentName: {
+      h: "Agent Name"
+      n: "agentName"
+      r: false
+      sh: "Name of the agent that started the session."
+      t: "`$STRING`"
+    }
+    agentUrn: {
+      h: "Agent Urn"
+      n: "agentUrn"
+      r: false
+      sh: "URN of the agent that started the session."
+      t: "`$STRING`"
+    }
+    categories: {
+      h: "Categories"
+      n: "categories"
+      r: true
+      sh: "Required."
+      t: "`$ARRAY`"
+    }
+    config: {
+      h: "Config"
+      n: "config"
+      r: false
+      sh: "Optional session options."
+      t: "`$OBJECT`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "When the session was created."
+      t: "`$STRING`"
+    }
+    insights: {
+      h: "Insights"
+      n: "insights"
+      r: false
+      sh: "Omitted when the request omitted insights or explicitly sent null."
+      t: "`$ANY`"
+    }
+    mcpUrl: {
+      h: "Mcp Url"
+      n: "mcpUrl"
+      r: false
+      sh: "URL of the session's MCP endpoint, for the agent to connect to."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Required human-readable session name."
+      t: "`$STRING`"
+    }
+    network: {
+      h: "Network"
+      n: "network"
+      r: false
+      sh: "Product-level session network binding."
+      t: "`$ANY`"
+    }
+    overrides: {
+      h: "Overrides"
+      n: "overrides"
+      r: true
+      sh: "Required."
+      t: "`$ARRAY`"
+    }
+    owning_user_id: {
+      h: "Owning User Id"
+      n: "owning_user_id"
+      r: false
+      sh: "DigitalOcean user ID of the user who created the session, when recorded."
+      t: "`$STRING`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: false
+      sh: "Optional tool-permission policy."
+      t: "`$ANY`"
+    }
+    session: {
+      h: "Session"
+      n: "session"
+      r: false
+      sh: "The created session."
+      t: "`$ANY`"
+    }
+    sessionUrn: {
+      h: "Session Urn"
+      n: "sessionUrn"
+      r: false
+      sh: "Session URN, for example `do:managed_agent_session:<uuid>`."
+      t: "`$STRING`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Canonical, version-pinned selected tool references."
+      t: "`$ARRAY`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "When the session was last modified."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "empty"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/action-gateway/actors/{actor_id}/limits:clear"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alice"
+                k: "param"
+                n: "actor_id"
+                or: "actor_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/action-gateway/actors/{actor_id}/limits:clear"
+          q: {
+            exist: [
+              "actor_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "actor_id"
+            }
+            {
+              lit: "limits:clear"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/action-gateway/actors/{actor_id}/limits:set"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "alice"
+                k: "param"
+                n: "actor_id"
+                or: "actor_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/action-gateway/actors/{actor_id}/limits:set"
+          q: {
+            exist: [
+              "actor_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "actors"
+            }
+            {
+              var: "actor_id"
+            }
+            {
+              lit: "limits:set"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/action-gateway/sessions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/action-gateway/sessions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/sessions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "alice"
+                k: "query"
+                n: "end_user_id"
+                or: "end_user_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/sessions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sessions`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/action-gateway/sessions/{session_urn}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "do:managed_agent_session:2b3c9f0e-1a4d-4e5f-8a7b-6c5d4e3f2a1b"
+                k: "param"
+                n: "session_urn"
+                or: "session_urn"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/action-gateway/sessions/{session_urn}"
+          q: {
+            exist: [
+              "session_urn"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "sessions"
+            }
+            {
+              var: "session_urn"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

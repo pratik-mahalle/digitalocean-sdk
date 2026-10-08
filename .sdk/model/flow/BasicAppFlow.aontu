@@ -1,0 +1,100 @@
+# BasicAppFlow
+
+main: kit: flow: BasicAppFlow:
+{
+  entity: "app",
+  kind: "basic",
+  name: "BasicAppFlow",
+  step: [
+    {
+      i: {
+        ref: "app_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_ref01",
+        srcdatavar: "app_ref01_data",
+        suffix: "_up0",
+        textfield: "deployment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_ref01",
+        srcdatavar: "app_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "app01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "app01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "app_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppFlow"
+}

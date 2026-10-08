@@ -1,0 +1,26 @@
+# BasicActorLimitFlow
+
+main: kit: flow: BasicActorLimitFlow:
+{
+  entity: "actor_limit",
+  kind: "basic",
+  name: "BasicActorLimitFlow",
+  step: [
+    {
+      m: {
+        actor_id: "actor01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "actor_limit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicActorLimitFlow"
+}

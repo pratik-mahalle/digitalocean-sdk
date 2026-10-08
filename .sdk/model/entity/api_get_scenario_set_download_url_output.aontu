@@ -1,0 +1,92 @@
+# Entity: api_get_scenario_set_download_url_output
+
+main: kit: entity: api_get_scenario_set_download_url_output: {
+
+  alias: field: {}
+
+  fields: {
+    download_url: {
+      h: "Download Url"
+      n: "download_url"
+      r: false
+      sh: "The presigned URL to download the scenario set file."
+      t: "`$STRING`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "The time the URL expires at."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_scenario_set_download_url_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/scenario_sets/{scenario_set_uuid}/download_url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "scenario_set_id"
+                or: "scenario_set_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}/download_url"
+          q: {
+            exist: [
+              "scenario_set_id"
+            ]
+          }
+          r: {
+            param: {
+              scenario_set_uuid: "scenario_set_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_sets"
+            }
+            {
+              var: "scenario_set_id"
+            }
+            {
+              lit: "download_url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

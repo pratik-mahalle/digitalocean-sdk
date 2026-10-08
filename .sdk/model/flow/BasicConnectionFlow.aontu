@@ -1,0 +1,81 @@
+# BasicConnectionFlow
+
+main: kit: flow: BasicConnectionFlow:
+{
+  entity: "connection",
+  kind: "basic",
+  name: "BasicConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "connection_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "connection_ref01",
+        srcdatavar: "connection_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "connection01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "connection_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "connection01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionFlow"
+}

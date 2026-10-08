@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "nfs": {
+      "NFS00": {
+        "access_points": [],
+        "created_at": "s6f",
+        "host": "s70",
+        "id": "NFS00",
+        "mount_path": "s72",
+        "name": "s73",
+        "performance_tier": "s74",
+        "region": "s75",
+        "size_gib": 118,
+        "status": "s77",
+        "vpc_ids": [],
+        "nfs_snapshot_id": "NFS_SNAPSHOT01"
+      },
+      "NFS01": {
+        "access_points": [],
+        "created_at": "sdd",
+        "host": "sde",
+        "id": "NFS01",
+        "mount_path": "se0",
+        "name": "se1",
+        "performance_tier": "se2",
+        "region": "se3",
+        "size_gib": 228,
+        "status": "se5",
+        "vpc_ids": [],
+        "nfs_snapshot_id": "NFS_SNAPSHOT01"
+      },
+      "NFS02": {
+        "access_points": [],
+        "created_at": "s14b",
+        "host": "s14c",
+        "id": "NFS02",
+        "mount_path": "s14e",
+        "name": "s14f",
+        "performance_tier": "s150",
+        "region": "s151",
+        "size_gib": 338,
+        "status": "s153",
+        "vpc_ids": [],
+        "nfs_snapshot_id": "NFS_SNAPSHOT01"
+      }
+    }
+  },
+  "new": {
+    "nfs": {
+      "nfs_ref01": {
+        "access_points": [],
+        "created_at": "s1b9",
+        "host": "s1ba",
+        "mount_path": "s1bc",
+        "name": "s1bd",
+        "performance_tier": "s1be",
+        "region": "s1bf",
+        "size_gib": 448,
+        "status": "s1c1",
+        "vpc_ids": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/nfs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/nfs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/nfs/{nfs_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/nfs/{nfs_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/nfs/snapshots/{nfs_snapshot_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

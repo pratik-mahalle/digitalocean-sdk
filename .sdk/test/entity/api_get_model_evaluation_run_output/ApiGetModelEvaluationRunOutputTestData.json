@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_get_model_evaluation_run_output": {
+      "API_GET_MODEL_EVALUATION_RUN_OUTPUT00": {
+        "links": {},
+        "meta": {},
+        "results": [],
+        "run": {},
+        "eval_run_uuid": "EVAL_RUN_UUID01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_OUTPUT00"
+      },
+      "API_GET_MODEL_EVALUATION_RUN_OUTPUT01": {
+        "links": {},
+        "meta": {},
+        "results": [],
+        "run": {},
+        "eval_run_uuid": "EVAL_RUN_UUID01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_OUTPUT01"
+      },
+      "API_GET_MODEL_EVALUATION_RUN_OUTPUT02": {
+        "links": {},
+        "meta": {},
+        "results": [],
+        "run": {},
+        "eval_run_uuid": "EVAL_RUN_UUID01",
+        "id": "API_GET_MODEL_EVALUATION_RUN_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_model_evaluation_run_output": {
+      "api_get_model_evaluation_run_output_ref01": {
+        "links": {},
+        "meta": {},
+        "results": [],
+        "run": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

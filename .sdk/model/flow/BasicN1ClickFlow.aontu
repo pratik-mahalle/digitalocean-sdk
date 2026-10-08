@@ -1,0 +1,22 @@
+# BasicN1ClickFlow
+
+main: kit: flow: BasicN1ClickFlow:
+{
+  entity: "n1_click",
+  kind: "basic",
+  name: "BasicN1ClickFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "n1_click_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicN1ClickFlow"
+}

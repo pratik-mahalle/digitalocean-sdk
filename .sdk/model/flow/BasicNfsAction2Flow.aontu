@@ -1,0 +1,22 @@
+# BasicNfsAction2Flow
+
+main: kit: flow: BasicNfsAction2Flow:
+{
+  entity: "nfs_action_2",
+  kind: "basic",
+  name: "BasicNfsAction2Flow",
+  step: [
+    {
+      i: {
+        ref: "nfs_action_2_ref01"
+      }
+
+      m: {
+        nfs_id: "nfs01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicNfsAction2Flow"
+}

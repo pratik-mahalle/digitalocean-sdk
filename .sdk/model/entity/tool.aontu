@@ -1,0 +1,373 @@
+# Entity: tool
+
+main: kit: entity: tool: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Best-effort catalog metadata and is empty for a large share of the catalog."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "What the tool does."
+      t: "`$STRING`"
+    }
+    history: {
+      h: "History"
+      n: "history"
+      r: false
+      sh: "Present only when the request set `include_history`."
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The unqualified tool name, without the provider prefix."
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "The ID of the provider that offers the tool, broken out so a client never has to split `tool_slug`."
+      t: "`$STRING`"
+    }
+    snapshot: {
+      h: "Snapshot"
+      n: "snapshot"
+      r: false
+      sh: "When the metrics were computed and the window they cover."
+      t: "`$ANY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Human-readable tool title."
+      t: "`$STRING`"
+    }
+    tool: {
+      h: "Tool"
+      n: "tool"
+      r: false
+      sh: "The tool's metrics over the window."
+      t: "`$ANY`"
+    }
+    tool_slug: {
+      h: "Tool Slug"
+      n: "tool_slug"
+      r: false
+      sh: "The provider-qualified, stable tool identifier (`<provider>_<name>`)."
+      t: "`$STRING`"
+    }
+    version: {
+      fo: "int32"
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "The version this toolbelt version pins for the member, matching the `@<version>` suffix in the corresponding toolbelt.tools entry."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "tool"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/toolbelts/{name}/providers/{provider}/tools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "search-toolbelt"
+                k: "param"
+                n: "name"
+                or: "name"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "exa"
+                k: "param"
+                n: "provider_id"
+                or: "provider"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 20
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "1"
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/toolbelts/{name}/providers/{provider}/tools"
+          q: {
+            exist: [
+              "name"
+              "provider_id"
+            ]
+          }
+          r: {
+            param: {
+              provider: "provider_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "toolbelts"
+            }
+            {
+              var: "name"
+            }
+            {
+              lit: "providers"
+            }
+            {
+              var: "provider_id"
+            }
+            {
+              lit: "tools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tools`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/search"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 20
+                k: "query"
+                n: "page_size"
+                or: "page_size"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ZXhhX3dlYl9zZWFyY2hAMQ"
+                k: "query"
+                n: "page_token"
+                or: "page_token"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "exa"
+                ]
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "search"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "search-toolbelt"
+                k: "query"
+                n: "toolbelt"
+                or: "toolbelt"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/search"
+          q: {
+            "$action": "search"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "search"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tools`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/tools/health/tools/{tool_slug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "exa_web_search"
+                k: "param"
+                n: "id"
+                or: "tool_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                k: "query"
+                n: "include_history"
+                or: "include_history"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: "HEALTH_WINDOW_SEVEN_DAYS"
+                k: "query"
+                n: "window"
+                or: "window"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/tools/health/tools/{tool_slug}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              tool_slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              lit: "health"
+            }
+            {
+              lit: "tools"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tool`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.toolbelt")]
+  ]
+
+}

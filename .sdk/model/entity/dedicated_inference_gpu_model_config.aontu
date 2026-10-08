@@ -1,0 +1,74 @@
+# Entity: dedicated_inference_gpu_model_config
+
+main: kit: entity: dedicated_inference_gpu_model_config: {
+
+  alias: field: {}
+
+  fields: {
+    gpu_slugs: {
+      h: "Gpu Slugs"
+      n: "gpu_slugs"
+      r: false
+      t: "`$ARRAY`"
+    }
+    is_gated_model: {
+      h: "Is Gated Model"
+      n: "is_gated_model"
+      r: false
+      sh: "Whether the model requires gated access (e.g."
+      t: "`$BOOLEAN`"
+    }
+    model_name: {
+      h: "Model Name"
+      n: "model_name"
+      r: false
+      t: "`$STRING`"
+    }
+    model_slug: {
+      h: "Model Slug"
+      n: "model_slug"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "dedicated_inference_gpu_model_config"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/gpu-model-config"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/gpu-model-config"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              lit: "gpu-model-config"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.gpu_model_configs`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,26 @@
+# BasicClusterlintFlow
+
+main: kit: flow: BasicClusterlintFlow:
+{
+  entity: "clusterlint",
+  kind: "basic",
+  name: "BasicClusterlintFlow",
+  step: [
+    {
+      m: {
+        cluster_id: "cluster01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clusterlint_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClusterlintFlow"
+}

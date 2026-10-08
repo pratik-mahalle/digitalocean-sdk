@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "apps_get_exec": {
+      "APPS_GET_EXEC00": {
+        "url": "sa",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APPS_GET_EXEC00"
+      },
+      "APPS_GET_EXEC01": {
+        "url": "s14",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APPS_GET_EXEC01"
+      },
+      "APPS_GET_EXEC02": {
+        "url": "s1e",
+        "app_id": "APP01",
+        "component_name": "COMPONENT_NAME01",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APPS_GET_EXEC02"
+      }
+    }
+  },
+  "new": {
+    "apps_get_exec": {
+      "apps_get_exec_ref01": {
+        "url": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/exec": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/components/{component_name}/exec": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

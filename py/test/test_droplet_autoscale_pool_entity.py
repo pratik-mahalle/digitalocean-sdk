@@ -1,0 +1,272 @@
+# DropletAutoscalePool entity test
+
+import json
+import os
+import time
+
+import pytest
+
+from digitalocean_sdk.utility.voxgig_struct import voxgig_struct as vs
+from digitalocean_sdk import DigitaloceanSDK
+from digitalocean_sdk.core import helpers
+from digitalocean_sdk.config import shared_config
+from digitalocean_sdk.feature.base_feature import DigitaloceanBaseFeature
+
+_TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+from test import runner
+
+
+class _FailHook(DigitaloceanBaseFeature):
+    def __init__(self):
+        super().__init__()
+        self.name = "failhook"
+        self.unexpected = 0
+
+    def init(self, ctx, options):
+        pass
+
+    def PreSpec(self, ctx):
+        raise RuntimeError("droplet_autoscale_pool hook failed")
+
+    def PreUnexpected(self, ctx):
+        self.unexpected += 1
+
+
+
+# main.kit.test.live.strict is true (the default is true): a live
+# request that fails, or a live test missing an input it needs,
+# fails the test.
+# An account with no record for a test to read skips it either way.
+LIVE_STRICT = True
+
+
+class TestDropletAutoscalePoolEntity:
+
+    def test_should_create_instance(self):
+        testsdk = DigitaloceanSDK.test(None, None)
+        ent = testsdk.DropletAutoscalePool(None)
+        assert ent is not None
+
+    def test_should_stream(self):
+        # Feature #4: the entity stream(action, ...) method runs the op
+        # pipeline and yields result items. With the streaming feature active
+        # it yields the feature's incremental output; otherwise it falls back
+        # to the materialised list so stream always yields.
+        seed = {
+            "entity": {
+                "droplet_autoscale_pool": {
+                    "s1": {"id": "s1"},
+                    "s2": {"id": "s2"},
+                    "s3": {"id": "s3"},
+                }
+            }
+        }
+
+        # Fallback: streaming inactive -> yields the materialised list items.
+        base = DigitaloceanSDK.test(seed, None)
+        seen = list(base.DropletAutoscalePool(None).stream("list", None, None))
+        assert len(seen) == 3
+
+        # Inbound: streaming active -> yields each item from the feature.
+        from digitalocean_sdk.config import shared_config
+        cfg = shared_config()
+        if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
+            sdk = DigitaloceanSDK.test(
+                seed, {"feature": {"streaming": {"active": True}}})
+            got = []
+            for item in sdk.DropletAutoscalePool(None).stream("list", None, None):
+                if isinstance(item, list):
+                    got.extend(item)
+                else:
+                    got.append(item)
+            assert len(got) == 3
+
+    def test_should_report_a_failed_stream(self):
+        offline = {"net": {"offline": True}}
+        with pytest.raises(Exception, match="offline"):
+            list(DigitaloceanSDK.test(offline, None).DropletAutoscalePool(None).stream("list", None, None))
+
+        quiet = {"ctrl": {"throw": False}}
+        list(DigitaloceanSDK.test(offline, None).DropletAutoscalePool(None).stream("list", None, quiet))
+
+        if "rbac" in (shared_config().get("feature") or {}):
+            denied = DigitaloceanSDK.test(
+                None, {"feature": {"rbac": {"active": True, "deny": True}}})
+            with pytest.raises(Exception) as err:
+                list(denied.DropletAutoscalePool(None).stream("list", None, None))
+            assert "rbac_denied" == getattr(err.value, "code", None)
+
+    def test_should_leave_the_callers_ctrl(self):
+        explain = {}
+        ctrl = {"explain": explain}
+        list(DigitaloceanSDK.test(None, None).DropletAutoscalePool(None).stream("list", None, {"ctrl": ctrl}))
+        assert ["explain"] == list(ctrl.keys())
+        assert explain is ctrl["explain"] and 0 < len(explain)
+
+    def test_should_fire_pre_unexpected(self):
+        hook = _FailHook()
+        client = DigitaloceanSDK({"feature": {"test": {"active": True}}, "extend": [hook]})
+        with pytest.raises(Exception, match="hook failed"):
+            client.DropletAutoscalePool(None).list(None, None)
+        assert 0 < hook.unexpected
+
+        fired = hook.unexpected
+        assert client.DropletAutoscalePool(None).list(None, {"throw": False}) is None
+        assert fired < hook.unexpected
+
+    def test_should_refuse_an_invalid_request(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        client = DigitaloceanSDK.test(
+            None, {"feature": {"validate": {"active": True}}})
+        with pytest.raises(Exception) as err:
+            client.DropletAutoscalePool(None).list({"name": 1}, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
+    def test_should_run_basic_flow(self):
+        setup = _droplet_autoscale_pool_basic_setup(None)
+        # Per-op sdk-test-control.json skip — basic test exercises a flow with
+        # multiple ops; skipping any one skips the whole flow (steps depend
+        # on each other).
+        _live = setup.get("live", False)
+        for _op in ["create", "list", "update", "load", "remove"]:
+            _skip, _reason = runner.is_control_skipped("entityOp", "droplet_autoscale_pool." + _op, "live" if _live else "unit")
+            if _skip:
+                pytest.skip(_reason or "skipped via sdk-test-control.json")
+                return
+        if setup["live"]:
+            for _live_key in ["autoscale_pool01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via DIGITALOCEAN_TEST_DROPLET_AUTOSCALE_POOL_ENTID")
+        client = setup["client"]
+
+        # CREATE
+        droplet_autoscale_pool_ref01_ent = client.DropletAutoscalePool(None)
+        droplet_autoscale_pool_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.droplet_autoscale_pool"), "droplet_autoscale_pool_ref01"))
+        droplet_autoscale_pool_ref01_data["autoscale_pool_id"] = setup["idmap"]["autoscale_pool01"]
+
+        droplet_autoscale_pool_ref01_data = helpers.to_map(runner.entity_data(droplet_autoscale_pool_ref01_ent.create(droplet_autoscale_pool_ref01_data, None)))
+        assert droplet_autoscale_pool_ref01_data is not None
+        assert droplet_autoscale_pool_ref01_data["id"] is not None
+
+        # LIST
+        droplet_autoscale_pool_ref01_match = {}
+
+        droplet_autoscale_pool_ref01_list_result = droplet_autoscale_pool_ref01_ent.list(droplet_autoscale_pool_ref01_match, None)
+        assert isinstance(droplet_autoscale_pool_ref01_list_result, list)
+
+        found_item = vs.select(
+            runner.entity_list_to_data(droplet_autoscale_pool_ref01_list_result),
+            {"id": droplet_autoscale_pool_ref01_data["id"]})
+        assert not vs.isempty(found_item)
+
+        # UPDATE
+        droplet_autoscale_pool_ref01_data_up0_up = {
+            "id": droplet_autoscale_pool_ref01_data["id"],
+        }
+
+        droplet_autoscale_pool_ref01_markdef_up0_name = "created_at"
+        droplet_autoscale_pool_ref01_markdef_up0_value = "Mark01-droplet_autoscale_pool_ref01_" + str(setup["now"])
+        droplet_autoscale_pool_ref01_data_up0_up[droplet_autoscale_pool_ref01_markdef_up0_name] = droplet_autoscale_pool_ref01_markdef_up0_value
+
+        droplet_autoscale_pool_ref01_resdata_up0 = helpers.to_map(runner.entity_data(droplet_autoscale_pool_ref01_ent.update(droplet_autoscale_pool_ref01_data_up0_up, None)))
+        assert droplet_autoscale_pool_ref01_resdata_up0 is not None
+        assert droplet_autoscale_pool_ref01_resdata_up0["id"] == droplet_autoscale_pool_ref01_data_up0_up["id"]
+        assert droplet_autoscale_pool_ref01_resdata_up0[droplet_autoscale_pool_ref01_markdef_up0_name] == droplet_autoscale_pool_ref01_markdef_up0_value
+
+        # LOAD
+        droplet_autoscale_pool_ref01_match_dt0 = {
+            "id": droplet_autoscale_pool_ref01_data["id"],
+        }
+        droplet_autoscale_pool_ref01_data_dt0_loaded = droplet_autoscale_pool_ref01_ent.load(droplet_autoscale_pool_ref01_match_dt0, None)
+        droplet_autoscale_pool_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(droplet_autoscale_pool_ref01_data_dt0_loaded))
+        assert droplet_autoscale_pool_ref01_data_dt0_load_result is not None
+        assert droplet_autoscale_pool_ref01_data_dt0_load_result["id"] == droplet_autoscale_pool_ref01_data["id"]
+
+        # REMOVE
+        droplet_autoscale_pool_ref01_match_rm0 = {
+            "id": droplet_autoscale_pool_ref01_data["id"],
+        }
+        droplet_autoscale_pool_ref01_ent.remove(droplet_autoscale_pool_ref01_match_rm0, None)
+
+        # LIST
+        droplet_autoscale_pool_ref01_match_rt0 = {}
+
+        droplet_autoscale_pool_ref01_list_rt0_result = droplet_autoscale_pool_ref01_ent.list(droplet_autoscale_pool_ref01_match_rt0, None)
+        assert isinstance(droplet_autoscale_pool_ref01_list_rt0_result, list)
+
+        not_found_item = vs.select(
+            runner.entity_list_to_data(droplet_autoscale_pool_ref01_list_rt0_result),
+            {"id": droplet_autoscale_pool_ref01_data["id"]})
+        assert vs.isempty(not_found_item)
+
+
+
+def _droplet_autoscale_pool_basic_setup(extra):
+    runner.load_env_local()
+
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/droplet_autoscale_pool/DropletAutoscalePoolTestData.json")
+    with open(entity_data_file, "r", encoding="utf-8") as f:
+        entity_data_source = f.read()
+
+    entity_data = json.loads(entity_data_source)
+
+    options = {}
+    options["entity"] = entity_data.get("existing")
+
+    client = DigitaloceanSDK.test(options, extra)
+
+    # Generate idmap via transform.
+    idmap = vs.transform(
+        ["droplet_autoscale_pool01", "droplet_autoscale_pool02", "droplet_autoscale_pool03", "autoscale_pool01"],
+        {
+            "`$PACK`": ["", {
+                "`$KEY`": "`$COPY`",
+                "`$VAL`": ["`$FORMAT`", "upper", "`$COPY`"],
+            }],
+        }
+    )
+
+    # Whether *_ENTID supplied the idmap, read before env_override consumes
+    # it: without it, the ids a live flow binds are the fixture's synthetic ones.
+    _entid_env_raw = os.environ.get(
+        "DIGITALOCEAN_TEST_DROPLET_AUTOSCALE_POOL_ENTID")
+    _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
+
+    env = runner.env_override({
+        "DIGITALOCEAN_TEST_DROPLET_AUTOSCALE_POOL_ENTID": idmap,
+        "DIGITALOCEAN_TEST_LIVE": "FALSE",
+        "DIGITALOCEAN_TEST_EXPLAIN": "FALSE",
+        "DIGITALOCEAN_APIKEY": "",
+    })
+
+    idmap_resolved = helpers.to_map(
+        env.get("DIGITALOCEAN_TEST_DROPLET_AUTOSCALE_POOL_ENTID"))
+    if idmap_resolved is None:
+        idmap_resolved = helpers.to_map(idmap)
+
+    if env.get("DIGITALOCEAN_TEST_LIVE") == "TRUE":
+        merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
+            {
+                "apikey": env.get("DIGITALOCEAN_APIKEY"),
+            },
+            extra or {},
+        ])
+        client = DigitaloceanSDK(helpers.to_map(merged_opts))
+
+    _live = env.get("DIGITALOCEAN_TEST_LIVE") == "TRUE"
+    return {
+        "client": client,
+        "data": entity_data,
+        "idmap": idmap_resolved,
+        "env": env,
+        "explain": env.get("DIGITALOCEAN_TEST_EXPLAIN") == "TRUE",
+        "live": _live,
+        "synthetic_only": _live and not _idmap_overridden,
+        "now": int(time.time() * 1000),
+    }

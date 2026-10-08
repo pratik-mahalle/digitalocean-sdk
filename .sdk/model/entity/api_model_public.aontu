@@ -1,0 +1,301 @@
+# Entity: api_model_public
+
+main: kit: entity: api_model_public: {
+
+  alias: field: {}
+
+  fields: {
+    agreement: {
+      h: "Agreement"
+      n: "agreement"
+      r: false
+      sh: "Agreement Description"
+      t: "`$OBJECT`"
+    }
+    benchmark_score: {
+      h: "Benchmark Score"
+      n: "benchmark_score"
+      r: false
+      sh: "Benchmark scores for this model, stored as arbitrary JSON"
+      t: "`$OBJECT`"
+    }
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: false
+      sh: "Model capabilities (inference, reasoning, vectorization, etc.)"
+      t: "`$ARRAY`"
+    }
+    context_window: {
+      fo: "int64"
+      h: "Context Window"
+      n: "context_window"
+      r: false
+      sh: "Context window (maximum tokens)"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date / time"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Model description"
+      t: "`$STRING`"
+    }
+    endpoints: {
+      h: "Endpoints"
+      n: "endpoints"
+      r: false
+      sh: "Available endpoints and their capabilities"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Human-readable model identifier"
+      t: "`$STRING`"
+    }
+    is_foundational: {
+      h: "Is Foundational"
+      n: "is_foundational"
+      r: false
+      sh: "True if it is a foundational model provided by do"
+      t: "`$BOOLEAN`"
+    }
+    kb_default_chunk_size: {
+      fo: "int64"
+      h: "Kb Default Chunk Size"
+      n: "kb_default_chunk_size"
+      r: false
+      sh: "Default chunking size limit to show in UI"
+      t: "`$INTEGER`"
+    }
+    kb_max_chunk_size: {
+      fo: "int64"
+      h: "Kb Max Chunk Size"
+      n: "kb_max_chunk_size"
+      r: false
+      sh: "Maximum chunk size limit of model"
+      t: "`$INTEGER`"
+    }
+    kb_min_chunk_size: {
+      fo: "int64"
+      h: "Kb Min Chunk Size"
+      n: "kb_min_chunk_size"
+      r: false
+      sh: "Minimum chunking size token limits if model supports KNOWLEDGEBASE usecase"
+      t: "`$INTEGER`"
+    }
+    lifecycle_status: {
+      h: "Lifecycle Status"
+      n: "lifecycle_status"
+      r: false
+      sh: "Lifecycle status of the model (internal, public-preview, active, deprecated, end_of_life)"
+      t: "`$STRING`"
+    }
+    modalities: {
+      h: "Modalities"
+      n: "modalities"
+      r: false
+      sh: "Input/output modalities"
+      t: "`$OBJECT`"
+    }
+    model_availability: {
+      h: "Model Availability"
+      n: "model_availability"
+      r: false
+      sh: "Model availability (serverless, dedicated, etc.)"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Display name of the model"
+      t: "`$STRING`"
+    }
+    parameter_count: {
+      fo: "float"
+      h: "Parameter Count"
+      n: "parameter_count"
+      r: false
+      sh: "Parameter count in billions"
+      t: "`$NUMBER`"
+    }
+    parent_uuid: {
+      h: "Parent Uuid"
+      n: "parent_uuid"
+      r: false
+      sh: "Unique id of the model, this model is based on"
+      t: "`$STRING`"
+    }
+    pricing: {
+      h: "Pricing"
+      n: "pricing"
+      r: false
+      sh: "Pricing per million tokens (aligns with existing ModelPrice pattern)"
+      t: "`$OBJECT`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      t: "`$STRING`"
+    }
+    reasoning_efforts: {
+      h: "Reasoning Efforts"
+      n: "reasoning_efforts"
+      r: false
+      sh: "Available reasoning efforts for this model"
+      t: "`$ARRAY`"
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: false
+      sh: "Playground settings derived from model metadata"
+      t: "`$ARRAY`"
+    }
+    thinking: {
+      h: "Thinking"
+      n: "thinking"
+      r: false
+      sh: "Whether this model supports extended thinking (Anthropic models)"
+      t: "`$BOOLEAN`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Model type (chat, embedding, image, reasoning, coding)"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Last modified"
+      t: "`$STRING`"
+    }
+    upload_complete: {
+      h: "Upload Complete"
+      n: "upload_complete"
+      r: false
+      sh: "Model has been fully uploaded"
+      t: "`$BOOLEAN`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "Download url"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id"
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Version Information about a Model"
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_model_public"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/models"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "public_only"
+                or: "public_only"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+              {
+                ex: [
+                  "MODEL_USECASE_UNKNOWN"
+                ]
+                k: "query"
+                n: "usecase"
+                or: "usecases"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/models"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.models`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,9 @@
+# BasicApiDeleteModelRouterOutputFlow
+
+main: kit: flow: BasicApiDeleteModelRouterOutputFlow:
+{
+  entity: "api_delete_model_router_output",
+  kind: "basic",
+  name: "BasicApiDeleteModelRouterOutputFlow",
+  "key$": "BasicApiDeleteModelRouterOutputFlow"
+}

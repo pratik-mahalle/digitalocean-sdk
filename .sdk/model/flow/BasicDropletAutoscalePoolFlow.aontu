@@ -1,0 +1,104 @@
+# BasicDropletAutoscalePoolFlow
+
+main: kit: flow: BasicDropletAutoscalePoolFlow:
+{
+  entity: "droplet_autoscale_pool",
+  kind: "basic",
+  name: "BasicDropletAutoscalePoolFlow",
+  step: [
+    {
+      i: {
+        ref: "droplet_autoscale_pool_ref01"
+      }
+
+      m: {
+        autoscale_pool_id: "autoscale_pool01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "droplet_autoscale_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "droplet_autoscale_pool_ref01",
+        srcdatavar: "droplet_autoscale_pool_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-droplet_autoscale_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "droplet_autoscale_pool_ref01",
+        srcdatavar: "droplet_autoscale_pool_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "droplet_autoscale_pool01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-droplet_autoscale_pool_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "droplet_autoscale_pool_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "droplet_autoscale_pool01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "droplet_autoscale_pool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDropletAutoscalePoolFlow"
+}

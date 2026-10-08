@@ -1,0 +1,733 @@
+# Entity: uptime
+
+main: kit: entity: uptime: {
+
+  alias: field: {}
+
+  fields: {
+    comparison: {
+      h: "Comparison"
+      n: "comparison"
+      r: false
+      sh: "The comparison operator used against the alert's threshold."
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: false
+      sh: "A boolean value indicating whether the check is enabled/disabled."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "A unique ID that can be used to identify and reference the alert."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "A human-friendly display name."
+      t: "`$STRING`"
+    }
+    notifications: {
+      h: "Notifications"
+      n: "notifications"
+      r: true
+      sh: "The notification settings for a trigger alert."
+      t: "`$OBJECT`"
+    }
+    period: {
+      h: "Period"
+      n: "period"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Period of time the threshold must be exceeded to trigger the alert."
+      t: "`$STRING`"
+    }
+    previous_outage: {
+      h: "Previous Outage"
+      n: "previous_outage"
+      r: false
+      t: "`$OBJECT`"
+    }
+    regions: {
+      h: "Regions"
+      n: "regions"
+      r: false
+      sh: "An array containing the selected regions to perform healthchecks from."
+      t: "`$ARRAY`"
+    }
+    target: {
+      fo: "url"
+      h: "Target"
+      n: "target"
+      r: false
+      sh: "The endpoint to perform healthchecks on."
+      t: "`$STRING`"
+    }
+    threshold: {
+      h: "Threshold"
+      n: "threshold"
+      r: false
+      sh: "The threshold at which the alert will enter a trigger state."
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The type of alert."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "uptime"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/uptime/checks/{check_id}/alerts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/uptime/checks/{check_id}/alerts"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "alerts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/uptime/checks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/uptime/checks"
+          q: {
+            "$action": "check"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.check`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/uptime/checks/{check_id}/alerts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/uptime/checks/{check_id}/alerts"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "alerts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alerts`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/uptime/checks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/uptime/checks"
+          q: {
+            "$action": "check"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.checks`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/uptime/checks/{check_id}/alerts/{alert_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
+                k: "param"
+                n: "alert_id"
+                or: "alert_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/uptime/checks/{check_id}/alerts/{alert_id}"
+          q: {
+            exist: [
+              "alert_id"
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/uptime/checks/{check_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/uptime/checks/{check_id}"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.check`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/uptime/checks/{check_id}/state"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/uptime/checks/{check_id}/state"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "state"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.state`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/uptime/checks/{check_id}/alerts/{alert_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
+                k: "param"
+                n: "alert_id"
+                or: "alert_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/uptime/checks/{check_id}/alerts/{alert_id}"
+          q: {
+            exist: [
+              "alert_id"
+              "check_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/uptime/checks/{check_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/uptime/checks/{check_id}"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/uptime/checks/{check_id}/alerts/{alert_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "17f0f0ae-b7e5-4ef6-86e3-aa569db58284"
+                k: "param"
+                n: "alert_id"
+                or: "alert_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/uptime/checks/{check_id}/alerts/{alert_id}"
+          q: {
+            exist: [
+              "alert_id"
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/uptime/checks/{check_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "check_id"
+                or: "check_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/uptime/checks/{check_id}"
+          q: {
+            exist: [
+              "check_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "uptime"
+            }
+            {
+              lit: "checks"
+            }
+            {
+              var: "check_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.check`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

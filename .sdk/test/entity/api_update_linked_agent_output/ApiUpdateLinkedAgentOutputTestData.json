@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_update_linked_agent_output": {
+      "API_UPDATE_LINKED_AGENT_OUTPUT00": {
+        "child_agent_uuid": "s3c",
+        "if_case": "s3d",
+        "parent_agent_uuid": "s3e",
+        "rollback": false,
+        "route_name": "s40",
+        "uuid": "s41",
+        "agent_id": "AGENT01",
+        "id": "API_UPDATE_LINKED_AGENT_OUTPUT00"
+      },
+      "API_UPDATE_LINKED_AGENT_OUTPUT01": {
+        "child_agent_uuid": "s78",
+        "if_case": "s79",
+        "parent_agent_uuid": "s7a",
+        "rollback": false,
+        "route_name": "s7c",
+        "uuid": "s7d",
+        "agent_id": "AGENT01",
+        "id": "API_UPDATE_LINKED_AGENT_OUTPUT01"
+      },
+      "API_UPDATE_LINKED_AGENT_OUTPUT02": {
+        "child_agent_uuid": "sb4",
+        "if_case": "sb5",
+        "parent_agent_uuid": "sb6",
+        "rollback": false,
+        "route_name": "sb8",
+        "uuid": "sb9",
+        "agent_id": "AGENT01",
+        "id": "API_UPDATE_LINKED_AGENT_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_linked_agent_output": {
+      "api_update_linked_agent_output_ref01": {
+        "child_agent_uuid": "sf0",
+        "if_case": "sf1",
+        "parent_agent_uuid": "sf2",
+        "rollback": false,
+        "route_name": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "batch_result": {
+      "BATCH_RESULT00": {
+        "batch_id": "BATCH01",
+        "error_file_url": "s3d",
+        "expires_at": "s3e",
+        "id": "BATCH_RESULT00",
+        "output_file_url": "s40",
+        "result_available": false
+      },
+      "BATCH_RESULT01": {
+        "batch_id": "BATCH01",
+        "error_file_url": "s79",
+        "expires_at": "s7a",
+        "id": "BATCH_RESULT01",
+        "output_file_url": "s7c",
+        "result_available": false
+      },
+      "BATCH_RESULT02": {
+        "batch_id": "BATCH01",
+        "error_file_url": "sb5",
+        "expires_at": "sb6",
+        "id": "BATCH_RESULT02",
+        "output_file_url": "sb8",
+        "result_available": false
+      }
+    }
+  },
+  "new": {
+    "batch_result": {
+      "batch_result_ref01": {
+        "batch_id": "BATCH01",
+        "error_file_url": "sf1",
+        "expires_at": "sf2",
+        "output_file_url": "sf4",
+        "result_available": false
+      }
+    }
+  },
+  "requests": {
+    "GET /v1/batches/{batch_id}/results": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

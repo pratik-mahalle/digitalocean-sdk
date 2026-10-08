@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "sql_mode": {
+      "SQL_MODE00": {
+        "sql_mode": "sa",
+        "database_id": "DATABASE01",
+        "id": "SQL_MODE00"
+      },
+      "SQL_MODE01": {
+        "sql_mode": "s14",
+        "database_id": "DATABASE01",
+        "id": "SQL_MODE01"
+      },
+      "SQL_MODE02": {
+        "sql_mode": "s1e",
+        "database_id": "DATABASE01",
+        "id": "SQL_MODE02"
+      }
+    }
+  },
+  "new": {
+    "sql_mode": {
+      "sql_mode_ref01": {
+        "sql_mode": "s28"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/databases/{database_cluster_uuid}/sql_mode": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

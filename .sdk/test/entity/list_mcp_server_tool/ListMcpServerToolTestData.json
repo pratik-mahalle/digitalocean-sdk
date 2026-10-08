@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "list_mcp_server_tool": {
+      "LIST_MCP_SERVER_TOOL00": {
+        "description": "s5a",
+        "enabled": false,
+        "enabledToolSlugs": [],
+        "name": "s5d",
+        "quarantineReason": "s5e",
+        "quarantined": false,
+        "toolSlug": "s60",
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "LIST_MCP_SERVER_TOOL00"
+      },
+      "LIST_MCP_SERVER_TOOL01": {
+        "description": "sb4",
+        "enabled": false,
+        "enabledToolSlugs": [],
+        "name": "sb7",
+        "quarantineReason": "sb8",
+        "quarantined": false,
+        "toolSlug": "sba",
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "LIST_MCP_SERVER_TOOL01"
+      },
+      "LIST_MCP_SERVER_TOOL02": {
+        "description": "s10e",
+        "enabled": false,
+        "enabledToolSlugs": [],
+        "name": "s111",
+        "quarantineReason": "s112",
+        "quarantined": false,
+        "toolSlug": "s114",
+        "tools": [],
+        "user_id": "USER01",
+        "server_ref": "SERVER_REF01",
+        "id": "LIST_MCP_SERVER_TOOL02"
+      }
+    }
+  },
+  "new": {
+    "list_mcp_server_tool": {
+      "list_mcp_server_tool_ref01": {
+        "description": "s168",
+        "enabled": false,
+        "enabledToolSlugs": [],
+        "name": "s16b",
+        "quarantineReason": "s16c",
+        "quarantined": false,
+        "toolSlug": "s16e",
+        "tools": [],
+        "user_id": "USER01"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/mcp-servers/{server_ref}/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/action-gateway/mcp-servers/{server_ref}/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

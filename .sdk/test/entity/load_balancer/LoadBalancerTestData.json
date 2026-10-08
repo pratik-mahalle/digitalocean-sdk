@@ -1,0 +1,193 @@
+{
+  "existing": {
+    "load_balancer": {
+      "LOAD_BALANCER00": {
+        "algorithm": "s136",
+        "created_at": "s137",
+        "disable_lets_encrypt_dns_records": true,
+        "domains": [],
+        "droplet_ids": [],
+        "enable_backend_keepalive": false,
+        "enable_proxy_protocol": true,
+        "firewall": {},
+        "forwarding_rules": [],
+        "glb_settings": {},
+        "health_check": {},
+        "http_idle_timeout_seconds": 321,
+        "id": "LOAD_BALANCER00",
+        "ip": "s143",
+        "ipv6": "s144",
+        "name": "s145",
+        "network": "s146",
+        "network_stack": "s147",
+        "project_id": "PROJECT01",
+        "redirect_http_to_https": false,
+        "region": {},
+        "size": "s14b",
+        "size_unit": 332,
+        "status": "s14d",
+        "sticky_sessions": {},
+        "subnet_uuid": "s14f",
+        "tag": "s150",
+        "target_load_balancer_ids": [],
+        "tls_cipher_policy": "s152",
+        "type": "s153",
+        "vpc_uuid": "s154"
+      },
+      "LOAD_BALANCER01": {
+        "algorithm": "s26c",
+        "created_at": "s26d",
+        "disable_lets_encrypt_dns_records": true,
+        "domains": [],
+        "droplet_ids": [],
+        "enable_backend_keepalive": false,
+        "enable_proxy_protocol": true,
+        "firewall": {},
+        "forwarding_rules": [],
+        "glb_settings": {},
+        "health_check": {},
+        "http_idle_timeout_seconds": 631,
+        "id": "LOAD_BALANCER01",
+        "ip": "s279",
+        "ipv6": "s27a",
+        "name": "s27b",
+        "network": "s27c",
+        "network_stack": "s27d",
+        "project_id": "PROJECT01",
+        "redirect_http_to_https": false,
+        "region": {},
+        "size": "s281",
+        "size_unit": 642,
+        "status": "s283",
+        "sticky_sessions": {},
+        "subnet_uuid": "s285",
+        "tag": "s286",
+        "target_load_balancer_ids": [],
+        "tls_cipher_policy": "s288",
+        "type": "s289",
+        "vpc_uuid": "s28a"
+      },
+      "LOAD_BALANCER02": {
+        "algorithm": "s3a2",
+        "created_at": "s3a3",
+        "disable_lets_encrypt_dns_records": true,
+        "domains": [],
+        "droplet_ids": [],
+        "enable_backend_keepalive": false,
+        "enable_proxy_protocol": true,
+        "firewall": {},
+        "forwarding_rules": [],
+        "glb_settings": {},
+        "health_check": {},
+        "http_idle_timeout_seconds": 941,
+        "id": "LOAD_BALANCER02",
+        "ip": "s3af",
+        "ipv6": "s3b0",
+        "name": "s3b1",
+        "network": "s3b2",
+        "network_stack": "s3b3",
+        "project_id": "PROJECT01",
+        "redirect_http_to_https": false,
+        "region": {},
+        "size": "s3b7",
+        "size_unit": 952,
+        "status": "s3b9",
+        "sticky_sessions": {},
+        "subnet_uuid": "s3bb",
+        "tag": "s3bc",
+        "target_load_balancer_ids": [],
+        "tls_cipher_policy": "s3be",
+        "type": "s3bf",
+        "vpc_uuid": "s3c0"
+      }
+    }
+  },
+  "new": {
+    "load_balancer": {
+      "load_balancer_ref01": {
+        "algorithm": "s4d8",
+        "created_at": "s4d9",
+        "disable_lets_encrypt_dns_records": true,
+        "domains": [],
+        "droplet_ids": [],
+        "enable_backend_keepalive": false,
+        "enable_proxy_protocol": true,
+        "firewall": {},
+        "forwarding_rules": [],
+        "glb_settings": {},
+        "health_check": {},
+        "http_idle_timeout_seconds": 1251,
+        "ip": "s4e5",
+        "ipv6": "s4e6",
+        "name": "s4e7",
+        "network": "s4e8",
+        "network_stack": "s4e9",
+        "project_id": "PROJECT01",
+        "redirect_http_to_https": false,
+        "region": {},
+        "size": "s4ed",
+        "size_unit": 1262,
+        "status": "s4ef",
+        "sticky_sessions": {},
+        "subnet_uuid": "s4f1",
+        "tag": "s4f2",
+        "target_load_balancer_ids": [],
+        "tls_cipher_policy": "s4f4",
+        "type": "s4f5",
+        "vpc_uuid": "s4f6"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/load_balancers/{lb_id}/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/load_balancers/{lb_id}/forwarding_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/load_balancers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/load_balancers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/load_balancers/{lb_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/load_balancers/{lb_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/load_balancers/{lb_id}/cache": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/load_balancers/{lb_id}/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/load_balancers/{lb_id}/forwarding_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/load_balancers/{lb_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicApiGetScheduledIndexingOutputFlow
+
+main: kit: flow: BasicApiGetScheduledIndexingOutputFlow:
+{
+  entity: "api_get_scheduled_indexing_output",
+  kind: "basic",
+  name: "BasicApiGetScheduledIndexingOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_scheduled_indexing_output_ref01",
+        srcdatavar: "api_get_scheduled_indexing_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_scheduled_indexing_output01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_scheduled_indexing_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetScheduledIndexingOutputFlow"
+}

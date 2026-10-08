@@ -1,0 +1,100 @@
+# BasicVpcFlow
+
+main: kit: flow: BasicVpcFlow:
+{
+  entity: "vpc",
+  kind: "basic",
+  name: "BasicVpcFlow",
+  step: [
+    {
+      i: {
+        ref: "vpc_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vpc_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_ref01",
+        srcdatavar: "vpc_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_ref01",
+        srcdatavar: "vpc_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vpc01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vpc_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vpc_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "vpc01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "vpc_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVpcFlow"
+}

@@ -1,0 +1,73 @@
+# Entity: dedicated_inference_size
+
+main: kit: entity: dedicated_inference_size: {
+
+  alias: field: {}
+
+  fields: {
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      t: "`$STRING`"
+    }
+    gpu_slug: {
+      h: "Gpu Slug"
+      n: "gpu_slug"
+      r: false
+      t: "`$STRING`"
+    }
+    price_per_hour: {
+      h: "Price Per Hour"
+      n: "price_per_hour"
+      r: false
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "dedicated_inference_size"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/sizes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/sizes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              lit: "sizes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sizes`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

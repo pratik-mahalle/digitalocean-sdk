@@ -1,0 +1,84 @@
+# Entity: api_get_indexing_job_details_signed_url_output
+
+main: kit: entity: api_get_indexing_job_details_signed_url_output: {
+
+  alias: field: {}
+
+  fields: {
+    signed_url: {
+      h: "Signed Url"
+      n: "signed_url"
+      r: false
+      sh: "The signed url for downloading the indexing job details"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_indexing_job_details_signed_url_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "indexing_job_id"
+                or: "indexing_job_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url"
+          q: {
+            exist: [
+              "indexing_job_id"
+            ]
+          }
+          r: {
+            param: {
+              indexing_job_uuid: "indexing_job_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "indexing_jobs"
+            }
+            {
+              var: "indexing_job_id"
+            }
+            {
+              lit: "details_signed_url"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

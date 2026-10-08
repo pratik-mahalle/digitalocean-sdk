@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "access_point": {
+      "ACCESS_POINT00": {
+        "access_policy": {},
+        "created_at": "s65",
+        "id": "ACCESS_POINT00",
+        "is_default": false,
+        "name": "s68",
+        "path": "s69",
+        "share_id": "SHARE01",
+        "status": "s6b",
+        "updated_at": "s6c",
+        "vpc_id": "VPC01"
+      },
+      "ACCESS_POINT01": {
+        "access_policy": {},
+        "created_at": "sc9",
+        "id": "ACCESS_POINT01",
+        "is_default": false,
+        "name": "scc",
+        "path": "scd",
+        "share_id": "SHARE01",
+        "status": "scf",
+        "updated_at": "sd0",
+        "vpc_id": "VPC01"
+      },
+      "ACCESS_POINT02": {
+        "access_policy": {},
+        "created_at": "s12d",
+        "id": "ACCESS_POINT02",
+        "is_default": false,
+        "name": "s130",
+        "path": "s131",
+        "share_id": "SHARE01",
+        "status": "s133",
+        "updated_at": "s134",
+        "vpc_id": "VPC01"
+      }
+    }
+  },
+  "new": {
+    "access_point": {
+      "access_point_ref01": {
+        "access_policy": {},
+        "created_at": "s191",
+        "is_default": false,
+        "name": "s194",
+        "path": "s195",
+        "share_id": "SHARE01",
+        "status": "s197",
+        "updated_at": "s198",
+        "vpc_id": "VPC01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/nfs/shares/{share_id}/access_points": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/nfs/shares/{share_id}/access_points": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/nfs/access_points/{access_point_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/nfs/access_points/{access_point_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

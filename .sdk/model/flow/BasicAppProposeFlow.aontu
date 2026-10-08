@@ -1,0 +1,18 @@
+# BasicAppProposeFlow
+
+main: kit: flow: BasicAppProposeFlow:
+{
+  entity: "app_propose",
+  kind: "basic",
+  name: "BasicAppProposeFlow",
+  step: [
+    {
+      i: {
+        ref: "app_propose_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAppProposeFlow"
+}

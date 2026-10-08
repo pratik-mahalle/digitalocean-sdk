@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "dedicated_inference_gpu_model_config": {
+      "DEDICATED_INFERENCE_GPU_MODEL_CONFIG00": {
+        "gpu_slugs": [],
+        "is_gated_model": false,
+        "model_name": "s2a",
+        "model_slug": "s2b"
+      },
+      "DEDICATED_INFERENCE_GPU_MODEL_CONFIG01": {
+        "gpu_slugs": [],
+        "is_gated_model": false,
+        "model_name": "s52",
+        "model_slug": "s53"
+      },
+      "DEDICATED_INFERENCE_GPU_MODEL_CONFIG02": {
+        "gpu_slugs": [],
+        "is_gated_model": false,
+        "model_name": "s7a",
+        "model_slug": "s7b"
+      }
+    }
+  },
+  "new": {
+    "dedicated_inference_gpu_model_config": {
+      "dedicated_inference_gpu_model_config_ref01": {
+        "gpu_slugs": [],
+        "is_gated_model": false,
+        "model_name": "sa2",
+        "model_slug": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/dedicated-inferences/gpu-model-config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

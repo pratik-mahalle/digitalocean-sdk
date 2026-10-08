@@ -1,0 +1,61 @@
+# BasicBlockStorageActionFlow
+
+main: kit: flow: BasicBlockStorageActionFlow:
+{
+  entity: "block_storage_action",
+  kind: "basic",
+  name: "BasicBlockStorageActionFlow",
+  step: [
+    {
+      i: {
+        ref: "block_storage_action_ref01"
+      }
+
+      m: {
+        volume_id: "volume01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        volume_id: "volume01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "block_storage_action_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "block_storage_action_ref01",
+        srcdatavar: "block_storage_action_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "block_storage_action01",
+        volume_id: "volume01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-block_storage_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBlockStorageActionFlow"
+}

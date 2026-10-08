@@ -1,0 +1,110 @@
+# Entity: resync
+
+main: kit: entity: resync: {
+
+  alias: field: {}
+
+  fields: {
+    authorization: {
+      h: "Authorization"
+      n: "authorization"
+      r: false
+      sh: "Set when discovery could not run because `user_id` has no authorized connection to this server yet."
+      t: "`$ANY`"
+    }
+    mcpServer: {
+      h: "Mcp Server"
+      n: "mcpServer"
+      r: false
+      sh: "The server, including `syncStatus` and `syncError`."
+      t: "`$ANY`"
+    }
+    pending: {
+      h: "Pending"
+      n: "pending"
+      r: false
+      sh: "True when discovery is still running (HTTP 202)."
+      t: "`$BOOLEAN`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Every tool discovered on the server when discovery finished in time; empty when pending is true."
+      t: "`$ARRAY`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: false
+      sh: "Required for a server registered with `credentialRefSource` connection: discovery reaches the server as this user, through their connection, because such a server has no team-wide credential."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "resync"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/action-gateway/mcp-servers/{server_ref}/resync"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "server_ref"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}/resync"
+          q: {
+            exist: [
+              "server_ref"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "server_ref"
+            }
+            {
+              lit: "resync"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.mcp_server")]
+  ]
+
+}

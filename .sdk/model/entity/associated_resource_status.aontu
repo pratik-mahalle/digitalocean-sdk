@@ -1,0 +1,104 @@
+# Entity: associated_resource_status
+
+main: kit: entity: associated_resource_status: {
+
+  alias: field: {}
+
+  fields: {
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format indicating when the requested action was completed."
+      t: "`$STRING`"
+    }
+    droplet: {
+      h: "Droplet"
+      n: "droplet"
+      r: false
+      sh: "An object containing information about a resource scheduled for deletion."
+      t: "`$OBJECT`"
+    }
+    failures: {
+      h: "Failures"
+      n: "failures"
+      r: false
+      sh: "A count of the associated resources that failed to be destroyed, if any."
+      t: "`$INTEGER`"
+    }
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: false
+      sh: "An object containing additional information about resource related to a Droplet requested to be destroyed."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "associated_resource_status"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/destroy_with_associated_resources/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "droplet_id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/status"
+          q: {
+            exist: [
+              "droplet_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "droplet_id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.droplet")]
+  ]
+
+}

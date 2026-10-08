@@ -1,0 +1,28 @@
+# BasicPrepaymentStatusFlow
+
+main: kit: flow: BasicPrepaymentStatusFlow:
+{
+  entity: "prepayment_status",
+  kind: "basic",
+  name: "BasicPrepaymentStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "prepayment_status_ref01",
+        srcdatavar: "prepayment_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-prepayment_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPrepaymentStatusFlow"
+}

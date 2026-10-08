@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "api_delete_anthropic_api_key_output": {
+      "API_DELETE_ANTHROPIC_API_KEY_OUTPUT00": {
+        "api_key": "s46",
+        "created_at": "s47",
+        "created_by": "s48",
+        "deleted_at": "s49",
+        "name": "s4a",
+        "updated_at": "s4b",
+        "uuid": "s4c",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_DELETE_ANTHROPIC_API_KEY_OUTPUT00"
+      },
+      "API_DELETE_ANTHROPIC_API_KEY_OUTPUT01": {
+        "api_key": "s8c",
+        "created_at": "s8d",
+        "created_by": "s8e",
+        "deleted_at": "s8f",
+        "name": "s90",
+        "updated_at": "s91",
+        "uuid": "s92",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_DELETE_ANTHROPIC_API_KEY_OUTPUT01"
+      },
+      "API_DELETE_ANTHROPIC_API_KEY_OUTPUT02": {
+        "api_key": "sd2",
+        "created_at": "sd3",
+        "created_by": "sd4",
+        "deleted_at": "sd5",
+        "name": "sd6",
+        "updated_at": "sd7",
+        "uuid": "sd8",
+        "api_key_uuid": "API_KEY_UUID01",
+        "id": "API_DELETE_ANTHROPIC_API_KEY_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_anthropic_api_key_output": {
+      "api_delete_anthropic_api_key_output_ref01": {
+        "api_key": "s118",
+        "created_at": "s119",
+        "created_by": "s11a",
+        "deleted_at": "s11b",
+        "name": "s11c",
+        "updated_at": "s11d",
+        "uuid": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/anthropic/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/anthropic/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/gen-ai/anthropic/keys/{api_key_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

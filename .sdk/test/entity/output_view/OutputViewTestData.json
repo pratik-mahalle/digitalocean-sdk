@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "output_view": {
+      "OUTPUT_VIEW00": {
+        "audit": {},
+        "description": "s79",
+        "fields": [],
+        "id": "OUTPUT_VIEW00",
+        "kind": "s7c",
+        "name": "s7d",
+        "output_schema": {},
+        "team_id": "TEAM01",
+        "tool": "s80",
+        "tool_id": "TOOL01",
+        "version": "s82",
+        "view_id": "VIEW01"
+      },
+      "OUTPUT_VIEW01": {
+        "audit": {},
+        "description": "sf1",
+        "fields": [],
+        "id": "OUTPUT_VIEW01",
+        "kind": "sf4",
+        "name": "sf5",
+        "output_schema": {},
+        "team_id": "TEAM01",
+        "tool": "sf8",
+        "tool_id": "TOOL01",
+        "version": "sfa",
+        "view_id": "VIEW01"
+      },
+      "OUTPUT_VIEW02": {
+        "audit": {},
+        "description": "s169",
+        "fields": [],
+        "id": "OUTPUT_VIEW02",
+        "kind": "s16c",
+        "name": "s16d",
+        "output_schema": {},
+        "team_id": "TEAM01",
+        "tool": "s170",
+        "tool_id": "TOOL01",
+        "version": "s172",
+        "view_id": "VIEW01"
+      }
+    }
+  },
+  "new": {
+    "output_view": {
+      "output_view_ref01": {
+        "audit": {},
+        "description": "s1e1",
+        "fields": [],
+        "kind": "s1e4",
+        "name": "s1e5",
+        "output_schema": {},
+        "team_id": "TEAM01",
+        "tool": "s1e8",
+        "tool_id": "TOOL01",
+        "version": "s1ea",
+        "view_id": "VIEW01"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/action-gateway/output-views": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/action-gateway/output-views/preview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/output-views": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/output-views/{view_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/action-gateway/output-views/{view_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

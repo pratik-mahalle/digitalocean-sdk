@@ -1,0 +1,26 @@
+# BasicApiListKnowledgeBaseIndexingJobsOutputFlow
+
+main: kit: flow: BasicApiListKnowledgeBaseIndexingJobsOutputFlow:
+{
+  entity: "api_list_knowledge_base_indexing_jobs_output",
+  kind: "basic",
+  name: "BasicApiListKnowledgeBaseIndexingJobsOutputFlow",
+  step: [
+    {
+      m: {
+        knowledge_base_id: "knowledge_base01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_knowledge_base_indexing_jobs_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListKnowledgeBaseIndexingJobsOutputFlow"
+}

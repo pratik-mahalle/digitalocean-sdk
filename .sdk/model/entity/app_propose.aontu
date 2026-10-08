@@ -1,0 +1,113 @@
+# Entity: app_propose
+
+main: kit: entity: app_propose: {
+
+  alias: field: {}
+
+  fields: {
+    app_cost: {
+      fo: "int32"
+      h: "App Cost"
+      n: "app_cost"
+      r: false
+      sh: "The monthly cost of the proposed app in USD."
+      t: "`$INTEGER`"
+    }
+    app_id: {
+      h: "App Id"
+      n: "app_id"
+      r: false
+      sh: "An optional ID of an existing app."
+      t: "`$STRING`"
+    }
+    app_is_static: {
+      h: "App Is Static"
+      n: "app_is_static"
+      r: false
+      sh: "Indicates whether the app is a static app."
+      t: "`$BOOLEAN`"
+    }
+    app_name_available: {
+      h: "App Name Available"
+      n: "app_name_available"
+      r: false
+      sh: "Indicates whether the app name is available."
+      t: "`$BOOLEAN`"
+    }
+    app_name_suggestion: {
+      h: "App Name Suggestion"
+      n: "app_name_suggestion"
+      r: false
+      sh: "The suggested name if the proposed app name is unavailable."
+      t: "`$STRING`"
+    }
+    app_tier_downgrade_cost: {
+      de: true
+      fo: "int32"
+      h: "App Tier Downgrade Cost"
+      n: "app_tier_downgrade_cost"
+      r: false
+      sh: "The monthly cost of the proposed app in USD using the previous pricing plan tier."
+      t: "`$INTEGER`"
+    }
+    existing_static_apps: {
+      h: "Existing Static Apps"
+      n: "existing_static_apps"
+      r: false
+      sh: "The maximum number of free static apps the account can have."
+      t: "`$STRING`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: true
+      sh: "The desired configuration of an application."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 7
+      }
+    }
+  }
+
+  name: "app_propose"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/apps/propose"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/apps/propose"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "propose"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,3399 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 226
+  metrics: count: path: 515
+  metrics: count: method: 761
+
+  entity: access_point: {
+    path: "/v2/nfs/access_points/{access_point_id}": {
+      rename: param: "access_point_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.access_point`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.access_point`")|top
+    }
+    path: "/v2/nfs/shares/{share_id}/access_points": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.access_point`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.access_points`")|top
+    }
+  }
+
+  entity: account: {
+    path: "/v2/account": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.account`")|top
+    }
+  }
+
+  entity: action: {
+    path: "/v2/actions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+    path: "/v2/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.action`")|top
+    }
+    path: "/v2/images/{image_id}/actions": {
+      op: create: method: *POST
+    }
+    path: "/v2/images/{image_id}/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: actor_limit: {
+    path: "/v2/action-gateway/actors/{actor_id}/limits": {
+      rename: param: "actor_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.configured_limits`")|top
+    }
+  }
+
+  entity: add_on: {
+    path: "/v2/add-ons/apps": {
+      action: "app": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.apps`")|top
+    }
+    path: "/v2/add-ons/apps/{app_slug}/metadata": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.metadata`")|top
+    }
+    path: "/v2/add-ons/saas": {
+      action: "saa": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.resource`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.resources`")|top
+    }
+    path: "/v2/add-ons/saas/{resource_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.resource`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.resource`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/add-ons/saas/{resource_uuid}/plan": {
+      action: "plan": {}
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.resource`")|top
+    }
+  }
+
+  entity: api_agent_version: {
+    path: "/v2/gen-ai/agents/{uuid}/versions": {
+      rename: param: "uuid": *"agent_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.agent_versions`")|top
+    }
+  }
+
+  entity: api_create_agent_api_key_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/api_keys": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_create_data_source_file_upload_presigned_urls_output: {
+    path: "/v2/gen-ai/evaluation_datasets/file_upload_presigned_urls": {
+      op: create: method: *POST
+    }
+    path: "/v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls": {
+      op: create: method: *POST
+    }
+    path: "/v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls": {
+      op: create: method: *POST
+    }
+    path: "/v2/gen-ai/scenario_sets/file_upload_presigned_urls": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: api_create_knowledge_base_data_source_output: {
+    path: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources": {
+      rename: param: "knowledge_base_uuid": *"knowledge_base_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.knowledge_base_data_source`")|top
+    }
+  }
+
+  entity: api_create_scenario_set_from_library_output: {
+    path: "/v2/gen-ai/scenario_library/{library_scenario_uuid}/create_scenario_set": {
+      rename: param: "library_scenario_uuid": *"scenario_library_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scenario_set`")|top
+    }
+  }
+
+  entity: api_delete_agent_api_key_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.api_key_info`")|top
+    }
+    path: "/v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}/regenerate": {
+      action: "regenerate": {}
+      rename: param: "agent_uuid": *"agent_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_delete_agent_output: {
+    path: "/v2/gen-ai/agents": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.agent`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.agents`")|top
+    }
+    path: "/v2/gen-ai/agents/{uuid}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_delete_anthropic_api_key_output: {
+    path: "/v2/gen-ai/anthropic/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.api_key_info`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.api_key_infos`")|top
+    }
+    path: "/v2/gen-ai/anthropic/keys/{api_key_uuid}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_delete_custom_evaluation_metric_output: {
+    path: "/v2/gen-ai/custom_evaluation_metrics/{metric_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_custom_model_output_public: {
+    path: "/v2/gen-ai/custom_models/{uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_evaluation_dataset_output: {
+    path: "/v2/gen-ai/evaluation_datasets": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.evaluation_datasets`")|top
+    }
+    path: "/v2/gen-ai/evaluation_datasets/{dataset_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_knowledge_base_data_source_output: {
+    path: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}": {
+      rename: param: "knowledge_base_uuid": *"knowledge_base_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_knowledge_base_output: {
+    path: "/v2/gen-ai/knowledge_bases/{uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_model_api_key_output: {
+    path: "/v2/gen-ai/models/api_keys": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.api_key_infos`")|top
+    }
+    path: "/v2/gen-ai/models/api_keys/{api_key_uuid}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.api_key_info`")|top
+    }
+    path: "/v2/gen-ai/models/api_keys/{api_key_uuid}/regenerate": {
+      action: "regenerate": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_delete_model_evaluation_preset_output: {
+    path: "/v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_model_evaluation_run_output_public: {
+    path: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_model_router_output: {
+    path: "/v2/gen-ai/models/routers/{uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_open_aiapi_key_output: {
+    path: "/v2/gen-ai/openai/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.api_key_info`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.api_key_infos`")|top
+    }
+    path: "/v2/gen-ai/openai/keys/{api_key_uuid}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_delete_scenario_set_output: {
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_scheduled_indexing_output: {
+    path: "/v2/gen-ai/scheduled-indexing": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.indexing_info`")|top
+    }
+    path: "/v2/gen-ai/scheduled-indexing/{uuid}": {
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.indexing_info`")|top
+    }
+  }
+
+  entity: api_delete_simulation_run_output: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_delete_workspace_output: {
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_dropbox_oauth2_get_tokens_output: {
+    path: "/v2/gen-ai/oauth2/dropbox/tokens": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: api_generate_oauth2_url_output: {
+    path: "/v2/gen-ai/oauth2/url": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_generate_scenario_set_output: {
+    path: "/v2/gen-ai/scenario_sets/generate": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scenario_set`")|top
+    }
+  }
+
+  entity: api_get_agent_output: {
+    path: "/v2/gen-ai/agents/{uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.agent`")|top
+    }
+    path: "/v2/gen-ai/agents/{uuid}/deployment_visibility": {
+      action: "deployment_visibility": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_get_agent_usage_output: {
+    path: "/v2/gen-ai/agents/{uuid}/usage": {
+      rename: param: "uuid": *"agent_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_anthropic_api_key_output: {
+    path: "/v2/gen-ai/anthropic/keys/{api_key_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_get_children_output: {
+    path: "/v2/gen-ai/agents/{uuid}/child_agents": {
+      rename: param: "uuid": *"agent_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.children`")|top
+    }
+  }
+
+  entity: api_get_custom_model_output_public: {
+    path: "/v2/gen-ai/custom_models": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.models`")|top
+    }
+    path: "/v2/gen-ai/custom_models/{uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.model`")|top
+    }
+    path: "/v2/gen-ai/custom_models/{uuid}/metadata": {
+      action: "metadata": {}
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.model`")|top
+    }
+  }
+
+  entity: api_get_evaluation_dataset_download_url_output: {
+    path: "/v2/gen-ai/evaluation_datasets/{dataset_uuid}/download_url": {
+      rename: param: "dataset_uuid": *"evaluation_dataset_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_evaluation_run_output: {
+    path: "/v2/gen-ai/evaluation_runs": {
+      op: create: method: *POST
+    }
+    path: "/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.evaluation_run`")|top
+    }
+  }
+
+  entity: api_get_evaluation_run_results_output: {
+    path: "/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results": {
+      rename: param: "evaluation_run_uuid": *"evaluation_run_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.prompts`")|top
+    }
+  }
+
+  entity: api_get_evaluation_test_case_output: {
+    path: "/v2/gen-ai/evaluation_test_cases": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.evaluation_test_cases`")|top
+    }
+    path: "/v2/gen-ai/evaluation_test_cases/{test_case_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.evaluation_test_case`")|top
+    }
+  }
+
+  entity: api_get_indexing_job_details_signed_url_output: {
+    path: "/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/details_signed_url": {
+      rename: param: "indexing_job_uuid": *"indexing_job_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_knowledge_base_indexing_job_output: {
+    path: "/v2/gen-ai/indexing_jobs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.job`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.jobs`")|top
+    }
+    path: "/v2/gen-ai/indexing_jobs/{uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.job`")|top
+    }
+    path: "/v2/gen-ai/indexing_jobs/{uuid}/cancel": {
+      action: "cancel": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.job`")|top
+    }
+  }
+
+  entity: api_get_knowledge_base_output: {
+    path: "/v2/gen-ai/knowledge_bases/{uuid}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_model_evaluation_run_output: {
+    path: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}": {
+      op: load: method: *GET
+    }
+    path: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/cancel": {
+      action: "cancel": {}
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.run`")|top
+    }
+  }
+
+  entity: api_get_model_evaluation_run_results_download_url_output: {
+    path: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/results/download_url": {
+      rename: param: "eval_run_uuid": *"model_evaluation_run_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_model_router_output: {
+    path: "/v2/gen-ai/models/routers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.model_router`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.model_routers`")|top
+    }
+    path: "/v2/gen-ai/models/routers/{uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.model_router`")|top
+    }
+  }
+
+  entity: api_get_open_aiapi_key_output: {
+    path: "/v2/gen-ai/openai/keys/{api_key_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_get_scenario_set_download_url_output: {
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}/download_url": {
+      rename: param: "scenario_set_uuid": *"scenario_set_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_scenario_set_output: {
+    path: "/v2/gen-ai/scenario_sets": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scenario_set`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scenario_sets`")|top
+    }
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.scenario_set`")|top
+    }
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}/duplicate": {
+      action: "duplicate": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scenario_set`")|top
+    }
+  }
+
+  entity: api_get_scheduled_indexing_output: {
+    path: "/v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.indexing_info`")|top
+    }
+  }
+
+  entity: api_get_simulation_journey_trajectory_url_output: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}/trajectory_url": {
+      rename: param: "journey_uuid": *"journey_id"
+      rename: param: "run_uuid": *"simulation_run_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: api_get_simulation_run_output: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}": {
+      op: load: method: *GET
+    }
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}/cancel": {
+      action: "cancel": {}
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.simulation_run`")|top
+    }
+  }
+
+  entity: api_get_workspace_output: {
+    path: "/v2/gen-ai/workspaces": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.workspace`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.workspaces`")|top
+    }
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.workspace`")|top
+    }
+  }
+
+  entity: api_import_custom_model_output_public: {
+    path: "/v2/gen-ai/custom_models/import": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: api_indexed_data_source: {
+    path: "/v2/gen-ai/indexing_jobs/{indexing_job_uuid}/data_sources": {
+      rename: param: "indexing_job_uuid": *"indexing_job_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.indexed_data_sources`")|top
+    }
+  }
+
+  entity: api_link_agent_function_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/functions": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_link_agent_guardrail_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/guardrails": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_link_agent_output: {
+    path: "/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}": {
+      rename: param: "parent_agent_uuid": *"agent_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: api_link_knowledge_base_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/knowledge_bases": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.agent`")|top
+    }
+    path: "/v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_list_agent_api_keys_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/api_keys": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.api_key_infos`")|top
+    }
+  }
+
+  entity: api_list_agents_by_anthropic_key_output: {
+    path: "/v2/gen-ai/anthropic/keys/{uuid}/agents": {
+      rename: param: "uuid": *"key_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.agents`")|top
+    }
+  }
+
+  entity: api_list_agents_by_open_ai_key_output: {
+    path: "/v2/gen-ai/openai/keys/{uuid}/agents": {
+      rename: param: "uuid": *"key_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.agents`")|top
+    }
+  }
+
+  entity: api_list_agents_by_workspace_output: {
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}/agents": {
+      rename: param: "workspace_uuid": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.agents`")|top
+    }
+  }
+
+  entity: api_list_evaluation_metrics_output: {
+    path: "/v2/gen-ai/evaluation_metrics": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.metrics`")|top
+    }
+  }
+
+  entity: api_list_evaluation_runs_by_test_case_output: {
+    path: "/v2/gen-ai/evaluation_test_cases/{evaluation_test_case_uuid}/evaluation_runs": {
+      rename: param: "evaluation_test_case_uuid": *"evaluation_test_case_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.evaluation_runs`")|top
+    }
+  }
+
+  entity: api_list_evaluation_test_cases_by_workspace_output: {
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}/evaluation_test_cases": {
+      rename: param: "workspace_uuid": *"workspace_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.evaluation_test_cases`")|top
+    }
+  }
+
+  entity: api_list_knowledge_base_data_sources_output: {
+    path: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources": {
+      rename: param: "knowledge_base_uuid": *"knowledge_base_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.knowledge_base_data_sources`")|top
+    }
+  }
+
+  entity: api_list_knowledge_base_indexing_jobs_output: {
+    path: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/indexing_jobs": {
+      rename: param: "knowledge_base_uuid": *"knowledge_base_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.jobs`")|top
+    }
+  }
+
+  entity: api_list_model_evaluation_metrics_output: {
+    path: "/v2/gen-ai/model_evaluation_metrics": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.metrics`")|top
+    }
+  }
+
+  entity: api_list_scenario_library_output: {
+    path: "/v2/gen-ai/scenario_library": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scenarios`")|top
+    }
+  }
+
+  entity: api_list_scenarios_output: {
+    path: "/v2/gen-ai/scenario_library/{library_scenario_uuid}/scenarios": {
+      rename: param: "library_scenario_uuid": *"scenario_library_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scenarios`")|top
+    }
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}/scenarios": {
+      rename: param: "scenario_set_uuid": *"scenario_set_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scenarios`")|top
+    }
+  }
+
+  entity: api_list_simulation_journeys_output: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys": {
+      rename: param: "run_uuid": *"simulation_run_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.journeys`")|top
+    }
+  }
+
+  entity: api_model_catalog_card: {
+    path: "/v2/gen-ai/models/catalog": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/gen-ai/models/catalog/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: api_model_evaluation_preset: {
+    path: "/v2/gen-ai/model_evaluation_presets": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.presets`")|top
+    }
+    path: "/v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}": {
+      rename: param: "eval_preset_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.preset`")|top
+    }
+  }
+
+  entity: api_model_public: {
+    path: "/v2/gen-ai/models": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.models`")|top
+    }
+  }
+
+  entity: api_model_router_preset: {
+    path: "/v2/gen-ai/models/routers/presets": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.presets`")|top
+    }
+  }
+
+  entity: api_model_router_task_preset: {
+    path: "/v2/gen-ai/models/routers/tasks/presets": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tasks`")|top
+    }
+  }
+
+  entity: api_move_agents_to_workspace_output: {
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}/agents": {
+      rename: param: "workspace_uuid": *"workspace_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.workspace`")|top
+    }
+  }
+
+  entity: api_prompt: {
+    path: "/v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results/{prompt_id}": {
+      rename: param: "evaluation_run_uuid": *"evaluation_run_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.prompt`")|top
+    }
+  }
+
+  entity: api_rollback_to_agent_version_output: {
+    path: "/v2/gen-ai/agents/{uuid}/versions": {
+      rename: param: "uuid": *"agent_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: api_simulation_journey: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}": {
+      rename: param: "journey_uuid": *"id"
+      rename: param: "run_uuid": *"simulation_run_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.journey`")|top
+    }
+  }
+
+  entity: api_simulation_trajectory: {
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}/trajectory": {
+      rename: param: "journey_uuid": *"journey_id"
+      rename: param: "run_uuid": *"simulation_run_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.trajectory`")|top
+    }
+  }
+
+  entity: api_unlink_agent_function_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/functions/{function_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_unlink_agent_guardrail_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/guardrails/{guardrail_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_unlink_agent_output: {
+    path: "/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}": {
+      rename: param: "parent_agent_uuid": *"agent_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: api_unlink_knowledge_base_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_update_agent_api_key_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/api_keys/{api_key_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_update_agent_function_output: {
+    path: "/v2/gen-ai/agents/{agent_uuid}/functions/{function_uuid}": {
+      rename: param: "agent_uuid": *"agent_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_update_agent_output: {
+    path: "/v2/gen-ai/agents/{uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.agent`")|top
+    }
+  }
+
+  entity: api_update_anthropic_api_key_output: {
+    path: "/v2/gen-ai/anthropic/keys/{api_key_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_update_custom_evaluation_metric_output: {
+    path: "/v2/gen-ai/custom_evaluation_metrics": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.metric`")|top
+    }
+    path: "/v2/gen-ai/custom_evaluation_metrics/{metric_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.metric`")|top
+    }
+  }
+
+  entity: api_update_evaluation_test_case_output: {
+    path: "/v2/gen-ai/evaluation_test_cases/{test_case_uuid}": {
+      op: update: method: *PUT
+    }
+  }
+
+  entity: api_update_knowledge_base_data_source_output: {
+    path: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}": {
+      rename: param: "knowledge_base_uuid": *"knowledge_base_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.knowledge_base_data_source`")|top
+    }
+  }
+
+  entity: api_update_knowledge_base_output: {
+    path: "/v2/gen-ai/knowledge_bases": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.knowledge_base`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.knowledge_bases`")|top
+    }
+    path: "/v2/gen-ai/knowledge_bases/{uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.knowledge_base`")|top
+    }
+  }
+
+  entity: api_update_linked_agent_output: {
+    path: "/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}": {
+      rename: param: "parent_agent_uuid": *"agent_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: api_update_model_api_key_output: {
+    path: "/v2/gen-ai/models/api_keys/{api_key_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_update_model_evaluation_run_output: {
+    path: "/v2/gen-ai/model_evaluation_runs": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.runs`")|top
+    }
+    path: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}": {
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.run`")|top
+    }
+  }
+
+  entity: api_update_model_router_output: {
+    path: "/v2/gen-ai/models/routers/{uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.model_router`")|top
+    }
+  }
+
+  entity: api_update_open_aiapi_key_output: {
+    path: "/v2/gen-ai/openai/keys/{api_key_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.api_key_info`")|top
+    }
+  }
+
+  entity: api_update_scenario_set_output: {
+    path: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.scenario_set`")|top
+    }
+  }
+
+  entity: api_update_simulation_run_output: {
+    path: "/v2/gen-ai/simulation_runs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.simulation_run`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.simulation_runs`")|top
+    }
+    path: "/v2/gen-ai/simulation_runs/{run_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.simulation_run`")|top
+    }
+  }
+
+  entity: api_update_workspace_output: {
+    path: "/v2/gen-ai/workspaces/{workspace_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.workspace`")|top
+    }
+  }
+
+  entity: app: {
+    path: "/v2/apps": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.app`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.apps`")|top
+    }
+    path: "/v2/apps/{app_id}/events/{event_id}": {
+      rename: param: "app_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.event`")|top
+    }
+    path: "/v2/apps/{app_id}/events/{event_id}/cancel": {
+      action: "cancel": {}
+      rename: param: "app_id": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.event`")|top
+    }
+    path: "/v2/apps/{app_id}/rollback/commit": {
+      action: "rollback_commit": {}
+      rename: param: "app_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/apps/{app_id}/rollback/validate": {
+      action: "rollback_validate": {}
+      rename: param: "app_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/apps/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.app`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.app`")|top
+    }
+  }
+
+  entity: app_alert: {
+    path: "/v2/apps/{app_id}/alerts": {
+      rename: param: "app_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.alerts`")|top
+    }
+    path: "/v2/apps/{app_id}/alerts/{alert_id}/destinations": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.alert`")|top
+    }
+  }
+
+  entity: app_event: {
+    path: "/v2/apps/{app_id}/events": {
+      rename: param: "app_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.events`")|top
+    }
+  }
+
+  entity: app_health: {
+    path: "/v2/apps/{app_id}/health": {
+      rename: param: "app_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.app_health`")|top
+    }
+  }
+
+  entity: app_instance: {
+    path: "/v2/apps/{app_id}/instances": {
+      rename: param: "app_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.instances`")|top
+    }
+  }
+
+  entity: app_job_invocation: {
+    path: "/v2/apps/{app_id}/job-invocations": {
+      rename: param: "app_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.job_invocations`")|top
+    }
+    path: "/v2/apps/{app_id}/job-invocations/{job_invocation_id}": {
+      rename: param: "job_invocation_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/v2/apps/{app_id}/job-invocations/{job_invocation_id}/cancel": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: app_metrics_bandwidth_usage: {
+    path: "/v2/apps/metrics/bandwidth_daily": {
+      op: create: method: *POST
+    }
+    path: "/v2/apps/{app_id}/metrics/bandwidth_daily": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.app_bandwidth_usage`")|top
+    }
+  }
+
+  entity: app_propose: {
+    path: "/v2/apps/propose": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: apps_deployment: {
+    path: "/v2/apps/{app_id}/deployments": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.deployments`")|top
+    }
+    path: "/v2/apps/{app_id}/deployments/{deployment_id}": {
+      rename: param: "deployment_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.deployment`")|top
+    }
+    path: "/v2/apps/{app_id}/deployments/{deployment_id}/cancel": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+    }
+    path: "/v2/apps/{app_id}/restart": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+    }
+    path: "/v2/apps/{app_id}/rollback": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+    }
+    path: "/v2/apps/{app_id}/rollback/revert": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.deployment`")|top
+    }
+  }
+
+  entity: apps_get_exec: {
+    path: "/v2/apps/{app_id}/components/{component_name}/exec": {
+      op: load: method: *GET
+    }
+    path: "/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/exec": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: apps_get_log: {
+    path: "/v2/apps/{app_id}/components/{component_name}/logs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+    path: "/v2/apps/{app_id}/deployments/{deployment_id}/components/{component_name}/logs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+    path: "/v2/apps/{app_id}/deployments/{deployment_id}/logs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+    path: "/v2/apps/{app_id}/events/{event_id}/logs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+    path: "/v2/apps/{app_id}/jobs/{job_name}/invocations/{job_invocation_id}/logs": {
+      rename: param: "job_invocation_id": *"invocation_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+    path: "/v2/apps/{app_id}/logs": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.historic_urls`")|top
+    }
+  }
+
+  entity: apps_instance_size: {
+    path: "/v2/apps/tiers/instance_sizes": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.instance_sizes`")|top
+    }
+    path: "/v2/apps/tiers/instance_sizes/{slug}": {
+      rename: param: "slug": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.instance_size`")|top
+    }
+  }
+
+  entity: apps_region: {
+    path: "/v2/apps/regions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.regions`")|top
+    }
+  }
+
+  entity: associated_kubernetes_resource: {
+    path: "/v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: associated_resource_status: {
+    path: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/status": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: async_invoke: {
+    path: "/v1/async-invoke": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: balance: {
+    path: "/v2/customers/my/balance": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: batch: {
+    path: "/v1/batches": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/v1/batches/{batch_id}": {
+      rename: param: "batch_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/v1/batches/{batch_id}/cancel": {
+      action: "cancel": {}
+      rename: param: "batch_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: batch_file_create: {
+    path: "/v1/batches/files": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: batch_inference: {
+    path: "/<upload_url>": {
+      op: update: method: *PUT
+    }
+  }
+
+  entity: batch_result: {
+    path: "/v1/batches/{batch_id}/results": {
+      rename: param: "batch_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: billing: {
+    path: "/v2/billing/{account_urn}/insights/{start_date}/{end_date}": {
+      op: load: method: *GET
+    }
+    path: "/v2/customers/my/billing_history": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.billing_history`")|top
+    }
+    path: "/v2/customers/my/invoices": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.invoices`")|top
+    }
+    path: "/v2/customers/my/invoices/{invoice_uuid}": {
+      op: load: method: *GET
+    }
+    path: "/v2/customers/my/invoices/{invoice_uuid}/csv": {
+      op: load: method: *GET
+    }
+    path: "/v2/customers/my/invoices/{invoice_uuid}/pdf": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: block_storage: {
+    path: "/v2/volumes": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.volume`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.volumes`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/volumes/snapshots/{snapshot_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.snapshot`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/volumes/{volume_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.volume`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/volumes/{volume_id}/snapshots": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.snapshot`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.snapshots`")|top
+    }
+  }
+
+  entity: block_storage_action: {
+    path: "/v2/volumes/actions": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+    }
+    path: "/v2/volumes/{volume_id}/actions": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+    path: "/v2/volumes/{volume_id}/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: byoip_prefix: {
+    path: "/v2/byoip_prefixes": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.byoip_prefixes`")|top
+    }
+    path: "/v2/byoip_prefixes/{byoip_prefix_uuid}": {
+      rename: param: "byoip_prefix_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.byoip_prefix`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.byoip_prefix`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/byoip_prefixes/{byoip_prefix_uuid}/ips": {
+      action: "ips": {}
+      rename: param: "byoip_prefix_uuid": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.ips`")|top
+    }
+  }
+
+  entity: cdn_endpoint: {
+    path: "/v2/cdn/endpoints": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.endpoint`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.endpoints`")|top
+    }
+    path: "/v2/cdn/endpoints/{cdn_id}": {
+      rename: param: "cdn_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.endpoint`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.endpoint`")|top
+    }
+    path: "/v2/cdn/endpoints/{cdn_id}/cache": {
+      action: "cache": {}
+      rename: param: "cdn_id": *"endpoint_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: certificate: {
+    path: "/v2/certificates": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.certificate`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.certificates`")|top
+    }
+    path: "/v2/certificates/{certificate_id}": {
+      rename: param: "certificate_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.certificate`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: chat_completion: {
+    path: "/api/v1/chat/completions": {
+      op: create: method: *POST
+    }
+    path: "/v1/chat/completions": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: clusterlint: {
+    path: "/v2/kubernetes/clusters/{cluster_id}/clusterlint": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.diagnostics`")|top
+    }
+  }
+
+  entity: connection: {
+    path: "/v2/action-gateway/connections": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.connection`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.connections`")|top
+    }
+    path: "/v2/action-gateway/connections/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.connection`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.connection`")|top
+    }
+  }
+
+  entity: connection_pool: {
+    path: "/v2/databases/{database_cluster_uuid}/pools": {
+      rename: param: "database_cluster_uuid": *"database_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.pools`")|top
+    }
+  }
+
+  entity: container_registry: {
+    path: "/v2/registries": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.registry`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.registries`")|top
+    }
+    path: "/v2/registries/options": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.options`")|top
+    }
+    path: "/v2/registries/subscription": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.subscription`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.subscription`")|top
+    }
+    path: "/v2/registries/validate-name": {
+      op: create: method: *POST
+    }
+    path: "/v2/registries/{registry_name}": {
+      rename: param: "registry_name": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.registry`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registries/{registry_name}/garbage-collection": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.garbage_collection`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.garbage_collection`")|top
+    }
+    path: "/v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.garbage_collection`")|top
+    }
+    path: "/v2/registries/{registry_name}/garbage-collections": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.garbage_collections`")|top
+    }
+    path: "/v2/registries/{registry_name}/repositories/{repository_name}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registries/{registry_name}/repositories/{repository_name}/digests": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.manifests`")|top
+    }
+    path: "/v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registries/{registry_name}/repositories/{repository_name}/tags": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tags`")|top
+    }
+    path: "/v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registries/{registry_name}/repositoriesV2": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.repositories`")|top
+    }
+    path: "/v2/registry": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.registry`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.registry`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registry/options": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.options`")|top
+    }
+    path: "/v2/registry/subscription": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.subscription`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.subscription`")|top
+    }
+    path: "/v2/registry/validate-name": {
+      op: create: method: *POST
+    }
+    path: "/v2/registry/{registry_name}/garbage-collection": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.garbage_collection`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.garbage_collection`")|top
+    }
+    path: "/v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.garbage_collection`")|top
+    }
+    path: "/v2/registry/{registry_name}/garbage-collections": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.garbage_collections`")|top
+    }
+    path: "/v2/registry/{registry_name}/repositories": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.repositories`")|top
+    }
+    path: "/v2/registry/{registry_name}/repositories/{repository_name}/digests": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.manifests`")|top
+    }
+    path: "/v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registry/{registry_name}/repositories/{repository_name}/tags": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tags`")|top
+    }
+    path: "/v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/registry/{registry_name}/repositoriesV2": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.repositories`")|top
+    }
+  }
+
+  entity: create_response: {
+    path: "/v1/responses": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: credential: {
+    path: "/v2/kubernetes/clusters/{cluster_id}/credentials": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: database: {
+    path: "/v2/databases": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.database`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.databases`")|top
+    }
+    path: "/v2/databases/metrics/credentials": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.credentials`")|top
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.database`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/autoscale": {
+      action: "autoscale": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.autoscale`")|top
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/backups": {
+      action: "backup": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: list: method: *GET
+    }
+    path: "/v2/databases/{database_cluster_uuid}/ca": {
+      action: "ca": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.ca`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/config": {
+      action: "config": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.config`")|top
+      op: patch: method: *PATCH
+    }
+    path: "/v2/databases/{database_cluster_uuid}/dbs": {
+      action: "dbs": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.db`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.dbs`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/dbs/{database_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.db`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/do_settings": {
+      action: "do_setting": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.do_settings`")|top
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/events": {
+      action: "event": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.events`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/eviction_policy": {
+      action: "eviction_policy": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/firewall": {
+      action: "firewall": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.rules`")|top
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/indexes": {
+      action: "index": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.indexes`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/indexes/{index_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/install_update": {
+      action: "install_update": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/logsink": {
+      action: "logsink": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.sink`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sinks`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/maintenance": {
+      action: "maintenance": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/migrate": {
+      action: "migrate": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/online-migration/{migration_id}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/pools": {
+      action: "pool": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.pool`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/pools/{pool_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.pool`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/replicas": {
+      action: "replica": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.replica`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.replicas`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.replica`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote": {
+      action: "promote": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/resize": {
+      action: "resize": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/schema-registry": {
+      action: "schema_registry": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.subjects`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/schema-registry/config": {
+      action: "schema_registry_config": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+    }
+    path: "/v2/databases/{database_cluster_uuid}/sql_mode": {
+      action: "sql_mode": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/topics": {
+      action: "topic": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.topic`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.topics`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/topics/{topic_name}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.topic`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.topic`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/upgrade": {
+      action: "upgrade": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: update: method: *PUT
+    }
+    path: "/v2/databases/{database_cluster_uuid}/users": {
+      action: "user": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.user`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.users`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/users/{username}": {
+      rename: param: "database_cluster_uuid": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.user`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.user`")|top
+    }
+    path: "/v2/databases/{database_cluster_uuid}/users/{username}/reset_auth": {
+      action: "reset_auth": {}
+      rename: param: "database_cluster_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.user`")|top
+    }
+  }
+
+  entity: dedicated_inference: {
+    path: "/v2/dedicated-inferences": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.dedicated_inference`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.dedicated_inferences`")|top
+    }
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}": {
+      rename: param: "dedicated_inference_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.dedicated_inference`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.dedicated_inference`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}/accelerators": {
+      action: "accelerator": {}
+      rename: param: "dedicated_inference_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.accelerators`")|top
+    }
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}/ca": {
+      action: "ca": {}
+      rename: param: "dedicated_inference_id": *"id"
+      op: load: method: *GET
+    }
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}/tokens": {
+      action: "token": {}
+      rename: param: "dedicated_inference_id": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.token`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tokens`")|top
+    }
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}/tokens/{token_id}": {
+      rename: param: "dedicated_inference_id": *"id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: dedicated_inference_accelerator: {
+    path: "/v2/dedicated-inferences/{dedicated_inference_id}/accelerators/{accelerator_id}": {
+      rename: param: "accelerator_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: dedicated_inference_gpu_model_config: {
+    path: "/v2/dedicated-inferences/gpu-model-config": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.gpu_model_configs`")|top
+    }
+  }
+
+  entity: dedicated_inference_size: {
+    path: "/v2/dedicated-inferences/sizes": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sizes`")|top
+    }
+  }
+
+  entity: docker_credential: {
+    path: "/v2/registries/{registry_name}/docker-credentials": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.auths`")|top
+    }
+    path: "/v2/registry/docker-credentials": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.auths`")|top
+    }
+  }
+
+  entity: domain: {
+    path: "/v2/domains": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.domain`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.domains`")|top
+    }
+    path: "/v2/domains/{domain_name}": {
+      rename: param: "domain_name": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.domain`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: domain_record: {
+    path: "/v2/domains/{domain_name}/records": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.domain_record`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.domain_records`")|top
+    }
+    path: "/v2/domains/{domain_name}/records/{domain_record_id}": {
+      rename: param: "domain_record_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.domain_record`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.domain_record`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.domain_record`")|top
+    }
+  }
+
+  entity: droplet: {
+    path: "/v2/droplets": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.droplets`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/droplets/backups/policies": {
+      op: load: method: *GET
+    }
+    path: "/v2/droplets/backups/supported_policies": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.supported_policies`")|top
+    }
+    path: "/v2/droplets/{droplet_id}": {
+      rename: param: "droplet_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.droplet`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/droplets/{droplet_id}/backups": {
+      action: "backup": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.backups`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/backups/policy": {
+      action: "backup_policy": {}
+      rename: param: "droplet_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.policy`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/destroy_with_associated_resources": {
+      action: "destroy_with_associated_resource": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+    }
+    path: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous": {
+      action: "destroy_with_associated_resource_dangerous": {}
+      rename: param: "droplet_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry": {
+      action: "destroy_with_associated_resource_retry": {}
+      rename: param: "droplet_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective": {
+      action: "destroy_with_associated_resource_selective": {}
+      rename: param: "droplet_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/v2/droplets/{droplet_id}/firewalls": {
+      action: "firewall": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.firewalls`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/kernels": {
+      action: "kernel": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.kernels`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/neighbors": {
+      action: "neighbor": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.droplets`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/snapshots": {
+      action: "snapshot": {}
+      rename: param: "droplet_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.snapshots`")|top
+    }
+  }
+
+  entity: droplet_action: {
+    path: "/v2/droplets/actions": {
+      op: create: method: *POST
+    }
+    path: "/v2/droplets/{droplet_id}/actions": {
+      rename: param: "droplet_id": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+    path: "/v2/droplets/{droplet_id}/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: droplet_autoscale_pool: {
+    path: "/v2/droplets/autoscale": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.autoscale_pool`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.autoscale_pools`")|top
+    }
+    path: "/v2/droplets/autoscale/{autoscale_pool_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.autoscale_pool`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.autoscale_pool`")|top
+    }
+    path: "/v2/droplets/autoscale/{autoscale_pool_id}/dangerous": {
+      action: "dangerous": {}
+      op: remove: method: *DELETE
+    }
+    path: "/v2/droplets/autoscale/{autoscale_pool_id}/history": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.history`")|top
+    }
+    path: "/v2/droplets/autoscale/{autoscale_pool_id}/members": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.droplets`")|top
+    }
+  }
+
+  entity: embedding: {
+    path: "/v1/embeddings": {
+      op: create: method: *POST
+      op: create: transform: req: "encoding_format": *("`reqdata.encoding_format`")|top
+      op: create: transform: req: "input": *("`reqdata.input`")|top
+      op: create: transform: req: "model": *("`reqdata.model`")|top
+      op: create: transform: req: "user": *("`reqdata.user`")|top
+    }
+  }
+
+  entity: empty: {
+    path: "/v2/action-gateway/actors/{actor_id}/limits:clear": {
+      op: create: method: *POST
+    }
+    path: "/v2/action-gateway/actors/{actor_id}/limits:set": {
+      op: create: method: *POST
+    }
+    path: "/v2/action-gateway/sessions": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sessions`")|top
+    }
+    path: "/v2/action-gateway/sessions/{session_urn}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: firewall: {
+    path: "/v2/firewalls": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.firewall`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.firewalls`")|top
+    }
+    path: "/v2/firewalls/{firewall_id}": {
+      rename: param: "firewall_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.firewall`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.firewall`")|top
+    }
+    path: "/v2/firewalls/{firewall_id}/droplets": {
+      action: "droplet": {}
+      rename: param: "firewall_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/v2/firewalls/{firewall_id}/rules": {
+      action: "rule": {}
+      rename: param: "firewall_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/v2/firewalls/{firewall_id}/tags": {
+      action: "tag": {}
+      rename: param: "firewall_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: floating_ip: {
+    path: "/v2/floating_ips": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.floating_ip`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.floating_ips`")|top
+    }
+    path: "/v2/floating_ips/{floating_ip}": {
+      rename: param: "floating_ip": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.floating_ip`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: floating_ip_action: {
+    path: "/v2/floating_ips/{floating_ip}/actions": {
+      rename: param: "floating_ip": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+    path: "/v2/floating_ips/{floating_ip}/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      rename: param: "floating_ip": *"floating_ip_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: function: {
+    path: "/v2/functions/namespaces": {
+      action: "namespace": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.namespace`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.namespaces`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.namespace`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.access_key`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.access_keys`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.access_key`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/triggers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.trigger`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.triggers`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.trigger`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.trigger`")|top
+    }
+  }
+
+  entity: genaiapi_region: {
+    path: "/v2/gen-ai/regions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.regions`")|top
+    }
+  }
+
+  entity: image: {
+    path: "/v1/images/generations": {
+      action: "generation": {}
+      op: create: method: *POST
+    }
+    path: "/v2/images": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.image`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.images`")|top
+    }
+    path: "/v2/images/{image_id}": {
+      rename: param: "image_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.image`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.image`")|top
+    }
+    path: "/v2/images/{image_id}/account_transfer": {
+      action: "account_transfer": {}
+      rename: param: "image_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/images/{image_id}/account_transfer/accept": {
+      action: "account_transfer_accept": {}
+      rename: param: "image_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/images/{image_id}/account_transfer/cancel": {
+      action: "account_transfer_cancel": {}
+      rename: param: "image_id": *"id"
+      op: create: method: *POST
+    }
+    path: "/v2/images/{image_id}/account_transfer/decline": {
+      action: "account_transfer_decline": {}
+      rename: param: "image_id": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: image_action: {
+    path: "/v2/images/{image_id}/actions": {
+      rename: param: "image_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+  }
+
+  entity: insight: {
+    path: "/v2/insights/alert-instances": {
+      action: "alert_instance": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.alert_instances`")|top
+    }
+    path: "/v2/insights/alert-instances/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.alert_instance`")|top
+    }
+    path: "/v2/insights/alert-rules": {
+      action: "alert_rule": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.alert_rule`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.alert_rules`")|top
+    }
+    path: "/v2/insights/alert-rules/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.alert_rule`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.alert_rule`")|top
+    }
+    path: "/v2/insights/notification-channels": {
+      action: "notification_channel": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.notification_channel`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.notification_channels`")|top
+    }
+    path: "/v2/insights/notification-channels/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.notification_channel`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.notification_channel`")|top
+    }
+  }
+
+  entity: invoice_summary: {
+    path: "/v2/customers/my/invoices/{invoice_uuid}/summary": {
+      rename: param: "invoice_uuid": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: kubernete: {
+    path: "/v2/kubernetes/clusters": {
+      action: "cluster": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.kubernetes_cluster`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.kubernetes_clusters`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.kubernetes_cluster`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.kubernetes_cluster`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/clusterlint": {
+      action: "clusterlint": {}
+      op: create: method: *POST
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/dangerous": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources/selective": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/kubeconfig": {
+      op: load: method: *GET
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/node_pools": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.node_pool`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.node_pools`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.node_pool`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.node_pool`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}/nodes/{node_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/node_pools/{node_pool_id}/recycle": {
+      action: "recycle": {}
+      op: create: method: *POST
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/status_messages": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.messages`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/upgrade": {
+      action: "upgrade": {}
+      op: create: method: *POST
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/upgrades": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.available_upgrade_versions`")|top
+    }
+    path: "/v2/kubernetes/registries": {
+      action: "registry": {}
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/v2/kubernetes/registry": {
+      action: "registry": {}
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: kubernetes_option: {
+    path: "/v2/kubernetes/options": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.options`")|top
+    }
+  }
+
+  entity: list_mcp_server_tool: {
+    path: "/v2/action-gateway/mcp-servers/{server_ref}/tools": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tools`")|top
+      op: update: method: *PUT
+    }
+  }
+
+  entity: list_provider: {
+    path: "/v2/action-gateway/tools/providers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+  }
+
+  entity: list_provider_health: {
+    path: "/v2/action-gateway/tools/health/providers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+  }
+
+  entity: list_tool: {
+    path: "/v2/action-gateway/tools": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: list_tool_health: {
+    path: "/v2/action-gateway/tools/health": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tools`")|top
+    }
+  }
+
+  entity: list_toolbelt_provider: {
+    path: "/v2/action-gateway/toolbelts/{name}/providers": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+  }
+
+  entity: list_toolkit: {
+    path: "/v2/action-gateway/tools/toolkits": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.toolkits`")|top
+    }
+  }
+
+  entity: load_balancer: {
+    path: "/v2/load_balancers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.load_balancer`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.load_balancers`")|top
+    }
+    path: "/v2/load_balancers/{lb_id}": {
+      rename: param: "lb_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.load_balancer`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.load_balancer`")|top
+    }
+    path: "/v2/load_balancers/{lb_id}/cache": {
+      action: "cache": {}
+      rename: param: "lb_id": *"id"
+      op: remove: method: *DELETE
+    }
+    path: "/v2/load_balancers/{lb_id}/droplets": {
+      action: "droplet": {}
+      rename: param: "lb_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/v2/load_balancers/{lb_id}/forwarding_rules": {
+      action: "forwarding_rule": {}
+      rename: param: "lb_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: logs_search: {
+    path: "/v2/insights/query/{region}/logs/search": {
+      rename: param: "region": *"query_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: logsink: {
+    path: "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}": {
+      rename: param: "database_cluster_uuid": *"database_id"
+      rename: param: "logsink_id": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: mcp_server: {
+    path: "/v2/action-gateway/mcp-servers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.mcpServer`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.mcpServers`")|top
+    }
+    path: "/v2/action-gateway/mcp-servers/{server_ref}": {
+      rename: param: "server_ref": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.mcpServer`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.mcpServer`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.mcpServer`")|top
+    }
+  }
+
+  entity: message: {
+    path: "/v1/messages": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: metric: {
+    path: "/v2/monitoring/metrics/apps/cpu_percentage": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/apps/memory_percentage": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/apps/restart_count": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/cpu_usage": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/disk_usage": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/index_vs_sequential_reads": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/load": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/memory_usage": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/op_rates": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/schema_latency": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/schema_throughput": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/threads_active": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/threads_connected": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/database/mysql/threads_created_rate": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/bandwidth": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/cpu": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/filesystem_free": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/filesystem_size": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/load_1": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/load_15": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/load_5": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/memory_available": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/memory_cached": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/memory_free": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet/memory_total": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/current_instances": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/current_memory_utilization": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/target_instances": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/droplet_autoscale/target_memory_utilization": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_connections": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_downtime": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_health_checks": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_responses": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/droplets_queue_size": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_connections_current": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_connections_limit": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_cpu_utilization": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_http_responses": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_http": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_current": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: model: {
+    path: "/v1/models": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: monitoring: {
+    path: "/v2/monitoring/alerts": {
+      action: "alert": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.policy`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.policies`")|top
+    }
+    path: "/v2/monitoring/alerts/{alert_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.policy`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.policy`")|top
+    }
+    path: "/v2/monitoring/sinks": {
+      action: "sink": {}
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sinks`")|top
+    }
+    path: "/v2/monitoring/sinks/destinations": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.destination`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.destinations`")|top
+    }
+    path: "/v2/monitoring/sinks/destinations/{destination_uuid}": {
+      op: create: method: *POST
+      op: load: method: *GET
+      op: load: transform: res: *("`body.destination`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/monitoring/sinks/{sink_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.sink`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: n1_click: {
+    path: "/v2/1-clicks": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.1_clicks`")|top
+    }
+  }
+
+  entity: n1_click_application: {
+    path: "/v2/1-clicks/kubernetes": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: neighbor_id: {
+    path: "/v2/reports/droplet_neighbors_ids": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.neighbor_ids`")|top
+    }
+  }
+
+  entity: nfs: {
+    path: "/v2/nfs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.share`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.shares`")|top
+    }
+    path: "/v2/nfs/snapshots/{nfs_snapshot_id}": {
+      op: remove: method: *DELETE
+    }
+    path: "/v2/nfs/{nfs_id}": {
+      rename: param: "nfs_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.share`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: nfs_action_2: {
+    path: "/v2/nfs/{nfs_id}/actions": {
+      action: "actions": {}
+      rename: param: "nfs_id": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: nfs_snapshot: {
+    path: "/v2/nfs/snapshots": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.snapshots`")|top
+    }
+    path: "/v2/nfs/snapshots/{nfs_snapshot_id}": {
+      rename: param: "nfs_snapshot_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.snapshot`")|top
+    }
+  }
+
+  entity: online_migration: {
+    path: "/v2/databases/{database_cluster_uuid}/online-migration": {
+      rename: param: "database_cluster_uuid": *"database_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: option: {
+    path: "/v2/databases/options": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: organization: {
+    path: "/v2/organizations/team": {
+      action: "team": {}
+      op: create: method: *POST
+    }
+    path: "/v2/organizations/teams": {
+      action: "team": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.teams`")|top
+    }
+  }
+
+  entity: output_view: {
+    path: "/v2/action-gateway/output-views": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.view`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.views`")|top
+    }
+    path: "/v2/action-gateway/output-views/preview": {
+      action: "preview": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.view`")|top
+    }
+    path: "/v2/action-gateway/output-views/{view_id}": {
+      rename: param: "view_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.view`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.view`")|top
+    }
+  }
+
+  entity: partner_network_connect: {
+    path: "/v2/partner_network_connect/attachments": {
+      action: "attachment": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.partner_attachment`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.partner_attachments`")|top
+    }
+    path: "/v2/partner_network_connect/attachments/{pa_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.partner_attachment`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.partner_attachment`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.partner_attachment`")|top
+    }
+    path: "/v2/partner_network_connect/attachments/{pa_id}/bgp_auth_key": {
+      op: load: method: *GET
+    }
+    path: "/v2/partner_network_connect/attachments/{pa_id}/remote_routes": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.remote_routes`")|top
+    }
+    path: "/v2/partner_network_connect/attachments/{pa_id}/service_key": {
+      action: "service_key": {}
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+  }
+
+  entity: prepayment_config: {
+    path: "/v2/customers/my/prepayment_config": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: prepayment_status: {
+    path: "/v2/customers/my/prepayment_status": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.status`")|top
+    }
+  }
+
+  entity: project: {
+    path: "/v2/projects": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.project`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.projects`")|top
+    }
+    path: "/v2/projects/default": {
+      action: "default": {}
+      op: load: method: *GET
+      op: load: transform: res: *("`body.project`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.project`")|top
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.project`")|top
+    }
+    path: "/v2/projects/{project_id}": {
+      rename: param: "project_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.project`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.project`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.project`")|top
+    }
+  }
+
+  entity: project_resource: {
+    path: "/v2/projects/default/resources": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.resources`")|top
+    }
+    path: "/v2/projects/{project_id}/resources": {
+      rename: param: "project_id": *"id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.resources`")|top
+    }
+  }
+
+  entity: prom_query: {
+    path: "/v2/insights/query/{region}/prom/api/v1/query": {
+      rename: param: "region": *"query_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: prom_query_range: {
+    path: "/v2/insights/query/{region}/prom/api/v1/query_range": {
+      rename: param: "region": *"query_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.data`")|top
+      op: load: method: *GET
+      op: load: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: prom_series: {
+    path: "/v2/insights/query/{region}/prom/api/v1/series": {
+      rename: param: "region": *"query_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: prom_string_list: {
+    path: "/v2/insights/query/{region}/prom/api/v1/label/{name}/values": {
+      rename: param: "region": *"query_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+    path: "/v2/insights/query/{region}/prom/api/v1/labels": {
+      rename: param: "region": *"query_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.data`")|top
+    }
+  }
+
+  entity: region: {
+    path: "/v2/regions": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.regions`")|top
+    }
+  }
+
+  entity: reserved_i_pv6: {
+    path: "/v2/reserved_ipv6": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.reserved_ipv6`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.reserved_ipv6s`")|top
+    }
+    path: "/v2/reserved_ipv6/{reserved_ipv6}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.reserved_ipv6`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: reserved_i_pv6_action: {
+    path: "/v2/reserved_ipv6/{reserved_ipv6}/actions": {
+      rename: param: "reserved_ipv6": *"reserved_ipv6_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: reserved_ip: {
+    path: "/v2/reserved_ips": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.reserved_ip`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.reserved_ips`")|top
+    }
+    path: "/v2/reserved_ips/{reserved_ip}": {
+      rename: param: "reserved_ip": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.reserved_ip`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: reserved_ip_action: {
+    path: "/v2/reserved_ips/{reserved_ip}/actions": {
+      rename: param: "reserved_ip": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.action`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.actions`")|top
+    }
+    path: "/v2/reserved_ips/{reserved_ip}/actions/{action_id}": {
+      rename: param: "action_id": *"id"
+      rename: param: "reserved_ip": *"reserved_ip_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.action`")|top
+    }
+  }
+
+  entity: resync: {
+    path: "/v2/action-gateway/mcp-servers/{server_ref}/resync": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: search: {
+    path: "/v2/action-gateway/sessions/search": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sessions`")|top
+    }
+    path: "/v2/action-gateway/toolbelts/search": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.toolbelts`")|top
+    }
+    path: "/v2/action-gateway/tools/providers/search": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.providers`")|top
+    }
+  }
+
+  entity: security: {
+    path: "/v2/security/scans": {
+      action: "scan": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scan`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scans`")|top
+    }
+    path: "/v2/security/scans/latest": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.scan`")|top
+    }
+    path: "/v2/security/scans/rules": {
+      op: create: method: *POST
+    }
+    path: "/v2/security/scans/{scan_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.scan`")|top
+    }
+    path: "/v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources": {
+      rename: param: "finding_uuid": *"finding_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.affected_resources`")|top
+    }
+    path: "/v2/security/settings/plan": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.tier_coverage`")|top
+    }
+    path: "/v2/security/settings/suppressions": {
+      op: create: method: *POST
+    }
+    path: "/v2/security/settings/suppressions/{suppression_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: setting: {
+    path: "/v2/security/settings": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: size: {
+    path: "/v2/sizes": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sizes`")|top
+    }
+  }
+
+  entity: snapshot: {
+    path: "/v2/snapshots": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.snapshots`")|top
+    }
+    path: "/v2/snapshots/{snapshot_id}": {
+      rename: param: "snapshot_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.snapshot`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: spaces_key: {
+    path: "/v2/spaces/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.key`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.keys`")|top
+    }
+    path: "/v2/spaces/keys/{access_key}": {
+      rename: param: "access_key": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.key`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.key`")|top
+    }
+  }
+
+  entity: sql_mode: {
+    path: "/v2/databases/{database_cluster_uuid}/sql_mode": {
+      rename: param: "database_cluster_uuid": *"database_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: ssh_key: {
+    path: "/v2/account/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.ssh_key`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.ssh_keys`")|top
+    }
+    path: "/v2/account/keys/{ssh_key_identifier}": {
+      rename: param: "ssh_key_identifier": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.ssh_key`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.ssh_key`")|top
+    }
+  }
+
+  entity: systemone: {
+    path: "/v1/systemone": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: tag: {
+    path: "/v2/tags": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.tag`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tags`")|top
+    }
+    path: "/v2/tags/{tag_id}": {
+      rename: param: "tag_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.tag`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/tags/{tag_id}/resources": {
+      action: "resource": {}
+      rename: param: "tag_id": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: tool: {
+    path: "/v2/action-gateway/toolbelts/{name}/providers/{provider}/tools": {
+      rename: param: "provider": *"provider_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tools`")|top
+    }
+    path: "/v2/action-gateway/tools/health/tools/{tool_slug}": {
+      rename: param: "tool_slug": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.tool`")|top
+    }
+    path: "/v2/action-gateway/tools/search": {
+      action: "search": {}
+      op: list: method: *GET
+      op: list: transform: res: *("`body.tools`")|top
+    }
+  }
+
+  entity: toolbelt: {
+    path: "/v2/action-gateway/toolbelts": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.toolbelt`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.toolbelts`")|top
+    }
+    path: "/v2/action-gateway/toolbelts/{name}": {
+      rename: param: "name": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.toolbelt`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.toolbelt`")|top
+    }
+    path: "/v2/action-gateway/toolbelts/{name}/tools/add": {
+      action: "tool_add": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.toolbelt`")|top
+    }
+    path: "/v2/action-gateway/toolbelts/{name}/tools/remove": {
+      action: "tool_remove": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.toolbelt`")|top
+    }
+  }
+
+  entity: uptime: {
+    path: "/v2/uptime/checks": {
+      action: "check": {}
+      op: create: method: *POST
+      op: create: transform: res: *("`body.check`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.checks`")|top
+    }
+    path: "/v2/uptime/checks/{check_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.check`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.check`")|top
+    }
+    path: "/v2/uptime/checks/{check_id}/alerts": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.alert`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.alerts`")|top
+    }
+    path: "/v2/uptime/checks/{check_id}/alerts/{alert_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.alert`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.alert`")|top
+    }
+    path: "/v2/uptime/checks/{check_id}/state": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.state`")|top
+    }
+  }
+
+  entity: user: {
+    path: "/v2/action-gateway/users": {
+      op: list: method: *GET
+    }
+    path: "/v2/action-gateway/users/{user_id}": {
+      rename: param: "user_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.user`")|top
+    }
+    path: "/v2/kubernetes/clusters/{cluster_id}/user": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.kubernetes_cluster_user`")|top
+    }
+  }
+
+  entity: vector_database: {
+    path: "/v2/vector-databases/{id}": {
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: vectordb_backup: {
+    path: "/v2/vector-databases/{id}/backups": {
+      rename: param: "id": *"vector_database_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.backups`")|top
+    }
+  }
+
+  entity: vectordb_get_restore_status: {
+    path: "/v2/vector-databases/{id}/backups/{backup_id}/restore": {
+      rename: param: "id": *"vector_database_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: vectordb_get_vector_db: {
+    path: "/v2/vector-databases": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vector_db`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.vector_dbs`")|top
+    }
+    path: "/v2/vector-databases/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.vector_db`")|top
+    }
+    path: "/v2/vector-databases/{id}/resize": {
+      action: "resize": {}
+      rename: param: "id": *"vector_database_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vector_db`")|top
+    }
+  }
+
+  entity: vectordb_get_vector_db_admin_credential: {
+    path: "/v2/vector-databases/{id}/credentials": {
+      rename: param: "id": *"vector_database_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: vectordb_restore_backup: {
+    path: "/v2/vector-databases/{id}/backups/{backup_id}/restore": {
+      rename: param: "id": *"vector_database_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: vectordb_update_vector_db: {
+    path: "/v2/vector-databases/{id}": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.vector_db`")|top
+    }
+  }
+
+  entity: vectordb_update_vector_db_tag: {
+    path: "/v2/vector-databases/{id}/tags": {
+      rename: param: "id": *"vector_database_id"
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.vector_db`")|top
+    }
+  }
+
+  entity: vpc: {
+    path: "/v2/vpcs": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vpc`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.vpcs`")|top
+    }
+    path: "/v2/vpcs/{vpc_id}": {
+      rename: param: "vpc_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.vpc`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.vpc`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.vpc`")|top
+    }
+    path: "/v2/vpcs/{vpc_id}/members": {
+      action: "member": {}
+      rename: param: "vpc_id": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.members`")|top
+    }
+    path: "/v2/vpcs/{vpc_id}/peerings": {
+      action: "peering": {}
+      rename: param: "vpc_id": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.peering`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.peerings`")|top
+    }
+    path: "/v2/vpcs/{vpc_id}/peerings/{vpc_peering_id}": {
+      rename: param: "vpc_id": *"id"
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.peering`")|top
+    }
+  }
+
+  entity: vpc_nat_gateway: {
+    path: "/v2/vpc_nat_gateways": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vpc_nat_gateway`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.vpc_nat_gateways`")|top
+    }
+    path: "/v2/vpc_nat_gateways/{id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.vpc_nat_gateway`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.vpc_nat_gateway`")|top
+    }
+  }
+
+  entity: vpc_peering: {
+    path: "/v2/vpc_peerings": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vpc_peering`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.vpc_peerings`")|top
+    }
+    path: "/v2/vpc_peerings/{vpc_peering_id}": {
+      rename: param: "vpc_peering_id": *"id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.vpc_peering`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.vpc_peering`")|top
+      op: remove: method: *DELETE
+      op: remove: transform: res: *("`body.vpc_peering`")|top
+    }
+  }
+
+  entity: vpc_routes__public_preview: {
+    path: "/v2/vpcs/{vpc_uuid}/routes": {
+      action: "routes": {}
+      rename: param: "vpc_uuid": *"id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.routes`")|top
+    }
+    path: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes": {
+      rename: param: "subnet_uuid": *"subnet_id"
+      rename: param: "vpc_uuid": *"vpc_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.route`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.routes`")|top
+    }
+    path: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}": {
+      rename: param: "subnet_uuid": *"subnet_id"
+      rename: param: "vpc_uuid": *"vpc_id"
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.route`")|top
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: vpc_subnets__public_preview: {
+    path: "/v2/vpcs/{vpc_uuid}/subnets": {
+      action: "subnets": {}
+      rename: param: "vpc_uuid": *"id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.vpc_subnet`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.vpc_subnet`")|top
+    }
+    path: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}": {
+      rename: param: "vpc_uuid": *"vpc_id"
+      op: load: method: *GET
+      op: load: transform: res: *("`body.vpc_subnet`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.vpc_subnet`")|top
+      op: remove: method: *DELETE
+    }
+    path: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/members": {
+      rename: param: "vpc_uuid": *"vpc_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.members`")|top
+    }
+  }
+
+}

@@ -1,0 +1,26 @@
+# BasicApiListEvaluationRunsByTestCaseOutputFlow
+
+main: kit: flow: BasicApiListEvaluationRunsByTestCaseOutputFlow:
+{
+  entity: "api_list_evaluation_runs_by_test_case_output",
+  kind: "basic",
+  name: "BasicApiListEvaluationRunsByTestCaseOutputFlow",
+  step: [
+    {
+      m: {
+        evaluation_test_case_id: "evaluation_test_case01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_evaluation_runs_by_test_case_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListEvaluationRunsByTestCaseOutputFlow"
+}

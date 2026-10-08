@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "setting": {
+      "SETTING00": {
+        "plan_downgrades": {},
+        "settings": {},
+        "tier_coverage": {},
+        "id": "SETTING00"
+      },
+      "SETTING01": {
+        "plan_downgrades": {},
+        "settings": {},
+        "tier_coverage": {},
+        "id": "SETTING01"
+      },
+      "SETTING02": {
+        "plan_downgrades": {},
+        "settings": {},
+        "tier_coverage": {},
+        "id": "SETTING02"
+      }
+    }
+  },
+  "new": {
+    "setting": {
+      "setting_ref01": {
+        "plan_downgrades": {},
+        "settings": {},
+        "tier_coverage": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/security/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

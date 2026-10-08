@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "connection_pool": {
+      "CONNECTION_POOL00": {
+        "connection": "s5a",
+        "db": "s5b",
+        "mode": "s5c",
+        "name": "s5d",
+        "private_connection": "s5e",
+        "size": 95,
+        "standby_connection": "s60",
+        "standby_private_connection": "s61",
+        "user": "s62",
+        "database_id": "DATABASE01"
+      },
+      "CONNECTION_POOL01": {
+        "connection": "sb4",
+        "db": "sb5",
+        "mode": "sb6",
+        "name": "sb7",
+        "private_connection": "sb8",
+        "size": 185,
+        "standby_connection": "sba",
+        "standby_private_connection": "sbb",
+        "user": "sbc",
+        "database_id": "DATABASE01"
+      },
+      "CONNECTION_POOL02": {
+        "connection": "s10e",
+        "db": "s10f",
+        "mode": "s110",
+        "name": "s111",
+        "private_connection": "s112",
+        "size": 275,
+        "standby_connection": "s114",
+        "standby_private_connection": "s115",
+        "user": "s116",
+        "database_id": "DATABASE01"
+      }
+    }
+  },
+  "new": {
+    "connection_pool": {
+      "connection_pool_ref01": {
+        "connection": "s168",
+        "db": "s169",
+        "mode": "s16a",
+        "name": "s16b",
+        "private_connection": "s16c",
+        "size": 365,
+        "standby_connection": "s16e",
+        "standby_private_connection": "s16f",
+        "user": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/databases/{database_cluster_uuid}/pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

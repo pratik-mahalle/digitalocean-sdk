@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "dedicated_inference_size": {
+      "DEDICATED_INFERENCE_SIZE00": {
+        "currency": "s28",
+        "gpu_slug": "s29",
+        "price_per_hour": "s2a",
+        "region": "s2b"
+      },
+      "DEDICATED_INFERENCE_SIZE01": {
+        "currency": "s50",
+        "gpu_slug": "s51",
+        "price_per_hour": "s52",
+        "region": "s53"
+      },
+      "DEDICATED_INFERENCE_SIZE02": {
+        "currency": "s78",
+        "gpu_slug": "s79",
+        "price_per_hour": "s7a",
+        "region": "s7b"
+      }
+    }
+  },
+  "new": {
+    "dedicated_inference_size": {
+      "dedicated_inference_size_ref01": {
+        "currency": "sa0",
+        "gpu_slug": "sa1",
+        "price_per_hour": "sa2",
+        "region": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/dedicated-inferences/sizes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

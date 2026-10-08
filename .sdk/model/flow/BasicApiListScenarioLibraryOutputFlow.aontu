@@ -1,0 +1,22 @@
+# BasicApiListScenarioLibraryOutputFlow
+
+main: kit: flow: BasicApiListScenarioLibraryOutputFlow:
+{
+  entity: "api_list_scenario_library_output",
+  kind: "basic",
+  name: "BasicApiListScenarioLibraryOutputFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_scenario_library_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListScenarioLibraryOutputFlow"
+}

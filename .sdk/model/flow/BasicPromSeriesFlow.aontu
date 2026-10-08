@@ -1,0 +1,38 @@
+# BasicPromSeriesFlow
+
+main: kit: flow: BasicPromSeriesFlow:
+{
+  entity: "prom_series",
+  kind: "basic",
+  name: "BasicPromSeriesFlow",
+  step: [
+    {
+      i: {
+        ref: "prom_series_ref01"
+      }
+
+      m: {
+        query_id: "query01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        query_id: "query01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "prom_series_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPromSeriesFlow"
+}

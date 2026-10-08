@@ -1,0 +1,44 @@
+# BasicApiModelEvaluationPresetFlow
+
+main: kit: flow: BasicApiModelEvaluationPresetFlow:
+{
+  entity: "api_model_evaluation_preset",
+  kind: "basic",
+  name: "BasicApiModelEvaluationPresetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_model_evaluation_preset_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_model_evaluation_preset_ref01",
+        srcdatavar: "api_model_evaluation_preset_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_model_evaluation_preset01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_model_evaluation_preset_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiModelEvaluationPresetFlow"
+}

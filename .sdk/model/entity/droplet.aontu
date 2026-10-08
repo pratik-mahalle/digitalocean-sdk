@@ -1,0 +1,1204 @@
+# Entity: droplet
+
+main: kit: entity: droplet: {
+
+  alias: field: {}
+
+  fields: {
+    backup_ids: {
+      h: "Backup Ids"
+      n: "backup_ids"
+      r: true
+      sh: "An array of backup IDs of any backups that have been taken of the Droplet instance."
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      sh: "A time value given in ISO8601 combined date and time format that represents when the Droplet was created."
+      t: "`$STRING`"
+    }
+    disk: {
+      h: "Disk"
+      n: "disk"
+      r: true
+      sh: "The size of the Droplet's disk in gigabytes."
+      t: "`$INTEGER`"
+    }
+    disk_info: {
+      h: "Disk Info"
+      n: "disk_info"
+      r: false
+      sh: "An array of objects containing information about the disks available to the Droplet."
+      t: "`$ARRAY`"
+    }
+    droplet: {
+      h: "Droplet"
+      n: "droplet"
+      r: false
+      t: "`$OBJECT`"
+    }
+    features: {
+      h: "Features"
+      n: "features"
+      r: true
+      sh: "An array of features enabled on this Droplet."
+      t: "`$ARRAY`"
+    }
+    gpu_info: {
+      h: "Gpu Info"
+      n: "gpu_info"
+      r: false
+      sh: "An object containing information about the GPU capabilities of Droplets created with this size."
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "A unique identifier for each Droplet instance."
+      t: "`$INTEGER`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: true
+      t: "`$ANY`"
+    }
+    kernel: {
+      de: true
+      h: "Kernel"
+      n: "kernel"
+      r: false
+      sh: "**Note**: All Droplets created after March 2017 use internal kernels by default."
+      t: "`$OBJECT`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 2
+      }
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: true
+      sh: "A boolean value indicating whether the Droplet has been locked, preventing actions by users."
+      t: "`$BOOLEAN`"
+    }
+    memory: {
+      h: "Memory"
+      n: "memory"
+      r: true
+      sh: "Memory of the Droplet in megabytes."
+      t: "`$INTEGER`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: true
+      t: "`$ANY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The human-readable name set for the Droplet instance."
+      t: "`$STRING`"
+    }
+    networks: {
+      h: "Networks"
+      n: "networks"
+      r: true
+      sh: "The details of the network that are configured for the Droplet instance."
+      t: "`$OBJECT`"
+    }
+    next_backup_window: {
+      h: "Next Backup Window"
+      n: "next_backup_window"
+      r: true
+      t: "`$ANY`"
+    }
+    policies: {
+      h: "Policies"
+      n: "policies"
+      r: false
+      sh: "A map where the keys are the Droplet IDs and the values are objects containing the backup policy information for each Droplet."
+      t: "`$OBJECT`"
+    }
+    possible_days: {
+      h: "Possible Days"
+      n: "possible_days"
+      r: false
+      sh: "The day of the week the backup will occur."
+      t: "`$ARRAY`"
+    }
+    possible_window_starts: {
+      h: "Possible Window Starts"
+      n: "possible_window_starts"
+      r: false
+      sh: "An array of integers representing the hours of the day that a backup can start."
+      t: "`$ARRAY`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: true
+      t: "`$OBJECT`"
+    }
+    retention_period_days: {
+      h: "Retention Period Days"
+      n: "retention_period_days"
+      r: false
+      sh: "The number of days that a backup will be kept."
+      t: "`$INTEGER`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: true
+      t: "`$OBJECT`"
+    }
+    size_slug: {
+      h: "Size Slug"
+      n: "size_slug"
+      r: true
+      sh: "The unique slug identifier for the size of this Droplet."
+      t: "`$STRING`"
+    }
+    snapshot_ids: {
+      h: "Snapshot Ids"
+      n: "snapshot_ids"
+      r: true
+      sh: "An array of snapshot IDs of any snapshots created from the Droplet instance.<br>Requires `image:read` scope."
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "A status string indicating the state of the Droplet instance."
+      t: "`$STRING`"
+    }
+    subnet_uuid: {
+      h: "Subnet Uuid"
+      n: "subnet_uuid"
+      r: false
+      sh: "A string specifying the UUID of the VPC subnet to which the Droplet is assigned.<br>Requires `vpc:read` scope."
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      sh: "An array of Tags the Droplet has been tagged with.<br>Requires `tag:read` scope."
+      t: "`$ARRAY`"
+    }
+    vcpus: {
+      h: "Vcpus"
+      n: "vcpus"
+      r: true
+      sh: "The number of virtual CPUs."
+      t: "`$INTEGER`"
+    }
+    volume_ids: {
+      h: "Volume Ids"
+      n: "volume_ids"
+      r: true
+      sh: "A flat array including the unique identifier for each Block Storage volume attached to the Droplet.<br>Requires `block_storage:read` scope."
+      t: "`$ARRAY`"
+    }
+    vpc_uuid: {
+      h: "Vpc Uuid"
+      n: "vpc_uuid"
+      r: false
+      sh: "A string specifying the UUID of the VPC to which the Droplet is assigned.<br>Requires `vpc:read` scope."
+      t: "`$STRING`"
+    }
+    window_length_hours: {
+      h: "Window Length Hours"
+      n: "window_length_hours"
+      r: false
+      sh: "The number of hours that a backup window is open."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "droplet"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/droplets/{droplet_id}/destroy_with_associated_resources/retry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/retry"
+          q: {
+            "$action": "destroy_with_associated_resource_retry"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+            {
+              lit: "retry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/droplets"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/droplets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/backups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/backups"
+          q: {
+            "$action": "backup"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "backups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.backups`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/destroy_with_associated_resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/destroy_with_associated_resources"
+          q: {
+            "$action": "destroy_with_associated_resource"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/firewalls"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/firewalls"
+          q: {
+            "$action": "firewall"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "firewalls"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.firewalls`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/kernels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/kernels"
+          q: {
+            "$action": "kernel"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "kernels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.kernels`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/neighbors"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/neighbors"
+          q: {
+            "$action": "neighbor"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "neighbors"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.droplets`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/snapshots"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/snapshots"
+          q: {
+            "$action": "snapshot"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "snapshots"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.snapshots`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "web-01"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "env:prod"
+                k: "query"
+                n: "tag_name"
+                or: "tag_name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "droplets"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.droplets`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/backups/supported_policies"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/droplets/backups/supported_policies"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "backups"
+            }
+            {
+              lit: "supported_policies"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.supported_policies`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.droplet`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/{droplet_id}/backups/policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/{droplet_id}/backups/policy"
+          q: {
+            "$action": "backup_policy"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "backups"
+            }
+            {
+              lit: "policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/droplets/backups/policies"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/droplets/backups/policies"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              lit: "backups"
+            }
+            {
+              lit: "policies"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: true
+                k: "header"
+                n: "x_dangerous"
+                or: "X-Dangerous"
+                r: true
+                t: "`$BOOLEAN`"
+              }
+            ]
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous"
+          q: {
+            "$action": "destroy_with_associated_resource_dangerous"
+            exist: [
+              "id"
+              "x_dangerous"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+            {
+              lit: "dangerous"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/droplets/{droplet_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets/{droplet_id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/droplets/{droplet_id}/destroy_with_associated_resources/selective"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: 3164444
+                k: "param"
+                n: "id"
+                or: "droplet_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets/{droplet_id}/destroy_with_associated_resources/selective"
+          q: {
+            "$action": "destroy_with_associated_resource_selective"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              droplet_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+            {
+              lit: "selective"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/droplets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "env:test"
+                k: "query"
+                n: "tag_name"
+                or: "tag_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/droplets"
+          q: {
+            exist: [
+              "tag_name"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "droplets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

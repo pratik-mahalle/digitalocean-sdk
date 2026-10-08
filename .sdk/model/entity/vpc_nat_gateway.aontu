@@ -1,0 +1,410 @@
+# Entity: vpc_nat_gateway
+
+main: kit: entity: vpc_nat_gateway: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the VPC NAT gateway was created."
+      t: "`$STRING`"
+    }
+    egresses: {
+      h: "Egresses"
+      n: "egresses"
+      r: false
+      sh: "An object containing egress information for the VPC NAT gateway."
+      t: "`$OBJECT`"
+    }
+    icmp_timeout_seconds: {
+      h: "Icmp Timeout Seconds"
+      n: "icmp_timeout_seconds"
+      r: false
+      sh: "The ICMP timeout in seconds for the VPC NAT gateway."
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The unique identifier for the VPC NAT gateway."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The human-readable name of the VPC NAT gateway."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The region in which the VPC NAT gateway is created."
+      t: "`$STRING`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      op: {
+        create: {
+          req: true
+          type: "`$INTEGER`"
+        }
+        update: {
+          req: true
+          type: "`$INTEGER`"
+        }
+      }
+      r: false
+      sh: "The size of the VPC NAT gateway."
+      t: "`$INTEGER`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "The current state of the VPC NAT gateway."
+      t: "`$STRING`"
+    }
+    tcp_timeout_seconds: {
+      h: "Tcp Timeout Seconds"
+      n: "tcp_timeout_seconds"
+      r: false
+      sh: "The TCP timeout in seconds for the VPC NAT gateway."
+      t: "`$INTEGER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The type of the VPC NAT gateway."
+      t: "`$STRING`"
+    }
+    udp_timeout_seconds: {
+      h: "Udp Timeout Seconds"
+      n: "udp_timeout_seconds"
+      r: false
+      sh: "The UDP timeout in seconds for the VPC NAT gateway."
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "A time value given in ISO8601 combined date and time format that represents when the VPC NAT gateway was last updated."
+      t: "`$STRING`"
+    }
+    vpcs: {
+      h: "Vpcs"
+      n: "vpcs"
+      op: {
+        create: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      sh: "An array of VPCs associated with the VPC NAT gateway."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vpc_nat_gateway"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/vpc_nat_gateways"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/vpc_nat_gateways"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpc_nat_gateways"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_nat_gateway`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpc_nat_gateways"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "my-vpc-nat-gateway"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "tor1"
+                k: "query"
+                n: "region"
+                or: "region"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "active"
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "public"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpc_nat_gateways"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpc_nat_gateways"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_nat_gateways`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/vpc_nat_gateways/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "70e1b58d-cdec-4e95-b3ee-2d4d95feff51"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/vpc_nat_gateways/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpc_nat_gateways"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_nat_gateway`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/vpc_nat_gateways/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "70e1b58d-cdec-4e95-b3ee-2d4d95feff51"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/vpc_nat_gateways/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpc_nat_gateways"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/vpc_nat_gateways/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "70e1b58d-cdec-4e95-b3ee-2d4d95feff51"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/vpc_nat_gateways/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vpc_nat_gateways"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.vpc_nat_gateway`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

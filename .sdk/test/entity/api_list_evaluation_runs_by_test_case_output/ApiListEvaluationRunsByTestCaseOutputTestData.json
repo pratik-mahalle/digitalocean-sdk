@@ -1,0 +1,120 @@
+{
+  "existing": {
+    "api_list_evaluation_runs_by_test_case_output": {
+      "API_LIST_EVALUATION_RUNS_BY_TEST_CASE_OUTPUT00": {
+        "agent_deleted": true,
+        "agent_deployment_name": "se7",
+        "agent_name": "se8",
+        "agent_uuid": "se9",
+        "agent_version_hash": "sea",
+        "agent_workspace_uuid": "seb",
+        "created_by_user_email": "sec",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "error_description": "see",
+        "evaluation_run_uuid": "sef",
+        "evaluation_test_case_workspace_uuid": "sf0",
+        "finished_at": "sf1",
+        "pass_status": true,
+        "queued_at": "sf3",
+        "run_level_metric_results": [],
+        "run_name": "sf5",
+        "star_metric_result": {},
+        "started_at": "sf7",
+        "status": "sf8",
+        "test_case_description": "sf9",
+        "test_case_name": "sfa",
+        "test_case_uuid": "sfb",
+        "test_case_version": 252,
+        "evaluation_test_case_id": "EVALUATION_TEST_CASE01"
+      },
+      "API_LIST_EVALUATION_RUNS_BY_TEST_CASE_OUTPUT01": {
+        "agent_deleted": true,
+        "agent_deployment_name": "s1cd",
+        "agent_name": "s1ce",
+        "agent_uuid": "s1cf",
+        "agent_version_hash": "s1d0",
+        "agent_workspace_uuid": "s1d1",
+        "created_by_user_email": "s1d2",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "error_description": "s1d4",
+        "evaluation_run_uuid": "s1d5",
+        "evaluation_test_case_workspace_uuid": "s1d6",
+        "finished_at": "s1d7",
+        "pass_status": true,
+        "queued_at": "s1d9",
+        "run_level_metric_results": [],
+        "run_name": "s1db",
+        "star_metric_result": {},
+        "started_at": "s1dd",
+        "status": "s1de",
+        "test_case_description": "s1df",
+        "test_case_name": "s1e0",
+        "test_case_uuid": "s1e1",
+        "test_case_version": 482,
+        "evaluation_test_case_id": "EVALUATION_TEST_CASE01"
+      },
+      "API_LIST_EVALUATION_RUNS_BY_TEST_CASE_OUTPUT02": {
+        "agent_deleted": true,
+        "agent_deployment_name": "s2b3",
+        "agent_name": "s2b4",
+        "agent_uuid": "s2b5",
+        "agent_version_hash": "s2b6",
+        "agent_workspace_uuid": "s2b7",
+        "created_by_user_email": "s2b8",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "error_description": "s2ba",
+        "evaluation_run_uuid": "s2bb",
+        "evaluation_test_case_workspace_uuid": "s2bc",
+        "finished_at": "s2bd",
+        "pass_status": true,
+        "queued_at": "s2bf",
+        "run_level_metric_results": [],
+        "run_name": "s2c1",
+        "star_metric_result": {},
+        "started_at": "s2c3",
+        "status": "s2c4",
+        "test_case_description": "s2c5",
+        "test_case_name": "s2c6",
+        "test_case_uuid": "s2c7",
+        "test_case_version": 712,
+        "evaluation_test_case_id": "EVALUATION_TEST_CASE01"
+      }
+    }
+  },
+  "new": {
+    "api_list_evaluation_runs_by_test_case_output": {
+      "api_list_evaluation_runs_by_test_case_output_ref01": {
+        "agent_deleted": true,
+        "agent_deployment_name": "s399",
+        "agent_name": "s39a",
+        "agent_uuid": "s39b",
+        "agent_version_hash": "s39c",
+        "agent_workspace_uuid": "s39d",
+        "created_by_user_email": "s39e",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "error_description": "s3a0",
+        "evaluation_run_uuid": "s3a1",
+        "evaluation_test_case_workspace_uuid": "s3a2",
+        "finished_at": "s3a3",
+        "pass_status": true,
+        "queued_at": "s3a5",
+        "run_level_metric_results": [],
+        "run_name": "s3a7",
+        "star_metric_result": {},
+        "started_at": "s3a9",
+        "status": "s3aa",
+        "test_case_description": "s3ab",
+        "test_case_name": "s3ac",
+        "test_case_uuid": "s3ad",
+        "test_case_version": 942
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/evaluation_test_cases/{evaluation_test_case_uuid}/evaluation_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

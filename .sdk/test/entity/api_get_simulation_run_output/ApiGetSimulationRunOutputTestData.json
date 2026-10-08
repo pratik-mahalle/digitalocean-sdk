@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "api_get_simulation_run_output": {
+      "API_GET_SIMULATION_RUN_OUTPUT00": {
+        "scenario_results": [],
+        "simulation_run": {},
+        "run_uuid": "RUN_UUID01",
+        "id": "API_GET_SIMULATION_RUN_OUTPUT00"
+      },
+      "API_GET_SIMULATION_RUN_OUTPUT01": {
+        "scenario_results": [],
+        "simulation_run": {},
+        "run_uuid": "RUN_UUID01",
+        "id": "API_GET_SIMULATION_RUN_OUTPUT01"
+      },
+      "API_GET_SIMULATION_RUN_OUTPUT02": {
+        "scenario_results": [],
+        "simulation_run": {},
+        "run_uuid": "RUN_UUID01",
+        "id": "API_GET_SIMULATION_RUN_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_simulation_run_output": {
+      "api_get_simulation_run_output_ref01": {
+        "scenario_results": [],
+        "simulation_run": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/simulation_runs/{run_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/gen-ai/simulation_runs/{run_uuid}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

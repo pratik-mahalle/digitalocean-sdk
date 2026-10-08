@@ -1,0 +1,170 @@
+# Entity: invoice_summary
+
+main: kit: entity: invoice_summary: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: false
+      sh: "Total amount of the invoice, in USD."
+      t: "`$STRING`"
+    }
+    billing_period: {
+      h: "Billing Period"
+      n: "billing_period"
+      r: false
+      sh: "Billing period of usage for which the invoice is issued, in `YYYY-MM` format."
+      t: "`$STRING`"
+    }
+    credits_and_adjustments: {
+      h: "Credits And Adjustments"
+      n: "credits_and_adjustments"
+      r: false
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    invoice_id: {
+      h: "Invoice Id"
+      n: "invoice_id"
+      r: false
+      sh: "ID of the invoice"
+      t: "`$STRING`"
+    }
+    invoice_uuid: {
+      h: "Invoice Uuid"
+      n: "invoice_uuid"
+      r: false
+      sh: "UUID of the invoice"
+      t: "`$STRING`"
+    }
+    overages: {
+      h: "Overages"
+      n: "overages"
+      r: false
+      t: "`$ANY`"
+    }
+    product_charges: {
+      h: "Product Charges"
+      n: "product_charges"
+      r: false
+      t: "`$ANY`"
+    }
+    taxes: {
+      h: "Taxes"
+      n: "taxes"
+      r: false
+      t: "`$ANY`"
+    }
+    user_billing_address: {
+      h: "User Billing Address"
+      n: "user_billing_address"
+      r: false
+      t: "`$ANY`"
+    }
+    user_company: {
+      h: "User Company"
+      n: "user_company"
+      r: false
+      sh: "Company of the DigitalOcean customer being invoiced, if set."
+      t: "`$STRING`"
+    }
+    user_email: {
+      h: "User Email"
+      n: "user_email"
+      r: false
+      sh: "Email of the DigitalOcean customer being invoiced."
+      t: "`$STRING`"
+    }
+    user_name: {
+      h: "User Name"
+      n: "user_name"
+      r: false
+      sh: "Name of the DigitalOcean customer being invoiced."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "invoice_summary"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/customers/my/invoices/{invoice_uuid}/summary"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "22737513-0ea7-4206-8ceb-98a575af7681"
+                k: "param"
+                n: "id"
+                or: "invoice_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/customers/my/invoices/{invoice_uuid}/summary"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              invoice_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "customers"
+            }
+            {
+              lit: "my"
+            }
+            {
+              lit: "invoices"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "summary"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "dedicated_inference_accelerator": {
+      "DEDICATED_INFERENCE_ACCELERATOR00": {
+        "created_at": "s3c",
+        "id": "DEDICATED_INFERENCE_ACCELERATOR00",
+        "name": "s3e",
+        "role": "s3f",
+        "slug": "s40",
+        "status": "s41",
+        "dedicated_inference_id": "DEDICATED_INFERENCE01"
+      },
+      "DEDICATED_INFERENCE_ACCELERATOR01": {
+        "created_at": "s78",
+        "id": "DEDICATED_INFERENCE_ACCELERATOR01",
+        "name": "s7a",
+        "role": "s7b",
+        "slug": "s7c",
+        "status": "s7d",
+        "dedicated_inference_id": "DEDICATED_INFERENCE01"
+      },
+      "DEDICATED_INFERENCE_ACCELERATOR02": {
+        "created_at": "sb4",
+        "id": "DEDICATED_INFERENCE_ACCELERATOR02",
+        "name": "sb6",
+        "role": "sb7",
+        "slug": "sb8",
+        "status": "sb9",
+        "dedicated_inference_id": "DEDICATED_INFERENCE01"
+      }
+    }
+  },
+  "new": {
+    "dedicated_inference_accelerator": {
+      "dedicated_inference_accelerator_ref01": {
+        "created_at": "sf0",
+        "name": "sf2",
+        "role": "sf3",
+        "slug": "sf4",
+        "status": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/dedicated-inferences/{dedicated_inference_id}/accelerators/{accelerator_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

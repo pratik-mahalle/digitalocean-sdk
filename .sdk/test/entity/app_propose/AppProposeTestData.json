@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "app_propose": {
+      "APP_PROPOSE00": {
+        "app_cost": 80,
+        "app_id": "APP01",
+        "app_is_static": true,
+        "app_name_available": false,
+        "app_name_suggestion": "s54",
+        "app_tier_downgrade_cost": 85,
+        "existing_static_apps": "s56",
+        "spec": {},
+        "id": "APP_PROPOSE00"
+      },
+      "APP_PROPOSE01": {
+        "app_cost": 160,
+        "app_id": "APP01",
+        "app_is_static": true,
+        "app_name_available": false,
+        "app_name_suggestion": "sa4",
+        "app_tier_downgrade_cost": 165,
+        "existing_static_apps": "sa6",
+        "spec": {},
+        "id": "APP_PROPOSE01"
+      },
+      "APP_PROPOSE02": {
+        "app_cost": 240,
+        "app_id": "APP01",
+        "app_is_static": true,
+        "app_name_available": false,
+        "app_name_suggestion": "sf4",
+        "app_tier_downgrade_cost": 245,
+        "existing_static_apps": "sf6",
+        "spec": {},
+        "id": "APP_PROPOSE02"
+      }
+    }
+  },
+  "new": {
+    "app_propose": {
+      "app_propose_ref01": {
+        "app_cost": 320,
+        "app_id": "APP01",
+        "app_is_static": true,
+        "app_name_available": false,
+        "app_name_suggestion": "s144",
+        "app_tier_downgrade_cost": 325,
+        "existing_static_apps": "s146",
+        "spec": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/propose": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

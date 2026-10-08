@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "api_update_model_router_output": {
+      "API_UPDATE_MODEL_ROUTER_OUTPUT00": {
+        "config": {},
+        "created_at": "s5b",
+        "description": "s5c",
+        "fallback_models": [],
+        "name": "s5e",
+        "policies": [],
+        "regions": [],
+        "updated_at": "s61",
+        "uuid": "s62",
+        "id": "API_UPDATE_MODEL_ROUTER_OUTPUT00"
+      },
+      "API_UPDATE_MODEL_ROUTER_OUTPUT01": {
+        "config": {},
+        "created_at": "sb5",
+        "description": "sb6",
+        "fallback_models": [],
+        "name": "sb8",
+        "policies": [],
+        "regions": [],
+        "updated_at": "sbb",
+        "uuid": "sbc",
+        "id": "API_UPDATE_MODEL_ROUTER_OUTPUT01"
+      },
+      "API_UPDATE_MODEL_ROUTER_OUTPUT02": {
+        "config": {},
+        "created_at": "s10f",
+        "description": "s110",
+        "fallback_models": [],
+        "name": "s112",
+        "policies": [],
+        "regions": [],
+        "updated_at": "s115",
+        "uuid": "s116",
+        "id": "API_UPDATE_MODEL_ROUTER_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_model_router_output": {
+      "api_update_model_router_output_ref01": {
+        "config": {},
+        "created_at": "s169",
+        "description": "s16a",
+        "fallback_models": [],
+        "name": "s16c",
+        "policies": [],
+        "regions": [],
+        "updated_at": "s16f",
+        "uuid": "s170"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/models/routers/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

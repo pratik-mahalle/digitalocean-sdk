@@ -1,0 +1,29 @@
+# BasicApiUpdateWorkspaceOutputFlow
+
+main: kit: flow: BasicApiUpdateWorkspaceOutputFlow:
+{
+  entity: "api_update_workspace_output",
+  kind: "basic",
+  name: "BasicApiUpdateWorkspaceOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_workspace_output_ref01",
+        srcdatavar: "api_update_workspace_output_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_workspace_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateWorkspaceOutputFlow"
+}

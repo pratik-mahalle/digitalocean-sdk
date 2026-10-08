@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "api_list_agent_api_keys_output": {
+      "API_LIST_AGENT_API_KEYS_OUTPUT00": {
+        "created_at": "s3c",
+        "created_by": "s3d",
+        "deleted_at": "s3e",
+        "name": "s3f",
+        "secret_key": "s40",
+        "uuid": "s41",
+        "agent_id": "AGENT01"
+      },
+      "API_LIST_AGENT_API_KEYS_OUTPUT01": {
+        "created_at": "s78",
+        "created_by": "s79",
+        "deleted_at": "s7a",
+        "name": "s7b",
+        "secret_key": "s7c",
+        "uuid": "s7d",
+        "agent_id": "AGENT01"
+      },
+      "API_LIST_AGENT_API_KEYS_OUTPUT02": {
+        "created_at": "sb4",
+        "created_by": "sb5",
+        "deleted_at": "sb6",
+        "name": "sb7",
+        "secret_key": "sb8",
+        "uuid": "sb9",
+        "agent_id": "AGENT01"
+      }
+    }
+  },
+  "new": {
+    "api_list_agent_api_keys_output": {
+      "api_list_agent_api_keys_output_ref01": {
+        "created_at": "sf0",
+        "created_by": "sf1",
+        "deleted_at": "sf2",
+        "name": "sf3",
+        "secret_key": "sf4",
+        "uuid": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/agents/{agent_uuid}/api_keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

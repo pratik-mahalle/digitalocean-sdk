@@ -1,0 +1,32 @@
+# BasicApiGetAnthropicApiKeyOutputFlow
+
+main: kit: flow: BasicApiGetAnthropicApiKeyOutputFlow:
+{
+  entity: "api_get_anthropic_api_key_output",
+  kind: "basic",
+  name: "BasicApiGetAnthropicApiKeyOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_get_anthropic_api_key_output_ref01",
+        srcdatavar: "api_get_anthropic_api_key_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "api_get_anthropic_api_key_output01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_get_anthropic_api_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetAnthropicApiKeyOutputFlow"
+}

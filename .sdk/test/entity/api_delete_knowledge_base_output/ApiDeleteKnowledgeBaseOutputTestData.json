@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_knowledge_base_output": {
+      "API_DELETE_KNOWLEDGE_BASE_OUTPUT00": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_OUTPUT00"
+      },
+      "API_DELETE_KNOWLEDGE_BASE_OUTPUT01": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_OUTPUT01"
+      },
+      "API_DELETE_KNOWLEDGE_BASE_OUTPUT02": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_knowledge_base_output": {
+      "api_delete_knowledge_base_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/knowledge_bases/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

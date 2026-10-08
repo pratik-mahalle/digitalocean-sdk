@@ -1,0 +1,33 @@
+# BasicAppsGetExecFlow
+
+main: kit: flow: BasicAppsGetExecFlow:
+{
+  entity: "apps_get_exec",
+  kind: "basic",
+  name: "BasicAppsGetExecFlow",
+  step: [
+    {
+      i: {
+        ref: "apps_get_exec_ref01",
+        srcdatavar: "apps_get_exec_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "apps_get_exec01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-apps_get_exec_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppsGetExecFlow"
+}

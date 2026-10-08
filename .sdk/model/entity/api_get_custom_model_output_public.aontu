@@ -1,0 +1,356 @@
+# Entity: api_get_custom_model_output_public
+
+main: kit: entity: api_get_custom_model_output_public: {
+
+  alias: field: {}
+
+  fields: {
+    active_deployments: {
+      h: "Active Deployments"
+      n: "active_deployments"
+      r: false
+      sh: "List of active deployments using this model"
+      t: "`$ARRAY`"
+    }
+    architecture: {
+      h: "Architecture"
+      n: "architecture"
+      r: false
+      sh: "Model architecture type (free-form string from config.json)"
+      t: "`$STRING`"
+    }
+    config_json: {
+      h: "Config Json"
+      n: "config_json"
+      r: false
+      sh: "Raw config.json contents from the model repository"
+      t: "`$OBJECT`"
+    }
+    context_length: {
+      fo: "int64"
+      h: "Context Length"
+      n: "context_length"
+      r: false
+      sh: "Maximum context length supported by the model"
+      t: "`$INTEGER`"
+    }
+    cost_estimate_per_month: {
+      fo: "int64"
+      h: "Cost Estimate Per Month"
+      n: "cost_estimate_per_month"
+      r: false
+      sh: "Estimated monthly cost in dollars for hosting"
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Timestamp when the model was created"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the custom model"
+      t: "`$STRING`"
+    }
+    error_message: {
+      h: "Error Message"
+      n: "error_message"
+      r: false
+      sh: "User-facing reason the most recent import failed; empty otherwise."
+      t: "`$STRING`"
+    }
+    file_count: {
+      fo: "int64"
+      h: "File Count"
+      n: "file_count"
+      r: false
+      sh: "Number of files in the model"
+      t: "`$INTEGER`"
+    }
+    input_modalities: {
+      h: "Input Modalities"
+      n: "input_modalities"
+      r: false
+      sh: "Input modalities supported (e.g., text, image)"
+      t: "`$ARRAY`"
+    }
+    license: {
+      h: "License"
+      n: "license"
+      r: false
+      sh: "License under which the model is distributed"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the custom model"
+      t: "`$STRING`"
+    }
+    output_modalities: {
+      h: "Output Modalities"
+      n: "output_modalities"
+      r: false
+      sh: "Output modalities supported (e.g., text, image)"
+      t: "`$ARRAY`"
+    }
+    parameters: {
+      fo: "uint64"
+      h: "Parameters"
+      n: "parameters"
+      r: false
+      sh: "Number of parameters in the model"
+      t: "`$STRING`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: false
+      sh: "Reference to the original source of the model"
+      t: "`$OBJECT`"
+    }
+    source_type: {
+      h: "Source Type"
+      n: "source_type"
+      r: false
+      sh: "Source from which the model was imported"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Import and deployment status of the custom model"
+      t: "`$STRING`"
+    }
+    storage_region: {
+      h: "Storage Region"
+      n: "storage_region"
+      r: false
+      sh: "Region of the Spaces bucket where model files are stored"
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "User-defined tags for organizing models"
+      t: "`$OBJECT`"
+    }
+    team_id: {
+      fo: "uint64"
+      h: "Team Id"
+      n: "team_id"
+      r: false
+      sh: "Team that owns the model"
+      t: "`$STRING`"
+    }
+    total_size_bytes: {
+      fo: "uint64"
+      h: "Total Size Bytes"
+      n: "total_size_bytes"
+      r: false
+      sh: "Total size of model files in bytes"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Timestamp when the model was last updated"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique identifier for the custom model"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_custom_model_output_public"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/custom_models"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "STATUS_UNSPECIFIED"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/custom_models"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "custom_models"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.models`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/custom_models/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/custom_models/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "custom_models"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.model`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/gen-ai/custom_models/{uuid}/metadata"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/gen-ai/custom_models/{uuid}/metadata"
+          q: {
+            "$action": "metadata"
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "custom_models"
+            }
+            {
+              var: "uuid"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.model`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

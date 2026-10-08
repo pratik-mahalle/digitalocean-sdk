@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "api_update_custom_evaluation_metric_output": {
+      "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT00": {
+        "associated_presets": [],
+        "category": "sa1",
+        "config": {},
+        "custom_eval_config": {},
+        "description": "sa4",
+        "evaluation_scope": "sa5",
+        "inverted": true,
+        "is_metric_goal": false,
+        "metric_name": "sa8",
+        "metric_rank": 169,
+        "metric_type": "saa",
+        "metric_uuid": "sab",
+        "metric_value_type": "sac",
+        "range_max": 173,
+        "range_min": 174,
+        "source": "saf",
+        "id": "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT00"
+      },
+      "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT01": {
+        "associated_presets": [],
+        "category": "s141",
+        "config": {},
+        "custom_eval_config": {},
+        "description": "s144",
+        "evaluation_scope": "s145",
+        "inverted": true,
+        "is_metric_goal": false,
+        "metric_name": "s148",
+        "metric_rank": 329,
+        "metric_type": "s14a",
+        "metric_uuid": "s14b",
+        "metric_value_type": "s14c",
+        "range_max": 333,
+        "range_min": 334,
+        "source": "s14f",
+        "id": "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT01"
+      },
+      "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT02": {
+        "associated_presets": [],
+        "category": "s1e1",
+        "config": {},
+        "custom_eval_config": {},
+        "description": "s1e4",
+        "evaluation_scope": "s1e5",
+        "inverted": true,
+        "is_metric_goal": false,
+        "metric_name": "s1e8",
+        "metric_rank": 489,
+        "metric_type": "s1ea",
+        "metric_uuid": "s1eb",
+        "metric_value_type": "s1ec",
+        "range_max": 493,
+        "range_min": 494,
+        "source": "s1ef",
+        "id": "API_UPDATE_CUSTOM_EVALUATION_METRIC_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_custom_evaluation_metric_output": {
+      "api_update_custom_evaluation_metric_output_ref01": {
+        "associated_presets": [],
+        "category": "s281",
+        "config": {},
+        "custom_eval_config": {},
+        "description": "s284",
+        "evaluation_scope": "s285",
+        "inverted": true,
+        "is_metric_goal": false,
+        "metric_name": "s288",
+        "metric_rank": 649,
+        "metric_type": "s28a",
+        "metric_uuid": "s28b",
+        "metric_value_type": "s28c",
+        "range_max": 653,
+        "range_min": 654,
+        "source": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/custom_evaluation_metrics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/gen-ai/custom_evaluation_metrics/{metric_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

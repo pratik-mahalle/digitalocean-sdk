@@ -1,0 +1,104 @@
+# BasicPartnerNetworkConnectFlow
+
+main: kit: flow: BasicPartnerNetworkConnectFlow:
+{
+  entity: "partner_network_connect",
+  kind: "basic",
+  name: "BasicPartnerNetworkConnectFlow",
+  step: [
+    {
+      i: {
+        ref: "partner_network_connect_ref01"
+      }
+
+      m: {
+        pa_id: "pa01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "partner_network_connect_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "partner_network_connect_ref01",
+        srcdatavar: "partner_network_connect_ref01_data",
+        suffix: "_up0",
+        textfield: "naas_provider"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-partner_network_connect_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "partner_network_connect_ref01",
+        srcdatavar: "partner_network_connect_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "partner_network_connect01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-partner_network_connect_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "partner_network_connect_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "partner_network_connect01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "partner_network_connect_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPartnerNetworkConnectFlow"
+}

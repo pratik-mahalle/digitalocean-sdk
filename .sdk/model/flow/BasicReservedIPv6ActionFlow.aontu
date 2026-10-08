@@ -1,0 +1,22 @@
+# BasicReservedIPv6ActionFlow
+
+main: kit: flow: BasicReservedIPv6ActionFlow:
+{
+  entity: "reserved_i_pv6_action",
+  kind: "basic",
+  name: "BasicReservedIPv6ActionFlow",
+  step: [
+    {
+      i: {
+        ref: "reserved_i_pv6_action_ref01"
+      }
+
+      m: {
+        reserved_ipv6_id: "reserved_ipv601"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicReservedIPv6ActionFlow"
+}

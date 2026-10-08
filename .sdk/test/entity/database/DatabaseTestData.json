@@ -1,0 +1,568 @@
+{
+  "existing": {
+    "database": {
+      "DATABASE00": {
+        "access_cert": "s1f4",
+        "access_key": "s1f5",
+        "autoscale": "s1f6",
+        "backup_restore": {},
+        "compatibility_level": "s1f8",
+        "config": {},
+        "connection": "s1fa",
+        "created_at": "s1fb",
+        "credentials": {},
+        "db": "s1fd",
+        "db_names": [],
+        "do_settings": "s1ff",
+        "engine": "s200",
+        "id": "DATABASE00",
+        "maintenance_window": "s202",
+        "metrics_endpoints": [],
+        "mode": "s204",
+        "mysql_settings": {},
+        "name": "s206",
+        "num_nodes": 519,
+        "partition_count": 520,
+        "partitions": [],
+        "password": "s20a",
+        "private_connection": "s20b",
+        "private_network_uuid": "s20c",
+        "project_id": "PROJECT01",
+        "region": "s20e",
+        "replication_factor": 527,
+        "role": "s210",
+        "rules": [],
+        "schema": "s212",
+        "schema_id": "SCHEMA01",
+        "schema_registry_connection": "s214",
+        "schema_type": "s215",
+        "semantic_version": "s216",
+        "settings": {},
+        "size": 536,
+        "standby_connection": "s219",
+        "standby_private_connection": "s21a",
+        "state": "s21b",
+        "status": "s21c",
+        "storage_size_mib": 541,
+        "subject_name": "s21e",
+        "tags": [],
+        "ui_connection": "s220",
+        "user": "s221",
+        "users": [],
+        "version": "s223",
+        "version_end_of_availability": "s224",
+        "version_end_of_life": "s225",
+        "username": "USERNAME01",
+        "database_name": "DATABASE_NAME01",
+        "pool_name": "POOL_NAME01",
+        "replica_name": "REPLICA_NAME01",
+        "topic_name": "TOPIC_NAME01",
+        "index_name": "INDEX_NAME01",
+        "logsink_id": "LOGSINK01",
+        "migration_id": "MIGRATION01"
+      },
+      "DATABASE01": {
+        "access_cert": "s3e8",
+        "access_key": "s3e9",
+        "autoscale": "s3ea",
+        "backup_restore": {},
+        "compatibility_level": "s3ec",
+        "config": {},
+        "connection": "s3ee",
+        "created_at": "s3ef",
+        "credentials": {},
+        "db": "s3f1",
+        "db_names": [],
+        "do_settings": "s3f3",
+        "engine": "s3f4",
+        "id": "DATABASE01",
+        "maintenance_window": "s3f6",
+        "metrics_endpoints": [],
+        "mode": "s3f8",
+        "mysql_settings": {},
+        "name": "s3fa",
+        "num_nodes": 1019,
+        "partition_count": 1020,
+        "partitions": [],
+        "password": "s3fe",
+        "private_connection": "s3ff",
+        "private_network_uuid": "s400",
+        "project_id": "PROJECT01",
+        "region": "s402",
+        "replication_factor": 1027,
+        "role": "s404",
+        "rules": [],
+        "schema": "s406",
+        "schema_id": "SCHEMA01",
+        "schema_registry_connection": "s408",
+        "schema_type": "s409",
+        "semantic_version": "s40a",
+        "settings": {},
+        "size": 1036,
+        "standby_connection": "s40d",
+        "standby_private_connection": "s40e",
+        "state": "s40f",
+        "status": "s410",
+        "storage_size_mib": 1041,
+        "subject_name": "s412",
+        "tags": [],
+        "ui_connection": "s414",
+        "user": "s415",
+        "users": [],
+        "version": "s417",
+        "version_end_of_availability": "s418",
+        "version_end_of_life": "s419",
+        "username": "USERNAME01",
+        "database_name": "DATABASE_NAME01",
+        "pool_name": "POOL_NAME01",
+        "replica_name": "REPLICA_NAME01",
+        "topic_name": "TOPIC_NAME01",
+        "index_name": "INDEX_NAME01",
+        "logsink_id": "LOGSINK01",
+        "migration_id": "MIGRATION01"
+      },
+      "DATABASE02": {
+        "access_cert": "s5dc",
+        "access_key": "s5dd",
+        "autoscale": "s5de",
+        "backup_restore": {},
+        "compatibility_level": "s5e0",
+        "config": {},
+        "connection": "s5e2",
+        "created_at": "s5e3",
+        "credentials": {},
+        "db": "s5e5",
+        "db_names": [],
+        "do_settings": "s5e7",
+        "engine": "s5e8",
+        "id": "DATABASE02",
+        "maintenance_window": "s5ea",
+        "metrics_endpoints": [],
+        "mode": "s5ec",
+        "mysql_settings": {},
+        "name": "s5ee",
+        "num_nodes": 1519,
+        "partition_count": 1520,
+        "partitions": [],
+        "password": "s5f2",
+        "private_connection": "s5f3",
+        "private_network_uuid": "s5f4",
+        "project_id": "PROJECT01",
+        "region": "s5f6",
+        "replication_factor": 1527,
+        "role": "s5f8",
+        "rules": [],
+        "schema": "s5fa",
+        "schema_id": "SCHEMA01",
+        "schema_registry_connection": "s5fc",
+        "schema_type": "s5fd",
+        "semantic_version": "s5fe",
+        "settings": {},
+        "size": 1536,
+        "standby_connection": "s601",
+        "standby_private_connection": "s602",
+        "state": "s603",
+        "status": "s604",
+        "storage_size_mib": 1541,
+        "subject_name": "s606",
+        "tags": [],
+        "ui_connection": "s608",
+        "user": "s609",
+        "users": [],
+        "version": "s60b",
+        "version_end_of_availability": "s60c",
+        "version_end_of_life": "s60d",
+        "username": "USERNAME01",
+        "database_name": "DATABASE_NAME01",
+        "pool_name": "POOL_NAME01",
+        "replica_name": "REPLICA_NAME01",
+        "topic_name": "TOPIC_NAME01",
+        "index_name": "INDEX_NAME01",
+        "logsink_id": "LOGSINK01",
+        "migration_id": "MIGRATION01"
+      }
+    }
+  },
+  "new": {
+    "database": {
+      "database_ref01": {
+        "access_cert": "s7d0",
+        "access_key": "s7d1",
+        "autoscale": "s7d2",
+        "backup_restore": {},
+        "compatibility_level": "s7d4",
+        "config": {},
+        "connection": "s7d6",
+        "created_at": "s7d7",
+        "credentials": {},
+        "db": "s7d9",
+        "db_names": [],
+        "do_settings": "s7db",
+        "engine": "s7dc",
+        "maintenance_window": "s7de",
+        "metrics_endpoints": [],
+        "mode": "s7e0",
+        "mysql_settings": {},
+        "name": "s7e2",
+        "num_nodes": 2019,
+        "partition_count": 2020,
+        "partitions": [],
+        "password": "s7e6",
+        "private_connection": "s7e7",
+        "private_network_uuid": "s7e8",
+        "project_id": "PROJECT01",
+        "region": "s7ea",
+        "replication_factor": 2027,
+        "role": "s7ec",
+        "rules": [],
+        "schema": "s7ee",
+        "schema_id": "SCHEMA01",
+        "schema_registry_connection": "s7f0",
+        "schema_type": "s7f1",
+        "semantic_version": "s7f2",
+        "settings": {},
+        "size": 2036,
+        "standby_connection": "s7f5",
+        "standby_private_connection": "s7f6",
+        "state": "s7f7",
+        "status": "s7f8",
+        "storage_size_mib": 2041,
+        "subject_name": "s7fa",
+        "tags": [],
+        "ui_connection": "s7fc",
+        "user": "s7fd",
+        "users": [],
+        "version": "s7ff",
+        "version_end_of_availability": "s800",
+        "version_end_of_life": "s801"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/databases/{database_cluster_uuid}/users/{username}/reset_auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/dbs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/logsink": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/pools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/replicas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/schema-registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/topics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases/{database_cluster_uuid}/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/backups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/dbs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/firewall": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/indexes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/logsink": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/replicas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/topics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/users": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}/versions/{version}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/dbs/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/pools/{pool_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/replicas/{replica_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/topics/{topic_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/users/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/autoscale": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/ca": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/do_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/eviction_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/{database_cluster_uuid}/schema-registry/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/databases/metrics/credentials": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/databases/{database_cluster_uuid}/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/dbs/{database_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/indexes/{index_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/online-migration/{migration_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/pools/{pool_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/replicas/{replica_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/schema-registry/{subject_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/topics/{topic_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}/users/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/databases/{database_cluster_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/pools/{pool_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/replicas/{replica_name}/promote": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/schema-registry/config/{subject_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/topics/{topic_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/users/{username}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/autoscale": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/do_settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/eviction_policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/firewall": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/install_update": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/maintenance": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/migrate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/resize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/schema-registry/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/sql_mode": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/{database_cluster_uuid}/upgrade": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/databases/metrics/credentials": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

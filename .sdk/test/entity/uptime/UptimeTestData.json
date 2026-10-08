@@ -1,0 +1,124 @@
+{
+  "existing": {
+    "uptime": {
+      "UPTIME00": {
+        "comparison": "s6e",
+        "enabled": false,
+        "id": "UPTIME00",
+        "name": "s71",
+        "notifications": {},
+        "period": "s73",
+        "previous_outage": {},
+        "regions": [],
+        "target": "s76",
+        "threshold": 119,
+        "type": "s78",
+        "check_id": "CHECK01",
+        "alert_id": "ALERT01"
+      },
+      "UPTIME01": {
+        "comparison": "sdc",
+        "enabled": false,
+        "id": "UPTIME01",
+        "name": "sdf",
+        "notifications": {},
+        "period": "se1",
+        "previous_outage": {},
+        "regions": [],
+        "target": "se4",
+        "threshold": 229,
+        "type": "se6",
+        "check_id": "CHECK01",
+        "alert_id": "ALERT01"
+      },
+      "UPTIME02": {
+        "comparison": "s14a",
+        "enabled": false,
+        "id": "UPTIME02",
+        "name": "s14d",
+        "notifications": {},
+        "period": "s14f",
+        "previous_outage": {},
+        "regions": [],
+        "target": "s152",
+        "threshold": 339,
+        "type": "s154",
+        "check_id": "CHECK01",
+        "alert_id": "ALERT01"
+      }
+    }
+  },
+  "new": {
+    "uptime": {
+      "uptime_ref01": {
+        "comparison": "s1b8",
+        "enabled": false,
+        "name": "s1bb",
+        "notifications": {},
+        "period": "s1bd",
+        "previous_outage": {},
+        "regions": [],
+        "target": "s1c0",
+        "threshold": 449,
+        "type": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/uptime/checks/{check_id}/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/uptime/checks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/uptime/checks/{check_id}/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/uptime/checks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/uptime/checks/{check_id}/alerts/{alert_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/uptime/checks/{check_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/uptime/checks/{check_id}/state": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/uptime/checks/{check_id}/alerts/{alert_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/uptime/checks/{check_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/uptime/checks/{check_id}/alerts/{alert_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/uptime/checks/{check_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

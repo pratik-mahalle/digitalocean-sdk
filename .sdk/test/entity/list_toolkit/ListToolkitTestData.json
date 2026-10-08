@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "list_toolkit": {
+      "LIST_TOOLKIT00": {
+        "categories": [],
+        "created_at": "s3d",
+        "description": "s3e",
+        "id": "LIST_TOOLKIT00",
+        "name": "s40",
+        "provider_kind": "s41"
+      },
+      "LIST_TOOLKIT01": {
+        "categories": [],
+        "created_at": "s79",
+        "description": "s7a",
+        "id": "LIST_TOOLKIT01",
+        "name": "s7c",
+        "provider_kind": "s7d"
+      },
+      "LIST_TOOLKIT02": {
+        "categories": [],
+        "created_at": "sb5",
+        "description": "sb6",
+        "id": "LIST_TOOLKIT02",
+        "name": "sb8",
+        "provider_kind": "sb9"
+      }
+    }
+  },
+  "new": {
+    "list_toolkit": {
+      "list_toolkit_ref01": {
+        "categories": [],
+        "created_at": "sf1",
+        "description": "sf2",
+        "name": "sf4",
+        "provider_kind": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/tools/toolkits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

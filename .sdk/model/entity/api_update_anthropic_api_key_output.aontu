@@ -1,0 +1,132 @@
+# Entity: api_update_anthropic_api_key_output
+
+main: kit: entity: api_update_anthropic_api_key_output: {
+
+  alias: field: {}
+
+  fields: {
+    api_key: {
+      h: "Api Key"
+      n: "api_key"
+      r: false
+      sh: "Anthropic API key"
+      t: "`$STRING`"
+    }
+    api_key_uuid: {
+      h: "Api Key Uuid"
+      n: "api_key_uuid"
+      r: false
+      sh: "API key ID"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Key creation date"
+      t: "`$STRING`"
+    }
+    created_by: {
+      fo: "uint64"
+      h: "Created By"
+      n: "created_by"
+      r: false
+      sh: "Created by user id from DO"
+      t: "`$STRING`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "Key deleted date"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Key last updated date"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Uuid"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_anthropic_api_key_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/anthropic/keys/{api_key_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "api_key_uuid"
+                or: "api_key_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/anthropic/keys/{api_key_uuid}"
+          q: {
+            exist: [
+              "api_key_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "anthropic"
+            }
+            {
+              lit: "keys"
+            }
+            {
+              var: "api_key_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.api_key_info`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

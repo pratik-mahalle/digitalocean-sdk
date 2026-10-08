@@ -1,0 +1,172 @@
+# Entity: api_get_model_evaluation_run_output
+
+main: kit: entity: api_get_model_evaluation_run_output: {
+
+  alias: field: {}
+
+  fields: {
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      sh: "Links to other pages"
+      t: "`$OBJECT`"
+    }
+    meta: {
+      h: "Meta"
+      n: "meta"
+      r: false
+      sh: "Meta information about the data set"
+      t: "`$OBJECT`"
+    }
+    results: {
+      h: "Results"
+      n: "results"
+      r: false
+      sh: "Paginated per-prompt evaluation results."
+      t: "`$ARRAY`"
+    }
+    run: {
+      h: "Run"
+      n: "run"
+      r: false
+      sh: "Model Evaluation Run Detail - full view returned when fetching a specific run."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "api_get_model_evaluation_run_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "eval_run_uuid"
+                or: "eval_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+          q: {
+            exist: [
+              "eval_run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+            {
+              var: "eval_run_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "eval_run_uuid"
+                or: "eval_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "eval_run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+            {
+              var: "eval_run_uuid"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

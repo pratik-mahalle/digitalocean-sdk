@@ -1,0 +1,9 @@
+# BasicApiDeleteSimulationRunOutputFlow
+
+main: kit: flow: BasicApiDeleteSimulationRunOutputFlow:
+{
+  entity: "api_delete_simulation_run_output",
+  kind: "basic",
+  name: "BasicApiDeleteSimulationRunOutputFlow",
+  "key$": "BasicApiDeleteSimulationRunOutputFlow"
+}

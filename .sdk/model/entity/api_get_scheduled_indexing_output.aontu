@@ -1,0 +1,147 @@
+# Entity: api_get_scheduled_indexing_output
+
+main: kit: entity: api_get_scheduled_indexing_output: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Created at timestamp"
+      t: "`$STRING`"
+    }
+    days: {
+      h: "Days"
+      n: "days"
+      r: false
+      sh: "Days for execution (day is represented same as in a cron expression, e.g."
+      t: "`$ARRAY`"
+    }
+    deleted_at: {
+      fo: "date-time"
+      h: "Deleted At"
+      n: "deleted_at"
+      r: false
+      sh: "Deleted at timestamp (if soft deleted)"
+      t: "`$STRING`"
+    }
+    is_active: {
+      h: "Is Active"
+      n: "is_active"
+      r: false
+      sh: "Whether the schedule is currently active"
+      t: "`$BOOLEAN`"
+    }
+    knowledge_base_uuid: {
+      h: "Knowledge Base Uuid"
+      n: "knowledge_base_uuid"
+      r: false
+      sh: "Knowledge base uuid associated with this schedule"
+      t: "`$STRING`"
+    }
+    last_ran_at: {
+      fo: "date-time"
+      h: "Last Ran At"
+      n: "last_ran_at"
+      r: false
+      sh: "Last time the schedule was executed"
+      t: "`$STRING`"
+    }
+    next_run_at: {
+      fo: "date-time"
+      h: "Next Run At"
+      n: "next_run_at"
+      r: false
+      sh: "Next scheduled run"
+      t: "`$STRING`"
+    }
+    time: {
+      h: "Time"
+      n: "time"
+      r: false
+      sh: "Scheduled time of execution (HH:MM:SS format)"
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Updated at timestamp"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique identifier for the scheduled indexing entry"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_get_scheduled_indexing_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "knowledge_base_uuid"
+                or: "knowledge_base_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/scheduled-indexing/knowledge-base/{knowledge_base_uuid}"
+          q: {
+            exist: [
+              "knowledge_base_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scheduled-indexing"
+            }
+            {
+              lit: "knowledge-base"
+            }
+            {
+              var: "knowledge_base_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.indexing_info`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

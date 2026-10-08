@@ -1,0 +1,9 @@
+# BasicApiDeleteCustomEvaluationMetricOutputFlow
+
+main: kit: flow: BasicApiDeleteCustomEvaluationMetricOutputFlow:
+{
+  entity: "api_delete_custom_evaluation_metric_output",
+  kind: "basic",
+  name: "BasicApiDeleteCustomEvaluationMetricOutputFlow",
+  "key$": "BasicApiDeleteCustomEvaluationMetricOutputFlow"
+}

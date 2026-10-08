@@ -1,0 +1,118 @@
+{
+  "existing": {
+    "api_get_evaluation_test_case_output": {
+      "API_GET_EVALUATION_TEST_CASE_OUTPUT00": {
+        "agent_workspace_name": "sc8",
+        "archived_at": "sc9",
+        "created_at": "sca",
+        "created_by_user_email": "scb",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "dataset": {},
+        "dataset_name": "sce",
+        "dataset_uuid": "scf",
+        "description": "sd0",
+        "latest_version_number_of_runs": 209,
+        "metrics": [],
+        "name": "sd3",
+        "star_metric": {},
+        "test_case_uuid": "sd5",
+        "total_runs": 214,
+        "updated_at": "sd7",
+        "updated_by_user_email": "sd8",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "version": 218,
+        "workspace_uuid": "sdb",
+        "id": "API_GET_EVALUATION_TEST_CASE_OUTPUT00"
+      },
+      "API_GET_EVALUATION_TEST_CASE_OUTPUT01": {
+        "agent_workspace_name": "s190",
+        "archived_at": "s191",
+        "created_at": "s192",
+        "created_by_user_email": "s193",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "dataset": {},
+        "dataset_name": "s196",
+        "dataset_uuid": "s197",
+        "description": "s198",
+        "latest_version_number_of_runs": 409,
+        "metrics": [],
+        "name": "s19b",
+        "star_metric": {},
+        "test_case_uuid": "s19d",
+        "total_runs": 414,
+        "updated_at": "s19f",
+        "updated_by_user_email": "s1a0",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "version": 418,
+        "workspace_uuid": "s1a3",
+        "id": "API_GET_EVALUATION_TEST_CASE_OUTPUT01"
+      },
+      "API_GET_EVALUATION_TEST_CASE_OUTPUT02": {
+        "agent_workspace_name": "s258",
+        "archived_at": "s259",
+        "created_at": "s25a",
+        "created_by_user_email": "s25b",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "dataset": {},
+        "dataset_name": "s25e",
+        "dataset_uuid": "s25f",
+        "description": "s260",
+        "latest_version_number_of_runs": 609,
+        "metrics": [],
+        "name": "s263",
+        "star_metric": {},
+        "test_case_uuid": "s265",
+        "total_runs": 614,
+        "updated_at": "s267",
+        "updated_by_user_email": "s268",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "version": 618,
+        "workspace_uuid": "s26b",
+        "id": "API_GET_EVALUATION_TEST_CASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_evaluation_test_case_output": {
+      "api_get_evaluation_test_case_output_ref01": {
+        "agent_workspace_name": "s320",
+        "archived_at": "s321",
+        "created_at": "s322",
+        "created_by_user_email": "s323",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "dataset": {},
+        "dataset_name": "s326",
+        "dataset_uuid": "s327",
+        "description": "s328",
+        "latest_version_number_of_runs": 809,
+        "metrics": [],
+        "name": "s32b",
+        "star_metric": {},
+        "test_case_uuid": "s32d",
+        "total_runs": 814,
+        "updated_at": "s32f",
+        "updated_by_user_email": "s330",
+        "updated_by_user_id": "UPDATED_BY_USER01",
+        "version": 818,
+        "workspace_uuid": "s333"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/evaluation_test_cases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/evaluation_test_cases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/evaluation_test_cases/{test_case_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicKubernetesOptionFlow
+
+main: kit: flow: BasicKubernetesOptionFlow:
+{
+  entity: "kubernetes_option",
+  kind: "basic",
+  name: "BasicKubernetesOptionFlow",
+  step: [
+    {
+      i: {
+        ref: "kubernetes_option_ref01",
+        srcdatavar: "kubernetes_option_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kubernetes_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicKubernetesOptionFlow"
+}

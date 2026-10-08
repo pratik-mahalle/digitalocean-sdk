@@ -1,0 +1,70 @@
+# Entity: n1_click_application
+
+main: kit: entity: n1_click_application: {
+
+  alias: field: {}
+
+  fields: {
+    addon_slugs: {
+      h: "Addon Slugs"
+      n: "addon_slugs"
+      r: true
+      sh: "An array of 1-Click Application slugs to be installed to the Kubernetes cluster."
+      t: "`$ARRAY`"
+    }
+    cluster_uuid: {
+      h: "Cluster Uuid"
+      n: "cluster_uuid"
+      r: true
+      sh: "A unique ID for the Kubernetes cluster to which the 1-Click Applications will be installed."
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      sh: "A message about the result of the request."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "n1_click_application"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/1-clicks/kubernetes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/1-clicks/kubernetes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "1-clicks"
+            }
+            {
+              lit: "kubernetes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

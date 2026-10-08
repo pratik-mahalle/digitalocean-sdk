@@ -1,0 +1,22 @@
+# BasicApiLinkKnowledgeBaseOutputFlow
+
+main: kit: flow: BasicApiLinkKnowledgeBaseOutputFlow:
+{
+  entity: "api_link_knowledge_base_output",
+  kind: "basic",
+  name: "BasicApiLinkKnowledgeBaseOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_link_knowledge_base_output_ref01"
+      }
+
+      m: {
+        agent_id: "agent01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiLinkKnowledgeBaseOutputFlow"
+}

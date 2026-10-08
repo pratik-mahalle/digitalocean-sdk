@@ -1,0 +1,123 @@
+{
+  "existing": {
+    "batch": {
+      "BATCH00": {
+        "batch_id": "BATCH01",
+        "cancelled_at": "sd3",
+        "completed_at": "sd4",
+        "completion_window": "sd5",
+        "created_at": "sd6",
+        "endpoint": "sd7",
+        "error_file_id": "ERROR_FILE01",
+        "errors": [],
+        "expires_at": "sda",
+        "failed_at": "sdb",
+        "file_id": "FILE01",
+        "finalizing_at": "sdd",
+        "id": "BATCH00",
+        "in_progress_at": "sdf",
+        "input_file_id": "INPUT_FILE01",
+        "metadata": {},
+        "output_file_id": "OUTPUT_FILE01",
+        "provider": "se3",
+        "request_counts": {},
+        "request_id": "REQUEST01",
+        "status": "se6"
+      },
+      "BATCH01": {
+        "batch_id": "BATCH01",
+        "cancelled_at": "s1a5",
+        "completed_at": "s1a6",
+        "completion_window": "s1a7",
+        "created_at": "s1a8",
+        "endpoint": "s1a9",
+        "error_file_id": "ERROR_FILE01",
+        "errors": [],
+        "expires_at": "s1ac",
+        "failed_at": "s1ad",
+        "file_id": "FILE01",
+        "finalizing_at": "s1af",
+        "id": "BATCH01",
+        "in_progress_at": "s1b1",
+        "input_file_id": "INPUT_FILE01",
+        "metadata": {},
+        "output_file_id": "OUTPUT_FILE01",
+        "provider": "s1b5",
+        "request_counts": {},
+        "request_id": "REQUEST01",
+        "status": "s1b8"
+      },
+      "BATCH02": {
+        "batch_id": "BATCH01",
+        "cancelled_at": "s277",
+        "completed_at": "s278",
+        "completion_window": "s279",
+        "created_at": "s27a",
+        "endpoint": "s27b",
+        "error_file_id": "ERROR_FILE01",
+        "errors": [],
+        "expires_at": "s27e",
+        "failed_at": "s27f",
+        "file_id": "FILE01",
+        "finalizing_at": "s281",
+        "id": "BATCH02",
+        "in_progress_at": "s283",
+        "input_file_id": "INPUT_FILE01",
+        "metadata": {},
+        "output_file_id": "OUTPUT_FILE01",
+        "provider": "s287",
+        "request_counts": {},
+        "request_id": "REQUEST01",
+        "status": "s28a"
+      }
+    }
+  },
+  "new": {
+    "batch": {
+      "batch_ref01": {
+        "batch_id": "BATCH01",
+        "cancelled_at": "s349",
+        "completed_at": "s34a",
+        "completion_window": "s34b",
+        "created_at": "s34c",
+        "endpoint": "s34d",
+        "error_file_id": "ERROR_FILE01",
+        "errors": [],
+        "expires_at": "s350",
+        "failed_at": "s351",
+        "file_id": "FILE01",
+        "finalizing_at": "s353",
+        "in_progress_at": "s355",
+        "input_file_id": "INPUT_FILE01",
+        "metadata": {},
+        "output_file_id": "OUTPUT_FILE01",
+        "provider": "s359",
+        "request_counts": {},
+        "request_id": "REQUEST01",
+        "status": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/batches/{batch_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/batches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/batches": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v1/batches/{batch_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

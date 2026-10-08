@@ -1,0 +1,268 @@
+# Entity: api_list_scenarios_output
+
+main: kit: entity: api_list_scenarios_output: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "What the user tries to accomplish."
+      t: "`$STRING`"
+    }
+    exploration_budget: {
+      fo: "int64"
+      h: "Exploration Budget"
+      n: "exploration_budget"
+      r: false
+      sh: "Number of journeys to explore for this scenario."
+      t: "`$INTEGER`"
+    }
+    max_turns: {
+      fo: "int64"
+      h: "Max Turns"
+      n: "max_turns"
+      r: false
+      sh: "Turn budget for the scenario."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Human-readable name for the scenario."
+      t: "`$STRING`"
+    }
+    scenario_uuid: {
+      h: "Scenario Uuid"
+      n: "scenario_uuid"
+      r: false
+      sh: "Unique id for the scenario."
+      t: "`$STRING`"
+    }
+    stopping_criteria: {
+      h: "Stopping Criteria"
+      n: "stopping_criteria"
+      r: false
+      sh: "Judge stopping criteria."
+      t: "`$ARRAY`"
+    }
+    user_persona: {
+      h: "User Persona"
+      n: "user_persona"
+      r: false
+      sh: "How the user communicates (tone, role)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_list_scenarios_output"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/scenario_library/{library_scenario_uuid}/scenarios"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "scenario_library_id"
+                or: "library_scenario_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "example string"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SCENARIO_SORT_FIELD_UNSPECIFIED"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SORT_DIRECTION_UNSPECIFIED"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/scenario_library/{library_scenario_uuid}/scenarios"
+          q: {
+            exist: [
+              "scenario_library_id"
+            ]
+          }
+          r: {
+            param: {
+              library_scenario_uuid: "scenario_library_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_library"
+            }
+            {
+              var: "scenario_library_id"
+            }
+            {
+              lit: "scenarios"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scenarios`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/gen-ai/scenario_sets/{scenario_set_uuid}/scenarios"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "scenario_set_id"
+                or: "scenario_set_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "example string"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SCENARIO_SORT_FIELD_UNSPECIFIED"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SORT_DIRECTION_UNSPECIFIED"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/scenario_sets/{scenario_set_uuid}/scenarios"
+          q: {
+            exist: [
+              "scenario_set_id"
+            ]
+          }
+          r: {
+            param: {
+              scenario_set_uuid: "scenario_set_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "scenario_sets"
+            }
+            {
+              var: "scenario_set_id"
+            }
+            {
+              lit: "scenarios"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scenarios`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

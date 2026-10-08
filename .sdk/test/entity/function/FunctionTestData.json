@@ -1,0 +1,161 @@
+{
+  "existing": {
+    "function": {
+      "FUNCTION00": {
+        "api_host": "saa",
+        "created_at": "sab",
+        "expires_at": "sac",
+        "expires_in": "sad",
+        "function": "sae",
+        "id": "FUNCTION00",
+        "is_enabled": true,
+        "key": "sb1",
+        "label": "sb2",
+        "name": "sb3",
+        "namespace": "sb4",
+        "region": "sb5",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "sb8",
+        "updated_at": "sb9",
+        "uuid": "sba",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "key_id": "KEY01"
+      },
+      "FUNCTION01": {
+        "api_host": "s154",
+        "created_at": "s155",
+        "expires_at": "s156",
+        "expires_in": "s157",
+        "function": "s158",
+        "id": "FUNCTION01",
+        "is_enabled": true,
+        "key": "s15b",
+        "label": "s15c",
+        "name": "s15d",
+        "namespace": "s15e",
+        "region": "s15f",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s162",
+        "updated_at": "s163",
+        "uuid": "s164",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "key_id": "KEY01"
+      },
+      "FUNCTION02": {
+        "api_host": "s1fe",
+        "created_at": "s1ff",
+        "expires_at": "s200",
+        "expires_in": "s201",
+        "function": "s202",
+        "id": "FUNCTION02",
+        "is_enabled": true,
+        "key": "s205",
+        "label": "s206",
+        "name": "s207",
+        "namespace": "s208",
+        "region": "s209",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s20c",
+        "updated_at": "s20d",
+        "uuid": "s20e",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "key_id": "KEY01"
+      }
+    }
+  },
+  "new": {
+    "function": {
+      "function_ref01": {
+        "api_host": "s2a8",
+        "created_at": "s2a9",
+        "expires_at": "s2aa",
+        "expires_in": "s2ab",
+        "function": "s2ac",
+        "is_enabled": true,
+        "key": "s2af",
+        "label": "s2b0",
+        "name": "s2b1",
+        "namespace": "s2b2",
+        "region": "s2b3",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s2b6",
+        "updated_at": "s2b7",
+        "uuid": "s2b8"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/functions/namespaces/{namespace_id}/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/functions/namespaces/{namespace_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/functions/namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

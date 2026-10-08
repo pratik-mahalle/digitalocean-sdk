@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "api_update_workspace_output": {
+      "API_UPDATE_WORKSPACE_OUTPUT00": {
+        "agents": [],
+        "created_at": "s6f",
+        "created_by": "s70",
+        "created_by_email": "s71",
+        "deleted_at": "s72",
+        "description": "s73",
+        "evaluation_test_cases": [],
+        "name": "s75",
+        "updated_at": "s76",
+        "uuid": "s77",
+        "workspace_uuid": "s78",
+        "id": "API_UPDATE_WORKSPACE_OUTPUT00"
+      },
+      "API_UPDATE_WORKSPACE_OUTPUT01": {
+        "agents": [],
+        "created_at": "sdd",
+        "created_by": "sde",
+        "created_by_email": "sdf",
+        "deleted_at": "se0",
+        "description": "se1",
+        "evaluation_test_cases": [],
+        "name": "se3",
+        "updated_at": "se4",
+        "uuid": "se5",
+        "workspace_uuid": "se6",
+        "id": "API_UPDATE_WORKSPACE_OUTPUT01"
+      },
+      "API_UPDATE_WORKSPACE_OUTPUT02": {
+        "agents": [],
+        "created_at": "s14b",
+        "created_by": "s14c",
+        "created_by_email": "s14d",
+        "deleted_at": "s14e",
+        "description": "s14f",
+        "evaluation_test_cases": [],
+        "name": "s151",
+        "updated_at": "s152",
+        "uuid": "s153",
+        "workspace_uuid": "s154",
+        "id": "API_UPDATE_WORKSPACE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_workspace_output": {
+      "api_update_workspace_output_ref01": {
+        "agents": [],
+        "created_at": "s1b9",
+        "created_by": "s1ba",
+        "created_by_email": "s1bb",
+        "deleted_at": "s1bc",
+        "description": "s1bd",
+        "evaluation_test_cases": [],
+        "name": "s1bf",
+        "updated_at": "s1c0",
+        "uuid": "s1c1",
+        "workspace_uuid": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/gen-ai/workspaces/{workspace_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

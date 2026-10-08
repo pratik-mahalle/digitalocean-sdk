@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "invoice_summary": {
+      "INVOICE_SUMMARY00": {
+        "amount": "s82",
+        "billing_period": "s83",
+        "credits_and_adjustments": "s84",
+        "id": "INVOICE_SUMMARY00",
+        "invoice_id": "INVOICE01",
+        "invoice_uuid": "s87",
+        "overages": "s88",
+        "product_charges": "s89",
+        "taxes": "s8a",
+        "user_billing_address": "s8b",
+        "user_company": "s8c",
+        "user_email": "s8d",
+        "user_name": "s8e"
+      },
+      "INVOICE_SUMMARY01": {
+        "amount": "s104",
+        "billing_period": "s105",
+        "credits_and_adjustments": "s106",
+        "id": "INVOICE_SUMMARY01",
+        "invoice_id": "INVOICE01",
+        "invoice_uuid": "s109",
+        "overages": "s10a",
+        "product_charges": "s10b",
+        "taxes": "s10c",
+        "user_billing_address": "s10d",
+        "user_company": "s10e",
+        "user_email": "s10f",
+        "user_name": "s110"
+      },
+      "INVOICE_SUMMARY02": {
+        "amount": "s186",
+        "billing_period": "s187",
+        "credits_and_adjustments": "s188",
+        "id": "INVOICE_SUMMARY02",
+        "invoice_id": "INVOICE01",
+        "invoice_uuid": "s18b",
+        "overages": "s18c",
+        "product_charges": "s18d",
+        "taxes": "s18e",
+        "user_billing_address": "s18f",
+        "user_company": "s190",
+        "user_email": "s191",
+        "user_name": "s192"
+      }
+    }
+  },
+  "new": {
+    "invoice_summary": {
+      "invoice_summary_ref01": {
+        "amount": "s208",
+        "billing_period": "s209",
+        "credits_and_adjustments": "s20a",
+        "invoice_id": "INVOICE01",
+        "invoice_uuid": "s20d",
+        "overages": "s20e",
+        "product_charges": "s20f",
+        "taxes": "s210",
+        "user_billing_address": "s211",
+        "user_company": "s212",
+        "user_email": "s213",
+        "user_name": "s214"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/customers/my/invoices/{invoice_uuid}/summary": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

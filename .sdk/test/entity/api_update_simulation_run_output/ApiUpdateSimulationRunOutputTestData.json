@@ -1,0 +1,138 @@
+{
+  "existing": {
+    "api_update_simulation_run_output": {
+      "API_UPDATE_SIMULATION_RUN_OUTPUT00": {
+        "agent_config": {},
+        "created_at": "sfb",
+        "created_by_user_email": "sfc",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "deleted_at": "sfe",
+        "evaluation_config": {},
+        "evaluation_run_uuid": "s100",
+        "exploration_budget": 257,
+        "failure_reason": "s102",
+        "journeys_finished": 259,
+        "judge_model_name": "s104",
+        "judge_model_uuid": "s105",
+        "max_turns": 262,
+        "name": "s107",
+        "result_summary": {},
+        "run_uuid": "s109",
+        "scenario_count": 266,
+        "scenario_set_uuid": "s10b",
+        "status": "s10c",
+        "total_journeys": 269,
+        "updated_at": "s10e",
+        "user_simulator_config": {},
+        "user_simulator_model_name": "s110",
+        "user_simulator_model_uuid": "s111",
+        "workflow_uuid": "s112",
+        "id": "API_UPDATE_SIMULATION_RUN_OUTPUT00"
+      },
+      "API_UPDATE_SIMULATION_RUN_OUTPUT01": {
+        "agent_config": {},
+        "created_at": "s1f5",
+        "created_by_user_email": "s1f6",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "deleted_at": "s1f8",
+        "evaluation_config": {},
+        "evaluation_run_uuid": "s1fa",
+        "exploration_budget": 507,
+        "failure_reason": "s1fc",
+        "journeys_finished": 509,
+        "judge_model_name": "s1fe",
+        "judge_model_uuid": "s1ff",
+        "max_turns": 512,
+        "name": "s201",
+        "result_summary": {},
+        "run_uuid": "s203",
+        "scenario_count": 516,
+        "scenario_set_uuid": "s205",
+        "status": "s206",
+        "total_journeys": 519,
+        "updated_at": "s208",
+        "user_simulator_config": {},
+        "user_simulator_model_name": "s20a",
+        "user_simulator_model_uuid": "s20b",
+        "workflow_uuid": "s20c",
+        "id": "API_UPDATE_SIMULATION_RUN_OUTPUT01"
+      },
+      "API_UPDATE_SIMULATION_RUN_OUTPUT02": {
+        "agent_config": {},
+        "created_at": "s2ef",
+        "created_by_user_email": "s2f0",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "deleted_at": "s2f2",
+        "evaluation_config": {},
+        "evaluation_run_uuid": "s2f4",
+        "exploration_budget": 757,
+        "failure_reason": "s2f6",
+        "journeys_finished": 759,
+        "judge_model_name": "s2f8",
+        "judge_model_uuid": "s2f9",
+        "max_turns": 762,
+        "name": "s2fb",
+        "result_summary": {},
+        "run_uuid": "s2fd",
+        "scenario_count": 766,
+        "scenario_set_uuid": "s2ff",
+        "status": "s300",
+        "total_journeys": 769,
+        "updated_at": "s302",
+        "user_simulator_config": {},
+        "user_simulator_model_name": "s304",
+        "user_simulator_model_uuid": "s305",
+        "workflow_uuid": "s306",
+        "id": "API_UPDATE_SIMULATION_RUN_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_update_simulation_run_output": {
+      "api_update_simulation_run_output_ref01": {
+        "agent_config": {},
+        "created_at": "s3e9",
+        "created_by_user_email": "s3ea",
+        "created_by_user_id": "CREATED_BY_USER01",
+        "deleted_at": "s3ec",
+        "evaluation_config": {},
+        "evaluation_run_uuid": "s3ee",
+        "exploration_budget": 1007,
+        "failure_reason": "s3f0",
+        "journeys_finished": 1009,
+        "judge_model_name": "s3f2",
+        "judge_model_uuid": "s3f3",
+        "max_turns": 1012,
+        "name": "s3f5",
+        "result_summary": {},
+        "run_uuid": "s3f7",
+        "scenario_count": 1016,
+        "scenario_set_uuid": "s3f9",
+        "status": "s3fa",
+        "total_journeys": 1019,
+        "updated_at": "s3fc",
+        "user_simulator_config": {},
+        "user_simulator_model_name": "s3fe",
+        "user_simulator_model_uuid": "s3ff",
+        "workflow_uuid": "s400"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/simulation_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/simulation_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/gen-ai/simulation_runs/{run_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

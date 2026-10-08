@@ -1,0 +1,26 @@
+# BasicApiListAgentsByAnthropicKeyOutputFlow
+
+main: kit: flow: BasicApiListAgentsByAnthropicKeyOutputFlow:
+{
+  entity: "api_list_agents_by_anthropic_key_output",
+  kind: "basic",
+  name: "BasicApiListAgentsByAnthropicKeyOutputFlow",
+  step: [
+    {
+      m: {
+        key_id: "key01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_agents_by_anthropic_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListAgentsByAnthropicKeyOutputFlow"
+}

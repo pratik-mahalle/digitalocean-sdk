@@ -1,0 +1,101 @@
+{
+  "existing": {
+    "byoip_prefix": {
+      "BYOIP_PREFIX00": {
+        "advertise": true,
+        "advertised": false,
+        "failure_reason": "s84",
+        "id": "BYOIP_PREFIX00",
+        "locked": true,
+        "name": "s87",
+        "prefix": "s88",
+        "project_id": "PROJECT01",
+        "region": "s8a",
+        "signature": "s8b",
+        "status": "s8c",
+        "uuid": "s8d",
+        "validations": []
+      },
+      "BYOIP_PREFIX01": {
+        "advertise": true,
+        "advertised": false,
+        "failure_reason": "s106",
+        "id": "BYOIP_PREFIX01",
+        "locked": true,
+        "name": "s109",
+        "prefix": "s10a",
+        "project_id": "PROJECT01",
+        "region": "s10c",
+        "signature": "s10d",
+        "status": "s10e",
+        "uuid": "s10f",
+        "validations": []
+      },
+      "BYOIP_PREFIX02": {
+        "advertise": true,
+        "advertised": false,
+        "failure_reason": "s188",
+        "id": "BYOIP_PREFIX02",
+        "locked": true,
+        "name": "s18b",
+        "prefix": "s18c",
+        "project_id": "PROJECT01",
+        "region": "s18e",
+        "signature": "s18f",
+        "status": "s190",
+        "uuid": "s191",
+        "validations": []
+      }
+    }
+  },
+  "new": {
+    "byoip_prefix": {
+      "byoip_prefix_ref01": {
+        "advertise": true,
+        "advertised": false,
+        "failure_reason": "s20a",
+        "locked": true,
+        "name": "s20d",
+        "prefix": "s20e",
+        "project_id": "PROJECT01",
+        "region": "s210",
+        "signature": "s211",
+        "status": "s212",
+        "uuid": "s213",
+        "validations": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/byoip_prefixes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/byoip_prefixes/{byoip_prefix_uuid}/ips": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/byoip_prefixes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/byoip_prefixes/{byoip_prefix_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/byoip_prefixes/{byoip_prefix_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/byoip_prefixes/{byoip_prefix_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,81 @@
+# BasicBlockStorageFlow
+
+main: kit: flow: BasicBlockStorageFlow:
+{
+  entity: "block_storage",
+  kind: "basic",
+  name: "BasicBlockStorageFlow",
+  step: [
+    {
+      i: {
+        ref: "block_storage_ref01"
+      }
+
+      m: {
+        volume_id: "volume01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "block_storage_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "block_storage_ref01",
+        srcdatavar: "block_storage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "block_storage01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-block_storage_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "block_storage_ref01",
+        suffix: "_rm0"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "block_storage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBlockStorageFlow"
+}

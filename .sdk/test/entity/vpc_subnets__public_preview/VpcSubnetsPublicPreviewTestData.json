@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "vpc_subnets__public_preview": {
+      "VPC_SUBNETS__PUBLIC_PREVIEW00": {
+        "created_at": "s5a",
+        "default": false,
+        "id": "VPC_SUBNETS__PUBLIC_PREVIEW00",
+        "ip_range": "s5d",
+        "meta": {},
+        "name": "s5f",
+        "region": "s60",
+        "type": "s61",
+        "urn": "s62",
+        "subnet_uuid": "SUBNET_UUID01",
+        "vpc_id": "VPC01"
+      },
+      "VPC_SUBNETS__PUBLIC_PREVIEW01": {
+        "created_at": "sb4",
+        "default": false,
+        "id": "VPC_SUBNETS__PUBLIC_PREVIEW01",
+        "ip_range": "sb7",
+        "meta": {},
+        "name": "sb9",
+        "region": "sba",
+        "type": "sbb",
+        "urn": "sbc",
+        "subnet_uuid": "SUBNET_UUID01",
+        "vpc_id": "VPC01"
+      },
+      "VPC_SUBNETS__PUBLIC_PREVIEW02": {
+        "created_at": "s10e",
+        "default": false,
+        "id": "VPC_SUBNETS__PUBLIC_PREVIEW02",
+        "ip_range": "s111",
+        "meta": {},
+        "name": "s113",
+        "region": "s114",
+        "type": "s115",
+        "urn": "s116",
+        "subnet_uuid": "SUBNET_UUID01",
+        "vpc_id": "VPC01"
+      }
+    }
+  },
+  "new": {
+    "vpc_subnets__public_preview": {
+      "vpc_subnets__public_preview_ref01": {
+        "created_at": "s168",
+        "default": false,
+        "ip_range": "s16b",
+        "meta": {},
+        "name": "s16d",
+        "region": "s16e",
+        "type": "s16f",
+        "urn": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/vpcs/{vpc_uuid}/subnets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpcs/{vpc_uuid}/subnets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

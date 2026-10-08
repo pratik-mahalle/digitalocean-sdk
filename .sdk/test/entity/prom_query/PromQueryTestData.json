@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "prom_query": {
+      "PROM_QUERY00": {
+        "result": "s14",
+        "resultType": "s15",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY00"
+      },
+      "PROM_QUERY01": {
+        "result": "s28",
+        "resultType": "s29",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY01"
+      },
+      "PROM_QUERY02": {
+        "result": "s3c",
+        "resultType": "s3d",
+        "query_id": "QUERY01",
+        "id": "PROM_QUERY02"
+      }
+    }
+  },
+  "new": {
+    "prom_query": {
+      "prom_query_ref01": {
+        "result": "s50",
+        "resultType": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/insights/query/{region}/prom/api/v1/query": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/insights/query/{region}/prom/api/v1/query": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "apps_instance_size": {
+      "APPS_INSTANCE_SIZE00": {
+        "bandwidth_allowance_gib": "s96",
+        "cpu_type": "s97",
+        "cpus": "s98",
+        "deprecation_intent": false,
+        "id": "APPS_INSTANCE_SIZE00",
+        "memory_bytes": "s9b",
+        "name": "s9c",
+        "scalable": false,
+        "single_instance_only": true,
+        "slug": "s9f",
+        "tier_downgrade_to": "sa0",
+        "tier_slug": "sa1",
+        "tier_upgrade_to": "sa2",
+        "usd_per_month": "sa3",
+        "usd_per_second": "sa4"
+      },
+      "APPS_INSTANCE_SIZE01": {
+        "bandwidth_allowance_gib": "s12c",
+        "cpu_type": "s12d",
+        "cpus": "s12e",
+        "deprecation_intent": false,
+        "id": "APPS_INSTANCE_SIZE01",
+        "memory_bytes": "s131",
+        "name": "s132",
+        "scalable": false,
+        "single_instance_only": true,
+        "slug": "s135",
+        "tier_downgrade_to": "s136",
+        "tier_slug": "s137",
+        "tier_upgrade_to": "s138",
+        "usd_per_month": "s139",
+        "usd_per_second": "s13a"
+      },
+      "APPS_INSTANCE_SIZE02": {
+        "bandwidth_allowance_gib": "s1c2",
+        "cpu_type": "s1c3",
+        "cpus": "s1c4",
+        "deprecation_intent": false,
+        "id": "APPS_INSTANCE_SIZE02",
+        "memory_bytes": "s1c7",
+        "name": "s1c8",
+        "scalable": false,
+        "single_instance_only": true,
+        "slug": "s1cb",
+        "tier_downgrade_to": "s1cc",
+        "tier_slug": "s1cd",
+        "tier_upgrade_to": "s1ce",
+        "usd_per_month": "s1cf",
+        "usd_per_second": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "apps_instance_size": {
+      "apps_instance_size_ref01": {
+        "bandwidth_allowance_gib": "s258",
+        "cpu_type": "s259",
+        "cpus": "s25a",
+        "deprecation_intent": false,
+        "memory_bytes": "s25d",
+        "name": "s25e",
+        "scalable": false,
+        "single_instance_only": true,
+        "slug": "s261",
+        "tier_downgrade_to": "s262",
+        "tier_slug": "s263",
+        "tier_upgrade_to": "s264",
+        "usd_per_month": "s265",
+        "usd_per_second": "s266"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/apps/tiers/instance_sizes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/tiers/instance_sizes/{slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,86 @@
+# Entity: systemone
+
+main: kit: entity: systemone: {
+
+  alias: field: {}
+
+  fields: {
+    answers: {
+      h: "Answers"
+      n: "answers"
+      r: true
+      sh: "A map of question name to answer, using the same keys as the request's `questions` object."
+      t: "`$OBJECT`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: true
+      sh: "Model ID that produced the response."
+      t: "`$STRING`"
+    }
+    questions: {
+      h: "Questions"
+      n: "questions"
+      r: true
+      sh: "A map of question name to question definition."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "The state to evaluate."
+      t: "`$STRING`"
+    }
+    usage: {
+      h: "Usage"
+      n: "usage"
+      r: true
+      sh: "Token usage for the request."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "systemone"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/systemone"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/systemone"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "systemone"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

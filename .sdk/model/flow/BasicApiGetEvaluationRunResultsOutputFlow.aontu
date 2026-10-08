@@ -1,0 +1,26 @@
+# BasicApiGetEvaluationRunResultsOutputFlow
+
+main: kit: flow: BasicApiGetEvaluationRunResultsOutputFlow:
+{
+  entity: "api_get_evaluation_run_results_output",
+  kind: "basic",
+  name: "BasicApiGetEvaluationRunResultsOutputFlow",
+  step: [
+    {
+      m: {
+        evaluation_run_id: "evaluation_run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_get_evaluation_run_results_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGetEvaluationRunResultsOutputFlow"
+}

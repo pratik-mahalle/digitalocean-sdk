@@ -1,0 +1,149 @@
+# Entity: api_list_model_evaluation_metrics_output
+
+main: kit: entity: api_list_model_evaluation_metrics_output: {
+
+  alias: field: {}
+
+  fields: {
+    associated_presets: {
+      h: "Associated Presets"
+      n: "associated_presets"
+      r: false
+      sh: "Saved model evaluation presets that reference this metric."
+      t: "`$ARRAY`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    custom_eval_config: {
+      h: "Custom Eval Config"
+      n: "custom_eval_config"
+      r: false
+      sh: "Configuration for a custom model-evaluation metric scored by an LLM judge."
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    evaluation_scope: {
+      h: "Evaluation Scope"
+      n: "evaluation_scope"
+      r: false
+      sh: "Scope that determines whether a metric belongs to agent evaluation or model evaluation."
+      t: "`$STRING`"
+    }
+    inverted: {
+      h: "Inverted"
+      n: "inverted"
+      r: false
+      sh: "If true, the metric is inverted, meaning that a lower value is better."
+      t: "`$BOOLEAN`"
+    }
+    is_metric_goal: {
+      h: "Is Metric Goal"
+      n: "is_metric_goal"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    metric_name: {
+      h: "Metric Name"
+      n: "metric_name"
+      r: false
+      t: "`$STRING`"
+    }
+    metric_rank: {
+      fo: "int64"
+      h: "Metric Rank"
+      n: "metric_rank"
+      r: false
+      t: "`$INTEGER`"
+    }
+    metric_type: {
+      h: "Metric Type"
+      n: "metric_type"
+      r: false
+      t: "`$STRING`"
+    }
+    metric_uuid: {
+      h: "Metric Uuid"
+      n: "metric_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    metric_value_type: {
+      h: "Metric Value Type"
+      n: "metric_value_type"
+      r: false
+      t: "`$STRING`"
+    }
+    range_max: {
+      fo: "float"
+      h: "Range Max"
+      n: "range_max"
+      r: false
+      sh: "The maximum value for the metric."
+      t: "`$NUMBER`"
+    }
+    range_min: {
+      fo: "float"
+      h: "Range Min"
+      n: "range_min"
+      r: false
+      sh: "The minimum value for the metric."
+      t: "`$NUMBER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "Distinguishes platform catalog metrics from user-defined LLM-as-judge metrics."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_list_model_evaluation_metrics_output"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_metrics"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_metrics"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_metrics"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.metrics`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,89 @@
+# Entity: api_unlink_agent_output
+
+main: kit: entity: api_unlink_agent_output: {
+
+  alias: field: {}
+
+  name: "api_unlink_agent_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "parent_agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "child_agent_uuid"
+                or: "child_agent_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/agents/{parent_agent_uuid}/child_agents/{child_agent_uuid}"
+          q: {
+            exist: [
+              "agent_id"
+              "child_agent_uuid"
+            ]
+          }
+          r: {
+            param: {
+              parent_agent_uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "child_agents"
+            }
+            {
+              var: "child_agent_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

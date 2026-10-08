@@ -1,0 +1,39 @@
+# BasicPromStringListFlow
+
+main: kit: flow: BasicPromStringListFlow:
+{
+  entity: "prom_string_list",
+  kind: "basic",
+  name: "BasicPromStringListFlow",
+  step: [
+    {
+      i: {
+        ref: "prom_string_list_ref01"
+      }
+
+      m: {
+        name: "name01",
+        query_id: "query01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        query_id: "query01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "prom_string_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPromStringListFlow"
+}

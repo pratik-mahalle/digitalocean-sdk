@@ -1,0 +1,736 @@
+# Entity: app
+
+main: kit: entity: app: {
+
+  alias: field: {}
+
+  fields: {
+    active_deployment: {
+      h: "Active Deployment"
+      n: "active_deployment"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 9
+      }
+    }
+    autoscaling: {
+      h: "Autoscaling"
+      n: "autoscaling"
+      r: false
+      sh: "Autoscaling event details."
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    dedicated_ips: {
+      h: "Dedicated Ips"
+      n: "dedicated_ips"
+      r: false
+      ro: true
+      t: "`$ARRAY`"
+    }
+    default_ingress: {
+      h: "Default Ingress"
+      n: "default_ingress"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    deployment: {
+      h: "Deployment"
+      n: "deployment"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 9
+      }
+    }
+    deployment_id: {
+      h: "Deployment Id"
+      n: "deployment_id"
+      r: false
+      sh: "For deployment events, this is the same as the deployment's ID."
+      t: "`$STRING`"
+    }
+    domains: {
+      h: "Domains"
+      n: "domains"
+      r: false
+      ro: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    in_progress_deployment: {
+      h: "In Progress Deployment"
+      n: "in_progress_deployment"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 9
+      }
+    }
+    last_deployment_created_at: {
+      fo: "date-time"
+      h: "Last Deployment Created At"
+      n: "last_deployment_created_at"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    live_domain: {
+      h: "Live Domain"
+      n: "live_domain"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    live_url: {
+      h: "Live Url"
+      n: "live_url"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    live_url_base: {
+      h: "Live Url Base"
+      n: "live_url_base"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    owner_uuid: {
+      h: "Owner Uuid"
+      n: "owner_uuid"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    pending_deployment: {
+      h: "Pending Deployment"
+      n: "pending_deployment"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 11
+      }
+    }
+    pinned_deployment: {
+      h: "Pinned Deployment"
+      n: "pinned_deployment"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 11
+      }
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      ro: true
+      sh: "Requires `project:read` scope."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$OBJECT`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: true
+      sh: "The desired configuration of an application."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 7
+      }
+    }
+    tier_slug: {
+      h: "Tier Slug"
+      n: "tier_slug"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of event"
+      t: "`$STRING`"
+    }
+    update_all_source_versions: {
+      h: "Update All Source Versions"
+      n: "update_all_source_versions"
+      r: false
+      sh: "Whether or not to update the source versions (for example fetching a new commit or image digest) of all components."
+      t: "`$BOOLEAN`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    vpc: {
+      h: "Vpc"
+      n: "vpc"
+      r: false
+      ro: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/events/{event_id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "event_id"
+                or: "event_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/events/{event_id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "event_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "events"
+            }
+            {
+              var: "event_id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.event`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/rollback/commit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/rollback/commit"
+          q: {
+            "$action": "rollback_commit"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rollback"
+            }
+            {
+              lit: "commit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps/{app_id}/rollback/validate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps/{app_id}/rollback/validate"
+          q: {
+            "$action": "rollback_validate"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rollback"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/apps"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "application/json"
+                k: "header"
+                n: "accept"
+                or: "Accept"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "application/json"
+                k: "header"
+                n: "content_type"
+                or: "Content-Type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/apps"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.app`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: true
+                k: "query"
+                n: "with_project"
+                or: "with_projects"
+                r: false
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.apps`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/{app_id}/events/{event_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "event_id"
+                or: "event_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{app_id}/events/{event_id}"
+          q: {
+            exist: [
+              "event_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              app_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "events"
+            }
+            {
+              var: "event_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.event`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/apps/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "myApp"
+                k: "query"
+                n: "name"
+                or: "name"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.app`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/apps/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/apps/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/apps/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4f6c71e2-1e90-4762-9fee-6cc4a0a9f2cf"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/apps/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.app`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,213 @@
+# Entity: apps_instance_size
+
+main: kit: entity: apps_instance_size: {
+
+  alias: field: {}
+
+  fields: {
+    bandwidth_allowance_gib: {
+      fo: "int64"
+      h: "Bandwidth Allowance Gib"
+      n: "bandwidth_allowance_gib"
+      r: false
+      t: "`$STRING`"
+    }
+    cpu_type: {
+      h: "Cpu Type"
+      n: "cpu_type"
+      r: false
+      t: "`$STRING`"
+    }
+    cpus: {
+      fo: "int64"
+      h: "Cpus"
+      n: "cpus"
+      r: false
+      t: "`$STRING`"
+    }
+    deprecation_intent: {
+      h: "Deprecation Intent"
+      n: "deprecation_intent"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    memory_bytes: {
+      fo: "int64"
+      h: "Memory Bytes"
+      n: "memory_bytes"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    scalable: {
+      h: "Scalable"
+      n: "scalable"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    single_instance_only: {
+      h: "Single Instance Only"
+      n: "single_instance_only"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      t: "`$STRING`"
+    }
+    tier_downgrade_to: {
+      de: true
+      h: "Tier Downgrade To"
+      n: "tier_downgrade_to"
+      r: false
+      t: "`$STRING`"
+    }
+    tier_slug: {
+      h: "Tier Slug"
+      n: "tier_slug"
+      r: false
+      t: "`$STRING`"
+    }
+    tier_upgrade_to: {
+      de: true
+      h: "Tier Upgrade To"
+      n: "tier_upgrade_to"
+      r: false
+      t: "`$STRING`"
+    }
+    usd_per_month: {
+      h: "Usd Per Month"
+      n: "usd_per_month"
+      r: false
+      t: "`$STRING`"
+    }
+    usd_per_second: {
+      h: "Usd Per Second"
+      n: "usd_per_second"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "apps_instance_size"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/tiers/instance_sizes"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/apps/tiers/instance_sizes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "tiers"
+            }
+            {
+              lit: "instance_sizes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.instance_sizes`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/apps/tiers/instance_sizes/{slug}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "apps-s-1vcpu-0.5gb"
+                k: "param"
+                n: "id"
+                or: "slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/apps/tiers/instance_sizes/{slug}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              slug: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "tiers"
+            }
+            {
+              lit: "instance_sizes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.instance_size`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

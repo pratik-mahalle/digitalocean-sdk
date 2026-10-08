@@ -1,0 +1,241 @@
+# Entity: prom_query_range
+
+main: kit: entity: prom_query_range: {
+
+  alias: field: {}
+
+  fields: {
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      sh: "One entry per matching series, each carrying the samples evaluated at every step across the requested range."
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 5
+      }
+    }
+    resultType: {
+      h: "Result Type"
+      n: "resultType"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "prom_query_range"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/query/{region}/prom/api/v1/query_range"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/insights/query/{region}/prom/api/v1/query_range"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                name: "end"
+              }
+              {
+                name: "query"
+              }
+              {
+                name: "start"
+              }
+              {
+                name: "step"
+              }
+              {
+                name: "timeout"
+              }
+            ]
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "query_range"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/query/{region}/prom/api/v1/query_range"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "do.droplets.cpu_time"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "15s"
+                k: "query"
+                n: "step"
+                or: "step"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "30s"
+                k: "query"
+                n: "timeout"
+                or: "timeout"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/query/{region}/prom/api/v1/query_range"
+          q: {
+            exist: [
+              "end"
+              "query"
+              "query_id"
+              "start"
+              "step"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "query_range"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

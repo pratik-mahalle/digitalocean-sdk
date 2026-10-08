@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "spaces_key": {
+      "SPACES_KEY00": {
+        "access_key": "s3c",
+        "created_at": "s3d",
+        "grants": [],
+        "id": "SPACES_KEY00",
+        "keys": [],
+        "name": "s41"
+      },
+      "SPACES_KEY01": {
+        "access_key": "s78",
+        "created_at": "s79",
+        "grants": [],
+        "id": "SPACES_KEY01",
+        "keys": [],
+        "name": "s7d"
+      },
+      "SPACES_KEY02": {
+        "access_key": "sb4",
+        "created_at": "sb5",
+        "grants": [],
+        "id": "SPACES_KEY02",
+        "keys": [],
+        "name": "sb9"
+      }
+    }
+  },
+  "new": {
+    "spaces_key": {
+      "spaces_key_ref01": {
+        "access_key": "sf0",
+        "created_at": "sf1",
+        "grants": [],
+        "keys": [],
+        "name": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/spaces/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/spaces/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/spaces/keys/{access_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/spaces/keys/{access_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/spaces/keys/{access_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/spaces/keys/{access_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "existing": {
+    "droplet_autoscale_pool": {
+      "DROPLET_AUTOSCALE_POOL00": {
+        "active_resources_count": 160,
+        "config": {},
+        "created_at": "sa2",
+        "current_instance_count": 163,
+        "current_utilization": {},
+        "desired_instance_count": 165,
+        "droplet_id": "DROPLET01",
+        "droplet_template": {},
+        "health_status": "sa8",
+        "history_event_id": "HISTORY_EVENT01",
+        "id": "DROPLET_AUTOSCALE_POOL00",
+        "name": "sab",
+        "reason": "sac",
+        "status": "sad",
+        "unhealthy_reason": "sae",
+        "updated_at": "saf",
+        "autoscale_pool_id": "AUTOSCALE_POOL01"
+      },
+      "DROPLET_AUTOSCALE_POOL01": {
+        "active_resources_count": 320,
+        "config": {},
+        "created_at": "s142",
+        "current_instance_count": 323,
+        "current_utilization": {},
+        "desired_instance_count": 325,
+        "droplet_id": "DROPLET01",
+        "droplet_template": {},
+        "health_status": "s148",
+        "history_event_id": "HISTORY_EVENT01",
+        "id": "DROPLET_AUTOSCALE_POOL01",
+        "name": "s14b",
+        "reason": "s14c",
+        "status": "s14d",
+        "unhealthy_reason": "s14e",
+        "updated_at": "s14f",
+        "autoscale_pool_id": "AUTOSCALE_POOL01"
+      },
+      "DROPLET_AUTOSCALE_POOL02": {
+        "active_resources_count": 480,
+        "config": {},
+        "created_at": "s1e2",
+        "current_instance_count": 483,
+        "current_utilization": {},
+        "desired_instance_count": 485,
+        "droplet_id": "DROPLET01",
+        "droplet_template": {},
+        "health_status": "s1e8",
+        "history_event_id": "HISTORY_EVENT01",
+        "id": "DROPLET_AUTOSCALE_POOL02",
+        "name": "s1eb",
+        "reason": "s1ec",
+        "status": "s1ed",
+        "unhealthy_reason": "s1ee",
+        "updated_at": "s1ef",
+        "autoscale_pool_id": "AUTOSCALE_POOL01"
+      }
+    }
+  },
+  "new": {
+    "droplet_autoscale_pool": {
+      "droplet_autoscale_pool_ref01": {
+        "active_resources_count": 640,
+        "config": {},
+        "created_at": "s282",
+        "current_instance_count": 643,
+        "current_utilization": {},
+        "desired_instance_count": 645,
+        "droplet_id": "DROPLET01",
+        "droplet_template": {},
+        "health_status": "s288",
+        "history_event_id": "HISTORY_EVENT01",
+        "name": "s28b",
+        "reason": "s28c",
+        "status": "s28d",
+        "unhealthy_reason": "s28e",
+        "updated_at": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/droplets/autoscale": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/autoscale/{autoscale_pool_id}/history": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/autoscale/{autoscale_pool_id}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/autoscale": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/autoscale/{autoscale_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets/autoscale/{autoscale_pool_id}/dangerous": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets/autoscale/{autoscale_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/droplets/autoscale/{autoscale_pool_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

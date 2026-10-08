@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "vectordb_backup": {
+      "VECTORDB_BACKUP00": {
+        "backup_id": "BACKUP01",
+        "completed_at": "s29",
+        "started_at": "s2a",
+        "status": "s2b",
+        "vector_database_id": "VECTOR_DATABASE01"
+      },
+      "VECTORDB_BACKUP01": {
+        "backup_id": "BACKUP01",
+        "completed_at": "s51",
+        "started_at": "s52",
+        "status": "s53",
+        "vector_database_id": "VECTOR_DATABASE01"
+      },
+      "VECTORDB_BACKUP02": {
+        "backup_id": "BACKUP01",
+        "completed_at": "s79",
+        "started_at": "s7a",
+        "status": "s7b",
+        "vector_database_id": "VECTOR_DATABASE01"
+      }
+    }
+  },
+  "new": {
+    "vectordb_backup": {
+      "vectordb_backup_ref01": {
+        "backup_id": "BACKUP01",
+        "completed_at": "sa1",
+        "started_at": "sa2",
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/vector-databases/{id}/backups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

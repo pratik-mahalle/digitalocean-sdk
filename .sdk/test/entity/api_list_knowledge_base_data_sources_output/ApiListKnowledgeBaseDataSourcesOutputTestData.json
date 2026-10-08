@@ -1,0 +1,88 @@
+{
+  "existing": {
+    "api_list_knowledge_base_data_sources_output": {
+      "API_LIST_KNOWLEDGE_BASE_DATA_SOURCES_OUTPUT00": {
+        "aws_data_source": {},
+        "bucket_name": "s97",
+        "chunking_algorithm": "s98",
+        "chunking_options": {},
+        "created_at": "s9a",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s9e",
+        "last_datasource_indexing_job": {},
+        "region": "sa0",
+        "spaces_data_source": {},
+        "updated_at": "sa2",
+        "uuid": "sa3",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01"
+      },
+      "API_LIST_KNOWLEDGE_BASE_DATA_SOURCES_OUTPUT01": {
+        "aws_data_source": {},
+        "bucket_name": "s12d",
+        "chunking_algorithm": "s12e",
+        "chunking_options": {},
+        "created_at": "s130",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s134",
+        "last_datasource_indexing_job": {},
+        "region": "s136",
+        "spaces_data_source": {},
+        "updated_at": "s138",
+        "uuid": "s139",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01"
+      },
+      "API_LIST_KNOWLEDGE_BASE_DATA_SOURCES_OUTPUT02": {
+        "aws_data_source": {},
+        "bucket_name": "s1c3",
+        "chunking_algorithm": "s1c4",
+        "chunking_options": {},
+        "created_at": "s1c6",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s1ca",
+        "last_datasource_indexing_job": {},
+        "region": "s1cc",
+        "spaces_data_source": {},
+        "updated_at": "s1ce",
+        "uuid": "s1cf",
+        "web_crawler_data_source": {},
+        "knowledge_base_id": "KNOWLEDGE_BASE01"
+      }
+    }
+  },
+  "new": {
+    "api_list_knowledge_base_data_sources_output": {
+      "api_list_knowledge_base_data_sources_output_ref01": {
+        "aws_data_source": {},
+        "bucket_name": "s259",
+        "chunking_algorithm": "s25a",
+        "chunking_options": {},
+        "created_at": "s25c",
+        "dropbox_data_source": {},
+        "file_upload_data_source": {},
+        "google_drive_data_source": {},
+        "item_path": "s260",
+        "last_datasource_indexing_job": {},
+        "region": "s262",
+        "spaces_data_source": {},
+        "updated_at": "s264",
+        "uuid": "s265",
+        "web_crawler_data_source": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

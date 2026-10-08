@@ -1,0 +1,277 @@
+# Entity: api_update_knowledge_base_output
+
+main: kit: entity: api_update_knowledge_base_output: {
+
+  alias: field: {}
+
+  fields: {
+    added_to_agent_at: {
+      fo: "date-time"
+      h: "Added To Agent At"
+      n: "added_to_agent_at"
+      r: false
+      sh: "Time when the knowledge base was added to the agent"
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Creation date / time"
+      t: "`$STRING`"
+    }
+    database_id: {
+      h: "Database Id"
+      n: "database_id"
+      r: false
+      sh: "Identifier of the DigitalOcean OpenSearch database this knowledge base will use, optional."
+      t: "`$STRING`"
+    }
+    datasources: {
+      h: "Datasources"
+      n: "datasources"
+      r: false
+      sh: "Optional data sources to attach at creation."
+      t: "`$ARRAY`"
+    }
+    embedding_model_uuid: {
+      h: "Embedding Model Uuid"
+      n: "embedding_model_uuid"
+      r: false
+      sh: "Identifier for the [embedding model](https://docs.digitalocean.com/products/genai-platform/details/models/#embedding-models)."
+      t: "`$STRING`"
+    }
+    is_public: {
+      h: "Is Public"
+      n: "is_public"
+      r: false
+      sh: "Whether the knowledge base is public or not"
+      t: "`$BOOLEAN`"
+    }
+    last_indexing_job: {
+      h: "Last Indexing Job"
+      n: "last_indexing_job"
+      r: false
+      sh: "IndexingJob description"
+      t: "`$OBJECT`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of knowledge base"
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "Identifier of the DigitalOcean project this knowledge base will belong to."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      sh: "Region code"
+      t: "`$STRING`"
+    }
+    reranking_config: {
+      h: "Reranking Config"
+      n: "reranking_config"
+      r: false
+      sh: "Configuration for cross-encoder reranking during retrieval."
+      t: "`$OBJECT`"
+    }
+    size: {
+      h: "Size"
+      n: "size"
+      r: false
+      t: "`$STRING`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "Tags to organize related resources"
+      t: "`$ARRAY`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Last modified"
+      t: "`$STRING`"
+    }
+    user_id: {
+      fo: "int64"
+      h: "User Id"
+      n: "user_id"
+      r: false
+      sh: "Id of user that created the knowledge base"
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Unique id for knowledge base"
+      t: "`$STRING`"
+    }
+    vpc_uuid: {
+      h: "Vpc Uuid"
+      n: "vpc_uuid"
+      r: false
+      sh: "The VPC to deploy the knowledge base database in"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_knowledge_base_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/knowledge_bases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/knowledge_bases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.knowledge_base`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/knowledge_bases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/knowledge_bases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.knowledge_bases`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/knowledge_bases/{uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "uuid"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/knowledge_bases/{uuid}"
+          q: {
+            exist: [
+              "uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              var: "uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.knowledge_base`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

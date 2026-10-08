@@ -1,0 +1,176 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { DigitaloceanSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('ApiGetChildrenOutputEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when DIGITALOCEAN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DIGITALOCEAN_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = DigitaloceanSDK.test()
+    const ent = testsdk.ApiGetChildrenOutput()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = DigitaloceanSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.ApiGetChildrenOutput().list({"agent_id":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.DIGITALOCEAN_TEST_LIVE
+    for (const op of ['list']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'api_get_children_output.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"anthropic_api_key":{"a":true,"h":"Anthropic Api Key","n":"anthropic_api_key","r":false,"sh":"Anthropic API Key Info","t":"`$OBJECT`","key$":"anthropic_api_key","index$":0},"api_key_infos":{"a":true,"h":"Api Key Infos","n":"api_key_infos","r":false,"sh":"Api key infos","t":"`$ARRAY`","key$":"api_key_infos","index$":1},"api_keys":{"a":true,"h":"Api Keys","n":"api_keys","r":false,"sh":"Api keys","t":"`$ARRAY`","key$":"api_keys","index$":2},"chatbot":{"a":true,"h":"Chatbot","n":"chatbot","r":false,"sh":"A Chatbot","t":"`$OBJECT`","key$":"chatbot","index$":3},"chatbot_identifiers":{"a":true,"h":"Chatbot Identifiers","n":"chatbot_identifiers","r":false,"sh":"Chatbot identifiers","t":"`$ARRAY`","key$":"chatbot_identifiers","index$":4},"child_agents":{"a":true,"h":"Child Agents","n":"child_agents","r":false,"sh":"Child agents","t":"`$ARRAY`","key$":"child_agents","index$":5},"conversation_logs_enabled":{"a":true,"h":"Conversation Logs Enabled","n":"conversation_logs_enabled","r":false,"sh":"Whether conversation logs are enabled for the agent","t":"`$BOOLEAN`","key$":"conversation_logs_enabled","index$":6},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":false,"sh":"Creation date / time","t":"`$STRING`","key$":"created_at","index$":7},"deployment":{"a":true,"h":"Deployment","n":"deployment","r":false,"sh":"Description of deployment","t":"`$OBJECT`","key$":"deployment","index$":8},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Description of agent","t":"`$STRING`","key$":"description","index$":9},"functions":{"a":true,"h":"Functions","n":"functions","r":false,"t":"`$ARRAY`","key$":"functions","index$":10},"guardrails":{"a":true,"h":"Guardrails","n":"guardrails","r":false,"sh":"The guardrails the agent is attached to","t":"`$ARRAY`","key$":"guardrails","index$":11},"if_case":{"a":true,"h":"If Case","n":"if_case","r":false,"t":"`$STRING`","key$":"if_case","index$":12},"instruction":{"a":true,"h":"Instruction","n":"instruction","r":false,"sh":"Agent instruction.","t":"`$STRING`","key$":"instruction","index$":13},"k":{"a":true,"fo":"int64","h":"K","n":"k","r":false,"t":"`$INTEGER`","key$":"k","index$":14},"knowledge_bases":{"a":true,"h":"Knowledge Bases","n":"knowledge_bases","r":false,"sh":"Knowledge bases","t":"`$ARRAY`","key$":"knowledge_bases","index$":15},"logging_config":{"a":true,"h":"Logging Config","n":"logging_config","r":false,"t":"`$OBJECT`","key$":"logging_config","index$":16},"max_tokens":{"a":true,"fo":"int64","h":"Max Tokens","n":"max_tokens","r":false,"t":"`$INTEGER`","key$":"max_tokens","index$":17},"mcp_servers":{"a":true,"h":"Mcp Servers","n":"mcp_servers","r":false,"sh":"MCP (Model Context Protocol) servers attached to this agent","t":"`$ARRAY`","key$":"mcp_servers","index$":18},"model":{"a":true,"h":"Model","n":"model","r":false,"sh":"Description of a Model","t":"`$OBJECT`","key$":"model","index$":19},"model_provider_key":{"a":true,"h":"Model Provider Key","n":"model_provider_key","r":false,"t":"`$OBJECT`","key$":"model_provider_key","index$":20},"model_router":{"a":true,"h":"Model Router","n":"model_router","r":false,"sh":"Model router","t":"`$OBJECT`","key$":"model_router","index$":21},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"Agent name","t":"`$STRING`","key$":"name","index$":22},"openai_api_key":{"a":true,"h":"Openai Api Key","n":"openai_api_key","r":false,"sh":"OpenAI API Key Info","t":"`$OBJECT`","key$":"openai_api_key","index$":23},"parent_agents":{"a":true,"h":"Parent Agents","n":"parent_agents","r":false,"sh":"Parent agents","t":"`$ARRAY`","key$":"parent_agents","index$":24},"project_id":{"a":true,"h":"Project Id","n":"project_id","r":false,"t":"`$STRING`","key$":"project_id","index$":25},"provide_citations":{"a":true,"h":"Provide Citations","n":"provide_citations","r":false,"sh":"Whether the agent should provide in-response citations","t":"`$BOOLEAN`","key$":"provide_citations","index$":26},"reasoning_effort":{"a":true,"h":"Reasoning Effort","n":"reasoning_effort","r":false,"sh":"The reasoning effort for the agent","t":"`$STRING`","key$":"reasoning_effort","index$":27},"region":{"a":true,"h":"Region","n":"region","r":false,"sh":"Region code","t":"`$STRING`","key$":"region","index$":28},"retrieval_method":{"a":true,"h":"Retrieval Method","n":"retrieval_method","r":false,"sh":"- RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is…","t":"`$STRING`","key$":"retrieval_method","index$":29},"route_created_at":{"a":true,"fo":"date-time","h":"Route Created At","n":"route_created_at","r":false,"sh":"Creation of route date / time","t":"`$STRING`","key$":"route_created_at","index$":30},"route_created_by":{"a":true,"fo":"uint64","h":"Route Created By","n":"route_created_by","r":false,"t":"`$STRING`","key$":"route_created_by","index$":31},"route_name":{"a":true,"h":"Route Name","n":"route_name","r":false,"sh":"Route name","t":"`$STRING`","key$":"route_name","index$":32},"route_uuid":{"a":true,"h":"Route Uuid","n":"route_uuid","r":false,"t":"`$STRING`","key$":"route_uuid","index$":33},"tags":{"a":true,"h":"Tags","n":"tags","r":false,"sh":"Agent tag to organize related resources","t":"`$ARRAY`","key$":"tags","index$":34},"temperature":{"a":true,"fo":"float","h":"Temperature","n":"temperature","r":false,"t":"`$NUMBER`","key$":"temperature","index$":35},"template":{"a":true,"h":"Template","n":"template","r":false,"sh":"Represents an AgentTemplate entity","t":"`$OBJECT`","key$":"template","index$":36},"thinking_token_budget":{"a":true,"fo":"int64","h":"Thinking Token Budget","n":"thinking_token_budget","r":false,"sh":"The thinking token budget for Anthropic extended thinking (0 = disabled)","t":"`$INTEGER`","key$":"thinking_token_budget","index$":37},"top_p":{"a":true,"fo":"float","h":"Top P","n":"top_p","r":false,"t":"`$NUMBER`","key$":"top_p","index$":38},"updated_at":{"a":true,"fo":"date-time","h":"Updated At","n":"updated_at","r":false,"sh":"Last modified","t":"`$STRING`","key$":"updated_at","index$":39},"url":{"a":true,"h":"Url","n":"url","r":false,"sh":"Access your agent under this url","t":"`$STRING`","key$":"url","index$":40},"user_id":{"a":true,"fo":"uint64","h":"User Id","n":"user_id","r":false,"sh":"Id of user that created the agent","t":"`$STRING`","key$":"user_id","index$":41},"uuid":{"a":true,"h":"Uuid","n":"uuid","r":false,"sh":"Unique agent id","t":"`$STRING`","key$":"uuid","index$":42},"version_hash":{"a":true,"h":"Version Hash","n":"version_hash","r":false,"sh":"The latest version of the agent","t":"`$STRING`","key$":"version_hash","index$":43},"vpc_egress_ips":{"a":true,"h":"Vpc Egress Ips","n":"vpc_egress_ips","r":false,"sh":"VPC Egress IPs","t":"`$ARRAY`","key$":"vpc_egress_ips","index$":44},"vpc_uuid":{"a":true,"h":"Vpc Uuid","n":"vpc_uuid","r":false,"t":"`$STRING`","key$":"vpc_uuid","index$":45},"web_fetch_enabled":{"a":true,"h":"Web Fetch Enabled","n":"web_fetch_enabled","r":false,"sh":"Whether this agent can use the built-in web_fetch tool.","t":"`$BOOLEAN`","key$":"web_fetch_enabled","index$":46},"web_search_enabled":{"a":true,"h":"Web Search Enabled","n":"web_search_enabled","r":false,"sh":"Whether this agent can use the built-in web_search tool.","t":"`$BOOLEAN`","key$":"web_search_enabled","index$":47},"workspace":{"a":true,"h":"Workspace","n":"workspace","r":false,"t":"`$OBJECT`","key$":"workspace","index$":48}},"name":"api_get_children_output","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v2/gen-ai/agents/{uuid}/child_agents","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"\"123e4567-e89b-12d3-a456-426614174000\"","k":"param","n":"agent_id","or":"uuid","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/v2/gen-ai/agents/{uuid}/child_agents","q":{"exist":["agent_id"]},"r":{"param":{"uuid":"agent_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v2"},{"lit":"gen-ai"},{"lit":"agents"},{"var":"agent_id"},{"lit":"child_agents"}],"t":{"req":"`reqdata`","res":"`body.children`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"api_get_children_output","name__orig":"api_get_children_output","Name":"ApiGetChildrenOutput","name_":"api_get_children_output","name-":"api-get-children-output","NAME":"API_GET_CHILDREN_OUTPUT","index$":33}, {"active":true,"entity":"api_get_children_output","key$":"BasicApiGetChildrenOutputFlow","kind":"basic","name":"BasicApiGetChildrenOutputFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"agent_id":"agent01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"api_get_children_output_ref01"}}],"index$":0}]}, 'ApiGetChildrenOutput', {"GET /v2/gen-ai/agents/{uuid}/child_agents":{"protocol":"http","parameters":[{"description":"Agent id","example":"\"123e4567-e89b-12d3-a456-426614174000\"","in":"path","name":"uuid","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let api_get_children_output_ref01_data = Object.values(setup.data.existing.api_get_children_output)[0] as any
+
+    // LIST
+    const api_get_children_output_ref01_ent = client.ApiGetChildrenOutput()
+    const api_get_children_output_ref01_match: any = {}
+    api_get_children_output_ref01_match['agent_id'] = setup.idmap['agent01']
+
+    const api_get_children_output_ref01_list = (await api_get_children_output_ref01_ent.list(api_get_children_output_ref01_match)).map((e: any) => e.data())
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/api_get_children_output/ApiGetChildrenOutputTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = DigitaloceanSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['api_get_children_output01','api_get_children_output02','api_get_children_output03','agent01'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'DIGITALOCEAN_TEST_API_GET_CHILDREN_OUTPUT_ENTID': idmap,
+    'DIGITALOCEAN_TEST_LIVE': 'FALSE',
+    'DIGITALOCEAN_TEST_EXPLAIN': 'FALSE',
+    'DIGITALOCEAN_APIKEY': '',
+  })
+
+  idmap = env['DIGITALOCEAN_TEST_API_GET_CHILDREN_OUTPUT_ENTID']
+
+  const live = 'TRUE' === env.DIGITALOCEAN_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['DIGITALOCEAN_TEST_API_GET_CHILDREN_OUTPUT_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new DigitaloceanSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.DIGITALOCEAN_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.DIGITALOCEAN_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

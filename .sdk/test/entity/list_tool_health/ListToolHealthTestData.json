@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "list_tool_health": {
+      "LIST_TOOL_HEALTH00": {
+        "health": "s1e",
+        "provider": "s1f",
+        "tool_slug": "s20"
+      },
+      "LIST_TOOL_HEALTH01": {
+        "health": "s3c",
+        "provider": "s3d",
+        "tool_slug": "s3e"
+      },
+      "LIST_TOOL_HEALTH02": {
+        "health": "s5a",
+        "provider": "s5b",
+        "tool_slug": "s5c"
+      }
+    }
+  },
+  "new": {
+    "list_tool_health": {
+      "list_tool_health_ref01": {
+        "health": "s78",
+        "provider": "s79",
+        "tool_slug": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/tools/health": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

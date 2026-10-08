@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "option": {
+      "OPTION00": {
+        "options": {},
+        "version_availability": {},
+        "id": "OPTION00"
+      },
+      "OPTION01": {
+        "options": {},
+        "version_availability": {},
+        "id": "OPTION01"
+      },
+      "OPTION02": {
+        "options": {},
+        "version_availability": {},
+        "id": "OPTION02"
+      }
+    }
+  },
+  "new": {
+    "option": {
+      "option_ref01": {
+        "options": {},
+        "version_availability": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/databases/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

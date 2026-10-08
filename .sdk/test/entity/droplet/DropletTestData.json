@@ -1,0 +1,232 @@
+{
+  "existing": {
+    "droplet": {
+      "DROPLET00": {
+        "backup_ids": [],
+        "created_at": "s141",
+        "disk": 322,
+        "disk_info": [],
+        "droplet": {},
+        "features": [],
+        "gpu_info": {},
+        "id": "DROPLET00",
+        "image": "s148",
+        "kernel": {},
+        "links": {},
+        "locked": false,
+        "memory": 332,
+        "meta": "s14d",
+        "name": "s14e",
+        "networks": {},
+        "next_backup_window": "s150",
+        "policies": {},
+        "possible_days": [],
+        "possible_window_starts": [],
+        "region": {},
+        "retention_period_days": 341,
+        "size": {},
+        "size_slug": "s157",
+        "snapshot_ids": [],
+        "status": "s159",
+        "subnet_uuid": "s15a",
+        "tags": [],
+        "vcpus": 348,
+        "volume_ids": [],
+        "vpc_uuid": "s15e",
+        "window_length_hours": 351
+      },
+      "DROPLET01": {
+        "backup_ids": [],
+        "created_at": "s281",
+        "disk": 642,
+        "disk_info": [],
+        "droplet": {},
+        "features": [],
+        "gpu_info": {},
+        "id": "DROPLET01",
+        "image": "s288",
+        "kernel": {},
+        "links": {},
+        "locked": false,
+        "memory": 652,
+        "meta": "s28d",
+        "name": "s28e",
+        "networks": {},
+        "next_backup_window": "s290",
+        "policies": {},
+        "possible_days": [],
+        "possible_window_starts": [],
+        "region": {},
+        "retention_period_days": 661,
+        "size": {},
+        "size_slug": "s297",
+        "snapshot_ids": [],
+        "status": "s299",
+        "subnet_uuid": "s29a",
+        "tags": [],
+        "vcpus": 668,
+        "volume_ids": [],
+        "vpc_uuid": "s29e",
+        "window_length_hours": 671
+      },
+      "DROPLET02": {
+        "backup_ids": [],
+        "created_at": "s3c1",
+        "disk": 962,
+        "disk_info": [],
+        "droplet": {},
+        "features": [],
+        "gpu_info": {},
+        "id": "DROPLET02",
+        "image": "s3c8",
+        "kernel": {},
+        "links": {},
+        "locked": false,
+        "memory": 972,
+        "meta": "s3cd",
+        "name": "s3ce",
+        "networks": {},
+        "next_backup_window": "s3d0",
+        "policies": {},
+        "possible_days": [],
+        "possible_window_starts": [],
+        "region": {},
+        "retention_period_days": 981,
+        "size": {},
+        "size_slug": "s3d7",
+        "snapshot_ids": [],
+        "status": "s3d9",
+        "subnet_uuid": "s3da",
+        "tags": [],
+        "vcpus": 988,
+        "volume_ids": [],
+        "vpc_uuid": "s3de",
+        "window_length_hours": 991
+      }
+    }
+  },
+  "new": {
+    "droplet": {
+      "droplet_ref01": {
+        "backup_ids": [],
+        "created_at": "s501",
+        "disk": 1282,
+        "disk_info": [],
+        "droplet": {},
+        "features": [],
+        "gpu_info": {},
+        "image": "s508",
+        "kernel": {},
+        "links": {},
+        "locked": false,
+        "memory": 1292,
+        "meta": "s50d",
+        "name": "s50e",
+        "networks": {},
+        "next_backup_window": "s510",
+        "policies": {},
+        "possible_days": [],
+        "possible_window_starts": [],
+        "region": {},
+        "retention_period_days": 1301,
+        "size": {},
+        "size_slug": "s517",
+        "snapshot_ids": [],
+        "status": "s519",
+        "subnet_uuid": "s51a",
+        "tags": [],
+        "vcpus": 1308,
+        "volume_ids": [],
+        "vpc_uuid": "s51e",
+        "window_length_hours": 1311
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/droplets/{droplet_id}/destroy_with_associated_resources/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/backups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/destroy_with_associated_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/firewalls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/kernels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/neighbors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/snapshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/backups/supported_policies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/{droplet_id}/backups/policy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/droplets/backups/policies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets/{droplet_id}/destroy_with_associated_resources/dangerous": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets/{droplet_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets/{droplet_id}/destroy_with_associated_resources/selective": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/droplets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

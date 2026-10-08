@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "associated_kubernetes_resource": {
+      "ASSOCIATED_KUBERNETES_RESOURCE00": {
+        "load_balancers": [],
+        "volume_snapshots": [],
+        "volumes": [],
+        "cluster_id": "CLUSTER01"
+      },
+      "ASSOCIATED_KUBERNETES_RESOURCE01": {
+        "load_balancers": [],
+        "volume_snapshots": [],
+        "volumes": [],
+        "cluster_id": "CLUSTER01"
+      },
+      "ASSOCIATED_KUBERNETES_RESOURCE02": {
+        "load_balancers": [],
+        "volume_snapshots": [],
+        "volumes": [],
+        "cluster_id": "CLUSTER01"
+      }
+    }
+  },
+  "new": {
+    "associated_kubernetes_resource": {
+      "associated_kubernetes_resource_ref01": {
+        "load_balancers": [],
+        "volume_snapshots": [],
+        "volumes": []
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

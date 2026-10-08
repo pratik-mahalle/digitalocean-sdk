@@ -1,0 +1,89 @@
+# Entity: api_delete_knowledge_base_data_source_output
+
+main: kit: entity: api_delete_knowledge_base_data_source_output: {
+
+  alias: field: {}
+
+  name: "api_delete_knowledge_base_data_source_output"
+  op: {
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "data_source_uuid"
+                or: "data_source_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "knowledge_base_id"
+                or: "knowledge_base_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}"
+          q: {
+            exist: [
+              "data_source_uuid"
+              "knowledge_base_id"
+            ]
+          }
+          r: {
+            param: {
+              knowledge_base_uuid: "knowledge_base_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "knowledge_bases"
+            }
+            {
+              var: "knowledge_base_id"
+            }
+            {
+              lit: "data_sources"
+            }
+            {
+              var: "data_source_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

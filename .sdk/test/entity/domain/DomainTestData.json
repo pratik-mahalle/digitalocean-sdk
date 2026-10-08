@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "domain": {
+      "DOMAIN00": {
+        "id": "DOMAIN00",
+        "ip_address": "s33",
+        "name": "s34",
+        "ttl": 53,
+        "zone_file": "s36"
+      },
+      "DOMAIN01": {
+        "id": "DOMAIN01",
+        "ip_address": "s65",
+        "name": "s66",
+        "ttl": 103,
+        "zone_file": "s68"
+      },
+      "DOMAIN02": {
+        "id": "DOMAIN02",
+        "ip_address": "s97",
+        "name": "s98",
+        "ttl": 153,
+        "zone_file": "s9a"
+      }
+    }
+  },
+  "new": {
+    "domain": {
+      "domain_ref01": {
+        "ip_address": "sc9",
+        "name": "sca",
+        "ttl": 203,
+        "zone_file": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/domains/{domain_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/domains/{domain_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

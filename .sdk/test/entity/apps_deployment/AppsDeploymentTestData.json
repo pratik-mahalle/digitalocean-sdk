@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "apps_deployment": {
+      "APPS_DEPLOYMENT00": {
+        "cause": "sbe",
+        "cloned_from": "sbf",
+        "components": [],
+        "created_at": "sc1",
+        "deployment_id": "DEPLOYMENT01",
+        "force_build": false,
+        "functions": [],
+        "id": "APPS_DEPLOYMENT00",
+        "jobs": [],
+        "phase": "sc7",
+        "phase_last_updated_at": "sc8",
+        "progress": {},
+        "services": [],
+        "skip_pin": false,
+        "spec": {},
+        "static_sites": [],
+        "tier_slug": "sce",
+        "updated_at": "scf",
+        "workers": [],
+        "app_id": "APP01"
+      },
+      "APPS_DEPLOYMENT01": {
+        "cause": "s17c",
+        "cloned_from": "s17d",
+        "components": [],
+        "created_at": "s17f",
+        "deployment_id": "DEPLOYMENT01",
+        "force_build": false,
+        "functions": [],
+        "id": "APPS_DEPLOYMENT01",
+        "jobs": [],
+        "phase": "s185",
+        "phase_last_updated_at": "s186",
+        "progress": {},
+        "services": [],
+        "skip_pin": false,
+        "spec": {},
+        "static_sites": [],
+        "tier_slug": "s18c",
+        "updated_at": "s18d",
+        "workers": [],
+        "app_id": "APP01"
+      },
+      "APPS_DEPLOYMENT02": {
+        "cause": "s23a",
+        "cloned_from": "s23b",
+        "components": [],
+        "created_at": "s23d",
+        "deployment_id": "DEPLOYMENT01",
+        "force_build": false,
+        "functions": [],
+        "id": "APPS_DEPLOYMENT02",
+        "jobs": [],
+        "phase": "s243",
+        "phase_last_updated_at": "s244",
+        "progress": {},
+        "services": [],
+        "skip_pin": false,
+        "spec": {},
+        "static_sites": [],
+        "tier_slug": "s24a",
+        "updated_at": "s24b",
+        "workers": [],
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "apps_deployment": {
+      "apps_deployment_ref01": {
+        "cause": "s2f8",
+        "cloned_from": "s2f9",
+        "components": [],
+        "created_at": "s2fb",
+        "deployment_id": "DEPLOYMENT01",
+        "force_build": false,
+        "functions": [],
+        "jobs": [],
+        "phase": "s301",
+        "phase_last_updated_at": "s302",
+        "progress": {},
+        "services": [],
+        "skip_pin": false,
+        "spec": {},
+        "static_sites": [],
+        "tier_slug": "s308",
+        "updated_at": "s309",
+        "workers": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/{app_id}/deployments/{deployment_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/deployments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/restart": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/rollback": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/apps/{app_id}/rollback/revert": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/deployments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/deployments/{deployment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

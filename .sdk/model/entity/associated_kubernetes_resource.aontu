@@ -1,0 +1,93 @@
+# Entity: associated_kubernetes_resource
+
+main: kit: entity: associated_kubernetes_resource: {
+
+  alias: field: {}
+
+  fields: {
+    load_balancers: {
+      h: "Load Balancers"
+      n: "load_balancers"
+      r: false
+      sh: "A list of names and IDs for associated load balancers that can be destroyed along with the cluster."
+      t: "`$ARRAY`"
+    }
+    volume_snapshots: {
+      h: "Volume Snapshots"
+      n: "volume_snapshots"
+      r: false
+      sh: "A list of names and IDs for associated volume snapshots that can be destroyed along with the cluster."
+      t: "`$ARRAY`"
+    }
+    volumes: {
+      h: "Volumes"
+      n: "volumes"
+      r: false
+      sh: "A list of names and IDs for associated volumes that can be destroyed along with the cluster."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "associated_kubernetes_resource"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "bd5f5959-5e1e-4205-a714-a914373942af"
+                k: "param"
+                n: "cluster_id"
+                or: "cluster_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/kubernetes/clusters/{cluster_id}/destroy_with_associated_resources"
+          q: {
+            exist: [
+              "cluster_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "kubernetes"
+            }
+            {
+              lit: "clusters"
+            }
+            {
+              var: "cluster_id"
+            }
+            {
+              lit: "destroy_with_associated_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

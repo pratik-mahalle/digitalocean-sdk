@@ -1,0 +1,26 @@
+# BasicListToolbeltProviderFlow
+
+main: kit: flow: BasicListToolbeltProviderFlow:
+{
+  entity: "list_toolbelt_provider",
+  kind: "basic",
+  name: "BasicListToolbeltProviderFlow",
+  step: [
+    {
+      m: {
+        name: "name01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_toolbelt_provider_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListToolbeltProviderFlow"
+}

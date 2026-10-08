@@ -1,0 +1,67 @@
+# Entity: kubernetes_option
+
+main: kit: entity: kubernetes_option: {
+
+  alias: field: {}
+
+  fields: {
+    regions: {
+      h: "Regions"
+      n: "regions"
+      r: false
+      t: "`$ARRAY`"
+    }
+    sizes: {
+      h: "Sizes"
+      n: "sizes"
+      r: false
+      t: "`$ARRAY`"
+    }
+    versions: {
+      h: "Versions"
+      n: "versions"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "kubernetes_option"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/kubernetes/options"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/kubernetes/options"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "kubernetes"
+            }
+            {
+              lit: "options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.options`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

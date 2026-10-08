@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "app_job_invocation": {
+      "APP_JOB_INVOCATION00": {
+        "completed_at": "s50",
+        "created_at": "s51",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_JOB_INVOCATION00",
+        "job_name": "s54",
+        "phase": "s55",
+        "started_at": "s56",
+        "trigger": {},
+        "app_id": "APP01",
+        "job_invocation_id": "JOB_INVOCATION01"
+      },
+      "APP_JOB_INVOCATION01": {
+        "completed_at": "sa0",
+        "created_at": "sa1",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_JOB_INVOCATION01",
+        "job_name": "sa4",
+        "phase": "sa5",
+        "started_at": "sa6",
+        "trigger": {},
+        "app_id": "APP01",
+        "job_invocation_id": "JOB_INVOCATION01"
+      },
+      "APP_JOB_INVOCATION02": {
+        "completed_at": "sf0",
+        "created_at": "sf1",
+        "deployment_id": "DEPLOYMENT01",
+        "id": "APP_JOB_INVOCATION02",
+        "job_name": "sf4",
+        "phase": "sf5",
+        "started_at": "sf6",
+        "trigger": {},
+        "app_id": "APP01",
+        "job_invocation_id": "JOB_INVOCATION01"
+      }
+    }
+  },
+  "new": {
+    "app_job_invocation": {
+      "app_job_invocation_ref01": {
+        "completed_at": "s140",
+        "created_at": "s141",
+        "deployment_id": "DEPLOYMENT01",
+        "job_name": "s144",
+        "phase": "s145",
+        "started_at": "s146",
+        "trigger": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/{app_id}/job-invocations/{job_invocation_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/job-invocations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/job-invocations/{job_invocation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

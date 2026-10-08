@@ -1,0 +1,217 @@
+# Entity: api_simulation_journey
+
+main: kit: entity: api_simulation_journey: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Time created at."
+      t: "`$STRING`"
+    }
+    duration_sec: {
+      fo: "uint64"
+      h: "Duration Sec"
+      n: "duration_sec"
+      r: false
+      sh: "Wall-clock time taken for the journey to complete, in seconds."
+      t: "`$STRING`"
+    }
+    failure_reason: {
+      h: "Failure Reason"
+      n: "failure_reason"
+      r: false
+      sh: "Human-readable explanation of a terminal FAILED status."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    journey_index: {
+      fo: "int64"
+      h: "Journey Index"
+      n: "journey_index"
+      r: false
+      sh: "Zero-based index of this journey within its scenario's exploration budget."
+      t: "`$INTEGER`"
+    }
+    journey_uuid: {
+      h: "Journey Uuid"
+      n: "journey_uuid"
+      r: false
+      sh: "UUID of the journey."
+      t: "`$STRING`"
+    }
+    judge_reasoning: {
+      h: "Judge Reasoning"
+      n: "judge_reasoning"
+      r: false
+      sh: "Optional judge reasoning for the verdict."
+      t: "`$STRING`"
+    }
+    run_uuid: {
+      h: "Run Uuid"
+      n: "run_uuid"
+      r: false
+      sh: "UUID of the run this journey belongs to."
+      t: "`$STRING`"
+    }
+    scenario_uuid: {
+      h: "Scenario Uuid"
+      n: "scenario_uuid"
+      r: false
+      sh: "UUID of the scenario this journey executed."
+      t: "`$STRING`"
+    }
+    session_id: {
+      h: "Session Id"
+      n: "session_id"
+      r: false
+      sh: "Session identifier for this journey."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Lifecycle status of a single journey."
+      t: "`$STRING`"
+    }
+    token_usage: {
+      h: "Token Usage"
+      n: "token_usage"
+      r: false
+      sh: "Per-actor token accounting for a run or journey."
+      t: "`$OBJECT`"
+    }
+    trajectory_bucket_name: {
+      h: "Trajectory Bucket Name"
+      n: "trajectory_bucket_name"
+      r: false
+      sh: "Object storage bucket holding the trajectory JSON."
+      t: "`$STRING`"
+    }
+    trajectory_bucket_region: {
+      h: "Trajectory Bucket Region"
+      n: "trajectory_bucket_region"
+      r: false
+      sh: "Object storage bucket region for the trajectory JSON."
+      t: "`$STRING`"
+    }
+    trajectory_spaces_key: {
+      h: "Trajectory Spaces Key"
+      n: "trajectory_spaces_key"
+      r: false
+      sh: "Object storage key for the trajectory JSON."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "Time last updated at."
+      t: "`$STRING`"
+    }
+    verdict: {
+      h: "Verdict"
+      n: "verdict"
+      r: false
+      sh: "The judge's verdict for a journey."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_simulation_journey"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "id"
+                or: "journey_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "simulation_run_id"
+                or: "run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}"
+          q: {
+            exist: [
+              "id"
+              "simulation_run_id"
+            ]
+          }
+          r: {
+            param: {
+              journey_uuid: "id"
+              run_uuid: "simulation_run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "simulation_runs"
+            }
+            {
+              var: "simulation_run_id"
+            }
+            {
+              lit: "journeys"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.journey`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

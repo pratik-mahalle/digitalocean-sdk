@@ -1,0 +1,118 @@
+# Entity: vectordb_restore_backup
+
+main: kit: entity: vectordb_restore_backup: {
+
+  alias: field: {}
+
+  fields: {
+    backup_id: {
+      h: "Backup Id"
+      n: "backup_id"
+      r: false
+      sh: "The backup ID being restored."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Required."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Initial status of the restore operation (e.g., \"STARTED\")."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "vectordb_restore_backup"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/vector-databases/{id}/backups/{backup_id}/restore"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"example string\""
+                k: "param"
+                n: "backup_id"
+                or: "backup_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "\"example string\""
+                k: "param"
+                n: "vector_database_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/vector-databases/{id}/backups/{backup_id}/restore"
+          q: {
+            exist: [
+              "backup_id"
+              "vector_database_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "vector_database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "vector-databases"
+            }
+            {
+              var: "vector_database_id"
+            }
+            {
+              lit: "backups"
+            }
+            {
+              var: "backup_id"
+            }
+            {
+              lit: "restore"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.vector_database")]
+  ]
+
+}

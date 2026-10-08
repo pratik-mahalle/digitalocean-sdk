@@ -1,0 +1,223 @@
+# Entity: api_model_evaluation_preset
+
+main: kit: entity: api_model_evaluation_preset: {
+
+  alias: field: {}
+
+  fields: {
+    candidate_inference_config: {
+      h: "Candidate Inference Config"
+      n: "candidate_inference_config"
+      r: false
+      sh: "Inference configuration for the candidate model during evaluation."
+      t: "`$OBJECT`"
+    }
+    candidate_model_name: {
+      h: "Candidate Model Name"
+      n: "candidate_model_name"
+      r: false
+      sh: "Model slug used to call the candidate model API."
+      t: "`$STRING`"
+    }
+    candidate_model_source: {
+      h: "Candidate Model Source"
+      n: "candidate_model_source"
+      r: false
+      sh: "Whether the candidate is a served model (serverless platform, a dedicated deployment, or a model router) or an OHS-hosted agent config."
+      t: "`$STRING`"
+    }
+    candidate_model_uuid: {
+      h: "Candidate Model Uuid"
+      n: "candidate_model_uuid"
+      r: false
+      sh: "UUID of the candidate model stored on this preset."
+      t: "`$STRING`"
+    }
+    candidate_system_prompt: {
+      h: "Candidate System Prompt"
+      n: "candidate_system_prompt"
+      r: false
+      sh: "System prompt / instructions to send to the candidate model."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Timestamp when the preset was created."
+      t: "`$STRING`"
+    }
+    dataset_name: {
+      h: "Dataset Name"
+      n: "dataset_name"
+      r: false
+      sh: "Display name of the dataset stored on this preset."
+      t: "`$STRING`"
+    }
+    dataset_uuid: {
+      h: "Dataset Uuid"
+      n: "dataset_uuid"
+      r: false
+      sh: "UUID of the dataset stored on this preset."
+      t: "`$STRING`"
+    }
+    eval_preset_uuid: {
+      h: "Eval Preset Uuid"
+      n: "eval_preset_uuid"
+      r: false
+      sh: "UUID of the evaluation preset."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    judge_model_name: {
+      h: "Judge Model Name"
+      n: "judge_model_name"
+      r: false
+      sh: "Display name of the judge model stored on this preset."
+      t: "`$STRING`"
+    }
+    judge_model_uuid: {
+      h: "Judge Model Uuid"
+      n: "judge_model_uuid"
+      r: false
+      sh: "UUID of the judge model stored on this preset."
+      t: "`$STRING`"
+    }
+    metrics: {
+      h: "Metrics"
+      n: "metrics"
+      r: false
+      sh: "Metrics selected for this preset."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the evaluation preset."
+      t: "`$STRING`"
+    }
+    saved_sections: {
+      h: "Saved Sections"
+      n: "saved_sections"
+      r: false
+      sh: "Sections of the inline evaluation config that were persisted when this preset was created."
+      t: "`$ARRAY`"
+    }
+    star_metric: {
+      h: "Star Metric"
+      n: "star_metric"
+      r: false
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "api_model_evaluation_preset"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_presets"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_presets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_presets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.presets`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "id"
+                or: "eval_preset_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_presets/{eval_preset_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              eval_preset_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_presets"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.preset`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

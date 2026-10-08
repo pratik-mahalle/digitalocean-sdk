@@ -1,0 +1,423 @@
+# Entity: mcp_server
+
+main: kit: entity: mcp_server: {
+
+  alias: field: {}
+
+  fields: {
+    api_key: {
+      h: "Api Key"
+      n: "api_key"
+      r: false
+      sh: "For `credentialRefSource` secret: the key or token itself."
+      t: "`$STRING`"
+      wo: true
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "When the server was registered, in RFC 3339 format."
+      t: "`$STRING`"
+    }
+    credentialRef: {
+      h: "Credential Ref"
+      n: "credentialRef"
+      r: false
+      sh: "The secret reference supplied at registration when source=secret, or the team's OAuth credential ID when source=connection."
+      t: "`$STRING`"
+    }
+    credentialRefSource: {
+      h: "Credential Ref Source"
+      n: "credentialRefSource"
+      r: false
+      sh: "How requests to the server authenticate: none, secret (a key or token sent in the Authorization header), or connection (each user's own OAuth authorization)."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Team-authored description, shown on the server's catalog card."
+      t: "`$STRING`"
+    }
+    endpoint: {
+      h: "Endpoint"
+      n: "endpoint"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "HTTPS URL of the server's MCP endpoint."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    lastSyncedAt: {
+      h: "Last Synced At"
+      n: "lastSyncedAt"
+      r: false
+      sh: "When discovery last succeeded, in RFC 3339 format; empty until the first success."
+      t: "`$STRING`"
+    }
+    oauth_authorization_ttl_seconds: {
+      fo: "uint64"
+      h: "Oauth Authorization Ttl Seconds"
+      n: "oauth_authorization_ttl_seconds"
+      r: false
+      sh: "How long a user's authorization is reused before re-consent."
+      t: "`$STRING`"
+    }
+    oauth_authorize_url: {
+      h: "Oauth Authorize Url"
+      n: "oauth_authorize_url"
+      r: false
+      sh: "OAuth authorization endpoint."
+      t: "`$STRING`"
+    }
+    oauth_client_id: {
+      h: "Oauth Client Id"
+      n: "oauth_client_id"
+      r: false
+      sh: "Required for `credentialRefSource` connection: the client ID of your team's OAuth client for the server."
+      t: "`$STRING`"
+    }
+    oauth_client_secret: {
+      h: "Oauth Client Secret"
+      n: "oauth_client_secret"
+      r: false
+      sh: "Required for `credentialRefSource` connection."
+      t: "`$STRING`"
+      wo: true
+    }
+    oauth_scopes: {
+      h: "Oauth Scopes"
+      n: "oauth_scopes"
+      r: false
+      sh: "OAuth scopes requested from each user."
+      t: "`$ARRAY`"
+    }
+    oauth_token_url: {
+      h: "Oauth Token Url"
+      n: "oauth_token_url"
+      r: false
+      sh: "Required for `credentialRefSource` connection: the OAuth token endpoint, under the same rules as `oauth_authorize_url`."
+      t: "`$STRING`"
+    }
+    protocolVersion: {
+      h: "Protocol Version"
+      n: "protocolVersion"
+      r: false
+      sh: "MCP protocol revision negotiated with the server."
+      t: "`$STRING`"
+    }
+    serverRef: {
+      h: "Server Ref"
+      n: "serverRef"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Server identifier, unique within your team."
+      t: "`$STRING`"
+    }
+    syncError: {
+      h: "Sync Error"
+      n: "syncError"
+      r: false
+      sh: "Why the latest discovery failed; empty after a successful one."
+      t: "`$STRING`"
+    }
+    syncStatus: {
+      h: "Sync Status"
+      n: "syncStatus"
+      r: false
+      sh: "Outcome of the latest discovery: pending (no discovery has finished yet), ok, failed, or `unsupported_protocol`."
+      t: "`$STRING`"
+    }
+    toolCount: {
+      fo: "int32"
+      h: "Tool Count"
+      n: "toolCount"
+      r: false
+      sh: "Number of tools discovered on the server, whether enabled or not."
+      t: "`$INTEGER`"
+    }
+    transport: {
+      h: "Transport"
+      n: "transport"
+      r: false
+      sh: "Always `streamable_http`."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "When the server was last modified, in RFC 3339 format."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "mcp_server"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/action-gateway/mcp-servers"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/action-gateway/mcp-servers"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.mcpServer`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/mcp-servers"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/action-gateway/mcp-servers"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.mcpServers`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/mcp-servers/{server_ref}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "id"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              server_ref: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.mcpServer`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/action-gateway/mcp-servers/{server_ref}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "id"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              server_ref: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.mcpServer`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/action-gateway/mcp-servers/{server_ref}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "id"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              server_ref: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.mcpServer`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

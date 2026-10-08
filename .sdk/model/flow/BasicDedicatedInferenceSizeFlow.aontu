@@ -1,0 +1,22 @@
+# BasicDedicatedInferenceSizeFlow
+
+main: kit: flow: BasicDedicatedInferenceSizeFlow:
+{
+  entity: "dedicated_inference_size",
+  kind: "basic",
+  name: "BasicDedicatedInferenceSizeFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dedicated_inference_size_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDedicatedInferenceSizeFlow"
+}

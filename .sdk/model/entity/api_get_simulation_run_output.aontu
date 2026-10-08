@@ -1,0 +1,140 @@
+# Entity: api_get_simulation_run_output
+
+main: kit: entity: api_get_simulation_run_output: {
+
+  alias: field: {}
+
+  fields: {
+    scenario_results: {
+      h: "Scenario Results"
+      n: "scenario_results"
+      r: false
+      sh: "Per-scenario breakdown of journey outcomes, aggregated from journey rows."
+      t: "`$ARRAY`"
+    }
+    simulation_run: {
+      h: "Simulation Run"
+      n: "simulation_run"
+      r: false
+      sh: "One execution of a scenario set against a candidate agent."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "api_get_simulation_run_output"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/simulation_runs/{run_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "run_uuid"
+                or: "run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/simulation_runs/{run_uuid}"
+          q: {
+            exist: [
+              "run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "simulation_runs"
+            }
+            {
+              var: "run_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/gen-ai/simulation_runs/{run_uuid}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "run_uuid"
+                or: "run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/gen-ai/simulation_runs/{run_uuid}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "simulation_runs"
+            }
+            {
+              var: "run_uuid"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.simulation_run`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

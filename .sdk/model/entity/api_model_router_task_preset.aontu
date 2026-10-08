@@ -1,0 +1,127 @@
+# Entity: api_model_router_task_preset
+
+main: kit: entity: api_model_router_task_preset: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      sh: "Higher-level grouping used by the UI"
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Task description"
+      t: "`$STRING`"
+    }
+    models: {
+      h: "Models"
+      n: "models"
+      r: false
+      sh: "Default models assigned to this task"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Display name"
+      t: "`$STRING`"
+    }
+    selection_policy: {
+      h: "Selection Policy"
+      n: "selection_policy"
+      r: false
+      sh: "Selection policy preference for choosing among assigned models."
+      t: "`$OBJECT`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: false
+      sh: "Lightweight labels for filtering"
+      t: "`$ARRAY`"
+    }
+    task_slug: {
+      h: "Task Slug"
+      n: "task_slug"
+      r: false
+      sh: "Task slug"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_model_router_task_preset"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/models/routers/tasks/presets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/models/routers/tasks/presets"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "models"
+            }
+            {
+              lit: "routers"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              lit: "presets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tasks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

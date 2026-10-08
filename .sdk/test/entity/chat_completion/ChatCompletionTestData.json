@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "chat_completion": {
+      "CHAT_COMPLETION00": {
+        "choices": [],
+        "created": 261,
+        "frequency_penalty": 262,
+        "id": "CHAT_COMPLETION00",
+        "logit_bias": {},
+        "logprobs": false,
+        "max_completion_tokens": 266,
+        "max_tokens": 267,
+        "messages": [],
+        "metadata": {},
+        "model": "s10e",
+        "n": 271,
+        "object": "s110",
+        "presence_penalty": 273,
+        "reasoning_effort": "s112",
+        "seed": 275,
+        "stop": "s114",
+        "stream": false,
+        "stream_options": {},
+        "temperature": 279,
+        "tool_choice": "s118",
+        "tools": [],
+        "top_logprobs": 282,
+        "top_p": 283,
+        "usage": {},
+        "user": "s11d"
+      },
+      "CHAT_COMPLETION01": {
+        "choices": [],
+        "created": 521,
+        "frequency_penalty": 522,
+        "id": "CHAT_COMPLETION01",
+        "logit_bias": {},
+        "logprobs": false,
+        "max_completion_tokens": 526,
+        "max_tokens": 527,
+        "messages": [],
+        "metadata": {},
+        "model": "s212",
+        "n": 531,
+        "object": "s214",
+        "presence_penalty": 533,
+        "reasoning_effort": "s216",
+        "seed": 535,
+        "stop": "s218",
+        "stream": false,
+        "stream_options": {},
+        "temperature": 539,
+        "tool_choice": "s21c",
+        "tools": [],
+        "top_logprobs": 542,
+        "top_p": 543,
+        "usage": {},
+        "user": "s221"
+      },
+      "CHAT_COMPLETION02": {
+        "choices": [],
+        "created": 781,
+        "frequency_penalty": 782,
+        "id": "CHAT_COMPLETION02",
+        "logit_bias": {},
+        "logprobs": false,
+        "max_completion_tokens": 786,
+        "max_tokens": 787,
+        "messages": [],
+        "metadata": {},
+        "model": "s316",
+        "n": 791,
+        "object": "s318",
+        "presence_penalty": 793,
+        "reasoning_effort": "s31a",
+        "seed": 795,
+        "stop": "s31c",
+        "stream": false,
+        "stream_options": {},
+        "temperature": 799,
+        "tool_choice": "s320",
+        "tools": [],
+        "top_logprobs": 802,
+        "top_p": 803,
+        "usage": {},
+        "user": "s325"
+      }
+    }
+  },
+  "new": {
+    "chat_completion": {
+      "chat_completion_ref01": {
+        "choices": [],
+        "created": 1041,
+        "frequency_penalty": 1042,
+        "logit_bias": {},
+        "logprobs": false,
+        "max_completion_tokens": 1046,
+        "max_tokens": 1047,
+        "messages": [],
+        "metadata": {},
+        "model": "s41a",
+        "n": 1051,
+        "object": "s41c",
+        "presence_penalty": 1053,
+        "reasoning_effort": "s41e",
+        "seed": 1055,
+        "stop": "s420",
+        "stream": false,
+        "stream_options": {},
+        "temperature": 1059,
+        "tool_choice": "s424",
+        "tools": [],
+        "top_logprobs": 1062,
+        "top_p": 1063,
+        "usage": {},
+        "user": "s429"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/chat/completions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v1/chat/completions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

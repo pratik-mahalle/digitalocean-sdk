@@ -1,0 +1,18 @@
+# BasicAsyncInvokeFlow
+
+main: kit: flow: BasicAsyncInvokeFlow:
+{
+  entity: "async_invoke",
+  kind: "basic",
+  name: "BasicAsyncInvokeFlow",
+  step: [
+    {
+      i: {
+        ref: "async_invoke_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAsyncInvokeFlow"
+}

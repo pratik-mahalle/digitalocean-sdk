@@ -1,0 +1,22 @@
+# BasicApiModelRouterPresetFlow
+
+main: kit: flow: BasicApiModelRouterPresetFlow:
+{
+  entity: "api_model_router_preset",
+  kind: "basic",
+  name: "BasicApiModelRouterPresetFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_model_router_preset_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiModelRouterPresetFlow"
+}

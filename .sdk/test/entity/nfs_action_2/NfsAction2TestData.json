@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "nfs_action_2": {
+      "NFS_ACTION_200": {
+        "id": "NFS_ACTION_200"
+      },
+      "NFS_ACTION_201": {
+        "id": "NFS_ACTION_201"
+      },
+      "NFS_ACTION_202": {
+        "id": "NFS_ACTION_202"
+      }
+    }
+  },
+  "new": {
+    "nfs_action_2": {
+      "nfs_action_2_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /v2/nfs/{nfs_id}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

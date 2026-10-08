@@ -1,0 +1,231 @@
+# Entity: message
+
+main: kit: entity: message: {
+
+  alias: field: {}
+
+  fields: {
+    content: {
+      h: "Content"
+      n: "content"
+      r: true
+      sh: "Assistant output blocks (`text` and/or `tool_use`)."
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 1
+      }
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for this message object."
+      t: "`$STRING`"
+    }
+    max_tokens: {
+      h: "Max Tokens"
+      n: "max_tokens"
+      r: true
+      sh: "Maximum tokens to generate before stopping."
+      t: "`$INTEGER`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: true
+      sh: "Conversation turns."
+      t: "`$ARRAY`"
+      union: {
+        branches: 4
+        count: 3
+        depth: 10
+      }
+    }
+    metadata: {
+      h: "Metadata"
+      n: "metadata"
+      r: false
+      sh: "Optional request metadata."
+      t: "`$OBJECT`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: true
+      sh: "Model that produced the message."
+      t: "`$STRING`"
+    }
+    reasoning_effort: {
+      h: "Reasoning Effort"
+      n: "reasoning_effort"
+      r: false
+      sh: "DigitalOcean extension for reasoning-capable models."
+      t: "`$STRING`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: true
+      sh: "Always `assistant` for this response."
+      t: "`$STRING`"
+    }
+    speed: {
+      h: "Speed"
+      n: "speed"
+      r: false
+      sh: "DigitalOcean extension for preferred inference speed."
+      t: "`$STRING`"
+    }
+    stop_reason: {
+      h: "Stop Reason"
+      n: "stop_reason"
+      r: true
+      sh: "Why generation stopped."
+      t: "`$STRING`"
+    }
+    stop_sequence: {
+      h: "Stop Sequence"
+      n: "stop_sequence"
+      r: false
+      sh: "When `stop_reason` is `stop_sequence`, the sequence that matched."
+      t: "`$STRING`"
+    }
+    stop_sequences: {
+      h: "Stop Sequences"
+      n: "stop_sequences"
+      r: false
+      sh: "Custom strings that stop generation when produced."
+      t: "`$ARRAY`"
+    }
+    stream: {
+      h: "Stream"
+      n: "stream"
+      r: false
+      sh: "When true, the response is streamed using server-sent events (SSE)."
+      t: "`$BOOLEAN`"
+    }
+    system: {
+      h: "System"
+      n: "system"
+      r: false
+      sh: "System prompt as plain text or as an array of text blocks."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    temperature: {
+      h: "Temperature"
+      n: "temperature"
+      r: false
+      sh: "Sampling temperature between 0.0 and 1.0."
+      t: "`$NUMBER`"
+    }
+    thinking: {
+      h: "Thinking"
+      n: "thinking"
+      r: true
+      sh: "Extended thinking configuration."
+      t: "`$OBJECT`"
+    }
+    tool_choice: {
+      h: "Tool Choice"
+      n: "tool_choice"
+      r: false
+      sh: "Controls how the model uses tools: automatic selection, require any tool, force a specific tool, or a string form accepted by the service."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Tool definitions the model may invoke."
+      t: "`$ARRAY`"
+    }
+    top_k: {
+      h: "Top K"
+      n: "top_k"
+      r: false
+      sh: "Top-K sampling cutoff."
+      t: "`$INTEGER`"
+    }
+    top_p: {
+      h: "Top P"
+      n: "top_p"
+      r: false
+      sh: "Nucleus sampling; use either `temperature` or `top_p`, not both."
+      t: "`$NUMBER`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Object type discriminator."
+      t: "`$STRING`"
+    }
+    usage: {
+      h: "Usage"
+      n: "usage"
+      r: true
+      sh: "Token usage for a non-streaming `POST /v1/messages` response."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "message"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v1/messages"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v1/messages"
+          rs: {
+            alternatives: [
+              {
+                kind: "raw"
+                media: "text/event-stream"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,271 @@
+# Entity: reserved_ip
+
+main: kit: entity: reserved_ip: {
+
+  alias: field: {}
+
+  fields: {
+    droplet: {
+      h: "Droplet"
+      n: "droplet"
+      r: false
+      sh: "The Droplet that the reserved IP has been assigned to."
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    ip: {
+      fo: "ipv4"
+      h: "Ip"
+      n: "ip"
+      r: false
+      sh: "The public IP address of the reserved IP."
+      t: "`$STRING`"
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: false
+      t: "`$OBJECT`"
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: false
+      sh: "A boolean value indicating whether or not the reserved IP has pending actions preventing new ones from being submitted."
+      t: "`$BOOLEAN`"
+    }
+    project_id: {
+      fo: "uuid"
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "The UUID of the project to which the reserved IP currently belongs.<br><br>Requires `project:read` scope."
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$ANY`"
+    }
+    reserved_ip: {
+      h: "Reserved Ip"
+      n: "reserved_ip"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "reserved_ip"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/reserved_ips"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/reserved_ips"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ip`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ips"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ips"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ips`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/reserved_ips/{reserved_ip}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "45.55.96.47"
+                k: "param"
+                n: "id"
+                or: "reserved_ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/reserved_ips/{reserved_ip}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              reserved_ip: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reserved_ip`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/reserved_ips/{reserved_ip}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "45.55.96.47"
+                k: "param"
+                n: "id"
+                or: "reserved_ip"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/reserved_ips/{reserved_ip}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              reserved_ip: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "reserved_ips"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

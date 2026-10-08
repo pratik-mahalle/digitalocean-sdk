@@ -1,0 +1,29 @@
+# BasicApiUpdateAnthropicApiKeyOutputFlow
+
+main: kit: flow: BasicApiUpdateAnthropicApiKeyOutputFlow:
+{
+  entity: "api_update_anthropic_api_key_output",
+  kind: "basic",
+  name: "BasicApiUpdateAnthropicApiKeyOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_update_anthropic_api_key_output_ref01",
+        srcdatavar: "api_update_anthropic_api_key_output_ref01_data",
+        suffix: "_up0",
+        textfield: "api_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_anthropic_api_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateAnthropicApiKeyOutputFlow"
+}

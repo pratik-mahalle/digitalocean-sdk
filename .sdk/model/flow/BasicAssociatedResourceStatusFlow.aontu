@@ -1,0 +1,32 @@
+# BasicAssociatedResourceStatusFlow
+
+main: kit: flow: BasicAssociatedResourceStatusFlow:
+{
+  entity: "associated_resource_status",
+  kind: "basic",
+  name: "BasicAssociatedResourceStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "associated_resource_status_ref01",
+        srcdatavar: "associated_resource_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "associated_resource_status01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-associated_resource_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAssociatedResourceStatusFlow"
+}

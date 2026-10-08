@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "app_metrics_bandwidth_usage": {
+      "APP_METRICS_BANDWIDTH_USAGE00": {
+        "app_bandwidth_usage": [],
+        "app_id": "APP01",
+        "app_ids": [],
+        "bandwidth_bytes": "s35",
+        "date": "s36",
+        "id": "APP_METRICS_BANDWIDTH_USAGE00"
+      },
+      "APP_METRICS_BANDWIDTH_USAGE01": {
+        "app_bandwidth_usage": [],
+        "app_id": "APP01",
+        "app_ids": [],
+        "bandwidth_bytes": "s67",
+        "date": "s68",
+        "id": "APP_METRICS_BANDWIDTH_USAGE01"
+      },
+      "APP_METRICS_BANDWIDTH_USAGE02": {
+        "app_bandwidth_usage": [],
+        "app_id": "APP01",
+        "app_ids": [],
+        "bandwidth_bytes": "s99",
+        "date": "s9a",
+        "id": "APP_METRICS_BANDWIDTH_USAGE02"
+      }
+    }
+  },
+  "new": {
+    "app_metrics_bandwidth_usage": {
+      "app_metrics_bandwidth_usage_ref01": {
+        "app_bandwidth_usage": [],
+        "app_id": "APP01",
+        "app_ids": [],
+        "bandwidth_bytes": "scb",
+        "date": "scc"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/apps/metrics/bandwidth_daily": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/apps/{app_id}/metrics/bandwidth_daily": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

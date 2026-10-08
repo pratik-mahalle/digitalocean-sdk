@@ -1,0 +1,9 @@
+# BasicApiDeleteKnowledgeBaseDataSourceOutputFlow
+
+main: kit: flow: BasicApiDeleteKnowledgeBaseDataSourceOutputFlow:
+{
+  entity: "api_delete_knowledge_base_data_source_output",
+  kind: "basic",
+  name: "BasicApiDeleteKnowledgeBaseDataSourceOutputFlow",
+  "key$": "BasicApiDeleteKnowledgeBaseDataSourceOutputFlow"
+}

@@ -1,0 +1,33 @@
+# BasicApiUpdateAgentApiKeyOutputFlow
+
+main: kit: flow: BasicApiUpdateAgentApiKeyOutputFlow:
+{
+  entity: "api_update_agent_api_key_output",
+  kind: "basic",
+  name: "BasicApiUpdateAgentApiKeyOutputFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01"
+      }
+
+      i: {
+        ref: "api_update_agent_api_key_output_ref01",
+        srcdatavar: "api_update_agent_api_key_output_ref01_data",
+        suffix: "_up0",
+        textfield: "agent_uuid"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_agent_api_key_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateAgentApiKeyOutputFlow"
+}

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "api_create_data_source_file_upload_presigned_urls_output": {
+      "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT00": {
+        "files": [],
+        "request_id": "REQUEST01",
+        "uploads": [],
+        "id": "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT00"
+      },
+      "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT01": {
+        "files": [],
+        "request_id": "REQUEST01",
+        "uploads": [],
+        "id": "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT01"
+      },
+      "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT02": {
+        "files": [],
+        "request_id": "REQUEST01",
+        "uploads": [],
+        "id": "API_CREATE_DATA_SOURCE_FILE_UPLOAD_PRESIGNED_URLS_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_create_data_source_file_upload_presigned_urls_output": {
+      "api_create_data_source_file_upload_presigned_urls_output_ref01": {
+        "files": [],
+        "request_id": "REQUEST01",
+        "uploads": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/gen-ai/knowledge_bases/data_sources/file_upload_presigned_urls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/gen-ai/model_evaluation/datasets/file_upload_presigned_urls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/gen-ai/scenario_sets/file_upload_presigned_urls": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

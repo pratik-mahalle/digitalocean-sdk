@@ -1,0 +1,26 @@
+# BasicAssociatedKubernetesResourceFlow
+
+main: kit: flow: BasicAssociatedKubernetesResourceFlow:
+{
+  entity: "associated_kubernetes_resource",
+  kind: "basic",
+  name: "BasicAssociatedKubernetesResourceFlow",
+  step: [
+    {
+      m: {
+        cluster_id: "cluster01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "associated_kubernetes_resource_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAssociatedKubernetesResourceFlow"
+}

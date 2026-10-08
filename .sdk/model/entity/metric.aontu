@@ -1,0 +1,4206 @@
+# Entity: metric
+
+main: kit: entity: metric: {
+
+  alias: field: {}
+
+  fields: {
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      sh: "Result of query."
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 5
+      }
+    }
+    resultType: {
+      h: "Result Type"
+      n: "resultType"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "metric"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/load"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "avg"
+                k: "query"
+                n: "aggregate"
+                or: "aggregate"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "load1"
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/load"
+          q: {
+            exist: [
+              "aggregate"
+              "db_id"
+              "end"
+              "metric"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "load"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/schema_latency"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "insert"
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "defaultdb"
+                k: "query"
+                n: "schema"
+                or: "schema"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/schema_latency"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "metric"
+              "schema"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "schema_latency"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/schema_throughput"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "insert"
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "defaultdb"
+                k: "query"
+                n: "schema"
+                or: "schema"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/schema_throughput"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "metric"
+              "schema"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "schema_throughput"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/bandwidth"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "inbound"
+                k: "query"
+                n: "direction"
+                or: "direction"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "private"
+                k: "query"
+                n: "interface"
+                or: "interface"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/bandwidth"
+          q: {
+            exist: [
+              "direction"
+              "end"
+              "host_id"
+              "interface"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "bandwidth"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/cpu_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "avg"
+                k: "query"
+                n: "aggregate"
+                or: "aggregate"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/cpu_usage"
+          q: {
+            exist: [
+              "aggregate"
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "cpu_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/disk_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "avg"
+                k: "query"
+                n: "aggregate"
+                or: "aggregate"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/disk_usage"
+          q: {
+            exist: [
+              "aggregate"
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "disk_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/memory_usage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "avg"
+                k: "query"
+                n: "aggregate"
+                or: "aggregate"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/memory_usage"
+          q: {
+            exist: [
+              "aggregate"
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "memory_usage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/op_rates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "select"
+                k: "query"
+                n: "metric"
+                or: "metric"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/op_rates"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "metric"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "op_rates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/apps/cpu_percentage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "sample-application"
+                k: "query"
+                n: "app_component"
+                or: "app_component"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
+                k: "query"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/apps/cpu_percentage"
+          q: {
+            exist: [
+              "app_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "cpu_percentage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/apps/memory_percentage"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "sample-application"
+                k: "query"
+                n: "app_component"
+                or: "app_component"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
+                k: "query"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/apps/memory_percentage"
+          q: {
+            exist: [
+              "app_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "memory_percentage"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/apps/restart_count"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "sample-application"
+                k: "query"
+                n: "app_component"
+                or: "app_component"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2db3c021-15ad-4088-bfe8-99dc972b9cf6"
+                k: "query"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/apps/restart_count"
+          q: {
+            exist: [
+              "app_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              lit: "restart_count"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/current_cpu_utilization"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "current_cpu_utilization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/current_instances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/current_instances"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "current_instances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/current_memory_utilization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/current_memory_utilization"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "current_memory_utilization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/target_cpu_utilization"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "target_cpu_utilization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/target_instances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/target_instances"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "target_instances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet_autoscale/target_memory_utilization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "0d3db13e-a604-4944-9827-7ec2642d32ac"
+                k: "query"
+                n: "autoscale_pool_id"
+                or: "autoscale_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet_autoscale/target_memory_utilization"
+          q: {
+            exist: [
+              "autoscale_pool_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet_autoscale"
+            }
+            {
+              lit: "target_memory_utilization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/index_vs_sequential_reads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/index_vs_sequential_reads"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "index_vs_sequential_reads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/threads_active"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/threads_active"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "threads_active"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/threads_connected"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/threads_connected"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "threads_connected"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/database/mysql/threads_created_rate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "query"
+                n: "db_id"
+                or: "db_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/database/mysql/threads_created_rate"
+          q: {
+            exist: [
+              "db_id"
+              "end"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "database"
+            }
+            {
+              lit: "mysql"
+            }
+            {
+              lit: "threads_created_rate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/cpu"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/cpu"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "cpu"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/filesystem_free"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/filesystem_free"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "filesystem_free"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/filesystem_size"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/filesystem_size"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "filesystem_size"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/load_1"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/load_1"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "load_1"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/load_15"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/load_15"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "load_15"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/load_5"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/load_5"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "load_5"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/memory_available"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/memory_available"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "memory_available"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/memory_cached"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/memory_cached"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "memory_cached"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/memory_free"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/memory_free"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "memory_free"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/droplet/memory_total"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "17209102"
+                k: "query"
+                n: "host_id"
+                or: "host_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/droplet/memory_total"
+          q: {
+            exist: [
+              "end"
+              "host_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "droplet"
+            }
+            {
+              lit: "memory_total"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_connections"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_downtime"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_downtime"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_downtime"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_health_checks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_health_checks"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_health_checks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_50p"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_response_time_50p"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_95p"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_response_time_95p"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_99p"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_response_time_99p"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_response_time_avg"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_response_time_avg"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_responses"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_responses"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_responses"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_50p"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_session_duration_50p"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_95p"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_session_duration_95p"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_http_session_duration_avg"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_http_session_duration_avg"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/droplets_queue_size"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/droplets_queue_size"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "droplets_queue_size"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_connections_current"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_connections_current"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_connections_current"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_connections_limit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_connections_limit"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_connections_limit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_cpu_utilization"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_cpu_utilization"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_cpu_utilization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_bytes"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_firewall_dropped_bytes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_firewall_dropped_packets"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_firewall_dropped_packets"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_http_requests_per_second"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_http_requests_per_second"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_http_responses"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_http_responses"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_http_responses"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_http"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_http"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_network_throughput_http"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_tcp"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_network_throughput_tcp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_network_throughput_udp"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_network_throughput_udp"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_nlb_tcp_network_throughput"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_nlb_tcp_network_throughput"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_nlb_udp_network_throughput"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_nlb_udp_network_throughput"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_current"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_current"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_tls_connections_current"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_tls_connections_exceeding_rate_limit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "1620705417"
+                k: "query"
+                n: "end"
+                or: "end"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "query"
+                n: "lb_id"
+                or: "lb_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "start"
+                or: "start"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit"
+          q: {
+            exist: [
+              "end"
+              "lb_id"
+              "start"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "load_balancer"
+            }
+            {
+              lit: "frontend_tls_connections_limit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

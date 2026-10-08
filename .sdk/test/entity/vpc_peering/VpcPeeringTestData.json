@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "vpc_peering": {
+      "VPC_PEERING00": {
+        "created_at": "s32",
+        "id": "VPC_PEERING00",
+        "name": "s34",
+        "status": "s35",
+        "vpc_ids": []
+      },
+      "VPC_PEERING01": {
+        "created_at": "s64",
+        "id": "VPC_PEERING01",
+        "name": "s66",
+        "status": "s67",
+        "vpc_ids": []
+      },
+      "VPC_PEERING02": {
+        "created_at": "s96",
+        "id": "VPC_PEERING02",
+        "name": "s98",
+        "status": "s99",
+        "vpc_ids": []
+      }
+    }
+  },
+  "new": {
+    "vpc_peering": {
+      "vpc_peering_ref01": {
+        "created_at": "sc8",
+        "name": "sca",
+        "status": "scb",
+        "vpc_ids": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/vpc_peerings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpc_peerings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpc_peerings/{vpc_peering_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/vpc_peerings/{vpc_peering_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/vpc_peerings/{vpc_peering_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

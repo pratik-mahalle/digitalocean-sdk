@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "api_get_evaluation_run_results_output": {
+      "API_GET_EVALUATION_RUN_RESULTS_OUTPUT00": {
+        "evaluation_trace_spans": [],
+        "ground_truth": "s65",
+        "input": "s66",
+        "input_tokens": "s67",
+        "output": "s68",
+        "output_tokens": "s69",
+        "prompt_chunks": [],
+        "prompt_id": "PROMPT01",
+        "prompt_level_metric_results": [],
+        "trace_id": "TRACE01",
+        "evaluation_run_id": "EVALUATION_RUN01"
+      },
+      "API_GET_EVALUATION_RUN_RESULTS_OUTPUT01": {
+        "evaluation_trace_spans": [],
+        "ground_truth": "sc9",
+        "input": "sca",
+        "input_tokens": "scb",
+        "output": "scc",
+        "output_tokens": "scd",
+        "prompt_chunks": [],
+        "prompt_id": "PROMPT01",
+        "prompt_level_metric_results": [],
+        "trace_id": "TRACE01",
+        "evaluation_run_id": "EVALUATION_RUN01"
+      },
+      "API_GET_EVALUATION_RUN_RESULTS_OUTPUT02": {
+        "evaluation_trace_spans": [],
+        "ground_truth": "s12d",
+        "input": "s12e",
+        "input_tokens": "s12f",
+        "output": "s130",
+        "output_tokens": "s131",
+        "prompt_chunks": [],
+        "prompt_id": "PROMPT01",
+        "prompt_level_metric_results": [],
+        "trace_id": "TRACE01",
+        "evaluation_run_id": "EVALUATION_RUN01"
+      }
+    }
+  },
+  "new": {
+    "api_get_evaluation_run_results_output": {
+      "api_get_evaluation_run_results_output_ref01": {
+        "evaluation_trace_spans": [],
+        "ground_truth": "s191",
+        "input": "s192",
+        "input_tokens": "s193",
+        "output": "s194",
+        "output_tokens": "s195",
+        "prompt_chunks": [],
+        "prompt_id": "PROMPT01",
+        "prompt_level_metric_results": [],
+        "trace_id": "TRACE01"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/evaluation_runs/{evaluation_run_uuid}/results": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

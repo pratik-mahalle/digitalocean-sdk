@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "n1_click_application": {
+      "N1_CLICK_APPLICATION00": {
+        "addon_slugs": [],
+        "cluster_uuid": "s1f",
+        "message": "s20",
+        "id": "N1_CLICK_APPLICATION00"
+      },
+      "N1_CLICK_APPLICATION01": {
+        "addon_slugs": [],
+        "cluster_uuid": "s3d",
+        "message": "s3e",
+        "id": "N1_CLICK_APPLICATION01"
+      },
+      "N1_CLICK_APPLICATION02": {
+        "addon_slugs": [],
+        "cluster_uuid": "s5b",
+        "message": "s5c",
+        "id": "N1_CLICK_APPLICATION02"
+      }
+    }
+  },
+  "new": {
+    "n1_click_application": {
+      "n1_click_application_ref01": {
+        "addon_slugs": [],
+        "cluster_uuid": "s79",
+        "message": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/1-clicks/kubernetes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

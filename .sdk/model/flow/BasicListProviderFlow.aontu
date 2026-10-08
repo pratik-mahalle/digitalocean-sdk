@@ -1,0 +1,22 @@
+# BasicListProviderFlow
+
+main: kit: flow: BasicListProviderFlow:
+{
+  entity: "list_provider",
+  kind: "basic",
+  name: "BasicListProviderFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_provider_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListProviderFlow"
+}

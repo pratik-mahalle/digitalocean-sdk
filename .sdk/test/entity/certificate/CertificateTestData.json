@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "certificate": {
+      "CERTIFICATE00": {
+        "certificate": {},
+        "created_at": "s5b",
+        "dns_names": [],
+        "id": "CERTIFICATE00",
+        "name": "s5e",
+        "not_after": "s5f",
+        "sha1_fingerprint": "s60",
+        "state": "s61",
+        "type": "s62"
+      },
+      "CERTIFICATE01": {
+        "certificate": {},
+        "created_at": "sb5",
+        "dns_names": [],
+        "id": "CERTIFICATE01",
+        "name": "sb8",
+        "not_after": "sb9",
+        "sha1_fingerprint": "sba",
+        "state": "sbb",
+        "type": "sbc"
+      },
+      "CERTIFICATE02": {
+        "certificate": {},
+        "created_at": "s10f",
+        "dns_names": [],
+        "id": "CERTIFICATE02",
+        "name": "s112",
+        "not_after": "s113",
+        "sha1_fingerprint": "s114",
+        "state": "s115",
+        "type": "s116"
+      }
+    }
+  },
+  "new": {
+    "certificate": {
+      "certificate_ref01": {
+        "certificate": {},
+        "created_at": "s169",
+        "dns_names": [],
+        "name": "s16c",
+        "not_after": "s16d",
+        "sha1_fingerprint": "s16e",
+        "state": "s16f",
+        "type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/certificates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/certificates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/certificates/{certificate_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/certificates/{certificate_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

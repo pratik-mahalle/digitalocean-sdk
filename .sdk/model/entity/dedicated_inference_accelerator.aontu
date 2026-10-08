@@ -1,0 +1,143 @@
+# Entity: dedicated_inference_accelerator
+
+main: kit: entity: dedicated_inference_accelerator: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "Unique ID of the accelerator."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      ro: true
+      sh: "Name of the accelerator."
+      t: "`$STRING`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: false
+      ro: true
+      sh: "Role of the accelerator (e.g."
+      t: "`$STRING`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: false
+      ro: true
+      sh: "DigitalOcean GPU slug."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      ro: true
+      sh: "Status of the accelerator."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dedicated_inference_accelerator"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/dedicated-inferences/{dedicated_inference_id}/accelerators/{accelerator_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "6b5c619c-359c-44ca-87e2-47e98170c01d"
+                k: "param"
+                n: "dedicated_inference_id"
+                or: "dedicated_inference_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "5b5c619c-359c-44ca-87e2-47e98170c02f"
+                k: "param"
+                n: "id"
+                or: "accelerator_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/dedicated-inferences/{dedicated_inference_id}/accelerators/{accelerator_id}"
+          q: {
+            exist: [
+              "dedicated_inference_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              accelerator_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "dedicated-inferences"
+            }
+            {
+              var: "dedicated_inference_id"
+            }
+            {
+              lit: "accelerators"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.dedicated_inference")]
+  ]
+
+}

@@ -1,0 +1,28 @@
+# BasicApiGenerateOauth2UrlOutputFlow
+
+main: kit: flow: BasicApiGenerateOauth2UrlOutputFlow:
+{
+  entity: "api_generate_oauth2_url_output",
+  kind: "basic",
+  name: "BasicApiGenerateOauth2UrlOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_generate_oauth2_url_output_ref01",
+        srcdatavar: "api_generate_oauth2_url_output_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_generate_oauth2_url_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiGenerateOauth2UrlOutputFlow"
+}

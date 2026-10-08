@@ -1,0 +1,99 @@
+# BasicDedicatedInferenceFlow
+
+main: kit: flow: BasicDedicatedInferenceFlow:
+{
+  entity: "dedicated_inference",
+  kind: "basic",
+  name: "BasicDedicatedInferenceFlow",
+  step: [
+    {
+      i: {
+        ref: "dedicated_inference_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dedicated_inference_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dedicated_inference_ref01",
+        srcdatavar: "dedicated_inference_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dedicated_inference_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dedicated_inference_ref01",
+        srcdatavar: "dedicated_inference_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "dedicated_inference01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dedicated_inference_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dedicated_inference_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "dedicated_inference01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "dedicated_inference_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDedicatedInferenceFlow"
+}

@@ -1,0 +1,106 @@
+{
+  "existing": {
+    "api_simulation_trajectory": {
+      "API_SIMULATION_TRAJECTORY00": {
+        "agent_id": "AGENT01",
+        "completed_at": "sb5",
+        "duration_sec": "sb6",
+        "evaluation_metrics": [],
+        "failure_reason": "sb8",
+        "journey_index": 185,
+        "journey_uuid": "sba",
+        "judge": {},
+        "max_turns": 188,
+        "messages": [],
+        "run_uuid": "sbe",
+        "scenario_uuid": "sbf",
+        "session_id": "SESSION01",
+        "started_at": "sc1",
+        "status": "sc2",
+        "token_usage": {},
+        "turn_count": 196,
+        "verdict": "sc5",
+        "journey_id": "JOURNEY01",
+        "simulation_run_id": "SIMULATION_RUN01",
+        "id": "API_SIMULATION_TRAJECTORY00"
+      },
+      "API_SIMULATION_TRAJECTORY01": {
+        "agent_id": "AGENT01",
+        "completed_at": "s169",
+        "duration_sec": "s16a",
+        "evaluation_metrics": [],
+        "failure_reason": "s16c",
+        "journey_index": 365,
+        "journey_uuid": "s16e",
+        "judge": {},
+        "max_turns": 368,
+        "messages": [],
+        "run_uuid": "s172",
+        "scenario_uuid": "s173",
+        "session_id": "SESSION01",
+        "started_at": "s175",
+        "status": "s176",
+        "token_usage": {},
+        "turn_count": 376,
+        "verdict": "s179",
+        "journey_id": "JOURNEY01",
+        "simulation_run_id": "SIMULATION_RUN01",
+        "id": "API_SIMULATION_TRAJECTORY01"
+      },
+      "API_SIMULATION_TRAJECTORY02": {
+        "agent_id": "AGENT01",
+        "completed_at": "s21d",
+        "duration_sec": "s21e",
+        "evaluation_metrics": [],
+        "failure_reason": "s220",
+        "journey_index": 545,
+        "journey_uuid": "s222",
+        "judge": {},
+        "max_turns": 548,
+        "messages": [],
+        "run_uuid": "s226",
+        "scenario_uuid": "s227",
+        "session_id": "SESSION01",
+        "started_at": "s229",
+        "status": "s22a",
+        "token_usage": {},
+        "turn_count": 556,
+        "verdict": "s22d",
+        "journey_id": "JOURNEY01",
+        "simulation_run_id": "SIMULATION_RUN01",
+        "id": "API_SIMULATION_TRAJECTORY02"
+      }
+    }
+  },
+  "new": {
+    "api_simulation_trajectory": {
+      "api_simulation_trajectory_ref01": {
+        "agent_id": "AGENT01",
+        "completed_at": "s2d1",
+        "duration_sec": "s2d2",
+        "evaluation_metrics": [],
+        "failure_reason": "s2d4",
+        "journey_index": 725,
+        "journey_uuid": "s2d6",
+        "judge": {},
+        "max_turns": 728,
+        "messages": [],
+        "run_uuid": "s2da",
+        "scenario_uuid": "s2db",
+        "session_id": "SESSION01",
+        "started_at": "s2dd",
+        "status": "s2de",
+        "token_usage": {},
+        "turn_count": 736,
+        "verdict": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/simulation_runs/{run_uuid}/journeys/{journey_uuid}/trajectory": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

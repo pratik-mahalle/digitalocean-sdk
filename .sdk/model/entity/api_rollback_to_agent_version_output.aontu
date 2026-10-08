@@ -1,0 +1,98 @@
+# Entity: api_rollback_to_agent_version_output
+
+main: kit: entity: api_rollback_to_agent_version_output: {
+
+  alias: field: {}
+
+  fields: {
+    audit_header: {
+      h: "Audit Header"
+      n: "audit_header"
+      r: false
+      sh: "An alternative way to provide auth information."
+      t: "`$OBJECT`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: false
+      sh: "Agent unique identifier"
+      t: "`$STRING`"
+    }
+    version_hash: {
+      h: "Version Hash"
+      n: "version_hash"
+      r: false
+      sh: "Unique identifier"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_rollback_to_agent_version_output"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/gen-ai/agents/{uuid}/versions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "agent_id"
+                or: "uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/gen-ai/agents/{uuid}/versions"
+          q: {
+            exist: [
+              "agent_id"
+            ]
+          }
+          r: {
+            param: {
+              uuid: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "versions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

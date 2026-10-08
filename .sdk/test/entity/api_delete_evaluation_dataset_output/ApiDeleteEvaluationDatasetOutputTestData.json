@@ -1,0 +1,82 @@
+{
+  "existing": {
+    "api_delete_evaluation_dataset_output": {
+      "API_DELETE_EVALUATION_DATASET_OUTPUT00": {
+        "created_at": "s6e",
+        "dataset_name": "s6f",
+        "dataset_paradigm": "s70",
+        "dataset_type": "s71",
+        "dataset_uuid": "s72",
+        "evaluation_dataset_uuid": "s73",
+        "file_size": "s74",
+        "file_upload_dataset": {},
+        "has_ground_truth": true,
+        "name": "s77",
+        "row_count": 120,
+        "id": "API_DELETE_EVALUATION_DATASET_OUTPUT00"
+      },
+      "API_DELETE_EVALUATION_DATASET_OUTPUT01": {
+        "created_at": "sdc",
+        "dataset_name": "sdd",
+        "dataset_paradigm": "sde",
+        "dataset_type": "sdf",
+        "dataset_uuid": "se0",
+        "evaluation_dataset_uuid": "se1",
+        "file_size": "se2",
+        "file_upload_dataset": {},
+        "has_ground_truth": true,
+        "name": "se5",
+        "row_count": 230,
+        "id": "API_DELETE_EVALUATION_DATASET_OUTPUT01"
+      },
+      "API_DELETE_EVALUATION_DATASET_OUTPUT02": {
+        "created_at": "s14a",
+        "dataset_name": "s14b",
+        "dataset_paradigm": "s14c",
+        "dataset_type": "s14d",
+        "dataset_uuid": "s14e",
+        "evaluation_dataset_uuid": "s14f",
+        "file_size": "s150",
+        "file_upload_dataset": {},
+        "has_ground_truth": true,
+        "name": "s153",
+        "row_count": 340,
+        "id": "API_DELETE_EVALUATION_DATASET_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_evaluation_dataset_output": {
+      "api_delete_evaluation_dataset_output_ref01": {
+        "created_at": "s1b8",
+        "dataset_name": "s1b9",
+        "dataset_paradigm": "s1ba",
+        "dataset_type": "s1bb",
+        "dataset_uuid": "s1bc",
+        "evaluation_dataset_uuid": "s1bd",
+        "file_size": "s1be",
+        "file_upload_dataset": {},
+        "has_ground_truth": true,
+        "name": "s1c1",
+        "row_count": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/gen-ai/evaluation_datasets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/gen-ai/evaluation_datasets": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/gen-ai/evaluation_datasets/{dataset_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

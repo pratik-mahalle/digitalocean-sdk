@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "list_provider": {
+      "LIST_PROVIDER00": {
+        "auth_type": "s64",
+        "auth_types": [],
+        "connection_parameters": [],
+        "credential_parameters": [],
+        "description": "s68",
+        "display_name": "s69",
+        "name": "s6a",
+        "oauth_client_setup_url": "s6b",
+        "oauth_redirect_url": "s6c",
+        "scopes": []
+      },
+      "LIST_PROVIDER01": {
+        "auth_type": "sc8",
+        "auth_types": [],
+        "connection_parameters": [],
+        "credential_parameters": [],
+        "description": "scc",
+        "display_name": "scd",
+        "name": "sce",
+        "oauth_client_setup_url": "scf",
+        "oauth_redirect_url": "sd0",
+        "scopes": []
+      },
+      "LIST_PROVIDER02": {
+        "auth_type": "s12c",
+        "auth_types": [],
+        "connection_parameters": [],
+        "credential_parameters": [],
+        "description": "s130",
+        "display_name": "s131",
+        "name": "s132",
+        "oauth_client_setup_url": "s133",
+        "oauth_redirect_url": "s134",
+        "scopes": []
+      }
+    }
+  },
+  "new": {
+    "list_provider": {
+      "list_provider_ref01": {
+        "auth_type": "s190",
+        "auth_types": [],
+        "connection_parameters": [],
+        "credential_parameters": [],
+        "description": "s194",
+        "display_name": "s195",
+        "name": "s196",
+        "oauth_client_setup_url": "s197",
+        "oauth_redirect_url": "s198",
+        "scopes": []
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/tools/providers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

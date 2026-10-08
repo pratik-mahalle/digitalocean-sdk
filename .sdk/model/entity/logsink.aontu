@@ -1,0 +1,132 @@
+# Entity: logsink
+
+main: kit: entity: logsink: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 4
+        count: 1
+        depth: 0
+      }
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    sink_id: {
+      h: "Sink Id"
+      n: "sink_id"
+      r: true
+      sh: "A unique identifier for Logsink"
+      t: "`$STRING`"
+    }
+    sink_name: {
+      h: "Sink Name"
+      n: "sink_name"
+      r: true
+      sh: "The name of the Logsink"
+      t: "`$STRING`"
+    }
+    sink_type: {
+      h: "Sink Type"
+      n: "sink_type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "logsink"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "database_id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "50484ec3-19d6-4cd3-b56f-3b0381c289a6"
+                k: "param"
+                n: "id"
+                or: "logsink_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/logsink/{logsink_id}"
+          q: {
+            exist: [
+              "database_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "database_id"
+              logsink_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "logsink"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.database")]
+  ]
+
+}

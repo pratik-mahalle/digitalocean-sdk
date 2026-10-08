@@ -1,0 +1,59 @@
+# BasicApiDeleteAgentOutputFlow
+
+main: kit: flow: BasicApiDeleteAgentOutputFlow:
+{
+  entity: "api_delete_agent_output",
+  kind: "basic",
+  name: "BasicApiDeleteAgentOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_delete_agent_output_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_delete_agent_output_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "api_delete_agent_output_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "api_delete_agent_output01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "api_delete_agent_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiDeleteAgentOutputFlow"
+}

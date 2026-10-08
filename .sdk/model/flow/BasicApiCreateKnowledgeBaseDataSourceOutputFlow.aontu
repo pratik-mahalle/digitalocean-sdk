@@ -1,0 +1,22 @@
+# BasicApiCreateKnowledgeBaseDataSourceOutputFlow
+
+main: kit: flow: BasicApiCreateKnowledgeBaseDataSourceOutputFlow:
+{
+  entity: "api_create_knowledge_base_data_source_output",
+  kind: "basic",
+  name: "BasicApiCreateKnowledgeBaseDataSourceOutputFlow",
+  step: [
+    {
+      i: {
+        ref: "api_create_knowledge_base_data_source_output_ref01"
+      }
+
+      m: {
+        knowledge_base_id: "knowledge_base01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicApiCreateKnowledgeBaseDataSourceOutputFlow"
+}

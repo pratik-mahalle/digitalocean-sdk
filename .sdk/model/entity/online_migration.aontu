@@ -1,0 +1,181 @@
+# Entity: online_migration
+
+main: kit: entity: online_migration: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "The time the migration was initiated, in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    disable_ssl: {
+      h: "Disable Ssl"
+      n: "disable_ssl"
+      r: false
+      sh: "Enables SSL encryption when connecting to the source database."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ID of the most recent migration."
+      t: "`$STRING`"
+    }
+    ignore_dbs: {
+      h: "Ignore Dbs"
+      n: "ignore_dbs"
+      r: false
+      sh: "List of databases that should be ignored during migration."
+      t: "`$ARRAY`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The current status of the migration."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "online_migration"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/online-migration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "database_id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/online-migration"
+          q: {
+            exist: [
+              "database_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "online-migration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/databases/{database_cluster_uuid}/online-migration"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "database_id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/databases/{database_cluster_uuid}/online-migration"
+          q: {
+            exist: [
+              "database_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "online-migration"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.database")]
+  ]
+
+}

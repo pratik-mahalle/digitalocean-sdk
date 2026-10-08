@@ -1,0 +1,100 @@
+# BasicDatabaseFlow
+
+main: kit: flow: BasicDatabaseFlow:
+{
+  entity: "database",
+  kind: "basic",
+  name: "BasicDatabaseFlow",
+  step: [
+    {
+      i: {
+        ref: "database_ref01"
+      }
+
+      m: {
+        subject_name: "subject_name01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "database_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "database_ref01",
+        srcdatavar: "database_ref01_data",
+        suffix: "_up0",
+        textfield: "compatibility_level"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-database_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "database_ref01",
+        srcdatavar: "database_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-database_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "database_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "database01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "database_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDatabaseFlow"
+}

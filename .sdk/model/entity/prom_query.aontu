@@ -1,0 +1,216 @@
+# Entity: prom_query
+
+main: kit: entity: prom_query: {
+
+  alias: field: {}
+
+  fields: {
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      sh: "Result payload shape depends on `resultType`."
+      t: "`$ANY`"
+      union: {
+        branches: 3
+        count: 2
+        depth: 6
+      }
+    }
+    resultType: {
+      h: "Result Type"
+      n: "resultType"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "prom_query"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/query/{region}/prom/api/v1/query"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/insights/query/{region}/prom/api/v1/query"
+          q: {
+            exist: [
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                name: "query"
+              }
+              {
+                name: "time"
+              }
+              {
+                name: "timeout"
+              }
+            ]
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "query"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/query/{region}/prom/api/v1/query"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "nyc3"
+                k: "param"
+                n: "query_id"
+                or: "region"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "do.droplets.cpu_time"
+                k: "query"
+                n: "query"
+                or: "query"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "1620683817"
+                k: "query"
+                n: "time"
+                or: "time"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "30s"
+                k: "query"
+                n: "timeout"
+                or: "timeout"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/query/{region}/prom/api/v1/query"
+          q: {
+            exist: [
+              "query"
+              "query_id"
+            ]
+          }
+          r: {
+            param: {
+              region: "query_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "query"
+            }
+            {
+              var: "query_id"
+            }
+            {
+              lit: "prom"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "query"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.data`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,137 @@
+# Entity: connection_pool
+
+main: kit: entity: connection_pool: {
+
+  alias: field: {}
+
+  fields: {
+    connection: {
+      h: "Connection"
+      n: "connection"
+      r: false
+      t: "`$ANY`"
+    }
+    db: {
+      h: "Db"
+      n: "db"
+      r: true
+      sh: "The database for use with the connection pool."
+      t: "`$STRING`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      sh: "The PGBouncer transaction mode for the connection pool."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A unique name for the connection pool."
+      t: "`$STRING`"
+    }
+    private_connection: {
+      h: "Private Connection"
+      n: "private_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    size: {
+      fo: "int32"
+      h: "Size"
+      n: "size"
+      r: true
+      sh: "The desired size of the PGBouncer connection pool."
+      t: "`$INTEGER`"
+    }
+    standby_connection: {
+      h: "Standby Connection"
+      n: "standby_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    standby_private_connection: {
+      h: "Standby Private Connection"
+      n: "standby_private_connection"
+      r: false
+      t: "`$ANY`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      sh: "The name of the user for use with the connection pool."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "connection_pool"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/databases/{database_cluster_uuid}/pools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "9cc10173-e9ea-4176-9dbc-a4cee4c4ff30"
+                k: "param"
+                n: "database_id"
+                or: "database_cluster_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/databases/{database_cluster_uuid}/pools"
+          q: {
+            exist: [
+              "database_id"
+            ]
+          }
+          r: {
+            param: {
+              database_cluster_uuid: "database_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "databases"
+            }
+            {
+              var: "database_id"
+            }
+            {
+              lit: "pools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.pools`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.database")]
+  ]
+
+}

@@ -1,0 +1,335 @@
+{
+  "existing": {
+    "container_registry": {
+      "CONTAINER_REGISTRY00": {
+        "available_regions": [],
+        "blobs": [],
+        "blobs_deleted": 332,
+        "cancel": false,
+        "compressed_size_bytes": 334,
+        "created_at": "s14f",
+        "digest": "s150",
+        "freed_bytes": 337,
+        "id": "CONTAINER_REGISTRY00",
+        "latest_manifest": {},
+        "latest_tag": {},
+        "manifest_count": 341,
+        "manifest_digest": "s156",
+        "name": "s157",
+        "region": "s158",
+        "registries": [],
+        "registry_name": "s15a",
+        "repository": "s15b",
+        "size_bytes": 348,
+        "status": "s15d",
+        "storage_usage_bytes": 350,
+        "storage_usage_bytes_updated_at": "s15f",
+        "subscription": "s160",
+        "subscription_tier_slug": "s161",
+        "subscription_tiers": [],
+        "tag": "s163",
+        "tag_count": 356,
+        "tags": [],
+        "tier": {},
+        "tier_slug": "s167",
+        "type": "s168",
+        "updated_at": "s169",
+        "uuid": "s16a",
+        "repository_name": "REPOSITORY_NAME01",
+        "repository_tag": "REPOSITORY_TAG01",
+        "garbage_collection_uuid": "GARBAGE_COLLECTION_UUID01"
+      },
+      "CONTAINER_REGISTRY01": {
+        "available_regions": [],
+        "blobs": [],
+        "blobs_deleted": 662,
+        "cancel": false,
+        "compressed_size_bytes": 664,
+        "created_at": "s299",
+        "digest": "s29a",
+        "freed_bytes": 667,
+        "id": "CONTAINER_REGISTRY01",
+        "latest_manifest": {},
+        "latest_tag": {},
+        "manifest_count": 671,
+        "manifest_digest": "s2a0",
+        "name": "s2a1",
+        "region": "s2a2",
+        "registries": [],
+        "registry_name": "s2a4",
+        "repository": "s2a5",
+        "size_bytes": 678,
+        "status": "s2a7",
+        "storage_usage_bytes": 680,
+        "storage_usage_bytes_updated_at": "s2a9",
+        "subscription": "s2aa",
+        "subscription_tier_slug": "s2ab",
+        "subscription_tiers": [],
+        "tag": "s2ad",
+        "tag_count": 686,
+        "tags": [],
+        "tier": {},
+        "tier_slug": "s2b1",
+        "type": "s2b2",
+        "updated_at": "s2b3",
+        "uuid": "s2b4",
+        "repository_name": "REPOSITORY_NAME01",
+        "repository_tag": "REPOSITORY_TAG01",
+        "garbage_collection_uuid": "GARBAGE_COLLECTION_UUID01"
+      },
+      "CONTAINER_REGISTRY02": {
+        "available_regions": [],
+        "blobs": [],
+        "blobs_deleted": 992,
+        "cancel": false,
+        "compressed_size_bytes": 994,
+        "created_at": "s3e3",
+        "digest": "s3e4",
+        "freed_bytes": 997,
+        "id": "CONTAINER_REGISTRY02",
+        "latest_manifest": {},
+        "latest_tag": {},
+        "manifest_count": 1001,
+        "manifest_digest": "s3ea",
+        "name": "s3eb",
+        "region": "s3ec",
+        "registries": [],
+        "registry_name": "s3ee",
+        "repository": "s3ef",
+        "size_bytes": 1008,
+        "status": "s3f1",
+        "storage_usage_bytes": 1010,
+        "storage_usage_bytes_updated_at": "s3f3",
+        "subscription": "s3f4",
+        "subscription_tier_slug": "s3f5",
+        "subscription_tiers": [],
+        "tag": "s3f7",
+        "tag_count": 1016,
+        "tags": [],
+        "tier": {},
+        "tier_slug": "s3fb",
+        "type": "s3fc",
+        "updated_at": "s3fd",
+        "uuid": "s3fe",
+        "repository_name": "REPOSITORY_NAME01",
+        "repository_tag": "REPOSITORY_TAG01",
+        "garbage_collection_uuid": "GARBAGE_COLLECTION_UUID01"
+      }
+    }
+  },
+  "new": {
+    "container_registry": {
+      "container_registry_ref01": {
+        "available_regions": [],
+        "blobs": [],
+        "blobs_deleted": 1322,
+        "cancel": false,
+        "compressed_size_bytes": 1324,
+        "created_at": "s52d",
+        "digest": "s52e",
+        "freed_bytes": 1327,
+        "latest_manifest": {},
+        "latest_tag": {},
+        "manifest_count": 1331,
+        "manifest_digest": "s534",
+        "name": "s535",
+        "region": "s536",
+        "registries": [],
+        "registry_name": "s538",
+        "repository": "s539",
+        "size_bytes": 1338,
+        "status": "s53b",
+        "storage_usage_bytes": 1340,
+        "storage_usage_bytes_updated_at": "s53d",
+        "subscription": "s53e",
+        "subscription_tier_slug": "s53f",
+        "subscription_tiers": [],
+        "tag": "s541",
+        "tag_count": 1346,
+        "tags": [],
+        "tier": {},
+        "tier_slug": "s545",
+        "type": "s546",
+        "updated_at": "s547",
+        "uuid": "s548"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/registries/{registry_name}/garbage-collection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registry/{registry_name}/garbage-collection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registries/subscription": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registries/validate-name": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registry/subscription": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/registry/validate-name": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}/repositories/{repository_name}/digests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}/repositories/{repository_name}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/repositories/{repository_name}/digests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/repositories/{repository_name}/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}/garbage-collections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}/repositoriesV2": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/garbage-collections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/repositoriesV2": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/{registry_name}/garbage-collection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/{registry_name}/garbage-collection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registries/subscription": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/registry/subscription": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/digests/{manifest_digest}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registries/{registry_name}/repositories/{repository_name}/tags/{repository_tag}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registry/{registry_name}/repositories/{repository_name}/tags/{repository_tag}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registries/{registry_name}/repositories/{repository_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registries/{registry_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/registry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/registries/{registry_name}/garbage-collection/{garbage_collection_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/registry/{registry_name}/garbage-collection/{garbage_collection_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

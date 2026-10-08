@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "logsink": {
+      "LOGSINK00": {
+        "config": "s32",
+        "id": "LOGSINK00",
+        "sink_id": "SINK01",
+        "sink_name": "s35",
+        "sink_type": "s36",
+        "database_id": "DATABASE01"
+      },
+      "LOGSINK01": {
+        "config": "s64",
+        "id": "LOGSINK01",
+        "sink_id": "SINK01",
+        "sink_name": "s67",
+        "sink_type": "s68",
+        "database_id": "DATABASE01"
+      },
+      "LOGSINK02": {
+        "config": "s96",
+        "id": "LOGSINK02",
+        "sink_id": "SINK01",
+        "sink_name": "s99",
+        "sink_type": "s9a",
+        "database_id": "DATABASE01"
+      }
+    }
+  },
+  "new": {
+    "logsink": {
+      "logsink_ref01": {
+        "config": "sc8",
+        "sink_id": "SINK01",
+        "sink_name": "scb",
+        "sink_type": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/databases/{database_cluster_uuid}/logsink/{logsink_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

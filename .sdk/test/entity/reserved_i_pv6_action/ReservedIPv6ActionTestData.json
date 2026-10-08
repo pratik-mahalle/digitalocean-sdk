@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "reserved_i_pv6_action": {
+      "RESERVED_I_PV6_ACTION00": {
+        "action": {},
+        "reserved_ipv6_id": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV6_ACTION00"
+      },
+      "RESERVED_I_PV6_ACTION01": {
+        "action": {},
+        "reserved_ipv6_id": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV6_ACTION01"
+      },
+      "RESERVED_I_PV6_ACTION02": {
+        "action": {},
+        "reserved_ipv6_id": "RESERVED_IPV601",
+        "id": "RESERVED_I_PV6_ACTION02"
+      }
+    }
+  },
+  "new": {
+    "reserved_i_pv6_action": {
+      "reserved_i_pv6_action_ref01": {
+        "action": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/reserved_ipv6/{reserved_ipv6}/actions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

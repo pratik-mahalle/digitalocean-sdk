@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "organization": {
+      "ORGANIZATION00": {
+        "id": "ORGANIZATION00"
+      },
+      "ORGANIZATION01": {
+        "id": "ORGANIZATION01"
+      },
+      "ORGANIZATION02": {
+        "id": "ORGANIZATION02"
+      }
+    }
+  },
+  "new": {
+    "organization": {
+      "organization_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /v2/organizations/team": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/organizations/teams": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

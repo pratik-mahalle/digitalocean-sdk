@@ -1,0 +1,360 @@
+# Entity: api_update_model_evaluation_run_output
+
+main: kit: entity: api_update_model_evaluation_run_output: {
+
+  alias: field: {}
+
+  fields: {
+    candidate_inference_config: {
+      h: "Candidate Inference Config"
+      n: "candidate_inference_config"
+      r: false
+      sh: "Inference configuration for the candidate model during evaluation."
+      t: "`$OBJECT`"
+    }
+    candidate_model_name: {
+      h: "Candidate Model Name"
+      n: "candidate_model_name"
+      r: false
+      sh: "Model slug used to call the candidate model API."
+      t: "`$STRING`"
+    }
+    candidate_model_source: {
+      h: "Candidate Model Source"
+      n: "candidate_model_source"
+      r: false
+      sh: "Whether the candidate is a served model (serverless platform, a dedicated deployment, or a model router) or an OHS-hosted agent config."
+      t: "`$STRING`"
+    }
+    candidate_model_uuid: {
+      h: "Candidate Model Uuid"
+      n: "candidate_model_uuid"
+      r: false
+      sh: "UUID of the candidate model to evaluate."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Timestamp when the run was created."
+      t: "`$STRING`"
+    }
+    dataset_name: {
+      h: "Dataset Name"
+      n: "dataset_name"
+      r: false
+      sh: "Name of the dataset used for evaluation."
+      t: "`$STRING`"
+    }
+    dataset_uuid: {
+      h: "Dataset Uuid"
+      n: "dataset_uuid"
+      r: false
+      sh: "UUID of the dataset to use for evaluation."
+      t: "`$STRING`"
+    }
+    epochs: {
+      fo: "int64"
+      h: "Epochs"
+      n: "epochs"
+      r: false
+      sh: "Number of times to evaluate each dataset row (n-pass/epochs), so the result reports avg@k/pass@k/cons@k instead of a single score."
+      t: "`$INTEGER`"
+    }
+    eval_preset_uuid: {
+      h: "Eval Preset Uuid"
+      n: "eval_preset_uuid"
+      r: false
+      t: "`$STRING`"
+    }
+    eval_run_uuid: {
+      h: "Eval Run Uuid"
+      n: "eval_run_uuid"
+      r: false
+      sh: "UUID of the created evaluation run."
+      t: "`$STRING`"
+    }
+    judge_model_name: {
+      h: "Judge Model Name"
+      n: "judge_model_name"
+      r: false
+      t: "`$STRING`"
+    }
+    judge_model_uuid: {
+      h: "Judge Model Uuid"
+      n: "judge_model_uuid"
+      r: false
+      sh: "UUID of the judge model used to score responses."
+      t: "`$STRING`"
+    }
+    metric_uuids: {
+      h: "Metric Uuids"
+      n: "metric_uuids"
+      r: false
+      sh: "UUIDs of metrics to evaluate (selected from ListModelEvaluationMetrics)."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the evaluation run."
+      t: "`$STRING`"
+    }
+    preset_name: {
+      h: "Preset Name"
+      n: "preset_name"
+      r: false
+      t: "`$STRING`"
+    }
+    preset_save_sections: {
+      h: "Preset Save Sections"
+      n: "preset_save_sections"
+      r: false
+      sh: "Which sections of this run's resolved configuration to persist as a reusable preset."
+      t: "`$ARRAY`"
+    }
+    progress: {
+      h: "Progress"
+      n: "progress"
+      r: false
+      sh: "Per-phase progress for a model evaluation run."
+      t: "`$OBJECT`"
+    }
+    save_as_preset: {
+      h: "Save As Preset"
+      n: "save_as_preset"
+      r: false
+      sh: "Deprecated: use `preset_save_sections`."
+      t: "`$BOOLEAN`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "Source of the run creation (api, sdk, cli)."
+      t: "`$STRING`"
+    }
+    star_metric: {
+      h: "Star Metric"
+      n: "star_metric"
+      r: false
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Model Evaluation Run Statuses"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "api_update_model_evaluation_run_output"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/gen-ai/model_evaluation_runs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/gen-ai/model_evaluation_runs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/gen-ai/model_evaluation_runs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: [
+                  "CANDIDATE_MODEL_SOURCE_SERVERLESS"
+                ]
+                k: "query"
+                n: "candidate_type"
+                or: "candidate_types"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: "123e4567-e89b-12d3-a456-426614174000"
+                k: "query"
+                n: "eval_preset_uuid"
+                or: "eval_preset_uuid"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 1
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "example string"
+                k: "query"
+                n: "search"
+                or: "search"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "MODEL_EVALUATION_RUN_SORT_FIELD_UNSPECIFIED"
+                k: "query"
+                n: "sort_by"
+                or: "sort_by"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "SORT_DIRECTION_UNSPECIFIED"
+                k: "query"
+                n: "sort_direction"
+                or: "sort_direction"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "MODEL_EVALUATION_RUN_STATUS_UNSPECIFIED"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: [
+                  "MODEL_EVALUATION_RUN_STATUS_UNSPECIFIED"
+                ]
+                k: "query"
+                n: "status"
+                or: "statuses"
+                r: false
+                t: "`$ARRAY`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/gen-ai/model_evaluation_runs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.runs`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PATCH /v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "\"123e4567-e89b-12d3-a456-426614174000\""
+                k: "param"
+                n: "eval_run_uuid"
+                or: "eval_run_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/v2/gen-ai/model_evaluation_runs/{eval_run_uuid}"
+          q: {
+            exist: [
+              "eval_run_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "gen-ai"
+            }
+            {
+              lit: "model_evaluation_runs"
+            }
+            {
+              var: "eval_run_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

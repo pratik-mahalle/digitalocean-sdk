@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "api_delete_custom_model_output_public": {
+      "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC00": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC00"
+      },
+      "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC01": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC01"
+      },
+      "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC02": {
+        "uuid": "UUID01",
+        "id": "API_DELETE_CUSTOM_MODEL_OUTPUT_PUBLIC02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_custom_model_output_public": {
+      "api_delete_custom_model_output_public_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/custom_models/{uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "ssh_key": {
+      "SSH_KEY00": {
+        "fingerprint": "s28",
+        "id": "SSH_KEY00",
+        "name": "s2a",
+        "public_key": "s2b"
+      },
+      "SSH_KEY01": {
+        "fingerprint": "s50",
+        "id": "SSH_KEY01",
+        "name": "s52",
+        "public_key": "s53"
+      },
+      "SSH_KEY02": {
+        "fingerprint": "s78",
+        "id": "SSH_KEY02",
+        "name": "s7a",
+        "public_key": "s7b"
+      }
+    }
+  },
+  "new": {
+    "ssh_key": {
+      "ssh_key_ref01": {
+        "fingerprint": "sa0",
+        "name": "sa2",
+        "public_key": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/account/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/account/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/account/keys/{ssh_key_identifier}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/account/keys/{ssh_key_identifier}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/account/keys/{ssh_key_identifier}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

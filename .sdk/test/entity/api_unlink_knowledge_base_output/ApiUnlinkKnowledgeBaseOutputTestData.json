@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "api_unlink_knowledge_base_output": {
+      "API_UNLINK_KNOWLEDGE_BASE_OUTPUT00": {
+        "agent_id": "AGENT01",
+        "knowledge_base_uuid": "KNOWLEDGE_BASE_UUID01",
+        "id": "API_UNLINK_KNOWLEDGE_BASE_OUTPUT00"
+      },
+      "API_UNLINK_KNOWLEDGE_BASE_OUTPUT01": {
+        "agent_id": "AGENT01",
+        "knowledge_base_uuid": "KNOWLEDGE_BASE_UUID01",
+        "id": "API_UNLINK_KNOWLEDGE_BASE_OUTPUT01"
+      },
+      "API_UNLINK_KNOWLEDGE_BASE_OUTPUT02": {
+        "agent_id": "AGENT01",
+        "knowledge_base_uuid": "KNOWLEDGE_BASE_UUID01",
+        "id": "API_UNLINK_KNOWLEDGE_BASE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_unlink_knowledge_base_output": {
+      "api_unlink_knowledge_base_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/agents/{agent_uuid}/knowledge_bases/{knowledge_base_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

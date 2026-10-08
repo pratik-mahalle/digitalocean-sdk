@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "api_delete_knowledge_base_data_source_output": {
+      "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT00": {
+        "data_source_uuid": "DATA_SOURCE_UUID01",
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT00"
+      },
+      "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT01": {
+        "data_source_uuid": "DATA_SOURCE_UUID01",
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT01"
+      },
+      "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT02": {
+        "data_source_uuid": "DATA_SOURCE_UUID01",
+        "knowledge_base_id": "KNOWLEDGE_BASE01",
+        "id": "API_DELETE_KNOWLEDGE_BASE_DATA_SOURCE_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_delete_knowledge_base_data_source_output": {
+      "api_delete_knowledge_base_data_source_output_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /v2/gen-ai/knowledge_bases/{knowledge_base_uuid}/data_sources/{data_source_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "tag": {
+      "TAG00": {
+        "id": "TAG00",
+        "name": "s1f",
+        "resources": {}
+      },
+      "TAG01": {
+        "id": "TAG01",
+        "name": "s3d",
+        "resources": {}
+      },
+      "TAG02": {
+        "id": "TAG02",
+        "name": "s5b",
+        "resources": {}
+      }
+    }
+  },
+  "new": {
+    "tag": {
+      "tag_ref01": {
+        "name": "s79",
+        "resources": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/tags/{tag_id}/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /v2/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/tags": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/tags/{tag_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/tags/{tag_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/tags/{tag_id}/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

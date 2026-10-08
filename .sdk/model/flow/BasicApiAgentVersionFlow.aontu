@@ -1,0 +1,26 @@
+# BasicApiAgentVersionFlow
+
+main: kit: flow: BasicApiAgentVersionFlow:
+{
+  entity: "api_agent_version",
+  kind: "basic",
+  name: "BasicApiAgentVersionFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_agent_version_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiAgentVersionFlow"
+}

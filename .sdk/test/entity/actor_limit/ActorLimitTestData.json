@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "actor_limit": {
+      "ACTOR_LIMIT00": {
+        "category": "s1e",
+        "id": "ACTOR_LIMIT00",
+        "requests_per_minute": "s20"
+      },
+      "ACTOR_LIMIT01": {
+        "category": "s3c",
+        "id": "ACTOR_LIMIT01",
+        "requests_per_minute": "s3e"
+      },
+      "ACTOR_LIMIT02": {
+        "category": "s5a",
+        "id": "ACTOR_LIMIT02",
+        "requests_per_minute": "s5c"
+      }
+    }
+  },
+  "new": {
+    "actor_limit": {
+      "actor_limit_ref01": {
+        "category": "s78",
+        "requests_per_minute": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/actors/{actor_id}/limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

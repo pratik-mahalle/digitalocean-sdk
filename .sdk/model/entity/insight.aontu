@@ -1,0 +1,779 @@
+# Entity: insight
+
+main: kit: entity: insight: {
+
+  alias: field: {}
+
+  fields: {
+    channel_type: {
+      h: "Channel Type"
+      n: "channel_type"
+      r: true
+      ro: true
+      sh: "The configured channel type."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      ro: true
+      sh: "Time the alert rule was created."
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: true
+      sh: "Email notification channel configuration."
+      t: "`$OBJECT`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: true
+      ro: true
+      sh: "A unique identifier for the alert instance."
+      t: "`$STRING`"
+    }
+    last_notified_at: {
+      fo: "date-time"
+      h: "Last Notified At"
+      n: "last_notified_at"
+      r: false
+      sh: "Time a notification was last sent for this alert instance."
+      t: "`$STRING`"
+    }
+    last_triggered_at: {
+      fo: "date-time"
+      h: "Last Triggered At"
+      n: "last_triggered_at"
+      r: true
+      sh: "Time the alert instance most recently fired."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "A human-readable name for the notification channel."
+      t: "`$STRING`"
+    }
+    resolved_at: {
+      fo: "date-time"
+      h: "Resolved At"
+      n: "resolved_at"
+      r: false
+      sh: "Time the alert instance resolved."
+      t: "`$STRING`"
+    }
+    resource_urn: {
+      h: "Resource Urn"
+      n: "resource_urn"
+      r: false
+      sh: "URN of the DigitalOcean resource the alert fired for."
+      t: "`$STRING`"
+    }
+    rule_id: {
+      fo: "uuid"
+      h: "Rule Id"
+      n: "rule_id"
+      r: true
+      sh: "ID of the alert rule that fired this alert instance."
+      t: "`$STRING`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: true
+      sh: "Severity of the breached threshold."
+      t: "`$STRING`"
+    }
+    slack: {
+      h: "Slack"
+      n: "slack"
+      r: true
+      sh: "Slack notification channel configuration as returned in API responses."
+      t: "`$OBJECT`"
+    }
+    spec: {
+      h: "Spec"
+      n: "spec"
+      r: true
+      sh: "Spec for an Insights alert rule."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      ro: true
+      sh: "Current status of the alert instance."
+      t: "`$STRING`"
+    }
+    triggered_at: {
+      fo: "date-time"
+      h: "Triggered At"
+      n: "triggered_at"
+      r: true
+      sh: "Time the alert instance first fired."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      ro: true
+      sh: "Time the alert rule was last updated."
+      t: "`$STRING`"
+    }
+    usage: {
+      h: "Usage"
+      n: "usage"
+      r: false
+      ro: true
+      t: "`$ANY`"
+    }
+    value: {
+      fo: "double"
+      h: "Value"
+      n: "value"
+      r: true
+      sh: "The observed metric value that breached the threshold."
+      t: "`$NUMBER`"
+    }
+    webhook: {
+      h: "Webhook"
+      n: "webhook"
+      r: true
+      sh: "Generic HTTPS webhook notification channel configuration as returned in API responses."
+      t: "`$OBJECT`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "insight"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/insights/alert-rules"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/insights/alert-rules"
+          q: {
+            "$action": "alert_rule"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_rule`"
+          }
+        }
+        {
+          co: {
+            id: "POST /v2/insights/notification-channels"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/insights/notification-channels"
+          q: {
+            "$action": "notification_channel"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "notification-channels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.notification_channel`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/alert-instances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "do:droplet:12345"
+                k: "query"
+                n: "resource_urn"
+                or: "resource_urn"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "8f3a2b1c-4d5e-6f7a-8b9c-0d1e2f3a4b5c"
+                k: "query"
+                n: "rule_id"
+                or: "rule_id"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "active"
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/alert-instances"
+          q: {
+            "$action": "alert_instance"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-instances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_instances`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/insights/alert-rules"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "do:droplet:12345"
+                k: "query"
+                n: "resource_urn"
+                or: "resource_urn"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/alert-rules"
+          q: {
+            "$action": "alert_rule"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_rules`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/insights/notification-channels"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/notification-channels"
+          q: {
+            "$action": "notification_channel"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "notification-channels"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.notification_channels`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/insights/alert-instances/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/alert-instances/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-instances"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_instance`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/insights/alert-rules/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/alert-rules/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-rules"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_rule`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/insights/notification-channels/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "550e8400-e29b-41d4-a716-446655440000"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/insights/notification-channels/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "notification-channels"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.notification_channel`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/insights/alert-rules/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/insights/alert-rules/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-rules"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /v2/insights/notification-channels/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "550e8400-e29b-41d4-a716-446655440000"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/insights/notification-channels/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "notification-channels"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/insights/alert-rules/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/insights/alert-rules/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "alert-rules"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.alert_rule`"
+          }
+        }
+        {
+          co: {
+            id: "PUT /v2/insights/notification-channels/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "550e8400-e29b-41d4-a716-446655440000"
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/insights/notification-channels/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "insights"
+            }
+            {
+              lit: "notification-channels"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.notification_channel`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

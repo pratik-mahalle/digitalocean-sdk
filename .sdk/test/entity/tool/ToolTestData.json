@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "tool": {
+      "TOOL00": {
+        "category": "s6e",
+        "description": "s6f",
+        "history": {},
+        "id": "TOOL00",
+        "name": "s72",
+        "provider": "s73",
+        "snapshot": "s74",
+        "title": "s75",
+        "tool": "s76",
+        "tool_slug": "s77",
+        "version": 120,
+        "provider_id": "PROVIDER01"
+      },
+      "TOOL01": {
+        "category": "sdc",
+        "description": "sdd",
+        "history": {},
+        "id": "TOOL01",
+        "name": "se0",
+        "provider": "se1",
+        "snapshot": "se2",
+        "title": "se3",
+        "tool": "se4",
+        "tool_slug": "se5",
+        "version": 230,
+        "provider_id": "PROVIDER01"
+      },
+      "TOOL02": {
+        "category": "s14a",
+        "description": "s14b",
+        "history": {},
+        "id": "TOOL02",
+        "name": "s14e",
+        "provider": "s14f",
+        "snapshot": "s150",
+        "title": "s151",
+        "tool": "s152",
+        "tool_slug": "s153",
+        "version": 340,
+        "provider_id": "PROVIDER01"
+      }
+    }
+  },
+  "new": {
+    "tool": {
+      "tool_ref01": {
+        "category": "s1b8",
+        "description": "s1b9",
+        "history": {},
+        "name": "s1bc",
+        "provider": "s1bd",
+        "snapshot": "s1be",
+        "title": "s1bf",
+        "tool": "s1c0",
+        "tool_slug": "s1c1",
+        "version": 450
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/action-gateway/toolbelts/{name}/providers/{provider}/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/tools/search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/action-gateway/tools/health/tools/{tool_slug}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

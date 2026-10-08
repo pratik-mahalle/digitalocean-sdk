@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "vpc_nat_gateway": {
+      "VPC_NAT_GATEWAY00": {
+        "created_at": "s82",
+        "egresses": {},
+        "icmp_timeout_seconds": 132,
+        "id": "VPC_NAT_GATEWAY00",
+        "name": "s86",
+        "region": "s87",
+        "size": 136,
+        "state": "s89",
+        "tcp_timeout_seconds": 138,
+        "type": "s8b",
+        "udp_timeout_seconds": 140,
+        "updated_at": "s8d",
+        "vpcs": []
+      },
+      "VPC_NAT_GATEWAY01": {
+        "created_at": "s104",
+        "egresses": {},
+        "icmp_timeout_seconds": 262,
+        "id": "VPC_NAT_GATEWAY01",
+        "name": "s108",
+        "region": "s109",
+        "size": 266,
+        "state": "s10b",
+        "tcp_timeout_seconds": 268,
+        "type": "s10d",
+        "udp_timeout_seconds": 270,
+        "updated_at": "s10f",
+        "vpcs": []
+      },
+      "VPC_NAT_GATEWAY02": {
+        "created_at": "s186",
+        "egresses": {},
+        "icmp_timeout_seconds": 392,
+        "id": "VPC_NAT_GATEWAY02",
+        "name": "s18a",
+        "region": "s18b",
+        "size": 396,
+        "state": "s18d",
+        "tcp_timeout_seconds": 398,
+        "type": "s18f",
+        "udp_timeout_seconds": 400,
+        "updated_at": "s191",
+        "vpcs": []
+      }
+    }
+  },
+  "new": {
+    "vpc_nat_gateway": {
+      "vpc_nat_gateway_ref01": {
+        "created_at": "s208",
+        "egresses": {},
+        "icmp_timeout_seconds": 522,
+        "name": "s20c",
+        "region": "s20d",
+        "size": 526,
+        "state": "s20f",
+        "tcp_timeout_seconds": 528,
+        "type": "s211",
+        "udp_timeout_seconds": 530,
+        "updated_at": "s213",
+        "vpcs": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/vpc_nat_gateways": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpc_nat_gateways": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/vpc_nat_gateways/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/vpc_nat_gateways/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/vpc_nat_gateways/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

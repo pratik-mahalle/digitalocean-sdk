@@ -1,0 +1,22 @@
+# BasicApiListEvaluationMetricsOutputFlow
+
+main: kit: flow: BasicApiListEvaluationMetricsOutputFlow:
+{
+  entity: "api_list_evaluation_metrics_output",
+  kind: "basic",
+  name: "BasicApiListEvaluationMetricsOutputFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "api_list_evaluation_metrics_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiListEvaluationMetricsOutputFlow"
+}

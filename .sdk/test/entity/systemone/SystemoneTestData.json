@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "systemone": {
+      "SYSTEMONE00": {
+        "answers": {},
+        "model": "s33",
+        "questions": {},
+        "state": "s35",
+        "usage": {},
+        "id": "SYSTEMONE00"
+      },
+      "SYSTEMONE01": {
+        "answers": {},
+        "model": "s65",
+        "questions": {},
+        "state": "s67",
+        "usage": {},
+        "id": "SYSTEMONE01"
+      },
+      "SYSTEMONE02": {
+        "answers": {},
+        "model": "s97",
+        "questions": {},
+        "state": "s99",
+        "usage": {},
+        "id": "SYSTEMONE02"
+      }
+    }
+  },
+  "new": {
+    "systemone": {
+      "systemone_ref01": {
+        "answers": {},
+        "model": "sc9",
+        "questions": {},
+        "state": "scb",
+        "usage": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /v1/systemone": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

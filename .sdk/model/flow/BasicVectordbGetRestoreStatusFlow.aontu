@@ -1,0 +1,33 @@
+# BasicVectordbGetRestoreStatusFlow
+
+main: kit: flow: BasicVectordbGetRestoreStatusFlow:
+{
+  entity: "vectordb_get_restore_status",
+  kind: "basic",
+  name: "BasicVectordbGetRestoreStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "vectordb_get_restore_status_ref01",
+        srcdatavar: "vectordb_get_restore_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vectordb_get_restore_status01",
+        vector_database_id: "vector_database01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vectordb_get_restore_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVectordbGetRestoreStatusFlow"
+}

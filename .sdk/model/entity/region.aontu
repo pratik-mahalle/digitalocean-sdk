@@ -1,0 +1,101 @@
+# Entity: region
+
+main: kit: entity: region: {
+
+  alias: field: {}
+
+  fields: {
+    available: {
+      h: "Available"
+      n: "available"
+      r: true
+      sh: "This is a boolean value that represents whether new Droplets can be created in this region."
+      t: "`$BOOLEAN`"
+    }
+    features: {
+      h: "Features"
+      n: "features"
+      r: true
+      sh: "This attribute is set to an array which contains features available in this region"
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The display name of the region."
+      t: "`$STRING`"
+    }
+    sizes: {
+      h: "Sizes"
+      n: "sizes"
+      r: true
+      sh: "This attribute is set to an array which contains the identifying slugs for the sizes available in this region."
+      t: "`$ARRAY`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      sh: "A human-readable string that is used as a unique identifier for each region."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "region"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/regions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/regions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "regions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.regions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,9 @@
+# BasicApiDeleteScenarioSetOutputFlow
+
+main: kit: flow: BasicApiDeleteScenarioSetOutputFlow:
+{
+  entity: "api_delete_scenario_set_output",
+  kind: "basic",
+  name: "BasicApiDeleteScenarioSetOutputFlow",
+  "key$": "BasicApiDeleteScenarioSetOutputFlow"
+}

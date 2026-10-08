@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "api_get_scenario_set_download_url_output": {
+      "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT00": {
+        "download_url": "s14",
+        "expires_at": "s15",
+        "scenario_set_id": "SCENARIO_SET01",
+        "id": "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT00"
+      },
+      "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT01": {
+        "download_url": "s28",
+        "expires_at": "s29",
+        "scenario_set_id": "SCENARIO_SET01",
+        "id": "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT01"
+      },
+      "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT02": {
+        "download_url": "s3c",
+        "expires_at": "s3d",
+        "scenario_set_id": "SCENARIO_SET01",
+        "id": "API_GET_SCENARIO_SET_DOWNLOAD_URL_OUTPUT02"
+      }
+    }
+  },
+  "new": {
+    "api_get_scenario_set_download_url_output": {
+      "api_get_scenario_set_download_url_output_ref01": {
+        "download_url": "s50",
+        "expires_at": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/gen-ai/scenario_sets/{scenario_set_uuid}/download_url": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

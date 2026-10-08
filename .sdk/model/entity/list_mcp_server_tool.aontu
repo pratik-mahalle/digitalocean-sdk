@@ -1,0 +1,194 @@
+# Entity: list_mcp_server_tool
+
+main: kit: entity: list_mcp_server_tool: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Tool description as the server reports it."
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: false
+      sh: "Whether the tool is enabled in your team's catalog."
+      t: "`$BOOLEAN`"
+    }
+    enabledToolSlugs: {
+      h: "Enabled Tool Slugs"
+      n: "enabledToolSlugs"
+      r: true
+      sh: "The complete set of tool slugs (`<server_ref>_<name>`) to enable; every other tool of the server is disabled."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Tool name as the server reports it, normalized to the catalog's naming rules."
+      t: "`$STRING`"
+    }
+    quarantineReason: {
+      h: "Quarantine Reason"
+      n: "quarantineReason"
+      r: false
+      sh: "Why the tool was quarantined; empty otherwise."
+      t: "`$STRING`"
+    }
+    quarantined: {
+      h: "Quarantined"
+      n: "quarantined"
+      r: false
+      sh: "True when the enabled tool was suspended because it disappeared from the server or its input schema changed incompatibly."
+      t: "`$BOOLEAN`"
+    }
+    toolSlug: {
+      h: "Tool Slug"
+      n: "toolSlug"
+      r: false
+      sh: "`<server_ref>_<name>`: the tool's catalog slug, and the value to list in `enabledToolSlugs`."
+      t: "`$STRING`"
+    }
+    tools: {
+      h: "Tools"
+      n: "tools"
+      r: false
+      sh: "Tools sorted by name."
+      t: "`$ARRAY`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: false
+      sh: "Required for a server registered with `credentialRefSource` connection when a tool needs verification against the live server, which can only be reached as a user who has authorized it."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "list_mcp_server_tool"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/action-gateway/mcp-servers/{server_ref}/tools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "server_ref"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}/tools"
+          q: {
+            exist: [
+              "server_ref"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "server_ref"
+            }
+            {
+              lit: "tools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tools`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/action-gateway/mcp-servers/{server_ref}/tools"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "docs"
+                k: "param"
+                n: "server_ref"
+                or: "server_ref"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/action-gateway/mcp-servers/{server_ref}/tools"
+          q: {
+            exist: [
+              "server_ref"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "action-gateway"
+            }
+            {
+              lit: "mcp-servers"
+            }
+            {
+              var: "server_ref"
+            }
+            {
+              lit: "tools"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.mcp_server")]
+  ]
+
+}

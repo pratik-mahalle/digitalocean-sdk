@@ -1,0 +1,26 @@
+# BasicImageActionFlow
+
+main: kit: flow: BasicImageActionFlow:
+{
+  entity: "image_action",
+  kind: "basic",
+  name: "BasicImageActionFlow",
+  step: [
+    {
+      m: {
+        image_id: "image01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "image_action_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImageActionFlow"
+}

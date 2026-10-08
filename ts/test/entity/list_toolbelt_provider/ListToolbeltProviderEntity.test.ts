@@ -1,0 +1,176 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { DigitaloceanSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('ListToolbeltProviderEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when DIGITALOCEAN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DIGITALOCEAN_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = DigitaloceanSDK.test()
+    const ent = testsdk.ListToolbeltProvider()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = DigitaloceanSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.ListToolbeltProvider().list({"name":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.DIGITALOCEAN_TEST_LIVE
+    for (const op of ['list']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'list_toolbelt_provider.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"categories":{"a":true,"h":"Categories","n":"categories","r":false,"sh":"The distinct tool categories among this toolbelt's members for the provider (sorted).","t":"`$ARRAY`","key$":"categories","index$":0},"created_at":{"a":true,"fo":"date-time","h":"Created At","n":"created_at","r":false,"sh":"When the provider was added to the catalog.","t":"`$STRING`","key$":"created_at","index$":1},"description":{"a":true,"h":"Description","n":"description","r":false,"sh":"Provider description.","t":"`$STRING`","key$":"description","index$":2},"id":{"a":true,"h":"Id","n":"id","r":false,"sh":"Equals provider; present so the entry has the same shape as a toolkit.","t":"`$STRING`","key$":"id","index$":3},"name":{"a":true,"h":"Name","n":"name","r":false,"sh":"The provider's display name.","t":"`$STRING`","key$":"name","index$":4},"provider":{"a":true,"h":"Provider","n":"provider","r":false,"sh":"The provider ID.","t":"`$STRING`","key$":"provider","index$":5},"tool_count":{"a":true,"fo":"int32","h":"Tool Count","n":"tool_count","r":false,"sh":"How many toolbelt members belong to this provider.","t":"`$INTEGER`","key$":"tool_count","index$":6}},"id":{"field":"id","name":"id"},"name":"list_toolbelt_provider","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /v2/action-gateway/toolbelts/{name}/providers","source":"openapi3","version":2},"g":{"params":[{"a":true,"ex":"search-toolbelt","k":"param","n":"name","or":"name","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":1,"k":"query","n":"page","or":"page","r":false,"t":"`$INTEGER`","index$":0},{"a":true,"ex":20,"k":"query","n":"per_page","or":"per_page","r":false,"t":"`$INTEGER`","index$":1},{"a":true,"ex":"search","k":"query","n":"search","or":"search","r":false,"t":"`$STRING`","index$":2},{"a":true,"ex":"1","k":"query","n":"version","or":"version","r":false,"t":"`$STRING`","index$":3}]},"k":"http","m":"GET","o":"/v2/action-gateway/toolbelts/{name}/providers","q":{"exist":["name"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v2"},{"lit":"action-gateway"},{"lit":"toolbelts"},{"var":"name"},{"lit":"providers"}],"t":{"req":"`reqdata`","res":"`body.providers`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["$.main.kit.entity.toolbelt"]]},"key$":"list_toolbelt_provider","name__orig":"list_toolbelt_provider","Name":"ListToolbeltProvider","name_":"list_toolbelt_provider","name-":"list-toolbelt-provider","NAME":"LIST_TOOLBELT_PROVIDER","index$":164}, {"active":true,"entity":"list_toolbelt_provider","key$":"BasicListToolbeltProviderFlow","kind":"basic","name":"BasicListToolbeltProviderFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"name":"name01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"list_toolbelt_provider_ref01"}}],"index$":0}]}, 'ListToolbeltProvider', {"GET /v2/action-gateway/toolbelts/{name}/providers":{"protocol":"http","parameters":[{"name":"name","in":"path","required":true,"description":"Toolbelt name.","schema":{"type":"string","pattern":"^[a-z][a-z0-9_-]{0,63}$"},"example":"search-toolbelt","x-ref":"#/components/parameters/toolbelt_name","index$":0},{"name":"version","in":"query","required":false,"description":"Version number to read. Empty reads the latest version.","schema":{"type":"string","pattern":"^[0-9]+$"},"example":"1","x-ref":"#/components/parameters/toolbelt_version_toolbelts_providers","index$":1},{"in":"query","name":"page","required":false,"description":"1-based page number. Values below 1 are treated as 1.","schema":{"type":"integer","minimum":1,"default":1},"example":1,"x-ref":"#/components/parameters/page_connections","index$":2},{"name":"per_page","in":"query","required":false,"description":"Page size. Defaults to 20; values above 100 are capped at 100.","schema":{"type":"integer","minimum":1,"maximum":100,"default":20},"example":20,"x-ref":"#/components/parameters/per_page","index$":3},{"name":"search","in":"query","required":false,"description":"Restricts providers whose ID, name, or description contains this value, case-insensitively.","schema":{"type":"string"},"example":"search","x-ref":"#/components/parameters/toolbelt_search_toolbelts_providers","index$":4}]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let list_toolbelt_provider_ref01_data = Object.values(setup.data.existing.list_toolbelt_provider)[0] as any
+
+    // LIST
+    const list_toolbelt_provider_ref01_ent = client.ListToolbeltProvider()
+    const list_toolbelt_provider_ref01_match: any = {}
+    list_toolbelt_provider_ref01_match['name'] = setup.idmap['name01']
+
+    const list_toolbelt_provider_ref01_list = (await list_toolbelt_provider_ref01_ent.list(list_toolbelt_provider_ref01_match)).map((e: any) => e.data())
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/list_toolbelt_provider/ListToolbeltProviderTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = DigitaloceanSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['list_toolbelt_provider01','list_toolbelt_provider02','list_toolbelt_provider03','toolbelt01','toolbelt02','toolbelt03','name01'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'DIGITALOCEAN_TEST_LIST_TOOLBELT_PROVIDER_ENTID': idmap,
+    'DIGITALOCEAN_TEST_LIVE': 'FALSE',
+    'DIGITALOCEAN_TEST_EXPLAIN': 'FALSE',
+    'DIGITALOCEAN_APIKEY': '',
+  })
+
+  idmap = env['DIGITALOCEAN_TEST_LIST_TOOLBELT_PROVIDER_ENTID']
+
+  const live = 'TRUE' === env.DIGITALOCEAN_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['DIGITALOCEAN_TEST_LIST_TOOLBELT_PROVIDER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new DigitaloceanSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.DIGITALOCEAN_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.DIGITALOCEAN_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

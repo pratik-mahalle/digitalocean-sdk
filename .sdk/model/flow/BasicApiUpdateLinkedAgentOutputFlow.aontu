@@ -1,0 +1,33 @@
+# BasicApiUpdateLinkedAgentOutputFlow
+
+main: kit: flow: BasicApiUpdateLinkedAgentOutputFlow:
+{
+  entity: "api_update_linked_agent_output",
+  kind: "basic",
+  name: "BasicApiUpdateLinkedAgentOutputFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01"
+      }
+
+      i: {
+        ref: "api_update_linked_agent_output_ref01",
+        srcdatavar: "api_update_linked_agent_output_ref01_data",
+        suffix: "_up0",
+        textfield: "if_case"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-api_update_linked_agent_output_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicApiUpdateLinkedAgentOutputFlow"
+}
