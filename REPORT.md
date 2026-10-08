@@ -7,8 +7,9 @@
 I generated TypeScript and Python SDKs for the DigitalOcean public API from its official OpenAPI spec, using
 `@voxgig/create-sdkgen` 0.30.6 and `@voxgig/sdkgen` 4.34.1. DigitalOcean is not in the voxgig-sdk catalogue.
 The work was AI-assisted (Claude Code). Wall-clock time from the first command to a pushed repo with a passing
-live test was about 15 minutes. My own hands-on time was about 5 minutes: choosing the API and targets, and
-supplying a token.
+live test was about 15 minutes. A second pass of model shaping, to get CI green, took about 40 more minutes.
+My own hands-on time was about 10 minutes in total: choosing the API and targets, supplying a token, and
+reviewing the results.
 
 The generator handled a very large spec (3.6 MB, 515 paths) in about 16 seconds and produced SDKs that work
 against the live API. Getting there took four workarounds, and the default entity model for an API this size
@@ -115,7 +116,8 @@ surprising.
 
 ## Suggested next steps for a production-quality SDK
 
-1. Trim the spec to the core resource families: droplets, volumes, domains, firewalls, kubernetes, databases, apps.
-2. Fix entity names and split the sub-resources in `model/entity/*.aontu`.
-3. Enable `paging` and `retry` by default.
-4. Regenerate until the offline suite and CI pass.
+1. Enable `paging` and `retry` by default, so `list()` returns every page.
+2. Fix the remaining naming defects (`kubernete`, `empty`, the 96 `api_*_output` entities) and split
+   droplet sub-resources (backups, kernels, neighbors) out of `Droplet`.
+3. Trim or group the spec by product area (compute, networking, databases, GenAI) if the client wants a smaller SDK.
+4. Run the generated live suite against a disposable account to cover create, update and remove.
