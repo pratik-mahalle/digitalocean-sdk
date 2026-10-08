@@ -16,3 +16,6 @@ logs/
 # Editor
 *~
 *.swp
+
+# ReadmeTop output, kept for reference only; the root README.md is hand-written
+doc/generated-readme/

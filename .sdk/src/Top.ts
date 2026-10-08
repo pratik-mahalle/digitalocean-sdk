@@ -2,6 +2,7 @@
 
 import {
   cmp,
+  Folder,
   Deploy,
   PublishWorkflow,
   ReadmeTop,
@@ -13,7 +14,11 @@ import {
 
 
 const Top = cmp(function Top(props: any) {
-  ReadmeTop({})
+  // The root README.md is hand-written. ReadmeTop still runs (it also prepares
+  // names other components use) but writes its README under doc/ instead.
+  Folder({ name: 'doc/generated-readme' }, () => {
+    ReadmeTop({})
+  })
 
   // Agent onboarding guides at the project root: AGENTS.md + a thin CLAUDE.md,
   // populated with the real target / feature / entity lists. Emitted outside
