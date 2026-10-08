@@ -1,0 +1,338 @@
+# Entity: function_key
+
+main: kit: entity: function_key: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      ro: true
+      sh: "The date and time the key was created."
+      t: "`$STRING`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      ro: true
+      sh: "When the key expires (null for non-expiring keys)."
+      t: "`$STRING`"
+    }
+    expires_in: {
+      h: "Expires In"
+      n: "expires_in"
+      r: false
+      sh: "The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days)."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      ro: true
+      sh: "The access key's unique identifier with prefix 'dof_v1_'."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The access key's name."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      ro: true
+      sh: "The date and time the key was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "function_key"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/functions/namespaces/{namespace_id}/keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/functions/namespaces/{namespace_id}/keys"
+          q: {
+            exist: [
+              "namespace_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_key`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/functions/namespaces/{namespace_id}/keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/functions/namespaces/{namespace_id}/keys"
+          q: {
+            exist: [
+              "namespace_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_keys`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "id"
+                or: "key_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/functions/namespaces/{namespace_id}/keys/{key_id}"
+          q: {
+            exist: [
+              "id"
+              "namespace_id"
+            ]
+          }
+          r: {
+            param: {
+              key_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "keys"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "id"
+                or: "key_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/functions/namespaces/{namespace_id}/keys/{key_id}"
+          q: {
+            exist: [
+              "id"
+              "namespace_id"
+            ]
+          }
+          r: {
+            param: {
+              key_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "keys"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.access_key`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

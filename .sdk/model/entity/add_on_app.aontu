@@ -1,0 +1,182 @@
+# Entity: add_on_app
+
+main: kit: entity: add_on_app: {
+
+  alias: field: {}
+
+  fields: {
+    app_slug: {
+      h: "App Slug"
+      n: "app_slug"
+      r: true
+      sh: "The slug identifier for the application associated with the resource."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      sh: "A brief description of the metadata item."
+      t: "`$STRING`"
+    }
+    display_name: {
+      h: "Display Name"
+      n: "display_name"
+      r: true
+      sh: "The display name of the metadata item."
+      t: "`$STRING`"
+    }
+    eula: {
+      h: "Eula"
+      n: "eula"
+      r: true
+      sh: "The End User License Agreement URL for the resource."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the addon metadata item."
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      sh: "The name of the metadata item."
+      t: "`$STRING`"
+    }
+    options: {
+      h: "Options"
+      n: "options"
+      r: false
+      t: "`$ARRAY`"
+    }
+    plans: {
+      h: "Plans"
+      n: "plans"
+      r: true
+      sh: "A list of plans available for the resource."
+      t: "`$ARRAY`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 6
+      }
+    }
+    tos: {
+      h: "Tos"
+      n: "tos"
+      r: true
+      sh: "The Terms of Service URL for the resource."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The data type of the metadata value."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "add_on_app"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/add-ons/apps/{app_slug}/metadata"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "example_app"
+                k: "param"
+                n: "app_slug"
+                or: "app_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/add-ons/apps/{app_slug}/metadata"
+          q: {
+            exist: [
+              "app_slug"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_slug"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.metadata`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/add-ons/apps"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/add-ons/apps"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "add-ons"
+            }
+            {
+              lit: "apps"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.apps`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

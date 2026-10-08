@@ -96,7 +96,6 @@ class ActionRequired(TypedDict):
 
 
 class Action(ActionRequired, total=False):
-    action: dict
     completed_at: str
     id: int
     region_slug: str
@@ -107,34 +106,13 @@ class Action(ActionRequired, total=False):
     type: str
 
 
-class ActionLoadMatchRequired(TypedDict):
+class ActionLoadMatch(TypedDict):
     id: int
-
-
-class ActionLoadMatch(ActionLoadMatchRequired, total=False):
-    image_id: int
 
 
 class ActionListMatch(TypedDict, total=False):
     page: int
     per_page: int
-
-
-class ActionCreateDataRequired(TypedDict):
-    image_id: int
-    region: dict
-
-
-class ActionCreateData(ActionCreateDataRequired, total=False):
-    action: dict
-    completed_at: str
-    id: int
-    region_slug: str
-    resource_id: int
-    resource_type: str
-    started_at: str
-    status: str
-    type: str
 
 
 class ActorLimitRequired(TypedDict):
@@ -150,85 +128,155 @@ class ActorLimitListMatch(TypedDict):
     id: str
 
 
-class AddOnRequired(TypedDict):
+class AddOnAppRequired(TypedDict):
     app_slug: str
     description: str
     display_name: str
-    has_config: bool
+    eula: str
     id: int
+    name: str
+    plans: list
+    tos: str
+    type: str
+
+
+class AddOnApp(AddOnAppRequired, total=False):
+    options: list
+
+
+class AddOnAppListMatch(TypedDict, total=False):
+    app_slug: str
+    description: str
+    display_name: str
+    eula: str
+    id: int
+    name: str
+    options: list
+    plans: list
+    tos: str
+    type: str
+
+
+class AddOnPlanRequired(TypedDict):
+    app_slug: str
+    has_config: bool
     name: str
     plan_slug: str
     state: str
-    type: str
     uuid: str
 
 
-class AddOn(AddOnRequired, total=False):
+class AddOnPlan(AddOnPlanRequired, total=False):
     app_name: str
     message: str
     metadata: list
-    options: list
     plan_name: str
     plan_price_per_month: int
     sso_url: str
 
 
-class AddOnLoadMatch(TypedDict):
+class AddOnPlanUpdateDataRequired(TypedDict):
     resource_uuid: str
 
 
-class AddOnListMatch(TypedDict):
+class AddOnPlanUpdateData(AddOnPlanUpdateDataRequired, total=False):
+    app_name: str
     app_slug: str
-
-
-class AddOnCreateDataRequired(TypedDict):
-    app_slug: str
-    description: str
-    display_name: str
     has_config: bool
-    id: int
+    message: str
+    metadata: list
     name: str
+    plan_name: str
+    plan_price_per_month: int
     plan_slug: str
+    sso_url: str
     state: str
-    type: str
     uuid: str
 
 
-class AddOnCreateData(AddOnCreateDataRequired, total=False):
+class AddOnResourceRequired(TypedDict):
+    app_slug: str
+    has_config: bool
+    name: str
+    plan_slug: str
+    state: str
+    uuid: str
+
+
+class AddOnResource(AddOnResourceRequired, total=False):
     app_name: str
+    fleet_uuid: str
+    linked_droplet_id: int
     message: str
     metadata: list
-    options: list
     plan_name: str
     plan_price_per_month: int
     sso_url: str
 
 
-class AddOnUpdateDataRequired(TypedDict):
+class AddOnResourceLoadMatch(TypedDict):
     resource_uuid: str
 
 
-class AddOnUpdateData(AddOnUpdateDataRequired, total=False):
+class AddOnResourceListMatch(TypedDict, total=False):
     app_name: str
     app_slug: str
-    description: str
-    display_name: str
+    fleet_uuid: str
     has_config: bool
-    id: int
+    linked_droplet_id: int
     message: str
     metadata: list
     name: str
-    options: list
     plan_name: str
     plan_price_per_month: int
     plan_slug: str
     sso_url: str
     state: str
-    type: str
     uuid: str
 
 
-class AddOnRemoveMatch(TypedDict):
+class AddOnResourceCreateDataRequired(TypedDict):
+    app_slug: str
+    has_config: bool
+    name: str
+    plan_slug: str
+    state: str
+    uuid: str
+
+
+class AddOnResourceCreateData(AddOnResourceCreateDataRequired, total=False):
+    app_name: str
+    fleet_uuid: str
+    linked_droplet_id: int
+    message: str
+    metadata: list
+    plan_name: str
+    plan_price_per_month: int
+    sso_url: str
+
+
+class AddOnResourceUpdateDataRequired(TypedDict):
+    resource_uuid: str
+
+
+class AddOnResourceUpdateData(AddOnResourceUpdateDataRequired, total=False):
+    app_name: str
+    app_slug: str
+    fleet_uuid: str
+    has_config: bool
+    linked_droplet_id: int
+    message: str
+    metadata: list
+    name: str
+    plan_name: str
+    plan_price_per_month: int
+    plan_slug: str
+    sso_url: str
+    state: str
+    uuid: str
+
+
+class AddOnResourceRemoveMatch(TypedDict):
     resource_uuid: str
 
 
@@ -5866,17 +5914,18 @@ class FloatingIpActionLoadMatch(TypedDict):
 
 
 class FloatingIpActionListMatch(TypedDict):
-    id: str
+    floating_ip_id: str
 
 
 class FloatingIpActionCreateDataRequired(TypedDict):
-    id: str
+    floating_ip_id: str
     region: dict
 
 
 class FloatingIpActionCreateData(FloatingIpActionCreateDataRequired, total=False):
     action: dict
     completed_at: str
+    id: int
     project_id: str
     region_slug: str
     resource_id: int
@@ -5886,97 +5935,153 @@ class FloatingIpActionCreateData(FloatingIpActionCreateDataRequired, total=False
     type: str
 
 
-class FunctionRequired(TypedDict):
-    scheduled_details: dict
+class FunctionKeyRequired(TypedDict):
+    name: str
 
 
-class Function(FunctionRequired, total=False):
-    api_host: str
+class FunctionKey(FunctionKeyRequired, total=False):
     created_at: str
     expires_at: str
     expires_in: str
-    function: str
     id: str
-    is_enabled: bool
+    updated_at: str
+
+
+class FunctionKeyListMatch(TypedDict):
+    namespace_id: str
+
+
+class FunctionKeyCreateDataRequired(TypedDict):
+    namespace_id: str
+    name: str
+
+
+class FunctionKeyCreateData(FunctionKeyCreateDataRequired, total=False):
+    created_at: str
+    expires_at: str
+    expires_in: str
+    id: str
+    updated_at: str
+
+
+class FunctionKeyUpdateDataRequired(TypedDict):
+    id: str
+    namespace_id: str
+
+
+class FunctionKeyUpdateData(FunctionKeyUpdateDataRequired, total=False):
+    created_at: str
+    expires_at: str
+    expires_in: str
+    name: str
+    updated_at: str
+
+
+class FunctionKeyRemoveMatch(TypedDict):
+    id: str
+    namespace_id: str
+
+
+class FunctionNamespace(TypedDict, total=False):
+    api_host: str
+    created_at: str
     key: str
     label: str
-    name: str
     namespace: str
     region: str
-    scheduled_runs: dict
-    type: str
     updated_at: str
     uuid: str
 
 
-class FunctionLoadMatchRequired(TypedDict):
+class FunctionNamespaceLoadMatch(TypedDict):
     namespace_id: str
 
 
-class FunctionLoadMatch(FunctionLoadMatchRequired, total=False):
+class FunctionNamespaceListMatch(TypedDict, total=False):
+    api_host: str
+    created_at: str
+    key: str
+    label: str
+    namespace: str
+    region: str
+    updated_at: str
+    uuid: str
+
+
+class FunctionNamespaceCreateData(TypedDict, total=False):
+    api_host: str
+    created_at: str
+    key: str
+    label: str
+    namespace: str
+    region: str
+    updated_at: str
+    uuid: str
+
+
+class FunctionNamespaceRemoveMatch(TypedDict):
+    namespace_id: str
+
+
+class FunctionTriggerRequired(TypedDict):
+    scheduled_details: dict
+
+
+class FunctionTrigger(FunctionTriggerRequired, total=False):
+    created_at: str
+    function: str
+    is_enabled: bool
+    name: str
+    namespace: str
+    scheduled_runs: dict
+    type: str
+    updated_at: str
+
+
+class FunctionTriggerLoadMatch(TypedDict):
+    namespace_id: str
     trigger_name: str
 
 
-class FunctionListMatch(TypedDict):
+class FunctionTriggerListMatch(TypedDict):
     namespace_id: str
 
 
-class FunctionCreateDataRequired(TypedDict):
+class FunctionTriggerCreateDataRequired(TypedDict):
     namespace_id: str
     scheduled_details: dict
 
 
-class FunctionCreateData(FunctionCreateDataRequired, total=False):
-    api_host: str
+class FunctionTriggerCreateData(FunctionTriggerCreateDataRequired, total=False):
     created_at: str
-    expires_at: str
-    expires_in: str
     function: str
-    id: str
     is_enabled: bool
-    key: str
-    label: str
     name: str
     namespace: str
-    region: str
     scheduled_runs: dict
     type: str
     updated_at: str
-    uuid: str
 
 
-class FunctionUpdateDataRequired(TypedDict):
+class FunctionTriggerUpdateDataRequired(TypedDict):
     namespace_id: str
-
-
-class FunctionUpdateData(FunctionUpdateDataRequired, total=False):
-    key_id: str
     trigger_name: str
-    api_host: str
+
+
+class FunctionTriggerUpdateData(FunctionTriggerUpdateDataRequired, total=False):
     created_at: str
-    expires_at: str
-    expires_in: str
     function: str
-    id: str
     is_enabled: bool
-    key: str
-    label: str
     name: str
     namespace: str
-    region: str
     scheduled_details: dict
     scheduled_runs: dict
     type: str
     updated_at: str
-    uuid: str
 
 
-class FunctionRemoveMatchRequired(TypedDict):
+class FunctionTriggerRemoveMatch(TypedDict):
     namespace_id: str
-
-
-class FunctionRemoveMatch(FunctionRemoveMatchRequired, total=False):
-    key_id: str
     trigger_name: str
 
 
@@ -6916,11 +7021,10 @@ class ModelListMatch(TypedDict, total=False):
     owned_by: str
 
 
-class MonitoringRequired(TypedDict):
+class MonitoringAlert(TypedDict):
     alerts: dict
     compare: str
     description: str
-    destination: dict
     enabled: bool
     entities: list
     tags: list
@@ -6930,28 +7034,21 @@ class MonitoringRequired(TypedDict):
     window: str
 
 
-class Monitoring(MonitoringRequired, total=False):
-    config: dict
-    id: str
-    name: str
-    resources: list
-
-
-class MonitoringLoadMatch(TypedDict):
+class MonitoringAlertLoadMatch(TypedDict):
     alert_uuid: str
 
 
-class MonitoringListMatch(TypedDict, total=False):
+class MonitoringAlertListMatch(TypedDict, total=False):
+    page: int
+    per_page: int
+
+
+class MonitoringAlertCreateData(TypedDict):
     alerts: dict
     compare: str
-    config: dict
     description: str
-    destination: dict
     enabled: bool
     entities: list
-    id: str
-    name: str
-    resources: list
     tags: list
     type: str
     uuid: str
@@ -6959,52 +7056,94 @@ class MonitoringListMatch(TypedDict, total=False):
     window: str
 
 
-class MonitoringCreateDataRequired(TypedDict):
+class MonitoringAlertUpdateDataRequired(TypedDict):
+    alert_uuid: str
+
+
+class MonitoringAlertUpdateData(MonitoringAlertUpdateDataRequired, total=False):
+    alerts: dict
+    compare: str
+    description: str
+    enabled: bool
+    entities: list
+    tags: list
+    type: str
+    uuid: str
+    value: float
+    window: str
+
+
+class MonitoringAlertRemoveMatch(TypedDict):
+    alert_uuid: str
+
+
+class MonitoringSinkRequired(TypedDict):
+    destination: dict
+
+
+class MonitoringSink(MonitoringSinkRequired, total=False):
     destination_uuid: str
-    alerts: dict
-    compare: str
-    description: str
-    destination: dict
-    enabled: bool
-    entities: list
-    tags: list
-    type: str
-    uuid: str
-    value: float
-    window: str
-
-
-class MonitoringCreateData(MonitoringCreateDataRequired, total=False):
-    config: dict
-    id: str
-    name: str
     resources: list
 
 
-class MonitoringUpdateDataRequired(TypedDict):
-    alert_uuid: str
+class MonitoringSinkLoadMatch(TypedDict):
+    sink_uuid: str
 
 
-class MonitoringUpdateData(MonitoringUpdateDataRequired, total=False):
-    alerts: dict
-    compare: str
-    config: dict
-    description: str
+class MonitoringSinkListMatch(TypedDict, total=False):
+    resource_id: str
+
+
+class MonitoringSinkCreateDataRequired(TypedDict):
     destination: dict
-    enabled: bool
-    entities: list
+
+
+class MonitoringSinkCreateData(MonitoringSinkCreateDataRequired, total=False):
+    destination_uuid: str
+    resources: list
+
+
+class MonitoringSinkRemoveMatch(TypedDict):
+    sink_uuid: str
+
+
+class MonitoringSinkDestination(TypedDict, total=False):
+    config: dict
     id: str
     name: str
-    resources: list
-    tags: list
     type: str
-    uuid: str
-    value: float
-    window: str
 
 
-class MonitoringRemoveMatch(TypedDict):
-    alert_uuid: str
+class MonitoringSinkDestinationLoadMatch(TypedDict):
+    id: str
+
+
+class MonitoringSinkDestinationListMatch(TypedDict, total=False):
+    config: dict
+    id: str
+    name: str
+    type: str
+
+
+class MonitoringSinkDestinationCreateData(TypedDict, total=False):
+    config: dict
+    id: str
+    name: str
+    type: str
+
+
+class MonitoringSinkDestinationUpdateDataRequired(TypedDict):
+    id: str
+
+
+class MonitoringSinkDestinationUpdateData(MonitoringSinkDestinationUpdateDataRequired, total=False):
+    config: dict
+    name: str
+    type: str
+
+
+class MonitoringSinkDestinationRemoveMatch(TypedDict):
+    id: str
 
 
 class N1Click(TypedDict):
@@ -7616,17 +7755,18 @@ class ReservedIpActionLoadMatch(TypedDict):
 
 
 class ReservedIpActionListMatch(TypedDict):
-    id: str
+    reserved_ip_id: str
 
 
 class ReservedIpActionCreateDataRequired(TypedDict):
-    id: str
+    reserved_ip_id: str
     region: dict
 
 
 class ReservedIpActionCreateData(ReservedIpActionCreateDataRequired, total=False):
     action: dict
     completed_at: str
+    id: int
     project_id: str
     region_slug: str
     resource_id: int
@@ -7694,70 +7834,69 @@ class SearchListMatch(TypedDict, total=False):
     query: str
 
 
-class Security(TypedDict, total=False):
+class SecurityPlan(TypedDict, total=False):
+    tier_coverage: dict
+
+
+class SecurityPlanUpdateData(TypedDict, total=False):
+    tier_coverage: dict
+
+
+class SecurityRule(TypedDict, total=False):
+    resource: str
+
+
+class SecurityRuleCreateData(TypedDict, total=False):
+    resource: str
+
+
+class SecurityScan(TypedDict, total=False):
     created_at: str
     findings: list
     id: str
     name: str
-    resource: str
-    resources: list
-    rule_uuid: str
     status: str
-    tier_coverage: dict
     type: str
     urn: str
 
 
-class SecurityLoadMatchRequired(TypedDict):
+class SecurityScanLoadMatchRequired(TypedDict):
     scan_id: str
 
 
-class SecurityLoadMatch(SecurityLoadMatchRequired, total=False):
+class SecurityScanLoadMatch(SecurityScanLoadMatchRequired, total=False):
     page: int
     per_page: int
     severity: str
     type: str
 
 
-class SecurityListMatchRequired(TypedDict):
-    finding_id: str
-    scan_id: str
-
-
-class SecurityListMatch(SecurityListMatchRequired, total=False):
+class SecurityScanListMatch(TypedDict, total=False):
     page: int
     per_page: int
 
 
-class SecurityCreateData(TypedDict, total=False):
+class SecurityScanCreateData(TypedDict, total=False):
     created_at: str
     findings: list
     id: str
     name: str
-    resource: str
-    resources: list
-    rule_uuid: str
     status: str
-    tier_coverage: dict
     type: str
     urn: str
 
 
-class SecurityUpdateData(TypedDict, total=False):
-    created_at: str
-    findings: list
-    id: str
-    name: str
-    resource: str
+class SecuritySuppression(TypedDict, total=False):
     resources: list
     rule_uuid: str
-    status: str
-    tier_coverage: dict
-    type: str
-    urn: str
 
 
-class SecurityRemoveMatch(TypedDict):
+class SecuritySuppressionCreateData(TypedDict, total=False):
+    resources: list
+    rule_uuid: str
+
+
+class SecuritySuppressionRemoveMatch(TypedDict):
     suppression_uuid: str
 
 
@@ -8562,7 +8701,7 @@ class VpcRoutesPublicPreviewCreateData(VpcRoutesPublicPreviewCreateDataRequired,
 
 
 class VpcRoutesPublicPreviewUpdateDataRequired(TypedDict):
-    route_uuid: str
+    id: str
     subnet_id: str
     vpc_id: str
 
@@ -8570,14 +8709,13 @@ class VpcRoutesPublicPreviewUpdateDataRequired(TypedDict):
 class VpcRoutesPublicPreviewUpdateData(VpcRoutesPublicPreviewUpdateDataRequired, total=False):
     created_at: str
     destination_cidr: str
-    id: str
     modifiable: bool
     target_urns: list
     type: str
 
 
 class VpcRoutesPublicPreviewRemoveMatch(TypedDict):
-    route_uuid: str
+    id: str
     subnet_id: str
     vpc_id: str
 

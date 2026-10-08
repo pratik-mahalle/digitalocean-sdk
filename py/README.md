@@ -53,15 +53,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load an addon
+### 3. Load an appjobinvocation
 
-AddOn is nested under resource_uuid, so provide the `resource_uuid`.
+AppJobInvocation is nested under app, so provide the `app_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    addon = client.AddOn().load({"resource_uuid": "example_resource_uuid"})
-    print(addon)
+    appjobinvocation = client.AppJobInvocation().load({"app_id": "example_app_id", "id": "example_id"})
+    print(appjobinvocation)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -83,8 +83,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    appsregions = client.AppsRegion().list()
-    print(appsregions)
+    functionnamespaces = client.FunctionNamespace().list()
+    print(functionnamespaces)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -152,8 +152,8 @@ client = DigitaloceanSDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-appsregion = client.AppsRegion().list()
-# appsregion contains the mock response record
+functionnamespace = client.FunctionNamespace().list()
+# functionnamespace contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -235,7 +235,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Account` | `(data) -> AccountEntity` | Create an Account entity instance. |
 | `Action` | `(data) -> ActionEntity` | Create an Action entity instance. |
 | `ActorLimit` | `(data) -> ActorLimitEntity` | Create an ActorLimit entity instance. |
-| `AddOn` | `(data) -> AddOnEntity` | Create an AddOn entity instance. |
+| `AddOnApp` | `(data) -> AddOnAppEntity` | Create an AddOnApp entity instance. |
+| `AddOnPlan` | `(data) -> AddOnPlanEntity` | Create an AddOnPlan entity instance. |
+| `AddOnResource` | `(data) -> AddOnResourceEntity` | Create an AddOnResource entity instance. |
 | `ApiAgentVersion` | `(data) -> ApiAgentVersionEntity` | Create an ApiAgentVersion entity instance. |
 | `ApiCreateAgentApiKeyOutput` | `(data) -> ApiCreateAgentApiKeyOutputEntity` | Create an ApiCreateAgentApiKeyOutput entity instance. |
 | `ApiCreateDataSourceFileUploadPresignedUrlsOutput` | `(data) -> ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity` | Create an ApiCreateDataSourceFileUploadPresignedUrlsOutput entity instance. |
@@ -382,7 +384,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Firewall` | `(data) -> FirewallEntity` | Create a Firewall entity instance. |
 | `FloatingIp` | `(data) -> FloatingIpEntity` | Create a FloatingIp entity instance. |
 | `FloatingIpAction` | `(data) -> FloatingIpActionEntity` | Create a FloatingIpAction entity instance. |
-| `Function` | `(data) -> FunctionEntity` | Create a Function entity instance. |
+| `FunctionKey` | `(data) -> FunctionKeyEntity` | Create a FunctionKey entity instance. |
+| `FunctionNamespace` | `(data) -> FunctionNamespaceEntity` | Create a FunctionNamespace entity instance. |
+| `FunctionTrigger` | `(data) -> FunctionTriggerEntity` | Create a FunctionTrigger entity instance. |
 | `GenaiapiRegion` | `(data) -> GenaiapiRegionEntity` | Create a GenaiapiRegion entity instance. |
 | `Image` | `(data) -> ImageEntity` | Create an Image entity instance. |
 | `ImageAction` | `(data) -> ImageActionEntity` | Create an ImageAction entity instance. |
@@ -404,7 +408,9 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `Message` | `(data) -> MessageEntity` | Create a Message entity instance. |
 | `Metric` | `(data) -> MetricEntity` | Create a Metric entity instance. |
 | `Model` | `(data) -> ModelEntity` | Create a Model entity instance. |
-| `Monitoring` | `(data) -> MonitoringEntity` | Create a Monitoring entity instance. |
+| `MonitoringAlert` | `(data) -> MonitoringAlertEntity` | Create a MonitoringAlert entity instance. |
+| `MonitoringSink` | `(data) -> MonitoringSinkEntity` | Create a MonitoringSink entity instance. |
+| `MonitoringSinkDestination` | `(data) -> MonitoringSinkDestinationEntity` | Create a MonitoringSinkDestination entity instance. |
 | `N1Click` | `(data) -> N1ClickEntity` | Create a N1Click entity instance. |
 | `N1ClickApplication` | `(data) -> N1ClickApplicationEntity` | Create a N1ClickApplication entity instance. |
 | `NeighborId` | `(data) -> NeighborIdEntity` | Create a NeighborId entity instance. |
@@ -431,7 +437,10 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `ReservedIpAction` | `(data) -> ReservedIpActionEntity` | Create a ReservedIpAction entity instance. |
 | `Resync` | `(data) -> ResyncEntity` | Create a Resync entity instance. |
 | `Search` | `(data) -> SearchEntity` | Create a Search entity instance. |
-| `Security` | `(data) -> SecurityEntity` | Create a Security entity instance. |
+| `SecurityPlan` | `(data) -> SecurityPlanEntity` | Create a SecurityPlan entity instance. |
+| `SecurityRule` | `(data) -> SecurityRuleEntity` | Create a SecurityRule entity instance. |
+| `SecurityScan` | `(data) -> SecurityScanEntity` | Create a SecurityScan entity instance. |
+| `SecuritySuppression` | `(data) -> SecuritySuppressionEntity` | Create a SecuritySuppression entity instance. |
 | `Setting` | `(data) -> SettingEntity` | Create a Setting entity instance. |
 | `Size` | `(data) -> SizeEntity` | Create a Size entity instance. |
 | `Snapshot` | `(data) -> SnapshotEntity` | Create a Snapshot entity instance. |
@@ -538,7 +547,6 @@ API path: `/v2/account`
 
 | Field | Description |
 | --- | --- |
-| `action` |  |
 | `completed_at` | A time value given in ISO8601 combined date and time format that represents when the action was completed. |
 | `id` | A unique numeric ID that can be used to identify and reference an action. |
 | `region` |  |
@@ -549,9 +557,9 @@ API path: `/v2/account`
 | `status` | The current status of the action. |
 | `type` | This is the type of action that the object represents. |
 
-Operations: Create, List, Load.
+Operations: List, Load.
 
-API path: `/v2/images/{image_id}/actions`
+API path: `/v2/actions`
 
 #### ActorLimit
 
@@ -565,26 +573,63 @@ Operations: List.
 
 API path: `/v2/action-gateway/actors/{actor_id}/limits`
 
-#### AddOn
+#### AddOnApp
+
+| Field | Description |
+| --- | --- |
+| `app_slug` | The slug identifier for the application associated with the resource. |
+| `description` | A brief description of the metadata item. |
+| `display_name` | The display name of the metadata item. |
+| `eula` | The End User License Agreement URL for the resource. |
+| `id` | Unique identifier for the addon metadata item. |
+| `name` | The name of the metadata item. |
+| `options` |  |
+| `plans` | A list of plans available for the resource. |
+| `tos` | The Terms of Service URL for the resource. |
+| `type` | The data type of the metadata value. |
+
+Operations: List.
+
+API path: `/v2/add-ons/apps/{app_slug}/metadata`
+
+#### AddOnPlan
 
 | Field | Description |
 | --- | --- |
 | `app_name` | The name of the application associated with the resource. |
 | `app_slug` | The slug identifier for the application associated with the resource. |
-| `description` | A brief description of the metadata item. |
-| `display_name` | The display name of the metadata item. |
 | `has_config` | Indicates if the resource has configuration values set by the vendor. |
-| `id` | Unique identifier for the addon metadata item. |
 | `message` | A message related to the resource, if applicable. |
 | `metadata` | Metadata associated with the resource, set by the user. |
 | `name` | The name of the addon resource. |
-| `options` |  |
 | `plan_name` | The name of the plan associated with the resource. |
 | `plan_price_per_month` | The price of the plan per month in US dollars. |
 | `plan_slug` | The slug identifier for the plan associated with the resource. |
 | `sso_url` | The Single Sign-On URL for the resource, if applicable. |
 | `state` | The state the resource is currently in. |
-| `type` | The data type of the metadata value. |
+| `uuid` | The unique identifier for the addon resource. |
+
+Operations: Update.
+
+API path: `/v2/add-ons/saas/{resource_uuid}/plan`
+
+#### AddOnResource
+
+| Field | Description |
+| --- | --- |
+| `app_name` | The name of the application associated with the resource. |
+| `app_slug` | The slug identifier for the application associated with the resource. |
+| `fleet_uuid` | UUID of the fleet/project to which this resource will belong. |
+| `has_config` | Indicates if the resource has configuration values set by the vendor. |
+| `linked_droplet_id` | ID of the droplet to be linked to this resource, if applicable. |
+| `message` | A message related to the resource, if applicable. |
+| `metadata` | Metadata associated with the resource, set by the user. |
+| `name` | The name of the addon resource. |
+| `plan_name` | The name of the plan associated with the resource. |
+| `plan_price_per_month` | The price of the plan per month in US dollars. |
+| `plan_slug` | The slug identifier for the plan associated with the resource. |
+| `sso_url` | The Single Sign-On URL for the resource, if applicable. |
+| `state` | The state the resource is currently in. |
 | `uuid` | The unique identifier for the addon resource. |
 
 Operations: Create, List, Load, Remove, Update.
@@ -3823,31 +3868,55 @@ Operations: Create, List, Load.
 
 API path: `/v2/floating_ips/{floating_ip}/actions`
 
-#### Function
+#### FunctionKey
+
+| Field | Description |
+| --- | --- |
+| `created_at` | The date and time the key was created. |
+| `expires_at` | When the key expires (null for non-expiring keys). |
+| `expires_in` | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
+| `id` | The access key's unique identifier with prefix 'dof_v1_'. |
+| `name` | The access key's name. |
+| `updated_at` | The date and time the key was last updated. |
+
+Operations: Create, List, Remove, Update.
+
+API path: `/v2/functions/namespaces/{namespace_id}/keys`
+
+#### FunctionNamespace
 
 | Field | Description |
 | --- | --- |
 | `api_host` | The namespace's API hostname. |
 | `created_at` | UTC time string. |
-| `expires_at` | When the key expires (null for non-expiring keys). |
-| `expires_in` | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
-| `function` | Name of function(action) that exists in the given namespace. |
-| `id` | The access key's unique identifier with prefix 'dof_v1_'. |
-| `is_enabled` | Indicates weather the trigger is paused or unpaused. |
 | `key` | A random alpha numeric string. |
 | `label` | The namespace's unique name. |
-| `name` | The trigger's unique name within the namespace. |
 | `namespace` | A unique string format of UUID with a prefix fn-. |
 | `region` | The namespace's datacenter region. |
+| `updated_at` | UTC time string. |
+| `uuid` | The namespace's Universally Unique Identifier. |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/v2/functions/namespaces`
+
+#### FunctionTrigger
+
+| Field | Description |
+| --- | --- |
+| `created_at` | UTC time string. |
+| `function` | Name of function(action) that exists in the given namespace. |
+| `is_enabled` | Indicates weather the trigger is paused or unpaused. |
+| `name` | The trigger's unique name within the namespace. |
+| `namespace` | A unique string format of UUID with a prefix fn-. |
 | `scheduled_details` | Trigger details for SCHEDULED type, where body is optional. |
 | `scheduled_runs` |  |
 | `type` | String which indicates the type of trigger source like SCHEDULED. |
 | `updated_at` | UTC time string. |
-| `uuid` | The namespace's Universally Unique Identifier. |
 
 Operations: Create, List, Load, Remove, Update.
 
-API path: `/v2/functions/namespaces/{namespace_id}/keys`
+API path: `/v2/functions/namespaces/{namespace_id}/triggers`
 
 #### GenaiapiRegion
 
@@ -4283,29 +4352,49 @@ Operations: List.
 
 API path: `/v1/models`
 
-#### Monitoring
+#### MonitoringAlert
 
 | Field | Description |
 | --- | --- |
 | `alerts` |  |
 | `compare` |  |
-| `config` | OpenSearch destination configuration with `credentials` omitted. |
 | `description` |  |
-| `destination` |  |
 | `enabled` |  |
 | `entities` |  |
-| `id` | A unique identifier for a destination. |
-| `name` | destination name |
-| `resources` | List of resources identified by their URNs. |
 | `tags` |  |
-| `type` | The destination type. |
+| `type` |  |
 | `uuid` |  |
 | `value` |  |
 | `window` |  |
 
 Operations: Create, List, Load, Remove, Update.
 
-API path: `/v2/monitoring/sinks/destinations/{destination_uuid}`
+API path: `/v2/monitoring/alerts`
+
+#### MonitoringSink
+
+| Field | Description |
+| --- | --- |
+| `destination` |  |
+| `destination_uuid` | A unique identifier for an already-existing destination. |
+| `resources` | List of resources identified by their URNs. |
+
+Operations: Create, List, Load, Remove.
+
+API path: `/v2/monitoring/sinks`
+
+#### MonitoringSinkDestination
+
+| Field | Description |
+| --- | --- |
+| `config` | OpenSearch destination configuration with `credentials` omitted. |
+| `id` | A unique identifier for a destination. |
+| `name` | destination name |
+| `type` | The destination type. |
+
+Operations: Create, List, Load, Remove, Update.
+
+API path: `/v2/monitoring/sinks/destinations`
 
 #### N1Click
 
@@ -4692,7 +4781,27 @@ Operations: List.
 
 API path: `/v2/action-gateway/sessions/search`
 
-#### Security
+#### SecurityPlan
+
+| Field | Description |
+| --- | --- |
+| `tier_coverage` | Scan coverage for each available plan tier. |
+
+Operations: Update.
+
+API path: `/v2/security/settings/plan`
+
+#### SecurityRule
+
+| Field | Description |
+| --- | --- |
+| `resource` | The URN of a resource to exclude from future scans. |
+
+Operations: Create.
+
+API path: `/v2/security/scans/rules`
+
+#### SecurityScan
 
 | Field | Description |
 | --- | --- |
@@ -4700,17 +4809,24 @@ API path: `/v2/action-gateway/sessions/search`
 | `findings` |  |
 | `id` | The unique identifier for the scan. |
 | `name` | The name of the affected resource. |
-| `resource` | The URN of a resource to exclude from future scans. |
-| `resources` | The URNs of resources to suppress for the rule. |
-| `rule_uuid` | The rule UUID to suppress for the listed resources. |
 | `status` | The status of the scan. |
-| `tier_coverage` | Scan coverage for each available plan tier. |
 | `type` | The type of the affected resource. |
 | `urn` | The URN for the affected resource. |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: Create, List, Load.
 
 API path: `/v2/security/scans`
+
+#### SecuritySuppression
+
+| Field | Description |
+| --- | --- |
+| `resources` | The URNs of resources to suppress for the rule. |
+| `rule_uuid` | The rule UUID to suppress for the listed resources. |
+
+Operations: Create, Remove.
+
+API path: `/v2/security/settings/suppressions`
 
 #### Setting
 
@@ -5226,7 +5342,6 @@ Create an instance: `action = client.Action()`
 
 | Method | Description |
 | --- | --- |
-| `create(data)` | Create a new entity with the given data. |
 | `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
@@ -5234,7 +5349,6 @@ Create an instance: `action = client.Action()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `action` | `dict` |  |
 | `completed_at` | `str` | A time value given in ISO8601 combined date and time format that represents when the action was completed. |
 | `id` | `int` | A unique numeric ID that can be used to identify and reference an action. |
 | `region` | `dict` |  |
@@ -5255,15 +5369,6 @@ action = client.Action().load({"id": 1})
 
 ```python
 actions = client.Action().list()
-```
-
-#### Example: Create
-
-```python
-action = client.Action().create({
-    "image_id": 1,  # int
-    "region": {},  # dict
-})
 ```
 
 
@@ -5292,9 +5397,69 @@ actor_limits = client.ActorLimit().list({"id": "example"})
 ```
 
 
-### AddOn
+### AddOnApp
 
-Create an instance: `add_on = client.AddOn()`
+Create an instance: `add_on_app = client.AddOnApp()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `list()` | List entities, optionally matching the given criteria. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_slug` | `str` | The slug identifier for the application associated with the resource. |
+| `description` | `str` | A brief description of the metadata item. |
+| `display_name` | `str` | The display name of the metadata item. |
+| `eula` | `str` | The End User License Agreement URL for the resource. |
+| `id` | `int` | Unique identifier for the addon metadata item. |
+| `name` | `str` | The name of the metadata item. |
+| `options` | `list` |  |
+| `plans` | `list` | A list of plans available for the resource. |
+| `tos` | `str` | The Terms of Service URL for the resource. |
+| `type` | `str` | The data type of the metadata value. |
+
+#### Example: List
+
+```python
+add_on_apps = client.AddOnApp().list()
+```
+
+
+### AddOnPlan
+
+Create an instance: `add_on_plan = client.AddOnPlan()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `app_name` | `str` | The name of the application associated with the resource. |
+| `app_slug` | `str` | The slug identifier for the application associated with the resource. |
+| `has_config` | `bool` | Indicates if the resource has configuration values set by the vendor. |
+| `message` | `str` | A message related to the resource, if applicable. |
+| `metadata` | `list` | Metadata associated with the resource, set by the user. |
+| `name` | `str` | The name of the addon resource. |
+| `plan_name` | `str` | The name of the plan associated with the resource. |
+| `plan_price_per_month` | `int` | The price of the plan per month in US dollars. |
+| `plan_slug` | `str` | The slug identifier for the plan associated with the resource. |
+| `sso_url` | `str` | The Single Sign-On URL for the resource, if applicable. |
+| `state` | `str` | The state the resource is currently in. |
+| `uuid` | `str` | The unique identifier for the addon resource. |
+
+
+### AddOnResource
+
+Create an instance: `add_on_resource = client.AddOnResource()`
 
 #### Operations
 
@@ -5312,47 +5477,40 @@ Create an instance: `add_on = client.AddOn()`
 | --- | --- | --- |
 | `app_name` | `str` | The name of the application associated with the resource. |
 | `app_slug` | `str` | The slug identifier for the application associated with the resource. |
-| `description` | `str` | A brief description of the metadata item. |
-| `display_name` | `str` | The display name of the metadata item. |
+| `fleet_uuid` | `str` | UUID of the fleet/project to which this resource will belong. |
 | `has_config` | `bool` | Indicates if the resource has configuration values set by the vendor. |
-| `id` | `int` | Unique identifier for the addon metadata item. |
+| `linked_droplet_id` | `int` | ID of the droplet to be linked to this resource, if applicable. |
 | `message` | `str` | A message related to the resource, if applicable. |
 | `metadata` | `list` | Metadata associated with the resource, set by the user. |
 | `name` | `str` | The name of the addon resource. |
-| `options` | `list` |  |
 | `plan_name` | `str` | The name of the plan associated with the resource. |
 | `plan_price_per_month` | `int` | The price of the plan per month in US dollars. |
 | `plan_slug` | `str` | The slug identifier for the plan associated with the resource. |
 | `sso_url` | `str` | The Single Sign-On URL for the resource, if applicable. |
 | `state` | `str` | The state the resource is currently in. |
-| `type` | `str` | The data type of the metadata value. |
 | `uuid` | `str` | The unique identifier for the addon resource. |
 
 #### Example: Load
 
 ```python
-add_on = client.AddOn().load({"resource_uuid": "resource_uuid"})
+add_on_resource = client.AddOnResource().load({"resource_uuid": "resource_uuid"})
 ```
 
 #### Example: List
 
 ```python
-add_ons = client.AddOn().list({"app_slug": "example"})
+add_on_resources = client.AddOnResource().list()
 ```
 
 #### Example: Create
 
 ```python
-add_on = client.AddOn().create({
+add_on_resource = client.AddOnResource().create({
     "app_slug": "example_app_slug",  # str
-    "description": "example_description",  # str
-    "display_name": "example_display_name",  # str
     "has_config": True,  # bool
-    "id": 1,  # int
     "name": "example_name",  # str
     "plan_slug": "example_plan_slug",  # str
     "state": "example_state",  # str
-    "type": "example_type",  # str
     "uuid": "example_uuid",  # str
 })
 ```
@@ -10919,22 +11077,108 @@ floating_ip_action = client.FloatingIpAction().load({"id": 1, "floating_ip_id": 
 #### Example: List
 
 ```python
-floating_ip_actions = client.FloatingIpAction().list({"id": "example_id"})
+floating_ip_actions = client.FloatingIpAction().list({"floating_ip_id": "example"})
 ```
 
 #### Example: Create
 
 ```python
 floating_ip_action = client.FloatingIpAction().create({
-    "id": "example_id",  # str
+    "floating_ip_id": "example_floating_ip_id",  # str
     "region": {},  # dict
 })
 ```
 
 
-### Function
+### FunctionKey
 
-Create an instance: `function = client.Function()`
+Create an instance: `function_key = client.FunctionKey()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list()` | List entities, optionally matching the given criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `created_at` | `str` | The date and time the key was created. |
+| `expires_at` | `str` | When the key expires (null for non-expiring keys). |
+| `expires_in` | `str` | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
+| `id` | `str` | The access key's unique identifier with prefix 'dof_v1_'. |
+| `name` | `str` | The access key's name. |
+| `updated_at` | `str` | The date and time the key was last updated. |
+
+#### Example: List
+
+```python
+function_keys = client.FunctionKey().list({"namespace_id": "example"})
+```
+
+#### Example: Create
+
+```python
+function_key = client.FunctionKey().create({
+    "namespace_id": "example_namespace_id",  # str
+    "name": "example_name",  # str
+})
+```
+
+
+### FunctionNamespace
+
+Create an instance: `function_namespace = client.FunctionNamespace()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `api_host` | `str` | The namespace's API hostname. |
+| `created_at` | `str` | UTC time string. |
+| `key` | `str` | A random alpha numeric string. |
+| `label` | `str` | The namespace's unique name. |
+| `namespace` | `str` | A unique string format of UUID with a prefix fn-. |
+| `region` | `str` | The namespace's datacenter region. |
+| `updated_at` | `str` | UTC time string. |
+| `uuid` | `str` | The namespace's Universally Unique Identifier. |
+
+#### Example: Load
+
+```python
+function_namespace = client.FunctionNamespace().load({"namespace_id": "namespace_id"})
+```
+
+#### Example: List
+
+```python
+function_namespaces = client.FunctionNamespace().list()
+```
+
+#### Example: Create
+
+```python
+function_namespace = client.FunctionNamespace().create({
+})
+```
+
+
+### FunctionTrigger
+
+Create an instance: `function_trigger = client.FunctionTrigger()`
 
 #### Operations
 
@@ -10950,40 +11194,32 @@ Create an instance: `function = client.Function()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `api_host` | `str` | The namespace's API hostname. |
 | `created_at` | `str` | UTC time string. |
-| `expires_at` | `str` | When the key expires (null for non-expiring keys). |
-| `expires_in` | `str` | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
 | `function` | `str` | Name of function(action) that exists in the given namespace. |
-| `id` | `str` | The access key's unique identifier with prefix 'dof_v1_'. |
 | `is_enabled` | `bool` | Indicates weather the trigger is paused or unpaused. |
-| `key` | `str` | A random alpha numeric string. |
-| `label` | `str` | The namespace's unique name. |
 | `name` | `str` | The trigger's unique name within the namespace. |
 | `namespace` | `str` | A unique string format of UUID with a prefix fn-. |
-| `region` | `str` | The namespace's datacenter region. |
 | `scheduled_details` | `dict` | Trigger details for SCHEDULED type, where body is optional. |
 | `scheduled_runs` | `dict` |  |
 | `type` | `str` | String which indicates the type of trigger source like SCHEDULED. |
 | `updated_at` | `str` | UTC time string. |
-| `uuid` | `str` | The namespace's Universally Unique Identifier. |
 
 #### Example: Load
 
 ```python
-function = client.Function().load({"namespace_id": "namespace_id"})
+function_trigger = client.FunctionTrigger().load({"namespace_id": "namespace_id", "trigger_name": "trigger_name"})
 ```
 
 #### Example: List
 
 ```python
-functions = client.Function().list({"namespace_id": "example"})
+function_triggers = client.FunctionTrigger().list({"namespace_id": "example"})
 ```
 
 #### Example: Create
 
 ```python
-function = client.Function().create({
+function_trigger = client.FunctionTrigger().create({
     "namespace_id": "example_namespace_id",  # str
     "scheduled_details": {},  # dict
 })
@@ -11794,9 +12030,9 @@ models = client.Model().list()
 ```
 
 
-### Monitoring
+### MonitoringAlert
 
-Create an instance: `monitoring = client.Monitoring()`
+Create an instance: `monitoring_alert = client.MonitoringAlert()`
 
 #### Operations
 
@@ -11814,16 +12050,11 @@ Create an instance: `monitoring = client.Monitoring()`
 | --- | --- | --- |
 | `alerts` | `dict` |  |
 | `compare` | `str` |  |
-| `config` | `dict` | OpenSearch destination configuration with `credentials` omitted. |
 | `description` | `str` |  |
-| `destination` | `dict` |  |
 | `enabled` | `bool` |  |
 | `entities` | `list` |  |
-| `id` | `str` | A unique identifier for a destination. |
-| `name` | `str` | destination name |
-| `resources` | `list` | List of resources identified by their URNs. |
 | `tags` | `list` |  |
-| `type` | `str` | The destination type. |
+| `type` | `str` |  |
 | `uuid` | `str` |  |
 | `value` | `float` |  |
 | `window` | `str` |  |
@@ -11831,24 +12062,22 @@ Create an instance: `monitoring = client.Monitoring()`
 #### Example: Load
 
 ```python
-monitoring = client.Monitoring().load({"alert_uuid": "alert_uuid"})
+monitoring_alert = client.MonitoringAlert().load({"alert_uuid": "alert_uuid"})
 ```
 
 #### Example: List
 
 ```python
-monitorings = client.Monitoring().list()
+monitoring_alerts = client.MonitoringAlert().list()
 ```
 
 #### Example: Create
 
 ```python
-monitoring = client.Monitoring().create({
-    "destination_uuid": "example_destination_uuid",  # str
+monitoring_alert = client.MonitoringAlert().create({
     "alerts": {},  # dict
     "compare": "example_compare",  # str
     "description": "example_description",  # str
-    "destination": {},  # dict
     "enabled": True,  # bool
     "entities": [],  # list
     "tags": [],  # list
@@ -11856,6 +12085,91 @@ monitoring = client.Monitoring().create({
     "uuid": "example_uuid",  # str
     "value": 1,  # float
     "window": "example_window",  # str
+})
+```
+
+
+### MonitoringSink
+
+Create an instance: `monitoring_sink = client.MonitoringSink()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `destination` | `dict` |  |
+| `destination_uuid` | `str` | A unique identifier for an already-existing destination. |
+| `resources` | `list` | List of resources identified by their URNs. |
+
+#### Example: Load
+
+```python
+monitoring_sink = client.MonitoringSink().load({"sink_uuid": "sink_uuid"})
+```
+
+#### Example: List
+
+```python
+monitoring_sinks = client.MonitoringSink().list()
+```
+
+#### Example: Create
+
+```python
+monitoring_sink = client.MonitoringSink().create({
+    "destination": {},  # dict
+})
+```
+
+
+### MonitoringSinkDestination
+
+Create an instance: `monitoring_sink_destination = client.MonitoringSinkDestination()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
+| `remove(match)` | Remove the matching entity. |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `config` | `dict` | OpenSearch destination configuration with `credentials` omitted. |
+| `id` | `str` | A unique identifier for a destination. |
+| `name` | `str` | destination name |
+| `type` | `str` | The destination type. |
+
+#### Example: Load
+
+```python
+monitoring_sink_destination = client.MonitoringSinkDestination().load({"id": "monitoring_sink_destination_id"})
+```
+
+#### Example: List
+
+```python
+monitoring_sink_destinations = client.MonitoringSinkDestination().list()
+```
+
+#### Example: Create
+
+```python
+monitoring_sink_destination = client.MonitoringSinkDestination().create({
 })
 ```
 
@@ -12679,14 +12993,14 @@ reserved_ip_action = client.ReservedIpAction().load({"id": 1, "reserved_ip_id": 
 #### Example: List
 
 ```python
-reserved_ip_actions = client.ReservedIpAction().list({"id": "example_id"})
+reserved_ip_actions = client.ReservedIpAction().list({"reserved_ip_id": "example"})
 ```
 
 #### Example: Create
 
 ```python
 reserved_ip_action = client.ReservedIpAction().create({
-    "id": "example_id",  # str
+    "reserved_ip_id": "example_reserved_ip_id",  # str
     "region": {},  # dict
 })
 ```
@@ -12771,9 +13085,50 @@ searchs = client.Search().list()
 ```
 
 
-### Security
+### SecurityPlan
 
-Create an instance: `security = client.Security()`
+Create an instance: `security_plan = client.SecurityPlan()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `update(data)` | Update an existing entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `tier_coverage` | `dict` | Scan coverage for each available plan tier. |
+
+
+### SecurityRule
+
+Create an instance: `security_rule = client.SecurityRule()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `resource` | `str` | The URN of a resource to exclude from future scans. |
+
+#### Example: Create
+
+```python
+security_rule = client.SecurityRule().create({
+})
+```
+
+
+### SecurityScan
+
+Create an instance: `security_scan = client.SecurityScan()`
 
 #### Operations
 
@@ -12782,8 +13137,6 @@ Create an instance: `security = client.Security()`
 | `create(data)` | Create a new entity with the given data. |
 | `list()` | List entities, optionally matching the given criteria. |
 | `load(match)` | Load a single entity by match criteria. |
-| `remove(match)` | Remove the matching entity. |
-| `update(data)` | Update an existing entity. |
 
 #### Fields
 
@@ -12793,30 +13146,52 @@ Create an instance: `security = client.Security()`
 | `findings` | `list` |  |
 | `id` | `str` | The unique identifier for the scan. |
 | `name` | `str` | The name of the affected resource. |
-| `resource` | `str` | The URN of a resource to exclude from future scans. |
-| `resources` | `list` | The URNs of resources to suppress for the rule. |
-| `rule_uuid` | `str` | The rule UUID to suppress for the listed resources. |
 | `status` | `str` | The status of the scan. |
-| `tier_coverage` | `dict` | Scan coverage for each available plan tier. |
 | `type` | `str` | The type of the affected resource. |
 | `urn` | `str` | The URN for the affected resource. |
 
 #### Example: Load
 
 ```python
-security = client.Security().load({"scan_id": "scan_id"})
+security_scan = client.SecurityScan().load({"scan_id": "scan_id"})
 ```
 
 #### Example: List
 
 ```python
-securitys = client.Security().list({"finding_id": "example", "scan_id": "example"})
+security_scans = client.SecurityScan().list()
 ```
 
 #### Example: Create
 
 ```python
-security = client.Security().create({
+security_scan = client.SecurityScan().create({
+})
+```
+
+
+### SecuritySuppression
+
+Create an instance: `security_suppression = client.SecuritySuppression()`
+
+#### Operations
+
+| Method | Description |
+| --- | --- |
+| `create(data)` | Create a new entity with the given data. |
+| `remove(match)` | Remove the matching entity. |
+
+#### Fields
+
+| Field | Type | Description |
+| --- | --- | --- |
+| `resources` | `list` | The URNs of resources to suppress for the rule. |
+| `rule_uuid` | `str` | The rule UUID to suppress for the listed resources. |
+
+#### Example: Create
+
+```python
+security_suppression = client.SecuritySuppression().create({
 })
 ```
 
@@ -13792,7 +14167,7 @@ Set `feature.test.active` to enable it, then override any of the options above.
 
 ## Open types
 
-5 fields are carried as open values rather than typed structures.
+6 fields are carried as open values rather than typed structures.
 This follows from the API definition, not from a gap in this SDK: the
 definition describes them with untagged unions —
 `oneOf`/`anyOf` branches with no `discriminator` — so it never states which
@@ -13804,6 +14179,7 @@ guarantee.
 | --- | --- | --- | --- |
 | `logsink` | `config` | 4 | 0 levels |
 | `message` | `messages` | 4 | 10 levels |
+| `add_on_app` | `plans` | 3 | 6 levels |
 | `billing` | `links` | 3 | 2 levels |
 | `droplet` | `links` | 3 | 2 levels |
 | `prom_query` | `result` | 3 | 6 levels |
@@ -13888,11 +14264,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-appsregion = client.AppsRegion()
-appsregion.list()
+functionnamespace = client.FunctionNamespace()
+functionnamespace.list()
 
-# appsregion.data_get() now returns the appsregion data from the last list
-# appsregion.match_get() returns the last match criteria
+# functionnamespace.data_get() now returns the functionnamespace data from the last list
+# functionnamespace.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

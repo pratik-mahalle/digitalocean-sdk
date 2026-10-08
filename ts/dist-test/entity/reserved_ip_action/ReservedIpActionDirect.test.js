@@ -73,19 +73,19 @@ const utility_1 = require("../../utility");
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-reserved_ip_action', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["reserved_ip_action01"], LIVE_STRICT))
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["reserved_ip01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            params.id = setup.idmap['reserved_ip_action01'];
+            params.reserved_ip_id = setup.idmap['reserved_ip01'];
         }
         else {
-            params.id = 'direct01';
+            params.reserved_ip_id = 'direct01';
         }
         const result = await client.direct({
-            path: 'v2/reserved_ips/{id}/actions',
+            path: 'v2/reserved_ips/{reserved_ip_id}/actions',
             method: 'GET',
             params,
             query,

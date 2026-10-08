@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "function_key": {
+      "FUNCTION_KEY00": {
+        "created_at": "s3c",
+        "expires_at": "s3d",
+        "expires_in": "s3e",
+        "id": "FUNCTION_KEY00",
+        "name": "s40",
+        "updated_at": "s41",
+        "namespace_id": "NAMESPACE01"
+      },
+      "FUNCTION_KEY01": {
+        "created_at": "s78",
+        "expires_at": "s79",
+        "expires_in": "s7a",
+        "id": "FUNCTION_KEY01",
+        "name": "s7c",
+        "updated_at": "s7d",
+        "namespace_id": "NAMESPACE01"
+      },
+      "FUNCTION_KEY02": {
+        "created_at": "sb4",
+        "expires_at": "sb5",
+        "expires_in": "sb6",
+        "id": "FUNCTION_KEY02",
+        "name": "sb8",
+        "updated_at": "sb9",
+        "namespace_id": "NAMESPACE01"
+      }
+    }
+  },
+  "new": {
+    "function_key": {
+      "function_key_ref01": {
+        "created_at": "sf0",
+        "expires_at": "sf1",
+        "expires_in": "sf2",
+        "name": "sf4",
+        "updated_at": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/functions/namespaces/{namespace_id}/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

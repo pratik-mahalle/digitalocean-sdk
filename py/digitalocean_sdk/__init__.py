@@ -365,10 +365,22 @@ class DigitaloceanSDK:
         return ActorLimitEntity(self, data)
 
 
-    def AddOn(self, data=None) -> "AddOnEntity":
-        """Entity factory: client.AddOn().list() / client.AddOn().load({"id": ...})."""
-        from digitalocean_sdk.entity.add_on_entity import AddOnEntity
-        return AddOnEntity(self, data)
+    def AddOnApp(self, data=None) -> "AddOnAppEntity":
+        """Entity factory: client.AddOnApp().list() / client.AddOnApp().load({"id": ...})."""
+        from digitalocean_sdk.entity.add_on_app_entity import AddOnAppEntity
+        return AddOnAppEntity(self, data)
+
+
+    def AddOnPlan(self, data=None) -> "AddOnPlanEntity":
+        """Entity factory: client.AddOnPlan().list() / client.AddOnPlan().load({"id": ...})."""
+        from digitalocean_sdk.entity.add_on_plan_entity import AddOnPlanEntity
+        return AddOnPlanEntity(self, data)
+
+
+    def AddOnResource(self, data=None) -> "AddOnResourceEntity":
+        """Entity factory: client.AddOnResource().list() / client.AddOnResource().load({"id": ...})."""
+        from digitalocean_sdk.entity.add_on_resource_entity import AddOnResourceEntity
+        return AddOnResourceEntity(self, data)
 
 
     def ApiAgentVersion(self, data=None) -> "ApiAgentVersionEntity":
@@ -1247,10 +1259,22 @@ class DigitaloceanSDK:
         return FloatingIpActionEntity(self, data)
 
 
-    def Function(self, data=None) -> "FunctionEntity":
-        """Entity factory: client.Function().list() / client.Function().load({"id": ...})."""
-        from digitalocean_sdk.entity.function_entity import FunctionEntity
-        return FunctionEntity(self, data)
+    def FunctionKey(self, data=None) -> "FunctionKeyEntity":
+        """Entity factory: client.FunctionKey().list() / client.FunctionKey().load({"id": ...})."""
+        from digitalocean_sdk.entity.function_key_entity import FunctionKeyEntity
+        return FunctionKeyEntity(self, data)
+
+
+    def FunctionNamespace(self, data=None) -> "FunctionNamespaceEntity":
+        """Entity factory: client.FunctionNamespace().list() / client.FunctionNamespace().load({"id": ...})."""
+        from digitalocean_sdk.entity.function_namespace_entity import FunctionNamespaceEntity
+        return FunctionNamespaceEntity(self, data)
+
+
+    def FunctionTrigger(self, data=None) -> "FunctionTriggerEntity":
+        """Entity factory: client.FunctionTrigger().list() / client.FunctionTrigger().load({"id": ...})."""
+        from digitalocean_sdk.entity.function_trigger_entity import FunctionTriggerEntity
+        return FunctionTriggerEntity(self, data)
 
 
     def GenaiapiRegion(self, data=None) -> "GenaiapiRegionEntity":
@@ -1379,10 +1403,22 @@ class DigitaloceanSDK:
         return ModelEntity(self, data)
 
 
-    def Monitoring(self, data=None) -> "MonitoringEntity":
-        """Entity factory: client.Monitoring().list() / client.Monitoring().load({"id": ...})."""
-        from digitalocean_sdk.entity.monitoring_entity import MonitoringEntity
-        return MonitoringEntity(self, data)
+    def MonitoringAlert(self, data=None) -> "MonitoringAlertEntity":
+        """Entity factory: client.MonitoringAlert().list() / client.MonitoringAlert().load({"id": ...})."""
+        from digitalocean_sdk.entity.monitoring_alert_entity import MonitoringAlertEntity
+        return MonitoringAlertEntity(self, data)
+
+
+    def MonitoringSink(self, data=None) -> "MonitoringSinkEntity":
+        """Entity factory: client.MonitoringSink().list() / client.MonitoringSink().load({"id": ...})."""
+        from digitalocean_sdk.entity.monitoring_sink_entity import MonitoringSinkEntity
+        return MonitoringSinkEntity(self, data)
+
+
+    def MonitoringSinkDestination(self, data=None) -> "MonitoringSinkDestinationEntity":
+        """Entity factory: client.MonitoringSinkDestination().list() / client.MonitoringSinkDestination().load({"id": ...})."""
+        from digitalocean_sdk.entity.monitoring_sink_destination_entity import MonitoringSinkDestinationEntity
+        return MonitoringSinkDestinationEntity(self, data)
 
 
     def N1Click(self, data=None) -> "N1ClickEntity":
@@ -1541,10 +1577,28 @@ class DigitaloceanSDK:
         return SearchEntity(self, data)
 
 
-    def Security(self, data=None) -> "SecurityEntity":
-        """Entity factory: client.Security().list() / client.Security().load({"id": ...})."""
-        from digitalocean_sdk.entity.security_entity import SecurityEntity
-        return SecurityEntity(self, data)
+    def SecurityPlan(self, data=None) -> "SecurityPlanEntity":
+        """Entity factory: client.SecurityPlan().list() / client.SecurityPlan().load({"id": ...})."""
+        from digitalocean_sdk.entity.security_plan_entity import SecurityPlanEntity
+        return SecurityPlanEntity(self, data)
+
+
+    def SecurityRule(self, data=None) -> "SecurityRuleEntity":
+        """Entity factory: client.SecurityRule().list() / client.SecurityRule().load({"id": ...})."""
+        from digitalocean_sdk.entity.security_rule_entity import SecurityRuleEntity
+        return SecurityRuleEntity(self, data)
+
+
+    def SecurityScan(self, data=None) -> "SecurityScanEntity":
+        """Entity factory: client.SecurityScan().list() / client.SecurityScan().load({"id": ...})."""
+        from digitalocean_sdk.entity.security_scan_entity import SecurityScanEntity
+        return SecurityScanEntity(self, data)
+
+
+    def SecuritySuppression(self, data=None) -> "SecuritySuppressionEntity":
+        """Entity factory: client.SecuritySuppression().list() / client.SecuritySuppression().load({"id": ...})."""
+        from digitalocean_sdk.entity.security_suppression_entity import SecuritySuppressionEntity
+        return SecuritySuppressionEntity(self, data)
 
 
     def Setting(self, data=None) -> "SettingEntity":
@@ -1728,7 +1782,9 @@ if TYPE_CHECKING:
     from digitalocean_sdk.entity.account_entity import AccountEntity
     from digitalocean_sdk.entity.action_entity import ActionEntity
     from digitalocean_sdk.entity.actor_limit_entity import ActorLimitEntity
-    from digitalocean_sdk.entity.add_on_entity import AddOnEntity
+    from digitalocean_sdk.entity.add_on_app_entity import AddOnAppEntity
+    from digitalocean_sdk.entity.add_on_plan_entity import AddOnPlanEntity
+    from digitalocean_sdk.entity.add_on_resource_entity import AddOnResourceEntity
     from digitalocean_sdk.entity.api_agent_version_entity import ApiAgentVersionEntity
     from digitalocean_sdk.entity.api_create_agent_api_key_output_entity import ApiCreateAgentApiKeyOutputEntity
     from digitalocean_sdk.entity.api_create_data_source_file_upload_presigned_urls_output_entity import ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity
@@ -1875,7 +1931,9 @@ if TYPE_CHECKING:
     from digitalocean_sdk.entity.firewall_entity import FirewallEntity
     from digitalocean_sdk.entity.floating_ip_entity import FloatingIpEntity
     from digitalocean_sdk.entity.floating_ip_action_entity import FloatingIpActionEntity
-    from digitalocean_sdk.entity.function_entity import FunctionEntity
+    from digitalocean_sdk.entity.function_key_entity import FunctionKeyEntity
+    from digitalocean_sdk.entity.function_namespace_entity import FunctionNamespaceEntity
+    from digitalocean_sdk.entity.function_trigger_entity import FunctionTriggerEntity
     from digitalocean_sdk.entity.genaiapi_region_entity import GenaiapiRegionEntity
     from digitalocean_sdk.entity.image_entity import ImageEntity
     from digitalocean_sdk.entity.image_action_entity import ImageActionEntity
@@ -1897,7 +1955,9 @@ if TYPE_CHECKING:
     from digitalocean_sdk.entity.message_entity import MessageEntity
     from digitalocean_sdk.entity.metric_entity import MetricEntity
     from digitalocean_sdk.entity.model_entity import ModelEntity
-    from digitalocean_sdk.entity.monitoring_entity import MonitoringEntity
+    from digitalocean_sdk.entity.monitoring_alert_entity import MonitoringAlertEntity
+    from digitalocean_sdk.entity.monitoring_sink_entity import MonitoringSinkEntity
+    from digitalocean_sdk.entity.monitoring_sink_destination_entity import MonitoringSinkDestinationEntity
     from digitalocean_sdk.entity.n1_click_entity import N1ClickEntity
     from digitalocean_sdk.entity.n1_click_application_entity import N1ClickApplicationEntity
     from digitalocean_sdk.entity.neighbor_id_entity import NeighborIdEntity
@@ -1924,7 +1984,10 @@ if TYPE_CHECKING:
     from digitalocean_sdk.entity.reserved_ip_action_entity import ReservedIpActionEntity
     from digitalocean_sdk.entity.resync_entity import ResyncEntity
     from digitalocean_sdk.entity.search_entity import SearchEntity
-    from digitalocean_sdk.entity.security_entity import SecurityEntity
+    from digitalocean_sdk.entity.security_plan_entity import SecurityPlanEntity
+    from digitalocean_sdk.entity.security_rule_entity import SecurityRuleEntity
+    from digitalocean_sdk.entity.security_scan_entity import SecurityScanEntity
+    from digitalocean_sdk.entity.security_suppression_entity import SecuritySuppressionEntity
     from digitalocean_sdk.entity.setting_entity import SettingEntity
     from digitalocean_sdk.entity.size_entity import SizeEntity
     from digitalocean_sdk.entity.snapshot_entity import SnapshotEntity

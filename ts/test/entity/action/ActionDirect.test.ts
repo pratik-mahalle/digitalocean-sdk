@@ -49,14 +49,12 @@ describe('ActionDirect', async () => {
     const query: any = {}
     if (setup.live) {
       params.id = 36804636
-      params.image_id = 62137902
     } else {
       params.id = 'direct01'
-      params.image_id = 'direct02'
     }
 
     const result: any = await client.direct({
-      path: 'v2/images/{image_id}/actions/{id}',
+      path: 'v2/actions/{id}',
       method: 'GET',
       params,
       query,
@@ -77,7 +75,6 @@ describe('ActionDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

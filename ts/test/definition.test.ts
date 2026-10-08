@@ -326,66 +326,6 @@ const PLAN: any[] = [
   {
     "entity": "action",
     "accessor": "Action",
-    "op": "create",
-    "method": "POST",
-    "path": "/v2/images/{image_id}/actions",
-    "args": [
-      {
-        "name": "image_id",
-        "wire": "image_id",
-        "value": 62137902
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 201,
-    "sample": {
-      "action": {
-        "id": 36805527,
-        "status": "in-progress",
-        "type": "transfer",
-        "started_at": "2014-11-14T16:42:45Z",
-        "completed_at": null,
-        "resource_id": 7938269,
-        "resource_type": "image",
-        "region": {
-          "name": "New York 3",
-          "slug": "nyc3",
-          "sizes": [
-            "s-1vcpu-3gb",
-            "m-1vcpu-8gb",
-            "s-3vcpu-1gb"
-          ],
-          "features": [
-            "private_networking",
-            "backups",
-            "ipv6"
-          ],
-          "available": true
-        },
-        "region_slug": "nyc3"
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "action",
-    "accessor": "Action",
     "op": "list",
     "method": "GET",
     "path": "/v2/actions",
@@ -461,71 +401,6 @@ const PLAN: any[] = [
       },
       "meta": {
         "total": 1
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "action",
-    "accessor": "Action",
-    "op": "load",
-    "method": "GET",
-    "path": "/v2/images/{image_id}/actions/{action_id}",
-    "args": [
-      {
-        "name": "id",
-        "wire": "action_id",
-        "value": 36804636
-      },
-      {
-        "name": "image_id",
-        "wire": "image_id",
-        "value": 62137902
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "action": {
-        "id": 36805527,
-        "status": "in-progress",
-        "type": "transfer",
-        "started_at": "2014-11-14T16:42:45Z",
-        "completed_at": null,
-        "resource_id": 7938269,
-        "resource_type": "image",
-        "region": {
-          "name": "New York 3",
-          "slug": "nyc3",
-          "sizes": [
-            "s-1vcpu-3gb",
-            "m-1vcpu-8gb",
-            "s-3vcpu-1gb"
-          ],
-          "features": [
-            "private_networking",
-            "backups",
-            "ipv6"
-          ],
-          "available": true
-        },
-        "region_slug": "nyc3"
       }
     },
     "idField": "id"
@@ -638,57 +513,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
-    "op": "create",
-    "method": "POST",
-    "path": "/v2/add-ons/saas",
-    "action": "saa",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "resource": {
-        "uuid": "123e4567-e89b-12d3-a456-426614174000",
-        "name": "my-resource-01",
-        "state": "provisioned",
-        "app_name": "Example App",
-        "app_slug": "example_app",
-        "plan_name": "Basic Plan",
-        "plan_slug": "basic_plan",
-        "plan_price_per_month": 10,
-        "has_config": true,
-        "metadata": [
-          {
-            "name": "property_name",
-            "value": "example_value"
-          }
-        ],
-        "sso_url": "https://example.com/sso",
-        "message": "Resource is provisioned successfully."
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_app",
+    "accessor": "AddOnApp",
     "op": "list",
     "method": "GET",
     "path": "/v2/add-ons/apps/{app_slug}/metadata",
@@ -736,12 +562,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_app",
+    "accessor": "AddOnApp",
     "op": "list",
     "method": "GET",
     "path": "/v2/add-ons/apps",
-    "action": "app",
     "args": [],
     "select": {},
     "headers": [],
@@ -794,12 +619,113 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_plan",
+    "accessor": "AddOnPlan",
+    "op": "update",
+    "method": "PATCH",
+    "path": "/v2/add-ons/saas/{resource_uuid}/plan",
+    "args": [
+      {
+        "name": "resource_uuid",
+        "wire": "resource_uuid",
+        "value": "123e4567-e89b-12d3-a456-426614174000"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "resource": {
+        "uuid": "123e4567-e89b-12d3-a456-426614174000",
+        "name": "my-resource-01",
+        "state": "provisioned",
+        "app_name": "Example App",
+        "app_slug": "example_app",
+        "plan_name": "Basic Plan",
+        "plan_slug": "basic_plan",
+        "plan_price_per_month": 10,
+        "has_config": true,
+        "metadata": [
+          {
+            "name": "property_name",
+            "value": "example_value"
+          }
+        ],
+        "sso_url": "https://example.com/sso",
+        "message": "Resource is provisioned successfully."
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "add_on_resource",
+    "accessor": "AddOnResource",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/add-ons/saas",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "resource": {
+        "uuid": "123e4567-e89b-12d3-a456-426614174000",
+        "name": "my-resource-01",
+        "state": "provisioned",
+        "app_name": "Example App",
+        "app_slug": "example_app",
+        "plan_name": "Basic Plan",
+        "plan_slug": "basic_plan",
+        "plan_price_per_month": 10,
+        "has_config": true,
+        "metadata": [
+          {
+            "name": "property_name",
+            "value": "example_value"
+          }
+        ],
+        "sso_url": "https://example.com/sso",
+        "message": "Resource is provisioned successfully."
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "add_on_resource",
+    "accessor": "AddOnResource",
     "op": "list",
     "method": "GET",
     "path": "/v2/add-ons/saas",
-    "action": "saa",
     "args": [],
     "select": {},
     "headers": [],
@@ -845,8 +771,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_resource",
+    "accessor": "AddOnResource",
     "op": "load",
     "method": "GET",
     "path": "/v2/add-ons/saas/{resource_uuid}",
@@ -899,8 +825,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_resource",
+    "accessor": "AddOnResource",
     "op": "remove",
     "method": "DELETE",
     "path": "/v2/add-ons/saas/{resource_uuid}",
@@ -930,66 +856,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "add_on",
-    "accessor": "AddOn",
+    "entity": "add_on_resource",
+    "accessor": "AddOnResource",
     "op": "update",
     "method": "PATCH",
     "path": "/v2/add-ons/saas/{resource_uuid}",
-    "args": [
-      {
-        "name": "resource_uuid",
-        "wire": "resource_uuid",
-        "value": "123e4567-e89b-12d3-a456-426614174000"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "resource": {
-        "uuid": "123e4567-e89b-12d3-a456-426614174000",
-        "name": "my-resource-01",
-        "state": "provisioned",
-        "app_name": "Example App",
-        "app_slug": "example_app",
-        "plan_name": "Basic Plan",
-        "plan_slug": "basic_plan",
-        "plan_price_per_month": 10,
-        "has_config": true,
-        "metadata": [
-          {
-            "name": "property_name",
-            "value": "example_value"
-          }
-        ],
-        "sso_url": "https://example.com/sso",
-        "message": "Resource is provisioned successfully."
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "add_on",
-    "accessor": "AddOn",
-    "op": "update",
-    "method": "PATCH",
-    "path": "/v2/add-ons/saas/{resource_uuid}/plan",
-    "action": "plan",
     "args": [
       {
         "name": "resource_uuid",
@@ -34674,7 +34545,7 @@ const PLAN: any[] = [
     "path": "/v2/floating_ips/{floating_ip}/actions",
     "args": [
       {
-        "name": "id",
+        "name": "floating_ip_id",
         "wire": "floating_ip",
         "value": "45.55.96.47"
       }
@@ -34735,7 +34606,7 @@ const PLAN: any[] = [
     "path": "/v2/floating_ips/{floating_ip}/actions",
     "args": [
       {
-        "name": "id",
+        "name": "floating_ip_id",
         "wire": "floating_ip",
         "value": "45.55.96.47"
       }
@@ -34860,12 +34731,192 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "function",
-    "accessor": "Function",
+    "entity": "function_key",
+    "accessor": "FunctionKey",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/functions/namespaces/{namespace_id}/keys",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 201,
+    "sample": {
+      "access_key": {
+        "id": "dof_v1-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "name": "my-function-access-key",
+        "secret": "DOSECRETKEYEXAMPLE",
+        "expires_at": "2026-12-19T10:30:00Z",
+        "created_at": "2025-12-19T10:30:00Z",
+        "updated_at": "2025-12-19T10:30:00Z"
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_key",
+    "accessor": "FunctionKey",
+    "op": "list",
+    "method": "GET",
+    "path": "/v2/functions/namespaces/{namespace_id}/keys",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "access_keys": [
+        {
+          "id": "dof_v1-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "name": "my-function-access-key",
+          "expires_at": "2026-12-19T10:30:00Z",
+          "created_at": "2025-12-19T10:30:00Z",
+          "updated_at": "2025-12-19T10:30:00Z"
+        },
+        {
+          "id": "dof_v1-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "name": "my-function-access-key-2",
+          "expires_at": null,
+          "created_at": "2025-11-15T08:00:00Z",
+          "updated_at": "2025-11-15T08:00:00Z"
+        }
+      ],
+      "count": 2
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_key",
+    "accessor": "FunctionKey",
+    "op": "remove",
+    "method": "DELETE",
+    "path": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+    "args": [
+      {
+        "name": "id",
+        "wire": "key_id",
+        "value": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      },
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {},
+    "idField": "id"
+  },
+  {
+    "entity": "function_key",
+    "accessor": "FunctionKey",
+    "op": "update",
+    "method": "PUT",
+    "path": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+    "args": [
+      {
+        "name": "id",
+        "wire": "key_id",
+        "value": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      },
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "access_key": {
+        "id": "dof_v1-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "name": "updated-key-name",
+        "expires_at": "2026-12-19T10:30:00Z",
+        "created_at": "2025-12-19T10:30:00Z",
+        "updated_at": "2025-12-19T16:00:00Z"
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_namespace",
+    "accessor": "FunctionNamespace",
     "op": "create",
     "method": "POST",
     "path": "/v2/functions/namespaces",
-    "action": "namespace",
     "args": [],
     "select": {},
     "headers": [],
@@ -34900,12 +34951,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "function",
-    "accessor": "Function",
+    "entity": "function_namespace",
+    "accessor": "FunctionNamespace",
     "op": "list",
     "method": "GET",
     "path": "/v2/functions/namespaces",
-    "action": "namespace",
     "args": [],
     "select": {},
     "headers": [],
@@ -34942,8 +34992,194 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "function",
-    "accessor": "Function",
+    "entity": "function_namespace",
+    "accessor": "FunctionNamespace",
+    "op": "load",
+    "method": "GET",
+    "path": "/v2/functions/namespaces/{namespace_id}",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "namespace": {
+        "api_host": "https://api_host.io",
+        "namespace": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "created_at": "2022-09-14T04:16:45Z",
+        "updated_at": "2022-09-14T04:16:45Z",
+        "label": "my namespace",
+        "region": "nyc1",
+        "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "key": "d1zcd455h01mqjfs4s2eaewyejehi5f2uj4etqq3h7cera8iwkub6xg5of1wdde2"
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_namespace",
+    "accessor": "FunctionNamespace",
+    "op": "remove",
+    "method": "DELETE",
+    "path": "/v2/functions/namespaces/{namespace_id}",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 204,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "function_trigger",
+    "accessor": "FunctionTrigger",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/functions/namespaces/{namespace_id}/triggers",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "trigger": {
+        "namespace": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "name": "my trigger",
+        "function": "hello",
+        "type": "SCHEDULED",
+        "is_enabled": true,
+        "created_at": "2022-11-11T04:16:45Z",
+        "updated_at": "2022-11-11T04:16:45Z",
+        "scheduled_details": {
+          "cron": "* * * * *",
+          "body": {
+            "name": "Welcome to DO!"
+          }
+        },
+        "scheduled_runs": {
+          "last_run_at": "2022-11-11T04:16:45Z",
+          "next_run_at": "2022-11-11T04:16:45Z"
+        }
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_trigger",
+    "accessor": "FunctionTrigger",
+    "op": "list",
+    "method": "GET",
+    "path": "/v2/functions/namespaces/{namespace_id}/triggers",
+    "args": [
+      {
+        "name": "namespace_id",
+        "wire": "namespace_id",
+        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "triggers": [
+        {
+          "namespace": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "name": "my trigger",
+          "function": "hello",
+          "type": "SCHEDULED",
+          "is_enabled": true,
+          "created_at": "2022-11-11T04:16:45Z",
+          "updated_at": "2022-11-11T04:16:45Z",
+          "scheduled_details": {
+            "cron": "* * * * *",
+            "body": {
+              "name": "Welcome to DO!"
+            }
+          },
+          "scheduled_runs": {
+            "last_run_at": "2022-11-11T04:16:45Z",
+            "next_run_at": "2022-11-11T04:16:45Z"
+          }
+        }
+      ]
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "function_trigger",
+    "accessor": "FunctionTrigger",
     "op": "load",
     "method": "GET",
     "path": "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}",
@@ -35001,92 +35237,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "function",
-    "accessor": "Function",
-    "op": "load",
-    "method": "GET",
-    "path": "/v2/functions/namespaces/{namespace_id}",
-    "args": [
-      {
-        "name": "namespace_id",
-        "wire": "namespace_id",
-        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "namespace": {
-        "api_host": "https://api_host.io",
-        "namespace": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "created_at": "2022-09-14T04:16:45Z",
-        "updated_at": "2022-09-14T04:16:45Z",
-        "label": "my namespace",
-        "region": "nyc1",
-        "uuid": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "key": "d1zcd455h01mqjfs4s2eaewyejehi5f2uj4etqq3h7cera8iwkub6xg5of1wdde2"
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "function",
-    "accessor": "Function",
-    "op": "remove",
-    "method": "DELETE",
-    "path": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-    "args": [
-      {
-        "name": "key_id",
-        "wire": "key_id",
-        "value": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      {
-        "name": "namespace_id",
-        "wire": "namespace_id",
-        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {},
-    "idField": "id"
-  },
-  {
-    "entity": "function",
-    "accessor": "Function",
+    "entity": "function_trigger",
+    "accessor": "FunctionTrigger",
     "op": "remove",
     "method": "DELETE",
     "path": "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}",
@@ -35121,86 +35273,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "function",
-    "accessor": "Function",
-    "op": "remove",
-    "method": "DELETE",
-    "path": "/v2/functions/namespaces/{namespace_id}",
-    "args": [
-      {
-        "name": "namespace_id",
-        "wire": "namespace_id",
-        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 204,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "function",
-    "accessor": "Function",
-    "op": "update",
-    "method": "PUT",
-    "path": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-    "args": [
-      {
-        "name": "key_id",
-        "wire": "key_id",
-        "value": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      },
-      {
-        "name": "namespace_id",
-        "wire": "namespace_id",
-        "value": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "access_key": {
-        "id": "dof_v1-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "name": "updated-key-name",
-        "expires_at": "2026-12-19T10:30:00Z",
-        "created_at": "2025-12-19T10:30:00Z",
-        "updated_at": "2025-12-19T16:00:00Z"
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "function",
-    "accessor": "Function",
+    "entity": "function_trigger",
+    "accessor": "FunctionTrigger",
     "op": "update",
     "method": "PUT",
     "path": "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}",
@@ -39531,43 +39605,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "create",
-    "method": "POST",
-    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-    "args": [
-      {
-        "name": "destination_uuid",
-        "wire": "destination_uuid",
-        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 204,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
+    "entity": "monitoring_alert",
+    "accessor": "MonitoringAlert",
     "op": "create",
     "method": "POST",
     "path": "/v2/monitoring/alerts",
-    "action": "alert",
     "args": [],
     "select": {},
     "headers": [],
@@ -39618,80 +39660,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "create",
-    "method": "POST",
-    "path": "/v2/monitoring/sinks",
-    "action": "sink",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 202,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "create",
-    "method": "POST",
-    "path": "/v2/monitoring/sinks/destinations",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "destination": {
-        "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
-        "name": "managed_opensearch_cluster",
-        "type": "opensearch_dbaas",
-        "config": {
-          "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
-          "endpoint": "example.com",
-          "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
-          "cluster_name": "managed_dbaas_cluster",
-          "index_name": "logs",
-          "retention_days": 14
-        }
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
+    "entity": "monitoring_alert",
+    "accessor": "MonitoringAlert",
     "op": "list",
     "method": "GET",
     "path": "/v2/monitoring/alerts",
-    "action": "alert",
     "args": [],
     "select": {
       "page": 1,
@@ -39768,12 +39741,189 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
+    "entity": "monitoring_alert",
+    "accessor": "MonitoringAlert",
+    "op": "load",
+    "method": "GET",
+    "path": "/v2/monitoring/alerts/{alert_uuid}",
+    "args": [
+      {
+        "name": "alert_uuid",
+        "wire": "alert_uuid",
+        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "policy": {
+        "alerts": {
+          "email": [
+            "bob@exmaple.com"
+          ],
+          "slack": [
+            {
+              "channel": "Production Alerts",
+              "url": "https://hooks.slack.com/services/EXAMPLE-WEBHOOK"
+            }
+          ]
+        },
+        "compare": "GreaterThan",
+        "description": "CPU Alert",
+        "enabled": true,
+        "entities": [
+          "192018292"
+        ],
+        "tags": [
+          "droplet_tag"
+        ],
+        "type": "v1/insights/droplet/cpu",
+        "uuid": "78b3da62-27e5-49ba-ac70-5db0b5935c64",
+        "value": 80,
+        "window": "5m"
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_alert",
+    "accessor": "MonitoringAlert",
+    "op": "remove",
+    "method": "DELETE",
+    "path": "/v2/monitoring/alerts/{alert_uuid}",
+    "args": [
+      {
+        "name": "alert_uuid",
+        "wire": "alert_uuid",
+        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 204,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_alert",
+    "accessor": "MonitoringAlert",
+    "op": "update",
+    "method": "PUT",
+    "path": "/v2/monitoring/alerts/{alert_uuid}",
+    "args": [
+      {
+        "name": "alert_uuid",
+        "wire": "alert_uuid",
+        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "policy": {
+        "alerts": {
+          "email": [
+            "bob@exmaple.com"
+          ],
+          "slack": [
+            {
+              "channel": "Production Alerts",
+              "url": "https://hooks.slack.com/services/EXAMPLE-WEBHOOK"
+            }
+          ]
+        },
+        "compare": "GreaterThan",
+        "description": "CPU Alert",
+        "enabled": true,
+        "entities": [
+          "192018292"
+        ],
+        "tags": [
+          "droplet_tag"
+        ],
+        "type": "v1/insights/droplet/cpu",
+        "uuid": "78b3da62-27e5-49ba-ac70-5db0b5935c64",
+        "value": 80,
+        "window": "5m"
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink",
+    "accessor": "MonitoringSink",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/monitoring/sinks",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 202,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink",
+    "accessor": "MonitoringSink",
     "op": "list",
     "method": "GET",
     "path": "/v2/monitoring/sinks",
-    "action": "sink",
     "args": [],
     "select": {
       "resource_id": "do:kubernetes:5ba4518b-b9e2-4978-aa92-2d4c727e8824"
@@ -39834,161 +39984,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "list",
-    "method": "GET",
-    "path": "/v2/monitoring/sinks/destinations",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "destinations": [
-        {
-          "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
-          "name": "managed_opensearch_cluster",
-          "type": "opensearch_dbaas",
-          "config": {
-            "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
-            "endpoint": "example.com",
-            "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
-            "cluster_name": "managed_dbaas_cluster",
-            "index_name": "logs",
-            "retention_days": 14
-          }
-        }
-      ]
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "load",
-    "method": "GET",
-    "path": "/v2/monitoring/alerts/{alert_uuid}",
-    "args": [
-      {
-        "name": "alert_uuid",
-        "wire": "alert_uuid",
-        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "policy": {
-        "alerts": {
-          "email": [
-            "bob@exmaple.com"
-          ],
-          "slack": [
-            {
-              "channel": "Production Alerts",
-              "url": "https://hooks.slack.com/services/EXAMPLE-WEBHOOK"
-            }
-          ]
-        },
-        "compare": "GreaterThan",
-        "description": "CPU Alert",
-        "enabled": true,
-        "entities": [
-          "192018292"
-        ],
-        "tags": [
-          "droplet_tag"
-        ],
-        "type": "v1/insights/droplet/cpu",
-        "uuid": "78b3da62-27e5-49ba-ac70-5db0b5935c64",
-        "value": 80,
-        "window": "5m"
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "load",
-    "method": "GET",
-    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-    "args": [
-      {
-        "name": "destination_uuid",
-        "wire": "destination_uuid",
-        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "destination": {
-        "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
-        "name": "managed_opensearch_cluster",
-        "type": "opensearch_dbaas",
-        "config": {
-          "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
-          "endpoint": "example.com",
-          "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
-          "cluster_name": "managed_dbaas_cluster",
-          "index_name": "logs",
-          "retention_days": 14
-        }
-      }
-    },
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
+    "entity": "monitoring_sink",
+    "accessor": "MonitoringSink",
     "op": "load",
     "method": "GET",
     "path": "/v2/monitoring/sinks/{sink_uuid}",
@@ -40047,70 +40044,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "remove",
-    "method": "DELETE",
-    "path": "/v2/monitoring/alerts/{alert_uuid}",
-    "args": [
-      {
-        "name": "alert_uuid",
-        "wire": "alert_uuid",
-        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 204,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "remove",
-    "method": "DELETE",
-    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-    "args": [
-      {
-        "name": "destination_uuid",
-        "wire": "destination_uuid",
-        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
-      }
-    ],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 204,
-    "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
+    "entity": "monitoring_sink",
+    "accessor": "MonitoringSink",
     "op": "remove",
     "method": "DELETE",
     "path": "/v2/monitoring/sinks/{sink_uuid}",
@@ -40140,16 +40075,102 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "monitoring",
-    "accessor": "Monitoring",
-    "op": "update",
-    "method": "PUT",
-    "path": "/v2/monitoring/alerts/{alert_uuid}",
+    "entity": "monitoring_sink_destination",
+    "accessor": "MonitoringSinkDestination",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/monitoring/sinks/destinations",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "destination": {
+        "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
+        "name": "managed_opensearch_cluster",
+        "type": "opensearch_dbaas",
+        "config": {
+          "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
+          "endpoint": "example.com",
+          "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
+          "cluster_name": "managed_dbaas_cluster",
+          "index_name": "logs",
+          "retention_days": 14
+        }
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink_destination",
+    "accessor": "MonitoringSinkDestination",
+    "op": "list",
+    "method": "GET",
+    "path": "/v2/monitoring/sinks/destinations",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "destinations": [
+        {
+          "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
+          "name": "managed_opensearch_cluster",
+          "type": "opensearch_dbaas",
+          "config": {
+            "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
+            "endpoint": "example.com",
+            "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
+            "cluster_name": "managed_dbaas_cluster",
+            "index_name": "logs",
+            "retention_days": 14
+          }
+        }
+      ]
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink_destination",
+    "accessor": "MonitoringSinkDestination",
+    "op": "load",
+    "method": "GET",
+    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
     "args": [
       {
-        "name": "alert_uuid",
-        "wire": "alert_uuid",
-        "value": "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+        "name": "id",
+        "wire": "destination_uuid",
+        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
       }
     ],
     "select": {},
@@ -40171,33 +40192,82 @@ const PLAN: any[] = [
     ],
     "status": 200,
     "sample": {
-      "policy": {
-        "alerts": {
-          "email": [
-            "bob@exmaple.com"
-          ],
-          "slack": [
-            {
-              "channel": "Production Alerts",
-              "url": "https://hooks.slack.com/services/EXAMPLE-WEBHOOK"
-            }
-          ]
-        },
-        "compare": "GreaterThan",
-        "description": "CPU Alert",
-        "enabled": true,
-        "entities": [
-          "192018292"
-        ],
-        "tags": [
-          "droplet_tag"
-        ],
-        "type": "v1/insights/droplet/cpu",
-        "uuid": "78b3da62-27e5-49ba-ac70-5db0b5935c64",
-        "value": 80,
-        "window": "5m"
+      "destination": {
+        "id": "01f30bfa-319a-4769-ba95-9d43971fb514",
+        "name": "managed_opensearch_cluster",
+        "type": "opensearch_dbaas",
+        "config": {
+          "id": "41078d41-165c-4cff-9f0a-19536e3e3d49",
+          "endpoint": "example.com",
+          "cluster_uuid": "85148069-7e35-4999-80bd-6fa1637ca385",
+          "cluster_name": "managed_dbaas_cluster",
+          "index_name": "logs",
+          "retention_days": 14
+        }
       }
     },
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink_destination",
+    "accessor": "MonitoringSinkDestination",
+    "op": "remove",
+    "method": "DELETE",
+    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
+    "args": [
+      {
+        "name": "id",
+        "wire": "destination_uuid",
+        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 204,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "monitoring_sink_destination",
+    "accessor": "MonitoringSinkDestination",
+    "op": "update",
+    "method": "POST",
+    "path": "/v2/monitoring/sinks/destinations/{destination_uuid}",
+    "args": [
+      {
+        "name": "id",
+        "wire": "destination_uuid",
+        "value": "1a64809f-1708-48ee-a742-dec8d481b8d1"
+      }
+    ],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 204,
+    "sample": null,
     "idField": "id"
   },
   {
@@ -44196,7 +44266,7 @@ const PLAN: any[] = [
     "path": "/v2/reserved_ips/{reserved_ip}/actions",
     "args": [
       {
-        "name": "id",
+        "name": "reserved_ip_id",
         "wire": "reserved_ip",
         "value": "45.55.96.47"
       }
@@ -44257,7 +44327,7 @@ const PLAN: any[] = [
     "path": "/v2/reserved_ips/{reserved_ip}/actions",
     "args": [
       {
-        "name": "id",
+        "name": "reserved_ip_id",
         "wire": "reserved_ip",
         "value": "45.55.96.47"
       }
@@ -44455,12 +44525,66 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_plan",
+    "accessor": "SecurityPlan",
+    "op": "update",
+    "method": "PUT",
+    "path": "/v2/security/settings/plan",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 200,
+    "sample": {
+      "tier_coverage": {}
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "security_rule",
+    "accessor": "SecurityRule",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/security/scans/rules",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 201,
+    "sample": null,
+    "idField": "id"
+  },
+  {
+    "entity": "security_scan",
+    "accessor": "SecurityScan",
     "op": "create",
     "method": "POST",
     "path": "/v2/security/scans",
-    "action": "scan",
     "args": [],
     "select": {},
     "headers": [],
@@ -44509,8 +44633,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_scan",
+    "accessor": "SecurityScan",
     "op": "list",
     "method": "GET",
     "path": "/v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources",
@@ -44571,12 +44695,11 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_scan",
+    "accessor": "SecurityScan",
     "op": "list",
     "method": "GET",
     "path": "/v2/security/scans",
-    "action": "scan",
     "args": [],
     "select": {
       "page": 1,
@@ -44647,8 +44770,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_scan",
+    "accessor": "SecurityScan",
     "op": "load",
     "method": "GET",
     "path": "/v2/security/scans/{scan_id}",
@@ -44733,8 +44856,8 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_scan",
+    "accessor": "SecurityScan",
     "op": "load",
     "method": "GET",
     "path": "/v2/security/scans/latest",
@@ -44813,8 +44936,59 @@ const PLAN: any[] = [
     "idField": "id"
   },
   {
-    "entity": "security",
-    "accessor": "Security",
+    "entity": "security_suppression",
+    "accessor": "SecuritySuppression",
+    "op": "create",
+    "method": "POST",
+    "path": "/v2/security/settings/suppressions",
+    "args": [],
+    "select": {},
+    "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
+    "query": [],
+    "queryArgs": [],
+    "auth": [
+      [
+        {
+          "in": "header",
+          "name": "authorization",
+          "scheme": "bearer"
+        }
+      ]
+    ],
+    "status": 201,
+    "sample": {
+      "resources": [
+        {
+          "id": "760e09ef-dc84-11e8-981e-3cfdfeaae000",
+          "rule_uuid": "460e09ef-dc84-11e8-981e-3cfdfeaae000",
+          "rule_name": "Droplet Backups Not Enabled",
+          "resource_id": "123",
+          "resource_type": "Droplet"
+        }
+      ],
+      "meta": {
+        "page": 1,
+        "pages": 3,
+        "total": 25
+      },
+      "links": {
+        "pages": {
+          "first": "https://api.digitalocean.com/v2/security/settings/suppressions?page=1",
+          "prev": "https://api.digitalocean.com/v2/security/settings/suppressions?page=1",
+          "next": "https://api.digitalocean.com/v2/security/settings/suppressions?page=2",
+          "last": "https://api.digitalocean.com/v2/security/settings/suppressions?page=3"
+        }
+      }
+    },
+    "idField": "id"
+  },
+  {
+    "entity": "security_suppression",
+    "accessor": "SecuritySuppression",
     "op": "remove",
     "method": "DELETE",
     "path": "/v2/security/settings/suppressions/{suppression_uuid}",
@@ -44841,36 +45015,6 @@ const PLAN: any[] = [
     ],
     "status": 204,
     "sample": null,
-    "idField": "id"
-  },
-  {
-    "entity": "security",
-    "accessor": "Security",
-    "op": "update",
-    "method": "PUT",
-    "path": "/v2/security/settings/plan",
-    "args": [],
-    "select": {},
-    "headers": [],
-    "cookies": [],
-    "responseMedia": [
-      "application/json"
-    ],
-    "query": [],
-    "queryArgs": [],
-    "auth": [
-      [
-        {
-          "in": "header",
-          "name": "authorization",
-          "scheme": "bearer"
-        }
-      ]
-    ],
-    "status": 200,
-    "sample": {
-      "tier_coverage": {}
-    },
     "idField": "id"
   },
   {
@@ -49116,7 +49260,7 @@ const PLAN: any[] = [
     "action": "routes",
     "args": [
       {
-        "name": "id",
+        "name": "vpc_id",
         "wire": "vpc_uuid",
         "value": "997615ce-132d-4bae-9270-9ee21b395e5d"
       }
@@ -49186,7 +49330,7 @@ const PLAN: any[] = [
     "path": "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}",
     "args": [
       {
-        "name": "route_uuid",
+        "name": "id",
         "wire": "route_uuid",
         "value": "f0e1d2c3-b4a5-6789-0fed-cba987654321"
       },
@@ -49227,7 +49371,7 @@ const PLAN: any[] = [
     "path": "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}",
     "args": [
       {
-        "name": "route_uuid",
+        "name": "id",
         "wire": "route_uuid",
         "value": "f0e1d2c3-b4a5-6789-0fed-cba987654321"
       },

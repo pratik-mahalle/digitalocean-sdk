@@ -1,0 +1,55 @@
+# Entity: security_rule
+
+main: kit: entity: security_rule: {
+
+  alias: field: {}
+
+  fields: {
+    resource: {
+      h: "Resource"
+      n: "resource"
+      r: false
+      sh: "The URN of a resource to exclude from future scans."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "security_rule"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/security/scans/rules"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/security/scans/rules"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+            {
+              lit: "rules"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

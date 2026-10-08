@@ -4,5 +4,182 @@
 
 @"./base-guide.aontu"
 
+# --- Model shaping (project-owned) ---
 
-
+guide: {
+  # Split monitoring: its paths are separate DigitalOcean resources.
+  entity: monitoring: active: false
+  entity: monitoring_alert: {
+    path: "/v2/monitoring/alerts": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.policy`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.policies`")|top
+    }
+    path: "/v2/monitoring/alerts/{alert_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.policy`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.policy`")|top
+    }
+  }
+  entity: monitoring_sink: {
+    path: "/v2/monitoring/sinks": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.sinks`")|top
+    }
+    path: "/v2/monitoring/sinks/{sink_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.sink`")|top
+      op: remove: method: *DELETE
+    }
+  }
+  entity: monitoring_sink_destination: {
+    path: "/v2/monitoring/sinks/destinations": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.destination`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.destinations`")|top
+    }
+    path: "/v2/monitoring/sinks/destinations/{destination_uuid}": {
+      op: update: method: *POST
+      op: load: method: *GET
+      op: load: transform: res: *("`body.destination`")|top
+      op: remove: method: *DELETE
+    }
+  }
+  # Split function: its paths are separate DigitalOcean resources.
+  entity: function: active: false
+  entity: function_namespace: {
+    path: "/v2/functions/namespaces": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.namespace`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.namespaces`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.namespace`")|top
+      op: remove: method: *DELETE
+    }
+  }
+  entity: function_key: {
+    path: "/v2/functions/namespaces/{namespace_id}/keys": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.access_key`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.access_keys`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/keys/{key_id}": {
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.access_key`")|top
+    }
+  }
+  entity: function_trigger: {
+    path: "/v2/functions/namespaces/{namespace_id}/triggers": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.trigger`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.triggers`")|top
+    }
+    path: "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.trigger`")|top
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.trigger`")|top
+    }
+  }
+  # Split add_on: its paths are separate DigitalOcean resources.
+  entity: add_on: active: false
+  entity: add_on_app: {
+    path: "/v2/add-ons/apps": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.apps`")|top
+    }
+    path: "/v2/add-ons/apps/{app_slug}/metadata": {
+      op: list: method: *GET
+      op: list: transform: res: *("`body.metadata`")|top
+    }
+  }
+  entity: add_on_resource: {
+    path: "/v2/add-ons/saas": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.resource`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.resources`")|top
+    }
+    path: "/v2/add-ons/saas/{resource_uuid}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.resource`")|top
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.resource`")|top
+      op: remove: method: *DELETE
+    }
+  }
+  entity: add_on_plan: {
+    path: "/v2/add-ons/saas/{resource_uuid}/plan": {
+      op: patch: method: *PATCH
+      op: patch: transform: res: *("`body.resource`")|top
+    }
+  }
+  # Split security: its paths are separate DigitalOcean resources.
+  entity: security: active: false
+  entity: security_scan: {
+    path: "/v2/security/scans": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.scan`")|top
+      op: list: method: *GET
+      op: list: transform: res: *("`body.scans`")|top
+    }
+    path: "/v2/security/scans/latest": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.scan`")|top
+    }
+    path: "/v2/security/scans/{scan_id}": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.scan`")|top
+    }
+    path: "/v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources": {
+      rename: param: "finding_uuid": *"finding_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.affected_resources`")|top
+    }
+  }
+  entity: security_rule: {
+    path: "/v2/security/scans/rules": {
+      op: create: method: *POST
+    }
+  }
+  entity: security_plan: {
+    path: "/v2/security/settings/plan": {
+      op: update: method: *PUT
+      op: update: transform: res: *("`body.tier_coverage`")|top
+    }
+  }
+  entity: security_suppression: {
+    path: "/v2/security/settings/suppressions": {
+      op: create: method: *POST
+    }
+    path: "/v2/security/settings/suppressions/{suppression_uuid}": {
+      op: remove: method: *DELETE
+    }
+  }
+  # apidef renamed the parent param to "id" on the collection path but to "<x>_id" on the item path.
+  entity: floating_ip_action: path: "/v2/floating_ips/{floating_ip}/actions": rename: param: "floating_ip": "floating_ip_id"
+  entity: reserved_ip_action: path: "/v2/reserved_ips/{reserved_ip}/actions": rename: param: "reserved_ip": "reserved_ip_id"
+  entity: vpc_routes__public_preview: path: "/v2/vpcs/{vpc_uuid}/routes": rename: param: "vpc_uuid": "vpc_id"
+  # Item-path params apidef left unrenamed; every other entity uses "id".
+  entity: function_key: path: "/v2/functions/namespaces/{namespace_id}/keys/{key_id}": rename: param: "key_id": "id"
+  entity: monitoring_sink_destination: path: "/v2/monitoring/sinks/destinations/{destination_uuid}": rename: param: "destination_uuid": "id"
+  entity: vpc_routes__public_preview: path: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}": rename: param: "route_uuid": "id"
+  # Create responds with oneOf {droplet} | {droplets}; apidef picked neither. Unwrap the single-droplet form.
+  # ponytail: multi-create (names: [...]) returns {droplets} and will not be unwrapped; add a separate op if needed.
+  entity: droplet: path: "/v2/droplets": op: create: transform: res: "`body.droplet`"
+  # Image actions already have their own image_action entity.
+  entity: action: path: "/v2/images/{image_id}/actions": active: false
+  entity: action: path: "/v2/images/{image_id}/actions/{action_id}": active: false
+}

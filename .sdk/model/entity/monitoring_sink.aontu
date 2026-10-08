@@ -1,0 +1,212 @@
+# Entity: monitoring_sink
+
+main: kit: entity: monitoring_sink: {
+
+  alias: field: {}
+
+  fields: {
+    destination: {
+      h: "Destination"
+      n: "destination"
+      r: true
+      t: "`$OBJECT`"
+    }
+    destination_uuid: {
+      h: "Destination Uuid"
+      n: "destination_uuid"
+      r: false
+      sh: "A unique identifier for an already-existing destination."
+      t: "`$STRING`"
+    }
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: false
+      sh: "List of resources identified by their URNs."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "monitoring_sink"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/monitoring/sinks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/monitoring/sinks"
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/sinks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "do:kubernetes:5ba4518b-b9e2-4978-aa92-2d4c727e8824"
+                k: "query"
+                n: "resource_id"
+                or: "resource_id"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/sinks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sinks`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/sinks/{sink_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c"
+                k: "param"
+                n: "sink_uuid"
+                or: "sink_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/sinks/{sink_uuid}"
+          q: {
+            exist: [
+              "sink_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              var: "sink_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.sink`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/monitoring/sinks/{sink_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c"
+                k: "param"
+                n: "sink_uuid"
+                or: "sink_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/monitoring/sinks/{sink_uuid}"
+          q: {
+            exist: [
+              "sink_uuid"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              var: "sink_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

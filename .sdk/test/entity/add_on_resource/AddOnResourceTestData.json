@@ -1,0 +1,107 @@
+{
+  "existing": {
+    "add_on_resource": {
+      "ADD_ON_RESOURCE00": {
+        "app_name": "s8c",
+        "app_slug": "s8d",
+        "fleet_uuid": "s8e",
+        "has_config": false,
+        "linked_droplet_id": "LINKED_DROPLET01",
+        "message": "s91",
+        "metadata": [],
+        "name": "s93",
+        "plan_name": "s94",
+        "plan_price_per_month": 149,
+        "plan_slug": "s96",
+        "sso_url": "s97",
+        "state": "s98",
+        "uuid": "s99",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_RESOURCE00"
+      },
+      "ADD_ON_RESOURCE01": {
+        "app_name": "s118",
+        "app_slug": "s119",
+        "fleet_uuid": "s11a",
+        "has_config": false,
+        "linked_droplet_id": "LINKED_DROPLET01",
+        "message": "s11d",
+        "metadata": [],
+        "name": "s11f",
+        "plan_name": "s120",
+        "plan_price_per_month": 289,
+        "plan_slug": "s122",
+        "sso_url": "s123",
+        "state": "s124",
+        "uuid": "s125",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_RESOURCE01"
+      },
+      "ADD_ON_RESOURCE02": {
+        "app_name": "s1a4",
+        "app_slug": "s1a5",
+        "fleet_uuid": "s1a6",
+        "has_config": false,
+        "linked_droplet_id": "LINKED_DROPLET01",
+        "message": "s1a9",
+        "metadata": [],
+        "name": "s1ab",
+        "plan_name": "s1ac",
+        "plan_price_per_month": 429,
+        "plan_slug": "s1ae",
+        "sso_url": "s1af",
+        "state": "s1b0",
+        "uuid": "s1b1",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_RESOURCE02"
+      }
+    }
+  },
+  "new": {
+    "add_on_resource": {
+      "add_on_resource_ref01": {
+        "app_name": "s230",
+        "app_slug": "s231",
+        "fleet_uuid": "s232",
+        "has_config": false,
+        "linked_droplet_id": "LINKED_DROPLET01",
+        "message": "s235",
+        "metadata": [],
+        "name": "s237",
+        "plan_name": "s238",
+        "plan_price_per_month": 569,
+        "plan_slug": "s23a",
+        "sso_url": "s23b",
+        "state": "s23c",
+        "uuid": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/add-ons/saas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/add-ons/saas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/add-ons/saas/{resource_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/add-ons/saas/{resource_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /v2/add-ons/saas/{resource_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

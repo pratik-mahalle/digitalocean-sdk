@@ -6,7 +6,9 @@ const AccessPointEntity_1 = require("./entity/AccessPointEntity");
 const AccountEntity_1 = require("./entity/AccountEntity");
 const ActionEntity_1 = require("./entity/ActionEntity");
 const ActorLimitEntity_1 = require("./entity/ActorLimitEntity");
-const AddOnEntity_1 = require("./entity/AddOnEntity");
+const AddOnAppEntity_1 = require("./entity/AddOnAppEntity");
+const AddOnPlanEntity_1 = require("./entity/AddOnPlanEntity");
+const AddOnResourceEntity_1 = require("./entity/AddOnResourceEntity");
 const ApiAgentVersionEntity_1 = require("./entity/ApiAgentVersionEntity");
 const ApiCreateAgentApiKeyOutputEntity_1 = require("./entity/ApiCreateAgentApiKeyOutputEntity");
 const ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity_1 = require("./entity/ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity");
@@ -153,7 +155,9 @@ const EmptyEntity_1 = require("./entity/EmptyEntity");
 const FirewallEntity_1 = require("./entity/FirewallEntity");
 const FloatingIpEntity_1 = require("./entity/FloatingIpEntity");
 const FloatingIpActionEntity_1 = require("./entity/FloatingIpActionEntity");
-const FunctionEntity_1 = require("./entity/FunctionEntity");
+const FunctionKeyEntity_1 = require("./entity/FunctionKeyEntity");
+const FunctionNamespaceEntity_1 = require("./entity/FunctionNamespaceEntity");
+const FunctionTriggerEntity_1 = require("./entity/FunctionTriggerEntity");
 const GenaiapiRegionEntity_1 = require("./entity/GenaiapiRegionEntity");
 const ImageEntity_1 = require("./entity/ImageEntity");
 const ImageActionEntity_1 = require("./entity/ImageActionEntity");
@@ -175,7 +179,9 @@ const McpServerEntity_1 = require("./entity/McpServerEntity");
 const MessageEntity_1 = require("./entity/MessageEntity");
 const MetricEntity_1 = require("./entity/MetricEntity");
 const ModelEntity_1 = require("./entity/ModelEntity");
-const MonitoringEntity_1 = require("./entity/MonitoringEntity");
+const MonitoringAlertEntity_1 = require("./entity/MonitoringAlertEntity");
+const MonitoringSinkEntity_1 = require("./entity/MonitoringSinkEntity");
+const MonitoringSinkDestinationEntity_1 = require("./entity/MonitoringSinkDestinationEntity");
 const N1ClickEntity_1 = require("./entity/N1ClickEntity");
 const N1ClickApplicationEntity_1 = require("./entity/N1ClickApplicationEntity");
 const NeighborIdEntity_1 = require("./entity/NeighborIdEntity");
@@ -202,7 +208,10 @@ const ReservedIpEntity_1 = require("./entity/ReservedIpEntity");
 const ReservedIpActionEntity_1 = require("./entity/ReservedIpActionEntity");
 const ResyncEntity_1 = require("./entity/ResyncEntity");
 const SearchEntity_1 = require("./entity/SearchEntity");
-const SecurityEntity_1 = require("./entity/SecurityEntity");
+const SecurityPlanEntity_1 = require("./entity/SecurityPlanEntity");
+const SecurityRuleEntity_1 = require("./entity/SecurityRuleEntity");
+const SecurityScanEntity_1 = require("./entity/SecurityScanEntity");
+const SecuritySuppressionEntity_1 = require("./entity/SecuritySuppressionEntity");
 const SettingEntity_1 = require("./entity/SettingEntity");
 const SizeEntity_1 = require("./entity/SizeEntity");
 const SnapshotEntity_1 = require("./entity/SnapshotEntity");
@@ -491,12 +500,26 @@ class DigitaloceanSDK {
         const self = this;
         return new ActorLimitEntity_1.ActorLimitEntity(self, entopts);
     }
-    // Entity access: `client.AddOn().list()` / `client.AddOn().load({ id })`.
+    // Entity access: `client.AddOnApp().list()` / `client.AddOnApp().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    AddOn(entopts) {
+    AddOnApp(entopts) {
         const self = this;
-        return new AddOnEntity_1.AddOnEntity(self, entopts);
+        return new AddOnAppEntity_1.AddOnAppEntity(self, entopts);
+    }
+    // Entity access: `client.AddOnPlan().list()` / `client.AddOnPlan().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AddOnPlan(entopts) {
+        const self = this;
+        return new AddOnPlanEntity_1.AddOnPlanEntity(self, entopts);
+    }
+    // Entity access: `client.AddOnResource().list()` / `client.AddOnResource().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    AddOnResource(entopts) {
+        const self = this;
+        return new AddOnResourceEntity_1.AddOnResourceEntity(self, entopts);
     }
     // Entity access: `client.ApiAgentVersion().list()` / `client.ApiAgentVersion().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1520,12 +1543,26 @@ class DigitaloceanSDK {
         const self = this;
         return new FloatingIpActionEntity_1.FloatingIpActionEntity(self, entopts);
     }
-    // Entity access: `client.Function().list()` / `client.Function().load({ id })`.
+    // Entity access: `client.FunctionKey().list()` / `client.FunctionKey().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Function(entopts) {
+    FunctionKey(entopts) {
         const self = this;
-        return new FunctionEntity_1.FunctionEntity(self, entopts);
+        return new FunctionKeyEntity_1.FunctionKeyEntity(self, entopts);
+    }
+    // Entity access: `client.FunctionNamespace().list()` / `client.FunctionNamespace().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    FunctionNamespace(entopts) {
+        const self = this;
+        return new FunctionNamespaceEntity_1.FunctionNamespaceEntity(self, entopts);
+    }
+    // Entity access: `client.FunctionTrigger().list()` / `client.FunctionTrigger().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    FunctionTrigger(entopts) {
+        const self = this;
+        return new FunctionTriggerEntity_1.FunctionTriggerEntity(self, entopts);
     }
     // Entity access: `client.GenaiapiRegion().list()` / `client.GenaiapiRegion().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1674,12 +1711,26 @@ class DigitaloceanSDK {
         const self = this;
         return new ModelEntity_1.ModelEntity(self, entopts);
     }
-    // Entity access: `client.Monitoring().list()` / `client.Monitoring().load({ id })`.
+    // Entity access: `client.MonitoringAlert().list()` / `client.MonitoringAlert().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Monitoring(entopts) {
+    MonitoringAlert(entopts) {
         const self = this;
-        return new MonitoringEntity_1.MonitoringEntity(self, entopts);
+        return new MonitoringAlertEntity_1.MonitoringAlertEntity(self, entopts);
+    }
+    // Entity access: `client.MonitoringSink().list()` / `client.MonitoringSink().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MonitoringSink(entopts) {
+        const self = this;
+        return new MonitoringSinkEntity_1.MonitoringSinkEntity(self, entopts);
+    }
+    // Entity access: `client.MonitoringSinkDestination().list()` / `client.MonitoringSinkDestination().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    MonitoringSinkDestination(entopts) {
+        const self = this;
+        return new MonitoringSinkDestinationEntity_1.MonitoringSinkDestinationEntity(self, entopts);
     }
     // Entity access: `client.N1Click().list()` / `client.N1Click().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -1863,12 +1914,33 @@ class DigitaloceanSDK {
         const self = this;
         return new SearchEntity_1.SearchEntity(self, entopts);
     }
-    // Entity access: `client.Security().list()` / `client.Security().load({ id })`.
+    // Entity access: `client.SecurityPlan().list()` / `client.SecurityPlan().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    Security(entopts) {
+    SecurityPlan(entopts) {
         const self = this;
-        return new SecurityEntity_1.SecurityEntity(self, entopts);
+        return new SecurityPlanEntity_1.SecurityPlanEntity(self, entopts);
+    }
+    // Entity access: `client.SecurityRule().list()` / `client.SecurityRule().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SecurityRule(entopts) {
+        const self = this;
+        return new SecurityRuleEntity_1.SecurityRuleEntity(self, entopts);
+    }
+    // Entity access: `client.SecurityScan().list()` / `client.SecurityScan().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SecurityScan(entopts) {
+        const self = this;
+        return new SecurityScanEntity_1.SecurityScanEntity(self, entopts);
+    }
+    // Entity access: `client.SecuritySuppression().list()` / `client.SecuritySuppression().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    SecuritySuppression(entopts) {
+        const self = this;
+        return new SecuritySuppressionEntity_1.SecuritySuppressionEntity(self, entopts);
     }
     // Entity access: `client.Setting().list()` / `client.Setting().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

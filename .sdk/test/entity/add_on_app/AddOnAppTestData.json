@@ -1,0 +1,69 @@
+{
+  "existing": {
+    "add_on_app": {
+      "ADD_ON_APP00": {
+        "app_slug": "s64",
+        "description": "s65",
+        "display_name": "s66",
+        "eula": "s67",
+        "id": "ADD_ON_APP00",
+        "name": "s69",
+        "options": [],
+        "plans": [],
+        "tos": "s6c",
+        "type": "s6d"
+      },
+      "ADD_ON_APP01": {
+        "app_slug": "sc8",
+        "description": "sc9",
+        "display_name": "sca",
+        "eula": "scb",
+        "id": "ADD_ON_APP01",
+        "name": "scd",
+        "options": [],
+        "plans": [],
+        "tos": "sd0",
+        "type": "sd1"
+      },
+      "ADD_ON_APP02": {
+        "app_slug": "s12c",
+        "description": "s12d",
+        "display_name": "s12e",
+        "eula": "s12f",
+        "id": "ADD_ON_APP02",
+        "name": "s131",
+        "options": [],
+        "plans": [],
+        "tos": "s134",
+        "type": "s135"
+      }
+    }
+  },
+  "new": {
+    "add_on_app": {
+      "add_on_app_ref01": {
+        "app_slug": "s190",
+        "description": "s191",
+        "display_name": "s192",
+        "eula": "s193",
+        "name": "s195",
+        "options": [],
+        "plans": [],
+        "tos": "s198",
+        "type": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /v2/add-ons/apps/{app_slug}/metadata": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/add-ons/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

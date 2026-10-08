@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "security_rule": {
+      "SECURITY_RULE00": {
+        "resource": "sa",
+        "id": "SECURITY_RULE00"
+      },
+      "SECURITY_RULE01": {
+        "resource": "s14",
+        "id": "SECURITY_RULE01"
+      },
+      "SECURITY_RULE02": {
+        "resource": "s1e",
+        "id": "SECURITY_RULE02"
+      }
+    }
+  },
+  "new": {
+    "security_rule": {
+      "security_rule_ref01": {
+        "resource": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/security/scans/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

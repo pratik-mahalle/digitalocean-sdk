@@ -237,7 +237,7 @@ main: kit: entity: vpc_routes__public_preview: {
               {
                 ex: "997615ce-132d-4bae-9270-9ee21b395e5d"
                 k: "param"
-                n: "id"
+                n: "vpc_id"
                 or: "vpc_uuid"
                 r: true
                 t: "`$STRING`"
@@ -267,12 +267,12 @@ main: kit: entity: vpc_routes__public_preview: {
           q: {
             "$action": "routes"
             exist: [
-              "id"
+              "vpc_id"
             ]
           }
           r: {
             param: {
-              vpc_uuid: "id"
+              vpc_uuid: "vpc_id"
             }
           }
           rs: {
@@ -287,7 +287,7 @@ main: kit: entity: vpc_routes__public_preview: {
               lit: "vpcs"
             }
             {
-              var: "id"
+              var: "vpc_id"
             }
             {
               lit: "routes"
@@ -314,7 +314,7 @@ main: kit: entity: vpc_routes__public_preview: {
               {
                 ex: "f0e1d2c3-b4a5-6789-0fed-cba987654321"
                 k: "param"
-                n: "route_uuid"
+                n: "id"
                 or: "route_uuid"
                 r: true
                 t: "`$STRING`"
@@ -341,13 +341,14 @@ main: kit: entity: vpc_routes__public_preview: {
           o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
           q: {
             exist: [
-              "route_uuid"
+              "id"
               "subnet_id"
               "vpc_id"
             ]
           }
           r: {
             param: {
+              route_uuid: "id"
               subnet_uuid: "subnet_id"
               vpc_uuid: "vpc_id"
             }
@@ -372,7 +373,7 @@ main: kit: entity: vpc_routes__public_preview: {
               lit: "routes"
             }
             {
-              var: "route_uuid"
+              var: "id"
             }
           ]
           t: {
@@ -396,7 +397,7 @@ main: kit: entity: vpc_routes__public_preview: {
               {
                 ex: "f0e1d2c3-b4a5-6789-0fed-cba987654321"
                 k: "param"
-                n: "route_uuid"
+                n: "id"
                 or: "route_uuid"
                 r: true
                 t: "`$STRING`"
@@ -423,13 +424,14 @@ main: kit: entity: vpc_routes__public_preview: {
           o: "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}"
           q: {
             exist: [
-              "route_uuid"
+              "id"
               "subnet_id"
               "vpc_id"
             ]
           }
           r: {
             param: {
+              route_uuid: "id"
               subnet_uuid: "subnet_id"
               vpc_uuid: "vpc_id"
             }
@@ -458,7 +460,7 @@ main: kit: entity: vpc_routes__public_preview: {
               lit: "routes"
             }
             {
-              var: "route_uuid"
+              var: "id"
             }
           ]
           t: {

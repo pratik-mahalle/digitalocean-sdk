@@ -85,19 +85,19 @@ describe('ReservedIpActionDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
     if (maybeSkipControl(t, 'direct', 'direct-list-reserved_ip_action', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["reserved_ip_action01"], LIVE_STRICT)) return
+    if (skipIfMissingIds(t, setup, ["reserved_ip01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      params.id = setup.idmap['reserved_ip_action01']
+      params.reserved_ip_id = setup.idmap['reserved_ip01']
     } else {
-      params.id = 'direct01'
+      params.reserved_ip_id = 'direct01'
     }
 
     const result: any = await client.direct({
-      path: 'v2/reserved_ips/{id}/actions',
+      path: 'v2/reserved_ips/{reserved_ip_id}/actions',
       method: 'GET',
       params,
       query,

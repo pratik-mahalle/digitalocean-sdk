@@ -106,7 +106,7 @@ main: kit: entity: floating_ip_action: {
               {
                 ex: "45.55.96.47"
                 k: "param"
-                n: "id"
+                n: "floating_ip_id"
                 or: "floating_ip"
                 r: true
                 t: "`$STRING`"
@@ -117,12 +117,12 @@ main: kit: entity: floating_ip_action: {
           o: "/v2/floating_ips/{floating_ip}/actions"
           q: {
             exist: [
-              "id"
+              "floating_ip_id"
             ]
           }
           r: {
             param: {
-              floating_ip: "id"
+              floating_ip: "floating_ip_id"
             }
           }
           rs: {
@@ -137,7 +137,7 @@ main: kit: entity: floating_ip_action: {
               lit: "floating_ips"
             }
             {
-              var: "id"
+              var: "floating_ip_id"
             }
             {
               lit: "actions"
@@ -164,7 +164,7 @@ main: kit: entity: floating_ip_action: {
               {
                 ex: "45.55.96.47"
                 k: "param"
-                n: "id"
+                n: "floating_ip_id"
                 or: "floating_ip"
                 r: true
                 t: "`$STRING`"
@@ -175,12 +175,12 @@ main: kit: entity: floating_ip_action: {
           o: "/v2/floating_ips/{floating_ip}/actions"
           q: {
             exist: [
-              "id"
+              "floating_ip_id"
             ]
           }
           r: {
             param: {
-              floating_ip: "id"
+              floating_ip: "floating_ip_id"
             }
           }
           rs: {
@@ -195,7 +195,7 @@ main: kit: entity: floating_ip_action: {
               lit: "floating_ips"
             }
             {
-              var: "id"
+              var: "floating_ip_id"
             }
             {
               lit: "actions"

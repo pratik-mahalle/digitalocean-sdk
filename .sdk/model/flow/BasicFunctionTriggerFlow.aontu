@@ -1,0 +1,118 @@
+# BasicFunctionTriggerFlow
+
+main: kit: flow: BasicFunctionTriggerFlow:
+{
+  entity: "function_trigger",
+  kind: "basic",
+  name: "BasicFunctionTriggerFlow",
+  step: [
+    {
+      i: {
+        ref: "function_trigger_ref01"
+      }
+
+      m: {
+        namespace_id: "namespace01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        namespace_id: "namespace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "function_trigger_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        namespace_id: "namespace01"
+      }
+
+      i: {
+        ref: "function_trigger_ref01",
+        srcdatavar: "function_trigger_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-function_trigger_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "function_trigger_ref01",
+        srcdatavar: "function_trigger_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "function_trigger01",
+        namespace_id: "namespace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-function_trigger_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "function_trigger_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "function_trigger01",
+        namespace_id: "namespace01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        namespace_id: "namespace01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "function_trigger_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFunctionTriggerFlow"
+}

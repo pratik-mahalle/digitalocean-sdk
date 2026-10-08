@@ -621,13 +621,6 @@
             "field": {}
           },
           "fields": {
-            "action": {
-              "a": true,
-              "h": "Action",
-              "n": "action",
-              "r": false,
-              "t": "`$OBJECT`"
-            },
             "completed_at": {
               "a": true,
               "fo": "date-time",
@@ -708,64 +701,6 @@
           },
           "name": "action",
           "op": {
-            "create": {
-              "input": "data",
-              "name": "create",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/images/{image_id}/actions",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": 62137902,
-                        "k": "param",
-                        "n": "image_id",
-                        "or": "image_id",
-                        "r": true,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/images/{image_id}/actions",
-                  "q": {
-                    "exist": [
-                      "image_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "images"
-                    },
-                    {
-                      "var": "image_id"
-                    },
-                    {
-                      "lit": "actions"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                }
-              ]
-            },
             "list": {
               "input": "data",
               "name": "list",
@@ -830,75 +765,6 @@
                 {
                   "a": true,
                   "co": {
-                    "id": "GET /v2/images/{image_id}/actions/{action_id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": 36804636,
-                        "k": "param",
-                        "n": "id",
-                        "or": "action_id",
-                        "r": true,
-                        "t": "`$INTEGER`"
-                      },
-                      {
-                        "a": true,
-                        "ex": 62137902,
-                        "k": "param",
-                        "n": "image_id",
-                        "or": "image_id",
-                        "r": true,
-                        "t": "`$INTEGER`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/images/{image_id}/actions/{action_id}",
-                  "q": {
-                    "exist": [
-                      "id",
-                      "image_id"
-                    ]
-                  },
-                  "r": {
-                    "param": {
-                      "action_id": "id"
-                    }
-                  },
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "images"
-                    },
-                    {
-                      "var": "image_id"
-                    },
-                    {
-                      "lit": "actions"
-                    },
-                    {
-                      "var": "id"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
                     "id": "GET /v2/actions/{action_id}",
                     "source": "openapi3",
                     "version": 2
@@ -953,11 +819,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.image"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "actor_limit": {
@@ -1067,20 +929,12 @@
             "ancestors": []
           }
         },
-        "add_on": {
+        "add_on_app": {
           "active": true,
           "alias": {
             "field": {}
           },
           "fields": {
-            "app_name": {
-              "a": true,
-              "h": "App Name",
-              "n": "app_name",
-              "r": false,
-              "sh": "The name of the application associated with the resource.",
-              "t": "`$STRING`"
-            },
             "app_slug": {
               "a": true,
               "h": "App Slug",
@@ -1105,13 +959,13 @@
               "sh": "The display name of the metadata item.",
               "t": "`$STRING`"
             },
-            "has_config": {
+            "eula": {
               "a": true,
-              "h": "Has Config",
-              "n": "has_config",
+              "h": "Eula",
+              "n": "eula",
               "r": true,
-              "sh": "Indicates if the resource has configuration values set by the vendor.",
-              "t": "`$BOOLEAN`"
+              "sh": "The End User License Agreement URL for the resource.",
+              "t": "`$STRING`"
             },
             "id": {
               "a": true,
@@ -1121,33 +975,12 @@
               "sh": "Unique identifier for the addon metadata item.",
               "t": "`$INTEGER`"
             },
-            "message": {
-              "a": true,
-              "h": "Message",
-              "n": "message",
-              "r": false,
-              "sh": "A message related to the resource, if applicable.",
-              "t": "`$STRING`"
-            },
-            "metadata": {
-              "a": true,
-              "h": "Metadata",
-              "n": "metadata",
-              "r": false,
-              "sh": "Metadata associated with the resource, set by the user.",
-              "t": "`$ARRAY`",
-              "union": {
-                "branches": 2,
-                "count": 1,
-                "depth": 3
-              }
-            },
             "name": {
               "a": true,
               "h": "Name",
               "n": "name",
               "r": true,
-              "sh": "The name of the addon resource.",
+              "sh": "The name of the metadata item.",
               "t": "`$STRING`"
             },
             "options": {
@@ -1157,44 +990,25 @@
               "r": false,
               "t": "`$ARRAY`"
             },
-            "plan_name": {
+            "plans": {
               "a": true,
-              "h": "Plan Name",
-              "n": "plan_name",
-              "r": false,
-              "sh": "The name of the plan associated with the resource.",
-              "t": "`$STRING`"
-            },
-            "plan_price_per_month": {
-              "a": true,
-              "h": "Plan Price Per Month",
-              "n": "plan_price_per_month",
-              "r": false,
-              "sh": "The price of the plan per month in US dollars.",
-              "t": "`$INTEGER`"
-            },
-            "plan_slug": {
-              "a": true,
-              "h": "Plan Slug",
-              "n": "plan_slug",
+              "h": "Plans",
+              "n": "plans",
               "r": true,
-              "sh": "The slug identifier for the plan associated with the resource.",
-              "t": "`$STRING`"
+              "sh": "A list of plans available for the resource.",
+              "t": "`$ARRAY`",
+              "union": {
+                "branches": 3,
+                "count": 1,
+                "depth": 6
+              }
             },
-            "sso_url": {
+            "tos": {
               "a": true,
-              "h": "Sso Url",
-              "n": "sso_url",
-              "r": false,
-              "sh": "The Single Sign-On URL for the resource, if applicable.",
-              "t": "`$STRING`"
-            },
-            "state": {
-              "a": true,
-              "h": "State",
-              "n": "state",
+              "h": "Tos",
+              "n": "tos",
               "r": true,
-              "sh": "The state the resource is currently in.",
+              "sh": "The Terms of Service URL for the resource.",
               "t": "`$STRING`"
             },
             "type": {
@@ -1204,63 +1018,14 @@
               "r": true,
               "sh": "The data type of the metadata value.",
               "t": "`$STRING`"
-            },
-            "uuid": {
-              "a": true,
-              "h": "Uuid",
-              "n": "uuid",
-              "r": true,
-              "sh": "The unique identifier for the addon resource.",
-              "t": "`$STRING`"
             }
           },
           "id": {
             "field": "id",
             "name": "id"
           },
-          "name": "add_on",
+          "name": "add_on_app",
           "op": {
-            "create": {
-              "input": "data",
-              "name": "create",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/add-ons/saas",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/add-ons/saas",
-                  "q": {
-                    "$action": "saa"
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "add-ons"
-                    },
-                    {
-                      "lit": "saas"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.resource`"
-                  }
-                }
-              ]
-            },
             "list": {
               "input": "data",
               "name": "list",
@@ -1331,9 +1096,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/v2/add-ons/apps",
-                  "q": {
-                    "$action": "app"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -1354,7 +1117,369 @@
                     "req": "`reqdata`",
                     "res": "`body.apps`"
                   }
-                },
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": [
+              [
+                "$.main.kit.entity.app"
+              ]
+            ]
+          }
+        },
+        "add_on_plan": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "app_name": {
+              "a": true,
+              "h": "App Name",
+              "n": "app_name",
+              "r": false,
+              "sh": "The name of the application associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "app_slug": {
+              "a": true,
+              "h": "App Slug",
+              "n": "app_slug",
+              "r": true,
+              "sh": "The slug identifier for the application associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "has_config": {
+              "a": true,
+              "h": "Has Config",
+              "n": "has_config",
+              "r": true,
+              "sh": "Indicates if the resource has configuration values set by the vendor.",
+              "t": "`$BOOLEAN`"
+            },
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "sh": "A message related to the resource, if applicable.",
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "r": false,
+              "sh": "Metadata associated with the resource, set by the user.",
+              "t": "`$ARRAY`",
+              "union": {
+                "branches": 2,
+                "count": 1,
+                "depth": 3
+              }
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "The name of the addon resource.",
+              "t": "`$STRING`"
+            },
+            "plan_name": {
+              "a": true,
+              "h": "Plan Name",
+              "n": "plan_name",
+              "r": false,
+              "sh": "The name of the plan associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "plan_price_per_month": {
+              "a": true,
+              "h": "Plan Price Per Month",
+              "n": "plan_price_per_month",
+              "r": false,
+              "sh": "The price of the plan per month in US dollars.",
+              "t": "`$INTEGER`"
+            },
+            "plan_slug": {
+              "a": true,
+              "h": "Plan Slug",
+              "n": "plan_slug",
+              "r": true,
+              "sh": "The slug identifier for the plan associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "sso_url": {
+              "a": true,
+              "h": "Sso Url",
+              "n": "sso_url",
+              "r": false,
+              "sh": "The Single Sign-On URL for the resource, if applicable.",
+              "t": "`$STRING`"
+            },
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "The state the resource is currently in.",
+              "t": "`$STRING`"
+            },
+            "uuid": {
+              "a": true,
+              "h": "Uuid",
+              "n": "uuid",
+              "r": true,
+              "sh": "The unique identifier for the addon resource.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "add_on_plan",
+          "op": {
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "PATCH /v2/add-ons/saas/{resource_uuid}/plan",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "123e4567-e89b-12d3-a456-426614174000",
+                        "k": "param",
+                        "n": "resource_uuid",
+                        "or": "resource_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PATCH",
+                  "o": "/v2/add-ons/saas/{resource_uuid}/plan",
+                  "q": {
+                    "exist": [
+                      "resource_uuid"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "add-ons"
+                    },
+                    {
+                      "lit": "saas"
+                    },
+                    {
+                      "var": "resource_uuid"
+                    },
+                    {
+                      "lit": "plan"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.resource`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "add_on_resource": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "app_name": {
+              "a": true,
+              "h": "App Name",
+              "n": "app_name",
+              "r": false,
+              "sh": "The name of the application associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "app_slug": {
+              "a": true,
+              "h": "App Slug",
+              "n": "app_slug",
+              "r": true,
+              "sh": "The slug identifier for the application associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "fleet_uuid": {
+              "a": true,
+              "h": "Fleet Uuid",
+              "n": "fleet_uuid",
+              "r": false,
+              "sh": "UUID of the fleet/project to which this resource will belong.",
+              "t": "`$STRING`"
+            },
+            "has_config": {
+              "a": true,
+              "h": "Has Config",
+              "n": "has_config",
+              "r": true,
+              "sh": "Indicates if the resource has configuration values set by the vendor.",
+              "t": "`$BOOLEAN`"
+            },
+            "linked_droplet_id": {
+              "a": true,
+              "h": "Linked Droplet Id",
+              "n": "linked_droplet_id",
+              "r": false,
+              "sh": "ID of the droplet to be linked to this resource, if applicable.",
+              "t": "`$INTEGER`"
+            },
+            "message": {
+              "a": true,
+              "h": "Message",
+              "n": "message",
+              "r": false,
+              "sh": "A message related to the resource, if applicable.",
+              "t": "`$STRING`"
+            },
+            "metadata": {
+              "a": true,
+              "h": "Metadata",
+              "n": "metadata",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$ARRAY`"
+                }
+              },
+              "r": false,
+              "sh": "Metadata associated with the resource, set by the user.",
+              "t": "`$ARRAY`",
+              "union": {
+                "branches": 2,
+                "count": 1,
+                "depth": 3
+              }
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": true,
+              "sh": "The name of the addon resource.",
+              "t": "`$STRING`"
+            },
+            "plan_name": {
+              "a": true,
+              "h": "Plan Name",
+              "n": "plan_name",
+              "r": false,
+              "sh": "The name of the plan associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "plan_price_per_month": {
+              "a": true,
+              "h": "Plan Price Per Month",
+              "n": "plan_price_per_month",
+              "r": false,
+              "sh": "The price of the plan per month in US dollars.",
+              "t": "`$INTEGER`"
+            },
+            "plan_slug": {
+              "a": true,
+              "h": "Plan Slug",
+              "n": "plan_slug",
+              "r": true,
+              "sh": "The slug identifier for the plan associated with the resource.",
+              "t": "`$STRING`"
+            },
+            "sso_url": {
+              "a": true,
+              "h": "Sso Url",
+              "n": "sso_url",
+              "r": false,
+              "sh": "The Single Sign-On URL for the resource, if applicable.",
+              "t": "`$STRING`"
+            },
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": true,
+              "sh": "The state the resource is currently in.",
+              "t": "`$STRING`"
+            },
+            "uuid": {
+              "a": true,
+              "h": "Uuid",
+              "n": "uuid",
+              "r": true,
+              "sh": "The unique identifier for the addon resource.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "add_on_resource",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/add-ons/saas",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/add-ons/saas",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "add-ons"
+                    },
+                    {
+                      "lit": "saas"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.resource`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
                 {
                   "a": true,
                   "co": {
@@ -1366,9 +1491,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/v2/add-ons/saas",
-                  "q": {
-                    "$action": "saa"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -1559,72 +1682,12 @@
                     "req": "`reqdata`",
                     "res": "`body.resource`"
                   }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "PATCH /v2/add-ons/saas/{resource_uuid}/plan",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "123e4567-e89b-12d3-a456-426614174000",
-                        "k": "param",
-                        "n": "resource_uuid",
-                        "or": "resource_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PATCH",
-                  "o": "/v2/add-ons/saas/{resource_uuid}/plan",
-                  "q": {
-                    "$action": "plan",
-                    "exist": [
-                      "resource_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "add-ons"
-                    },
-                    {
-                      "lit": "saas"
-                    },
-                    {
-                      "var": "resource_uuid"
-                    },
-                    {
-                      "lit": "plan"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.resource`"
-                  }
                 }
               ]
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.app"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "api_agent_version": {
@@ -18722,11 +18785,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.function"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "api_unlink_agent_guardrail_output": {
@@ -19694,11 +19753,7 @@
             }
           },
           "relations": {
-            "ancestors": [
-              [
-                "$.main.kit.entity.function"
-              ]
-            ]
+            "ancestors": []
           }
         },
         "api_update_agent_output": {
@@ -41355,7 +41410,7 @@
                   ],
                   "t": {
                     "req": "`reqdata`",
-                    "res": "`body`"
+                    "res": "`body.droplet`"
                   }
                 }
               ]
@@ -44969,7 +45024,7 @@
                         "a": true,
                         "ex": "45.55.96.47",
                         "k": "param",
-                        "n": "id",
+                        "n": "floating_ip_id",
                         "or": "floating_ip",
                         "r": true,
                         "t": "`$STRING`"
@@ -44981,12 +45036,12 @@
                   "o": "/v2/floating_ips/{floating_ip}/actions",
                   "q": {
                     "exist": [
-                      "id"
+                      "floating_ip_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "floating_ip": "id"
+                      "floating_ip": "floating_ip_id"
                     }
                   },
                   "rs": {
@@ -45001,7 +45056,7 @@
                       "lit": "floating_ips"
                     },
                     {
-                      "var": "id"
+                      "var": "floating_ip_id"
                     },
                     {
                       "lit": "actions"
@@ -45031,7 +45086,7 @@
                         "a": true,
                         "ex": "45.55.96.47",
                         "k": "param",
-                        "n": "id",
+                        "n": "floating_ip_id",
                         "or": "floating_ip",
                         "r": true,
                         "t": "`$STRING`"
@@ -45043,12 +45098,12 @@
                   "o": "/v2/floating_ips/{floating_ip}/actions",
                   "q": {
                     "exist": [
-                      "id"
+                      "floating_ip_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "floating_ip": "id"
+                      "floating_ip": "floating_ip_id"
                     }
                   },
                   "rs": {
@@ -45063,7 +45118,7 @@
                       "lit": "floating_ips"
                     },
                     {
-                      "var": "id"
+                      "var": "floating_ip_id"
                     },
                     {
                       "lit": "actions"
@@ -45161,20 +45216,12 @@
             ]
           }
         },
-        "function": {
+        "function_key": {
           "active": true,
           "alias": {
             "field": {}
           },
           "fields": {
-            "api_host": {
-              "a": true,
-              "h": "Api Host",
-              "n": "api_host",
-              "r": false,
-              "sh": "The namespace's API hostname.",
-              "t": "`$STRING`"
-            },
             "created_at": {
               "a": true,
               "fo": "date-time",
@@ -45182,7 +45229,7 @@
               "n": "created_at",
               "r": false,
               "ro": true,
-              "sh": "UTC time string.",
+              "sh": "The date and time the key was created.",
               "t": "`$STRING`"
             },
             "expires_at": {
@@ -45203,20 +45250,6 @@
               "sh": "The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days).",
               "t": "`$STRING`"
             },
-            "function": {
-              "a": true,
-              "h": "Function",
-              "n": "function",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$STRING`"
-                }
-              },
-              "r": false,
-              "sh": "Name of function(action) that exists in the given namespace.",
-              "t": "`$STRING`"
-            },
             "id": {
               "a": true,
               "h": "Id",
@@ -45226,97 +45259,22 @@
               "sh": "The access key's unique identifier with prefix 'dof_v1_'.",
               "t": "`$STRING`"
             },
-            "is_enabled": {
-              "a": true,
-              "h": "Is Enabled",
-              "n": "is_enabled",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$BOOLEAN`"
-                }
-              },
-              "r": false,
-              "sh": "Indicates weather the trigger is paused or unpaused.",
-              "t": "`$BOOLEAN`"
-            },
-            "key": {
-              "a": true,
-              "h": "Key",
-              "n": "key",
-              "r": false,
-              "sh": "A random alpha numeric string.",
-              "t": "`$STRING`"
-            },
-            "label": {
-              "a": true,
-              "h": "Label",
-              "n": "label",
-              "r": false,
-              "sh": "The namespace's unique name.",
-              "t": "`$STRING`"
-            },
             "name": {
               "a": true,
               "h": "Name",
               "n": "name",
               "op": {
-                "create": {
-                  "req": true,
+                "list": {
+                  "req": false,
                   "type": "`$STRING`"
                 },
                 "update": {
-                  "req": true,
+                  "req": false,
                   "type": "`$STRING`"
                 }
               },
-              "r": false,
-              "sh": "The trigger's unique name within the namespace.",
-              "t": "`$STRING`"
-            },
-            "namespace": {
-              "a": true,
-              "h": "Namespace",
-              "n": "namespace",
-              "r": false,
-              "sh": "A unique string format of UUID with a prefix fn-.",
-              "t": "`$STRING`"
-            },
-            "region": {
-              "a": true,
-              "h": "Region",
-              "n": "region",
-              "r": false,
-              "sh": "The namespace's datacenter region.",
-              "t": "`$STRING`"
-            },
-            "scheduled_details": {
-              "a": true,
-              "h": "Scheduled Details",
-              "n": "scheduled_details",
               "r": true,
-              "sh": "Trigger details for SCHEDULED type, where body is optional.",
-              "t": "`$OBJECT`"
-            },
-            "scheduled_runs": {
-              "a": true,
-              "h": "Scheduled Runs",
-              "n": "scheduled_runs",
-              "r": false,
-              "t": "`$OBJECT`"
-            },
-            "type": {
-              "a": true,
-              "h": "Type",
-              "n": "type",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$STRING`"
-                }
-              },
-              "r": false,
-              "sh": "String which indicates the type of trigger source like SCHEDULED.",
+              "sh": "The access key's name.",
               "t": "`$STRING`"
             },
             "updated_at": {
@@ -45326,15 +45284,7 @@
               "n": "updated_at",
               "r": false,
               "ro": true,
-              "sh": "UTC time string.",
-              "t": "`$STRING`"
-            },
-            "uuid": {
-              "a": true,
-              "h": "Uuid",
-              "n": "uuid",
-              "r": false,
-              "sh": "The namespace's Universally Unique Identifier.",
+              "sh": "The date and time the key was last updated.",
               "t": "`$STRING`"
             }
           },
@@ -45342,7 +45292,7 @@
             "field": "id",
             "name": "id"
           },
-          "name": "function",
+          "name": "function_key",
           "op": {
             "create": {
               "input": "data",
@@ -45401,96 +45351,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.access_key`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/functions/namespaces/{namespace_id}/triggers",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "namespace_id",
-                        "or": "namespace_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/functions/namespaces/{namespace_id}/triggers",
-                  "q": {
-                    "exist": [
-                      "namespace_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    },
-                    {
-                      "var": "namespace_id"
-                    },
-                    {
-                      "lit": "triggers"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.trigger`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/functions/namespaces",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/functions/namespaces",
-                  "q": {
-                    "$action": "namespace"
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.namespace`"
                   }
                 }
               ]
@@ -45553,7 +45413,619 @@
                     "req": "`reqdata`",
                     "res": "`body.access_keys`"
                   }
-                },
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "id",
+                        "or": "key_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "namespace_id",
+                        "or": "namespace_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "namespace_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "key_id": "id"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    },
+                    {
+                      "var": "namespace_id"
+                    },
+                    {
+                      "lit": "keys"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "id",
+                        "or": "key_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      },
+                      {
+                        "a": true,
+                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "namespace_id",
+                        "or": "namespace_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
+                  "q": {
+                    "exist": [
+                      "id",
+                      "namespace_id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "key_id": "id"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    },
+                    {
+                      "var": "namespace_id"
+                    },
+                    {
+                      "lit": "keys"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.access_key`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "function_namespace": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "api_host": {
+              "a": true,
+              "h": "Api Host",
+              "n": "api_host",
+              "r": false,
+              "sh": "The namespace's API hostname.",
+              "t": "`$STRING`"
+            },
+            "created_at": {
+              "a": true,
+              "h": "Created At",
+              "n": "created_at",
+              "r": false,
+              "sh": "UTC time string.",
+              "t": "`$STRING`"
+            },
+            "key": {
+              "a": true,
+              "h": "Key",
+              "n": "key",
+              "r": false,
+              "sh": "A random alpha numeric string.",
+              "t": "`$STRING`"
+            },
+            "label": {
+              "a": true,
+              "h": "Label",
+              "n": "label",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "The namespace's unique name.",
+              "t": "`$STRING`"
+            },
+            "namespace": {
+              "a": true,
+              "h": "Namespace",
+              "n": "namespace",
+              "r": false,
+              "sh": "A unique string format of UUID with a prefix fn-.",
+              "t": "`$STRING`"
+            },
+            "region": {
+              "a": true,
+              "h": "Region",
+              "n": "region",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "The namespace's datacenter region.",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": false,
+              "sh": "UTC time string.",
+              "t": "`$STRING`"
+            },
+            "uuid": {
+              "a": true,
+              "h": "Uuid",
+              "n": "uuid",
+              "r": false,
+              "sh": "The namespace's Universally Unique Identifier.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "function_namespace",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/functions/namespaces",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/functions/namespaces",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.namespace`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/functions/namespaces",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/functions/namespaces",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.namespaces`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/functions/namespaces/{namespace_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "namespace_id",
+                        "or": "namespace_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/functions/namespaces/{namespace_id}",
+                  "q": {
+                    "exist": [
+                      "namespace_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    },
+                    {
+                      "var": "namespace_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.namespace`"
+                  }
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /v2/functions/namespaces/{namespace_id}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "namespace_id",
+                        "or": "namespace_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/v2/functions/namespaces/{namespace_id}",
+                  "q": {
+                    "exist": [
+                      "namespace_id"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    },
+                    {
+                      "var": "namespace_id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "function_trigger": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "created_at": {
+              "a": true,
+              "h": "Created At",
+              "n": "created_at",
+              "r": false,
+              "sh": "UTC time string.",
+              "t": "`$STRING`"
+            },
+            "function": {
+              "a": true,
+              "h": "Function",
+              "n": "function",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "Name of function(action) that exists in the given namespace.",
+              "t": "`$STRING`"
+            },
+            "is_enabled": {
+              "a": true,
+              "h": "Is Enabled",
+              "n": "is_enabled",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$BOOLEAN`"
+                }
+              },
+              "r": false,
+              "sh": "Indicates weather the trigger is paused or unpaused.",
+              "t": "`$BOOLEAN`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "The trigger's unique name within the namespace.",
+              "t": "`$STRING`"
+            },
+            "namespace": {
+              "a": true,
+              "h": "Namespace",
+              "n": "namespace",
+              "r": false,
+              "sh": "A unique string format of UUID with a prefix fn-.",
+              "t": "`$STRING`"
+            },
+            "scheduled_details": {
+              "a": true,
+              "h": "Scheduled Details",
+              "n": "scheduled_details",
+              "r": true,
+              "sh": "Trigger details for SCHEDULED type, where body is optional.",
+              "t": "`$OBJECT`"
+            },
+            "scheduled_runs": {
+              "a": true,
+              "h": "Scheduled Runs",
+              "n": "scheduled_runs",
+              "r": false,
+              "t": "`$OBJECT`"
+            },
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "String which indicates the type of trigger source like SCHEDULED.",
+              "t": "`$STRING`"
+            },
+            "updated_at": {
+              "a": true,
+              "h": "Updated At",
+              "n": "updated_at",
+              "r": false,
+              "sh": "UTC time string.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "function_trigger",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/functions/namespaces/{namespace_id}/triggers",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+                        "k": "param",
+                        "n": "namespace_id",
+                        "or": "namespace_id",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/functions/namespaces/{namespace_id}/triggers",
+                  "q": {
+                    "exist": [
+                      "namespace_id"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "functions"
+                    },
+                    {
+                      "lit": "namespaces"
+                    },
+                    {
+                      "var": "namespace_id"
+                    },
+                    {
+                      "lit": "triggers"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.trigger`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
                 {
                   "a": true,
                   "co": {
@@ -45607,41 +46079,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.triggers`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/functions/namespaces",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/functions/namespaces",
-                  "q": {
-                    "$action": "namespace"
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.namespaces`"
                   }
                 }
               ]
@@ -45717,58 +46154,6 @@
                     "req": "`reqdata`",
                     "res": "`body.trigger`"
                   }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/functions/namespaces/{namespace_id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "namespace_id",
-                        "or": "namespace_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/functions/namespaces/{namespace_id}",
-                  "q": {
-                    "exist": [
-                      "namespace_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    },
-                    {
-                      "var": "namespace_id"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.namespace`"
-                  }
                 }
               ]
             },
@@ -45776,74 +46161,6 @@
               "input": "data",
               "name": "remove",
               "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "key_id",
-                        "or": "key_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "namespace_id",
-                        "or": "namespace_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "DELETE",
-                  "o": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-                  "q": {
-                    "exist": [
-                      "key_id",
-                      "namespace_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    },
-                    {
-                      "var": "namespace_id"
-                    },
-                    {
-                      "lit": "keys"
-                    },
-                    {
-                      "var": "key_id"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
                 {
                   "a": true,
                   "co": {
@@ -45907,54 +46224,6 @@
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "DELETE /v2/functions/namespaces/{namespace_id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "namespace_id",
-                        "or": "namespace_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "DELETE",
-                  "o": "/v2/functions/namespaces/{namespace_id}",
-                  "q": {
-                    "exist": [
-                      "namespace_id"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    },
-                    {
-                      "var": "namespace_id"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
                 }
               ]
             },
@@ -45962,74 +46231,6 @@
               "input": "data",
               "name": "update",
               "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "dof-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "key_id",
-                        "or": "key_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      },
-                      {
-                        "a": true,
-                        "ex": "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-                        "k": "param",
-                        "n": "namespace_id",
-                        "or": "namespace_id",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/v2/functions/namespaces/{namespace_id}/keys/{key_id}",
-                  "q": {
-                    "exist": [
-                      "key_id",
-                      "namespace_id"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "functions"
-                    },
-                    {
-                      "lit": "namespaces"
-                    },
-                    {
-                      "var": "namespace_id"
-                    },
-                    {
-                      "lit": "keys"
-                    },
-                    {
-                      "var": "key_id"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.access_key`"
-                  }
-                },
                 {
                   "a": true,
                   "co": {
@@ -57346,7 +57547,7 @@
             "ancestors": []
           }
         },
-        "monitoring": {
+        "monitoring_alert": {
           "active": true,
           "alias": {
             "field": {}
@@ -57366,33 +57567,12 @@
               "r": true,
               "t": "`$STRING`"
             },
-            "config": {
-              "a": true,
-              "h": "Config",
-              "n": "config",
-              "op": {
-                "create": {
-                  "req": true,
-                  "type": "`$OBJECT`"
-                }
-              },
-              "r": false,
-              "sh": "OpenSearch destination configuration with `credentials` omitted.",
-              "t": "`$OBJECT`"
-            },
             "description": {
               "a": true,
               "h": "Description",
               "n": "description",
               "r": true,
               "t": "`$STRING`"
-            },
-            "destination": {
-              "a": true,
-              "h": "Destination",
-              "n": "destination",
-              "r": true,
-              "t": "`$OBJECT`"
             },
             "enabled": {
               "a": true,
@@ -57408,30 +57588,6 @@
               "r": true,
               "t": "`$ARRAY`"
             },
-            "id": {
-              "a": true,
-              "h": "Id",
-              "n": "id",
-              "r": false,
-              "sh": "A unique identifier for a destination.",
-              "t": "`$STRING`"
-            },
-            "name": {
-              "a": true,
-              "h": "Name",
-              "n": "name",
-              "r": false,
-              "sh": "destination name",
-              "t": "`$STRING`"
-            },
-            "resources": {
-              "a": true,
-              "h": "Resources",
-              "n": "resources",
-              "r": false,
-              "sh": "List of resources identified by their URNs.",
-              "t": "`$ARRAY`"
-            },
             "tags": {
               "a": true,
               "h": "Tags",
@@ -57443,22 +57599,7 @@
               "a": true,
               "h": "Type",
               "n": "type",
-              "op": {
-                "create": {
-                  "req": false,
-                  "type": "`$STRING`"
-                },
-                "list": {
-                  "req": false,
-                  "type": "`$STRING`"
-                },
-                "load": {
-                  "req": false,
-                  "type": "`$STRING`"
-                }
-              },
               "r": true,
-              "sh": "The destination type.",
               "t": "`$STRING`"
             },
             "uuid": {
@@ -57484,67 +57625,12 @@
               "t": "`$STRING`"
             }
           },
-          "id": {
-            "field": "id",
-            "name": "id"
-          },
-          "name": "monitoring",
+          "name": "monitoring_alert",
           "op": {
             "create": {
               "input": "data",
               "name": "create",
               "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/monitoring/sinks/destinations/{destination_uuid}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
-                        "k": "param",
-                        "n": "destination_uuid",
-                        "or": "destination_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-                  "q": {
-                    "exist": [
-                      "destination_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "lit": "destinations"
-                    },
-                    {
-                      "var": "destination_uuid"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
                 {
                   "a": true,
                   "co": {
@@ -57556,9 +57642,7 @@
                   "k": "http",
                   "m": "POST",
                   "o": "/v2/monitoring/alerts",
-                  "q": {
-                    "$action": "alert"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -57578,73 +57662,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.policy`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/monitoring/sinks",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/monitoring/sinks",
-                  "q": {
-                    "$action": "sink"
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/monitoring/sinks/destinations",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/monitoring/sinks/destinations",
-                  "q": {},
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "lit": "destinations"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.destination`"
                   }
                 }
               ]
@@ -57685,9 +57702,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/v2/monitoring/alerts",
-                  "q": {
-                    "$action": "alert"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -57707,89 +57722,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.policies`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/monitoring/sinks",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "query": [
-                      {
-                        "a": true,
-                        "ex": "do:kubernetes:5ba4518b-b9e2-4978-aa92-2d4c727e8824",
-                        "k": "query",
-                        "n": "resource_id",
-                        "or": "resource_id",
-                        "r": false,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/monitoring/sinks",
-                  "q": {
-                    "$action": "sink"
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.sinks`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/monitoring/sinks/destinations",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/monitoring/sinks/destinations",
-                  "q": {},
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "lit": "destinations"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.destinations`"
                   }
                 }
               ]
@@ -57849,113 +57781,6 @@
                     "req": "`reqdata`",
                     "res": "`body.policy`"
                   }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/monitoring/sinks/destinations/{destination_uuid}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
-                        "k": "param",
-                        "n": "destination_uuid",
-                        "or": "destination_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-                  "q": {
-                    "exist": [
-                      "destination_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "lit": "destinations"
-                    },
-                    {
-                      "var": "destination_uuid"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.destination`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "GET /v2/monitoring/sinks/{sink_uuid}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c",
-                        "k": "param",
-                        "n": "sink_uuid",
-                        "or": "sink_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "GET",
-                  "o": "/v2/monitoring/sinks/{sink_uuid}",
-                  "q": {
-                    "exist": [
-                      "sink_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "var": "sink_uuid"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.sink`"
-                  }
                 }
               ]
             },
@@ -58004,105 +57829,6 @@
                     },
                     {
                       "var": "alert_uuid"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "DELETE /v2/monitoring/sinks/destinations/{destination_uuid}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
-                        "k": "param",
-                        "n": "destination_uuid",
-                        "or": "destination_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "DELETE",
-                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
-                  "q": {
-                    "exist": [
-                      "destination_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "lit": "destinations"
-                    },
-                    {
-                      "var": "destination_uuid"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "DELETE /v2/monitoring/sinks/{sink_uuid}",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {
-                    "params": [
-                      {
-                        "a": true,
-                        "ex": "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c",
-                        "k": "param",
-                        "n": "sink_uuid",
-                        "or": "sink_uuid",
-                        "r": true,
-                        "t": "`$STRING`"
-                      }
-                    ]
-                  },
-                  "k": "http",
-                  "m": "DELETE",
-                  "o": "/v2/monitoring/sinks/{sink_uuid}",
-                  "q": {
-                    "exist": [
-                      "sink_uuid"
-                    ]
-                  },
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "monitoring"
-                    },
-                    {
-                      "lit": "sinks"
-                    },
-                    {
-                      "var": "sink_uuid"
                     }
                   ],
                   "t": {
@@ -58166,6 +57892,582 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.policy`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "monitoring_sink": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "destination": {
+              "a": true,
+              "h": "Destination",
+              "n": "destination",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "destination_uuid": {
+              "a": true,
+              "h": "Destination Uuid",
+              "n": "destination_uuid",
+              "r": false,
+              "sh": "A unique identifier for an already-existing destination.",
+              "t": "`$STRING`"
+            },
+            "resources": {
+              "a": true,
+              "h": "Resources",
+              "n": "resources",
+              "r": false,
+              "sh": "List of resources identified by their URNs.",
+              "t": "`$ARRAY`"
+            }
+          },
+          "name": "monitoring_sink",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/monitoring/sinks",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/monitoring/sinks",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/monitoring/sinks",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "query": [
+                      {
+                        "a": true,
+                        "ex": "do:kubernetes:5ba4518b-b9e2-4978-aa92-2d4c727e8824",
+                        "k": "query",
+                        "n": "resource_id",
+                        "or": "resource_id",
+                        "r": false,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/monitoring/sinks",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.sinks`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/monitoring/sinks/{sink_uuid}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c",
+                        "k": "param",
+                        "n": "sink_uuid",
+                        "or": "sink_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/monitoring/sinks/{sink_uuid}",
+                  "q": {
+                    "exist": [
+                      "sink_uuid"
+                    ]
+                  },
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "var": "sink_uuid"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.sink`"
+                  }
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /v2/monitoring/sinks/{sink_uuid}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "78b172b6-52c3-4a4b-96d5-78d3f1a0b18c",
+                        "k": "param",
+                        "n": "sink_uuid",
+                        "or": "sink_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/v2/monitoring/sinks/{sink_uuid}",
+                  "q": {
+                    "exist": [
+                      "sink_uuid"
+                    ]
+                  },
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "var": "sink_uuid"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "monitoring_sink_destination": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "config": {
+              "a": true,
+              "h": "Config",
+              "n": "config",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$OBJECT`"
+                },
+                "update": {
+                  "req": true,
+                  "type": "`$OBJECT`"
+                }
+              },
+              "r": false,
+              "sh": "OpenSearch destination configuration with `credentials` omitted.",
+              "t": "`$OBJECT`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "A unique identifier for a destination.",
+              "t": "`$STRING`"
+            },
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "destination name",
+              "t": "`$STRING`"
+            },
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "op": {
+                "create": {
+                  "req": true,
+                  "type": "`$STRING`"
+                },
+                "update": {
+                  "req": true,
+                  "type": "`$STRING`"
+                }
+              },
+              "r": false,
+              "sh": "The destination type.",
+              "t": "`$STRING`"
+            }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
+          },
+          "name": "monitoring_sink_destination",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/monitoring/sinks/destinations",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/monitoring/sinks/destinations",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "lit": "destinations"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.destination`"
+                  }
+                }
+              ]
+            },
+            "list": {
+              "input": "data",
+              "name": "list",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/monitoring/sinks/destinations",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/monitoring/sinks/destinations",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "lit": "destinations"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.destinations`"
+                  }
+                }
+              ]
+            },
+            "load": {
+              "input": "data",
+              "name": "load",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "GET /v2/monitoring/sinks/destinations/{destination_uuid}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
+                        "k": "param",
+                        "n": "id",
+                        "or": "destination_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "destination_uuid": "id"
+                    }
+                  },
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "lit": "destinations"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.destination`"
+                  }
+                }
+              ]
+            },
+            "remove": {
+              "input": "data",
+              "name": "remove",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "DELETE /v2/monitoring/sinks/destinations/{destination_uuid}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
+                        "k": "param",
+                        "n": "id",
+                        "or": "destination_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "DELETE",
+                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "destination_uuid": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "lit": "destinations"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            },
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/monitoring/sinks/destinations/{destination_uuid}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
+                    "params": [
+                      {
+                        "a": true,
+                        "ex": "1a64809f-1708-48ee-a742-dec8d481b8d1",
+                        "k": "param",
+                        "n": "id",
+                        "or": "destination_uuid",
+                        "r": true,
+                        "t": "`$STRING`"
+                      }
+                    ]
+                  },
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/monitoring/sinks/destinations/{destination_uuid}",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
+                  },
+                  "r": {
+                    "param": {
+                      "destination_uuid": "id"
+                    }
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "monitoring"
+                    },
+                    {
+                      "lit": "sinks"
+                    },
+                    {
+                      "lit": "destinations"
+                    },
+                    {
+                      "var": "id"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
                   }
                 }
               ]
@@ -63428,7 +63730,7 @@
                         "a": true,
                         "ex": "45.55.96.47",
                         "k": "param",
-                        "n": "id",
+                        "n": "reserved_ip_id",
                         "or": "reserved_ip",
                         "r": true,
                         "t": "`$STRING`"
@@ -63440,12 +63742,12 @@
                   "o": "/v2/reserved_ips/{reserved_ip}/actions",
                   "q": {
                     "exist": [
-                      "id"
+                      "reserved_ip_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "reserved_ip": "id"
+                      "reserved_ip": "reserved_ip_id"
                     }
                   },
                   "rs": {
@@ -63460,7 +63762,7 @@
                       "lit": "reserved_ips"
                     },
                     {
-                      "var": "id"
+                      "var": "reserved_ip_id"
                     },
                     {
                       "lit": "actions"
@@ -63490,7 +63792,7 @@
                         "a": true,
                         "ex": "45.55.96.47",
                         "k": "param",
-                        "n": "id",
+                        "n": "reserved_ip_id",
                         "or": "reserved_ip",
                         "r": true,
                         "t": "`$STRING`"
@@ -63502,12 +63804,12 @@
                   "o": "/v2/reserved_ips/{reserved_ip}/actions",
                   "q": {
                     "exist": [
-                      "id"
+                      "reserved_ip_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "reserved_ip": "id"
+                      "reserved_ip": "reserved_ip_id"
                     }
                   },
                   "rs": {
@@ -63522,7 +63824,7 @@
                       "lit": "reserved_ips"
                     },
                     {
-                      "var": "id"
+                      "var": "reserved_ip_id"
                     },
                     {
                       "lit": "actions"
@@ -64208,7 +64510,131 @@
             "ancestors": []
           }
         },
-        "security": {
+        "security_plan": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "tier_coverage": {
+              "a": true,
+              "h": "Tier Coverage",
+              "n": "tier_coverage",
+              "r": false,
+              "sh": "Scan coverage for each available plan tier.",
+              "t": "`$OBJECT`"
+            }
+          },
+          "name": "security_plan",
+          "op": {
+            "update": {
+              "input": "data",
+              "name": "update",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "PUT /v2/security/settings/plan",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "PUT",
+                  "o": "/v2/security/settings/plan",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "security"
+                    },
+                    {
+                      "lit": "settings"
+                    },
+                    {
+                      "lit": "plan"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body.tier_coverage`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "security_rule": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "resource": {
+              "a": true,
+              "h": "Resource",
+              "n": "resource",
+              "r": false,
+              "sh": "The URN of a resource to exclude from future scans.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "security_rule",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/security/scans/rules",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/security/scans/rules",
+                  "q": {},
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "security"
+                    },
+                    {
+                      "lit": "scans"
+                    },
+                    {
+                      "lit": "rules"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "security_scan": {
           "active": true,
           "alias": {
             "field": {}
@@ -64246,30 +64672,6 @@
               "sh": "The name of the affected resource.",
               "t": "`$STRING`"
             },
-            "resource": {
-              "a": true,
-              "h": "Resource",
-              "n": "resource",
-              "r": false,
-              "sh": "The URN of a resource to exclude from future scans.",
-              "t": "`$STRING`"
-            },
-            "resources": {
-              "a": true,
-              "h": "Resources",
-              "n": "resources",
-              "r": false,
-              "sh": "The URNs of resources to suppress for the rule.",
-              "t": "`$ARRAY`"
-            },
-            "rule_uuid": {
-              "a": true,
-              "h": "Rule Uuid",
-              "n": "rule_uuid",
-              "r": false,
-              "sh": "The rule UUID to suppress for the listed resources.",
-              "t": "`$STRING`"
-            },
             "status": {
               "a": true,
               "h": "Status",
@@ -64277,14 +64679,6 @@
               "r": false,
               "sh": "The status of the scan.",
               "t": "`$STRING`"
-            },
-            "tier_coverage": {
-              "a": true,
-              "h": "Tier Coverage",
-              "n": "tier_coverage",
-              "r": false,
-              "sh": "Scan coverage for each available plan tier.",
-              "t": "`$OBJECT`"
             },
             "type": {
               "a": true,
@@ -64307,7 +64701,7 @@
             "field": "id",
             "name": "id"
           },
-          "name": "security",
+          "name": "security_scan",
           "op": {
             "create": {
               "input": "data",
@@ -64324,9 +64718,7 @@
                   "k": "http",
                   "m": "POST",
                   "o": "/v2/security/scans",
-                  "q": {
-                    "$action": "scan"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -64346,74 +64738,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body.scan`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/security/scans/rules",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/security/scans/rules",
-                  "q": {},
-                  "r": {},
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "security"
-                    },
-                    {
-                      "lit": "scans"
-                    },
-                    {
-                      "lit": "rules"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
-                  }
-                },
-                {
-                  "a": true,
-                  "co": {
-                    "id": "POST /v2/security/settings/suppressions",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "POST",
-                  "o": "/v2/security/settings/suppressions",
-                  "q": {},
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "security"
-                    },
-                    {
-                      "lit": "settings"
-                    },
-                    {
-                      "lit": "suppressions"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body`"
                   }
                 }
               ]
@@ -64549,9 +64873,7 @@
                   "k": "http",
                   "m": "GET",
                   "o": "/v2/security/scans",
-                  "q": {
-                    "$action": "scan"
-                  },
+                  "q": {},
                   "r": {},
                   "rs": {
                     "kind": "json",
@@ -64745,6 +65067,78 @@
                   }
                 }
               ]
+            }
+          },
+          "relations": {
+            "ancestors": []
+          }
+        },
+        "security_suppression": {
+          "active": true,
+          "alias": {
+            "field": {}
+          },
+          "fields": {
+            "resources": {
+              "a": true,
+              "h": "Resources",
+              "n": "resources",
+              "r": false,
+              "sh": "The URNs of resources to suppress for the rule.",
+              "t": "`$ARRAY`"
+            },
+            "rule_uuid": {
+              "a": true,
+              "h": "Rule Uuid",
+              "n": "rule_uuid",
+              "r": false,
+              "sh": "The rule UUID to suppress for the listed resources.",
+              "t": "`$STRING`"
+            }
+          },
+          "name": "security_suppression",
+          "op": {
+            "create": {
+              "input": "data",
+              "name": "create",
+              "points": [
+                {
+                  "a": true,
+                  "co": {
+                    "id": "POST /v2/security/settings/suppressions",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {},
+                  "k": "http",
+                  "m": "POST",
+                  "o": "/v2/security/settings/suppressions",
+                  "q": {},
+                  "r": {},
+                  "rs": {
+                    "kind": "json",
+                    "media": "application/json"
+                  },
+                  "s": [
+                    {
+                      "lit": "v2"
+                    },
+                    {
+                      "lit": "security"
+                    },
+                    {
+                      "lit": "settings"
+                    },
+                    {
+                      "lit": "suppressions"
+                    }
+                  ],
+                  "t": {
+                    "req": "`reqdata`",
+                    "res": "`body`"
+                  }
+                }
+              ]
             },
             "remove": {
               "input": "data",
@@ -64799,48 +65193,6 @@
                   "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  }
-                }
-              ]
-            },
-            "update": {
-              "input": "data",
-              "name": "update",
-              "points": [
-                {
-                  "a": true,
-                  "co": {
-                    "id": "PUT /v2/security/settings/plan",
-                    "source": "openapi3",
-                    "version": 2
-                  },
-                  "g": {},
-                  "k": "http",
-                  "m": "PUT",
-                  "o": "/v2/security/settings/plan",
-                  "q": {},
-                  "r": {},
-                  "rs": {
-                    "kind": "json",
-                    "media": "application/json"
-                  },
-                  "s": [
-                    {
-                      "lit": "v2"
-                    },
-                    {
-                      "lit": "security"
-                    },
-                    {
-                      "lit": "settings"
-                    },
-                    {
-                      "lit": "plan"
-                    }
-                  ],
-                  "t": {
-                    "req": "`reqdata`",
-                    "res": "`body.tier_coverage`"
                   }
                 }
               ]
@@ -71801,7 +72153,7 @@
                         "a": true,
                         "ex": "997615ce-132d-4bae-9270-9ee21b395e5d",
                         "k": "param",
-                        "n": "id",
+                        "n": "vpc_id",
                         "or": "vpc_uuid",
                         "r": true,
                         "t": "`$STRING`"
@@ -71834,12 +72186,12 @@
                   "q": {
                     "$action": "routes",
                     "exist": [
-                      "id"
+                      "vpc_id"
                     ]
                   },
                   "r": {
                     "param": {
-                      "vpc_uuid": "id"
+                      "vpc_uuid": "vpc_id"
                     }
                   },
                   "rs": {
@@ -71854,7 +72206,7 @@
                       "lit": "vpcs"
                     },
                     {
-                      "var": "id"
+                      "var": "vpc_id"
                     },
                     {
                       "lit": "routes"
@@ -71884,7 +72236,7 @@
                         "a": true,
                         "ex": "f0e1d2c3-b4a5-6789-0fed-cba987654321",
                         "k": "param",
-                        "n": "route_uuid",
+                        "n": "id",
                         "or": "route_uuid",
                         "r": true,
                         "t": "`$STRING`"
@@ -71914,13 +72266,14 @@
                   "o": "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}",
                   "q": {
                     "exist": [
-                      "route_uuid",
+                      "id",
                       "subnet_id",
                       "vpc_id"
                     ]
                   },
                   "r": {
                     "param": {
+                      "route_uuid": "id",
                       "subnet_uuid": "subnet_id",
                       "vpc_uuid": "vpc_id"
                     }
@@ -71945,7 +72298,7 @@
                       "lit": "routes"
                     },
                     {
-                      "var": "route_uuid"
+                      "var": "id"
                     }
                   ],
                   "t": {
@@ -71972,7 +72325,7 @@
                         "a": true,
                         "ex": "f0e1d2c3-b4a5-6789-0fed-cba987654321",
                         "k": "param",
-                        "n": "route_uuid",
+                        "n": "id",
                         "or": "route_uuid",
                         "r": true,
                         "t": "`$STRING`"
@@ -72002,13 +72355,14 @@
                   "o": "/v2/vpcs/{vpc_uuid}/subnets/{subnet_uuid}/routes/{route_uuid}",
                   "q": {
                     "exist": [
-                      "route_uuid",
+                      "id",
                       "subnet_id",
                       "vpc_id"
                     ]
                   },
                   "r": {
                     "param": {
+                      "route_uuid": "id",
                       "subnet_uuid": "subnet_id",
                       "vpc_uuid": "vpc_id"
                     }
@@ -72037,7 +72391,7 @@
                       "lit": "routes"
                     },
                     {
-                      "var": "route_uuid"
+                      "var": "id"
                     }
                   ],
                   "t": {
@@ -72876,19 +73230,6 @@
             {
               "a": true,
               "d": {},
-              "i": {
-                "ref": "action_ref01"
-              },
-              "m": {
-                "image_id": "image01"
-              },
-              "o": "create",
-              "s": [],
-              "v": []
-            },
-            {
-              "a": true,
-              "d": {},
               "i": {},
               "m": {},
               "o": "list",
@@ -72954,23 +73295,78 @@
             }
           ]
         },
-        "BasicAddOnFlow": {
+        "BasicAddOnAppFlow": {
           "active": true,
-          "entity": "add_on",
-          "key$": "BasicAddOnFlow",
+          "entity": "add_on_app",
+          "key$": "BasicAddOnAppFlow",
           "kind": "basic",
-          "name": "BasicAddOnFlow",
+          "name": "BasicAddOnAppFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "add_on_app_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicAddOnPlanFlow": {
+          "active": true,
+          "entity": "add_on_plan",
+          "key$": "BasicAddOnPlanFlow",
+          "kind": "basic",
+          "name": "BasicAddOnPlanFlow",
           "param": {},
           "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "add_on_ref01"
+                "ref": "add_on_plan_ref01",
+                "srcdatavar": "add_on_plan_ref01_data",
+                "suffix": "_up0",
+                "textfield": "app_name"
               },
-              "m": {
-                "app_slug": "app_slug01"
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-add_on_plan_ref01"
+                  }
+                }
+              ],
+              "v": []
+            }
+          ]
+        },
+        "BasicAddOnResourceFlow": {
+          "active": true,
+          "entity": "add_on_resource",
+          "key$": "BasicAddOnResourceFlow",
+          "kind": "basic",
+          "name": "BasicAddOnResourceFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "add_on_resource_ref01"
               },
+              "m": {},
               "o": "create",
               "s": [],
               "v": []
@@ -72986,7 +73382,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "add_on_ref01"
+                    "ref": "add_on_resource_ref01"
                   }
                 }
               ]
@@ -72995,8 +73391,8 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "add_on_ref01",
-                "srcdatavar": "add_on_ref01_data",
+                "ref": "add_on_resource_ref01",
+                "srcdatavar": "add_on_resource_ref01_data",
                 "suffix": "_up0",
                 "textfield": "app_name"
               },
@@ -73006,7 +73402,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-add_on_ref01"
+                    "mark": "Mark01-add_on_resource_ref01"
                   }
                 }
               ],
@@ -73016,12 +73412,12 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "add_on_ref01",
-                "srcdatavar": "add_on_ref01_data",
+                "ref": "add_on_resource_ref01",
+                "srcdatavar": "add_on_resource_ref01_data",
                 "suffix": "_dt0"
               },
               "m": {
-                "id": "add_on01"
+                "id": "add_on_resource01"
               },
               "o": "load",
               "s": [],
@@ -73029,7 +73425,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-add_on_ref01"
+                    "mark": "Mark01-add_on_resource_ref01"
                   }
                 }
               ]
@@ -73038,11 +73434,11 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "add_on_ref01",
+                "ref": "add_on_resource_ref01",
                 "suffix": "_rm0"
               },
               "m": {
-                "id": "add_on01"
+                "id": "add_on_resource01"
               },
               "o": "remove",
               "s": [],
@@ -73061,7 +73457,7 @@
                 {
                   "apply": "ItemNotExists",
                   "def": {
-                    "ref": "add_on_ref01"
+                    "ref": "add_on_resource_ref01"
                   }
                 }
               ]
@@ -78916,7 +79312,6 @@
                 "ref": "floating_ip_action_ref01"
               },
               "m": {
-                "floating_ip": "floating_ip01",
                 "floating_ip_id": "floating_ip01"
               },
               "o": "create",
@@ -78928,7 +79323,7 @@
               "d": {},
               "i": {},
               "m": {
-                "floating_ip": "floating_ip01"
+                "floating_ip_id": "floating_ip01"
               },
               "o": "list",
               "s": [],
@@ -79057,23 +79452,120 @@
             }
           ]
         },
-        "BasicFunctionFlow": {
+        "BasicFunctionKeyFlow": {
           "active": true,
-          "entity": "function",
-          "key$": "BasicFunctionFlow",
+          "entity": "function_key",
+          "key$": "BasicFunctionKeyFlow",
           "kind": "basic",
-          "name": "BasicFunctionFlow",
+          "name": "BasicFunctionKeyFlow",
           "param": {},
           "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "function_ref01"
+                "ref": "function_key_ref01"
               },
               "m": {
                 "namespace_id": "namespace01"
               },
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
+                "namespace_id": "namespace01"
+              },
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "function_key_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {
+                "namespace_id": "namespace01"
+              },
+              "i": {
+                "ref": "function_key_ref01",
+                "srcdatavar": "function_key_ref01_data",
+                "suffix": "_up0",
+                "textfield": "expires_in"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-function_key_ref01"
+                  }
+                }
+              ],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "function_key_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "function_key01",
+                "namespace_id": "namespace01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "suffix": "_rt0"
+              },
+              "m": {
+                "namespace_id": "namespace01"
+              },
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemNotExists",
+                  "def": {
+                    "ref": "function_key_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicFunctionNamespaceFlow": {
+          "active": true,
+          "entity": "function_namespace",
+          "key$": "BasicFunctionNamespaceFlow",
+          "kind": "basic",
+          "name": "BasicFunctionNamespaceFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "function_namespace_ref01"
+              },
+              "m": {},
               "o": "create",
               "s": [],
               "v": []
@@ -79089,44 +79581,21 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "function_ref01"
+                    "ref": "function_namespace_ref01"
                   }
                 }
               ]
             },
             {
               "a": true,
-              "d": {
-                "namespace_id": "namespace01"
-              },
-              "i": {
-                "ref": "function_ref01",
-                "srcdatavar": "function_ref01_data",
-                "suffix": "_up0",
-                "textfield": "api_host"
-              },
-              "m": {},
-              "o": "update",
-              "s": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-function_ref01"
-                  }
-                }
-              ],
-              "v": []
-            },
-            {
-              "a": true,
               "d": {},
               "i": {
-                "ref": "function_ref01",
-                "srcdatavar": "function_ref01_data",
+                "ref": "function_namespace_ref01",
+                "srcdatavar": "function_namespace_ref01_data",
                 "suffix": "_dt0"
               },
               "m": {
-                "id": "function01"
+                "id": "function_namespace01"
               },
               "o": "load",
               "s": [],
@@ -79134,7 +79603,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-function_ref01"
+                    "mark": "Mark01-function_namespace_ref01"
                   }
                 }
               ]
@@ -79143,11 +79612,11 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "function_ref01",
+                "ref": "function_namespace_ref01",
                 "suffix": "_rm0"
               },
               "m": {
-                "id": "function01"
+                "id": "function_namespace01"
               },
               "o": "remove",
               "s": [],
@@ -79166,7 +79635,129 @@
                 {
                   "apply": "ItemNotExists",
                   "def": {
-                    "ref": "function_ref01"
+                    "ref": "function_namespace_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicFunctionTriggerFlow": {
+          "active": true,
+          "entity": "function_trigger",
+          "key$": "BasicFunctionTriggerFlow",
+          "kind": "basic",
+          "name": "BasicFunctionTriggerFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "function_trigger_ref01"
+              },
+              "m": {
+                "namespace_id": "namespace01"
+              },
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
+                "namespace_id": "namespace01"
+              },
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "function_trigger_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {
+                "namespace_id": "namespace01"
+              },
+              "i": {
+                "ref": "function_trigger_ref01",
+                "srcdatavar": "function_trigger_ref01_data",
+                "suffix": "_up0",
+                "textfield": "created_at"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-function_trigger_ref01"
+                  }
+                }
+              ],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "function_trigger_ref01",
+                "srcdatavar": "function_trigger_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "function_trigger01",
+                "namespace_id": "namespace01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-function_trigger_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "function_trigger_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "function_trigger01",
+                "namespace_id": "namespace01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "suffix": "_rt0"
+              },
+              "m": {
+                "namespace_id": "namespace01"
+              },
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemNotExists",
+                  "def": {
+                    "ref": "function_trigger_ref01"
                   }
                 }
               ]
@@ -80190,19 +80781,19 @@
             }
           ]
         },
-        "BasicMonitoringFlow": {
+        "BasicMonitoringAlertFlow": {
           "active": true,
-          "entity": "monitoring",
-          "key$": "BasicMonitoringFlow",
+          "entity": "monitoring_alert",
+          "key$": "BasicMonitoringAlertFlow",
           "kind": "basic",
-          "name": "BasicMonitoringFlow",
+          "name": "BasicMonitoringAlertFlow",
           "param": {},
           "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "monitoring_ref01"
+                "ref": "monitoring_alert_ref01"
               },
               "m": {},
               "o": "create",
@@ -80220,7 +80811,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "monitoring_ref01"
+                    "ref": "monitoring_alert_ref01"
                   }
                 }
               ]
@@ -80229,8 +80820,8 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "monitoring_ref01",
-                "srcdatavar": "monitoring_ref01_data",
+                "ref": "monitoring_alert_ref01",
+                "srcdatavar": "monitoring_alert_ref01_data",
                 "suffix": "_up0",
                 "textfield": "compare"
               },
@@ -80240,7 +80831,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-monitoring_ref01"
+                    "mark": "Mark01-monitoring_alert_ref01"
                   }
                 }
               ],
@@ -80250,12 +80841,12 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "monitoring_ref01",
-                "srcdatavar": "monitoring_ref01_data",
+                "ref": "monitoring_alert_ref01",
+                "srcdatavar": "monitoring_alert_ref01_data",
                 "suffix": "_dt0"
               },
               "m": {
-                "id": "monitoring01"
+                "id": "monitoring_alert01"
               },
               "o": "load",
               "s": [],
@@ -80263,7 +80854,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-monitoring_ref01"
+                    "mark": "Mark01-monitoring_alert_ref01"
                   }
                 }
               ]
@@ -80272,11 +80863,11 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "monitoring_ref01",
+                "ref": "monitoring_alert_ref01",
                 "suffix": "_rm0"
               },
               "m": {
-                "id": "monitoring01"
+                "id": "monitoring_alert01"
               },
               "o": "remove",
               "s": [],
@@ -80295,7 +80886,210 @@
                 {
                   "apply": "ItemNotExists",
                   "def": {
-                    "ref": "monitoring_ref01"
+                    "ref": "monitoring_alert_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicMonitoringSinkDestinationFlow": {
+          "active": true,
+          "entity": "monitoring_sink_destination",
+          "key$": "BasicMonitoringSinkDestinationFlow",
+          "kind": "basic",
+          "name": "BasicMonitoringSinkDestinationFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_destination_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "monitoring_sink_destination_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_destination_ref01",
+                "srcdatavar": "monitoring_sink_destination_ref01_data",
+                "suffix": "_up0",
+                "textfield": "name"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-monitoring_sink_destination_ref01"
+                  }
+                }
+              ],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_destination_ref01",
+                "srcdatavar": "monitoring_sink_destination_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "monitoring_sink_destination01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-monitoring_sink_destination_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_destination_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "monitoring_sink_destination01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "suffix": "_rt0"
+              },
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemNotExists",
+                  "def": {
+                    "ref": "monitoring_sink_destination_ref01"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "BasicMonitoringSinkFlow": {
+          "active": true,
+          "entity": "monitoring_sink",
+          "key$": "BasicMonitoringSinkFlow",
+          "kind": "basic",
+          "name": "BasicMonitoringSinkFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemExists",
+                  "def": {
+                    "ref": "monitoring_sink_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_ref01",
+                "srcdatavar": "monitoring_sink_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "monitoring_sink01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-monitoring_sink_ref01"
+                  }
+                }
+              ]
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "monitoring_sink_ref01",
+                "suffix": "_rm0"
+              },
+              "m": {
+                "id": "monitoring_sink01"
+              },
+              "o": "remove",
+              "s": [],
+              "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "suffix": "_rt0"
+              },
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
+                {
+                  "apply": "ItemNotExists",
+                  "def": {
+                    "ref": "monitoring_sink_ref01"
                   }
                 }
               ]
@@ -81397,7 +82191,6 @@
                 "ref": "reserved_ip_action_ref01"
               },
               "m": {
-                "reserved_ip": "reserved_ip01",
                 "reserved_ip_id": "reserved_ip01"
               },
               "o": "create",
@@ -81409,7 +82202,7 @@
               "d": {},
               "i": {},
               "m": {
-                "reserved_ip": "reserved_ip01"
+                "reserved_ip_id": "reserved_ip01"
               },
               "o": "list",
               "s": [],
@@ -81587,19 +82380,70 @@
             }
           ]
         },
-        "BasicSecurityFlow": {
+        "BasicSecurityPlanFlow": {
           "active": true,
-          "entity": "security",
-          "key$": "BasicSecurityFlow",
+          "entity": "security_plan",
+          "key$": "BasicSecurityPlanFlow",
           "kind": "basic",
-          "name": "BasicSecurityFlow",
+          "name": "BasicSecurityPlanFlow",
           "param": {},
           "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "security_ref01"
+                "ref": "security_plan_ref01",
+                "srcdatavar": "security_plan_ref01_data",
+                "suffix": "_up0"
+              },
+              "m": {},
+              "o": "update",
+              "s": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-security_plan_ref01"
+                  }
+                }
+              ],
+              "v": []
+            }
+          ]
+        },
+        "BasicSecurityRuleFlow": {
+          "active": true,
+          "entity": "security_rule",
+          "key$": "BasicSecurityRuleFlow",
+          "kind": "basic",
+          "name": "BasicSecurityRuleFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "security_rule_ref01"
+              },
+              "m": {},
+              "o": "create",
+              "s": [],
+              "v": []
+            }
+          ]
+        },
+        "BasicSecurityScanFlow": {
+          "active": true,
+          "entity": "security_scan",
+          "key$": "BasicSecurityScanFlow",
+          "kind": "basic",
+          "name": "BasicSecurityScanFlow",
+          "param": {},
+          "step": [
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "security_scan_ref01"
               },
               "m": {
                 "finding_id": "finding01",
@@ -81620,7 +82464,7 @@
                 {
                   "apply": "ItemExists",
                   "def": {
-                    "ref": "security_ref01"
+                    "ref": "security_scan_ref01"
                   }
                 }
               ]
@@ -81629,29 +82473,8 @@
               "a": true,
               "d": {},
               "i": {
-                "ref": "security_ref01",
-                "srcdatavar": "security_ref01_data",
-                "suffix": "_up0",
-                "textfield": "created_at"
-              },
-              "m": {},
-              "o": "update",
-              "s": [
-                {
-                  "apply": "TextFieldMark",
-                  "def": {
-                    "mark": "Mark01-security_ref01"
-                  }
-                }
-              ],
-              "v": []
-            },
-            {
-              "a": true,
-              "d": {},
-              "i": {
-                "ref": "security_ref01",
-                "srcdatavar": "security_ref01_data",
+                "ref": "security_scan_ref01",
+                "srcdatavar": "security_scan_ref01_data",
                 "suffix": "_dt0"
               },
               "m": {},
@@ -81661,22 +82484,29 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-security_ref01"
+                    "mark": "Mark01-security_scan_ref01"
                   }
                 }
               ]
-            },
+            }
+          ]
+        },
+        "BasicSecuritySuppressionFlow": {
+          "active": true,
+          "entity": "security_suppression",
+          "key$": "BasicSecuritySuppressionFlow",
+          "kind": "basic",
+          "name": "BasicSecuritySuppressionFlow",
+          "param": {},
+          "step": [
             {
               "a": true,
               "d": {},
               "i": {
-                "ref": "security_ref01",
-                "suffix": "_rm0"
+                "ref": "security_suppression_ref01"
               },
-              "m": {
-                "id": "security01"
-              },
-              "o": "remove",
+              "m": {},
+              "o": "create",
               "s": [],
               "v": []
             },
@@ -81684,19 +82514,15 @@
               "a": true,
               "d": {},
               "i": {
-                "suffix": "_rt0"
+                "ref": "security_suppression_ref01",
+                "suffix": "_rm0"
               },
-              "m": {},
-              "o": "list",
+              "m": {
+                "id": "security_suppression01"
+              },
+              "o": "remove",
               "s": [],
-              "v": [
-                {
-                  "apply": "ItemNotExists",
-                  "def": {
-                    "ref": "security_ref01"
-                  }
-                }
-              ]
+              "v": []
             }
           ]
         },
@@ -83083,7 +83909,7 @@
               "d": {},
               "i": {},
               "m": {
-                "vpc_uuid": "vpc_uuid01"
+                "vpc_id": "vpc01"
               },
               "o": "list",
               "s": [],
@@ -83143,7 +83969,7 @@
                 "suffix": "_rt0"
               },
               "m": {
-                "vpc_uuid": "vpc_uuid01"
+                "vpc_id": "vpc01"
               },
               "o": "list",
               "s": [],

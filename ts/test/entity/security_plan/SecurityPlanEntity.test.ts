@@ -1,0 +1,166 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { DigitaloceanSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('SecurityPlanEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when DIGITALOCEAN_TEST_LIVE=TRUE.
+  afterEach(liveDelay('DIGITALOCEAN_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = DigitaloceanSDK.test()
+    const ent = testsdk.SecurityPlan()
+    assert(null != ent)
+  })
+
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.DIGITALOCEAN_TEST_LIVE
+    for (const op of ['update']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'security_plan.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"tier_coverage":{"a":true,"h":"Tier Coverage","n":"tier_coverage","r":false,"sh":"Scan coverage for each available plan tier.","t":"`$OBJECT`","key$":"tier_coverage","index$":0}},"name":"security_plan","op":{"update":{"input":"data","name":"update","points":[{"a":true,"co":{"id":"PUT /v2/security/settings/plan","source":"openapi3","version":2},"g":{},"k":"http","m":"PUT","o":"/v2/security/settings/plan","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"v2"},{"lit":"security"},{"lit":"settings"},{"lit":"plan"}],"t":{"req":"`reqdata`","res":"`body.tier_coverage`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"security_plan","name__orig":"security_plan","Name":"SecurityPlan","name_":"security_plan","name-":"security-plan","NAME":"SECURITY_PLAN","index$":206}, {"active":true,"entity":"security_plan","key$":"BasicSecurityPlanFlow","kind":"basic","name":"BasicSecurityPlanFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"security_plan_ref01","srcdatavar":"security_plan_ref01_data","suffix":"_up0"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-security_plan_ref01"}}],"v":[],"index$":0}]}, 'SecurityPlan', {"PUT /v2/security/settings/plan":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"tier_coverage":{"type":"object","description":"Scan coverage for each available plan tier.","additionalProperties":{"type":"object","properties":{"resources":{"type":"array","items":{},"description":"The URNs of resources to scan for the tier.","default":[],"example":[]},"tags":{"type":"array","items":{},"description":"Resource tags to scan for the tier.","default":[],"example":[]}}},"example":{"basic":{"resources":["do:droplet:fe3a2fd7-903d-46e6-ada3-3e4f285fb89d"],"tags":["production"]}},"key$":"tier_coverage"}},"index$":1}}}},"parameters":[]}}, { strict: LIVE_STRICT, t })
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let security_plan_ref01_data = Object.values(setup.data.existing.security_plan)[0] as any
+
+    // UPDATE
+    const security_plan_ref01_ent = client.SecurityPlan()
+    const security_plan_ref01_data_up0: any = {}
+
+    const security_plan_ref01_resdata_up0 = (await security_plan_ref01_ent.update(security_plan_ref01_data_up0)).data()
+    assert(null != security_plan_ref01_resdata_up0)
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/security_plan/SecurityPlanTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = DigitaloceanSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['security_plan01','security_plan02','security_plan03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'DIGITALOCEAN_TEST_SECURITY_PLAN_ENTID': idmap,
+    'DIGITALOCEAN_TEST_LIVE': 'FALSE',
+    'DIGITALOCEAN_TEST_EXPLAIN': 'FALSE',
+    'DIGITALOCEAN_APIKEY': '',
+  })
+
+  idmap = env['DIGITALOCEAN_TEST_SECURITY_PLAN_ENTID']
+
+  const live = 'TRUE' === env.DIGITALOCEAN_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['DIGITALOCEAN_TEST_SECURITY_PLAN_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new DigitaloceanSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.DIGITALOCEAN_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.DIGITALOCEAN_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

@@ -33,7 +33,7 @@ class TestFloatingIpActionDirect:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
         if setup["live"]:
-            for _live_key in ["floating_ip_action01"]:
+            for _live_key in ["floating_ip01"]:
                 if setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via DIGITALOCEAN_TEST_FLOATING_IP_ACTION_ENTID")
 
@@ -41,12 +41,12 @@ class TestFloatingIpActionDirect:
 
         params = {}
         if setup["live"]:
-            params["id"] = setup["idmap"].get("floating_ip_action01")
+            params["floating_ip_id"] = setup["idmap"].get("floating_ip01")
         else:
-            params["id"] = "direct01"
+            params["floating_ip_id"] = "direct01"
 
         result = client.direct({
-            "path": "v2/floating_ips/{id}/actions",
+            "path": "v2/floating_ips/{floating_ip_id}/actions",
             "method": "GET",
             "params": params,
         })

@@ -5,12 +5,6 @@ main: kit: entity: action: {
   alias: field: {}
 
   fields: {
-    action: {
-      h: "Action"
-      n: "action"
-      r: false
-      t: "`$OBJECT`"
-    }
     completed_at: {
       fo: "date-time"
       h: "Completed At"
@@ -84,59 +78,6 @@ main: kit: entity: action: {
 
   name: "action"
   op: {
-    create: {
-      name: "create"
-      points: [
-        {
-          co: {
-            id: "POST /v2/images/{image_id}/actions"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                ex: 62137902
-                k: "param"
-                n: "image_id"
-                or: "image_id"
-                r: true
-                t: "`$INTEGER`"
-              }
-            ]
-          }
-          m: "POST"
-          o: "/v2/images/{image_id}/actions"
-          q: {
-            exist: [
-              "image_id"
-            ]
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "v2"
-            }
-            {
-              lit: "images"
-            }
-            {
-              var: "image_id"
-            }
-            {
-              lit: "actions"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     list: {
       name: "list"
       points: [
@@ -192,71 +133,6 @@ main: kit: entity: action: {
       points: [
         {
           co: {
-            id: "GET /v2/images/{image_id}/actions/{action_id}"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                ex: 36804636
-                k: "param"
-                n: "id"
-                or: "action_id"
-                r: true
-                t: "`$INTEGER`"
-              }
-              {
-                ex: 62137902
-                k: "param"
-                n: "image_id"
-                or: "image_id"
-                r: true
-                t: "`$INTEGER`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/v2/images/{image_id}/actions/{action_id}"
-          q: {
-            exist: [
-              "id"
-              "image_id"
-            ]
-          }
-          r: {
-            param: {
-              action_id: "id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "v2"
-            }
-            {
-              lit: "images"
-            }
-            {
-              var: "image_id"
-            }
-            {
-              lit: "actions"
-            }
-            {
-              var: "id"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-        {
-          co: {
             id: "GET /v2/actions/{action_id}"
             source: "openapi3"
             version: 2
@@ -310,8 +186,5 @@ main: kit: entity: action: {
   }
 
 
-  relations: ancestors: [
-    [path("$.main.kit.entity.image")]
-  ]
 
 }

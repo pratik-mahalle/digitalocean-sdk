@@ -97,9 +97,9 @@ Create a new `ActorLimit` entity instance.
 
 **Returns:** `ActorLimitEntity` instance.
 
-#### `AddOn(data?: object)`
+#### `AddOnApp(data?: object)`
 
-Create a new `AddOn` entity instance.
+Create a new `AddOnApp` entity instance.
 
 **Parameters:**
 
@@ -107,7 +107,31 @@ Create a new `AddOn` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `AddOnEntity` instance.
+**Returns:** `AddOnAppEntity` instance.
+
+#### `AddOnPlan(data?: object)`
+
+Create a new `AddOnPlan` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AddOnPlanEntity` instance.
+
+#### `AddOnResource(data?: object)`
+
+Create a new `AddOnResource` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `AddOnResourceEntity` instance.
 
 #### `ApiAgentVersion(data?: object)`
 
@@ -1861,9 +1885,9 @@ Create a new `FloatingIpAction` entity instance.
 
 **Returns:** `FloatingIpActionEntity` instance.
 
-#### `Function(data?: object)`
+#### `FunctionKey(data?: object)`
 
-Create a new `Function` entity instance.
+Create a new `FunctionKey` entity instance.
 
 **Parameters:**
 
@@ -1871,7 +1895,31 @@ Create a new `Function` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `FunctionEntity` instance.
+**Returns:** `FunctionKeyEntity` instance.
+
+#### `FunctionNamespace(data?: object)`
+
+Create a new `FunctionNamespace` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `FunctionNamespaceEntity` instance.
+
+#### `FunctionTrigger(data?: object)`
+
+Create a new `FunctionTrigger` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `FunctionTriggerEntity` instance.
 
 #### `GenaiapiRegion(data?: object)`
 
@@ -2125,9 +2173,9 @@ Create a new `Model` entity instance.
 
 **Returns:** `ModelEntity` instance.
 
-#### `Monitoring(data?: object)`
+#### `MonitoringAlert(data?: object)`
 
-Create a new `Monitoring` entity instance.
+Create a new `MonitoringAlert` entity instance.
 
 **Parameters:**
 
@@ -2135,7 +2183,31 @@ Create a new `Monitoring` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `MonitoringEntity` instance.
+**Returns:** `MonitoringAlertEntity` instance.
+
+#### `MonitoringSink(data?: object)`
+
+Create a new `MonitoringSink` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MonitoringSinkEntity` instance.
+
+#### `MonitoringSinkDestination(data?: object)`
+
+Create a new `MonitoringSinkDestination` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `MonitoringSinkDestinationEntity` instance.
 
 #### `N1Click(data?: object)`
 
@@ -2449,9 +2521,9 @@ Create a new `Search` entity instance.
 
 **Returns:** `SearchEntity` instance.
 
-#### `Security(data?: object)`
+#### `SecurityPlan(data?: object)`
 
-Create a new `Security` entity instance.
+Create a new `SecurityPlan` entity instance.
 
 **Parameters:**
 
@@ -2459,7 +2531,43 @@ Create a new `Security` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `SecurityEntity` instance.
+**Returns:** `SecurityPlanEntity` instance.
+
+#### `SecurityRule(data?: object)`
+
+Create a new `SecurityRule` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SecurityRuleEntity` instance.
+
+#### `SecurityScan(data?: object)`
+
+Create a new `SecurityScan` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SecurityScanEntity` instance.
+
+#### `SecuritySuppression(data?: object)`
+
+Create a new `SecuritySuppression` entity instance.
+
+**Parameters:**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `data` | `object` | Initial entity data. |
+
+**Returns:** `SecuritySuppressionEntity` instance.
 
 #### `Setting(data?: object)`
 
@@ -2994,7 +3102,6 @@ const action = client.Action()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `action` | `Record<string, any>` | No |  |
 | `completed_at` | `string` | No | A time value given in ISO8601 combined date and time format that represents when the action was completed. |
 | `id` | `number` | No | A unique numeric ID that can be used to identify and reference an action. |
 | `region` | `Record<string, any>` | Yes |  |
@@ -3006,17 +3113,6 @@ const action = client.Action()
 | `type` | `string` | No | This is the type of action that the object represents. |
 
 ### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data.
-
-```ts
-const result = await client.Action().create({
-  image_id: 1,
-  region: {},
-})
-```
 
 #### `list(match: object, ctrl?: object)`
 
@@ -3114,10 +3210,69 @@ Return a copy of the entity options.
 
 ---
 
-## AddOnEntity
+## AddOnAppEntity
 
 ```ts
-const add_on = client.AddOn()
+const add_on_app = client.AddOnApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_slug` | `string` | Yes | The slug identifier for the application associated with the resource. |
+| `description` | `string` | Yes | A brief description of the metadata item. |
+| `display_name` | `string` | Yes | The display name of the metadata item. |
+| `eula` | `string` | Yes | The End User License Agreement URL for the resource. |
+| `id` | `number` | Yes | Unique identifier for the addon metadata item. |
+| `name` | `string` | Yes | The name of the metadata item. |
+| `options` | `any[]` | No |  |
+| `plans` | `any[]` | Yes | A list of plans available for the resource. |
+| `tos` | `string` | Yes | The Terms of Service URL for the resource. |
+| `type` | `string` | Yes | The data type of the metadata value. |
+
+### Operations
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.AddOnApp().list()
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AddOnAppEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AddOnPlanEntity
+
+```ts
+const add_on_plan = client.AddOnPlan()
 ```
 
 ### Fields
@@ -3126,96 +3281,25 @@ const add_on = client.AddOn()
 | --- | --- | --- | --- |
 | `app_name` | `string` | No | The name of the application associated with the resource. |
 | `app_slug` | `string` | Yes | The slug identifier for the application associated with the resource. |
-| `description` | `string` | Yes | A brief description of the metadata item. |
-| `display_name` | `string` | Yes | The display name of the metadata item. |
 | `has_config` | `boolean` | Yes | Indicates if the resource has configuration values set by the vendor. |
-| `id` | `number` | Yes | Unique identifier for the addon metadata item. |
 | `message` | `string` | No | A message related to the resource, if applicable. |
 | `metadata` | `any[]` | No | Metadata associated with the resource, set by the user. |
 | `name` | `string` | Yes | The name of the addon resource. |
-| `options` | `any[]` | No |  |
 | `plan_name` | `string` | No | The name of the plan associated with the resource. |
 | `plan_price_per_month` | `number` | No | The price of the plan per month in US dollars. |
 | `plan_slug` | `string` | Yes | The slug identifier for the plan associated with the resource. |
 | `sso_url` | `string` | No | The Single Sign-On URL for the resource, if applicable. |
 | `state` | `string` | Yes | The state the resource is currently in. |
-| `type` | `string` | Yes | The data type of the metadata value. |
 | `uuid` | `string` | Yes | The unique identifier for the addon resource. |
 
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `saa` | `/v2/add-ons/saas` | `client.AddOn().create({ $action: 'saa', ... })` |
-| `app` | `/v2/add-ons/apps` | `client.AddOn().list({ $action: 'app', ... })` |
-| `saa` | `/v2/add-ons/saas` | `client.AddOn().list({ $action: 'saa', ... })` |
-| `plan` | `/v2/add-ons/saas/{resource_uuid}/plan` | `client.AddOn().update({ $action: 'plan', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-AddOn record — check the API definition for its shape.
-
-```ts
-const result = await client.AddOn().create({
-  $action: 'saa',
-  /* ...the action's own arguments */
-})
-```
-
 ### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data.
-
-```ts
-const result = await client.AddOn().create({
-  app_slug: 'example_app_slug',
-  description: 'example_description',
-  display_name: 'example_display_name',
-  has_config: true,
-  id: 1,
-  name: 'example_name',
-  plan_slug: 'example_plan_slug',
-  state: 'example_state',
-  type: 'example_type',
-  uuid: 'example_uuid',
-})
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.AddOn().list({ app_slug: "example" })
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria.
-
-```ts
-const result = await client.AddOn().load({ resource_uuid: 'resource_uuid' })
-```
-
-#### `remove(match: object, ctrl?: object)`
-
-Remove the entity matching the given criteria.
-
-```ts
-const result = await client.AddOn().remove({ resource_uuid: 'resource_uuid' })
-```
 
 #### `update(data: object, ctrl?: object)`
 
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.AddOn().update({
+const result = await client.AddOnPlan().update({
   resource_uuid: 'resource_uuid',
   // Fields to update
 })
@@ -3235,7 +3319,131 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `AddOnEntity` instance with the same client and
+Create a new `AddOnPlanEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## AddOnResourceEntity
+
+```ts
+const add_on_resource = client.AddOnResource()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_name` | `string` | No | The name of the application associated with the resource. |
+| `app_slug` | `string` | Yes | The slug identifier for the application associated with the resource. |
+| `fleet_uuid` | `string` | No | UUID of the fleet/project to which this resource will belong. |
+| `has_config` | `boolean` | Yes | Indicates if the resource has configuration values set by the vendor. |
+| `linked_droplet_id` | `number` | No | ID of the droplet to be linked to this resource, if applicable. |
+| `message` | `string` | No | A message related to the resource, if applicable. |
+| `metadata` | `any[]` | No | Metadata associated with the resource, set by the user. |
+| `name` | `string` | Yes | The name of the addon resource. |
+| `plan_name` | `string` | No | The name of the plan associated with the resource. |
+| `plan_price_per_month` | `number` | No | The price of the plan per month in US dollars. |
+| `plan_slug` | `string` | Yes | The slug identifier for the plan associated with the resource. |
+| `sso_url` | `string` | No | The Single Sign-On URL for the resource, if applicable. |
+| `state` | `string` | Yes | The state the resource is currently in. |
+| `uuid` | `string` | Yes | The unique identifier for the addon resource. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_name` | - | - | - | - | - |
+| `app_slug` | - | - | - | - | - |
+| `fleet_uuid` | - | - | - | - | - |
+| `has_config` | - | - | - | - | - |
+| `linked_droplet_id` | - | - | - | - | - |
+| `message` | - | - | - | - | - |
+| `metadata` | - | - | Yes | - | - |
+| `name` | - | - | - | - | - |
+| `plan_name` | - | - | - | - | - |
+| `plan_price_per_month` | - | - | - | - | - |
+| `plan_slug` | - | - | - | - | - |
+| `sso_url` | - | - | - | - | - |
+| `state` | - | - | - | - | - |
+| `uuid` | - | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.AddOnResource().create({
+  app_slug: 'example_app_slug',
+  has_config: true,
+  name: 'example_name',
+  plan_slug: 'example_plan_slug',
+  state: 'example_state',
+  uuid: 'example_uuid',
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.AddOnResource().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.AddOnResource().load({ resource_uuid: 'resource_uuid' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.AddOnResource().remove({ resource_uuid: 'resource_uuid' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.AddOnResource().update({
+  resource_uuid: 'resource_uuid',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `AddOnResourceEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -14066,7 +14274,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.FloatingIpAction().create({
-  id: 'example_id',
+  floating_ip_id: 'example_floating_ip_id',
   region: {},
 })
 ```
@@ -14076,7 +14284,7 @@ const result = await client.FloatingIpAction().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.FloatingIpAction().list({ id: "example_id" })
+const results = await client.FloatingIpAction().list({ floating_ip_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -14115,76 +14323,33 @@ Return a copy of the entity options.
 
 ---
 
-## FunctionEntity
+## FunctionKeyEntity
 
 ```ts
-const function_ = client.Function()
+const function_key = client.FunctionKey()
 ```
 
 ### Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_host` | `string` | No | The namespace's API hostname. |
-| `created_at` | `string` | No | UTC time string. |
+| `created_at` | `string` | No | The date and time the key was created. |
 | `expires_at` | `string` | No | When the key expires (null for non-expiring keys). |
 | `expires_in` | `string` | No | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
-| `function` | `string` | No | Name of function(action) that exists in the given namespace. |
 | `id` | `string` | No | The access key's unique identifier with prefix 'dof_v1_'. |
-| `is_enabled` | `boolean` | No | Indicates weather the trigger is paused or unpaused. |
-| `key` | `string` | No | A random alpha numeric string. |
-| `label` | `string` | No | The namespace's unique name. |
-| `name` | `string` | No | The trigger's unique name within the namespace. |
-| `namespace` | `string` | No | A unique string format of UUID with a prefix fn-. |
-| `region` | `string` | No | The namespace's datacenter region. |
-| `scheduled_details` | `Record<string, any>` | Yes | Trigger details for SCHEDULED type, where body is optional. |
-| `scheduled_runs` | `Record<string, any>` | No |  |
-| `type` | `string` | No | String which indicates the type of trigger source like SCHEDULED. |
-| `updated_at` | `string` | No | UTC time string. |
-| `uuid` | `string` | No | The namespace's Universally Unique Identifier. |
+| `name` | `string` | Yes | The access key's name. |
+| `updated_at` | `string` | No | The date and time the key was last updated. |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `api_host` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `expires_at` | - | - | - | - | - |
-| `expires_in` | - | - | - | - | - |
-| `function` | - | - | Yes | - | - |
-| `id` | - | - | - | - | - |
-| `is_enabled` | - | - | Yes | - | - |
-| `key` | - | - | - | - | - |
-| `label` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `namespace` | - | - | - | - | - |
-| `region` | - | - | - | - | - |
-| `scheduled_details` | - | - | - | - | - |
-| `scheduled_runs` | - | - | - | - | - |
-| `type` | - | - | Yes | - | - |
-| `updated_at` | - | - | - | - | - |
-| `uuid` | - | - | - | - | - |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `namespace` | `/v2/functions/namespaces` | `client.Function().create({ $action: 'namespace', ... })` |
-| `namespace` | `/v2/functions/namespaces` | `client.Function().list({ $action: 'namespace', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-Function record — check the API definition for its shape.
-
-```ts
-const result = await client.Function().create({
-  $action: 'namespace',
-  /* ...the action's own arguments */
-})
-```
+| Field | list | create | update | remove |
+| --- | --- | --- | --- | --- |
+| `created_at` | - | - | - | - |
+| `expires_at` | - | - | - | - |
+| `expires_in` | - | - | - | - |
+| `id` | - | - | - | - |
+| `name` | Yes | - | Yes | - |
+| `updated_at` | - | - | - | - |
 
 ### Operations
 
@@ -14193,9 +14358,9 @@ const result = await client.Function().create({
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Function().create({
+const result = await client.FunctionKey().create({
   namespace_id: 'example_namespace_id',
-  scheduled_details: {},
+  name: 'example_name',
 })
 ```
 
@@ -14204,15 +14369,7 @@ const result = await client.Function().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Function().list({ namespace_id: "example" })
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria.
-
-```ts
-const result = await client.Function().load({ namespace_id: 'namespace_id' })
+const results = await client.FunctionKey().list({ namespace_id: "example" })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -14220,7 +14377,7 @@ const result = await client.Function().load({ namespace_id: 'namespace_id' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Function().remove({ namespace_id: 'namespace_id' })
+const result = await client.FunctionKey().remove({ id: 'id', namespace_id: 'namespace_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -14228,7 +14385,8 @@ const result = await client.Function().remove({ namespace_id: 'namespace_id' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.Function().update({
+const result = await client.FunctionKey().update({
+  id: 'id',
   namespace_id: 'namespace_id',
   // Fields to update
 })
@@ -14248,7 +14406,213 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `FunctionEntity` instance with the same client and
+Create a new `FunctionKeyEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## FunctionNamespaceEntity
+
+```ts
+const function_namespace = client.FunctionNamespace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_host` | `string` | No | The namespace's API hostname. |
+| `created_at` | `string` | No | UTC time string. |
+| `key` | `string` | No | A random alpha numeric string. |
+| `label` | `string` | No | The namespace's unique name. |
+| `namespace` | `string` | No | A unique string format of UUID with a prefix fn-. |
+| `region` | `string` | No | The namespace's datacenter region. |
+| `updated_at` | `string` | No | UTC time string. |
+| `uuid` | `string` | No | The namespace's Universally Unique Identifier. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | remove |
+| --- | --- | --- | --- | --- |
+| `api_host` | - | - | - | - |
+| `created_at` | - | - | - | - |
+| `key` | - | - | - | - |
+| `label` | - | - | Yes | - |
+| `namespace` | - | - | - | - |
+| `region` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `uuid` | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.FunctionNamespace().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.FunctionNamespace().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.FunctionNamespace().load({ namespace_id: 'namespace_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.FunctionNamespace().remove({ namespace_id: 'namespace_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FunctionNamespaceEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## FunctionTriggerEntity
+
+```ts
+const function_trigger = client.FunctionTrigger()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | No | UTC time string. |
+| `function` | `string` | No | Name of function(action) that exists in the given namespace. |
+| `is_enabled` | `boolean` | No | Indicates weather the trigger is paused or unpaused. |
+| `name` | `string` | No | The trigger's unique name within the namespace. |
+| `namespace` | `string` | No | A unique string format of UUID with a prefix fn-. |
+| `scheduled_details` | `Record<string, any>` | Yes | Trigger details for SCHEDULED type, where body is optional. |
+| `scheduled_runs` | `Record<string, any>` | No |  |
+| `type` | `string` | No | String which indicates the type of trigger source like SCHEDULED. |
+| `updated_at` | `string` | No | UTC time string. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `created_at` | - | - | - | - | - |
+| `function` | - | - | Yes | - | - |
+| `is_enabled` | - | - | Yes | - | - |
+| `name` | - | - | Yes | - | - |
+| `namespace` | - | - | - | - | - |
+| `scheduled_details` | - | - | - | - | - |
+| `scheduled_runs` | - | - | - | - | - |
+| `type` | - | - | Yes | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.FunctionTrigger().create({
+  namespace_id: 'example_namespace_id',
+  scheduled_details: {},
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.FunctionTrigger().list({ namespace_id: "example" })
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.FunctionTrigger().load({ namespace_id: 'namespace_id', trigger_name: 'trigger_name' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.FunctionTrigger().remove({ namespace_id: 'namespace_id', trigger_name: 'trigger_name' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.FunctionTrigger().update({
+  namespace_id: 'namespace_id',
+  trigger_name: 'trigger_name',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `FunctionTriggerEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -15913,10 +16277,10 @@ Return a copy of the entity options.
 
 ---
 
-## MonitoringEntity
+## MonitoringAlertEntity
 
 ```ts
-const monitoring = client.Monitoring()
+const monitoring_alert = client.MonitoringAlert()
 ```
 
 ### Fields
@@ -15925,62 +16289,14 @@ const monitoring = client.Monitoring()
 | --- | --- | --- | --- |
 | `alerts` | `Record<string, any>` | Yes |  |
 | `compare` | `string` | Yes |  |
-| `config` | `Record<string, any>` | No | OpenSearch destination configuration with `credentials` omitted. |
 | `description` | `string` | Yes |  |
-| `destination` | `Record<string, any>` | Yes |  |
 | `enabled` | `boolean` | Yes |  |
 | `entities` | `any[]` | Yes |  |
-| `id` | `string` | No | A unique identifier for a destination. |
-| `name` | `string` | No | destination name |
-| `resources` | `any[]` | No | List of resources identified by their URNs. |
 | `tags` | `any[]` | Yes |  |
-| `type` | `string` | Yes | The destination type. |
+| `type` | `string` | Yes |  |
 | `uuid` | `string` | Yes |  |
 | `value` | `number` | Yes |  |
 | `window` | `string` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `alerts` | - | - | - | - | - |
-| `compare` | - | - | - | - | - |
-| `config` | - | - | Yes | - | - |
-| `description` | - | - | - | - | - |
-| `destination` | - | - | - | - | - |
-| `enabled` | - | - | - | - | - |
-| `entities` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `resources` | - | - | - | - | - |
-| `tags` | - | - | - | - | - |
-| `type` | Yes | Yes | Yes | - | - |
-| `uuid` | - | - | - | - | - |
-| `value` | - | - | - | - | - |
-| `window` | - | - | - | - | - |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `alert` | `/v2/monitoring/alerts` | `client.Monitoring().create({ $action: 'alert', ... })` |
-| `sink` | `/v2/monitoring/sinks` | `client.Monitoring().create({ $action: 'sink', ... })` |
-| `alert` | `/v2/monitoring/alerts` | `client.Monitoring().list({ $action: 'alert', ... })` |
-| `sink` | `/v2/monitoring/sinks` | `client.Monitoring().list({ $action: 'sink', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-Monitoring record — check the API definition for its shape.
-
-```ts
-const result = await client.Monitoring().create({
-  $action: 'alert',
-  /* ...the action's own arguments */
-})
-```
 
 ### Operations
 
@@ -15989,12 +16305,10 @@ const result = await client.Monitoring().create({
 Create a new entity with the given data.
 
 ```ts
-const result = await client.Monitoring().create({
-  destination_uuid: 'example_destination_uuid',
+const result = await client.MonitoringAlert().create({
   alerts: {},
   compare: 'example_compare',
   description: 'example_description',
-  destination: {},
   enabled: true,
   entities: [],
   tags: [],
@@ -16010,7 +16324,7 @@ const result = await client.Monitoring().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Monitoring().list()
+const results = await client.MonitoringAlert().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -16018,7 +16332,7 @@ const results = await client.Monitoring().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Monitoring().load({ alert_uuid: 'alert_uuid' })
+const result = await client.MonitoringAlert().load({ alert_uuid: 'alert_uuid' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -16026,7 +16340,7 @@ const result = await client.Monitoring().load({ alert_uuid: 'alert_uuid' })
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.Monitoring().remove({ alert_uuid: 'alert_uuid' })
+const result = await client.MonitoringAlert().remove({ alert_uuid: 'alert_uuid' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -16034,7 +16348,7 @@ const result = await client.Monitoring().remove({ alert_uuid: 'alert_uuid' })
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.Monitoring().update({
+const result = await client.MonitoringAlert().update({
   alert_uuid: 'alert_uuid',
   // Fields to update
 })
@@ -16054,7 +16368,183 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `MonitoringEntity` instance with the same client and
+Create a new `MonitoringAlertEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MonitoringSinkEntity
+
+```ts
+const monitoring_sink = client.MonitoringSink()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination` | `Record<string, any>` | Yes |  |
+| `destination_uuid` | `string` | No | A unique identifier for an already-existing destination. |
+| `resources` | `any[]` | No | List of resources identified by their URNs. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.MonitoringSink().create({
+  destination: {},
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.MonitoringSink().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.MonitoringSink().load({ sink_uuid: 'sink_uuid' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.MonitoringSink().remove({ sink_uuid: 'sink_uuid' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MonitoringSinkEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## MonitoringSinkDestinationEntity
+
+```ts
+const monitoring_sink_destination = client.MonitoringSinkDestination()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `config` | `Record<string, any>` | No | OpenSearch destination configuration with `credentials` omitted. |
+| `id` | `string` | No | A unique identifier for a destination. |
+| `name` | `string` | No | destination name |
+| `type` | `string` | No | The destination type. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `config` | - | - | Yes | Yes | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `type` | - | - | Yes | Yes | - |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.MonitoringSinkDestination().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.MonitoringSinkDestination().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.MonitoringSinkDestination().load({ id: 'monitoring_sink_destination_id' })
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.MonitoringSinkDestination().remove({ id: 'monitoring_sink_destination_id' })
+```
+
+#### `update(data: object, ctrl?: object)`
+
+Update an existing entity. The data must include the entity `id`.
+
+```ts
+const result = await client.MonitoringSinkDestination().update({
+  id: 'monitoring_sink_destination_id',
+  // Fields to update
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `MonitoringSinkDestinationEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -17775,7 +18265,7 @@ Create a new entity with the given data.
 
 ```ts
 const result = await client.ReservedIpAction().create({
-  id: 'example_id',
+  reserved_ip_id: 'example_reserved_ip_id',
   region: {},
 })
 ```
@@ -17785,7 +18275,7 @@ const result = await client.ReservedIpAction().create({
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.ReservedIpAction().list({ id: "example_id" })
+const results = await client.ReservedIpAction().list({ reserved_ip_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -17957,90 +18447,26 @@ Return a copy of the entity options.
 
 ---
 
-## SecurityEntity
+## SecurityPlanEntity
 
 ```ts
-const security = client.Security()
+const security_plan = client.SecurityPlan()
 ```
 
 ### Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `string` | No | When scan was created. |
-| `findings` | `any[]` | No |  |
-| `id` | `string` | No | The unique identifier for the scan. |
-| `name` | `string` | No | The name of the affected resource. |
-| `resource` | `string` | No | The URN of a resource to exclude from future scans. |
-| `resources` | `any[]` | No | The URNs of resources to suppress for the rule. |
-| `rule_uuid` | `string` | No | The rule UUID to suppress for the listed resources. |
-| `status` | `string` | No | The status of the scan. |
 | `tier_coverage` | `Record<string, any>` | No | Scan coverage for each available plan tier. |
-| `type` | `string` | No | The type of the affected resource. |
-| `urn` | `string` | No | The URN for the affected resource. |
-
-### Actions
-
-This entity exposes custom API actions in addition to the standard
-operations. Select one with `$action` in the call's argument; the
-remaining keys are sent as that action's payload.
-
-| Action | Route | Call |
-| --- | --- | --- |
-| `scan` | `/v2/security/scans` | `client.Security().create({ $action: 'scan', ... })` |
-| `scan` | `/v2/security/scans` | `client.Security().list({ $action: 'scan', ... })` |
-
-An action returns that action's OWN response, which is not necessarily a
-Security record — check the API definition for its shape.
-
-```ts
-const result = await client.Security().create({
-  $action: 'scan',
-  /* ...the action's own arguments */
-})
-```
 
 ### Operations
-
-#### `create(data: object, ctrl?: object)`
-
-Create a new entity with the given data.
-
-```ts
-const result = await client.Security().create({
-})
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Returns an array.
-
-```ts
-const results = await client.Security().list({ finding_id: "example", scan_id: "example" })
-```
-
-#### `load(match: object, ctrl?: object)`
-
-Load a single entity matching the given criteria.
-
-```ts
-const result = await client.Security().load({ scan_id: 'scan_id' })
-```
-
-#### `remove(match: object, ctrl?: object)`
-
-Remove the entity matching the given criteria.
-
-```ts
-const result = await client.Security().remove({ suppression_uuid: 'suppression_uuid' })
-```
 
 #### `update(data: object, ctrl?: object)`
 
 Update an existing entity. The data must include the entity `id`.
 
 ```ts
-const result = await client.Security().update({
+const result = await client.SecurityPlan().update({
   // Fields to update
 })
 ```
@@ -18059,7 +18485,191 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `SecurityEntity` instance with the same client and
+Create a new `SecurityPlanEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SecurityRuleEntity
+
+```ts
+const security_rule = client.SecurityRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | `string` | No | The URN of a resource to exclude from future scans. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.SecurityRule().create({
+})
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SecurityRuleEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SecurityScanEntity
+
+```ts
+const security_scan = client.SecurityScan()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `string` | No | When scan was created. |
+| `findings` | `any[]` | No |  |
+| `id` | `string` | No | The unique identifier for the scan. |
+| `name` | `string` | No | The name of the affected resource. |
+| `status` | `string` | No | The status of the scan. |
+| `type` | `string` | No | The type of the affected resource. |
+| `urn` | `string` | No | The URN for the affected resource. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.SecurityScan().create({
+})
+```
+
+#### `list(match: object, ctrl?: object)`
+
+List entities matching the given criteria. Returns an array.
+
+```ts
+const results = await client.SecurityScan().list()
+```
+
+#### `load(match: object, ctrl?: object)`
+
+Load a single entity matching the given criteria.
+
+```ts
+const result = await client.SecurityScan().load({ scan_id: 'scan_id' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SecurityScanEntity` instance with the same client and
+options.
+
+#### `client()`
+
+Return the parent `DigitaloceanSDK` instance.
+
+#### `entopts()`
+
+Return a copy of the entity options.
+
+
+---
+
+## SecuritySuppressionEntity
+
+```ts
+const security_suppression = client.SecuritySuppression()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resources` | `any[]` | No | The URNs of resources to suppress for the rule. |
+| `rule_uuid` | `string` | No | The rule UUID to suppress for the listed resources. |
+
+### Operations
+
+#### `create(data: object, ctrl?: object)`
+
+Create a new entity with the given data.
+
+```ts
+const result = await client.SecuritySuppression().create({
+})
+```
+
+#### `remove(match: object, ctrl?: object)`
+
+Remove the entity matching the given criteria.
+
+```ts
+const result = await client.SecuritySuppression().remove({ suppression_uuid: 'suppression_uuid' })
+```
+
+### Common Methods
+
+#### `data(data?: object)`
+
+Get or set the entity data. When called with data, sets the entity's
+internal data and returns the current data. When called without
+arguments, returns a copy of the current data.
+
+#### `match(match?: object)`
+
+Get or set the entity match criteria. Works the same as `data()`.
+
+#### `make()`
+
+Create a new `SecuritySuppressionEntity` instance with the same client and
 options.
 
 #### `client()`
@@ -20011,7 +20621,7 @@ const results = await client.VpcRoutesPublicPreview().list({ subnet_id: "example
 Remove the entity matching the given criteria.
 
 ```ts
-const result = await client.VpcRoutesPublicPreview().remove({ route_uuid: 'route_uuid', subnet_id: 'subnet_id', vpc_id: 'vpc_id' })
+const result = await client.VpcRoutesPublicPreview().remove({ id: 'id', subnet_id: 'subnet_id', vpc_id: 'vpc_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -20020,7 +20630,7 @@ Update an existing entity. The data must include the entity `id`.
 
 ```ts
 const result = await client.VpcRoutesPublicPreview().update({
-  route_uuid: 'route_uuid',
+  id: 'id',
   subnet_id: 'subnet_id',
   vpc_id: 'vpc_id',
   // Fields to update

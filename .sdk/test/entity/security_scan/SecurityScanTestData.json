@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "security_scan": {
+      "SECURITY_SCAN00": {
+        "created_at": "s46",
+        "findings": [],
+        "id": "SECURITY_SCAN00",
+        "name": "s49",
+        "status": "s4a",
+        "type": "s4b",
+        "urn": "s4c",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01"
+      },
+      "SECURITY_SCAN01": {
+        "created_at": "s8c",
+        "findings": [],
+        "id": "SECURITY_SCAN01",
+        "name": "s8f",
+        "status": "s90",
+        "type": "s91",
+        "urn": "s92",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01"
+      },
+      "SECURITY_SCAN02": {
+        "created_at": "sd2",
+        "findings": [],
+        "id": "SECURITY_SCAN02",
+        "name": "sd5",
+        "status": "sd6",
+        "type": "sd7",
+        "urn": "sd8",
+        "finding_id": "FINDING01",
+        "scan_id": "SCAN01"
+      }
+    }
+  },
+  "new": {
+    "security_scan": {
+      "security_scan_ref01": {
+        "created_at": "s118",
+        "findings": [],
+        "name": "s11b",
+        "status": "s11c",
+        "type": "s11d",
+        "urn": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/security/scans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/{scan_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/security/scans/latest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

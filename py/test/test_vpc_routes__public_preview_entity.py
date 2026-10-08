@@ -46,13 +46,13 @@ class TestVpcRoutesPublicPreviewEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "list", "update", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "vpc_routes__public_preview." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["subnet01", "vpc01", "vpc_uuid01"]:
+            for _live_key in ["subnet01", "vpc01"]:
                 if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via DIGITALOCEAN_TEST_VPC_ROUTES_PUBLIC_PREVIEW_ENTID")
         client = setup["client"]
@@ -70,7 +70,7 @@ class TestVpcRoutesPublicPreviewEntity:
 
         # LIST
         vpc_routes__public_preview_ref01_match = {
-            "vpc_uuid": setup["idmap"]["vpc_uuid01"],
+            "vpc_id": setup["idmap"]["vpc01"],
         }
 
         vpc_routes__public_preview_ref01_list_result = vpc_routes__public_preview_ref01_ent.list(vpc_routes__public_preview_ref01_match, None)
@@ -81,9 +81,31 @@ class TestVpcRoutesPublicPreviewEntity:
             {"id": vpc_routes__public_preview_ref01_data["id"]})
         assert not vs.isempty(found_item)
 
+        # UPDATE
+        vpc_routes__public_preview_ref01_data_up0_up = {
+            "id": vpc_routes__public_preview_ref01_data["id"],
+            "subnet_id": setup["idmap"]["subnet_id"],
+            "vpc_id": setup["idmap"]["vpc_id"],
+        }
+
+        vpc_routes__public_preview_ref01_markdef_up0_name = "destination_cidr"
+        vpc_routes__public_preview_ref01_markdef_up0_value = "Mark01-vpc_routes__public_preview_ref01_" + str(setup["now"])
+        vpc_routes__public_preview_ref01_data_up0_up[vpc_routes__public_preview_ref01_markdef_up0_name] = vpc_routes__public_preview_ref01_markdef_up0_value
+
+        vpc_routes__public_preview_ref01_resdata_up0 = helpers.to_map(runner.entity_data(vpc_routes__public_preview_ref01_ent.update(vpc_routes__public_preview_ref01_data_up0_up, None)))
+        assert vpc_routes__public_preview_ref01_resdata_up0 is not None
+        assert vpc_routes__public_preview_ref01_resdata_up0["id"] == vpc_routes__public_preview_ref01_data_up0_up["id"]
+        assert vpc_routes__public_preview_ref01_resdata_up0[vpc_routes__public_preview_ref01_markdef_up0_name] == vpc_routes__public_preview_ref01_markdef_up0_value
+
+        # REMOVE
+        vpc_routes__public_preview_ref01_match_rm0 = {
+            "id": vpc_routes__public_preview_ref01_data["id"],
+        }
+        vpc_routes__public_preview_ref01_ent.remove(vpc_routes__public_preview_ref01_match_rm0, None)
+
         # LIST
         vpc_routes__public_preview_ref01_match_rt0 = {
-            "vpc_uuid": setup["idmap"]["vpc_uuid01"],
+            "vpc_id": setup["idmap"]["vpc01"],
         }
 
         vpc_routes__public_preview_ref01_list_rt0_result = vpc_routes__public_preview_ref01_ent.list(vpc_routes__public_preview_ref01_match_rt0, None)
@@ -112,7 +134,7 @@ def _vpc_routes__public_preview_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["vpc_routes__public_preview01", "vpc_routes__public_preview02", "vpc_routes__public_preview03", "vpc01", "vpc02", "vpc03", "subnet01", "vpc_uuid01"],
+        ["vpc_routes__public_preview01", "vpc_routes__public_preview02", "vpc_routes__public_preview03", "vpc01", "vpc02", "vpc03", "subnet01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -138,6 +160,10 @@ def _vpc_routes__public_preview_basic_setup(extra):
         env.get("DIGITALOCEAN_TEST_VPC_ROUTES_PUBLIC_PREVIEW_ENTID"))
     if idmap_resolved is None:
         idmap_resolved = helpers.to_map(idmap)
+    if idmap_resolved.get("subnet_id") is None:
+        idmap_resolved["subnet_id"] = idmap_resolved.get("subnet01")
+    if idmap_resolved.get("vpc_id") is None:
+        idmap_resolved["vpc_id"] = idmap_resolved.get("vpc01")
 
     if env.get("DIGITALOCEAN_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([

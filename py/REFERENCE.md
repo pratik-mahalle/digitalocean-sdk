@@ -58,9 +58,17 @@ Create a new `ActionEntity` instance. Pass `None` for no initial data.
 
 Create a new `ActorLimitEntity` instance. Pass `None` for no initial data.
 
-#### `AddOn(data=None)`
+#### `AddOnApp(data=None)`
 
-Create a new `AddOnEntity` instance. Pass `None` for no initial data.
+Create a new `AddOnAppEntity` instance. Pass `None` for no initial data.
+
+#### `AddOnPlan(data=None)`
+
+Create a new `AddOnPlanEntity` instance. Pass `None` for no initial data.
+
+#### `AddOnResource(data=None)`
+
+Create a new `AddOnResourceEntity` instance. Pass `None` for no initial data.
 
 #### `ApiAgentVersion(data=None)`
 
@@ -646,9 +654,17 @@ Create a new `FloatingIpEntity` instance. Pass `None` for no initial data.
 
 Create a new `FloatingIpActionEntity` instance. Pass `None` for no initial data.
 
-#### `Function(data=None)`
+#### `FunctionKey(data=None)`
 
-Create a new `FunctionEntity` instance. Pass `None` for no initial data.
+Create a new `FunctionKeyEntity` instance. Pass `None` for no initial data.
+
+#### `FunctionNamespace(data=None)`
+
+Create a new `FunctionNamespaceEntity` instance. Pass `None` for no initial data.
+
+#### `FunctionTrigger(data=None)`
+
+Create a new `FunctionTriggerEntity` instance. Pass `None` for no initial data.
 
 #### `GenaiapiRegion(data=None)`
 
@@ -734,9 +750,17 @@ Create a new `MetricEntity` instance. Pass `None` for no initial data.
 
 Create a new `ModelEntity` instance. Pass `None` for no initial data.
 
-#### `Monitoring(data=None)`
+#### `MonitoringAlert(data=None)`
 
-Create a new `MonitoringEntity` instance. Pass `None` for no initial data.
+Create a new `MonitoringAlertEntity` instance. Pass `None` for no initial data.
+
+#### `MonitoringSink(data=None)`
+
+Create a new `MonitoringSinkEntity` instance. Pass `None` for no initial data.
+
+#### `MonitoringSinkDestination(data=None)`
+
+Create a new `MonitoringSinkDestinationEntity` instance. Pass `None` for no initial data.
 
 #### `N1Click(data=None)`
 
@@ -842,9 +866,21 @@ Create a new `ResyncEntity` instance. Pass `None` for no initial data.
 
 Create a new `SearchEntity` instance. Pass `None` for no initial data.
 
-#### `Security(data=None)`
+#### `SecurityPlan(data=None)`
 
-Create a new `SecurityEntity` instance. Pass `None` for no initial data.
+Create a new `SecurityPlanEntity` instance. Pass `None` for no initial data.
+
+#### `SecurityRule(data=None)`
+
+Create a new `SecurityRuleEntity` instance. Pass `None` for no initial data.
+
+#### `SecurityScan(data=None)`
+
+Create a new `SecurityScanEntity` instance. Pass `None` for no initial data.
+
+#### `SecuritySuppression(data=None)`
+
+Create a new `SecuritySuppressionEntity` instance. Pass `None` for no initial data.
 
 #### `Setting(data=None)`
 
@@ -1158,7 +1194,6 @@ action = client.Action()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `action` | `dict` | No |  |
 | `completed_at` | `str` | No | A time value given in ISO8601 combined date and time format that represents when the action was completed. |
 | `id` | `int` | No | A unique numeric ID that can be used to identify and reference an action. |
 | `region` | `dict` | Yes |  |
@@ -1170,17 +1205,6 @@ action = client.Action()
 | `type` | `str` | No | This is the type of action that the object represents. |
 
 ### Operations
-
-#### `create(reqdata, ctrl=None) -> dict`
-
-Create a new entity with the given data. Returns the created entity data and raises on error.
-
-```python
-result = client.Action().create({
-    "image_id": 1,  # int
-    "region": {},  # dict
-})
-```
 
 #### `list(reqmatch=None, ctrl=None) -> list`
 
@@ -1284,10 +1308,72 @@ Return the entity name.
 
 ---
 
-## AddOnEntity
+## AddOnAppEntity
 
 ```python
-add_on = client.AddOn()
+add_on_app = client.AddOnApp()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_slug` | `str` | Yes | The slug identifier for the application associated with the resource. |
+| `description` | `str` | Yes | A brief description of the metadata item. |
+| `display_name` | `str` | Yes | The display name of the metadata item. |
+| `eula` | `str` | Yes | The End User License Agreement URL for the resource. |
+| `id` | `int` | Yes | Unique identifier for the addon metadata item. |
+| `name` | `str` | Yes | The name of the metadata item. |
+| `options` | `list` | No |  |
+| `plans` | `list` | Yes | A list of plans available for the resource. |
+| `tos` | `str` | Yes | The Terms of Service URL for the resource. |
+| `type` | `str` | Yes | The data type of the metadata value. |
+
+### Operations
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.AddOnApp().list()
+for add_on_app in results:
+    print(add_on_app)
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AddOnAppEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AddOnPlanEntity
+
+```python
+add_on_plan = client.AddOnPlan()
 ```
 
 ### Fields
@@ -1296,75 +1382,25 @@ add_on = client.AddOn()
 | --- | --- | --- | --- |
 | `app_name` | `str` | No | The name of the application associated with the resource. |
 | `app_slug` | `str` | Yes | The slug identifier for the application associated with the resource. |
-| `description` | `str` | Yes | A brief description of the metadata item. |
-| `display_name` | `str` | Yes | The display name of the metadata item. |
 | `has_config` | `bool` | Yes | Indicates if the resource has configuration values set by the vendor. |
-| `id` | `int` | Yes | Unique identifier for the addon metadata item. |
 | `message` | `str` | No | A message related to the resource, if applicable. |
 | `metadata` | `list` | No | Metadata associated with the resource, set by the user. |
 | `name` | `str` | Yes | The name of the addon resource. |
-| `options` | `list` | No |  |
 | `plan_name` | `str` | No | The name of the plan associated with the resource. |
 | `plan_price_per_month` | `int` | No | The price of the plan per month in US dollars. |
 | `plan_slug` | `str` | Yes | The slug identifier for the plan associated with the resource. |
 | `sso_url` | `str` | No | The Single Sign-On URL for the resource, if applicable. |
 | `state` | `str` | Yes | The state the resource is currently in. |
-| `type` | `str` | Yes | The data type of the metadata value. |
 | `uuid` | `str` | Yes | The unique identifier for the addon resource. |
 
 ### Operations
-
-#### `create(reqdata, ctrl=None) -> dict`
-
-Create a new entity with the given data. Returns the created entity data and raises on error.
-
-```python
-result = client.AddOn().create({
-    "app_slug": "example_app_slug",  # str
-    "description": "example_description",  # str
-    "display_name": "example_display_name",  # str
-    "has_config": True,  # bool
-    "id": 1,  # int
-    "name": "example_name",  # str
-    "plan_slug": "example_plan_slug",  # str
-    "state": "example_state",  # str
-    "type": "example_type",  # str
-    "uuid": "example_uuid",  # str
-})
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.AddOn().list({"app_slug": "example"})
-for add_on in results:
-    print(add_on)
-```
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.AddOn().load({"resource_uuid": "resource_uuid"})
-```
-
-#### `remove(reqmatch, ctrl=None) -> dict`
-
-Remove the entity matching the given criteria. Raises on error.
-
-```python
-result = client.AddOn().remove({"resource_uuid": "resource_uuid"})
-```
 
 #### `update(reqdata, ctrl=None) -> dict`
 
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.AddOn().update({
+result = client.AddOnPlan().update({
     "resource_uuid": "resource_uuid",
     # Fields to update
 })
@@ -1390,7 +1426,134 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `AddOnEntity` instance with the same options.
+Create a new `AddOnPlanEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## AddOnResourceEntity
+
+```python
+add_on_resource = client.AddOnResource()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `app_name` | `str` | No | The name of the application associated with the resource. |
+| `app_slug` | `str` | Yes | The slug identifier for the application associated with the resource. |
+| `fleet_uuid` | `str` | No | UUID of the fleet/project to which this resource will belong. |
+| `has_config` | `bool` | Yes | Indicates if the resource has configuration values set by the vendor. |
+| `linked_droplet_id` | `int` | No | ID of the droplet to be linked to this resource, if applicable. |
+| `message` | `str` | No | A message related to the resource, if applicable. |
+| `metadata` | `list` | No | Metadata associated with the resource, set by the user. |
+| `name` | `str` | Yes | The name of the addon resource. |
+| `plan_name` | `str` | No | The name of the plan associated with the resource. |
+| `plan_price_per_month` | `int` | No | The price of the plan per month in US dollars. |
+| `plan_slug` | `str` | Yes | The slug identifier for the plan associated with the resource. |
+| `sso_url` | `str` | No | The Single Sign-On URL for the resource, if applicable. |
+| `state` | `str` | Yes | The state the resource is currently in. |
+| `uuid` | `str` | Yes | The unique identifier for the addon resource. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_name` | - | - | - | - | - |
+| `app_slug` | - | - | - | - | - |
+| `fleet_uuid` | - | - | - | - | - |
+| `has_config` | - | - | - | - | - |
+| `linked_droplet_id` | - | - | - | - | - |
+| `message` | - | - | - | - | - |
+| `metadata` | - | - | Yes | - | - |
+| `name` | - | - | - | - | - |
+| `plan_name` | - | - | - | - | - |
+| `plan_price_per_month` | - | - | - | - | - |
+| `plan_slug` | - | - | - | - | - |
+| `sso_url` | - | - | - | - | - |
+| `state` | - | - | - | - | - |
+| `uuid` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.AddOnResource().create({
+    "app_slug": "example_app_slug",  # str
+    "has_config": True,  # bool
+    "name": "example_name",  # str
+    "plan_slug": "example_plan_slug",  # str
+    "state": "example_state",  # str
+    "uuid": "example_uuid",  # str
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.AddOnResource().list()
+for add_on_resource in results:
+    print(add_on_resource)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.AddOnResource().load({"resource_uuid": "resource_uuid"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.AddOnResource().remove({"resource_uuid": "resource_uuid"})
+```
+
+#### `update(reqdata, ctrl=None) -> dict`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+
+```python
+result = client.AddOnResource().update({
+    "resource_uuid": "resource_uuid",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `AddOnResourceEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -12106,7 +12269,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.FloatingIpAction().create({
-    "id": "example_id",  # str
+    "floating_ip_id": "example_floating_ip_id",  # str
     "region": {},  # dict
 })
 ```
@@ -12116,7 +12279,7 @@ result = client.FloatingIpAction().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.FloatingIpAction().list({"id": "example_id"})
+results = client.FloatingIpAction().list({"floating_ip_id": "example"})
 for floating_ip_action in results:
     print(floating_ip_action)
 ```
@@ -12158,55 +12321,33 @@ Return the entity name.
 
 ---
 
-## FunctionEntity
+## FunctionKeyEntity
 
 ```python
-function = client.Function()
+function_key = client.FunctionKey()
 ```
 
 ### Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `api_host` | `str` | No | The namespace's API hostname. |
-| `created_at` | `str` | No | UTC time string. |
+| `created_at` | `str` | No | The date and time the key was created. |
 | `expires_at` | `str` | No | When the key expires (null for non-expiring keys). |
 | `expires_in` | `str` | No | The duration after which the access key expires, specified as a human-readable duration string in the format `<int>h` (hours) or `<int>d` (days). |
-| `function` | `str` | No | Name of function(action) that exists in the given namespace. |
 | `id` | `str` | No | The access key's unique identifier with prefix 'dof_v1_'. |
-| `is_enabled` | `bool` | No | Indicates weather the trigger is paused or unpaused. |
-| `key` | `str` | No | A random alpha numeric string. |
-| `label` | `str` | No | The namespace's unique name. |
-| `name` | `str` | No | The trigger's unique name within the namespace. |
-| `namespace` | `str` | No | A unique string format of UUID with a prefix fn-. |
-| `region` | `str` | No | The namespace's datacenter region. |
-| `scheduled_details` | `dict` | Yes | Trigger details for SCHEDULED type, where body is optional. |
-| `scheduled_runs` | `dict` | No |  |
-| `type` | `str` | No | String which indicates the type of trigger source like SCHEDULED. |
-| `updated_at` | `str` | No | UTC time string. |
-| `uuid` | `str` | No | The namespace's Universally Unique Identifier. |
+| `name` | `str` | Yes | The access key's name. |
+| `updated_at` | `str` | No | The date and time the key was last updated. |
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `api_host` | - | - | - | - | - |
-| `created_at` | - | - | - | - | - |
-| `expires_at` | - | - | - | - | - |
-| `expires_in` | - | - | - | - | - |
-| `function` | - | - | Yes | - | - |
-| `id` | - | - | - | - | - |
-| `is_enabled` | - | - | Yes | - | - |
-| `key` | - | - | - | - | - |
-| `label` | - | - | - | - | - |
-| `name` | - | - | Yes | Yes | - |
-| `namespace` | - | - | - | - | - |
-| `region` | - | - | - | - | - |
-| `scheduled_details` | - | - | - | - | - |
-| `scheduled_runs` | - | - | - | - | - |
-| `type` | - | - | Yes | - | - |
-| `updated_at` | - | - | - | - | - |
-| `uuid` | - | - | - | - | - |
+| Field | list | create | update | remove |
+| --- | --- | --- | --- | --- |
+| `created_at` | - | - | - | - |
+| `expires_at` | - | - | - | - |
+| `expires_in` | - | - | - | - |
+| `id` | - | - | - | - |
+| `name` | Yes | - | Yes | - |
+| `updated_at` | - | - | - | - |
 
 ### Operations
 
@@ -12215,9 +12356,9 @@ function = client.Function()
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.Function().create({
+result = client.FunctionKey().create({
     "namespace_id": "example_namespace_id",  # str
-    "scheduled_details": {},  # dict
+    "name": "example_name",  # str
 })
 ```
 
@@ -12226,17 +12367,9 @@ result = client.Function().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Function().list({"namespace_id": "example"})
-for function in results:
-    print(function)
-```
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.Function().load({"namespace_id": "namespace_id"})
+results = client.FunctionKey().list({"namespace_id": "example"})
+for function_key in results:
+    print(function_key)
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -12244,7 +12377,7 @@ result = client.Function().load({"namespace_id": "namespace_id"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Function().remove({"namespace_id": "namespace_id"})
+result = client.FunctionKey().remove({"id": "id", "namespace_id": "namespace_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -12252,7 +12385,8 @@ result = client.Function().remove({"namespace_id": "namespace_id"})
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.Function().update({
+result = client.FunctionKey().update({
+    "id": "id",
     "namespace_id": "namespace_id",
     # Fields to update
 })
@@ -12278,7 +12412,219 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `FunctionEntity` instance with the same options.
+Create a new `FunctionKeyEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## FunctionNamespaceEntity
+
+```python
+function_namespace = client.FunctionNamespace()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `api_host` | `str` | No | The namespace's API hostname. |
+| `created_at` | `str` | No | UTC time string. |
+| `key` | `str` | No | A random alpha numeric string. |
+| `label` | `str` | No | The namespace's unique name. |
+| `namespace` | `str` | No | A unique string format of UUID with a prefix fn-. |
+| `region` | `str` | No | The namespace's datacenter region. |
+| `updated_at` | `str` | No | UTC time string. |
+| `uuid` | `str` | No | The namespace's Universally Unique Identifier. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | remove |
+| --- | --- | --- | --- | --- |
+| `api_host` | - | - | - | - |
+| `created_at` | - | - | - | - |
+| `key` | - | - | - | - |
+| `label` | - | - | Yes | - |
+| `namespace` | - | - | - | - |
+| `region` | - | - | Yes | - |
+| `updated_at` | - | - | - | - |
+| `uuid` | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.FunctionNamespace().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.FunctionNamespace().list()
+for function_namespace in results:
+    print(function_namespace)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.FunctionNamespace().load({"namespace_id": "namespace_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.FunctionNamespace().remove({"namespace_id": "namespace_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FunctionNamespaceEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## FunctionTriggerEntity
+
+```python
+function_trigger = client.FunctionTrigger()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `str` | No | UTC time string. |
+| `function` | `str` | No | Name of function(action) that exists in the given namespace. |
+| `is_enabled` | `bool` | No | Indicates weather the trigger is paused or unpaused. |
+| `name` | `str` | No | The trigger's unique name within the namespace. |
+| `namespace` | `str` | No | A unique string format of UUID with a prefix fn-. |
+| `scheduled_details` | `dict` | Yes | Trigger details for SCHEDULED type, where body is optional. |
+| `scheduled_runs` | `dict` | No |  |
+| `type` | `str` | No | String which indicates the type of trigger source like SCHEDULED. |
+| `updated_at` | `str` | No | UTC time string. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `created_at` | - | - | - | - | - |
+| `function` | - | - | Yes | - | - |
+| `is_enabled` | - | - | Yes | - | - |
+| `name` | - | - | Yes | - | - |
+| `namespace` | - | - | - | - | - |
+| `scheduled_details` | - | - | - | - | - |
+| `scheduled_runs` | - | - | - | - | - |
+| `type` | - | - | Yes | - | - |
+| `updated_at` | - | - | - | - | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.FunctionTrigger().create({
+    "namespace_id": "example_namespace_id",  # str
+    "scheduled_details": {},  # dict
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.FunctionTrigger().list({"namespace_id": "example"})
+for function_trigger in results:
+    print(function_trigger)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.FunctionTrigger().load({"namespace_id": "namespace_id", "trigger_name": "trigger_name"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.FunctionTrigger().remove({"namespace_id": "namespace_id", "trigger_name": "trigger_name"})
+```
+
+#### `update(reqdata, ctrl=None) -> dict`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+
+```python
+result = client.FunctionTrigger().update({
+    "namespace_id": "namespace_id",
+    "trigger_name": "trigger_name",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `FunctionTriggerEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -13887,10 +14233,10 @@ Return the entity name.
 
 ---
 
-## MonitoringEntity
+## MonitoringAlertEntity
 
 ```python
-monitoring = client.Monitoring()
+monitoring_alert = client.MonitoringAlert()
 ```
 
 ### Fields
@@ -13899,39 +14245,14 @@ monitoring = client.Monitoring()
 | --- | --- | --- | --- |
 | `alerts` | `dict` | Yes |  |
 | `compare` | `str` | Yes |  |
-| `config` | `dict` | No | OpenSearch destination configuration with `credentials` omitted. |
 | `description` | `str` | Yes |  |
-| `destination` | `dict` | Yes |  |
 | `enabled` | `bool` | Yes |  |
 | `entities` | `list` | Yes |  |
-| `id` | `str` | No | A unique identifier for a destination. |
-| `name` | `str` | No | destination name |
-| `resources` | `list` | No | List of resources identified by their URNs. |
 | `tags` | `list` | Yes |  |
-| `type` | `str` | Yes | The destination type. |
+| `type` | `str` | Yes |  |
 | `uuid` | `str` | Yes |  |
 | `value` | `float` | Yes |  |
 | `window` | `str` | Yes |  |
-
-### Field Usage by Operation
-
-| Field | load | list | create | update | remove |
-| --- | --- | --- | --- | --- | --- |
-| `alerts` | - | - | - | - | - |
-| `compare` | - | - | - | - | - |
-| `config` | - | - | Yes | - | - |
-| `description` | - | - | - | - | - |
-| `destination` | - | - | - | - | - |
-| `enabled` | - | - | - | - | - |
-| `entities` | - | - | - | - | - |
-| `id` | - | - | - | - | - |
-| `name` | - | - | - | - | - |
-| `resources` | - | - | - | - | - |
-| `tags` | - | - | - | - | - |
-| `type` | Yes | Yes | Yes | - | - |
-| `uuid` | - | - | - | - | - |
-| `value` | - | - | - | - | - |
-| `window` | - | - | - | - | - |
 
 ### Operations
 
@@ -13940,12 +14261,10 @@ monitoring = client.Monitoring()
 Create a new entity with the given data. Returns the created entity data and raises on error.
 
 ```python
-result = client.Monitoring().create({
-    "destination_uuid": "example_destination_uuid",  # str
+result = client.MonitoringAlert().create({
     "alerts": {},  # dict
     "compare": "example_compare",  # str
     "description": "example_description",  # str
-    "destination": {},  # dict
     "enabled": True,  # bool
     "entities": [],  # list
     "tags": [],  # list
@@ -13961,9 +14280,9 @@ result = client.Monitoring().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Monitoring().list()
-for monitoring in results:
-    print(monitoring)
+results = client.MonitoringAlert().list()
+for monitoring_alert in results:
+    print(monitoring_alert)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -13971,7 +14290,7 @@ for monitoring in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Monitoring().load({"alert_uuid": "alert_uuid"})
+result = client.MonitoringAlert().load({"alert_uuid": "alert_uuid"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> dict`
@@ -13979,7 +14298,7 @@ result = client.Monitoring().load({"alert_uuid": "alert_uuid"})
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.Monitoring().remove({"alert_uuid": "alert_uuid"})
+result = client.MonitoringAlert().remove({"alert_uuid": "alert_uuid"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -13987,7 +14306,7 @@ result = client.Monitoring().remove({"alert_uuid": "alert_uuid"})
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.Monitoring().update({
+result = client.MonitoringAlert().update({
     "alert_uuid": "alert_uuid",
     # Fields to update
 })
@@ -14013,7 +14332,189 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MonitoringEntity` instance with the same options.
+Create a new `MonitoringAlertEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## MonitoringSinkEntity
+
+```python
+monitoring_sink = client.MonitoringSink()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `destination` | `dict` | Yes |  |
+| `destination_uuid` | `str` | No | A unique identifier for an already-existing destination. |
+| `resources` | `list` | No | List of resources identified by their URNs. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.MonitoringSink().create({
+    "destination": {},  # dict
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.MonitoringSink().list()
+for monitoring_sink in results:
+    print(monitoring_sink)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.MonitoringSink().load({"sink_uuid": "sink_uuid"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.MonitoringSink().remove({"sink_uuid": "sink_uuid"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MonitoringSinkEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## MonitoringSinkDestinationEntity
+
+```python
+monitoring_sink_destination = client.MonitoringSinkDestination()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `config` | `dict` | No | OpenSearch destination configuration with `credentials` omitted. |
+| `id` | `str` | No | A unique identifier for a destination. |
+| `name` | `str` | No | destination name |
+| `type` | `str` | No | The destination type. |
+
+### Field Usage by Operation
+
+| Field | load | list | create | update | remove |
+| --- | --- | --- | --- | --- | --- |
+| `config` | - | - | Yes | Yes | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `type` | - | - | Yes | Yes | - |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.MonitoringSinkDestination().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.MonitoringSinkDestination().list()
+for monitoring_sink_destination in results:
+    print(monitoring_sink_destination)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.MonitoringSinkDestination().load({"id": "monitoring_sink_destination_id"})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.MonitoringSinkDestination().remove({"id": "monitoring_sink_destination_id"})
+```
+
+#### `update(reqdata, ctrl=None) -> dict`
+
+Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
+
+```python
+result = client.MonitoringSinkDestination().update({
+    "id": "monitoring_sink_destination_id",
+    # Fields to update
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `MonitoringSinkDestinationEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -15674,7 +16175,7 @@ Create a new entity with the given data. Returns the created entity data and rai
 
 ```python
 result = client.ReservedIpAction().create({
-    "id": "example_id",  # str
+    "reserved_ip_id": "example_reserved_ip_id",  # str
     "region": {},  # dict
 })
 ```
@@ -15684,7 +16185,7 @@ result = client.ReservedIpAction().create({
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.ReservedIpAction().list({"id": "example_id"})
+results = client.ReservedIpAction().list({"reserved_ip_id": "example"})
 for reserved_ip_action in results:
     print(reserved_ip_action)
 ```
@@ -15863,71 +16364,26 @@ Return the entity name.
 
 ---
 
-## SecurityEntity
+## SecurityPlanEntity
 
 ```python
-security = client.Security()
+security_plan = client.SecurityPlan()
 ```
 
 ### Fields
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `created_at` | `str` | No | When scan was created. |
-| `findings` | `list` | No |  |
-| `id` | `str` | No | The unique identifier for the scan. |
-| `name` | `str` | No | The name of the affected resource. |
-| `resource` | `str` | No | The URN of a resource to exclude from future scans. |
-| `resources` | `list` | No | The URNs of resources to suppress for the rule. |
-| `rule_uuid` | `str` | No | The rule UUID to suppress for the listed resources. |
-| `status` | `str` | No | The status of the scan. |
 | `tier_coverage` | `dict` | No | Scan coverage for each available plan tier. |
-| `type` | `str` | No | The type of the affected resource. |
-| `urn` | `str` | No | The URN for the affected resource. |
 
 ### Operations
-
-#### `create(reqdata, ctrl=None) -> dict`
-
-Create a new entity with the given data. Returns the created entity data and raises on error.
-
-```python
-result = client.Security().create({
-})
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
-
-```python
-results = client.Security().list({"finding_id": "example", "scan_id": "example"})
-for security in results:
-    print(security)
-```
-
-#### `load(reqmatch, ctrl=None) -> dict`
-
-Load a single entity matching the given criteria. Returns the entity data and raises on error.
-
-```python
-result = client.Security().load({"scan_id": "scan_id"})
-```
-
-#### `remove(reqmatch, ctrl=None) -> dict`
-
-Remove the entity matching the given criteria. Raises on error.
-
-```python
-result = client.Security().remove({"suppression_uuid": "suppression_uuid"})
-```
 
 #### `update(reqdata, ctrl=None) -> dict`
 
 Update an existing entity. The data must include the entity `id`. Returns the updated entity data and raises on error.
 
 ```python
-result = client.Security().update({
+result = client.SecurityPlan().update({
     # Fields to update
 })
 ```
@@ -15952,7 +16408,196 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `SecurityEntity` instance with the same options.
+Create a new `SecurityPlanEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SecurityRuleEntity
+
+```python
+security_rule = client.SecurityRule()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resource` | `str` | No | The URN of a resource to exclude from future scans. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.SecurityRule().create({
+})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecurityRuleEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SecurityScanEntity
+
+```python
+security_scan = client.SecurityScan()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `created_at` | `str` | No | When scan was created. |
+| `findings` | `list` | No |  |
+| `id` | `str` | No | The unique identifier for the scan. |
+| `name` | `str` | No | The name of the affected resource. |
+| `status` | `str` | No | The status of the scan. |
+| `type` | `str` | No | The type of the affected resource. |
+| `urn` | `str` | No | The URN for the affected resource. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.SecurityScan().create({
+})
+```
+
+#### `list(reqmatch=None, ctrl=None) -> list`
+
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
+
+```python
+results = client.SecurityScan().list()
+for security_scan in results:
+    print(security_scan)
+```
+
+#### `load(reqmatch, ctrl=None) -> dict`
+
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
+
+```python
+result = client.SecurityScan().load({"scan_id": "scan_id"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecurityScanEntity` instance with the same options.
+
+#### `get_name() -> str`
+
+Return the entity name.
+
+
+---
+
+## SecuritySuppressionEntity
+
+```python
+security_suppression = client.SecuritySuppression()
+```
+
+### Fields
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| `resources` | `list` | No | The URNs of resources to suppress for the rule. |
+| `rule_uuid` | `str` | No | The rule UUID to suppress for the listed resources. |
+
+### Operations
+
+#### `create(reqdata, ctrl=None) -> dict`
+
+Create a new entity with the given data. Returns the created entity data and raises on error.
+
+```python
+result = client.SecuritySuppression().create({
+})
+```
+
+#### `remove(reqmatch, ctrl=None) -> dict`
+
+Remove the entity matching the given criteria. Raises on error.
+
+```python
+result = client.SecuritySuppression().remove({"suppression_uuid": "suppression_uuid"})
+```
+
+### Common Methods
+
+#### `data_get() -> dict`
+
+Get the entity data.
+
+#### `data_set(data)`
+
+Set the entity data.
+
+#### `match_get() -> dict`
+
+Get the entity match criteria.
+
+#### `match_set(match)`
+
+Set the entity match criteria.
+
+#### `make() -> Entity`
+
+Create a new `SecuritySuppressionEntity` instance with the same options.
 
 #### `get_name() -> str`
 
@@ -17807,7 +18452,7 @@ for vpc_routes__public_preview in results:
 Remove the entity matching the given criteria. Raises on error.
 
 ```python
-result = client.VpcRoutesPublicPreview().remove({"route_uuid": "route_uuid", "subnet_id": "subnet_id", "vpc_id": "vpc_id"})
+result = client.VpcRoutesPublicPreview().remove({"id": "id", "subnet_id": "subnet_id", "vpc_id": "vpc_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> dict`
@@ -17816,7 +18461,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.VpcRoutesPublicPreview().update({
-    "route_uuid": "route_uuid",
+    "id": "id",
     "subnet_id": "subnet_id",
     "vpc_id": "vpc_id",
     # Fields to update

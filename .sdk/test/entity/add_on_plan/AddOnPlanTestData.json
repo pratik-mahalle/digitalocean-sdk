@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "add_on_plan": {
+      "ADD_ON_PLAN00": {
+        "app_name": "s78",
+        "app_slug": "s79",
+        "has_config": true,
+        "message": "s7b",
+        "metadata": [],
+        "name": "s7d",
+        "plan_name": "s7e",
+        "plan_price_per_month": 127,
+        "plan_slug": "s80",
+        "sso_url": "s81",
+        "state": "s82",
+        "uuid": "s83",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_PLAN00"
+      },
+      "ADD_ON_PLAN01": {
+        "app_name": "sf0",
+        "app_slug": "sf1",
+        "has_config": true,
+        "message": "sf3",
+        "metadata": [],
+        "name": "sf5",
+        "plan_name": "sf6",
+        "plan_price_per_month": 247,
+        "plan_slug": "sf8",
+        "sso_url": "sf9",
+        "state": "sfa",
+        "uuid": "sfb",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_PLAN01"
+      },
+      "ADD_ON_PLAN02": {
+        "app_name": "s168",
+        "app_slug": "s169",
+        "has_config": true,
+        "message": "s16b",
+        "metadata": [],
+        "name": "s16d",
+        "plan_name": "s16e",
+        "plan_price_per_month": 367,
+        "plan_slug": "s170",
+        "sso_url": "s171",
+        "state": "s172",
+        "uuid": "s173",
+        "resource_uuid": "RESOURCE_UUID01",
+        "id": "ADD_ON_PLAN02"
+      }
+    }
+  },
+  "new": {
+    "add_on_plan": {
+      "add_on_plan_ref01": {
+        "app_name": "s1e0",
+        "app_slug": "s1e1",
+        "has_config": true,
+        "message": "s1e3",
+        "metadata": [],
+        "name": "s1e5",
+        "plan_name": "s1e6",
+        "plan_price_per_month": 487,
+        "plan_slug": "s1e8",
+        "sso_url": "s1e9",
+        "state": "s1ea",
+        "uuid": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "PATCH /v2/add-ons/saas/{resource_uuid}/plan": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

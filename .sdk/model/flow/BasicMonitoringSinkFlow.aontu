@@ -1,0 +1,81 @@
+# BasicMonitoringSinkFlow
+
+main: kit: flow: BasicMonitoringSinkFlow:
+{
+  entity: "monitoring_sink",
+  kind: "basic",
+  name: "BasicMonitoringSinkFlow",
+  step: [
+    {
+      i: {
+        ref: "monitoring_sink_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "monitoring_sink_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "monitoring_sink_ref01",
+        srcdatavar: "monitoring_sink_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "monitoring_sink01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-monitoring_sink_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "monitoring_sink_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "monitoring_sink01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "monitoring_sink_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMonitoringSinkFlow"
+}

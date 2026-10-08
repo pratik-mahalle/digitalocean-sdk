@@ -1,0 +1,318 @@
+# Entity: monitoring_alert
+
+main: kit: entity: monitoring_alert: {
+
+  alias: field: {}
+
+  fields: {
+    alerts: {
+      h: "Alerts"
+      n: "alerts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    compare: {
+      h: "Compare"
+      n: "compare"
+      r: true
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    entities: {
+      h: "Entities"
+      n: "entities"
+      r: true
+      t: "`$ARRAY`"
+    }
+    tags: {
+      h: "Tags"
+      n: "tags"
+      r: true
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+    uuid: {
+      h: "Uuid"
+      n: "uuid"
+      r: true
+      t: "`$STRING`"
+    }
+    value: {
+      fo: "float"
+      h: "Value"
+      n: "value"
+      r: true
+      t: "`$NUMBER`"
+    }
+    window: {
+      h: "Window"
+      n: "window"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "monitoring_alert"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/monitoring/alerts"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/monitoring/alerts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "alerts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/alerts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/alerts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "alerts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policies`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/alerts/{alert_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "alert_uuid"
+                or: "alert_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/alerts/{alert_uuid}"
+          q: {
+            exist: [
+              "alert_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/monitoring/alerts/{alert_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "alert_uuid"
+                or: "alert_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/monitoring/alerts/{alert_uuid}"
+          q: {
+            exist: [
+              "alert_uuid"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/monitoring/alerts/{alert_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "4de7ac8b-495b-4884-9a69-1050c6793cd6"
+                k: "param"
+                n: "alert_uuid"
+                or: "alert_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/monitoring/alerts/{alert_uuid}"
+          q: {
+            exist: [
+              "alert_uuid"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "alerts"
+            }
+            {
+              var: "alert_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

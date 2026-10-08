@@ -65,15 +65,13 @@ class TestActionDirect:
         query = {}
         if setup["live"]:
             params["id"] = 36804636
-            params["image_id"] = 62137902
             pass
         else:
             params["id"] = "direct01"
-            params["image_id"] = "direct02"
             pass
 
         result = client.direct({
-            "path": "v2/images/{image_id}/actions/{id}",
+            "path": "v2/actions/{id}",
             "method": "GET",
             "params": params,
             "query": query,

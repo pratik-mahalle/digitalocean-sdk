@@ -129,37 +129,29 @@ class TestActionEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "load"]:
+        for _op in ["list", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "action." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
-        if setup["live"]:
-            for _live_key in ["image01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via DIGITALOCEAN_TEST_ACTION_ENTID")
         client = setup["client"]
+        if setup["live"]:
+            runner.live_existing(setup, LIVE_STRICT, "action",
+                                 lambda: client.Action(None).list({}, None))
 
-        # CREATE
-        action_ref01_ent = client.Action(None)
-        action_ref01_data = helpers.to_map(vs.getprop(
-            vs.getpath(setup["data"], "new.action"), "action_ref01"))
-        action_ref01_data["image_id"] = setup["idmap"]["image01"]
-
-        action_ref01_data = helpers.to_map(runner.entity_data(action_ref01_ent.create(action_ref01_data, None)))
-        assert action_ref01_data is not None
-        assert action_ref01_data["id"] is not None
+        # Bootstrap entity data from existing test data.
+        action_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.action")))
+        action_ref01_data = None
+        if len(action_ref01_data_raw) > 0:
+            action_ref01_data = helpers.to_map(action_ref01_data_raw[0][1])
 
         # LIST
+        action_ref01_ent = client.Action(None)
         action_ref01_match = {}
 
         action_ref01_list_result = action_ref01_ent.list(action_ref01_match, None)
         assert isinstance(action_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(action_ref01_list_result),
-            {"id": action_ref01_data["id"]})
-        assert not vs.isempty(found_item)
 
         # LOAD
         action_ref01_match_dt0 = {
@@ -188,7 +180,7 @@ def _action_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["action01", "action02", "action03", "image01", "image02", "image03"],
+        ["action01", "action02", "action03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

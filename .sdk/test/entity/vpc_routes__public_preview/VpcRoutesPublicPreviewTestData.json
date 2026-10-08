@@ -9,8 +9,7 @@
         "target_urns": [],
         "type": "s41",
         "subnet_id": "SUBNET01",
-        "vpc_id": "VPC01",
-        "route_uuid": "ROUTE_UUID01"
+        "vpc_id": "VPC01"
       },
       "VPC_ROUTES__PUBLIC_PREVIEW01": {
         "created_at": "s78",
@@ -20,8 +19,7 @@
         "target_urns": [],
         "type": "s7d",
         "subnet_id": "SUBNET01",
-        "vpc_id": "VPC01",
-        "route_uuid": "ROUTE_UUID01"
+        "vpc_id": "VPC01"
       },
       "VPC_ROUTES__PUBLIC_PREVIEW02": {
         "created_at": "sb4",
@@ -31,8 +29,7 @@
         "target_urns": [],
         "type": "sb9",
         "subnet_id": "SUBNET01",
-        "vpc_id": "VPC01",
-        "route_uuid": "ROUTE_UUID01"
+        "vpc_id": "VPC01"
       }
     }
   },

@@ -1,0 +1,59 @@
+# Entity: security_plan
+
+main: kit: entity: security_plan: {
+
+  alias: field: {}
+
+  fields: {
+    tier_coverage: {
+      h: "Tier Coverage"
+      n: "tier_coverage"
+      r: false
+      sh: "Scan coverage for each available plan tier."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "security_plan"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/security/settings/plan"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/v2/security/settings/plan"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "settings"
+            }
+            {
+              lit: "plan"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.tier_coverage`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

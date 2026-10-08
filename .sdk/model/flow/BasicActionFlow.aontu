@@ -7,18 +7,6 @@ main: kit: flow: BasicActionFlow:
   name: "BasicActionFlow",
   step: [
     {
-      i: {
-        ref: "action_ref01"
-      }
-
-      m: {
-        image_id: "image01"
-      }
-
-      o: "create"
-    }
-
-    {
       o: "list",
       v: [
         {

@@ -6,7 +6,7 @@ The DigitalOcean API.
 
 This guide introduces the API, the client libraries, and the companion tools in this repository. Start with the API capabilities, choose a client for your application, and use the linked reference when you need exact request and response details.
 
-The selected API surface contains 226 entities and 761 HTTP routes. There are 2 SDK targets.
+The selected API surface contains 235 entities and 759 HTTP routes. There are 2 SDK targets.
 
 An entity groups related API operations. An operation can have several routes with different inputs or authentication requirements. The SDK exposes the entity and its operations using the conventions of the selected language.
 
@@ -42,9 +42,9 @@ Key fields to recognise:
 
 ### Action
 
-Results: The response will be a JSON object with a key called `action`. The value of this will be an object containing the standard image action attributes.; The results will be returned as a JSON object with an actions key. This will be set to an array filled with action objects containing the standard action attributes; The response will be an object with a key called `action`. The value of this will be an object that contains the standard image action attributes.; The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes.
+Results: The results will be returned as a JSON object with an actions key. This will be set to an array filled with action objects containing the standard action attributes; The result will be a JSON object with an action key. This will be set to an action object containing the standard action attributes.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `list`, `load`.
 
 Key fields to recognise:
 
@@ -66,9 +66,37 @@ Key fields to recognise:
 - `id`: A short identifier corresponding to the HTTP status code returned. For example, the ID for a response returning a 404 status code would be &quot;`not_found`.&quot;
 - `requests_per_minute`: Calls allowed per minute. 0 blocks every call in the category.
 
-### AddOn
+### AddOnApp
 
-Results: The response will be a JSON object with a key called `resource`. The value of this will be the resource created with the given. For additional details specific to the app, find and view its [DigitalOcean Marketplace](https://marketplace.digitalocean.com) page.; The response will be a JSON object with a key called `metadata`. `metadata` will be an array of objects, each representing a metadata item for the app. Each object will contain details such as `id`, `name`, `display_name`, `description`, `type`, and `options`. For additional details specific to the app, find and view its [DigitalOcean Marketplace](https://marketplace.digitalocean.com) page.; The response will be a JSON object with a key called `apps`. `apps` will be an array of objects.; The response will be an array of JSON objects with a key called `resources`.; The response will be a JSON object with a key called `resource`.; The action was successful and the response body is empty.; The response will be a JSON object with a key called `resource`, representing the updated resource.
+Results: The response will be a JSON object with a key called `metadata`. `metadata` will be an array of objects, each representing a metadata item for the app. Each object will contain details such as `id`, `name`, `display_name`, `description`, `type`, and `options`. For additional details specific to the app, find and view its [DigitalOcean Marketplace](https://marketplace.digitalocean.com) page.; The response will be a JSON object with a key called `apps`. `apps` will be an array of objects.
+
+SDK operations: `list`.
+
+Key fields to recognise:
+
+- `app_slug`: The slug identifier for the application associated with the resource.
+- `description`: A brief description of the metadata item.
+- `display_name`: The display name of the metadata item.
+- `eula`: The End User License Agreement URL for the resource.
+- `id`: Unique identifier for the addon metadata item.
+
+### AddOnPlan
+
+Results: The response will be a JSON object with a key called `resource`, representing the updated resource.
+
+SDK operations: `update`.
+
+Key fields to recognise:
+
+- `app_name`: The name of the application associated with the resource.
+- `app_slug`: The slug identifier for the application associated with the resource.
+- `has_config`: Indicates if the resource has configuration values set by the vendor.
+- `message`: A message related to the resource, if applicable.
+- `metadata`: Metadata associated with the resource, set by the user.
+
+### AddOnResource
+
+Results: The response will be a JSON object with a key called `resource`. The value of this will be the resource created with the given. For additional details specific to the app, find and view its [DigitalOcean Marketplace](https://marketplace.digitalocean.com) page.; The response will be an array of JSON objects with a key called `resources`.; The response will be a JSON object with a key called `resource`.; The action was successful and the response body is empty.; The response will be a JSON object with a key called `resource`, representing the updated resource.
 
 SDK operations: `create`, `list`, `load`, `remove`, `update`.
 
@@ -76,9 +104,9 @@ Key fields to recognise:
 
 - `app_name`: The name of the application associated with the resource.
 - `app_slug`: The slug identifier for the application associated with the resource.
-- `description`: A brief description of the metadata item.
-- `display_name`: The display name of the metadata item.
+- `fleet_uuid`: UUID of the fleet/project to which this resource will belong.
 - `has_config`: Indicates if the resource has configuration values set by the vendor.
+- `linked_droplet_id`: ID of the droplet to be linked to this resource, if applicable.
 
 ### ApiAgentVersion
 
@@ -1432,7 +1460,7 @@ Key fields to recognise:
 
 ### AssociatedResourceStatus
 
-Results: A JSON object containing containing the status of a request to destroy a Droplet and its associated resources.
+Results: A JSON object containing the status of a request to destroy a Droplet and its associated resources.
 
 SDK operations: `load`.
 
@@ -1769,7 +1797,7 @@ Key fields to recognise:
 
 - `id`: A short identifier corresponding to the HTTP status code returned. For example, the ID for a response returning a 404 status code would be &quot;`not_found`.&quot;
 - `ip_address`: This optional attribute may contain an IP address. When provided, an A record will be automatically created pointing to the apex domain.
-- `name`: The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, `example.com` is a valid domain name.
+- `name`: The name of the domain itself. This should follow the standard domain format of `domain.TLD`. For instance, `example.com` is a valid domain name.
 - `ttl`: This value is the time to live for the records on this domain, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
 - `zone_file`: This attribute contains the complete contents of the zone file for the selected domain. Individual domain record resources should be used to get more granular control over records. However, this attribute can also be used to get information about the SOA record, which is created automatically and is not accessible as an individual record resource.
 
@@ -1899,19 +1927,47 @@ Key fields to recognise:
 - `region_slug`: A human-readable string that is used as a unique identifier for each region.
 - `resource_id`: A unique identifier for the resource that the action is associated with.
 
-### Function
+### FunctionKey
 
-Results: A JSON response containing details about the newly created access key.; A JSON response object with a key called `trigger`. The object contains the properties associated with the trigger.; A JSON response object with a key called `namespace`. The object contains the properties associated with the namespace.; A JSON response containing a list of access keys for the namespace.; An array of JSON objects with a key called `namespaces`. Each object represents a namespace and contains the properties associated with it.; Success. The access key was deleted.; The action was successful and the response body is empty.; A JSON response containing the updated access key details.
+Results: A JSON response containing details about the newly created access key.; A JSON response containing a list of access keys for the namespace.; Success. The access key was deleted.; A JSON response containing the updated access key details.
+
+SDK operations: `create`, `list`, `remove`, `update`.
+
+Key fields to recognise:
+
+- `created_at`: The date and time the key was created.
+- `expires_at`: When the key expires (null for non-expiring keys).
+- `expires_in`: The duration after which the access key expires, specified as a human-readable duration string in the format `&lt;int&gt;h` (hours) or `&lt;int&gt;d` (days).
+- `id`: The access key&#39;s unique identifier with prefix &#39;`dof_v1_`&#39;.
+- `name`: The access key&#39;s name.
+
+### FunctionNamespace
+
+Results: A JSON response object with a key called `namespace`. The object contains the properties associated with the namespace.; An array of JSON objects with a key called `namespaces`. Each object represents a namespace and contains the properties associated with it.; The action was successful and the response body is empty.
+
+SDK operations: `create`, `list`, `load`, `remove`.
+
+Key fields to recognise:
+
+- `api_host`: The namespace&#39;s API hostname. Each function in a namespace is provided an endpoint at the namespace&#39;s hostname.
+- `created_at`: UTC time string.
+- `key`: A random alpha numeric string. This key is used in conjunction with the namespace&#39;s UUID to authenticate a user to use the namespace via `doctl`, DigitalOcean&#39;s official CLI.
+- `label`: The namespace&#39;s unique name.
+- `namespace`: A unique string format of UUID with a prefix fn-.
+
+### FunctionTrigger
+
+Results: A JSON response object with a key called `trigger`. The object contains the properties associated with the trigger.; An array of JSON objects with a key called `namespaces`. Each object represents a namespace and contains the properties associated with it.; The action was successful and the response body is empty.
 
 SDK operations: `create`, `list`, `load`, `remove`, `update`.
 
 Key fields to recognise:
 
-- `api_host`: The namespace&#39;s API hostname. Each function in a namespace is provided an endpoint at the namespace&#39;s hostname.
-- `created_at`: The date and time the key was created.
-- `expires_at`: When the key expires (null for non-expiring keys).
-- `expires_in`: The duration after which the access key expires, specified as a human-readable duration string in the format `&lt;int&gt;h` (hours) or `&lt;int&gt;d` (days).
+- `created_at`: UTC time string.
 - `function`: Name of function(action) that exists in the given namespace.
+- `is_enabled`: Indicates weather the trigger is paused or unpaused.
+- `name`: The trigger&#39;s unique name within the namespace.
+- `namespace`: A unique string format of UUID with a prefix fn-.
 
 ### GenaiapiRegion
 
@@ -2186,18 +2242,34 @@ Key fields to recognise:
 - `object`: The object type, which is always &quot;list&quot;.
 - `owned_by`: The organization that owns the model.
 
-### Monitoring
+### MonitoringAlert
 
-Results: The action was successful and the response body is empty.; An alert policy.; This does not indicate the success or failure of any operation, just that the request has been accepted for processing.; The response is a JSON object with a `destination` key.; A list of alert policies.; The response is a JSON object with a `sinks` key.; The response is a JSON object with a `destinations` key.; The response is a JSON object with a `sink` key.
+Results: An alert policy.; A list of alert policies.; The action was successful and the response body is empty.
+
+SDK operations: `create`, `list`, `load`, `remove`, `update`.
+
+### MonitoringSink
+
+Results: This does not indicate the success or failure of any operation, just that the request has been accepted for processing.; The response is a JSON object with a `sinks` key.; The response is a JSON object with a `sink` key.; The action was successful and the response body is empty.
+
+SDK operations: `create`, `list`, `load`, `remove`.
+
+Key fields to recognise:
+
+- `destination_uuid`: A unique identifier for an already-existing destination.
+- `resources`: List of resources identified by their URNs.
+
+### MonitoringSinkDestination
+
+Results: The response is a JSON object with a `destination` key.; The response is a JSON object with a `destinations` key.; The action was successful and the response body is empty.
 
 SDK operations: `create`, `list`, `load`, `remove`, `update`.
 
 Key fields to recognise:
 
 - `config`: OpenSearch destination configuration with `credentials` omitted.
-- `id`: A short identifier corresponding to the HTTP status code returned. For example, the ID for a response returning a 404 status code would be &quot;`not_found`.&quot;
+- `id`: A unique identifier for a destination.
 - `name`: destination name
-- `resources`: List of resources identified by their URNs.
 - `type`: The destination type. `opensearch_dbaas` for a DigitalOcean managed OpenSearch cluster or `opensearch_ext` for an externally managed one.
 
 ### N1Click
@@ -2494,19 +2566,50 @@ Key fields to recognise:
 - `auth_type`: Deprecated: read `auth_types`, since a provider may accept more than one credential kind. This is the first entry of `auth_types` other than `none`, or `none` when that is the only entry.
 - `auth_types`: Credential kinds the provider accepts, sorted: none|oauth|`shared_api_key`|unknown|`user_oauth_app`|`user_token`. `none` means the provider needs no credential. `oauth` means users can connect through DigitalOcean&#39;s shared OAuth application. `user_oauth_app` means users can connect through an OAuth client your team registers as a provider credential; without `oauth` alongside it, that is the only way to connect. `shared_api_key` means DigitalOcean supplies the key. `user_token` means your team or its users supply a key or token. `unknown` means the provider declares no kind this API recognizes, including an OAuth provider whose shared application is not available. It is never paired with another kind.
 
-### Security
+### SecurityPlan
 
-Results: The response will be a JSON object with a key called `scan`.; The action was successful and the response body is empty.; The response will be a JSON object containing suppressed resources.; The response will be a JSON object with a key called `affected_resources`.; The response will be a JSON object with a key called `scans`. This will be set to an array of objects, each of which will contain the standard attributes associated with a scan.; The response will be a JSON object with updated tier coverage.
+Results: The response will be a JSON object with updated tier coverage.
 
-SDK operations: `create`, `list`, `load`, `remove`, `update`.
+SDK operations: `update`.
+
+Key fields to recognise:
+
+- `tier_coverage`: Scan coverage for each available plan tier.
+
+### SecurityRule
+
+Results: The action was successful and the response body is empty.
+
+SDK operations: `create`.
+
+Key fields to recognise:
+
+- `resource`: The URN of a resource to exclude from future scans.
+
+### SecurityScan
+
+Results: The response will be a JSON object with a key called `scan`.; The response will be a JSON object with a key called `affected_resources`.; The response will be a JSON object with a key called `scans`. This will be set to an array of objects, each of which will contain the standard attributes associated with a scan.
+
+SDK operations: `create`, `list`, `load`.
 
 Key fields to recognise:
 
 - `created_at`: When scan was created.
 - `id`: The unique identifier for the scan.
 - `name`: The name of the rule that triggered the finding.
-- `resource`: The URN of a resource to exclude from future scans.
+- `status`: The status of the scan.
+- `type`: The type of the affected resource.
+
+### SecuritySuppression
+
+Results: The response will be a JSON object containing suppressed resources.; The action was successful and the response body is empty.
+
+SDK operations: `create`, `remove`.
+
+Key fields to recognise:
+
 - `resources`: The URNs of resources to suppress for the rule.
+- `rule_uuid`: Unique identifier for the suppressed rule.
 
 ### Setting
 
@@ -2842,19 +2945,17 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | AccessPoint | `load` | `GET /v2/nfs/access_points/{access_point_id}` | Required |
 | AccessPoint | `remove` | `DELETE /v2/nfs/access_points/{access_point_id}` | Required |
 | Account | `load` | `GET /v2/account` | Required |
-| Action | `create` | `POST /v2/images/{image_id}/actions` | Required |
 | Action | `list` | `GET /v2/actions` | Required |
-| Action | `load` | `GET /v2/images/{image_id}/actions/{action_id}` | Required |
 | Action | `load` | `GET /v2/actions/{action_id}` | Required |
 | ActorLimit | `list` | `GET /v2/action-gateway/actors/{actor_id}/limits` | Required |
-| AddOn | `create` | `POST /v2/add-ons/saas` | Required |
-| AddOn | `list` | `GET /v2/add-ons/apps/{app_slug}/metadata` | Required |
-| AddOn | `list` | `GET /v2/add-ons/apps` | Required |
-| AddOn | `list` | `GET /v2/add-ons/saas` | Required |
-| AddOn | `load` | `GET /v2/add-ons/saas/{resource_uuid}` | Required |
-| AddOn | `remove` | `DELETE /v2/add-ons/saas/{resource_uuid}` | Required |
-| AddOn | `update` | `PATCH /v2/add-ons/saas/{resource_uuid}` | Required |
-| AddOn | `update` | `PATCH /v2/add-ons/saas/{resource_uuid}/plan` | Required |
+| AddOnApp | `list` | `GET /v2/add-ons/apps/{app_slug}/metadata` | Required |
+| AddOnApp | `list` | `GET /v2/add-ons/apps` | Required |
+| AddOnPlan | `update` | `PATCH /v2/add-ons/saas/{resource_uuid}/plan` | Required |
+| AddOnResource | `create` | `POST /v2/add-ons/saas` | Required |
+| AddOnResource | `list` | `GET /v2/add-ons/saas` | Required |
+| AddOnResource | `load` | `GET /v2/add-ons/saas/{resource_uuid}` | Required |
+| AddOnResource | `remove` | `DELETE /v2/add-ons/saas/{resource_uuid}` | Required |
+| AddOnResource | `update` | `PATCH /v2/add-ons/saas/{resource_uuid}` | Required |
 | ApiAgentVersion | `list` | `GET /v2/gen-ai/agents/{uuid}/versions` | Required |
 | ApiCreateAgentApiKeyOutput | `create` | `POST /v2/gen-ai/agents/{agent_uuid}/api_keys` | Required |
 | ApiCreateDataSourceFileUploadPresignedUrlsOutput | `create` | `POST /v2/gen-ai/evaluation_datasets/file_upload_presigned_urls` | Required |
@@ -3268,19 +3369,19 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | FloatingIpAction | `create` | `POST /v2/floating_ips/{floating_ip}/actions` | Required |
 | FloatingIpAction | `list` | `GET /v2/floating_ips/{floating_ip}/actions` | Required |
 | FloatingIpAction | `load` | `GET /v2/floating_ips/{floating_ip}/actions/{action_id}` | Required |
-| Function | `create` | `POST /v2/functions/namespaces/{namespace_id}/keys` | Required |
-| Function | `create` | `POST /v2/functions/namespaces/{namespace_id}/triggers` | Required |
-| Function | `create` | `POST /v2/functions/namespaces` | Required |
-| Function | `list` | `GET /v2/functions/namespaces/{namespace_id}/keys` | Required |
-| Function | `list` | `GET /v2/functions/namespaces/{namespace_id}/triggers` | Required |
-| Function | `list` | `GET /v2/functions/namespaces` | Required |
-| Function | `load` | `GET /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
-| Function | `load` | `GET /v2/functions/namespaces/{namespace_id}` | Required |
-| Function | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}` | Required |
-| Function | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
-| Function | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}` | Required |
-| Function | `update` | `PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}` | Required |
-| Function | `update` | `PUT /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
+| FunctionKey | `create` | `POST /v2/functions/namespaces/{namespace_id}/keys` | Required |
+| FunctionKey | `list` | `GET /v2/functions/namespaces/{namespace_id}/keys` | Required |
+| FunctionKey | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}/keys/{key_id}` | Required |
+| FunctionKey | `update` | `PUT /v2/functions/namespaces/{namespace_id}/keys/{key_id}` | Required |
+| FunctionNamespace | `create` | `POST /v2/functions/namespaces` | Required |
+| FunctionNamespace | `list` | `GET /v2/functions/namespaces` | Required |
+| FunctionNamespace | `load` | `GET /v2/functions/namespaces/{namespace_id}` | Required |
+| FunctionNamespace | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}` | Required |
+| FunctionTrigger | `create` | `POST /v2/functions/namespaces/{namespace_id}/triggers` | Required |
+| FunctionTrigger | `list` | `GET /v2/functions/namespaces/{namespace_id}/triggers` | Required |
+| FunctionTrigger | `load` | `GET /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
+| FunctionTrigger | `remove` | `DELETE /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
+| FunctionTrigger | `update` | `PUT /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}` | Required |
 | GenaiapiRegion | `list` | `GET /v2/gen-ai/regions` | Required |
 | Image | `create` | `POST /v2/images/{image_id}/account_transfer` | Required |
 | Image | `create` | `POST /v2/images/{image_id}/account_transfer/accept` | Required |
@@ -3415,20 +3516,20 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | Metric | `load` | `GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_exceeding_rate_limit` | Required |
 | Metric | `load` | `GET /v2/monitoring/metrics/load_balancer/frontend_tls_connections_limit` | Required |
 | Model | `list` | `GET /v1/models` | Required |
-| Monitoring | `create` | `POST /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
-| Monitoring | `create` | `POST /v2/monitoring/alerts` | Required |
-| Monitoring | `create` | `POST /v2/monitoring/sinks` | Required |
-| Monitoring | `create` | `POST /v2/monitoring/sinks/destinations` | Required |
-| Monitoring | `list` | `GET /v2/monitoring/alerts` | Required |
-| Monitoring | `list` | `GET /v2/monitoring/sinks` | Required |
-| Monitoring | `list` | `GET /v2/monitoring/sinks/destinations` | Required |
-| Monitoring | `load` | `GET /v2/monitoring/alerts/{alert_uuid}` | Required |
-| Monitoring | `load` | `GET /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
-| Monitoring | `load` | `GET /v2/monitoring/sinks/{sink_uuid}` | Required |
-| Monitoring | `remove` | `DELETE /v2/monitoring/alerts/{alert_uuid}` | Required |
-| Monitoring | `remove` | `DELETE /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
-| Monitoring | `remove` | `DELETE /v2/monitoring/sinks/{sink_uuid}` | Required |
-| Monitoring | `update` | `PUT /v2/monitoring/alerts/{alert_uuid}` | Required |
+| MonitoringAlert | `create` | `POST /v2/monitoring/alerts` | Required |
+| MonitoringAlert | `list` | `GET /v2/monitoring/alerts` | Required |
+| MonitoringAlert | `load` | `GET /v2/monitoring/alerts/{alert_uuid}` | Required |
+| MonitoringAlert | `remove` | `DELETE /v2/monitoring/alerts/{alert_uuid}` | Required |
+| MonitoringAlert | `update` | `PUT /v2/monitoring/alerts/{alert_uuid}` | Required |
+| MonitoringSink | `create` | `POST /v2/monitoring/sinks` | Required |
+| MonitoringSink | `list` | `GET /v2/monitoring/sinks` | Required |
+| MonitoringSink | `load` | `GET /v2/monitoring/sinks/{sink_uuid}` | Required |
+| MonitoringSink | `remove` | `DELETE /v2/monitoring/sinks/{sink_uuid}` | Required |
+| MonitoringSinkDestination | `create` | `POST /v2/monitoring/sinks/destinations` | Required |
+| MonitoringSinkDestination | `list` | `GET /v2/monitoring/sinks/destinations` | Required |
+| MonitoringSinkDestination | `load` | `GET /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
+| MonitoringSinkDestination | `remove` | `DELETE /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
+| MonitoringSinkDestination | `update` | `POST /v2/monitoring/sinks/destinations/{destination_uuid}` | Required |
 | N1Click | `list` | `GET /v2/1-clicks` | Required |
 | N1ClickApplication | `create` | `POST /v2/1-clicks/kubernetes` | Required |
 | NeighborId | `list` | `GET /v2/reports/droplet_neighbors_ids` | Required |
@@ -3500,15 +3601,15 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | Search | `list` | `GET /v2/action-gateway/sessions/search` | Required |
 | Search | `list` | `GET /v2/action-gateway/toolbelts/search` | Required |
 | Search | `list` | `GET /v2/action-gateway/tools/providers/search` | Required |
-| Security | `create` | `POST /v2/security/scans` | Required |
-| Security | `create` | `POST /v2/security/scans/rules` | Required |
-| Security | `create` | `POST /v2/security/settings/suppressions` | Required |
-| Security | `list` | `GET /v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources` | Required |
-| Security | `list` | `GET /v2/security/scans` | Required |
-| Security | `load` | `GET /v2/security/scans/{scan_id}` | Required |
-| Security | `load` | `GET /v2/security/scans/latest` | Required |
-| Security | `remove` | `DELETE /v2/security/settings/suppressions/{suppression_uuid}` | Required |
-| Security | `update` | `PUT /v2/security/settings/plan` | Required |
+| SecurityPlan | `update` | `PUT /v2/security/settings/plan` | Required |
+| SecurityRule | `create` | `POST /v2/security/scans/rules` | Required |
+| SecurityScan | `create` | `POST /v2/security/scans` | Required |
+| SecurityScan | `list` | `GET /v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources` | Required |
+| SecurityScan | `list` | `GET /v2/security/scans` | Required |
+| SecurityScan | `load` | `GET /v2/security/scans/{scan_id}` | Required |
+| SecurityScan | `load` | `GET /v2/security/scans/latest` | Required |
+| SecuritySuppression | `create` | `POST /v2/security/settings/suppressions` | Required |
+| SecuritySuppression | `remove` | `DELETE /v2/security/settings/suppressions/{suppression_uuid}` | Required |
 | Setting | `load` | `GET /v2/security/settings` | Required |
 | Size | `list` | `GET /v2/sizes` | Required |
 | Snapshot | `list` | `GET /v2/snapshots` | Required |

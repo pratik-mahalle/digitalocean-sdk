@@ -85,8 +85,5 @@ main: kit: entity: api_unlink_agent_function_output: {
   }
 
 
-  relations: ancestors: [
-    [path("$.main.kit.entity.function")]
-  ]
 
 }

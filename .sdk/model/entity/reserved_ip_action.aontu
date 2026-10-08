@@ -106,7 +106,7 @@ main: kit: entity: reserved_ip_action: {
               {
                 ex: "45.55.96.47"
                 k: "param"
-                n: "id"
+                n: "reserved_ip_id"
                 or: "reserved_ip"
                 r: true
                 t: "`$STRING`"
@@ -117,12 +117,12 @@ main: kit: entity: reserved_ip_action: {
           o: "/v2/reserved_ips/{reserved_ip}/actions"
           q: {
             exist: [
-              "id"
+              "reserved_ip_id"
             ]
           }
           r: {
             param: {
-              reserved_ip: "id"
+              reserved_ip: "reserved_ip_id"
             }
           }
           rs: {
@@ -137,7 +137,7 @@ main: kit: entity: reserved_ip_action: {
               lit: "reserved_ips"
             }
             {
-              var: "id"
+              var: "reserved_ip_id"
             }
             {
               lit: "actions"
@@ -164,7 +164,7 @@ main: kit: entity: reserved_ip_action: {
               {
                 ex: "45.55.96.47"
                 k: "param"
-                n: "id"
+                n: "reserved_ip_id"
                 or: "reserved_ip"
                 r: true
                 t: "`$STRING`"
@@ -175,12 +175,12 @@ main: kit: entity: reserved_ip_action: {
           o: "/v2/reserved_ips/{reserved_ip}/actions"
           q: {
             exist: [
-              "id"
+              "reserved_ip_id"
             ]
           }
           r: {
             param: {
-              reserved_ip: "id"
+              reserved_ip: "reserved_ip_id"
             }
           }
           rs: {
@@ -195,7 +195,7 @@ main: kit: entity: reserved_ip_action: {
               lit: "reserved_ips"
             }
             {
-              var: "id"
+              var: "reserved_ip_id"
             }
             {
               lit: "actions"

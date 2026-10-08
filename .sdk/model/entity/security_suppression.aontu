@@ -1,0 +1,118 @@
+# Entity: security_suppression
+
+main: kit: entity: security_suppression: {
+
+  alias: field: {}
+
+  fields: {
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: false
+      sh: "The URNs of resources to suppress for the rule."
+      t: "`$ARRAY`"
+    }
+    rule_uuid: {
+      h: "Rule Uuid"
+      n: "rule_uuid"
+      r: false
+      sh: "The rule UUID to suppress for the listed resources."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "security_suppression"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/security/settings/suppressions"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/security/settings/suppressions"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "settings"
+            }
+            {
+              lit: "suppressions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/security/settings/suppressions/{suppression_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "5b3b2b2d-5c9c-4a61-9e2f-4d8f80f30a12"
+                k: "param"
+                n: "suppression_uuid"
+                or: "suppression_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/security/settings/suppressions/{suppression_uuid}"
+          q: {
+            exist: [
+              "suppression_uuid"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "settings"
+            }
+            {
+              lit: "suppressions"
+            }
+            {
+              var: "suppression_uuid"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

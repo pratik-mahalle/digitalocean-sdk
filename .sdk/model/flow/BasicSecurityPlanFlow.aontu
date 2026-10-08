@@ -1,0 +1,28 @@
+# BasicSecurityPlanFlow
+
+main: kit: flow: BasicSecurityPlanFlow:
+{
+  entity: "security_plan",
+  kind: "basic",
+  name: "BasicSecurityPlanFlow",
+  step: [
+    {
+      i: {
+        ref: "security_plan_ref01",
+        srcdatavar: "security_plan_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-security_plan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSecurityPlanFlow"
+}

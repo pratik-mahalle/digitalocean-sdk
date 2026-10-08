@@ -19,10 +19,43 @@ needs shaping before the SDK is ready for customers.
 | Check | TypeScript | Python |
 | --- | --- | --- |
 | Build | pass | pass (`pip install -e .`) |
-| Offline test suite | 1891 pass / 13 fail / 228 skip | 1174 pass / 10 fail / 307 skip |
+| Offline suite, first generation | 1891 pass / 13 fail | 1174 pass / 10 fail |
+| Offline suite, after model shaping (see below) | 1954 pass / 0 fail | 1231 pass / 0 fail |
 | Live, read-only (`Account.load`, `Region.list`, `Size.list`, `Droplet.list`, `SshKey.list`) | all pass | all pass |
 
 Run the live smoke test with `DIGITALOCEAN_TOKEN=... node examples/live-smoke.js`.
+
+## Model shaping (second pass, to get CI green)
+
+All of this was done in project-owned files, so a regeneration keeps it. Nothing generated was hand-edited.
+
+- **Split multi-resource entities** in `.sdk/model/guide/guide.aontu`. Each original entity is switched off with
+  `active: false`, and its paths are re-homed into new entities:
+  - `monitoring` → `monitoring_alert`, `monitoring_sink`, `monitoring_sink_destination`
+  - `function` → `function_namespace`, `function_key`, `function_trigger`
+  - `add_on` → `add_on_app`, `add_on_resource`, `add_on_plan`
+  - `security` → `security_scan`, `security_rule`, `security_plan`, `security_suppression`
+- **Fixed apidef parameter renaming.**
+  - On `floating_ip_action`, `reserved_ip_action` and `vpc_routes`, the parent parameter was renamed to `id` on the
+    collection path but to `<x>_id` on the item path.
+  - On `function_key`, `monitoring_sink_destination` and `vpc_routes`, the item parameter was never renamed to `id`,
+    so `remove` couldn't find the record.
+- **Fixed two operations.**
+  - `POST /monitoring/sinks/destinations/{uuid}` is an update, not a create.
+  - `droplet.create` now unwraps `body.droplet`. apidef couldn't choose a branch of the `oneOf` response, so the
+    created entity used to hold `{droplet: {...}}`.
+- **Removed duplicate image-action paths from `action`.** They already have their own `image_action` entity.
+- **Skipped 3 tests** in `test/sdk-test-control.json`, each with a written reason. For load-only nested entities
+  (`api_simulation_journey`, `dedicated_inference_accelerator`, `logsink`), the generated basic-flow test calls
+  `load({id})` without the parent path parameter, and the record has no parent field to supply it. That's a
+  generator bug the model can't fix.
+- **Fixed two upstream spec prose defects** that failed the docs QA gate: an unspaced `domain.TLD`, and a doubled
+  word ("containing containing").
+
+Splitting entities via `active: false` plus re-declared paths works well once you know about it. The
+`active` flag is documented only in a source comment in apidef's `utility.js`. The test-control file is copied
+once and never refreshed, so editing the template under `.sdk/tm/` has no effect on an existing tree. That's
+surprising.
 
 ## Issues, in the order I hit them
 
@@ -58,7 +91,7 @@ Run the live smoke test with `DIGITALOCEAN_TOKEN=... node examples/live-smoke.js
      `security` and `vpc_routes`. Only `security` is also a colliding entity. That TS and Python fail identically
      points to the model rather than to the code templates. I didn't investigate the root cause within the time-box.
    - The README tutorial demonstrates the alphabetically first entity (`AccessPoint`) instead of a core one like `Droplet`.
-8. **The generated CI fails on the first push.**
+8. **The generated CI fails on the first push.** (Fixed in the second pass. See Model shaping.)
    - The `ci` workflow fails because of the test failures above.
    - The `Documentation` workflow fails a Vale prose lint (`Google.Spacing`) on text copied from the upstream spec.
 9. **Smaller inconsistencies:**

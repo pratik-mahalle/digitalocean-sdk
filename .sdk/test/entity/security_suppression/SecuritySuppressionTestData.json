@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "security_suppression": {
+      "SECURITY_SUPPRESSION00": {
+        "resources": [],
+        "rule_uuid": "s15",
+        "suppression_uuid": "SUPPRESSION_UUID01",
+        "id": "SECURITY_SUPPRESSION00"
+      },
+      "SECURITY_SUPPRESSION01": {
+        "resources": [],
+        "rule_uuid": "s29",
+        "suppression_uuid": "SUPPRESSION_UUID01",
+        "id": "SECURITY_SUPPRESSION01"
+      },
+      "SECURITY_SUPPRESSION02": {
+        "resources": [],
+        "rule_uuid": "s3d",
+        "suppression_uuid": "SUPPRESSION_UUID01",
+        "id": "SECURITY_SUPPRESSION02"
+      }
+    }
+  },
+  "new": {
+    "security_suppression": {
+      "security_suppression_ref01": {
+        "resources": [],
+        "rule_uuid": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/security/settings/suppressions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/security/settings/suppressions/{suppression_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

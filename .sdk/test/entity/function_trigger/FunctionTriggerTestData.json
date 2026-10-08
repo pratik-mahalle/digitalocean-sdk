@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "function_trigger": {
+      "FUNCTION_TRIGGER00": {
+        "created_at": "s5a",
+        "function": "s5b",
+        "is_enabled": true,
+        "name": "s5d",
+        "namespace": "s5e",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s61",
+        "updated_at": "s62",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "id": "FUNCTION_TRIGGER00"
+      },
+      "FUNCTION_TRIGGER01": {
+        "created_at": "sb4",
+        "function": "sb5",
+        "is_enabled": true,
+        "name": "sb7",
+        "namespace": "sb8",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "sbb",
+        "updated_at": "sbc",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "id": "FUNCTION_TRIGGER01"
+      },
+      "FUNCTION_TRIGGER02": {
+        "created_at": "s10e",
+        "function": "s10f",
+        "is_enabled": true,
+        "name": "s111",
+        "namespace": "s112",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s115",
+        "updated_at": "s116",
+        "namespace_id": "NAMESPACE01",
+        "trigger_name": "TRIGGER_NAME01",
+        "id": "FUNCTION_TRIGGER02"
+      }
+    }
+  },
+  "new": {
+    "function_trigger": {
+      "function_trigger_ref01": {
+        "created_at": "s168",
+        "function": "s169",
+        "is_enabled": true,
+        "name": "s16b",
+        "namespace": "s16c",
+        "scheduled_details": {},
+        "scheduled_runs": {},
+        "type": "s16f",
+        "updated_at": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/functions/namespaces/{namespace_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

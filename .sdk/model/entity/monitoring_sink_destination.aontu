@@ -1,0 +1,316 @@
+# Entity: monitoring_sink_destination
+
+main: kit: entity: monitoring_sink_destination: {
+
+  alias: field: {}
+
+  fields: {
+    config: {
+      h: "Config"
+      n: "config"
+      op: {
+        create: {
+          req: true
+          type: "`$OBJECT`"
+        }
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "OpenSearch destination configuration with `credentials` omitted."
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "A unique identifier for a destination."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "destination name"
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The destination type."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "monitoring_sink_destination"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/monitoring/sinks/destinations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/monitoring/sinks/destinations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              lit: "destinations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.destination`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/sinks/destinations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/v2/monitoring/sinks/destinations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              lit: "destinations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.destinations`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/monitoring/sinks/destinations/{destination_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "1a64809f-1708-48ee-a742-dec8d481b8d1"
+                k: "param"
+                n: "id"
+                or: "destination_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/monitoring/sinks/destinations/{destination_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              destination_uuid: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              lit: "destinations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.destination`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/monitoring/sinks/destinations/{destination_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "1a64809f-1708-48ee-a742-dec8d481b8d1"
+                k: "param"
+                n: "id"
+                or: "destination_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/monitoring/sinks/destinations/{destination_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              destination_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              lit: "destinations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "POST /v2/monitoring/sinks/destinations/{destination_uuid}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "1a64809f-1708-48ee-a742-dec8d481b8d1"
+                k: "param"
+                n: "id"
+                or: "destination_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/monitoring/sinks/destinations/{destination_uuid}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              destination_uuid: "id"
+            }
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "monitoring"
+            }
+            {
+              lit: "sinks"
+            }
+            {
+              lit: "destinations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

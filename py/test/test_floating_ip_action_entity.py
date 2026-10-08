@@ -37,7 +37,7 @@ class TestFloatingIpActionEntity:
         client = DigitaloceanSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.FloatingIpAction(None).list({"id": 1}, None)
+            client.FloatingIpAction(None).list({"floating_ip_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,24 +46,41 @@ class TestFloatingIpActionEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["load"]:
+        for _op in ["create", "list", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "floating_ip_action." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            runner.live_miss(LIVE_STRICT, "Live entity test blocked: " + "the flow loads a floating_ip_action record it has no list to find")
+            for _live_key in ["floating_ip01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via DIGITALOCEAN_TEST_FLOATING_IP_ACTION_ENTID")
         client = setup["client"]
 
-        # Bootstrap entity data from existing test data.
-        floating_ip_action_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.floating_ip_action")))
-        floating_ip_action_ref01_data = None
-        if len(floating_ip_action_ref01_data_raw) > 0:
-            floating_ip_action_ref01_data = helpers.to_map(floating_ip_action_ref01_data_raw[0][1])
+        # CREATE
+        floating_ip_action_ref01_ent = client.FloatingIpAction(None)
+        floating_ip_action_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.floating_ip_action"), "floating_ip_action_ref01"))
+        floating_ip_action_ref01_data["floating_ip_id"] = setup["idmap"]["floating_ip01"]
+
+        floating_ip_action_ref01_data = helpers.to_map(runner.entity_data(floating_ip_action_ref01_ent.create(floating_ip_action_ref01_data, None)))
+        assert floating_ip_action_ref01_data is not None
+        assert floating_ip_action_ref01_data["id"] is not None
+
+        # LIST
+        floating_ip_action_ref01_match = {
+            "floating_ip_id": setup["idmap"]["floating_ip01"],
+        }
+
+        floating_ip_action_ref01_list_result = floating_ip_action_ref01_ent.list(floating_ip_action_ref01_match, None)
+        assert isinstance(floating_ip_action_ref01_list_result, list)
+
+        found_item = vs.select(
+            runner.entity_list_to_data(floating_ip_action_ref01_list_result),
+            {"id": floating_ip_action_ref01_data["id"]})
+        assert not vs.isempty(found_item)
 
         # LOAD
-        floating_ip_action_ref01_ent = client.FloatingIpAction(None)
         floating_ip_action_ref01_match_dt0 = {
             "id": floating_ip_action_ref01_data["id"],
         }

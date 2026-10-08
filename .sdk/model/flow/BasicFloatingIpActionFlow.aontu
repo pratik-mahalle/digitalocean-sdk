@@ -12,7 +12,6 @@ main: kit: flow: BasicFloatingIpActionFlow:
       }
 
       m: {
-        floating_ip: "floating_ip01",
         floating_ip_id: "floating_ip01"
       }
 
@@ -21,7 +20,7 @@ main: kit: flow: BasicFloatingIpActionFlow:
 
     {
       m: {
-        floating_ip: "floating_ip01"
+        floating_ip_id: "floating_ip01"
       }
 
       o: "list",

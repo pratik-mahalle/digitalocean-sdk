@@ -1,0 +1,81 @@
+# BasicFunctionNamespaceFlow
+
+main: kit: flow: BasicFunctionNamespaceFlow:
+{
+  entity: "function_namespace",
+  kind: "basic",
+  name: "BasicFunctionNamespaceFlow",
+  step: [
+    {
+      i: {
+        ref: "function_namespace_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "function_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "function_namespace_ref01",
+        srcdatavar: "function_namespace_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "function_namespace01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-function_namespace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "function_namespace_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "function_namespace01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "function_namespace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFunctionNamespaceFlow"
+}

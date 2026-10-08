@@ -1,0 +1,29 @@
+# BasicAddOnPlanFlow
+
+main: kit: flow: BasicAddOnPlanFlow:
+{
+  entity: "add_on_plan",
+  kind: "basic",
+  name: "BasicAddOnPlanFlow",
+  step: [
+    {
+      i: {
+        ref: "add_on_plan_ref01",
+        srcdatavar: "add_on_plan_ref01_data",
+        suffix: "_up0",
+        textfield: "app_name"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-add_on_plan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddOnPlanFlow"
+}

@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "security_plan": {
+      "SECURITY_PLAN00": {
+        "tier_coverage": {},
+        "id": "SECURITY_PLAN00"
+      },
+      "SECURITY_PLAN01": {
+        "tier_coverage": {},
+        "id": "SECURITY_PLAN01"
+      },
+      "SECURITY_PLAN02": {
+        "tier_coverage": {},
+        "id": "SECURITY_PLAN02"
+      }
+    }
+  },
+  "new": {
+    "security_plan": {
+      "security_plan_ref01": {
+        "tier_coverage": {}
+      }
+    }
+  },
+  "requests": {
+    "PUT /v2/security/settings/plan": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

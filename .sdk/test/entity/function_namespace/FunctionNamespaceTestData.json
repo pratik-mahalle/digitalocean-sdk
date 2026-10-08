@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "function_namespace": {
+      "FUNCTION_NAMESPACE00": {
+        "api_host": "s50",
+        "created_at": "s51",
+        "key": "s52",
+        "label": "s53",
+        "namespace": "s54",
+        "region": "s55",
+        "updated_at": "s56",
+        "uuid": "s57",
+        "namespace_id": "NAMESPACE01",
+        "id": "FUNCTION_NAMESPACE00"
+      },
+      "FUNCTION_NAMESPACE01": {
+        "api_host": "sa0",
+        "created_at": "sa1",
+        "key": "sa2",
+        "label": "sa3",
+        "namespace": "sa4",
+        "region": "sa5",
+        "updated_at": "sa6",
+        "uuid": "sa7",
+        "namespace_id": "NAMESPACE01",
+        "id": "FUNCTION_NAMESPACE01"
+      },
+      "FUNCTION_NAMESPACE02": {
+        "api_host": "sf0",
+        "created_at": "sf1",
+        "key": "sf2",
+        "label": "sf3",
+        "namespace": "sf4",
+        "region": "sf5",
+        "updated_at": "sf6",
+        "uuid": "sf7",
+        "namespace_id": "NAMESPACE01",
+        "id": "FUNCTION_NAMESPACE02"
+      }
+    }
+  },
+  "new": {
+    "function_namespace": {
+      "function_namespace_ref01": {
+        "api_host": "s140",
+        "created_at": "s141",
+        "key": "s142",
+        "label": "s143",
+        "namespace": "s144",
+        "region": "s145",
+        "updated_at": "s146",
+        "uuid": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/functions/namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/functions/namespaces/{namespace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/functions/namespaces/{namespace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

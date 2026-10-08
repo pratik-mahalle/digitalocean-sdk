@@ -1,0 +1,414 @@
+# Entity: function_trigger
+
+main: kit: entity: function_trigger: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "UTC time string."
+      t: "`$STRING`"
+    }
+    function: {
+      h: "Function"
+      n: "function"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Name of function(action) that exists in the given namespace."
+      t: "`$STRING`"
+    }
+    is_enabled: {
+      h: "Is Enabled"
+      n: "is_enabled"
+      op: {
+        create: {
+          req: true
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: false
+      sh: "Indicates weather the trigger is paused or unpaused."
+      t: "`$BOOLEAN`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "The trigger's unique name within the namespace."
+      t: "`$STRING`"
+    }
+    namespace: {
+      h: "Namespace"
+      n: "namespace"
+      r: false
+      sh: "A unique string format of UUID with a prefix fn-."
+      t: "`$STRING`"
+    }
+    scheduled_details: {
+      h: "Scheduled Details"
+      n: "scheduled_details"
+      r: true
+      sh: "Trigger details for SCHEDULED type, where body is optional."
+      t: "`$OBJECT`"
+    }
+    scheduled_runs: {
+      h: "Scheduled Runs"
+      n: "scheduled_runs"
+      r: false
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "String which indicates the type of trigger source like SCHEDULED."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: false
+      sh: "UTC time string."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "function_trigger"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/functions/namespaces/{namespace_id}/triggers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/v2/functions/namespaces/{namespace_id}/triggers"
+          q: {
+            exist: [
+              "namespace_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "triggers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/functions/namespaces/{namespace_id}/triggers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/functions/namespaces/{namespace_id}/triggers"
+          q: {
+            exist: [
+              "namespace_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "triggers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.triggers`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "my trigger"
+                k: "param"
+                n: "trigger_name"
+                or: "trigger_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+          q: {
+            exist: [
+              "namespace_id"
+              "trigger_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "trigger_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "my trigger"
+                k: "param"
+                n: "trigger_name"
+                or: "trigger_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+          q: {
+            exist: [
+              "namespace_id"
+              "trigger_name"
+            ]
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "trigger_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "fn-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                k: "param"
+                n: "namespace_id"
+                or: "namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "my trigger"
+                k: "param"
+                n: "trigger_name"
+                or: "trigger_name"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/v2/functions/namespaces/{namespace_id}/triggers/{trigger_name}"
+          q: {
+            exist: [
+              "namespace_id"
+              "trigger_name"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "functions"
+            }
+            {
+              lit: "namespaces"
+            }
+            {
+              var: "namespace_id"
+            }
+            {
+              lit: "triggers"
+            }
+            {
+              var: "trigger_name"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.trigger`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

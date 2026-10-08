@@ -12,7 +12,6 @@ main: kit: flow: BasicReservedIpActionFlow:
       }
 
       m: {
-        reserved_ip: "reserved_ip01",
         reserved_ip_id: "reserved_ip01"
       }
 
@@ -21,7 +20,7 @@ main: kit: flow: BasicReservedIpActionFlow:
 
     {
       m: {
-        reserved_ip: "reserved_ip01"
+        reserved_ip_id: "reserved_ip01"
       }
 
       o: "list",

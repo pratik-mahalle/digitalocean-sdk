@@ -1,0 +1,399 @@
+# Entity: security_scan
+
+main: kit: entity: security_scan: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "When scan was created."
+      t: "`$STRING`"
+    }
+    findings: {
+      h: "Findings"
+      n: "findings"
+      r: false
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The unique identifier for the scan."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The name of the affected resource."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "The status of the scan."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The type of the affected resource."
+      t: "`$STRING`"
+    }
+    urn: {
+      h: "Urn"
+      n: "urn"
+      r: false
+      sh: "The URN for the affected resource."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "security_scan"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /v2/security/scans"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/v2/security/scans"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scan`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "50e14f43-dd4e-412f-864d-78943ea28d91"
+                k: "param"
+                n: "finding_id"
+                or: "finding_uuid"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "497dcba3-ecbf-4587-a2dd-5eb0665e6880"
+                k: "param"
+                n: "scan_id"
+                or: "scan_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/security/scans/{scan_id}/findings/{finding_uuid}/affected_resources"
+          q: {
+            exist: [
+              "finding_id"
+              "scan_id"
+            ]
+          }
+          r: {
+            param: {
+              finding_uuid: "finding_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+            {
+              var: "scan_id"
+            }
+            {
+              lit: "findings"
+            }
+            {
+              var: "finding_id"
+            }
+            {
+              lit: "affected_resources"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.affected_resources`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/security/scans"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/security/scans"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scans`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v2/security/scans/{scan_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "497dcba3-ecbf-4587-a2dd-5eb0665e6880"
+                k: "param"
+                n: "scan_id"
+                or: "scan_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "CRITICAL"
+                k: "query"
+                n: "severity"
+                or: "severity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "CSPM"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/security/scans/{scan_id}"
+          q: {
+            exist: [
+              "scan_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+            {
+              var: "scan_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scan`"
+          }
+        }
+        {
+          co: {
+            id: "GET /v2/security/scans/latest"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: 1
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                k: "query"
+                n: "per_page"
+                or: "per_page"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "CRITICAL"
+                k: "query"
+                n: "severity"
+                or: "severity"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "CSPM"
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v2/security/scans/latest"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "v2"
+            }
+            {
+              lit: "security"
+            }
+            {
+              lit: "scans"
+            }
+            {
+              lit: "latest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.scan`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

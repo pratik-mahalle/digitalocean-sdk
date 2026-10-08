@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "monitoring_alert": {
+      "MONITORING_ALERT00": {
+        "alerts": {},
+        "compare": "s65",
+        "description": "s66",
+        "enabled": false,
+        "entities": [],
+        "tags": [],
+        "type": "s6a",
+        "uuid": "s6b",
+        "value": 108,
+        "window": "s6d",
+        "alert_uuid": "ALERT_UUID01",
+        "id": "MONITORING_ALERT00"
+      },
+      "MONITORING_ALERT01": {
+        "alerts": {},
+        "compare": "sc9",
+        "description": "sca",
+        "enabled": false,
+        "entities": [],
+        "tags": [],
+        "type": "sce",
+        "uuid": "scf",
+        "value": 208,
+        "window": "sd1",
+        "alert_uuid": "ALERT_UUID01",
+        "id": "MONITORING_ALERT01"
+      },
+      "MONITORING_ALERT02": {
+        "alerts": {},
+        "compare": "s12d",
+        "description": "s12e",
+        "enabled": false,
+        "entities": [],
+        "tags": [],
+        "type": "s132",
+        "uuid": "s133",
+        "value": 308,
+        "window": "s135",
+        "alert_uuid": "ALERT_UUID01",
+        "id": "MONITORING_ALERT02"
+      }
+    }
+  },
+  "new": {
+    "monitoring_alert": {
+      "monitoring_alert_ref01": {
+        "alerts": {},
+        "compare": "s191",
+        "description": "s192",
+        "enabled": false,
+        "entities": [],
+        "tags": [],
+        "type": "s196",
+        "uuid": "s197",
+        "value": 408,
+        "window": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/monitoring/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/alerts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /v2/monitoring/alerts/{alert_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

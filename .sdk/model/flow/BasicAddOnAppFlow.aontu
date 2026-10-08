@@ -1,0 +1,22 @@
+# BasicAddOnAppFlow
+
+main: kit: flow: BasicAddOnAppFlow:
+{
+  entity: "add_on_app",
+  kind: "basic",
+  name: "BasicAddOnAppFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "add_on_app_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddOnAppFlow"
+}

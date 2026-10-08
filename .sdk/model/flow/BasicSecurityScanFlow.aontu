@@ -1,0 +1,53 @@
+# BasicSecurityScanFlow
+
+main: kit: flow: BasicSecurityScanFlow:
+{
+  entity: "security_scan",
+  kind: "basic",
+  name: "BasicSecurityScanFlow",
+  step: [
+    {
+      i: {
+        ref: "security_scan_ref01"
+      }
+
+      m: {
+        finding_id: "finding01",
+        scan_id: "scan01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "security_scan_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "security_scan_ref01",
+        srcdatavar: "security_scan_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-security_scan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSecurityScanFlow"
+}

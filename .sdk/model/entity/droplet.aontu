@@ -322,7 +322,7 @@ main: kit: entity: droplet: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.droplet`"
           }
         }
       ]

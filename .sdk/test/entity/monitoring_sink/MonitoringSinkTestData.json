@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "monitoring_sink": {
+      "MONITORING_SINK00": {
+        "destination": {},
+        "destination_uuid": "s1f",
+        "resources": [],
+        "sink_uuid": "SINK_UUID01",
+        "id": "MONITORING_SINK00"
+      },
+      "MONITORING_SINK01": {
+        "destination": {},
+        "destination_uuid": "s3d",
+        "resources": [],
+        "sink_uuid": "SINK_UUID01",
+        "id": "MONITORING_SINK01"
+      },
+      "MONITORING_SINK02": {
+        "destination": {},
+        "destination_uuid": "s5b",
+        "resources": [],
+        "sink_uuid": "SINK_UUID01",
+        "id": "MONITORING_SINK02"
+      }
+    }
+  },
+  "new": {
+    "monitoring_sink": {
+      "monitoring_sink_ref01": {
+        "destination": {},
+        "destination_uuid": "s79",
+        "resources": []
+      }
+    }
+  },
+  "requests": {
+    "POST /v2/monitoring/sinks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /v2/monitoring/sinks/{sink_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /v2/monitoring/sinks/{sink_uuid}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

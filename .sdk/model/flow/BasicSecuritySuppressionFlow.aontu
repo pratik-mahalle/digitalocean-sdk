@@ -1,0 +1,31 @@
+# BasicSecuritySuppressionFlow
+
+main: kit: flow: BasicSecuritySuppressionFlow:
+{
+  entity: "security_suppression",
+  kind: "basic",
+  name: "BasicSecuritySuppressionFlow",
+  step: [
+    {
+      i: {
+        ref: "security_suppression_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "security_suppression_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "security_suppression01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicSecuritySuppressionFlow"
+}

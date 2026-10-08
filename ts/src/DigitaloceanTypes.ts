@@ -69,7 +69,6 @@ export interface AccountLoadMatch {
 }
 
 export interface Action {
-  action?: Record<string, any>
   completed_at?: string
   id?: number
   region: Record<string, any>
@@ -83,26 +82,11 @@ export interface Action {
 
 export interface ActionLoadMatch {
   id: number
-  image_id?: number
 }
 
 export interface ActionListMatch {
   page?: number
   per_page?: number
-}
-
-export interface ActionCreateData {
-  image_id: number
-  action?: Record<string, any>
-  completed_at?: string
-  id?: number
-  region: Record<string, any>
-  region_slug?: string
-  resource_id?: number
-  resource_type?: string
-  started_at?: string
-  status?: string
-  type?: string
 }
 
 export interface ActorLimit {
@@ -115,94 +99,137 @@ export interface ActorLimitListMatch {
   id: string
 }
 
-export interface AddOn {
-  app_name?: string
+export interface AddOnApp {
   app_slug: string
   description: string
   display_name: string
-  has_config: boolean
+  eula: string
   id: number
-  message?: string
-  metadata?: any[]
   name: string
   options?: any[]
-  plan_name?: string
-  plan_price_per_month?: number
-  plan_slug: string
-  sso_url?: string
-  state: string
+  plans: any[]
+  tos: string
   type: string
-  uuid: string
 }
 
-export interface AddOnLoadMatch {
-  resource_uuid: string
-}
-
-export interface AddOnListMatch {
-  app_slug: string
-
-  // Selects a custom action instead of the plain list:
-  //   'app' | 'saa'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface AddOnCreateData {
-  app_name?: string
-  app_slug: string
-  description: string
-  display_name: string
-  has_config: boolean
-  id: number
-  message?: string
-  metadata?: any[]
-  name: string
-  options?: any[]
-  plan_name?: string
-  plan_price_per_month?: number
-  plan_slug: string
-  sso_url?: string
-  state: string
-  type: string
-  uuid: string
-
-  // Selects a custom action instead of the plain create:
-  //   'saa'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface AddOnUpdateData {
-  resource_uuid: string
-  app_name?: string
+export interface AddOnAppListMatch {
   app_slug?: string
   description?: string
   display_name?: string
-  has_config?: boolean
+  eula?: string
   id?: number
+  name?: string
+  options?: any[]
+  plans?: any[]
+  tos?: string
+  type?: string
+}
+
+export interface AddOnPlan {
+  app_name?: string
+  app_slug: string
+  has_config: boolean
+  message?: string
+  metadata?: any[]
+  name: string
+  plan_name?: string
+  plan_price_per_month?: number
+  plan_slug: string
+  sso_url?: string
+  state: string
+  uuid: string
+}
+
+export interface AddOnPlanUpdateData {
+  resource_uuid: string
+  app_name?: string
+  app_slug?: string
+  has_config?: boolean
   message?: string
   metadata?: any[]
   name?: string
-  options?: any[]
   plan_name?: string
   plan_price_per_month?: number
   plan_slug?: string
   sso_url?: string
   state?: string
-  type?: string
   uuid?: string
-
-  // Selects a custom action instead of the plain update:
-  //   'plan'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
-export interface AddOnRemoveMatch {
+export interface AddOnResource {
+  app_name?: string
+  app_slug: string
+  fleet_uuid?: string
+  has_config: boolean
+  linked_droplet_id?: number
+  message?: string
+  metadata?: any[]
+  name: string
+  plan_name?: string
+  plan_price_per_month?: number
+  plan_slug: string
+  sso_url?: string
+  state: string
+  uuid: string
+}
+
+export interface AddOnResourceLoadMatch {
+  resource_uuid: string
+}
+
+export interface AddOnResourceListMatch {
+  app_name?: string
+  app_slug?: string
+  fleet_uuid?: string
+  has_config?: boolean
+  linked_droplet_id?: number
+  message?: string
+  metadata?: any[]
+  name?: string
+  plan_name?: string
+  plan_price_per_month?: number
+  plan_slug?: string
+  sso_url?: string
+  state?: string
+  uuid?: string
+}
+
+export interface AddOnResourceCreateData {
+  app_name?: string
+  app_slug: string
+  fleet_uuid?: string
+  has_config: boolean
+  linked_droplet_id?: number
+  message?: string
+  metadata?: any[]
+  name: string
+  plan_name?: string
+  plan_price_per_month?: number
+  plan_slug: string
+  sso_url?: string
+  state: string
+  uuid: string
+}
+
+export interface AddOnResourceUpdateData {
+  resource_uuid: string
+  app_name?: string
+  app_slug?: string
+  fleet_uuid?: string
+  has_config?: boolean
+  linked_droplet_id?: number
+  message?: string
+  metadata?: any[]
+  name?: string
+  plan_name?: string
+  plan_price_per_month?: number
+  plan_slug?: string
+  sso_url?: string
+  state?: string
+  uuid?: string
+}
+
+export interface AddOnResourceRemoveMatch {
   resource_uuid: string
 }
 
@@ -5623,13 +5650,14 @@ export interface FloatingIpActionLoadMatch {
 }
 
 export interface FloatingIpActionListMatch {
-  id: string
+  floating_ip_id: string
 }
 
 export interface FloatingIpActionCreateData {
-  id: string
+  floating_ip_id: string
   action?: Record<string, any>
   completed_at?: string
+  id?: number
   project_id?: string
   region: Record<string, any>
   region_slug?: string
@@ -5640,95 +5668,136 @@ export interface FloatingIpActionCreateData {
   type?: string
 }
 
-export interface FunctionType {
-  api_host?: string
+export interface FunctionKey {
   created_at?: string
   expires_at?: string
   expires_in?: string
-  function?: string
   id?: string
-  is_enabled?: boolean
+  name: string
+  updated_at?: string
+}
+
+export interface FunctionKeyListMatch {
+  namespace_id: string
+}
+
+export interface FunctionKeyCreateData {
+  namespace_id: string
+  created_at?: string
+  expires_at?: string
+  expires_in?: string
+  id?: string
+  name: string
+  updated_at?: string
+}
+
+export interface FunctionKeyUpdateData {
+  id: string
+  namespace_id: string
+  created_at?: string
+  expires_at?: string
+  expires_in?: string
+  name?: string
+  updated_at?: string
+}
+
+export interface FunctionKeyRemoveMatch {
+  id: string
+  namespace_id: string
+}
+
+export interface FunctionNamespace {
+  api_host?: string
+  created_at?: string
   key?: string
   label?: string
-  name?: string
   namespace?: string
   region?: string
-  scheduled_details: Record<string, any>
-  scheduled_runs?: Record<string, any>
-  type?: string
   updated_at?: string
   uuid?: string
 }
 
-export interface FunctionLoadMatch {
+export interface FunctionNamespaceLoadMatch {
   namespace_id: string
-  trigger_name?: string
 }
 
-export interface FunctionListMatch {
-  namespace_id: string
-
-  // Selects a custom action instead of the plain list:
-  //   'namespace'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface FunctionCreateData {
-  namespace_id: string
+export interface FunctionNamespaceListMatch {
   api_host?: string
   created_at?: string
-  expires_at?: string
-  expires_in?: string
-  function?: string
-  id?: string
-  is_enabled?: boolean
   key?: string
   label?: string
-  name?: string
   namespace?: string
   region?: string
+  updated_at?: string
+  uuid?: string
+}
+
+export interface FunctionNamespaceCreateData {
+  api_host?: string
+  created_at?: string
+  key?: string
+  label?: string
+  namespace?: string
+  region?: string
+  updated_at?: string
+  uuid?: string
+}
+
+export interface FunctionNamespaceRemoveMatch {
+  namespace_id: string
+}
+
+export interface FunctionTrigger {
+  created_at?: string
+  function?: string
+  is_enabled?: boolean
+  name?: string
+  namespace?: string
   scheduled_details: Record<string, any>
   scheduled_runs?: Record<string, any>
   type?: string
   updated_at?: string
-  uuid?: string
-
-  // Selects a custom action instead of the plain create:
-  //   'namespace'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
-export interface FunctionUpdateData {
-  key_id?: string
+export interface FunctionTriggerLoadMatch {
   namespace_id: string
-  trigger_name?: string
-  api_host?: string
+  trigger_name: string
+}
+
+export interface FunctionTriggerListMatch {
+  namespace_id: string
+}
+
+export interface FunctionTriggerCreateData {
+  namespace_id: string
   created_at?: string
-  expires_at?: string
-  expires_in?: string
   function?: string
-  id?: string
   is_enabled?: boolean
-  key?: string
-  label?: string
   name?: string
   namespace?: string
-  region?: string
+  scheduled_details: Record<string, any>
+  scheduled_runs?: Record<string, any>
+  type?: string
+  updated_at?: string
+}
+
+export interface FunctionTriggerUpdateData {
+  namespace_id: string
+  trigger_name: string
+  created_at?: string
+  function?: string
+  is_enabled?: boolean
+  name?: string
+  namespace?: string
   scheduled_details?: Record<string, any>
   scheduled_runs?: Record<string, any>
   type?: string
   updated_at?: string
-  uuid?: string
 }
 
-export interface FunctionRemoveMatch {
-  key_id?: string
+export interface FunctionTriggerRemoveMatch {
   namespace_id: string
-  trigger_name?: string
+  trigger_name: string
 }
 
 export interface GenaiapiRegion {
@@ -6637,17 +6706,12 @@ export interface ModelListMatch {
   owned_by?: string
 }
 
-export interface Monitoring {
+export interface MonitoringAlert {
   alerts: Record<string, any>
   compare: string
-  config?: Record<string, any>
   description: string
-  destination: Record<string, any>
   enabled: boolean
   entities: any[]
-  id?: string
-  name?: string
-  resources?: any[]
   tags: any[]
   type: string
   uuid: string
@@ -6655,71 +6719,35 @@ export interface Monitoring {
   window: string
 }
 
-export interface MonitoringLoadMatch {
+export interface MonitoringAlertLoadMatch {
   alert_uuid: string
 }
 
-export interface MonitoringListMatch {
-  alerts?: Record<string, any>
-  compare?: string
-  config?: Record<string, any>
-  description?: string
-  destination?: Record<string, any>
-  enabled?: boolean
-  entities?: any[]
-  id?: string
-  name?: string
-  resources?: any[]
-  tags?: any[]
-  type?: string
-  uuid?: string
-  value?: number
-  window?: string
-
-  // Selects a custom action instead of the plain list:
-  //   'alert' | 'sink'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
+export interface MonitoringAlertListMatch {
+  page?: number
+  per_page?: number
 }
 
-export interface MonitoringCreateData {
-  destination_uuid: string
+export interface MonitoringAlertCreateData {
   alerts: Record<string, any>
   compare: string
-  config?: Record<string, any>
   description: string
-  destination: Record<string, any>
   enabled: boolean
   entities: any[]
-  id?: string
-  name?: string
-  resources?: any[]
   tags: any[]
   type: string
   uuid: string
   value: number
   window: string
-
-  // Selects a custom action instead of the plain create:
-  //   'alert' | 'sink'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
-export interface MonitoringUpdateData {
+export interface MonitoringAlertUpdateData {
   alert_uuid: string
   alerts?: Record<string, any>
   compare?: string
-  config?: Record<string, any>
   description?: string
-  destination?: Record<string, any>
   enabled?: boolean
   entities?: any[]
-  id?: string
-  name?: string
-  resources?: any[]
   tags?: any[]
   type?: string
   uuid?: string
@@ -6727,8 +6755,68 @@ export interface MonitoringUpdateData {
   window?: string
 }
 
-export interface MonitoringRemoveMatch {
+export interface MonitoringAlertRemoveMatch {
   alert_uuid: string
+}
+
+export interface MonitoringSink {
+  destination: Record<string, any>
+  destination_uuid?: string
+  resources?: any[]
+}
+
+export interface MonitoringSinkLoadMatch {
+  sink_uuid: string
+}
+
+export interface MonitoringSinkListMatch {
+  resource_id?: string
+}
+
+export interface MonitoringSinkCreateData {
+  destination: Record<string, any>
+  destination_uuid?: string
+  resources?: any[]
+}
+
+export interface MonitoringSinkRemoveMatch {
+  sink_uuid: string
+}
+
+export interface MonitoringSinkDestination {
+  config?: Record<string, any>
+  id?: string
+  name?: string
+  type?: string
+}
+
+export interface MonitoringSinkDestinationLoadMatch {
+  id: string
+}
+
+export interface MonitoringSinkDestinationListMatch {
+  config?: Record<string, any>
+  id?: string
+  name?: string
+  type?: string
+}
+
+export interface MonitoringSinkDestinationCreateData {
+  config?: Record<string, any>
+  id?: string
+  name?: string
+  type?: string
+}
+
+export interface MonitoringSinkDestinationUpdateData {
+  id: string
+  config?: Record<string, any>
+  name?: string
+  type?: string
+}
+
+export interface MonitoringSinkDestinationRemoveMatch {
+  id: string
 }
 
 export interface N1Click {
@@ -7334,13 +7422,14 @@ export interface ReservedIpActionLoadMatch {
 }
 
 export interface ReservedIpActionListMatch {
-  id: string
+  reserved_ip_id: string
 }
 
 export interface ReservedIpActionCreateData {
-  id: string
+  reserved_ip_id: string
   action?: Record<string, any>
   completed_at?: string
+  id?: number
   project_id?: string
   region: Record<string, any>
   region_slug?: string
@@ -7406,21 +7495,33 @@ export interface SearchListMatch {
   query?: string
 }
 
-export interface Security {
+export interface SecurityPlan {
+  tier_coverage?: Record<string, any>
+}
+
+export interface SecurityPlanUpdateData {
+  tier_coverage?: Record<string, any>
+}
+
+export interface SecurityRule {
+  resource?: string
+}
+
+export interface SecurityRuleCreateData {
+  resource?: string
+}
+
+export interface SecurityScan {
   created_at?: string
   findings?: any[]
   id?: string
   name?: string
-  resource?: string
-  resources?: any[]
-  rule_uuid?: string
   status?: string
-  tier_coverage?: Record<string, any>
   type?: string
   urn?: string
 }
 
-export interface SecurityLoadMatch {
+export interface SecurityScanLoadMatch {
   scan_id: string
   page?: number
   per_page?: number
@@ -7428,54 +7529,32 @@ export interface SecurityLoadMatch {
   type?: string
 }
 
-export interface SecurityListMatch {
-  finding_id: string
-  scan_id: string
+export interface SecurityScanListMatch {
   page?: number
   per_page?: number
-
-  // Selects a custom action instead of the plain list:
-  //   'scan'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
 }
 
-export interface SecurityCreateData {
+export interface SecurityScanCreateData {
   created_at?: string
   findings?: any[]
   id?: string
   name?: string
-  resource?: string
-  resources?: any[]
-  rule_uuid?: string
   status?: string
-  tier_coverage?: Record<string, any>
-  type?: string
-  urn?: string
-
-  // Selects a custom action instead of the plain create:
-  //   'scan'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface SecurityUpdateData {
-  created_at?: string
-  findings?: any[]
-  id?: string
-  name?: string
-  resource?: string
-  resources?: any[]
-  rule_uuid?: string
-  status?: string
-  tier_coverage?: Record<string, any>
   type?: string
   urn?: string
 }
 
-export interface SecurityRemoveMatch {
+export interface SecuritySuppression {
+  resources?: any[]
+  rule_uuid?: string
+}
+
+export interface SecuritySuppressionCreateData {
+  resources?: any[]
+  rule_uuid?: string
+}
+
+export interface SecuritySuppressionRemoveMatch {
   suppression_uuid: string
 }
 
@@ -8265,19 +8344,18 @@ export interface VpcRoutesPublicPreviewCreateData {
 }
 
 export interface VpcRoutesPublicPreviewUpdateData {
-  route_uuid: string
+  id: string
   subnet_id: string
   vpc_id: string
   created_at?: string
   destination_cidr?: string
-  id?: string
   modifiable?: boolean
   target_urns?: any[]
   type?: string
 }
 
 export interface VpcRoutesPublicPreviewRemoveMatch {
-  route_uuid: string
+  id: string
   subnet_id: string
   vpc_id: string
 }

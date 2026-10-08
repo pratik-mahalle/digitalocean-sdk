@@ -238,32 +238,6 @@
 
 {
   point: "warning"
-  note: "Points POST /v2/functions/namespaces/{namespace_id}/keys and POST /v2/functions/namespaces/{namespace_id}/triggers on entity=function op=create have the same selector (exist: namespace_id), so only POST /v2/functions/namespaces/{namespace_id}/keys is ever chosen. An action or another entity in guide.aontu tells them apart."
-  entity: "function"
-  op: "create"
-  points: [
-    "POST /v2/functions/namespaces/{namespace_id}/keys"
-    "POST /v2/functions/namespaces/{namespace_id}/triggers"
-  ]
-
-}
-
-
-{
-  point: "warning"
-  note: "Points GET /v2/functions/namespaces/{namespace_id}/keys and GET /v2/functions/namespaces/{namespace_id}/triggers on entity=function op=list have the same selector (exist: namespace_id), so only GET /v2/functions/namespaces/{namespace_id}/keys is ever chosen. An action or another entity in guide.aontu tells them apart."
-  entity: "function"
-  op: "list"
-  points: [
-    "GET /v2/functions/namespaces/{namespace_id}/keys"
-    "GET /v2/functions/namespaces/{namespace_id}/triggers"
-  ]
-
-}
-
-
-{
-  point: "warning"
   note: "Points GET /v2/insights/alert-instances/{id}, GET /v2/insights/alert-rules/{id} and GET /v2/insights/notification-channels/{id} on entity=insight op=load have the same selector (exist: id), so only GET /v2/insights/alert-instances/{id} is ever chosen. An action or another entity in guide.aontu tells them apart."
   entity: "insight"
   op: "load"
@@ -523,19 +497,6 @@
     "GET /v2/action-gateway/sessions/search"
     "GET /v2/action-gateway/toolbelts/search"
     "GET /v2/action-gateway/tools/providers/search"
-  ]
-
-}
-
-
-{
-  point: "warning"
-  note: "Points POST /v2/security/scans/rules and POST /v2/security/settings/suppressions on entity=security op=create have the same selector (exist: none), so only POST /v2/security/scans/rules is ever chosen. An action or another entity in guide.aontu tells them apart."
-  entity: "security"
-  op: "create"
-  points: [
-    "POST /v2/security/scans/rules"
-    "POST /v2/security/settings/suppressions"
   ]
 
 }

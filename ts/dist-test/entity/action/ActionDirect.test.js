@@ -34,14 +34,12 @@ const utility_1 = require("../../utility");
         const query = {};
         if (setup.live) {
             params.id = 36804636;
-            params.image_id = 62137902;
         }
         else {
             params.id = 'direct01';
-            params.image_id = 'direct02';
         }
         const result = await client.direct({
-            path: 'v2/images/{image_id}/actions/{id}',
+            path: 'v2/actions/{id}',
             method: 'GET',
             params,
             query,
@@ -62,7 +60,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
         }
     });
     (0, node_test_1.test)('direct-list-action', async (t) => {

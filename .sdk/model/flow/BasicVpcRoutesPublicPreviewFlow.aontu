@@ -21,7 +21,7 @@ main: kit: flow: BasicVpcRoutesPublicPreviewFlow:
 
     {
       m: {
-        vpc_uuid: "vpc_uuid01"
+        vpc_id: "vpc01"
       }
 
       o: "list",
@@ -80,7 +80,7 @@ main: kit: flow: BasicVpcRoutesPublicPreviewFlow:
       }
 
       m: {
-        vpc_uuid: "vpc_uuid01"
+        vpc_id: "vpc01"
       }
 
       o: "list",

@@ -4,7 +4,9 @@ import { AccessPointEntity } from './entity/AccessPointEntity'
 import { AccountEntity } from './entity/AccountEntity'
 import { ActionEntity } from './entity/ActionEntity'
 import { ActorLimitEntity } from './entity/ActorLimitEntity'
-import { AddOnEntity } from './entity/AddOnEntity'
+import { AddOnAppEntity } from './entity/AddOnAppEntity'
+import { AddOnPlanEntity } from './entity/AddOnPlanEntity'
+import { AddOnResourceEntity } from './entity/AddOnResourceEntity'
 import { ApiAgentVersionEntity } from './entity/ApiAgentVersionEntity'
 import { ApiCreateAgentApiKeyOutputEntity } from './entity/ApiCreateAgentApiKeyOutputEntity'
 import { ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity } from './entity/ApiCreateDataSourceFileUploadPresignedUrlsOutputEntity'
@@ -151,7 +153,9 @@ import { EmptyEntity } from './entity/EmptyEntity'
 import { FirewallEntity } from './entity/FirewallEntity'
 import { FloatingIpEntity } from './entity/FloatingIpEntity'
 import { FloatingIpActionEntity } from './entity/FloatingIpActionEntity'
-import { FunctionEntity } from './entity/FunctionEntity'
+import { FunctionKeyEntity } from './entity/FunctionKeyEntity'
+import { FunctionNamespaceEntity } from './entity/FunctionNamespaceEntity'
+import { FunctionTriggerEntity } from './entity/FunctionTriggerEntity'
 import { GenaiapiRegionEntity } from './entity/GenaiapiRegionEntity'
 import { ImageEntity } from './entity/ImageEntity'
 import { ImageActionEntity } from './entity/ImageActionEntity'
@@ -173,7 +177,9 @@ import { McpServerEntity } from './entity/McpServerEntity'
 import { MessageEntity } from './entity/MessageEntity'
 import { MetricEntity } from './entity/MetricEntity'
 import { ModelEntity } from './entity/ModelEntity'
-import { MonitoringEntity } from './entity/MonitoringEntity'
+import { MonitoringAlertEntity } from './entity/MonitoringAlertEntity'
+import { MonitoringSinkEntity } from './entity/MonitoringSinkEntity'
+import { MonitoringSinkDestinationEntity } from './entity/MonitoringSinkDestinationEntity'
 import { N1ClickEntity } from './entity/N1ClickEntity'
 import { N1ClickApplicationEntity } from './entity/N1ClickApplicationEntity'
 import { NeighborIdEntity } from './entity/NeighborIdEntity'
@@ -200,7 +206,10 @@ import { ReservedIpEntity } from './entity/ReservedIpEntity'
 import { ReservedIpActionEntity } from './entity/ReservedIpActionEntity'
 import { ResyncEntity } from './entity/ResyncEntity'
 import { SearchEntity } from './entity/SearchEntity'
-import { SecurityEntity } from './entity/SecurityEntity'
+import { SecurityPlanEntity } from './entity/SecurityPlanEntity'
+import { SecurityRuleEntity } from './entity/SecurityRuleEntity'
+import { SecurityScanEntity } from './entity/SecurityScanEntity'
+import { SecuritySuppressionEntity } from './entity/SecuritySuppressionEntity'
 import { SettingEntity } from './entity/SettingEntity'
 import { SizeEntity } from './entity/SizeEntity'
 import { SnapshotEntity } from './entity/SnapshotEntity'
@@ -580,12 +589,30 @@ class DigitaloceanSDK {
   }
 
 
-  // Entity access: `client.AddOn().list()` / `client.AddOn().load({ id })`.
+  // Entity access: `client.AddOnApp().list()` / `client.AddOnApp().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  AddOn(entopts?: Record<string, any>) {
+  AddOnApp(entopts?: Record<string, any>) {
     const self = this
-    return new AddOnEntity(self, entopts)
+    return new AddOnAppEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.AddOnPlan().list()` / `client.AddOnPlan().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AddOnPlan(entopts?: Record<string, any>) {
+    const self = this
+    return new AddOnPlanEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.AddOnResource().list()` / `client.AddOnResource().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  AddOnResource(entopts?: Record<string, any>) {
+    const self = this
+    return new AddOnResourceEntity(self, entopts)
   }
 
 
@@ -1903,12 +1930,30 @@ class DigitaloceanSDK {
   }
 
 
-  // Entity access: `client.Function().list()` / `client.Function().load({ id })`.
+  // Entity access: `client.FunctionKey().list()` / `client.FunctionKey().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  Function(entopts?: Record<string, any>) {
+  FunctionKey(entopts?: Record<string, any>) {
     const self = this
-    return new FunctionEntity(self, entopts)
+    return new FunctionKeyEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.FunctionNamespace().list()` / `client.FunctionNamespace().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FunctionNamespace(entopts?: Record<string, any>) {
+    const self = this
+    return new FunctionNamespaceEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.FunctionTrigger().list()` / `client.FunctionTrigger().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  FunctionTrigger(entopts?: Record<string, any>) {
+    const self = this
+    return new FunctionTriggerEntity(self, entopts)
   }
 
 
@@ -2101,12 +2146,30 @@ class DigitaloceanSDK {
   }
 
 
-  // Entity access: `client.Monitoring().list()` / `client.Monitoring().load({ id })`.
+  // Entity access: `client.MonitoringAlert().list()` / `client.MonitoringAlert().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  Monitoring(entopts?: Record<string, any>) {
+  MonitoringAlert(entopts?: Record<string, any>) {
     const self = this
-    return new MonitoringEntity(self, entopts)
+    return new MonitoringAlertEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.MonitoringSink().list()` / `client.MonitoringSink().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MonitoringSink(entopts?: Record<string, any>) {
+    const self = this
+    return new MonitoringSinkEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.MonitoringSinkDestination().list()` / `client.MonitoringSinkDestination().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  MonitoringSinkDestination(entopts?: Record<string, any>) {
+    const self = this
+    return new MonitoringSinkDestinationEntity(self, entopts)
   }
 
 
@@ -2344,12 +2407,39 @@ class DigitaloceanSDK {
   }
 
 
-  // Entity access: `client.Security().list()` / `client.Security().load({ id })`.
+  // Entity access: `client.SecurityPlan().list()` / `client.SecurityPlan().load({ id })`.
   // The argument is the entity OPTIONS object (passed to the entity
   // constructor as entopts), not initial entity data.
-  Security(entopts?: Record<string, any>) {
+  SecurityPlan(entopts?: Record<string, any>) {
     const self = this
-    return new SecurityEntity(self, entopts)
+    return new SecurityPlanEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.SecurityRule().list()` / `client.SecurityRule().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SecurityRule(entopts?: Record<string, any>) {
+    const self = this
+    return new SecurityRuleEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.SecurityScan().list()` / `client.SecurityScan().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SecurityScan(entopts?: Record<string, any>) {
+    const self = this
+    return new SecurityScanEntity(self, entopts)
+  }
+
+
+  // Entity access: `client.SecuritySuppression().list()` / `client.SecuritySuppression().load({ id })`.
+  // The argument is the entity OPTIONS object (passed to the entity
+  // constructor as entopts), not initial entity data.
+  SecuritySuppression(entopts?: Record<string, any>) {
+    const self = this
+    return new SecuritySuppressionEntity(self, entopts)
   }
 
 

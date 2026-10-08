@@ -68137,7 +68137,7 @@
     "properties": {
      "name": {
       "type": "string",
-      "description": "The name of the domain itself. This should follow the standard domain format of domain.TLD. For instance, `example.com` is a valid domain name.",
+      "description": "The name of the domain itself. This should follow the standard domain format of `domain.TLD`. For instance, `example.com` is a valid domain name.",
       "example": "example.com"
      },
      "ip_address": {
@@ -99587,7 +99587,7 @@
     }
    },
    "associated_resources_status": {
-    "description": "A JSON object containing containing the status of a request to destroy a Droplet and its associated resources.",
+    "description": "A JSON object containing the status of a request to destroy a Droplet and its associated resources.",
     "headers": {
      "ratelimit-limit": {
       "$ref": "#/components/headers/ratelimit-limit"

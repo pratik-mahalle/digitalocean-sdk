@@ -78,7 +78,7 @@ def _api_update_agent_function_output_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["api_update_agent_function_output01", "api_update_agent_function_output02", "api_update_agent_function_output03", "function01", "function02", "function03"],
+        ["api_update_agent_function_output01", "api_update_agent_function_output02", "api_update_agent_function_output03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

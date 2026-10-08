@@ -9,7 +9,23 @@
       },
       "unit": {
         "direct": [],
-        "entityOp": []
+        "entityOp": [
+          {
+            "entity": "api_simulation_journey",
+            "op": "load",
+            "reason": "sdkgen bug: the generated basic flow for a load-only nested entity calls load({id}) without the parent path param, and the record has no parent field to supply it"
+          },
+          {
+            "entity": "dedicated_inference_accelerator",
+            "op": "load",
+            "reason": "sdkgen bug: the generated basic flow for a load-only nested entity calls load({id}) without the parent path param, and the record has no parent field to supply it"
+          },
+          {
+            "entity": "logsink",
+            "op": "load",
+            "reason": "sdkgen bug: the generated basic flow for a load-only nested entity calls load({id}) without the parent path param, and the record has no parent field to supply it"
+          }
+        ]
       }
     },
     "live": {

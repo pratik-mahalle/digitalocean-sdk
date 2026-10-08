@@ -1,0 +1,18 @@
+# BasicSecurityRuleFlow
+
+main: kit: flow: BasicSecurityRuleFlow:
+{
+  entity: "security_rule",
+  kind: "basic",
+  name: "BasicSecurityRuleFlow",
+  step: [
+    {
+      i: {
+        ref: "security_rule_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSecurityRuleFlow"
+}
